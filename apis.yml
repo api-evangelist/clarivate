@@ -1,0 +1,33 @@
+aid: clarivate
+name: Clarivate
+description: >-
+  Empower yourself with our advanced tools to accelerate the pace of innovation
+  in your organization. Access and learn about the APIs from our portfolio of
+  industry-leading products. 
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API
+created: '2024-12-16'
+modified: '2024-12-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/clarivate/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: clarivate:clarivate
+    name: Clarivate
+    description: >-
+      Empower yourself with our advanced tools to accelerate the pace of
+      innovation in your organization. Access and learn about the APIs from our
+      portfolio of industry-leading products. 
+    humanURL: ' https://developer.clarivate.com/'
+    tags:
+      - API
+    properties:
+      - type: Documentation
+        url: ' https://developer.clarivate.com/'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
