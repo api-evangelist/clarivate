@@ -3,9 +3,9 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/clarivate/refs/heads/main/apis.yml
 name: Clarivate
 tags:
+  - Analytics
   - Data
   - Insights
-  - Analytics
   - Research
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -23,8 +23,8 @@ apis:
   - aid: clarivate:clarivate
     name: Clarivate APIs
     tags:
-      - Data
       - Analytics
+      - Data
     humanURL: https://developer.clarivate.com/
     properties:
       - url: https://developer.clarivate.com/
