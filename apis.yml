@@ -114,9 +114,9 @@ common:
   - type: JSON-LD
     url: json-ld/clarivate-context.jsonld
   - type: Spectral
-    url: spectral/clarivate-spectral.yml
+    url: rules/clarivate-rules.yml
   - type: Naftiko Capabilities
-    url: naftiko/clarivate-capabilities.yml
+    url: capabilities/clarivate-capabilities.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

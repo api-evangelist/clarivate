@@ -65,8 +65,8 @@ The InCites API provides programmatic access to the Clarivate research benchmark
 - [Privacy Policy](https://clarivate.com/privacy-center/)
 - [Terms of Service](https://clarivate.com/legal-center/)
 - [JSON-LD Context](json-ld/clarivate-context.jsonld)
-- [Spectral Ruleset](spectral/clarivate-spectral.yml)
-- [Naftiko Capabilities](naftiko/clarivate-capabilities.yml)
+- [Spectral Ruleset](rules/clarivate-rules.yml)
+- [Naftiko Capabilities](capabilities/clarivate-capabilities.yml)
 
 ## Maintainers
 
