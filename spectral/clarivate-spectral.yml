@@ -1,0 +1,43 @@
+extends:
+  - spectral:oas
+rules:
+  clarivate-info-contact:
+    description: API info MUST contain a contact email or URL.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  clarivate-https-only:
+    description: All Clarivate API servers MUST use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+  clarivate-operation-id:
+    description: Operations MUST have an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: truthy
+  clarivate-tag-required:
+    description: Operations MUST be tagged for product domain grouping.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].tags
+    then:
+      function: truthy
+  clarivate-security-required:
+    description: API MUST define API key security schemes.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      function: truthy
+  clarivate-server-url:
+    description: API MUST declare at least one server URL.
+    severity: error
+    given: $.servers
+    then:
+      function: truthy

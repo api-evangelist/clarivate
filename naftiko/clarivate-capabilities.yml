@@ -1,0 +1,30 @@
+capabilities:
+  - id: clarivate.access-research-publications
+    name: Access research publications and citations
+    description: >-
+      Query the Web of Science Core Collection for publications, authors,
+      affiliations, and citation relationships used in bibliometric and
+      research evaluation workflows.
+    apis:
+      - clarivate:web-of-science-api
+  - id: clarivate.benchmark-research
+    name: Benchmark research performance
+    description: >-
+      Compare institutional and author-level research performance metrics
+      built on Web of Science indicators through the InCites platform.
+    apis:
+      - clarivate:incites-api
+  - id: clarivate.analyze-patents
+    name: Analyze global patent data
+    description: >-
+      Search and analyze normalized Derwent World Patents Index data,
+      patent families, and citations for IP and competitive intelligence.
+    apis:
+      - clarivate:derwent-innovation-api
+  - id: clarivate.power-life-sciences-intelligence
+    name: Power life sciences intelligence
+    description: >-
+      Access Cortellis drug pipeline, clinical trial, regulatory, and
+      deals intelligence for biopharma and medical-device decision making.
+    apis:
+      - clarivate:cortellis-api

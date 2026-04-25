@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "@vocab": "https://apievangelist.com/vocab/clarivate/",
+    "schema": "https://schema.org/",
+    "cv": "https://developer.clarivate.com/vocab/",
+    "Organization": "schema:Organization",
+    "Product": "schema:Product",
+    "API": "schema:WebAPI",
+    "Publication": "schema:ScholarlyArticle",
+    "Patent": "cv:Patent",
+    "Citation": "cv:Citation",
+    "Trial": "cv:ClinicalTrial",
+    "Drug": "cv:Drug",
+    "Institution": "schema:EducationalOrganization",
+    "name": "schema:name",
+    "description": "schema:description",
+    "category": "schema:category",
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified"
+  }
+}
