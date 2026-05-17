@@ -107,11 +107,11 @@ common:
     url: https://developer.clarivate.com/apis
   - type: Support
     url: https://support.clarivate.com/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://clarivate.com/privacy-center/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://clarivate.com/legal-center/
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/clarivate-context.jsonld
   - type: Spectral
     url: rules/clarivate-rules.yml
