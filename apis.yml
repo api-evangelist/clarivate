@@ -99,6 +99,10 @@ apis:
       research benchmarking platform, enabling institutional research
       performance analytics built on Web of Science data.
 common:
+  - type: GitHubOrganization
+    url: https://github.com/clarivate
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/clarivate
   - type: Website
     url: https://clarivate.com/
   - type: Portal
