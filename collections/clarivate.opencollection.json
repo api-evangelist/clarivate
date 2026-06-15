@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clarivate Web of Science Starter API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ApiKey",
+      "value": "{{X-ApiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query Web of Science documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.clarivate.com/apis/wos-starter/v1/documents",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Advanced search query using field tags (TI, AU, PY, DO, etc.)"
+              },
+              {
+                "name": "db",
+                "value": "",
+                "type": "query",
+                "description": "Database selection"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (1-50)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Order results by LD, PY, RS, or TC with A/D modifiers"
+              },
+              {
+                "name": "modifiedTimeSpan",
+                "value": "",
+                "type": "query",
+                "description": "Date range filter (yyyy-mm-dd+yyyy-mm-dd)"
+              },
+              {
+                "name": "publishTimeSpan",
+                "value": "",
+                "type": "query",
+                "description": "Date range filter (yyyy-mm-dd+yyyy-mm-dd)"
+              }
+            ]
+          },
+          "docs": "Query Web of Science documents"
+        },
+        {
+          "info": {
+            "name": "Retrieve a document by UID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.clarivate.com/apis/wos-starter/v1/documents/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Web of Science unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a document by UID"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Journals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query journals (by ISSN)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.clarivate.com/apis/wos-starter/v1/journals",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query journals (by ISSN)"
+        },
+        {
+          "info": {
+            "name": "Get journal details by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.clarivate.com/apis/wos-starter/v1/journals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get journal details by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
