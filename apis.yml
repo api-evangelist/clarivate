@@ -88,6 +88,10 @@ apis:
       The InCites API provides programmatic access to the Clarivate research benchmarking platform, enabling
       institutional research performance analytics built on Web of Science data.
 common:
+  - type: DomainSecurity
+    url: security/clarivate-domain-security.yml
+  - type: Authentication
+    url: authentication/clarivate-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/clarivate
   - type: LinkedIn
@@ -108,6 +112,8 @@ common:
     url: json-ld/clarivate-context.jsonld
   - type: Spectral
     url: rules/clarivate-rules.yml
+  - type: Blog
+    url: https://clarivate.com/news/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
