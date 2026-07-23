@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: Clarivate Web of Science Starter Documents API
+  description: 'The Web of Science Starter API delivers real-time bibliographic
+
+    verification and citation data drawn from the Web of Science Core
+
+    Collection. It supports document search by advanced query syntax,
+
+    document retrieval by UID, and journal lookup by ISSN or ID.
+
+    Authentication uses an API key passed via the X-ApiKey header.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Clarivate Developer Portal
+    url: https://developer.clarivate.com/apis/wos
+servers:
+- url: https://api.clarivate.com/apis/wos-starter/v1
+  description: Web of Science Starter API v1
+- url: https://api.clarivate.com/apis/wos-starter/v2
+  description: Web of Science Starter API v2
+security:
+- apiKeyAuth: []
+tags:
+- name: Documents
+paths:
+  /documents:
+    get:
+      tags:
+      - Documents
+      summary: Query Web of Science documents
+      operationId: searchDocuments
+      parameters:
+      - in: query
+        name: q
+        required: true
+        description: Advanced search query using field tags (TI, AU, PY, DO, etc.)
+        schema:
+          type: string
+      - in: query
+        name: db
+        description: Database selection
+        schema:
+          type: string
+          enum:
+          - WOS
+          - BIOABS
+          - MEDLINE
+          - BCI
+          - INSPEC
+          - ZOOREC
+          - DRCI
+          default: WOS
+      - in: query
+        name: limit
+        description: Results per page (1-50)
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 50
+          default: 10
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: sortField
+        description: Order results by LD, PY, RS, or TC with A/D modifiers
+        schema:
+          type: string
+      - in: query
+        name: modifiedTimeSpan
+        description: Date range filter (yyyy-mm-dd+yyyy-mm-dd)
+        schema:
+          type: string
+      - in: query
+        name: publishTimeSpan
+        description: Date range filter (yyyy-mm-dd+yyyy-mm-dd)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A page of matching documents
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentsResponse'
+  /documents/{uid}:
+    parameters:
+    - in: path
+      name: uid
+      required: true
+      description: Web of Science unique identifier
+      schema:
+        type: string
+    get:
+      tags:
+      - Documents
+      summary: Retrieve a document by UID
+      operationId: getDocument
+      responses:
+        '200':
+          description: A document
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+components:
+  schemas:
+    Document:
+      type: object
+      properties:
+        uid:
+          type: string
+        title:
+          type: string
+        types:
+          type: array
+          items:
+            type: string
+        sourceTypes:
+          type: array
+          items:
+            type: string
+        source:
+          type: object
+          properties:
+            sourceTitle:
+              type: string
+            publishYear:
+              type: integer
+            publishMonth:
+              type: string
+            volume:
+              type: string
+            issue:
+              type: string
+            pages:
+              type: object
+              properties:
+                range:
+                  type: string
+                begin:
+                  type: string
+                end:
+                  type: string
+                count:
+                  type: integer
+        names:
+          type: object
+          properties:
+            authors:
+              type: array
+              items:
+                type: object
+                properties:
+                  displayName:
+                    type: string
+                  wosStandard:
+                    type: string
+                  researcherIds:
+                    type: array
+                    items:
+                      type: string
+        identifiers:
+          type: object
+          properties:
+            doi:
+              type: string
+            issn:
+              type: string
+            eissn:
+              type: string
+            isbn:
+              type: string
+            pmid:
+              type: string
+        keywords:
+          type: object
+          properties:
+            authorKeywords:
+              type: array
+              items:
+                type: string
+        citations:
+          type: array
+          items:
+            type: object
+            properties:
+              db:
+                type: string
+              count:
+                type: integer
+        links:
+          type: object
+          properties:
+            record:
+              type: string
+              format: uri
+    DocumentsResponse:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            total:
+              type: integer
+            page:
+              type: integer
+            limit:
+              type: integer
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              format: uri
+            next:
+              type: string
+              format: uri
+            prev:
+              type: string
+              format: uri
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-ApiKey

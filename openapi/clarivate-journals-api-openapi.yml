@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Clarivate Web of Science Starter Documents Journals API
+  description: 'The Web of Science Starter API delivers real-time bibliographic
+
+    verification and citation data drawn from the Web of Science Core
+
+    Collection. It supports document search by advanced query syntax,
+
+    document retrieval by UID, and journal lookup by ISSN or ID.
+
+    Authentication uses an API key passed via the X-ApiKey header.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Clarivate Developer Portal
+    url: https://developer.clarivate.com/apis/wos
+servers:
+- url: https://api.clarivate.com/apis/wos-starter/v1
+  description: Web of Science Starter API v1
+- url: https://api.clarivate.com/apis/wos-starter/v2
+  description: Web of Science Starter API v2
+security:
+- apiKeyAuth: []
+tags:
+- name: Journals
+paths:
+  /journals:
+    get:
+      tags:
+      - Journals
+      summary: Query journals (by ISSN)
+      operationId: searchJournals
+      parameters:
+      - in: query
+        name: q
+        schema:
+          type: string
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 50
+          default: 10
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      responses:
+        '200':
+          description: A page of matching journals
+  /journals/{id}:
+    parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Journals
+      summary: Get journal details by ID
+      operationId: getJournal
+      responses:
+        '200':
+          description: A journal
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-ApiKey
