@@ -1,0 +1,16 @@
+{
+  "provider": "clarivate",
+  "sources": [
+    "clarivate-documents-api-openapi.yml",
+    "clarivate-journals-api-openapi.yml"
+  ],
+  "outputs": [
+    "clarivate-documents-api-openapi.yml",
+    "clarivate-journals-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
