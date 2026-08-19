@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clarivate Web of Science Starter Documents Journals API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ApiKey",
+      "value": "{{X-ApiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Journals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query journals (by ISSN)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.clarivate.com/apis/wos-starter/v1/journals",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query journals (by ISSN)"
+        },
+        {
+          "info": {
+            "name": "Get journal details by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.clarivate.com/apis/wos-starter/v1/journals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get journal details by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

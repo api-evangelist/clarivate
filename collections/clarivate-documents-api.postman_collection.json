@@ -1,0 +1,288 @@
+{
+  "item": [
+    {
+      "id": "323a8f5c-912d-493d-a9e0-a96508c19f7a",
+      "name": "Documents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d1b0f83-2b0d-4e19-9bc5-c506bd1979e2",
+          "name": "Query Web of Science documents",
+          "request": {
+            "name": "Query Web of Science documents",
+            "description": {},
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Advanced search query using field tags (TI, AU, PY, DO, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "db",
+                  "value": "WOS",
+                  "description": "Database selection"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Results per page (1-50)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "<string>",
+                  "description": "Order results by LD, PY, RS, or TC with A/D modifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "modifiedTimeSpan",
+                  "value": "<string>",
+                  "description": "Date range filter (yyyy-mm-dd+yyyy-mm-dd)"
+                },
+                {
+                  "disabled": false,
+                  "key": "publishTimeSpan",
+                  "value": "<string>",
+                  "description": "Date range filter (yyyy-mm-dd+yyyy-mm-dd)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "890493d1-5761-4252-8798-9339d42ea240",
+              "name": "A page of matching documents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "db",
+                      "value": "WOS"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modifiedTimeSpan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "publishTimeSpan",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ApiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"total\": 8805,\n    \"page\": 4049,\n    \"limit\": 4225\n  },\n  \"hits\": [\n    {\n      \"uid\": \"string\",\n      \"title\": \"string\",\n      \"types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sourceTypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": {\n        \"sourceTitle\": \"string\",\n        \"publishYear\": 3201,\n        \"publishMonth\": \"string\",\n        \"volume\": \"string\",\n        \"issue\": \"string\",\n        \"pages\": {\n          \"range\": \"string\",\n          \"begin\": \"string\",\n          \"end\": \"string\",\n          \"count\": 7374\n        }\n      },\n      \"names\": {\n        \"authors\": [\n          {\n            \"displayName\": \"string\",\n            \"wosStandard\": \"string\",\n            \"researcherIds\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          {\n            \"displayName\": \"string\",\n            \"wosStandard\": \"string\",\n            \"researcherIds\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        ]\n      },\n      \"identifiers\": {\n        \"doi\": \"string\",\n        \"issn\": \"string\",\n        \"eissn\": \"string\",\n        \"isbn\": \"string\",\n        \"pmid\": \"string\"\n      },\n      \"keywords\": {\n        \"authorKeywords\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"citations\": [\n        {\n          \"db\": \"string\",\n          \"count\": 6671\n        },\n        {\n          \"db\": \"string\",\n          \"count\": 4772\n        }\n      ],\n      \"links\": {\n        \"record\": \"https://tnMkhMAuqNGVYpFcgmR.kgydBM6S2e8jyQDCfOkTYe.tareKdxakDTtuerKO8qawloqAbX,VObrA.8+Ih6WWbl4Gi0J4-e\"\n      }\n    },\n    {\n      \"uid\": \"string\",\n      \"title\": \"string\",\n      \"types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sourceTypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": {\n        \"sourceTitle\": \"string\",\n        \"publishYear\": 7402,\n        \"publishMonth\": \"string\",\n        \"volume\": \"string\",\n        \"issue\": \"string\",\n        \"pages\": {\n          \"range\": \"string\",\n          \"begin\": \"string\",\n          \"end\": \"string\",\n          \"count\": 4135\n        }\n      },\n      \"names\": {\n        \"authors\": [\n          {\n            \"displayName\": \"string\",\n            \"wosStandard\": \"string\",\n            \"researcherIds\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          {\n            \"displayName\": \"string\",\n            \"wosStandard\": \"string\",\n            \"researcherIds\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        ]\n      },\n      \"identifiers\": {\n        \"doi\": \"string\",\n        \"issn\": \"string\",\n        \"eissn\": \"string\",\n        \"isbn\": \"string\",\n        \"pmid\": \"string\"\n      },\n      \"keywords\": {\n        \"authorKeywords\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"citations\": [\n        {\n          \"db\": \"string\",\n          \"count\": 9222\n        },\n        {\n          \"db\": \"string\",\n          \"count\": 895\n        }\n      ],\n      \"links\": {\n        \"record\": \"http://DsxNNFIhkVRubDNvlHknajLiiGTB.jpfU0A.9Sr0EHCCLY,x-p9e9ajTQmDcbCXNB\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"http://rFRKSExMrJgBboBSvhTstoN.qslpKXAF1MmwYbBoj,4O7Mca3.TMI3VqSR5MA7yYeB,0r\",\n    \"next\": \"https://rcuRebB.xbvJJMdPrWRRbXOMrVSIhiIuul9pxJbDVcwLFoJITws20tI1pYU7\",\n    \"prev\": \"http://wNpxzTiGzJjszabOZNwzGLhvHGzK.jnJ8emOP\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afbf6b6f-ee79-470c-9cde-3fb1625f9dec",
+          "name": "Retrieve a document by UID",
+          "request": {
+            "name": "Retrieve a document by UID",
+            "description": {},
+            "url": {
+              "path": [
+                "documents",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) Web of Science unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cf48906-971a-4a3c-ab6e-4aec77de64c4",
+              "name": "A document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) Web of Science unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ApiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uid\": \"string\",\n  \"title\": \"string\",\n  \"types\": [\n    \"string\",\n    \"string\"\n  ],\n  \"sourceTypes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source\": {\n    \"sourceTitle\": \"string\",\n    \"publishYear\": 4812,\n    \"publishMonth\": \"string\",\n    \"volume\": \"string\",\n    \"issue\": \"string\",\n    \"pages\": {\n      \"range\": \"string\",\n      \"begin\": \"string\",\n      \"end\": \"string\",\n      \"count\": 3741\n    }\n  },\n  \"names\": {\n    \"authors\": [\n      {\n        \"displayName\": \"string\",\n        \"wosStandard\": \"string\",\n        \"researcherIds\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"displayName\": \"string\",\n        \"wosStandard\": \"string\",\n        \"researcherIds\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  \"identifiers\": {\n    \"doi\": \"string\",\n    \"issn\": \"string\",\n    \"eissn\": \"string\",\n    \"isbn\": \"string\",\n    \"pmid\": \"string\"\n  },\n  \"keywords\": {\n    \"authorKeywords\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"citations\": [\n    {\n      \"db\": \"string\",\n      \"count\": 675\n    },\n    {\n      \"db\": \"string\",\n      \"count\": 6587\n    }\n  ],\n  \"links\": {\n    \"record\": \"http://ThAoejsFC.cmVlRBI\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.clarivate.com/apis/wos-starter/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-ApiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b2661ad-1d61-4447-9175-6de149cd8aa8",
+    "name": "Clarivate Web of Science Starter Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Web of Science Starter API delivers real-time bibliographic\nverification and citation data drawn from the Web of Science Core\nCollection. It supports document search by advanced query syntax,\ndocument retrieval by UID, and journal lookup by ISSN or ID.\nAuthentication uses an API key passed via the X-ApiKey header.\n\n\nContact Support:\n Name: Clarivate Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
