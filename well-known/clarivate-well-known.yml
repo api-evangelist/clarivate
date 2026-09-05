@@ -1,0 +1,188 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Direct HTTPS probes on 2026-09-05 of every host this record knows: the registrable
+  domain and www, the developer portal, and all three API hosts named in the servers[]
+  blocks of the 26 harvested OpenAPI documents (api.clarivate.com,
+  incites-api.clarivate.com, wos-api.clarivate.com), plus www.cortellis.com.
+description: >-
+  Clarivate serves NO /.well-known document on any host. Two distinct false-positive
+  shapes were hit and are recorded here so a later run does not mistake either for a
+  document: clarivate.com/www.clarivate.com return an HTTP 404 with a full WordPress
+  404 page body, and all three API hosts return HTTP 200 with the 1,038-byte Angular
+  single-page-app shell (`<!DOCTYPE html> ... data-critters-container`) for EVERY
+  /.well-known/* path, including paths that cannot exist. A 200 carrying an SPA shell
+  is not a document, so NO WellKnown, SecurityTxt or AgentCard pointer is emitted from
+  this probe. www.cortellis.com is behind a Cloudflare interstitial (403 "Just a
+  moment...") and could not be read.
+result: none
+hosts:
+  - host: clarivate.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+  - host: www.clarivate.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+  - host: developer.clarivate.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+  - host: api.clarivate.com
+    note: >-
+      Answers 200 with a 1,038-byte Angular SPA shell for every /.well-known path.
+      Treated as a MISS on all paths — no document is served.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/openid-configuration
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/agent.json
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/aauth-resource.json
+        status: 200
+        body: spa-shell
+        document: false
+  - host: incites-api.clarivate.com
+    note: Same Angular SPA shell as api.clarivate.com; all paths are misses.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/agent.json
+        status: 200
+        body: spa-shell
+        document: false
+  - host: wos-api.clarivate.com
+    note: Same Angular SPA shell as api.clarivate.com; all paths are misses.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        body: spa-shell
+        document: false
+      - path: /.well-known/agent.json
+        status: 200
+        body: spa-shell
+        document: false
+  - host: www.cortellis.com
+    note: Cloudflare bot interstitial ("Just a moment...") answered every path; unreadable, not proven absent.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+gap:
+  finding: >-
+    Clarivate publishes 26 OpenAPI documents through developer.clarivate.com but no
+    machine-discoverable index of them. A /.well-known/api-catalog on clarivate.com
+    (RFC 9727) listing the developer-portal swagger URLs would make the whole estate
+    discoverable without scraping the portal HTML, and a /.well-known/security.txt
+    pointing at the existing HackerOne program would make the disclosure route
+    machine-readable.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

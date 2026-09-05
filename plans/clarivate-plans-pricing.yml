@@ -4,155 +4,321 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Clarivate
 providerId: clarivate
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Analytics
-  - Citations
-  - Data
-  - Drug Pipeline
-  - Insights
-  - Intellectual Property
-  - Life Sciences
-  - Patents
-  - Publications
-  - Research
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+modified: '2026-09-05'
+generated: '2026-09-05'
+method: searched
+source: >-
+  The "Plans" and "Throttling Configuration" sections published on each API detail
+  page of the Clarivate Developer Portal —
+  https://developer.clarivate.com/apis/wos-starter,
+  https://developer.clarivate.com/apis/wos,
+  https://developer.clarivate.com/apis/wos-journal,
+  https://developer.clarivate.com/apis/wos-researcher and
+  https://developer.clarivate.com/apis/incites (all HTTP 200 on 2026-09-05).
+description: >-
+  Clarivate publishes NO money price for any API. Every plan below is an entitlement
+  tier attached to a Web of Science, InCites or product subscription, and the published
+  numbers are request allowances, not prices — the portal states plainly that "the
+  plans are not visible during the subscription process" for the Expanded API and that
+  Clarivate configures the tier from the institution's contract. The one plan anyone
+  can obtain without a subscription is the Web of Science Starter API Free Trial Plan
+  at 50 requests/day. This file replaces a 2026-05-04 scaffold that invented Free /
+  Professional / Enterprise tiers with 1,000 and 100,000 request quotas; none of those
+  values existed at Clarivate.
+pricing_model: subscription-entitlement
+currency: null
+public_price_list: false
+plan_count: 13
 plans:
-  - id: clarivate-free
-    name: Free
+  - id: wos-starter-free-trial
+    name: Free Trial Plan
+    api: Web of Science Starter API
     type: freemium
-    description: Free entry tier for the Clarivate API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    price: null
+    description: >-
+      Available to anyone, even if your organization does not subscribe to Web of
+      Science. Does not return times cited. Ideal for personal and evaluation purposes.
+    source: https://developer.clarivate.com/apis/wos-starter
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Requests per day
+        name: requests_per_day
         type: quota
         metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
+        limit: 50
+        timeFrame: day
+      - label: Requests per second
+        name: requests_per_second
         type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Web of Science APIs
-      - name: Derwent Innovation API
-      - name: Cortellis APIs
-      - name: InCites Benchmarking and Analytics API
-  - id: clarivate-pro
-    name: Professional
-    type: paid
-    description: Production tier for Clarivate. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+        metric: requests_per_second
+        limit: 1
+        timeFrame: second
+  - id: wos-starter-institutional-member
+    name: Free Institutional Member Plan
+    api: Web of Science Starter API
+    type: entitlement
+    price: null
+    description: >-
+      Available to members of organizations that subscribe to Web of Science. Returns
+      times cited.
+    source: https://developer.clarivate.com/apis/wos-starter
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
+      - label: Requests per day
+        name: requests_per_day
         type: quota
         metric: requests
+        limit: 5000
+        timeFrame: day
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+  - id: wos-starter-institutional-integration
+    name: Free Institutional Integration Plan
+    api: Web of Science Starter API
+    type: entitlement
+    price: null
+    description: >-
+      For institutions requiring higher usage limits; supports integration and
+      synchronization of Web of Science documents with internal systems. Approval is
+      limited to administrative staff of the organization.
+    source: https://developer.clarivate.com/apis/wos-starter
+    entries:
+      - label: Requests per day
+        name: requests_per_day
+        type: quota
+        metric: requests
+        limit: 20000
+        timeFrame: day
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+  - id: wos-expanded-basic
+    name: Basic
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    description: Entitlement tier configured from the institution's Web of Science contract.
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 2
+        timeFrame: second
+      - label: Full records per year
+        name: full_records_per_year
+        type: quota
+        metric: full_records
+        limit: 50000
+        timeFrame: year
+  - id: wos-expanded-intermediate
+    name: Intermediate
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 2
+        timeFrame: second
+      - label: Full records per year
+        name: full_records_per_year
+        type: quota
+        metric: full_records
+        limit: 250000
+        timeFrame: year
+  - id: wos-expanded-advanced
+    name: Advanced
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 3
+        timeFrame: second
+      - label: Full records per year
+        name: full_records_per_year
+        type: quota
+        metric: full_records
+        limit: 1000000
+        timeFrame: year
+  - id: wos-expanded-premium
+    name: Premium
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+      - label: Full records per year
+        name: full_records_per_year
+        type: quota
+        metric: full_records
+        limit: 3000000
+        timeFrame: year
+  - id: wos-expanded-essentials-1
+    name: Essentials 1
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    description: For institutions subscribing to the Web of Science Essentials Packages.
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 3
+        timeFrame: second
+      - label: Requests per day
+        name: requests_per_day
+        type: quota
+        metric: requests
+        limit: 30000
+        timeFrame: day
+      - label: Full records per month
+        name: full_records_per_month
+        type: quota
+        metric: full_records
+        limit: 1000000
+        timeFrame: month
+  - id: wos-expanded-essentials-2
+    name: Essentials 2
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 3
+        timeFrame: second
+      - label: Requests per day
+        name: requests_per_day
+        type: quota
+        metric: requests
+        limit: 10000
+        timeFrame: day
+      - label: Full records per month
+        name: full_records_per_month
+        type: quota
+        metric: full_records
+        limit: 500000
+        timeFrame: month
+  - id: wos-expanded-essentials-3
+    name: Essentials 3
+    api: Web of Science API Expanded
+    type: entitlement
+    price: null
+    source: https://developer.clarivate.com/apis/wos
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 2
+        timeFrame: second
+      - label: Requests per day
+        name: requests_per_day
+        type: quota
+        metric: requests
+        limit: 5000
+        timeFrame: day
+      - label: Full records per month
+        name: full_records_per_month
+        type: quota
+        metric: full_records
         limit: 100000
         timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Web of Science APIs
-      - name: Derwent Innovation API
-      - name: Cortellis APIs
-      - name: InCites Benchmarking and Analytics API
-  - id: clarivate-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Clarivate. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+  - id: wos-journals-plan
+    name: Journals API Plan
+    api: Web of Science Journals API
+    type: entitlement
+    price: null
+    description: >-
+      The API has only one plan. Access requires registration on the portal and
+      approval from Clarivate Sales/Product teams.
+    source: https://developer.clarivate.com/apis/wos-journal
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+  - id: wos-researcher-plan
+    name: Researcher API Plan
+    api: Web of Science Researcher API
+    type: entitlement
+    price: null
+    description: This API has only one plan. Requires a Web of Science subscription.
+    source: https://developer.clarivate.com/apis/wos-researcher
+    entries:
+      - label: Requests per second
+        name: requests_per_second
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+      - label: Requests per day
+        name: requests_per_day
         type: quota
         metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
+        limit: 5000
+        timeFrame: day
+  - id: incites-standard
+    name: Standard InCites Subscription
+    api: InCites Document Level Metrics API
+    type: entitlement
+    price: null
+    description: >-
+      The only plan for this API. The portal notes that other plans appearing during
+      subscription are for internal purposes only.
+    source: https://developer.clarivate.com/apis/incites
+    entries:
+      - label: Requests per second
+        name: requests_per_second
         type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Web of Science APIs
-      - name: Derwent Innovation API
-      - name: Cortellis APIs
-      - name: InCites Benchmarking and Analytics API
+        metric: requests_per_second
+        limit: 2
+        timeFrame: second
+      - label: Requests per day
+        name: requests_per_day
+        type: quota
+        metric: requests
+        limit: 2000
+        timeFrame: day
+notes:
+  - >-
+    13 published plan rows across five APIs: the Starter API's three
+    plans, the Expanded API's seven, and one each for Journals, Researcher and InCites.
+  - >-
+    No plan carries a currency amount anywhere on the developer portal. Access to every
+    non-trial plan is gated on a product subscription and approval by Clarivate.
+  - >-
+    The other 21 APIs on the portal (Cortellis, Derwent, Converis, EndNote, SUSHI, RIC,
+    IP Data) publish no plan table at all — they read "Contact us" or "All requests are
+    reviewed against your contract and use case(s) prior to being approved".
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

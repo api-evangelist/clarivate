@@ -1,15 +1,108 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/clarivate-openapi.yml
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://developer.clarivate.com/help/api-access (HTTP 200, 2026-09-05) — the portal's
+  own "Accessing using an API Key" and "Accessing using OAuth 2.0 Client Credentials
+  Flow" guide — cross-checked against the securitySchemes declared in the 26 OpenAPI
+  documents harvested from developer.clarivate.com/apis/<api>/swagger.
+description: >-
+  Every Clarivate API is fronted by one API gateway at api.clarivate.com (the portal
+  runs wicked.haufe.io over Kong). The gateway supports two credential styles and the
+  choice is per-API, not per-caller: an API key in the X-ApiKey header — used by 20 of
+  the 26 published contracts — or OAuth 2.0 Client Credentials. Keys are issued per
+  registered APPLICATION, not per user, and the portal states explicitly that a key must
+  not be re-used across applications because the gateway cannot detect it. Two contracts
+  deviate: the Converis Read API uses HTTP Basic against the customer's own Converis
+  instance, and the EndNote API declares an OAuth 2.0 authorization-code flow.
+docs:
+  api_access: https://developer.clarivate.com/help/api-access
+  api_key_section: https://developer.clarivate.com/help/api-access#key_access
+  register_application: https://developer.clarivate.com/help/application
+gateway:
+  host: api.clarivate.com
+  key_header: X-ApiKey
+  example: "curl -H 'X-ApiKey: <your API Key>' https://api.clarivate.com/<api>/<endpoint>"
+  key_binding: >-
+    An API key is bound to the application it was generated for. The portal instructs
+    callers to use a different key per application and warns that the gateway cannot
+    enforce it.
+  oauth2_client_credentials:
+    documented: true
+    grant_type: client_credentials
+    token_endpoint_pattern: https://api.clarivate.com/auth/{auth-method}/api/{api}/token
+    request: >-
+      POST application/x-www-form-urlencoded with
+      grant_type=client_credentials&client_id=...&client_secret=...
+    response_fields: [token_type, access_token, expires_in]
+    token_type: bearer
+    expires_in: 3600
+    call_header: 'Authorization: Bearer <access_token>'
+    note: >-
+      The token endpoint is provided by the API gateway, not by the backend API, so the
+      authorization call is identical regardless of which API is being called. The help
+      page also references OAuth2 Resource Owner Password Grant as a supported gateway
+      flow. NO OAuth SCOPES are published for any Clarivate API — see
+      scopes/clarivate-scopes.yml.
+onboarding:
+  steps:
+    - Register on the Clarivate Developer Portal (https://developer.clarivate.com/).
+    - Register an application (https://developer.clarivate.com/help/application).
+    - Subscribe the application to a specific API and plan; most plans require approval.
+    - Receive the API key (or client id/secret) bound to that application.
+  approval_required: true
+  note: >-
+    Only the Web of Science Starter API Free Trial Plan is obtainable without a product
+    subscription. Every other plan is entitled from the institution's contract and
+    approved by Clarivate.
 summary:
   types:
   - apiKey
+  - http
+  - oauth2
   api_key_in:
   - header
+  oauth2_flows:
+  - authorizationCode
 schemes:
-- name: apiKeyAuth
+- name: key
   type: apiKey
   in: header
   parameter: X-ApiKey
   sources:
-  - openapi/clarivate-openapi.yml
+  - openapi/clarivate-cddi-counter-five-openapi.json
+  - openapi/clarivate-cortellis-api-collection-openapi.json
+  - openapi/clarivate-dss-search-api-openapi.json
+  - openapi/clarivate-incites-openapi.json
+  - openapi/clarivate-ipdata-api-openapi.json
+  - openapi/clarivate-lsh-download-ext-client-openapi.json
+  - openapi/clarivate-patentmonitor-innography-openapi.json
+  - openapi/clarivate-reviewer-connect-openapi.json
+  - openapi/clarivate-ric-agent-hub-api-openapi.json
+  - openapi/clarivate-ric-ai-api-openapi.json
+  - openapi/clarivate-ric-download-api-openapi.json
+  - openapi/clarivate-ric-searchretrieve-api-openapi.json
+  - openapi/clarivate-sushi-api-openapi.json
+  - openapi/clarivate-twa-riskmark-integration-openapi.json
+  - openapi/clarivate-wos-journal-openapi.json
+  - openapi/clarivate-wos-openapi.json
+  - openapi/clarivate-wos-researcher-openapi.json
+  - openapi/clarivate-wos-starter-openapi.json
+  - openapi/clarivate-woslite-openapi.json
+  - openapi/clarivate-wosrl-api-openapi.json
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: The authentication information has to be provided by the client application as
+    Basic authentication header. This can be configured by an admin in Converis under Configuration
+    -> API Authentication Info.
+  sources:
+  - openapi/clarivate-converisreadapi-openapi.json
+- name: Log In, accessCode
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
+    tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token
+    scopes: 0
+  sources:
+  - openapi/clarivate-endnote-openapi.json

@@ -14,28 +14,29 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: freemium
-  onboarding: self-serve
-  trial: false
-  try_now: true
+  pricing: subscription
+  onboarding: approval-required
+  trial: true
+  try_now: false
   public: false
-  label: Freemium · Self-serve signup
-  confidence: medium
+  label: Subscription entitlement · application registration then Clarivate approval
+  confidence: high
   source:
   - plans
   - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
+  - openapi
+  generated: '2026-09-05'
+  method: searched
 created: '2024-12-16'
-modified: '2026-04-23'
+modified: '2026-09-05'
 type: Index
 access: 3rd-Party
-position: Consuming
+position: Producing
 specificationVersion: '0.23'
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/clarivate.png
 tags:
   - Analytics
+  - Bibliometrics
   - Citations
   - Data
   - Drug Pipeline
@@ -45,122 +46,698 @@ tags:
   - Patents
   - Publications
   - Research
+  - Scholarly Communication
 description: >-
-  Clarivate is a global information services company providing data, insights, and analytics across academia,
-  government, life sciences, healthcare, and intellectual property. Clarivate exposes a unified developer portal at
-  developer.clarivate.com that catalogs APIs across its product families: Web of Science for publication and citation
-  data, Derwent for patent data, Cortellis for life sciences and drug pipeline intelligence, and supporting tools such
-  as InCites and ScholarOne. APIs are subscription-based and authenticated with per-API keys issued through the
-  developer portal after subscription approval.
+  Clarivate is a global information services company providing data, insights and analytics across
+  academia and government, life sciences and healthcare, and intellectual property. It publishes 26
+  machine-readable API contracts through one developer portal at developer.clarivate.com, each
+  fetchable at developer.clarivate.com/apis/<api>/swagger, and serves them through a single gateway
+  at api.clarivate.com. The estate spans Web of Science publication and citation data, Journal
+  Citation Reports metrics, InCites benchmarking, Derwent patent and trademark intelligence,
+  Converis research information management, Cortellis life sciences intelligence, and COUNTER R5
+  usage reporting over NISO SUSHI. Access is by API key or OAuth 2.0 client credentials, issued per
+  registered application; every plan but the Web of Science Starter Free Trial is entitled from an
+  institutional subscription and approved by Clarivate.
 apis:
-- aid: clarivate:web-of-science-api
-  name: Web of Science APIs
+- aid: clarivate:ipdata-api
+  name: Intellectual Property (IP) Data API
+  description: >-
+    Consolidated access to normalized and linked Clarivate IP Group data — Derwent patents,
+    trademarks, designs and case law — with search, analytics and document retrieval. All requests
+    are reviewed against the customer's contract and use cases before approval. Published contract:
+    33 operation(s).
+  humanURL: https://developer.clarivate.com/apis/ipdata-api
+  baseURL: https://api.clarivate.com
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Case Law
+  - Derwent
+  - Intellectual Property
+  - Patents
+  - Trademarks
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-ipdata-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ipdata-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ipdata-api
+  - type: Overlay
+    url: overlays/clarivate-ipdata-api-overlay.yaml
+- aid: clarivate:converisreadapi
+  name: Converis Web Services (Read API)
+  description: >-
+    The Converis Read API lets applications read data from a Converis research information
+    management instance for use in other systems. The base URL must be adapted to the customer's own
+    Converis domain; unauthenticated queries return only publicly visible data. Published contract:
+    24 operation(s).
+  humanURL: https://developer.clarivate.com/apis/converisreadapi
+  baseURL: https://api.clarivate.com/converisreadapi
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Converis
+  - CRIS
+  - Research Information Management
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-converisreadapi-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/converisreadapi/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/converisreadapi
+  - type: Overlay
+    url: overlays/clarivate-converisreadapi-overlay.yaml
+- aid: clarivate:dss-search-api
+  name: Derwent Sequence Search API
+  description: >-
+    REST access to the Derwent Sequence Search platform for biological sequence searching against
+    patent literature — BLASTP, SWN, MotifP, BestSeqP, CDRP, keyword and modification searches,
+    organized into reports. Published contract: 23 operation(s).
+  humanURL: https://developer.clarivate.com/apis/dss-search-api
+  baseURL: https://api.clarivate.com/derwent-sequence-search
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Bioinformatics
+  - Derwent
+  - Patents
+  - Sequence Search
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-dss-search-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/dss-search-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/dss-search-api
+  - type: Overlay
+    url: overlays/clarivate-dss-search-api-overlay.yaml
+- aid: clarivate:wos-journal
+  name: Web of Science Journals API
+  description: >-
+    Journal-level metadata and metrics for every journal in the Journal Citation Reports covered by
+    the Web of Science Core Collection, including the Journal Impact Factor, JCI, quartiles and
+    category citation networks by JCR year. Published contract: 13 operation(s).
+  humanURL: https://developer.clarivate.com/apis/wos-journal
+  baseURL: https://api.clarivate.com/apis/wos-journals/v1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Journal Citation Reports
+  - Journal Impact Factor
+  - Journals
+  - Research Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-wos-journal-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos-journal/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos-journal
+  - type: Overlay
+    url: overlays/clarivate-wos-journal-overlay.yaml
+- aid: clarivate:endnote
+  name: EndNote REST API
+  description: >-
+    Create and update references and attachments inside an EndNote library, for exports into EndNote
+    or to update existing reference data. Marked deprecated on the developer portal — no new
+    subscriptions. Published contract: 12 operation(s).
+  humanURL: https://developer.clarivate.com/apis/endnote
+  baseURL: https://api.clarivate.com/api/endnote/v1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Deprecated
+  - EndNote
+  - Reference Management
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-endnote-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/endnote/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/endnote
+  - type: Overlay
+    url: overlays/clarivate-endnote-overlay.yaml
+- aid: clarivate:legacy-api
+  name: Converis Legacy API
+  description: >-
+    The Converis Legacy API — filtered info-object retrieval and Pentaho authentication against a
+    Converis instance. Published contract: 12 operation(s).
+  humanURL: https://developer.clarivate.com/apis/legacy_api
+  baseURL: https://api.clarivate.com/legacyapi
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Converis
+  - CRIS
+  - Legacy
+  - Research Information Management
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-legacy-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/legacy_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/legacy_api
+  - type: Overlay
+    url: overlays/clarivate-legacy-api-overlay.yaml
+- aid: clarivate:converis-additional-api
+  name: Converis Additional APIs
+  description: >-
+    Supplementary Converis operations covering cache management for users and persons and submission
+    of data to a PDI process endpoint. Published contract: 10 operation(s).
+  humanURL: https://developer.clarivate.com/apis/converis_additional_api
+  baseURL: https://api.clarivate.com/converisadditionalapi
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Converis
+  - CRIS
+  - Research Information Management
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-converis-additional-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/converis_additional_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/converis_additional_api
+  - type: Overlay
+    url: overlays/clarivate-converis-additional-api-overlay.yaml
+- aid: clarivate:incites
+  name: InCites Document Level Metrics API
+  description: >-
+    Article-level metrics from InCites Benchmarking & Analytics, the citation-based evaluation tool
+    academic and government administrators use to analyze institutional productivity and benchmark
+    against peers. Available as JSON or XML. Published contract: 10 operation(s).
+  humanURL: https://developer.clarivate.com/apis/incites
+  baseURL: https://incites-api.clarivate.com/api/incites
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Benchmarking
+  - InCites
+  - Metrics
+  - Research Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-incites-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/incites/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/incites
+  - type: Overlay
+    url: overlays/clarivate-incites-overlay.yaml
+- aid: clarivate:wos
+  name: Web of Science API Expanded
+  description: >-
+    Rich searching across the Web of Science to retrieve full item-level metadata including times-
+    cited counts, contributor addresses and affiliations, and funding data, plus related-record and
+    citing-article discovery and a Citation Report endpoint. Published contract: 10 operation(s).
+  humanURL: https://developer.clarivate.com/apis/wos
+  baseURL: https://api.clarivate.com/api/wos
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Bibliometrics
   - Citations
   - Publications
   - Research Analytics
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.clarivate.com/apis/wos
+  - Web of Science
   properties:
-  - url: https://developer.clarivate.com/apis/wos
-    type: Documentation
+  - type: OpenAPI
+    url: openapi/clarivate-wos-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos
+  - type: Overlay
+    url: overlays/clarivate-wos-overlay.yaml
+- aid: clarivate:sushi-api
+  name: Web of Science SUSHI COUNTER5 API
   description: >-
-    Web of Science APIs deliver publication and citation data drawn from the curated Web of Science Core
-    Collection, supporting bibliometric analysis, research evaluation, and institutional assessment workflows.
-- aid: clarivate:derwent-innovation-api
-  name: Derwent Innovation API
+    Harvest COUNTER-compliant usage statistics from the Web of Science platform over the NISO SUSHI
+    protocol, in accordance with the COUNTER Release 5 Code of Practice. Approval-only, for site
+    usage administrators, using three-factor credentials. Published contract: 8 operation(s).
+  humanURL: https://developer.clarivate.com/apis/sushi-api
+  baseURL: https://api.clarivate.com/api/counter/r5
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
-  - Derwent
-  - Intellectual Property
-  - Patents
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.clarivate.com/apis/derwent
+  - COUNTER
+  - Libraries
+  - NISO SUSHI
+  - Usage Statistics
   properties:
-  - url: https://developer.clarivate.com/apis/derwent
-    type: Documentation
+  - type: OpenAPI
+    url: openapi/clarivate-sushi-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/sushi-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/sushi-api
+  - type: Overlay
+    url: overlays/clarivate-sushi-api-overlay.yaml
+- aid: clarivate:cud-api
+  name: Converis CUD API
   description: >-
-    The Derwent Innovation API provides programmatic access to Derwent World Patents Index data, including
-    normalized patent records, families, and citations used for IP intelligence and competitive analysis.
-- aid: clarivate:cortellis-api
-  name: Cortellis APIs
+    The Converis Create/Update/Delete API — create, update and delete data entities and link
+    entities in a Converis instance. The only fully mutating contract Clarivate publishes. Published
+    contract: 6 operation(s).
+  humanURL: https://developer.clarivate.com/apis/cud_api
+  baseURL: https://api.clarivate.com/cudapi
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Converis
+  - CRIS
+  - Research Information Management
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-cud-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/cud_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/cud_api
+  - type: Overlay
+    url: overlays/clarivate-cud-api-overlay.yaml
+- aid: clarivate:ric-ai-api
+  name: C3 AI API
+  description: >-
+    The C3 AI API exposes prediction endpoints over Clarivate life sciences and healthcare models.
+    Published contract: 5 operation(s).
+  humanURL: https://developer.clarivate.com/apis/ric_ai_api
+  baseURL: https://api.clarivate.com/c3/ai
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - AI
+  - Life Sciences
+  - Prediction
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-ric-ai-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric_ai_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric_ai_api
+  - type: Overlay
+    url: overlays/clarivate-ric-ai-api-overlay.yaml
+- aid: clarivate:cddi-counter-five
+  name: Cortellis Drug Discovery Intelligence SUSHI COUNTER5 API
+  description: >-
+    Harvest COUNTER Release 5 usage statistics from the Cortellis Drug Discovery Intelligence
+    platform over the NISO SUSHI protocol. Published contract: 4 operation(s).
+  humanURL: https://developer.clarivate.com/apis/cddi-counter-five
+  baseURL: https://api.clarivate.com/api/cddi/counter5
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - COUNTER
+  - Cortellis
+  - Life Sciences
+  - NISO SUSHI
+  - Usage Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-cddi-counter-five-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/cddi-counter-five/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/cddi-counter-five
+  - type: Overlay
+    url: overlays/clarivate-cddi-counter-five-overlay.yaml
+- aid: clarivate:ric-download-api
+  name: RIC Feed API
+  description: >-
+    The RIC Feed API requests and retrieves packaged Clarivate life sciences and healthcare data
+    products for download. Published contract: 4 operation(s).
+  humanURL: https://developer.clarivate.com/apis/ric-download-api
+  baseURL: https://api.clarivate.com
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Data Feed
+  - Downloads
+  - Life Sciences
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-ric-download-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric-download-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric-download-api
+  - type: Overlay
+    url: overlays/clarivate-ric-download-api-overlay.yaml
+- aid: clarivate:wos-researcher
+  name: Web of Science Researcher API
+  description: >-
+    Query and harvest Web of Science author records — researcher profiles, their documents and their
+    peer-review record — searchable by ORCID, ResearcherID, author name, organization and country.
+    Published contract: 4 operation(s).
+  humanURL: https://developer.clarivate.com/apis/wos-researcher
+  baseURL: https://api.clarivate.com/apis/wos-researcher
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - ORCID
+  - Peer Review
+  - Researchers
+  - Research Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-wos-researcher-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos-researcher/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos-researcher
+  - type: Overlay
+    url: overlays/clarivate-wos-researcher-overlay.yaml
+- aid: clarivate:wos-starter
+  name: Web of Science Starter API
+  description: >-
+    Real-time bibliographic verification and citation data from the Web of Science Core Collection,
+    supporting document search by field-tag query, retrieval by accession number, and journal lookup
+    by ISSN. The only Clarivate API with a plan anyone can obtain without a product subscription.
+    Published contract: 4 operation(s).
+  humanURL: https://developer.clarivate.com/apis/wos-starter
+  baseURL: https://api.clarivate.com/apis/wos-starter/v1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Bibliometrics
+  - Citations
+  - Publications
+  - Research Analytics
+  - Web of Science
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-wos-starter-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos-starter/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos-starter
+  - type: Overlay
+    url: overlays/clarivate-wos-starter-overlay.yaml
+- aid: clarivate:woslite
+  name: Web of Science API Lite
+  description: >-
+    Simple searching across the Web of Science for core item-level metadata as JSON or XML.
+    Superseded: the developer portal states this API has been replaced by the Web of Science Starter
+    API. Published contract: 3 operation(s).
+  humanURL: https://developer.clarivate.com/apis/woslite
+  baseURL: https://wos-api.clarivate.com/api/woslite
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Citations
+  - Deprecated
+  - Publications
+  - Web of Science
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-woslite-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/woslite/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/woslite
+  - type: Overlay
+    url: overlays/clarivate-woslite-overlay.yaml
+- aid: clarivate:lsh-download-ext-client
+  name: LSH Download External Client API
+  description: >-
+    Download and history operations for Clarivate life sciences and healthcare data-product
+    delivery. Published contract: 2 operation(s).
+  humanURL: https://developer.clarivate.com/apis/lsh-download-ext-client
+  baseURL: https://api.clarivate.com/lsh-ds
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Downloads
+  - Life Sciences
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-lsh-download-ext-client-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/lsh-download-ext-client/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/lsh-download-ext-client
+  - type: Overlay
+    url: overlays/clarivate-lsh-download-ext-client-overlay.yaml
+- aid: clarivate:wosrl-api
+  name: Web of Science Reviewer Locator
+  description: >-
+    The Web of Science Reviewer Locator matches manuscripts to qualified peer reviewers drawn from
+    Web of Science and Publons data. Published contract: 2 operation(s).
+  humanURL: https://developer.clarivate.com/apis/wosrl-api
+  baseURL: https://api.clarivate.com/api/wosrl
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Peer Review
+  - Reviewer Locator
+  - Web of Science
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-wosrl-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wosrl-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wosrl-api
+  - type: Overlay
+    url: overlays/clarivate-wosrl-api-overlay.yaml
+- aid: clarivate:cortellis-api-collection
+  name: Cortellis API Collection
+  description: >-
+    The gateway entry point for the Cortellis API collection covering drug pipeline, company and
+    source content sets. Contact Clarivate for a Cortellis API subscription. Published contract: 1
+    operation(s).
+  humanURL: https://developer.clarivate.com/apis/cortellis-api-collection
+  baseURL: https://api.clarivate.com/cortellis-api-collection-1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
   - Clinical Trials
   - Cortellis
   - Drug Pipeline
   - Life Sciences
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.cortellis.com/
-  properties:
-  - url: https://developer.clarivate.com/apis/cortellis
-    type: Documentation
-  - url: https://www.cortellis.com/
-    type: Portal
-  description: >-
-    Cortellis APIs expose the Clarivate life sciences intelligence platform, covering drug pipelines,
-    clinical trials, regulatory intelligence, deals, and competitive intelligence for biopharma and medical-device
-    companies.
-- aid: clarivate:incites-api
-  name: InCites Benchmarking and Analytics API
-  tags:
-  - Benchmarking
-  - InCites
-  - Research Analytics
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.clarivate.com/apis/incites
-  properties:
-  - url: https://developer.clarivate.com/apis/incites
-    type: Documentation
-  description: >-
-    The InCites API provides programmatic access to the Clarivate research benchmarking platform, enabling
-    institutional research performance analytics built on Web of Science data.
-- aid: clarivate:clarivate-documents-api
-  name: Clarivate Documents API
-  description: The Documents API from Clarivate — 2 operation(s) for documents.
-  humanURL: https://developer.clarivate.com/apis/wos
-  tags:
-  - Documents
   properties:
   - type: OpenAPI
-    url: openapi/clarivate-documents-api-openapi.yml
-- aid: clarivate:clarivate-journals-api
-  name: Clarivate Journals API
-  description: The Journals API from Clarivate — 2 operation(s) for journals.
-  humanURL: https://developer.clarivate.com/apis/wos
+    url: openapi/clarivate-cortellis-api-collection-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/cortellis-api-collection/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/cortellis-api-collection
+  - type: Overlay
+    url: overlays/clarivate-cortellis-api-collection-overlay.yaml
+- aid: clarivate:patentmonitor-innography
+  name: Patent Monitor Innography Integration API
+  description: >-
+    Integration endpoint that delivers Patent Monitor alert results into Innography. Published
+    contract: 1 operation(s).
+  humanURL: https://developer.clarivate.com/apis/patentmonitor-innography
+  baseURL: https://api.clarivate.com/patentmonitor/api/v1/innography/send-alert-results
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   tags:
-  - Journals
+  - Alerts
+  - Innography
+  - Intellectual Property
+  - Patents
   properties:
   - type: OpenAPI
-    url: openapi/clarivate-journals-api-openapi.yml
+    url: openapi/clarivate-patentmonitor-innography-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/patentmonitor-innography/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/patentmonitor-innography
+  - type: Overlay
+    url: overlays/clarivate-patentmonitor-innography-overlay.yaml
+- aid: clarivate:reviewer-connect
+  name: Publons Reviewer Connect
+  description: >-
+    Publons Reviewer Connect — reviewer discovery and recommendation for editors and publishers.
+    Published contract: 1 operation(s).
+  humanURL: https://developer.clarivate.com/apis/reviewer-connect
+  baseURL: https://api.clarivate.com/reviewer-connect/api
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Peer Review
+  - Publons
+  - Reviewers
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-reviewer-connect-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/reviewer-connect/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/reviewer-connect
+  - type: Overlay
+    url: overlays/clarivate-reviewer-connect-overlay.yaml
+- aid: clarivate:ric-agent-hub-api
+  name: LSH AI Agent API
+  description: >-
+    A conversational, AI-powered data retrieval service for the life sciences and healthcare domain.
+    It accepts natural-language questions about drug development, clinical trials, indications and
+    organizations, resolves entities, generates and executes knowledge-graph queries, and supports
+    multi-turn follow-ups. Published contract: 1 operation(s).
+  humanURL: https://developer.clarivate.com/apis/ric-agent-hub-api
+  baseURL: https://api.clarivate.com
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - AI Agent
+  - Clinical Trials
+  - Knowledge Graph
+  - Life Sciences
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-ric-agent-hub-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric-agent-hub-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric-agent-hub-api
+  - type: Overlay
+    url: overlays/clarivate-ric-agent-hub-api-overlay.yaml
+- aid: clarivate:ric-searchretrieve-api
+  name: LSH Data Product Search & Retrieve API
+  description: >-
+    A GraphQL endpoint providing a single access point to query various Clarivate content sets
+    across multiple domains. Schema introspection is API-key gated. Published contract: 1
+    operation(s).
+  humanURL: https://developer.clarivate.com/apis/ric-searchretrieve-api
+  baseURL: https://api.clarivate.com/ric/searchretrieve/v1
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - GraphQL
+  - Life Sciences
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-ric-searchretrieve-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric-searchretrieve-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric-searchretrieve-api
+  - type: Overlay
+    url: overlays/clarivate-ric-searchretrieve-api-overlay.yaml
+- aid: clarivate:sushi-status-api
+  name: SUSHI Status API
+  description: >-
+    The public COUNTER 5.1 SUSHI status endpoint for the Web of Science SUSHI API. Requires no
+    authentication — the only unauthenticated Clarivate API surface. Published contract: 1
+    operation(s).
+  humanURL: https://developer.clarivate.com/apis/sushi-status-api
+  baseURL: https://api.clarivate.com/api/counter/r51/status
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - COUNTER
+  - NISO SUSHI
+  - Status
+  - Usage Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-sushi-status-api-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/sushi-status-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/sushi-status-api
+  - type: Overlay
+    url: overlays/clarivate-sushi-status-api-overlay.yaml
+- aid: clarivate:twa-riskmark-integration
+  name: TWA RiskMark Integration API
+  description: >-
+    Integration endpoint connecting Trademark Watch Analyst to RiskMark. Published contract: 1
+    operation(s).
+  humanURL: https://developer.clarivate.com/apis/twa-riskmark-integration
+  baseURL: https://api.clarivate.com/integration-api
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  tags:
+  - Integration
+  - Intellectual Property
+  - RiskMark
+  - Trademarks
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-twa-riskmark-integration-openapi.json
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: Overlay
+    url: overlays/clarivate-twa-riskmark-integration-overlay.yaml
 common:
-  - type: AgenticAccess
-    url: agentic-access/clarivate-agentic-access.yml
-  - type: DomainSecurity
-    url: security/clarivate-domain-security.yml
+  - type: Website
+    url: https://clarivate.com/
+  - type: DeveloperPortal
+    url: https://developer.clarivate.com/
+  - type: Documentation
+    url: https://developer.clarivate.com/apis
+  - type: APIReference
+    url: https://developer.clarivate.com/apis
+  - type: APICatalog
+    url: https://developer.clarivate.com/apis
+  - type: GettingStarted
+    url: https://developer.clarivate.com/help/application
   - type: Authentication
     url: authentication/clarivate-authentication.yml
+  - type: APIKeys
+    url: https://developer.clarivate.com/help/api-access#key_access
+  - type: OAuthScopes
+    url: scopes/clarivate-scopes.yml
+  - type: SignUp
+    url: https://developer.clarivate.com/login
+  - type: Support
+    url: https://support.clarivate.com/
+  - type: Blog
+    url: https://clarivate.com/news/
+  - type: Newsroom
+    url: https://clarivate.com/news/
   - type: GitHubOrganization
     url: https://github.com/clarivate
   - type: LinkedIn
     url: https://www.linkedin.com/company/clarivate
-  - type: Website
-    url: https://clarivate.com/
-  - type: Portal
-    url: https://developer.clarivate.com/
-  - type: API Catalog
-    url: https://developer.clarivate.com/apis
-  - type: Support
-    url: https://support.clarivate.com/
-  - type: PrivacyPolicy
-    url: https://clarivate.com/privacy-center/
   - type: TermsOfService
     url: https://clarivate.com/legal-center/
+  - type: PrivacyPolicy
+    url: https://clarivate.com/privacy-center/
+  - type: InterfaceLicense
+    url: https://clarivate.com/wp-content/uploads/dlm_uploads/2019/08/End-User-Terms.pdf
+  - type: Plans
+    url: plans/clarivate-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/clarivate-rate-limits.yml
+  - type: StatusPage
+    url: https://status.clarivate.com/
+  - type: ChangeLog
+    url: changelog/clarivate-changelog.yml
+  - type: ReleaseNotes
+    url: https://clarivate.com/academia-government/release-notes/wos-apis/
+  - type: Lifecycle
+    url: lifecycle/clarivate-lifecycle.yml
+  - type: Deprecation
+    url: lifecycle/clarivate-lifecycle.yml
+  - type: Conventions
+    url: conventions/clarivate-conventions.yml
+  - type: ErrorCatalog
+    url: errors/clarivate-problem-types.yml
+  - type: DataModel
+    url: data-model/clarivate-data-model.yml
+  - type: Conformance
+    url: conformance/clarivate-conformance.yml
+  - type: Compliance
+    url: https://clarivate.com/trust-center/security-compliance/
+  - type: TrustCenter
+    url: security/clarivate-trust-center.yml
+  - type: Trust
+    url: https://clarivate.com/trust-center/
+  - type: Security
+    url: security/clarivate-vulnerability-disclosure.yml
+  - type: VulnerabilityDisclosure
+    url: security/clarivate-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/clarivate-domain-security.yml
+  - type: Packages
+    url: packages/clarivate-packages.yml
+  - type: SDKs
+    url: packages/clarivate-packages.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/clarivate-llms.txt
+  - type: X-MCPServerCandidate
+    url: mcp/clarivate-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/clarivate-tool-crosswalk.yml
+  - type: AgenticAccess
+    url: agentic-access/clarivate-agentic-access.yml
   - type: JSONLD
     url: json-ld/clarivate-context.jsonld
   - type: Spectral
     url: rules/clarivate-rules.yml
-  - type: Blog
-    url: https://clarivate.com/news/
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 73
+  pass: local-v3
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

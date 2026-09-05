@@ -1,0 +1,1817 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  Derived from components.schemas / definitions and their $ref graph across the 26
+  OpenAPI/Swagger contracts in openapi/, harvested from
+  https://developer.clarivate.com/apis/<api>/swagger on 2026-09-05. Identifier
+  semantics cross-checked against the field-tag tables published in the Web of Science
+  Starter, Journals and Researcher contract descriptions.
+description: >-
+  The entity graph Clarivate's published contracts actually declare. It is not one
+  model: each product family carries its own schema namespace with no shared
+  components, so the same real-world thing (a document, an organization, a person)
+  is a different type in Web of Science, InCites, Derwent IP Data and Converis. The
+  join keys between them are the scholarly identifier schemes — DOI, ISSN/eISSN,
+  ISBN, PMID, ORCID, ResearcherID and the Web of Science UT accession number — not
+  Clarivate-internal foreign keys.
+identifier_schemes:
+  - id: UT
+    note: Web of Science accession number — the primary key for a document across Starter, Expanded, InCites and Reviewer Locator.
+  - id: DOI
+    note: Digital Object Identifier; a documented search field tag (DO) and a response field.
+  - id: ISSN / eISSN
+    note: Journal identifiers; the primary lookup key for the Journals API (/journals/{id}).
+  - id: ISBN
+    note: Book identifier, carried on Starter and Lite document records.
+  - id: PMID
+    note: PubMed identifier, carried on Starter document records.
+  - id: ORCID
+    note: Researcher identifier; a first-class search field of the Researcher API and present on Reviewer Connect and Reviewer Locator.
+  - id: ResearcherID (RID)
+    note: Clarivate's own researcher identifier, joinable to ORCID via the Researcher API.
+  - id: categoryCode
+    note: Two-character Web of Science (ASCA) category code used by the Journals and InCites APIs.
+domains:
+  - name: Publications & citations
+    apis: ["wos-starter", "wos", "woslite"]
+    note: Documents, sources, authors, keywords, citation counts.
+  - name: Journals & metrics
+    apis: ["wos-journal", "incites"]
+    note: Journals, categories, Journal Impact Factor and JCI metrics, document-level metrics.
+  - name: Researchers & peer review
+    apis: ["wos-researcher", "reviewer-connect", "wosrl-api"]
+    note: Researcher profiles, ORCID/RID identity, reviewer matching and recognition.
+  - name: Intellectual property
+    apis: ["ipdata-api", "dss-search-api", "patentmonitor-innography"]
+    note: Patents, trademarks, designs, case law, Derwent families and sequence-search reports.
+  - name: Research information management
+    apis: ["converisreadapi", "cud-api", "converis-additional-api", "legacy-api"]
+    note: Converis entities and link entities in the customer's own instance.
+  - name: Life sciences & healthcare
+    apis: ["ric-agent-hub-api", "ric-ai-api", "ric-download-api", "ric-searchretrieve-api", "lsh-download-ext-client", "cortellis-api-collection", "cddi-counter-five"]
+    note: Drug pipeline, clinical trials, knowledge-graph retrieval and data-product downloads.
+  - name: Usage reporting
+    apis: ["sushi-api", "sushi-status-api", "cddi-counter-five"]
+    note: COUNTER R5/R5.1 usage reports harvested over NISO SUSHI.
+  - name: Reference management
+    apis: ["endnote"]
+    note: EndNote library references and attachments (deprecated API).
+entity_count: 256
+entities:
+  - name: SUSHI_error
+    apis: ["cddi-counter-five"]
+    field_count: 5
+  - name: SUSHI_report_header
+    apis: ["cddi-counter-five", "sushi-api"]
+    field_count: 10
+    identifier_fields: ["Report_ID"]
+  - name: SUSHI_report_list
+    apis: ["cddi-counter-five", "sushi-api"]
+    field_count: 5
+    identifier_fields: ["Report_ID"]
+  - name: SUSHI_service_status
+    apis: ["cddi-counter-five", "sushi-api", "sushi-status-api"]
+    field_count: 5
+  - name: SUSHI_platform_report
+    apis: ["cddi-counter-five"]
+    field_count: 2
+  - name: SUSHI_platform_usage
+    apis: ["cddi-counter-five"]
+    field_count: 2
+  - name: SUSHI_database_report
+    apis: ["cddi-counter-five"]
+    field_count: 2
+  - name: SUSHI_database_usage
+    apis: ["cddi-counter-five"]
+    field_count: 4
+  - name: SUSHI_item_performance
+    apis: ["cddi-counter-five"]
+    field_count: 2
+  - name: DefaultResponse
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: UserDelegation
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: UserDelegationValidity
+    apis: ["converisreadapi"]
+    field_count: 2
+  - name: UserDelegationList
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: UserRole
+    apis: ["converisreadapi"]
+    field_count: 4
+  - name: UserList
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: User
+    apis: ["converisreadapi"]
+    field_count: 11
+    identifier_fields: ["userName"]
+  - name: LabelDefinition
+    apis: ["converisreadapi"]
+    field_count: 2
+  - name: LinkReference
+    apis: ["converisreadapi"]
+    field_count: 2
+  - name: EntityDefinition
+    apis: ["converisreadapi"]
+    field_count: 11
+    identifier_fields: ["id"]
+  - name: EntityDefinitionList
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: LinkEntityDefinition
+    apis: ["converisreadapi"]
+    field_count: 7
+    identifier_fields: ["id"]
+  - name: LinkEntityDefinitionList
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: AttributeDefinition
+    apis: ["converisreadapi"]
+    field_count: 10
+    identifier_fields: ["id"]
+  - name: WorkflowStep
+    apis: ["converisreadapi"]
+    field_count: 2
+  - name: AttributeInputDefinition
+    apis: ["converisreadapi"]
+    field_count: 4
+  - name: EntityDataList
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: LinkEntityDataList
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: EntityData
+    apis: ["converisreadapi"]
+    field_count: 13
+    identifier_fields: ["id"]
+  - name: LinkEntityData
+    apis: ["converisreadapi"]
+    field_count: 11
+    identifier_fields: ["id"]
+  - name: BasicData
+    apis: ["converisreadapi"]
+    field_count: 5
+    identifier_fields: ["id"]
+  - name: AttributeData
+    apis: ["converisreadapi"]
+    field_count: 5
+  - name: ChoiceGroupData
+    apis: ["converisreadapi"]
+    field_count: 3
+  - name: meta
+    apis: ["dss-search-api"]
+    field_count: 0
+  - name: link
+    apis: ["dss-search-api"]
+    field_count: 0
+  - name: links
+    apis: ["dss-search-api"]
+    field_count: 2
+  - name: error
+    apis: ["dss-search-api"]
+    field_count: 5
+  - name: errors
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: JsonApiPaginationMeta
+    apis: ["dss-search-api"]
+    field_count: 2
+  - name: PaginationLinks
+    apis: ["dss-search-api"]
+    field_count: 5
+  - name: Patent
+    apis: ["dss-search-api"]
+    field_count: 5
+    identifier_fields: ["id"]
+  - name: ProjectAttributes
+    apis: ["dss-search-api"]
+    field_count: 11
+    identifier_fields: ["id"]
+  - name: Project
+    apis: ["dss-search-api"]
+    field_count: 3
+    identifier_fields: ["id"]
+  - name: ProjectCreateParams
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: ProjectUpdateParams
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: SearchAttributes
+    apis: ["dss-search-api"]
+    field_count: 10
+    identifier_fields: ["id"]
+  - name: Search
+    apis: ["dss-search-api"]
+    field_count: 3
+    identifier_fields: ["id"]
+  - name: SearchCreateSingleQueryParams
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: SearchCreateMultiSequenceParams
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: SearchCreateParams
+    apis: ["dss-search-api"]
+    field_count: 0
+  - name: SearchUpdateParams
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: SearchResultAlignment
+    apis: ["dss-search-api"]
+    field_count: 16
+  - name: SearchResult
+    apis: ["dss-search-api"]
+    field_count: 32
+  - name: PaginationMeta
+    apis: ["dss-search-api"]
+    field_count: 4
+  - name: Sequence
+    apis: ["dss-search-api"]
+    field_count: 5
+    identifier_fields: ["id"]
+  - name: SessionInfo
+    apis: ["dss-search-api"]
+    field_count: 1
+  - name: userspaceresource
+    apis: ["endnote"]
+    field_count: 9
+  - name: roalibrary
+    apis: ["endnote"]
+    field_count: 6
+  - name: referencetype
+    apis: ["endnote"]
+    field_count: 2
+  - name: roareference
+    apis: ["endnote"]
+    field_count: 8
+    identifier_fields: ["guid"]
+  - name: uri
+    apis: ["endnote"]
+    field_count: 7
+  - name: ArrayOfDates
+    apis: ["incites"]
+    field_count: 0
+  - name: Record
+    apis: ["incites"]
+    field_count: 16
+  - name: ArrayOfRecords
+    apis: ["incites"]
+    field_count: 0
+  - name: ArrayOfUTs
+    apis: ["incites"]
+    field_count: 0
+  - name: UT
+    apis: ["incites"]
+    field_count: 1
+  - name: ErrorMessage
+    apis: ["incites"]
+    field_count: 2
+  - name: Percentiles
+    apis: ["incites"]
+    field_count: 6
+  - name: OA_FLAG_DATA
+    apis: ["incites"]
+    field_count: 1
+  - name: class_browsing_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: class_search_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: combined_search_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: corporate_tree_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: derwent_images_request
+    apis: ["ipdata-api"]
+    field_count: 8
+  - name: doc_idmapping_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: document_availability_request_caselaw
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: document_availability_request_patent
+    apis: ["ipdata-api"]
+    field_count: 3
+  - name: document_by_ids_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: document_by_listref_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: document_by_pns_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: document_pdf_request_derwent_api_post
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: document_pdf_response_derwent_api_post
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: field_aliases_caselaw
+    apis: ["ipdata-api"]
+    field_count: 170
+    identifier_fields: ["GUID"]
+  - name: field_aliases_patent
+    apis: ["ipdata-api"]
+    field_count: 132
+    identifier_fields: ["DOCUMENT_GUID", "GUID"]
+  - name: field_aliases_trademark
+    apis: ["ipdata-api"]
+    field_count: 67
+    identifier_fields: ["GUID", "ID"]
+  - name: image_url_list_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 3
+  - name: image_url_list_patent
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: match_patent
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: match_response_patent
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: query_body_caselaw
+    apis: ["ipdata-api"]
+    field_count: 4
+  - name: query_body_patent
+    apis: ["ipdata-api"]
+    field_count: 4
+  - name: query_body_trademark
+    apis: ["ipdata-api"]
+    field_count: 4
+  - name: records_request_caselaw
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: records_request_patent
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: records_request_trademark
+    apis: ["ipdata-api"]
+    field_count: 2
+  - name: search_by_ids_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: search_by_pns_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: search_by_query_request_derwent_api
+    apis: ["ipdata-api"]
+    field_count: 1
+  - name: search_request_caselaw
+    apis: ["ipdata-api"]
+    field_count: 7
+  - name: search_request_patent
+    apis: ["ipdata-api"]
+    field_count: 7
+  - name: search_request_trademark
+    apis: ["ipdata-api"]
+    field_count: 7
+  - name: Request
+    apis: ["reviewer-connect"]
+    field_count: 7
+  - name: SearchArticle
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 4
+  - name: JournalOrFunder
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 1
+  - name: AuthorOrApplicant
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 4
+  - name: AuthorOrganization
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 1
+  - name: ExcludedReviewer
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 3
+  - name: Country
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 1
+  - name: Response
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 6
+  - name: RecommendedReviewer
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 21
+    identifier_fields: ["orcid", "researcherId"]
+  - name: Organization
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 8
+  - name: Article
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 6
+    identifier_fields: ["doi", "ut"]
+  - name: Journal
+    apis: ["reviewer-connect", "wos-starter", "wosrl-api"]
+    field_count: 8
+    identifier_fields: ["eIssn", "id", "issn"]
+  - name: Funder
+    apis: ["reviewer-connect", "wosrl-api"]
+    field_count: 1
+  - name: 400Response
+    apis: ["reviewer-connect"]
+    field_count: 0
+  - name: AgentStatus
+    apis: ["ric-agent-hub-api"]
+    field_count: 0
+  - name: HTTPValidationError
+    apis: ["ric-agent-hub-api"]
+    field_count: 1
+  - name: IntermediateStep
+    apis: ["ric-agent-hub-api"]
+    field_count: 6
+  - name: PublicAgentMessageResponse
+    apis: ["ric-agent-hub-api"]
+    field_count: 6
+  - name: PublicAgentRequest
+    apis: ["ric-agent-hub-api"]
+    field_count: 2
+  - name: PublicAgentSuccessResponse
+    apis: ["ric-agent-hub-api"]
+    field_count: 7
+  - name: PublicUsageInfo
+    apis: ["ric-agent-hub-api"]
+    field_count: 5
+  - name: ValidationError
+    apis: ["ric-agent-hub-api"]
+    field_count: 5
+  - name: ApiErrorEnum
+    apis: ["ric-ai-api"]
+    field_count: 0
+  - name: ContentSetInfoResponse
+    apis: ["ric-ai-api"]
+    field_count: 2
+  - name: ContentSetOntologiesResponse
+    apis: ["ric-ai-api"]
+    field_count: 2
+  - name: ContentSetOntologiesResponseData
+    apis: ["ric-ai-api"]
+    field_count: 2
+  - name: ContentSetOntologyResponse
+    apis: ["ric-ai-api"]
+    field_count: 2
+  - name: Error
+    apis: ["ric-ai-api", "ric-download-api"]
+    field_count: 3
+  - name: ErrorResponse
+    apis: ["ric-ai-api", "ric-download-api", "wos-researcher", "woslite"]
+    field_count: 5
+    identifier_fields: ["id"]
+  - name: Format
+    apis: ["ric-ai-api", "ric-download-api"]
+    field_count: 0
+  - name: MakePredictionRequest
+    apis: ["ric-ai-api"]
+    field_count: 3
+  - name: MakePredictionResponse
+    apis: ["ric-ai-api"]
+    field_count: 2
+  - name: OperationEnum
+    apis: ["ric-ai-api", "ric-download-api"]
+    field_count: 0
+  - name: Prediction
+    apis: ["ric-ai-api"]
+    field_count: 0
+  - name: PredictionInput
+    apis: ["ric-ai-api"]
+    field_count: 3
+  - name: PredictionsResponse
+    apis: ["ric-ai-api"]
+    field_count: 2
+  - name: PredictionsResponseData
+    apis: ["ric-ai-api"]
+    field_count: 4
+  - name: PredictionsResponseDataInput
+    apis: ["ric-ai-api"]
+    field_count: 4
+  - name: PredictionsResponseDataModel
+    apis: ["ric-ai-api"]
+    field_count: 1
+  - name: Status
+    apis: ["ric-ai-api"]
+    field_count: 0
+  - name: CheckPackageStatusResult
+    apis: ["ric-download-api"]
+    field_count: 4
+  - name: CheckPackageStatusResultFile
+    apis: ["ric-download-api"]
+    field_count: 8
+  - name: ConjunctionEnum
+    apis: ["ric-download-api"]
+    field_count: 0
+  - name: ContentSubscriptionResponse
+    apis: ["ric-download-api"]
+    field_count: 4
+  - name: FileTypeEnum
+    apis: ["ric-download-api"]
+    field_count: 0
+  - name: Filter
+    apis: ["ric-download-api"]
+    field_count: 3
+  - name: FilterGroup
+    apis: ["ric-download-api"]
+    field_count: 0
+  - name: MaxInternalChangeNumber
+    apis: ["ric-download-api"]
+    field_count: 3
+  - name: RequestPackageInput
+    apis: ["ric-download-api"]
+    field_count: 6
+  - name: RequestPackageResult
+    apis: ["ric-download-api"]
+    field_count: 1
+  - name: StatusEnum
+    apis: ["ric-download-api"]
+    field_count: 0
+  - name: SubscriptionsInfoResult
+    apis: ["ric-download-api"]
+    field_count: 1
+  - name: GraphQLQuery
+    apis: ["ric-searchretrieve-api"]
+    field_count: 1
+  - name: GraphQLResponse
+    apis: ["ric-searchretrieve-api"]
+    field_count: 1
+  - name: SUSHI_error_model
+    apis: ["sushi-api", "sushi-status-api"]
+    field_count: 5
+  - name: SUSHI_consortium_member_list
+    apis: ["sushi-api"]
+    field_count: 4
+  - name: SUSHI_org_identifiers
+    apis: ["sushi-api"]
+    field_count: 2
+  - name: COUNTER_platform_report
+    apis: ["sushi-api"]
+    field_count: 2
+  - name: COUNTER_platform_usage
+    apis: ["sushi-api"]
+    field_count: 2
+  - name: COUNTER_database_report
+    apis: ["sushi-api"]
+    field_count: 2
+  - name: COUNTER_database_usage
+    apis: ["sushi-api"]
+    field_count: 5
+  - name: COUNTER_publisher_identifiers
+    apis: ["sushi-api"]
+    field_count: 2
+  - name: COUNTER_item_performance
+    apis: ["sushi-api"]
+    field_count: 2
+  - name: SingleOppositionResponse
+    apis: ["twa-riskmark-integration"]
+    field_count: 3
+  - name: Trademark
+    apis: ["twa-riskmark-integration"]
+    field_count: 6
+    identifier_fields: ["guid"]
+  - name: GoodsAndService
+    apis: ["twa-riskmark-integration"]
+    field_count: 2
+  - name: ApplicantInfo
+    apis: ["twa-riskmark-integration"]
+    field_count: 4
+  - name: JournalList
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: JournalListRecord
+    apis: ["wos-journal"]
+    field_count: 8
+    identifier_fields: ["id"]
+  - name: JournalRecord
+    apis: ["wos-journal"]
+    field_count: 14
+    identifier_fields: ["eIssn", "id", "issn"]
+  - name: Categories
+    apis: ["wos-journal"]
+    field_count: 0
+  - name: JournalCitationReport
+    apis: ["wos-journal"]
+    field_count: 0
+  - name: OpenAccess
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: Publisher
+    apis: ["wos-journal"]
+    field_count: 4
+    identifier_fields: ["id"]
+  - name: JournalData
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: JournalReports
+    apis: ["wos-journal"]
+    field_count: 10
+  - name: JournalReportsJournal
+    apis: ["wos-journal"]
+    field_count: 3
+    identifier_fields: ["id"]
+  - name: ImpactMetrics
+    apis: ["wos-journal"]
+    field_count: 6
+  - name: InfluenceMetrics
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: SourceMetrics
+    apis: ["wos-journal"]
+    field_count: 3
+  - name: CitationDistribution
+    apis: ["wos-journal"]
+    field_count: 7
+  - name: Ranks
+    apis: ["wos-journal"]
+    field_count: 6
+  - name: SourceData
+    apis: ["wos-journal"]
+    field_count: 3
+  - name: JournalProfile
+    apis: ["wos-journal"]
+    field_count: 6
+  - name: JournalsCited
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: JournalsCiting
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: JournalHistoryRecord
+    apis: ["wos-journal"]
+    field_count: 5
+  - name: JournalsCitesJournal
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: CategoryList
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: CategoryListRecord
+    apis: ["wos-journal"]
+    field_count: 6
+    identifier_fields: ["id"]
+  - name: CategoryRecord
+    apis: ["wos-journal"]
+    field_count: 6
+    identifier_fields: ["id"]
+  - name: CategoryCitationReports
+    apis: ["wos-journal"]
+    field_count: 0
+  - name: CategoryReports
+    apis: ["wos-journal"]
+    field_count: 10
+  - name: Jif
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: Immediacy
+    apis: ["wos-journal"]
+    field_count: 3
+  - name: HalfLife
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: Frequency
+    apis: ["wos-journal"]
+    field_count: 11
+  - name: CategoryReportsSourceData
+    apis: ["wos-journal"]
+    field_count: 3
+  - name: CategoryData
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: CategoriesCited
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: CategoriesCiting
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: CitedData
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: CitingData
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: Cites
+    apis: ["wos-journal"]
+    field_count: 0
+  - name: Citable
+    apis: ["wos-journal"]
+    field_count: 0
+  - name: Metadata
+    apis: ["wos-journal", "wos-researcher", "wos-starter"]
+    field_count: 3
+  - name: SearchMatch
+    apis: ["wos-journal", "wos-researcher"]
+    field_count: 2
+  - name: RankQuartileData
+    apis: ["wos-journal"]
+    field_count: 5
+  - name: JournalTitleYear
+    apis: ["wos-journal"]
+    field_count: 2
+  - name: ReferenceResponse
+    apis: ["wos"]
+    field_count: 2
+  - name: ReferenceResponseXML
+    apis: ["wos"]
+    field_count: 2
+  - name: WosSearchResponse
+    apis: ["wos"]
+    field_count: 2
+  - name: WosShortSearchResponse
+    apis: ["wos"]
+    field_count: 2
+  - name: WosSearchResponseXML
+    apis: ["wos"]
+    field_count: 2
+  - name: CitationReportResponse
+    apis: ["wos"]
+    field_count: 0
+  - name: CitationReportResponseXML
+    apis: ["wos"]
+    field_count: 1
+  - name: RetrieveResponse
+    apis: ["wos"]
+    field_count: 1
+  - name: RetrieveResponseXML
+    apis: ["wos"]
+    field_count: 1
+  - name: QueryResult
+    apis: ["wos", "woslite"]
+    field_count: 3
+  - name: ReferenceRecord
+    apis: ["wos"]
+    field_count: 8
+    identifier_fields: ["UID", "doi"]
+  - name: WosRecord
+    apis: ["wos"]
+    field_count: 5
+    identifier_fields: ["UID"]
+  - name: WosShortRecord
+    apis: ["wos"]
+    field_count: 4
+    identifier_fields: ["UID"]
+  - name: WosRecordXML
+    apis: ["wos"]
+    field_count: 5
+    identifier_fields: ["UID"]
+  - name: CategoryContextResponse
+    apis: ["wos"]
+    field_count: 1
+  - name: CategoryContextResponseXML
+    apis: ["wos"]
+    field_count: 4
+    identifier_fields: ["UID"]
+  - name: CategoryContext
+    apis: ["wos"]
+    field_count: 3
+  - name: CategoryContextXML
+    apis: ["wos"]
+    field_count: 1
+  - name: errorMessage
+    apis: ["wos"]
+    field_count: 3
+    identifier_fields: ["id"]
+  - name: ResearcherList
+    apis: ["wos-researcher"]
+    field_count: 2
+  - name: ResearcherListRecord
+    apis: ["wos-researcher"]
+    field_count: 10
+  - name: AuthorshipSearchMatch
+    apis: ["wos-researcher"]
+    field_count: 4
+    identifier_fields: ["ut"]
+  - name: DocumentsCount
+    apis: ["wos-researcher"]
+    field_count: 2
+  - name: ResearcherRecord
+    apis: ["wos-researcher"]
+    field_count: 8
+  - name: ResearcherDocument
+    apis: ["wos-researcher"]
+    field_count: 2
+  - name: ResearcherDocumentRecord
+    apis: ["wos-researcher"]
+    field_count: 7
+    identifier_fields: ["uid"]
+  - name: Position
+    apis: ["wos-researcher"]
+    field_count: 2
+  - name: Name
+    apis: ["wos-researcher"]
+    field_count: 4
+  - name: Affiliation
+    apis: ["wos-researcher"]
+    field_count: 4
+  - name: Ids
+    apis: ["wos-researcher"]
+    field_count: 3
+  - name: ResearcherAllTimeMetrics
+    apis: ["wos-researcher"]
+    field_count: 6
+  - name: PeerReview
+    apis: ["wos-researcher"]
+    field_count: 6
+  - name: HighlyCitedResearcherYear
+    apis: ["wos-researcher"]
+    field_count: 2
+  - name: PeerReviewList
+    apis: ["wos-researcher"]
+    field_count: 2
+  - name: JournalsList
+    apis: ["wos-starter"]
+    field_count: 2
+  - name: Document
+    apis: ["wos-starter"]
+    field_count: 10
+    identifier_fields: ["uid"]
+  - name: DocumentsList
+    apis: ["wos-starter"]
+    field_count: 2
+  - name: OtherName
+    apis: ["wos-starter"]
+    field_count: 1
+  - name: AuthorName
+    apis: ["wos-starter"]
+    field_count: 3
+    identifier_fields: ["researcherId"]
+  - name: WosLiteResponse
+    apis: ["woslite"]
+    field_count: 2
+  - name: WosLiteRecord
+    apis: ["woslite"]
+    field_count: 7
+    identifier_fields: ["UT"]
+  - name: Source
+    apis: ["woslite"]
+    field_count: 8
+  - name: Doctype
+    apis: ["woslite"]
+    field_count: 1
+  - name: Author
+    apis: ["woslite"]
+    field_count: 3
+  - name: Keyword
+    apis: ["woslite"]
+    field_count: 1
+  - name: Other
+    apis: ["woslite"]
+    field_count: 10
+  - name: SearchInput
+    apis: ["wosrl-api"]
+    field_count: 7
+relationship_count: 187
+relationships:
+  - from: SUSHI_report_header
+    to: SUSHI_error
+    type: has_many
+    via: Exceptions
+    api: cddi-counter-five
+  - from: SUSHI_platform_report
+    to: SUSHI_report_header
+    type: has_one
+    via: Report_Header
+    api: cddi-counter-five
+  - from: SUSHI_platform_report
+    to: SUSHI_platform_usage
+    type: has_many
+    via: Report_Items
+    api: cddi-counter-five
+  - from: SUSHI_platform_usage
+    to: SUSHI_item_performance
+    type: has_many
+    via: Performance
+    api: cddi-counter-five
+  - from: SUSHI_database_report
+    to: SUSHI_report_header
+    type: has_one
+    via: Report_Header
+    api: cddi-counter-five
+  - from: SUSHI_database_report
+    to: SUSHI_database_usage
+    type: has_many
+    via: Report_Items
+    api: cddi-counter-five
+  - from: SUSHI_database_usage
+    to: SUSHI_item_performance
+    type: has_many
+    via: Performance
+    api: cddi-counter-five
+  - from: UserDelegation
+    to: User
+    type: has_one
+    via: fromUser
+    api: converisreadapi
+  - from: UserDelegation
+    to: User
+    type: has_one
+    via: toUser
+    api: converisreadapi
+  - from: UserDelegation
+    to: UserRole
+    type: has_one
+    via: role
+    api: converisreadapi
+  - from: UserDelegation
+    to: UserDelegationValidity
+    type: has_one
+    via: validity
+    api: converisreadapi
+  - from: UserDelegationList
+    to: UserDelegation
+    type: has_many
+    via: data
+    api: converisreadapi
+  - from: UserList
+    to: User
+    type: has_many
+    via: data
+    api: converisreadapi
+  - from: User
+    to: UserRole
+    type: has_many
+    via: roles
+    api: converisreadapi
+  - from: EntityDefinition
+    to: LabelDefinition
+    type: has_many
+    via: singular
+    api: converisreadapi
+  - from: EntityDefinition
+    to: LabelDefinition
+    type: has_many
+    via: plural
+    api: converisreadapi
+  - from: EntityDefinition
+    to: WorkflowStep
+    type: has_many
+    via: workflowSteps
+    api: converisreadapi
+  - from: EntityDefinition
+    to: AttributeDefinition
+    type: has_many
+    via: attributes
+    api: converisreadapi
+  - from: EntityDefinition
+    to: LinkReference
+    type: has_many
+    via: links
+    api: converisreadapi
+  - from: EntityDefinitionList
+    to: EntityDefinition
+    type: has_many
+    via: data
+    api: converisreadapi
+  - from: LinkEntityDefinition
+    to: AttributeDefinition
+    type: has_many
+    via: attributes
+    api: converisreadapi
+  - from: LinkEntityDefinitionList
+    to: LinkEntityDefinition
+    type: has_many
+    via: data
+    api: converisreadapi
+  - from: AttributeDefinition
+    to: AttributeInputDefinition
+    type: has_one
+    via: dataInput
+    api: converisreadapi
+  - from: AttributeDefinition
+    to: LabelDefinition
+    type: has_many
+    via: labels
+    api: converisreadapi
+  - from: WorkflowStep
+    to: LabelDefinition
+    type: has_many
+    via: label
+    api: converisreadapi
+  - from: EntityDataList
+    to: EntityData
+    type: has_many
+    via: data
+    api: converisreadapi
+  - from: LinkEntityDataList
+    to: LinkEntityData
+    type: has_many
+    via: data
+    api: converisreadapi
+  - from: EntityData
+    to: LabelDefinition
+    type: has_many
+    via: statusLabels
+    api: converisreadapi
+  - from: EntityData
+    to: LabelDefinition
+    type: has_many
+    via: shortDescription
+    api: converisreadapi
+  - from: EntityData
+    to: AttributeData
+    type: has_many
+    via: attributes
+    api: converisreadapi
+  - from: EntityData
+    to: LinkReference
+    type: has_many
+    via: links
+    api: converisreadapi
+  - from: LinkEntityData
+    to: BasicData
+    type: has_one
+    via: leftEntity
+    api: converisreadapi
+  - from: LinkEntityData
+    to: BasicData
+    type: has_one
+    via: rightEntity
+    api: converisreadapi
+  - from: LinkEntityData
+    to: AttributeData
+    type: has_many
+    via: attributes
+    api: converisreadapi
+  - from: BasicData
+    to: LinkReference
+    type: has_one
+    via: data
+    api: converisreadapi
+  - from: BasicData
+    to: LabelDefinition
+    type: has_many
+    via: shortDescription
+    api: converisreadapi
+  - from: AttributeData
+    to: ChoiceGroupData
+    type: has_one
+    via: choiceGroupData
+    api: converisreadapi
+  - from: ChoiceGroupData
+    to: LabelDefinition
+    type: has_many
+    via: choiceGroupValueLabels
+    api: converisreadapi
+  - from: links
+    to: link
+    type: has_one
+    via: related
+    api: dss-search-api
+  - from: errors
+    to: error
+    type: has_many
+    via: errors
+    api: dss-search-api
+  - from: Patent
+    to: links
+    type: has_one
+    via: links
+    api: dss-search-api
+  - from: Patent
+    to: meta
+    type: has_one
+    via: meta
+    api: dss-search-api
+  - from: Project
+    to: ProjectAttributes
+    type: has_one
+    via: attributes
+    api: dss-search-api
+  - from: Search
+    to: SearchAttributes
+    type: has_one
+    via: attributes
+    api: dss-search-api
+  - from: SearchResult
+    to: SearchResultAlignment
+    type: has_many
+    via: alignments
+    api: dss-search-api
+  - from: Sequence
+    to: links
+    type: has_one
+    via: links
+    api: dss-search-api
+  - from: Sequence
+    to: meta
+    type: has_one
+    via: meta
+    api: dss-search-api
+  - from: userspaceresource
+    to: uri
+    type: has_one
+    via: referenceUserSpaceUri
+    api: endnote
+  - from: userspaceresource
+    to: uri
+    type: has_one
+    via: uri
+    api: endnote
+  - from: roalibrary
+    to: uri
+    type: has_one
+    via: attachmentSizeTotalUri
+    api: endnote
+  - from: roalibrary
+    to: uri
+    type: has_one
+    via: referenceTotalUri
+    api: endnote
+  - from: roalibrary
+    to: uri
+    type: has_one
+    via: reference
+    api: endnote
+  - from: roareference
+    to: uri
+    type: has_one
+    via: uri
+    api: endnote
+  - from: roareference
+    to: uri
+    type: has_one
+    via: fileFactoryUri
+    api: endnote
+  - from: Record
+    to: Percentiles
+    type: has_many
+    via: PERCENTILE
+    api: incites
+  - from: Request
+    to: SearchArticle
+    type: has_one
+    via: searchArticle
+    api: reviewer-connect
+  - from: Request
+    to: ExcludedReviewer
+    type: has_many
+    via: excludedReviewers
+    api: reviewer-connect
+  - from: Request
+    to: Country
+    type: has_many
+    via: includedCountries
+    api: reviewer-connect
+  - from: Request
+    to: Country
+    type: has_many
+    via: excludedCountries
+    api: reviewer-connect
+  - from: SearchArticle
+    to: JournalOrFunder
+    type: has_one
+    via: journal
+    api: reviewer-connect
+  - from: SearchArticle
+    to: AuthorOrApplicant
+    type: has_many
+    via: authors
+    api: reviewer-connect
+  - from: AuthorOrApplicant
+    to: AuthorOrganization
+    type: has_many
+    via: organizations
+    api: reviewer-connect
+  - from: Response
+    to: RecommendedReviewer
+    type: has_many
+    via: recommendedReviewers
+    api: reviewer-connect
+  - from: RecommendedReviewer
+    to: Organization
+    type: has_many
+    via: recentOrganizations
+    api: reviewer-connect
+  - from: RecommendedReviewer
+    to: Article
+    type: has_many
+    via: relevantArticles
+    api: reviewer-connect
+  - from: RecommendedReviewer
+    to: Article
+    type: has_many
+    via: conflictOfInterestArticles
+    api: reviewer-connect
+  - from: RecommendedReviewer
+    to: Organization
+    type: has_many
+    via: conflictOfInterestOrganizations
+    api: reviewer-connect
+  - from: Article
+    to: Journal
+    type: has_one
+    via: journal
+    api: reviewer-connect
+  - from: HTTPValidationError
+    to: ValidationError
+    type: has_many
+    via: detail
+    api: ric-agent-hub-api
+  - from: PublicAgentMessageResponse
+    to: AgentStatus
+    type: has_one
+    via: status
+    api: ric-agent-hub-api
+  - from: PublicAgentMessageResponse
+    to: IntermediateStep
+    type: has_many
+    via: intermediate_steps
+    api: ric-agent-hub-api
+  - from: PublicAgentMessageResponse
+    to: PublicUsageInfo
+    type: has_one
+    via: usage
+    api: ric-agent-hub-api
+  - from: PublicAgentSuccessResponse
+    to: AgentStatus
+    type: has_one
+    via: status
+    api: ric-agent-hub-api
+  - from: PublicAgentSuccessResponse
+    to: IntermediateStep
+    type: has_many
+    via: intermediate_steps
+    api: ric-agent-hub-api
+  - from: PublicAgentSuccessResponse
+    to: PublicUsageInfo
+    type: has_one
+    via: usage
+    api: ric-agent-hub-api
+  - from: ContentSetOntologiesResponse
+    to: Status
+    type: has_one
+    via: status
+    api: ric-ai-api
+  - from: ContentSetOntologiesResponse
+    to: ContentSetOntologiesResponseData
+    type: has_many
+    via: data
+    api: ric-ai-api
+  - from: ContentSetOntologyResponse
+    to: Status
+    type: has_one
+    via: status
+    api: ric-ai-api
+  - from: Error
+    to: ApiErrorEnum
+    type: has_one
+    via: code
+    api: ric-ai-api
+  - from: ErrorResponse
+    to: Error
+    type: has_many
+    via: errors
+    api: ric-ai-api
+  - from: MakePredictionRequest
+    to: Format
+    type: has_one
+    via: format
+    api: ric-ai-api
+  - from: MakePredictionRequest
+    to: PredictionInput
+    type: has_many
+    via: inputs
+    api: ric-ai-api
+  - from: MakePredictionResponse
+    to: Status
+    type: has_one
+    via: status
+    api: ric-ai-api
+  - from: MakePredictionResponse
+    to: Prediction
+    type: has_many
+    via: data
+    api: ric-ai-api
+  - from: PredictionInput
+    to: OperationEnum
+    type: has_one
+    via: op
+    api: ric-ai-api
+  - from: PredictionsResponse
+    to: Status
+    type: has_one
+    via: status
+    api: ric-ai-api
+  - from: PredictionsResponse
+    to: PredictionsResponseData
+    type: has_many
+    via: data
+    api: ric-ai-api
+  - from: PredictionsResponseData
+    to: PredictionsResponseDataModel
+    type: has_many
+    via: models
+    api: ric-ai-api
+  - from: PredictionsResponseData
+    to: PredictionsResponseDataInput
+    type: has_many
+    via: inputs
+    api: ric-ai-api
+  - from: CheckPackageStatusResult
+    to: CheckPackageStatusResultFile
+    type: has_many
+    via: files
+    api: ric-download-api
+  - from: ErrorResponse
+    to: Error
+    type: has_many
+    via: errors
+    api: ric-download-api
+  - from: SubscriptionsInfoResult
+    to: ContentSubscriptionResponse
+    type: has_many
+    via: subscriptions
+    api: ric-download-api
+  - from: SUSHI_report_header
+    to: SUSHI_error_model
+    type: has_many
+    via: Exceptions
+    api: sushi-api
+  - from: COUNTER_platform_report
+    to: SUSHI_report_header
+    type: has_one
+    via: Report_Header
+    api: sushi-api
+  - from: COUNTER_platform_report
+    to: COUNTER_platform_usage
+    type: has_many
+    via: Report_Items
+    api: sushi-api
+  - from: COUNTER_platform_usage
+    to: COUNTER_item_performance
+    type: has_many
+    via: Performance
+    api: sushi-api
+  - from: COUNTER_database_report
+    to: SUSHI_report_header
+    type: has_one
+    via: Report_Header
+    api: sushi-api
+  - from: COUNTER_database_report
+    to: COUNTER_database_usage
+    type: has_many
+    via: Report_Items
+    api: sushi-api
+  - from: COUNTER_database_usage
+    to: COUNTER_publisher_identifiers
+    type: has_many
+    via: Publisher_ID
+    api: sushi-api
+  - from: COUNTER_database_usage
+    to: COUNTER_item_performance
+    type: has_many
+    via: Performance
+    api: sushi-api
+  - from: SingleOppositionResponse
+    to: Trademark
+    type: has_one
+    via: trademark1
+    api: twa-riskmark-integration
+  - from: SingleOppositionResponse
+    to: Trademark
+    type: has_one
+    via: trademark2
+    api: twa-riskmark-integration
+  - from: Trademark
+    to: GoodsAndService
+    type: has_many
+    via: goodsAndServices
+    api: twa-riskmark-integration
+  - from: Trademark
+    to: ApplicantInfo
+    type: has_many
+    via: applicantInfos
+    api: twa-riskmark-integration
+  - from: JournalList
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: JournalList
+    to: JournalListRecord
+    type: has_many
+    via: hits
+    api: wos-journal
+  - from: JournalListRecord
+    to: SearchMatch
+    type: has_many
+    via: matches
+    api: wos-journal
+  - from: JournalListRecord
+    to: Categories
+    type: has_one
+    via: categories
+    api: wos-journal
+  - from: JournalRecord
+    to: Publisher
+    type: has_one
+    via: publisher
+    api: wos-journal
+  - from: JournalRecord
+    to: OpenAccess
+    type: has_one
+    via: openAccess
+    api: wos-journal
+  - from: JournalRecord
+    to: Categories
+    type: has_one
+    via: categories
+    api: wos-journal
+  - from: JournalRecord
+    to: JournalCitationReport
+    type: has_one
+    via: journalCitationReports
+    api: wos-journal
+  - from: JournalData
+    to: CitedData
+    type: has_one
+    via: cited
+    api: wos-journal
+  - from: JournalData
+    to: CitingData
+    type: has_one
+    via: citing
+    api: wos-journal
+  - from: JournalReports
+    to: JournalReportsJournal
+    type: has_one
+    via: journal
+    api: wos-journal
+  - from: JournalReports
+    to: Ranks
+    type: has_one
+    via: ranks
+    api: wos-journal
+  - from: JournalReports
+    to: JournalData
+    type: has_one
+    via: journalData
+    api: wos-journal
+  - from: JournalReports
+    to: SourceData
+    type: has_one
+    via: sourceData
+    api: wos-journal
+  - from: JournalReports
+    to: JournalProfile
+    type: has_one
+    via: journalProfile
+    api: wos-journal
+  - from: SourceMetrics
+    to: HalfLife
+    type: has_one
+    via: halfLife
+    api: wos-journal
+  - from: Ranks
+    to: RankQuartileData
+    type: has_many
+    via: articleInfluence
+    api: wos-journal
+  - from: Ranks
+    to: RankQuartileData
+    type: has_many
+    via: eigenFactorScore
+    api: wos-journal
+  - from: Ranks
+    to: RankQuartileData
+    type: has_many
+    via: immediacyIndex
+    api: wos-journal
+  - from: JournalsCited
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: JournalsCiting
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: CategoryList
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: CategoryList
+    to: CategoryListRecord
+    type: has_many
+    via: hits
+    api: wos-journal
+  - from: CategoryListRecord
+    to: SearchMatch
+    type: has_many
+    via: matches
+    api: wos-journal
+  - from: CategoryListRecord
+    to: CategoryCitationReports
+    type: has_one
+    via: categoryCitationReports
+    api: wos-journal
+  - from: CategoryRecord
+    to: CategoryCitationReports
+    type: has_one
+    via: categoryCitationReports
+    api: wos-journal
+  - from: CategoryReports
+    to: Jif
+    type: has_one
+    via: jif
+    api: wos-journal
+  - from: CategoryReports
+    to: Immediacy
+    type: has_one
+    via: immediacy
+    api: wos-journal
+  - from: CategoryReports
+    to: HalfLife
+    type: has_one
+    via: halfLife
+    api: wos-journal
+  - from: CategoryReports
+    to: Frequency
+    type: has_one
+    via: frequency
+    api: wos-journal
+  - from: CategoryReports
+    to: CategoryReportsSourceData
+    type: has_one
+    via: sourceData
+    api: wos-journal
+  - from: CategoryReports
+    to: CategoryData
+    type: has_one
+    via: categoryData
+    api: wos-journal
+  - from: CategoryData
+    to: CitedData
+    type: has_one
+    via: cited
+    api: wos-journal
+  - from: CategoryData
+    to: CitingData
+    type: has_one
+    via: citing
+    api: wos-journal
+  - from: CategoriesCited
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: CategoriesCiting
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: JournalTitleYear
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-journal
+  - from: ReferenceResponse
+    to: ReferenceRecord
+    type: has_many
+    via: Data
+    api: wos
+  - from: ReferenceResponse
+    to: QueryResult
+    type: has_one
+    via: QueryResult
+    api: wos
+  - from: WosSearchResponse
+    to: QueryResult
+    type: has_one
+    via: QueryResult
+    api: wos
+  - from: WosShortSearchResponse
+    to: QueryResult
+    type: has_one
+    via: QueryResult
+    api: wos
+  - from: WosSearchResponseXML
+    to: QueryResult
+    type: has_one
+    via: QueryResult
+    api: wos
+  - from: CategoryContextResponseXML
+    to: CategoryContextXML
+    type: has_many
+    via: aggregated
+    api: wos
+  - from: CategoryContextResponseXML
+    to: CategoryContextXML
+    type: has_many
+    via: citing
+    api: wos
+  - from: CategoryContextResponseXML
+    to: CategoryContextXML
+    type: has_many
+    via: references
+    api: wos
+  - from: ResearcherList
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-researcher
+  - from: ResearcherList
+    to: ResearcherListRecord
+    type: has_many
+    via: hits
+    api: wos-researcher
+  - from: ResearcherListRecord
+    to: DocumentsCount
+    type: has_one
+    via: documentsCount
+    api: wos-researcher
+  - from: ResearcherListRecord
+    to: SearchMatch
+    type: has_many
+    via: matches
+    api: wos-researcher
+  - from: ResearcherListRecord
+    to: AuthorshipSearchMatch
+    type: has_many
+    via: authorships
+    api: wos-researcher
+  - from: AuthorshipSearchMatch
+    to: SearchMatch
+    type: has_many
+    via: matches
+    api: wos-researcher
+  - from: ResearcherRecord
+    to: Ids
+    type: has_one
+    via: ids
+    api: wos-researcher
+  - from: ResearcherRecord
+    to: Name
+    type: has_one
+    via: name
+    api: wos-researcher
+  - from: ResearcherRecord
+    to: ResearcherAllTimeMetrics
+    type: has_one
+    via: metricsAllTime
+    api: wos-researcher
+  - from: ResearcherDocument
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-researcher
+  - from: ResearcherDocument
+    to: ResearcherDocumentRecord
+    type: has_many
+    via: hits
+    api: wos-researcher
+  - from: PeerReviewList
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-researcher
+  - from: PeerReviewList
+    to: PeerReview
+    type: has_many
+    via: hits
+    api: wos-researcher
+  - from: JournalsList
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-starter
+  - from: JournalsList
+    to: Journal
+    type: has_many
+    via: hits
+    api: wos-starter
+  - from: DocumentsList
+    to: Metadata
+    type: has_one
+    via: metadata
+    api: wos-starter
+  - from: DocumentsList
+    to: Document
+    type: has_many
+    via: hits
+    api: wos-starter
+  - from: WosLiteResponse
+    to: QueryResult
+    type: has_one
+    via: QueryResult
+    api: woslite
+  - from: WosLiteResponse
+    to: WosLiteRecord
+    type: has_many
+    via: Data
+    api: woslite
+  - from: WosLiteRecord
+    to: Doctype
+    type: has_one
+    via: Doctype
+    api: woslite
+  - from: WosLiteRecord
+    to: Source
+    type: has_one
+    via: Source
+    api: woslite
+  - from: WosLiteRecord
+    to: Author
+    type: has_one
+    via: Author
+    api: woslite
+  - from: WosLiteRecord
+    to: Keyword
+    type: has_one
+    via: Keyword
+    api: woslite
+  - from: WosLiteRecord
+    to: Other
+    type: has_one
+    via: Other
+    api: woslite
+  - from: SearchInput
+    to: SearchArticle
+    type: has_one
+    via: searchArticle
+    api: wosrl-api
+  - from: SearchInput
+    to: ExcludedReviewer
+    type: has_many
+    via: excludedReviewers
+    api: wosrl-api
+  - from: SearchInput
+    to: Country
+    type: has_many
+    via: includedCountries
+    api: wosrl-api
+  - from: SearchInput
+    to: Country
+    type: has_many
+    via: excludedCountries
+    api: wosrl-api
+  - from: SearchArticle
+    to: JournalOrFunder
+    type: has_one
+    via: journal
+    api: wosrl-api
+  - from: SearchArticle
+    to: AuthorOrApplicant
+    type: has_many
+    via: authors
+    api: wosrl-api
+  - from: AuthorOrApplicant
+    to: AuthorOrganization
+    type: has_many
+    via: organizations
+    api: wosrl-api
+  - from: Response
+    to: SearchInput
+    type: has_one
+    via: searchInput
+    api: wosrl-api
+  - from: Response
+    to: RecommendedReviewer
+    type: has_many
+    via: recommendedReviewers
+    api: wosrl-api
+  - from: RecommendedReviewer
+    to: Organization
+    type: has_many
+    via: recentOrganizations
+    api: wosrl-api
+  - from: RecommendedReviewer
+    to: Article
+    type: has_many
+    via: relevantArticles
+    api: wosrl-api
+  - from: RecommendedReviewer
+    to: Article
+    type: has_many
+    via: conflictOfInterestArticles
+    api: wosrl-api
+  - from: RecommendedReviewer
+    to: Organization
+    type: has_many
+    via: conflictOfInterestOrganizations
+    api: wosrl-api
+  - from: Article
+    to: Journal
+    type: has_one
+    via: journal
+    api: wosrl-api
+gaps:
+  - >-
+    No shared components across contracts: the 26 specs declare no common schema
+    namespace, so a Document in the Starter API and a Document in the Expanded API
+    are structurally unrelated types even though they describe the same record.
+  - >-
+    Twelve of the 26 contracts are Swagger 2.0, which cannot express the shared
+    component reuse that would make the estate one model.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

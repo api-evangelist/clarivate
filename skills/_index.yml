@@ -1,0 +1,55 @@
+generated: '2026-09-05'
+method: generated
+source: >-
+  Authored from the 26 OpenAPI/Swagger contracts harvested from
+  https://developer.clarivate.com/apis/<api>/swagger on 2026-09-05, plus the
+  conventions, errors, plans and rate-limits artifacts in this repository. Every path
+  and operationId referenced in a skill was grepped out of the harvested contract; none
+  is invented.
+description: >-
+  Packaged Agent Skills for the marquee Clarivate flows. Clarivate publishes no skills
+  or AGENTS.md of its own (probed 2026-09-05), so these are generated. Each skill
+  carries the throttle, the error envelope and the entitlement gate for its API,
+  because those are the three things that stop a Clarivate integration in practice.
+skills:
+  - name: clarivate-wos-document-lookup
+    file: clarivate-wos-document-lookup.md
+    api: Web of Science Starter API
+    spec: openapi/clarivate-wos-starter-openapi.json
+    operations: 4
+    summary: Verify a publication against the Core Collection and read its citation counts.
+  - name: clarivate-wos-journal-metrics
+    file: clarivate-wos-journal-metrics.md
+    api: Web of Science Journals API
+    spec: openapi/clarivate-wos-journal-openapi.json
+    operations: 13
+    summary: Journal Impact Factor, JCI, quartiles and category citation networks by JCR year.
+  - name: clarivate-wos-researcher-profile
+    file: clarivate-wos-researcher-profile.md
+    api: Web of Science Researcher API
+    spec: openapi/clarivate-wos-researcher-openapi.json
+    operations: 4
+    summary: Resolve a researcher by ORCID or ResearcherID and pull publications and peer reviews.
+  - name: clarivate-counter-sushi-harvest
+    file: clarivate-counter-sushi-harvest.md
+    api: Web of Science SUSHI COUNTER5 API
+    spec: openapi/clarivate-sushi-api-openapi.json
+    operations: 8
+    summary: Harvest COUNTER R5 Platform and Database reports over NISO SUSHI.
+  - name: clarivate-derwent-patent-search
+    file: clarivate-derwent-patent-search.md
+    api: Intellectual Property (IP) Data API
+    spec: openapi/clarivate-ipdata-api-openapi.json
+    operations: 33
+    summary: Search and retrieve Derwent patents, trademarks, designs and case law.
+not_covered:
+  note: >-
+    No skill was written for the Converis CUD, Converis Additional, EndNote or Derwent
+    Sequence Search write surfaces. Those are the four APIs that mutate state, and
+    Clarivate documents no idempotency mechanism, no dry-run mode and no reversal
+    window for any of them — see conventions/clarivate-conventions.yml. Shipping an
+    agent skill that tells a model to create or delete entities under those conditions
+    would be irresponsible until Clarivate publishes replay and recovery semantics.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

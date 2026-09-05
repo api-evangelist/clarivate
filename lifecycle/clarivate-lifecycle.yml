@@ -1,0 +1,106 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://clarivate.com/academia-government/release-notes/wos-apis/ (HTTP 200),
+  https://status.clarivate.com/ (HTTP 200), the "API deprecated" banners on
+  https://developer.clarivate.com/apis/endnote and
+  https://developer.clarivate.com/apis/ipdata-di-graphql-api, and the replacement
+  notice on https://developer.clarivate.com/apis/woslite — all fetched 2026-09-05.
+description: >-
+  Clarivate runs a real deprecation practice — it has sunset a SOAP estate, retired
+  Links AMR with scheduled brownouts and warning headers, and marks retired APIs in
+  the portal — but it publishes no written deprecation POLICY document, no notice
+  period, and it does not emit RFC 8594 Sunset/Deprecation headers as standing
+  practice. The Web of Science API release notes, the only dated changelog in the
+  estate, has not been updated since 20 June 2024.
+versioning:
+  scheme: path-segment
+  mechanism: The major version is part of the base path (/apis/wos-starter/v1, /v2, /api/counter/r5, /r51).
+  header: null
+  docs: https://developer.clarivate.com/apis
+  notes: >-
+    The Starter API is the only contract publishing two live versions in one
+    servers[] block (v1 and v2). No migration guide for v1 to v2 is published.
+deprecation:
+  policy_url: null
+  policy_published: false
+  changelog: https://clarivate.com/academia-government/release-notes/wos-apis/
+  sunset_header: false
+  practice: >-
+    Deprecations are announced in the release notes and marked on the portal API page
+    with an "API deprecated" banner meaning the API can no longer be SUBSCRIBED to
+    while existing subscriptions stay valid. For the 2023 SOAP sunset Clarivate ran
+    scheduled "brownouts" — the API returning an error instead of data on announced
+    dates — and added three warning headers to every response. That is a stronger
+    retirement practice than most vendors run, and it is not written down anywhere as
+    a policy a customer can plan against.
+  notice_period: null
+deprecated_apis:
+  - name: EndNote REST API
+    portal: https://developer.clarivate.com/apis/endnote
+    state: deprecated
+    evidence: >-
+      "API deprecated — This API has been deprecated by the API Portal maintainers.
+      This means it can no longer be subscribed to. Existing subscriptions are still
+      valid."
+    superseded_by: null
+    spec: openapi/clarivate-endnote-openapi.json
+  - name: DI GraphQL API (With Auth)
+    portal: https://developer.clarivate.com/apis/ipdata-di-graphql-api
+    state: deprecated
+    evidence: Same "API deprecated" banner; POST /derwent-graphql can no longer be subscribed to.
+    superseded_by: Intellectual Property (IP) Data API
+  - name: Web of Science API Lite
+    portal: https://developer.clarivate.com/apis/woslite
+    state: superseded
+    evidence: >-
+      "Notice: This API has been replaced by the Starter API. Please update your
+      application as soon as possible."
+    superseded_by: Web of Science Starter API
+    spec: openapi/clarivate-woslite-openapi.json
+  - name: Web of Science Expanded (SOAP) API
+    state: sunset
+    sunset_date: '2023-11-01'
+    evidence: >-
+      Release notes 2023-05-11 — "The November 1, 2023 sunset of the legacy SOAP
+      versions of our Web of Science APIs was announced last year"; 2023-06-08 —
+      scheduled brownouts; 2023-06-22 — three sunset-warning headers added to every
+      response.
+    superseded_by: Web of Science API Expanded (REST)
+  - name: Links Article Match Retrieval (AMR)
+    state: sunset
+    evidence: >-
+      Release notes 2023-07-20 — scheduled brownouts announced; 2023-08-03 — the
+      Starter API gained the SUR search tag to replace a DRCI option "previously
+      available on the deprecated Links AMR API".
+    superseded_by: Web of Science Starter API (detail=short)
+    archived_repo: https://github.com/clarivate/wos-amr
+sla:
+  url: null
+  public_uptime_target: null
+  notes: >-
+    No numeric uptime commitment is published for any Clarivate API. Availability
+    commitments sit inside institutional subscription agreements.
+status_page:
+  url: https://status.clarivate.com/
+  status: 200
+  provider: first-party
+  subscribe: email and SMS incident notifications
+  scope: >-
+    Platform-wide Clarivate status. It is not API-specific and does not expose a
+    machine-readable status endpoint (no /api/v2/status.json).
+support:
+  url: https://support.clarivate.com/
+  incites_help: https://incites.zendesk.com/hc/en-gb/
+release_notes:
+  url: https://clarivate.com/academia-government/release-notes/wos-apis/
+  scope: Web of Science APIs only (Starter, Expanded, Journals, Researcher, Links AMR, SOAP)
+  latest_entry: '2024-06-20'
+  staleness: >-
+    No entry in over two years as of 2026-09-05, while the portal continues to list 26
+    live contracts. The other 21 APIs (Cortellis, Derwent, Converis, SUSHI, RIC/LSH,
+    IP Data) have no changelog at all.
+  detail: changelog/clarivate-changelog.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

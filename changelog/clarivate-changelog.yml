@@ -1,0 +1,133 @@
+generated: '2026-09-05'
+method: searched
+source: https://clarivate.com/academia-government/release-notes/wos-apis/
+description: >-
+  The Web of Science API release notes — the only dated, public changelog Clarivate
+  publishes for any of its 26 APIs. Entries are undated by version number; each is
+  identified by release date and names the affected API. The most recent entry is
+  20 June 2024, so the changelog is more than two years stale relative to a live
+  estate. Recent window captured below.
+scheme: dated-release-notes
+versioning: path-segment (no dated or numbered API version to correlate entries against)
+current_version: null
+latest_entry: '2024-06-20'
+scope: Web of Science Starter, Expanded, Journals, Researcher, Links AMR and the legacy SOAP APIs
+entries:
+  - date: '2024-06-20'
+    apis: [Web of Science Journals API, Web of Science Researcher API]
+    breaking: false
+    additions: true
+    highlights:
+      - The 2024 Journal Citation Reports update landed on 20 June; the Journals API dataset was updated the same day to include 2023 data.
+      - The Researcher API now includes ORCID in its search response, removing an extra request to resolve a ResearcherID's ORCID.
+  - date: '2024-05-23'
+    apis: [Web of Science API Expanded]
+    breaking: false
+    additions: true
+    highlights:
+      - New Short Record (SR) view retrievable through the optionView query parameter.
+      - Times Cited now returned for all databases on the Full Record as an array, with WOK representing the total across all databases.
+  - date: '2023-08-31'
+    apis: [Web of Science API Expanded]
+    breaking: false
+    additions: true
+    highlights:
+      - New Citation Report endpoint generating bibliometrics for any Web of Science query.
+  - date: '2023-08-17'
+    apis: [Web of Science Starter API, Web of Science API Expanded]
+    breaking: false
+    additions: true
+    highlights:
+      - The `detail` parameter is now supported by /documents/{UT} on the Starter API.
+      - /related now supports modifiedTimeSpan and /citing now supports createdTimeSpan on the Expanded API.
+  - date: '2023-08-03'
+    apis: [Web of Science API Expanded, Web of Science Starter API]
+    breaking: true
+    additions: true
+    highlights:
+      - modifiedTimeSpan can now be applied to /citing, but applying it with databaseId=WOK now returns an error on all endpoints.
+      - The Starter API now supports the sourceURL search tag (SUR), extending it to a Data Citation Index option previously only on the deprecated Links AMR API.
+  - date: '2023-07-20'
+    apis: [Web of Science Starter API, Links AMR]
+    breaking: true
+    additions: true
+    highlights:
+      - New `detail` parameter selecting full or short response payloads.
+      - Links AMR entered scheduled brownouts, returning an error instead of data, ahead of sunset.
+  - date: '2023-07-06'
+    apis: [Web of Science Journals API]
+    breaking: false
+    additions: false
+    highlights:
+      - Journals API dataset updated 28 June with the 2023 release, carrying 2022 journal metrics.
+  - date: '2023-06-22'
+    apis: [Links AMR]
+    breaking: false
+    additions: true
+    highlights:
+      - Three new sunset-warning headers added to every Links AMR response.
+  - date: '2023-06-08'
+    apis: [Web of Science API Expanded, Web of Science Expanded (SOAP), Web of Science Starter API]
+    breaking: true
+    additions: false
+    highlights:
+      - Improved error handling — Query ID error messages were not descriptive (e.g. Server.objectNotFound).
+      - SOAP APIs entered scheduled brownouts ahead of the 1 November 2023 sunset.
+      - Bug fix — free Starter tokens were blocking access requests to other APIs.
+  - date: '2023-05-25'
+    apis: [Web of Science API Expanded, Web of Science Starter API]
+    breaking: false
+    additions: true
+    highlights:
+      - Record Usage Counts now available on the Expanded API.
+      - Bug fix for /related; bug fix for mis-processed Free plan subscription requests on the Starter API.
+  - date: '2023-05-11'
+    apis: [Web of Science API Lite, Web of Science Expanded (SOAP)]
+    breaking: true
+    additions: false
+    highlights:
+      - Reminder of the 1 November 2023 sunset of the legacy SOAP API versions; three sunset headers added to every SOAP response.
+  - date: '2023-04-27'
+    apis: [Web of Science API Expanded]
+    breaking: false
+    additions: false
+    highlights:
+      - optionView is now assumed when viewField is provided; viewField remains accepted but was removed from the documentation.
+  - date: '2023-04-13'
+    apis: [Web of Science API Expanded]
+    breaking: false
+    additions: false
+    highlights:
+      - The collection name is now optional on viewField for every database except WOK.
+  - date: '2023-03-30'
+    apis: [Web of Science API Expanded]
+    breaking: false
+    additions: false
+    highlights:
+      - Web of Science category code updates (ASCA categories are revised periodically).
+  - date: '2023-03-16'
+    apis: [Web of Science Starter API]
+    breaking: false
+    additions: false
+    highlights:
+      - Bug fix — two-character ASCA category codes were omitted for categories containing an ampersand.
+  - date: '2023-03-02'
+    apis: [Web of Science Starter API]
+    breaking: false
+    additions: true
+    highlights:
+      - New optional modifiedTimeSpan parameter, limiting results to documents modified in a window — aimed at recurring data-integration syncs.
+  - date: '2023-02-23'
+    apis: [Web of Science API Expanded, Web of Science Researcher API]
+    breaking: false
+    additions: false
+    highlights:
+      - Bug fix — count=0 is now supported on /related.
+      - The Researcher API country filter now applies only to a profile's primary affiliation.
+gaps:
+  - No entry since 2024-06-20; the changelog does not reflect a live 26-API estate.
+  - No changelog at all for Cortellis, Derwent, Converis, IP Data, SUSHI or the RIC/LSH APIs.
+  - No machine-readable feed (no RSS, no JSON) for the release notes.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

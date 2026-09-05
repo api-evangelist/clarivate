@@ -4,109 +4,142 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Clarivate
 providerId: clarivate
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Analytics
-  - Citations
-  - Data
-  - Drug Pipeline
-  - Insights
-  - Intellectual Property
-  - Life Sciences
-  - Patents
-  - Publications
-  - Research
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Clarivate API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+modified: '2026-09-05'
+generated: '2026-09-05'
+method: searched
+source: >-
+  The "Throttling Configuration" and "Plans" tables published on the Clarivate
+  Developer Portal API detail pages: https://developer.clarivate.com/apis/wos-starter,
+  https://developer.clarivate.com/apis/wos, https://developer.clarivate.com/apis/wos-journal,
+  https://developer.clarivate.com/apis/wos-researcher, https://developer.clarivate.com/apis/incites
+  (all HTTP 200 on 2026-09-05).
+description: >-
+  Clarivate publishes per-second and per-day request ceilings for the five Web of
+  Science / InCites APIs, tied to entitlement plan rather than to a paid tier. It does
+  NOT document any rate-limit response header, any 429 behaviour, or any Retry-After
+  contract — so an agent can read the number in the docs but gets no runtime signal
+  back from the gateway. This file replaces a 2026-05-04 scaffold that asserted
+  X-RateLimit-* / RateLimit-Policy headers and 429/503 codes Clarivate has never
+  documented.
+limit_count: 13
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  documented: false
+  note: >-
+    No rate-limit response headers are documented anywhere on developer.clarivate.com.
+    The published throttle is a docs number only; the API gateway (a Kong-based
+    wicked.haufe.io portal) is not documented as emitting X-RateLimit-*, RateLimit-* or
+    Retry-After.
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  documented: false
+  note: >-
+    The status code returned on exhaustion is not published. The documented error table
+    for the WoS APIs covers 400, 401, 404, 405 and 50X only — 429 does not appear.
 limits:
-  - tier: free
-    name: Free Tier Default
+  - api: Web of Science Starter API
+    tier: Free Trial Plan
     scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Web of Science APIs
-      - Derwent Innovation API
-      - Cortellis APIs
-      - InCites Benchmarking and Analytics API
-  - tier: free
-    name: Free Tier Monthly Quota
+    metric: requests_per_second
+    limit: 1
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos-starter
+  - api: Web of Science Starter API
+    tier: Free Trial Plan
     scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Web of Science APIs
-      - Derwent Innovation API
-      - Cortellis APIs
-      - InCites Benchmarking and Analytics API
-  - tier: professional
-    name: Professional Tier Default
+    metric: requests_per_day
+    limit: 50
+    timeFrame: day
+    source: https://developer.clarivate.com/apis/wos-starter
+  - api: Web of Science Starter API
+    tier: Free Institutional Member Plan
     scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Web of Science APIs
-      - Derwent Innovation API
-      - Cortellis APIs
-      - InCites Benchmarking and Analytics API
-  - tier: professional
-    name: Professional Tier Monthly Quota
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos-starter
+  - api: Web of Science Starter API
+    tier: Free Institutional Member Plan
     scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Web of Science APIs
-      - Derwent Innovation API
-      - Cortellis APIs
-      - InCites Benchmarking and Analytics API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+    metric: requests_per_day
+    limit: 5000
+    timeFrame: day
+    source: https://developer.clarivate.com/apis/wos-starter
+  - api: Web of Science Starter API
+    tier: Free Institutional Integration Plan
+    scope: api-key
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos-starter
+  - api: Web of Science Starter API
+    tier: Free Institutional Integration Plan
+    scope: api-key
+    metric: requests_per_day
+    limit: 20000
+    timeFrame: day
+    source: https://developer.clarivate.com/apis/wos-starter
+  - api: Web of Science API Expanded
+    tier: Basic
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Web of Science APIs
-      - Derwent Innovation API
-      - Cortellis APIs
-      - InCites Benchmarking and Analytics API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos
+  - api: Web of Science API Expanded
+    tier: Intermediate
+    scope: contract
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos
+  - api: Web of Science API Expanded
+    tier: Advanced
+    scope: contract
+    metric: requests_per_second
+    limit: 3
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos
+  - api: Web of Science API Expanded
+    tier: Premium
+    scope: contract
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos
+  - api: Web of Science Journals API
+    tier: Journals API Plan
+    scope: api-key
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos-journal
+  - api: Web of Science Researcher API
+    tier: Researcher API Plan
+    scope: api-key
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/wos-researcher
+  - api: InCites Document Level Metrics API
+    tier: Standard InCites Subscription
+    scope: api-key
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    source: https://developer.clarivate.com/apis/incites
+volume_ceilings:
+  note: >-
+    The Expanded API additionally meters "Full Records" — the record-retrieval volume,
+    not the request count — per year (Basic 50,000 / Intermediate 250,000 /
+    Advanced 1,000,000 / Premium 3,000,000) and per month on the Essentials packages
+    (1,000,000 / 500,000 / 100,000). See plans/clarivate-plans-pricing.yml.
+undocumented:
+  - >-
+    The 21 non-WoS APIs on the developer portal (Cortellis, Derwent Sequence Search,
+    IP Data, Converis, EndNote, SUSHI, RIC/LSH) publish no throttle figures at all.
+  - >-
+    No documented rate-limit headers, no documented 429 body, no documented
+    Retry-After. This is the largest agent-readiness gap in Clarivate's runtime
+    semantics: a client cannot discover its remaining budget from a response.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,102 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  Derived by binding Clarivate's two GraphQL surfaces to the REST operations published
+  in the same estate. Sources: openapi/clarivate-ric-searchretrieve-api-openapi.json,
+  the deprecated DI GraphQL listing at
+  https://developer.clarivate.com/apis/ipdata-di-graphql-api, and the 26 harvested
+  OpenAPI contracts. There is no MCP server to cross-walk (see mcp/clarivate-mcp.yml),
+  so this records the REST-vs-GraphQL divergence only.
+description: >-
+  Clarivate publishes both REST and GraphQL over the same content, and the two do not
+  line up. Both GraphQL endpoints are API-key gated — introspection returns HTTP 401
+  "No API key found in request" — so their field sets could not be enumerated and are
+  NOT guessed here. What can be stated from the published contracts: the GraphQL
+  surfaces exist, one of them is already deprecated, and the entire 196-operation REST
+  surface has no agent-callable projection at all.
+surfaces:
+  openapi:
+    count: 26
+    operations: 196
+    discovery: https://developer.clarivate.com/apis/<api>/swagger
+    gated: false
+    note: Contracts are public; calling them requires a key and, for most, an approved subscription.
+  graphql:
+    - name: LSH Data Product Search & Retrieve API
+      endpoint: https://api.clarivate.com/ric/searchretrieve/v1/graphql
+      declared_in: openapi/clarivate-ric-searchretrieve-api-openapi.json
+      description: >-
+        "This graphQL API provides a single access point to query various Clarivate
+        content sets from multiple domains."
+      introspection:
+        attempted: '2026-09-05'
+        status: 401
+        body: '{"message":"No API key found in request"}'
+        result: gated
+      sdl_captured: false
+    - name: DI GraphQL API (With Auth)
+      endpoint: https://api.clarivate.com/derwent-graphql
+      declared_in: https://developer.clarivate.com/apis/ipdata-di-graphql-api
+      state: deprecated
+      introspection:
+        attempted: '2026-09-05'
+        status: 401
+        body: '{"message":"No API key found in request"}'
+        result: gated
+      sdl_captured: false
+  mcp:
+    exists: false
+    note: See mcp/clarivate-mcp.yml — candidate only, mode none.
+crosswalk:
+  - tool: graphql
+    category: search
+    graphql: https://api.clarivate.com/ric/searchretrieve/v1/graphql
+    rest: []
+    binding: none
+    confidence: low
+    note: >-
+      The RIC search-retrieve GraphQL endpoint is documented as a single access point
+      across "various Clarivate content sets from multiple domains" — the REST estate
+      splits that same territory across the Cortellis, Derwent and IP Data contracts,
+      but Clarivate publishes no mapping and the schema is gated, so no operation-level
+      binding can be asserted.
+  - tool: derwent-graphql
+    category: patents
+    graphql: https://api.clarivate.com/derwent-graphql
+    rest:
+      - derwentSearchByQuery
+      - derwentDocumentsByIds
+      - derwentDocumentsByPns
+      - derwentClassBrowse
+      - derwentCombinedSearch
+    binding: semantic
+    confidence: low
+    note: >-
+      The deprecated DI GraphQL API and the IP Data API cover the same Derwent patent
+      content, so the REST operations above are the likely successors. Mapped by
+      product semantics ONLY — the GraphQL schema is gated and Clarivate publishes no
+      migration table. The portal marks the GraphQL surface deprecated and no longer
+      subscribable, which is itself the strongest signal that IP Data REST is the
+      replacement.
+graphql_only:
+  - tool: '(unknown)'
+    reason: >-
+      Both schemas are auth-gated; field-level GraphQL-only capability cannot be
+      enumerated without an approved API key. Recorded as unknown rather than empty.
+rest_only:
+  note: >-
+    All 196 REST operations are REST-only in practice, since no MCP server exists and
+    neither GraphQL schema could be read. The five Web of Science / InCites read APIs
+    (40 operations) are the surface an agent would most want and have no GraphQL or MCP
+    projection whatsoever.
+  operation_count: 196
+coverage:
+  rest_operations: 196
+  mcp_tools: 0
+  graphql_endpoints: 2
+  graphql_endpoints_readable: 0
+  bound: 0
+  unbound_rest: 196
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

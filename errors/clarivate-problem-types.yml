@@ -1,0 +1,106 @@
+generated: '2026-09-05'
+method: searched
+format: vendor-json
+source: >-
+  The "Errors" section published inside the info.description of the Web of Science
+  Starter, Journals and Researcher OpenAPI documents
+  (https://developer.clarivate.com/apis/wos-starter/swagger and siblings), the
+  "Response format" section of https://developer.clarivate.com/apis/dss-search-api,
+  and the live gateway rejection body observed at
+  https://api.clarivate.com/apis/wos-starter/v1/openapi.json (HTTP 401, 2026-09-05).
+description: >-
+  Clarivate does NOT use RFC 9457 application/problem+json. Errors come back as a
+  vendor JSON envelope, and there are three distinct envelopes in play depending on
+  where the request dies: the backend API's own `error` object, a different shape for
+  401, and a third shape emitted by the API gateway before the request ever reaches a
+  backend. A client has to handle all three.
+rfc9457: false
+envelopes:
+  - id: backend-error
+    applies_to: >-
+      Web of Science Starter, Journals, Researcher and Expanded APIs — every status
+      except 401.
+    media_type: application/json
+    shape: '{ "error": { "status": integer, "title": string, "details": string } }'
+    example: >-
+      {"error": {"status": 404, "title": "Resource couldn't be found", "details":
+      "There is no record found in the Web of Science database. Please check your
+      query."}}
+  - id: unauthorized
+    applies_to: 401 responses from the Web of Science APIs.
+    media_type: application/json
+    shape: '{ "error_description": string, "error": string }'
+    example: '{"error_description": "The access token is missing", "error": "invalid_request"}'
+  - id: gateway-rejection
+    applies_to: >-
+      Any request the api.clarivate.com gateway rejects before routing — most
+      commonly a missing or unrecognised API key.
+    media_type: application/json
+    shape: '{ "message": string, "request_id": string }'
+    example: '{"message": "No API key found in request", "request_id": "4b749572f16700025827622259b4305b"}'
+    observed: https://api.clarivate.com/apis/wos-starter/v1/openapi.json
+  - id: dss-error
+    applies_to: Derwent Sequence Search API.
+    media_type: application/json
+    shape: '{ "code": ..., "error": ... }'
+    note: >-
+      The portal states: "When a request fails, the response body is still JSON, but
+      always contains the fields code and error which you can inspect to use for
+      debugging."
+    source: https://developer.clarivate.com/apis/dss-search-api
+problems:
+  - status: 400
+    title: Bad request
+    meaning: Request syntax error.
+    envelope: backend-error
+    remediation: Check the field-tag query syntax and parameter names before retrying.
+  - status: 401
+    title: Unauthorized
+    meaning: The API key is invalid or missing.
+    envelope: unauthorized
+    remediation: >-
+      Send the key in the X-ApiKey header, or acquire a bearer token from
+      https://api.clarivate.com/auth/{auth-method}/api/{api}/token. Note the key is
+      bound to the application it was issued for.
+  - status: 403
+    title: Forbidden
+    meaning: >-
+      The subscribed plan does not entitle the caller to the requested database,
+      view or record volume. Not documented in the portal error table; inferred from
+      the entitlement model, so treat as unconfirmed.
+    envelope: backend-error
+    confidence: low
+  - status: 404
+    title: Not found
+    meaning: The resource is not found.
+    envelope: backend-error
+    remediation: Verify the UID / ISSN / identifier; the record may not be in the subscribed database.
+  - status: 404
+    title: Suppressed Title
+    meaning: >-
+      Journals API only — a journal suppressed from the Journal Citation Reports for a
+      specific year.
+    envelope: backend-error
+    reference: https://jcr.help.clarivate.com/Content/title-suppressions.htm
+  - status: 405
+    title: Method not allowed
+    meaning: Any method other than GET is rejected on the read-only Web of Science APIs.
+    envelope: backend-error
+  - status: 50X
+    title: Server errors
+    meaning: Technical error with servers.
+    envelope: backend-error
+    remediation: Retry with backoff. Check https://status.clarivate.com/ before escalating.
+gaps:
+  - >-
+    429 is absent from every published error table even though per-second throttles
+    are published for five APIs. The exhaustion status code and body are undocumented.
+  - >-
+    No stable machine-readable error CODE vocabulary — `title` and `details` are
+    English prose, so a client cannot branch on an identifier.
+  - >-
+    Three different envelopes across one gateway means error handling cannot be
+    written once for the estate.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

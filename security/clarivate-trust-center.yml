@@ -1,0 +1,70 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://clarivate.com/trust-center/ (HTTP 200) and
+  https://clarivate.com/trust-center/security-compliance/ (HTTP 200), fetched 2026-09-05.
+description: >-
+  Clarivate operates a first-party Trust Center on its own domain, with a security
+  compliance sub-page that names certifications per product family and offers
+  downloadable certificates and a Statement of Applicability. It is a genuine trust
+  surface, not a marketing page — the compliance detail is product-scoped rather than
+  a blanket claim.
+trust_center:
+  url: https://clarivate.com/trust-center/
+  status: 200
+  first_party: true
+  provider: self-hosted
+  sections:
+    - name: Security compliance
+      url: https://clarivate.com/trust-center/security-compliance/
+    - name: Insights
+      url: https://clarivate.com/trust-center/insights/
+    - name: Privacy center
+      url: https://clarivate.com/privacy-center/
+    - name: Information security
+      url: https://clarivate.com/information-security/
+    - name: Summary of security standards
+      url: https://clarivate.com/information-security/summary-of-standards/
+    - name: Product security
+      url: https://clarivate.com/information-security/product-security/
+certifications:
+  - ISO/IEC 27001
+  - ISO/IEC 27017
+  - ISO/IEC 27018
+  - ISO/IEC 27701
+  - ISO/IEC 27032
+  - ISO 22301
+  - SOC 2 Type II
+  - PCI DSS (SAQ A / A-EP / D / C-VT by product)
+  - FedRAMP
+  - TX-RAMP (Level 1)
+  - StateRAMP (Moderate)
+  - AZ-RAMP
+  - GDPR
+  - Spain ENS (Esquema Nacional de Seguridad)
+documents_offered:
+  - Clarivate ISO 27001 Certificate
+  - Statement of Applicability (2025)
+  - Innovative Interfaces ISO 27001 / 27017 / 27701 certificates
+  - Ex Libris ISO 22301 / 27001 / 27017 / 27018 / 27032 / 27701 certificates
+  - Ex Libris Security and Privacy Whitepaper
+internal_standards:
+  note: Published at https://clarivate.com/information-security/summary-of-standards/
+  standards:
+    - Acceptable Use Standard
+    - Access Control Standard
+    - Audit Logging and Monitoring Standard
+    - Secure Software Development Lifecycle (SDLC) Standard
+    - Data Backup and Recovery Standard
+    - Encryption Standard
+    - Patch Management Standard
+    - Cloud Security Standard
+    - Human Resource Security Standard
+scope_note: >-
+  Certification scope is per product, not per API. Web of Science is named under ISO
+  27001 and TX-RAMP; the Derwent IP products carry SOC 2 Type II. None of the
+  certifications is asserted against the api.clarivate.com gateway specifically.
+disclosure: security/clarivate-vulnerability-disclosure.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

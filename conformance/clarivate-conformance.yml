@@ -1,0 +1,229 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  Derived from the 26 OpenAPI/Swagger contracts harvested from
+  https://developer.clarivate.com/apis/<api>/swagger on 2026-09-05, and from
+  Clarivate's own published claims at https://clarivate.com/trust-center/security-compliance/
+  and https://developer.clarivate.com/help/api-access.
+description: >-
+  What Clarivate's contracts actually conform to. The headline finding is a real
+  domain-standard implementation: three of the 26 contracts implement the NISO SUSHI
+  protocol against the COUNTER Release 5 / 5.1 Code of Practice, with the canonical
+  COUNTER report path vocabulary (/status, /members, /reports, /reports/pr,
+  /reports/pr_p1, /reports/dr, /reports/dr_d1, /reports/dr_d2) present in the spec
+  itself — so a library that already speaks COUNTER SUSHI harvests Web of Science and
+  Cortellis usage with an existing client and no bespoke connector. The Researcher API
+  likewise treats ORCID as a first-class query field. On the cross-cutting side
+  Clarivate is conservative: OpenAPI 2.0/3.0 documents, API-key auth, page/limit
+  pagination, no RFC 9457, no OpenAPI 3.1 anywhere.
+conformance:
+  - id: counter-sushi-r5
+    label: NISO SUSHI / COUNTER Release 5 Code of Practice
+    category: domain-standard
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/sushi-api/swagger
+    detail: >-
+      "This API helps you harvest usage statistics from the Web of Science platform
+      via the NISO SUSHI protocol in accordance with the COUNTER R5 Code of Practice."
+      The contract carries the canonical COUNTER report paths — /status, /members,
+      /reports, /reports/pr, /reports/pr_p1, /reports/dr, /reports/dr_d1,
+      /reports/dr_d2 — and the documented three-factor SUSHI credential set
+      (Key + Requestor ID + Customer ID).
+    artifacts:
+      - openapi/clarivate-sushi-api-openapi.json
+      - openapi/clarivate-cddi-counter-five-openapi.json
+      - openapi/clarivate-sushi-status-api-openapi.json
+    reference: https://www.projectcounter.org/code-of-practice-five-sections/abstract/
+  - id: counter-sushi-r51-status
+    label: COUNTER 5.1 SUSHI status endpoint
+    category: domain-standard
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/sushi-status-api/swagger
+    detail: >-
+      "Public status endpoint for SUSHI COUNTER 5.1 API - No authentication required."
+      Served at https://api.clarivate.com/api/counter/r51/status — the only
+      unauthenticated Clarivate API surface found in this pass.
+    artifacts: [openapi/clarivate-sushi-status-api-openapi.json]
+  - id: orcid
+    label: ORCID researcher identifier
+    category: domain-standard
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/wos-researcher/swagger
+    detail: >-
+      ORCID is a documented search field of the Researcher API (`ORCID=0000-0000-000-0000`)
+      alongside ResearcherID, and the API description states the profile "effortlessly
+      sync[s] your ORCID record with publications and peer reviews". The Expanded API,
+      Reviewer Locator and Publons Reviewer Connect contracts also carry ORCID fields.
+    artifacts:
+      - openapi/clarivate-wos-researcher-openapi.json
+      - openapi/clarivate-wos-openapi.json
+      - openapi/clarivate-reviewer-connect-openapi.json
+  - id: issn-isbn-doi
+    label: ISSN / ISBN / DOI / PubMed identifier schemes
+    category: domain-standard
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/wos-starter/swagger
+    detail: >-
+      Document and journal records are keyed and searchable on DOI, ISSN, eISSN, ISBN
+      and PMID as declared response fields and field tags (DO, IS), not as free text.
+    artifacts:
+      - openapi/clarivate-wos-starter-openapi.json
+      - openapi/clarivate-wos-journal-openapi.json
+  - id: shibboleth
+    label: Shibboleth federated identity (Converis)
+    category: domain-standard
+    conforms: partial
+    confidence: medium
+    evidence: https://developer.clarivate.com/apis/converisreadapi/swagger
+    detail: >-
+      The Converis Web Services contract references Shibboleth in its user/identity
+      surface. The API's own authentication is HTTP Basic against the customer's
+      Converis instance, so this is a platform capability referenced by the contract
+      rather than a conformance of the API itself.
+  - id: openapi
+    label: OpenAPI Specification
+    category: contract
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/wos/swagger
+    detail: >-
+      26 machine-readable contracts published, one per API, at a predictable URL
+      (developer.clarivate.com/apis/<api>/swagger). Versions in use: OpenAPI 3.1.0 (3),
+      3.0.3 (3), 3.0.1 (1), 3.0.0 (7) and Swagger 2.0 (12). No contract uses
+      OpenAPI 3.2.
+  - id: rest-json
+    label: REST over HTTPS with JSON responses
+    category: cross-cutting
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/dss-search-api
+  - id: apikey-auth
+    label: API key authentication (header)
+    category: cross-cutting
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/help/api-access#key_access
+    detail: X-ApiKey request header, declared as a securityScheme in 20 of 26 contracts.
+  - id: oauth2
+    label: OAuth 2.0
+    category: cross-cutting
+    conforms: partial
+    confidence: high
+    evidence: https://developer.clarivate.com/help/api-access
+    detail: >-
+      The gateway documents a Client Credentials flow and references a Resource Owner
+      Password Grant; the EndNote contract declares an authorization-code flow with
+      authorize/token endpoints under https://api.clarivate.com/auth/steam/api/endnote/.
+      No scopes are published for any flow and no discovery document is served, so
+      this is OAuth 2.0 without an OAuth 2.0 discovery or authorization surface.
+  - id: oidc
+    label: OpenID Connect
+    conforms: false
+    confidence: high
+    evidence: well-known/clarivate-well-known.yml
+    detail: No /.well-known/openid-configuration on any host (404 or SPA shell).
+  - id: rfc9457
+    label: RFC 9457 Problem Details for HTTP APIs
+    conforms: false
+    confidence: high
+    evidence: errors/clarivate-problem-types.yml
+    detail: >-
+      Errors use a vendor `{"error": {"status", "title", "details"}}` envelope, with
+      two further shapes for 401 and for gateway rejections. No
+      application/problem+json anywhere.
+  - id: rfc9727
+    label: RFC 9727 /.well-known/api-catalog
+    conforms: false
+    confidence: high
+    evidence: well-known/clarivate-well-known.yml
+    detail: Probed on six hosts; 404 or SPA shell everywhere.
+  - id: rfc8594
+    label: RFC 8594 Sunset / Deprecation headers
+    conforms: partial
+    confidence: medium
+    evidence: https://clarivate.com/academia-government/release-notes/wos-apis/
+    detail: >-
+      Clarivate added "three new headers in every response intended to alert users of
+      the impending sunset" for the Links AMR and SOAP retirements in 2023. The header
+      names are not published and this is not standing practice — no live contract
+      declares Sunset or Deprecation headers.
+  - id: pagination
+    label: Documented pagination
+    conforms: true
+    confidence: high
+    evidence: https://developer.clarivate.com/apis/wos-starter/swagger
+    detail: page + limit request parameters and a metadata{total,page,limit} response block.
+  - id: idempotency
+    label: Idempotency mechanism
+    conforms: false
+    confidence: high
+    evidence: conventions/clarivate-conventions.yml
+    detail: No idempotency key, replay window or deduplication documented on any mutating operation.
+  - id: asyncapi
+    label: AsyncAPI / event surface
+    conforms: false
+    confidence: high
+    evidence: https://developer.clarivate.com/apis
+    detail: No webhooks, no streaming and no event catalog on any of the 26 contracts.
+compliance:
+  note: >-
+    Certifications published by Clarivate at
+    https://clarivate.com/trust-center/security-compliance/. Reproduced as the provider
+    states them; scope is per-product, not estate-wide.
+  certifications:
+    - id: iso-27001
+      label: ISO/IEC 27001 Information Security Management
+      scope: >-
+        Clarivate PLC certificate covering IP, Life Sciences & Healthcare and
+        Academia & Government systems, including Web of Science, EndNote, Cortellis,
+        Derwent products, ProQuest platforms and the Ex Libris suite.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: iso-27017
+      label: ISO/IEC 27017 Cloud Security
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: iso-27018
+      label: ISO/IEC 27018 PII in Public Cloud
+      scope: Ex Libris and selected products.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: iso-27701
+      label: ISO/IEC 27701 Privacy Information Management
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: iso-27032
+      label: ISO/IEC 27032 Cybersecurity
+      scope: Ex Libris.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: iso-22301
+      label: ISO 22301 Business Continuity Management
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: soc2-type2
+      label: SOC 2 Type II
+      scope: >-
+        Derwent Patent Analytics/Monitor/Search, Docket, Foundation IP, Integration
+        Hub, IPFolio, Leganto, Memotech, Primo, Rapido, Rialto, Specto, TIPMS,
+        TrademarkVision AI, Unycom, Vega Discover.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: pci-dss
+      label: PCI DSS (SAQ A, A-EP, D, C-VT by product)
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: fedramp
+      label: FedRAMP
+      scope: Esploro, IPFolio, Leganto, Primo, RapidILL, Rapido, Rialto, Specto.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: tx-ramp
+      label: TX-RAMP Level 1
+      scope: Alexander Street, EndNote, ProQuest Platform, RefWorks, Sierra, Web of Science, campusM, Pivot-RP.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: stateramp
+      label: StateRAMP (Moderate)
+      scope: TrademarkVision AI.
+      evidence: https://clarivate.com/trust-center/security-compliance/
+    - id: gdpr
+      label: GDPR
+      evidence: https://clarivate.com/privacy-center/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

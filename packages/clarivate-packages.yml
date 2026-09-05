@@ -1,0 +1,210 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://github.com/clarivate — the Clarivate GitHub organization, linked from
+  every "Code samples (GitHub)" / "Client library & code samples (GitHub)" link on
+  the API detail pages of https://developer.clarivate.com/apis. Registry presence was
+  checked directly against registry.npmjs.org, pypi.org/pypi/<pkg>/json and
+  search.maven.org; package names and versions were read from each repository's own
+  setup.py / package.json / pom.xml on raw.githubusercontent.com.
+description: >-
+  Clarivate's first-party client libraries are generated OpenAPI clients published as
+  GITHUB SOURCE ONLY. Every name below was probed against its language registry and
+  every one 404s — none of these SDKs is installable from npm, PyPI, Maven Central or
+  NuGet, and none of the repositories cuts a git tag or GitHub release. `version:` is
+  therefore the version declared inside the repository's own package manifest and
+  `published:` is the repository's last push date (the only dated release signal that
+  exists for these packages). Every WoS client still declares 1.0.0, and the four
+  woslite clients wrap an API the developer portal now marks as replaced by the
+  Starter API.
+registry_probe:
+  note: >-
+    Every package name below returned 404 from its registry metadata endpoint on
+    2026-09-05. Recorded as an honest absence, not a guess.
+  probes:
+    - url: https://pypi.org/pypi/clarivate-wos-starter-client/json
+      status: 404
+    - url: https://pypi.org/pypi/ipdata-api-client/json
+      status: 404
+    - url: https://registry.npmjs.org/clarivate-wos-starter-js-client
+      status: 404
+packages:
+  - language: python
+    registry: none
+    distribution: github-source
+    name: clarivate-wos-starter-python-client
+    api: Web of Science Starter API
+    url: https://github.com/clarivate/wosstarter_python_client
+    source: https://github.com/clarivate/wosstarter_python_client
+    install: pip install git+https://github.com/clarivate/wosstarter_python_client.git
+    official: true
+    version: 1.0.0
+    published: '2025-02-27'
+    note: >-
+      Version read from setup.py (VERSION = "1.0.0"); no PyPI release and no git tag,
+      so `published` is the repository's last push date.
+  - language: python
+    registry: none
+    distribution: github-source
+    name: clarivate-wos-journals-python-client
+    api: Web of Science Journals API
+    url: https://github.com/clarivate/wosjournals-python-client
+    source: https://github.com/clarivate/wosjournals-python-client
+    install: pip install git+https://github.com/clarivate/wosjournals-python-client.git
+    official: true
+    version: 1.0.0
+    published: '2022-05-04'
+    note: Version from setup.py; no PyPI release, no tags. Last push 2022-05-04.
+  - language: python
+    registry: none
+    distribution: github-source
+    name: ipdata-api-client
+    api: Intellectual Property (IP) Data API
+    url: https://github.com/clarivate/ipdata-api-py-client
+    source: https://github.com/clarivate/ipdata-api-py-client
+    install: pip install git+https://github.com/clarivate/ipdata-api-py-client.git
+    official: true
+    version: 1.0.0
+    published: '2025-01-21'
+    note: >-
+      Linked as "Client library & code samples (GitHub)" from
+      https://developer.clarivate.com/apis/ipdata-api. Version from setup.py.
+  - language: python
+    registry: none
+    distribution: github-source
+    name: clarivate-c3-ai-api-client-python
+    api: C3-AI-API
+    url: https://github.com/clarivate/clarivate-c3-ai-api-client-python
+    source: https://github.com/clarivate/clarivate-c3-ai-api-client-python
+    official: true
+    version: null
+    published: '2024-02-14'
+    note: No package manifest version could be read; no registry release and no tags.
+  - language: python
+    registry: none
+    distribution: github-source
+    name: clarivate-c3-datafeed-api-client-python
+    api: C3 Data Feed API
+    url: https://github.com/clarivate/clarivate-c3-datafeed-api-client-python
+    source: https://github.com/clarivate/clarivate-c3-datafeed-api-client-python
+    official: true
+    version: null
+    published: '2025-02-12'
+    note: No package manifest version could be read; no registry release and no tags.
+  - language: python
+    registry: none
+    distribution: github-source
+    name: swagger-client (woslite_py_client)
+    api: Web of Science API Lite
+    url: https://github.com/clarivate/woslite_py_client
+    source: https://github.com/clarivate/woslite_py_client
+    official: true
+    version: 1.0.0
+    published: '2021-05-26'
+    note: >-
+      setup.py still carries the generator default NAME = "swagger-client". Wraps the
+      WoS Lite API, which the developer portal marks as replaced by the Starter API.
+  - language: java
+    registry: none
+    distribution: github-source
+    name: com.clarivate.wos:wos-api-starter-client
+    api: Web of Science Starter API
+    url: https://github.com/clarivate/wosstarter-java-client
+    source: https://github.com/clarivate/wosstarter-java-client
+    official: true
+    version: 1.0.0
+    published: '2022-04-06'
+    note: >-
+      groupId/artifactId/version read from pom.xml. Not present on Maven Central —
+      the coordinates resolve only if the repo is built locally.
+  - language: java
+    registry: none
+    distribution: github-source
+    name: com.clarivate.wos:wos-journals-client
+    api: Web of Science Journals API
+    url: https://github.com/clarivate/wosjournals-java-client
+    source: https://github.com/clarivate/wosjournals-java-client
+    official: true
+    version: 1.0.0
+    published: '2024-09-27'
+    note: Coordinates from pom.xml; not published to Maven Central.
+  - language: java
+    registry: none
+    distribution: github-source
+    name: woslite_java_client
+    api: Web of Science API Lite
+    url: https://github.com/clarivate/woslite_java_client
+    source: https://github.com/clarivate/woslite_java_client
+    official: true
+    version: null
+    published: '2021-10-12'
+    note: No Maven coordinates confirmed; wraps the replaced WoS Lite API.
+  - language: javascript
+    registry: none
+    distribution: github-source
+    name: clarivate-wos-starter-js-client
+    api: Web of Science Starter API
+    url: https://github.com/clarivate/wosstarter-javascript-client
+    source: https://github.com/clarivate/wosstarter-javascript-client
+    official: true
+    version: 1.0.0
+    published: '2022-04-06'
+    note: >-
+      name/version read from package.json; licensed "Clarivate Content as a Service
+      Licence". Never published to npm.
+  - language: javascript
+    registry: none
+    distribution: github-source
+    name: clarivate-wos-journals-js-client
+    api: Web of Science Journals API
+    url: https://github.com/clarivate/wosjournals-javascript-client
+    source: https://github.com/clarivate/wosjournals-javascript-client
+    official: true
+    version: 1.0.0
+    published: '2022-04-08'
+    note: name/version read from package.json. Never published to npm.
+  - language: csharp
+    registry: none
+    distribution: github-source
+    name: woslite_csharp_client
+    api: Web of Science API Lite
+    url: https://github.com/clarivate/woslite_csharp_client
+    source: https://github.com/clarivate/woslite_csharp_client
+    official: true
+    version: null
+    published: '2021-01-25'
+    note: No NuGet package; wraps the replaced WoS Lite API.
+  - language: r
+    registry: none
+    distribution: github-source
+    name: woslite_r_client
+    api: Web of Science API Lite
+    url: https://github.com/clarivate/woslite_r_client
+    source: https://github.com/clarivate/woslite_r_client
+    official: true
+    version: null
+    published: '2021-07-21'
+    note: No CRAN release; wraps the replaced WoS Lite API.
+tools:
+  - name: Web of Science API Exporter
+    language: vue
+    url: https://github.com/clarivate/wos-excel-converter
+    official: true
+    published: '2026-06-30'
+    note: >-
+      Desktop application linked from https://developer.clarivate.com/apis/wos as
+      "Web of Science API Exporter (GitHub)". Exports API results to Excel.
+  - name: Web of Science Reviewer Locator plugin for OJS
+    language: php
+    url: https://github.com/clarivate/wos_reviewer_locator_plugin_ojs
+    official: true
+    published: '2026-06-28'
+  - name: wos_api_usecases
+    language: python
+    url: https://github.com/clarivate/wos_api_usecases
+    official: true
+    published: '2026-04-07'
+    note: Code snippets used with the Web of Science APIs; the most actively maintained sample repo.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

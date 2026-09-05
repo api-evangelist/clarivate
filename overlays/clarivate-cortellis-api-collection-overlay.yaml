@@ -1,0 +1,38 @@
+overlay: 1.0.0
+info:
+  title: "API Evangelist enrichment overlay — cortellis-api-collection"
+  version: 1.0.0
+x-provenance:
+  generated: '2026-09-05'
+  method: generated
+  source: openapi/clarivate-cortellis-api-collection-openapi.json
+  harvested_from: https://developer.clarivate.com/apis/cortellis-api-collection/swagger
+  note: >-
+    Non-destructive enhancements API Evangelist adds on top of Clarivate's
+    as-published contract. The original document in openapi/ is never mutated.
+    Source contract declares swagger: 2.0.
+extends: openapi/clarivate-cortellis-api-collection-openapi.json
+actions:
+  - target: $.info
+    update:
+      x-apis-io-provider: clarivate
+      x-apis-io-portal: https://developer.clarivate.com/apis/cortellis-api-collection
+      x-apis-io-contract-url: https://developer.clarivate.com/apis/cortellis-api-collection/swagger
+      x-apis-io-harvested: '2026-09-05'
+      x-apis-io-artifacts:
+        authentication: authentication/clarivate-authentication.yml
+        conventions: conventions/clarivate-conventions.yml
+        errors: errors/clarivate-problem-types.yml
+        lifecycle: lifecycle/clarivate-lifecycle.yml
+        plans: plans/clarivate-plans-pricing.yml
+        rate_limits: rate-limits/clarivate-rate-limits.yml
+        conformance: conformance/clarivate-conformance.yml
+        data_model: data-model/clarivate-data-model.yml
+  - target: $.info
+    update:
+      x-runtime-semantics:
+        idempotency: none
+        dry_run: none
+        rate_limit_headers: undocumented
+        error_envelope: 'vendor: {error:{status,title,details}}'
+        pagination: page+limit with metadata{total,page,limit}

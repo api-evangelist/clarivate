@@ -1,0 +1,1 @@
+{"swagger":"2.0","info":{"title":"patentmonitor-innography","version":"1.0.0"},"paths":{"/newapi":{"get":{"responses":{"200":{"description":"Success"}}}}},"securityDefinitions":{"key":{"type":"apiKey","in":"header","name":"X-ApiKey"}},"security":[{"key":[]}],"host":"api.clarivate.com","basePath":"/patentmonitor/api/v1/innography/send-alert-results","schemes":["https"]}

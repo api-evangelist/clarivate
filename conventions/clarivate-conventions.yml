@@ -1,0 +1,191 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  The cross-cutting behaviour documented inside Clarivate's own contracts and help
+  pages: the info.description blocks of the Web of Science Starter, Journals,
+  Researcher and Expanded OpenAPI documents fetched from
+  https://developer.clarivate.com/apis/<api>/swagger, plus
+  https://developer.clarivate.com/help/api-access and the Derwent Sequence Search API
+  "Response format" section on https://developer.clarivate.com/apis/dss-search-api.
+description: >-
+  How Clarivate's REST estate behaves across operations: one gateway, one key header,
+  one page/limit pagination idiom, one error envelope. Clarivate documents its read
+  semantics unusually well for an enterprise data vendor and its write semantics
+  barely at all — there is no idempotency mechanism, no documented rate-limit header,
+  and no stated reversal window on any of the four APIs that mutate state.
+base_url: https://api.clarivate.com
+api_style: >-
+  REST over HTTPS, JSON responses. The five Web of Science / InCites APIs are GET-only
+  read APIs; Derwent IP Data and the LSH/RIC APIs use POST as a query verb (search
+  bodies), and only Converis CUD, Converis Additional, EndNote and Derwent Sequence
+  Search actually mutate provider-side state.
+
+authentication:
+  scheme: API key in the X-ApiKey request header; OAuth 2.0 Client Credentials on APIs configured for it
+  key_scope: per registered application, not per user
+  docs: https://developer.clarivate.com/help/api-access
+  detail: authentication/clarivate-authentication.yml
+
+idempotency:
+  supported: false
+  coverage: none
+  mechanism: null
+  docs: null
+  detail: >-
+    Clarivate documents no idempotency key, no request-deduplication window and no
+    replay semantics on any of the 26 published contracts. There is no
+    Idempotency-Key header, no client-supplied request id, and no documented
+    behaviour for a retried POST. The exposure is real but narrow: 20 of 26 contracts
+    are read-only or use POST purely as a search verb, so the un-protected mutating
+    surface is the Converis CUD API (createDataEntities / updateDataEntities /
+    createLinkEntities), the EndNote reference create/update operations, and the
+    Derwent Sequence Search report and search creation operations.
+
+pagination:
+  style: page-number
+  request_params:
+    limit: Number of returned results, 0-50, default 10
+    page: Page to retrieve, default 1
+  response_fields:
+    metadata.total: total number of hits
+    metadata.page: the page returned
+    metadata.limit: the page size used
+  applies_to: >-
+    Web of Science Starter, Journals and Researcher APIs. The Expanded API uses a
+    different idiom (firstRecord + count query parameters). The Derwent IP Data API
+    paginates inside the POST search body.
+  cursor: false
+  docs: https://developer.clarivate.com/apis/wos-starter
+
+field_selection:
+  supported: true
+  mechanism: >-
+    The Starter API `detail` parameter selects between a full response
+    (detail=full) and an abbreviated one (detail=short). The Expanded API uses
+    `optionView` (Short Record SR vs Full Record) and `viewField`.
+  docs: https://clarivate.com/academia-government/release-notes/wos-apis/
+
+query_language:
+  supported: true
+  mechanism: >-
+    Web of Science field-tag query syntax passed in `q` — TI, IS, SO, VL, PG, CS, PY,
+    AU, AI, UT, DO, DT, PMID, OG, TS, SUR. The Starter API supports a documented
+    subset; the Expanded API supports the full tag set. The Journals API supports
+    free-text search plus AND/OR/NOT operators, wildcard prefix search, value filters
+    (edition, categoryCode, jcrYear, jifQuartile) and range filters
+    (jif, jifPercentile, jci) with eq/gt/gte/lt/lte operators.
+  docs: https://webofscience.help.clarivate.com/en-us/Content/advanced-search.html
+
+request_tracing:
+  supported: partial
+  mechanism: >-
+    The gateway returns a `request_id` in its own error bodies (e.g. the 401
+    "No API key found in request" response). It is not documented, not requestable by
+    the client, and no correlation-id request header is published. The developer
+    portal separately surfaces a `correlationId` in its HTML error pages.
+
+versioning:
+  scheme: path-segment
+  mechanism: >-
+    The version is baked into the base path per API — /apis/wos-starter/v1 and
+    /apis/wos-starter/v2, /apis/wos-journals/v1, /ric/download/v1,
+    /api/counter/r5 and /api/counter/r51. There is no version request header and no
+    account-pinned default.
+  notes: >-
+    Only the Starter API currently publishes two live major versions (v1 and v2) in
+    the same contract's servers[] block.
+  detail: lifecycle/clarivate-lifecycle.yml
+
+error_envelope:
+  media_type: application/json
+  shape: '{ "error": { "status": integer, "title": string, "details": string } }'
+  exception: >-
+    401 Unauthorized returns a different shape —
+    { "error_description": "...", "error": "invalid_request" } — and gateway-level
+    rejections return { "message": "...", "request_id": "..." }.
+  rfc9457: false
+  detail: errors/clarivate-problem-types.yml
+
+rate_limit_signaling:
+  documented: false
+  detail: >-
+    Per-second and per-day ceilings are published in the portal's plan tables, but no
+    response header, no 429 contract and no Retry-After is documented. A client cannot
+    learn its remaining budget from a response.
+  reference: rate-limits/clarivate-rate-limits.yml
+
+dry_run_mode:
+  supported: false
+  coverage: none
+  note: >-
+    No sandbox, test mode, test key prefix or preview/validate-only parameter is
+    published for any Clarivate API. There is no way to rehearse a Converis CUD write
+    or an EndNote reference update before committing it.
+
+reversibility:
+  grade: documented
+  coverage: partial
+  note: >-
+    Reversal operations exist for two of the four mutating APIs, but Clarivate states
+    NO window for any of them — no retention period, no undo horizon, no restore path
+    for a deleted entity. Nothing in the docs tells an agent whether a delete is
+    recoverable, which is why this grades `documented` (a reversal path exists) rather
+    than `verified` (a path plus a stated window).
+  surfaces:
+    - api: Converis CUD API
+      write: createDataEntities (POST /{version}/dataobject/dataentities)
+      reversal: deleteDataEntities (DELETE /{version}/dataobject/dataentities)
+      window: null
+      window_documented: false
+      spec: openapi/clarivate-cud-api-openapi.json
+    - api: Converis CUD API
+      write: createLinkEntities (POST /{version}/dataobject/linkentities)
+      reversal: deleteLinkEntities (DELETE /{version}/dataobject/linkentities)
+      window: null
+      window_documented: false
+      spec: openapi/clarivate-cud-api-openapi.json
+    - api: Converis CUD API
+      write: updateDataEntities (PUT /{version}/dataobject/dataentities)
+      reversal: null
+      note: >-
+        An update overwrites in place. No prior-version retrieval, no revert operation
+        and no change history endpoint is published.
+      window: null
+      window_documented: false
+    - api: Derwent Sequence Search API
+      write: POST /reports
+      reversal: DELETE /reports/{id}
+      window: null
+      window_documented: false
+      spec: openapi/clarivate-dss-search-api-openapi.json
+    - api: Derwent Sequence Search API
+      write: POST /reports/{report_id}/searches
+      reversal: DELETE /reports/{report_id}/searches/{id} (and destroy_bulk)
+      window: null
+      window_documented: false
+    - api: EndNote REST API
+      write: POST /reference, PUT /reference, PUT /references/{guid}, POST /references/{guid}/file
+      reversal: null
+      note: >-
+        No delete or undo operation is published for EndNote references or attached
+        files. The API is additionally marked deprecated on the portal.
+      window: null
+      window_documented: false
+    - api: Converis Additional APIs
+      write: submitDataToPdiProcess (POST /{version}/pdiprocess/{wsEndpoint})
+      reversal: null
+      note: >-
+        Cache-eviction DELETEs (removeUserFromCache, removePersonFromCache) are
+        maintenance operations, not reversals of the PDI submission.
+      window: null
+      window_documented: false
+
+conventions_gaps:
+  - No idempotency mechanism on any mutating operation.
+  - No rate-limit response headers and no documented 429 behaviour.
+  - No sandbox or dry-run mode anywhere in the estate.
+  - No stated reversal window on any delete, so an agent cannot judge recoverability.
+  - No webhooks or event surface on any of the 26 contracts.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
