@@ -599,6 +599,8 @@ apis:
     url: https://developer.clarivate.com/apis/ric-searchretrieve-api
   - type: Overlay
     url: overlays/clarivate-ric-searchretrieve-api-overlay.yaml
+  - type: X-GraphQLGated
+    url: graphql/clarivate-graphql.yml
 - aid: clarivate:sushi-status-api
   name: SUSHI Status API
   description: >-
@@ -733,10 +735,12 @@ common:
     url: json-ld/clarivate-context.jsonld
   - type: Spectral
     url: rules/clarivate-rules.yml
+  - type: X-GraphQLGated
+    url: graphql/clarivate-graphql.yml
 x-enrichment:
   date: '2026-09-05'
   status: enriched
-  artifacts_added: 73
+  artifacts_added: 74
   pass: local-v3
 maintainers:
   - FN: Kin Lane

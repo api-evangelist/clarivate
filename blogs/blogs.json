@@ -2,16 +2,21 @@
   "repo": "clarivate",
   "feeds": [
     {
-      "source": "https://clarivate.com/",
-      "feed_url": "https://clarivate.com/news/",
-      "title": "Clarivate News",
+      "source": "https://support.clarivate.com/",
+      "feed_url": "https://support.clarivate.com/",
+      "title": "",
       "saved": 0,
-      "error": "parse_failed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
+      "method": "none"
+    },
+    {
+      "source": "https://clarivate.com/news/",
+      "feed_url": "https://clarivate.com/news/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-08-30T22:05:13Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 9,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
