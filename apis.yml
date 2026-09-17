@@ -2263,122 +2263,6 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
-- aid: clarivate:clarivate-graphql-api
-  name: Clarivate Graphql API
-  description: The Graphql API from Clarivate — 1 operation(s) for graphql.
-  humanURL: https://developer.clarivate.com/apis/ipdata-api
-  baseURL: https://api.clarivate.com
-  tags:
-  - Graphql
-  properties:
-  - type: OpenAPI
-    url: openapi/clarivate-graphql-api-openapi.yml
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/ipdata-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/ipdata-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/converisreadapi/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/converisreadapi
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/dss-search-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/dss-search-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/wos-journal/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/wos-journal
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/endnote/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/endnote
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/legacy_api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/legacy_api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/converis_additional_api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/converis_additional_api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/incites/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/incites
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/wos/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/wos
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/sushi-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/sushi-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/cud_api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/cud_api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/ric_ai_api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/ric_ai_api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/cddi-counter-five/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/cddi-counter-five
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/ric-download-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/ric-download-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/wos-researcher/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/wos-researcher
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/wos-starter/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/wos-starter
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/woslite/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/woslite
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/lsh-download-ext-client/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/lsh-download-ext-client
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/wosrl-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/wosrl-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/cortellis-api-collection/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/cortellis-api-collection
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/patentmonitor-innography/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/patentmonitor-innography
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/reviewer-connect/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/reviewer-connect
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/ric-agent-hub-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/ric-agent-hub-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/ric-searchretrieve-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/ric-searchretrieve-api
-  - type: X-GraphQLGated
-    url: graphql/clarivate-graphql.yml
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/sushi-status-api/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/sushi-status-api
-  - type: OpenAPISource
-    url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
-  - type: Documentation
-    url: https://developer.clarivate.com/apis/twa-riskmark-integration
 - aid: clarivate:clarivate-history-api
   name: Clarivate History API
   description: The History API from Clarivate — 1 operation(s) for history.
@@ -7034,6 +6918,122 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/clarivate-xml-api-openapi.yml
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ipdata-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ipdata-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/converisreadapi/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/converisreadapi
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/dss-search-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/dss-search-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos-journal/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos-journal
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/endnote/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/endnote
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/legacy_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/legacy_api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/converis_additional_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/converis_additional_api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/incites/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/incites
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/sushi-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/sushi-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/cud_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/cud_api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric_ai_api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric_ai_api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/cddi-counter-five/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/cddi-counter-five
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric-download-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric-download-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos-researcher/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos-researcher
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wos-starter/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wos-starter
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/woslite/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/woslite
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/lsh-download-ext-client/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/lsh-download-ext-client
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/wosrl-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/wosrl-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/cortellis-api-collection/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/cortellis-api-collection
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/patentmonitor-innography/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/patentmonitor-innography
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/reviewer-connect/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/reviewer-connect
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric-agent-hub-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric-agent-hub-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/ric-searchretrieve-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/ric-searchretrieve-api
+  - type: X-GraphQLGated
+    url: graphql/clarivate-graphql.yml
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/sushi-status-api/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/sushi-status-api
+  - type: OpenAPISource
+    url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
+  - type: Documentation
+    url: https://developer.clarivate.com/apis/twa-riskmark-integration
+- aid: clarivate:clarivate-graph-ql-api
+  name: Clarivate Graph QL API
+  description: The Graph QL API from Clarivate — 1 operation(s) for graph ql.
+  humanURL: https://developer.clarivate.com/apis/ipdata-api
+  baseURL: https://api.clarivate.com
+  tags:
+  - Graph QL
+  properties:
+  - type: OpenAPI
+    url: openapi/clarivate-graph-ql-api-openapi.yml
   - type: OpenAPISource
     url: https://developer.clarivate.com/apis/ipdata-api/swagger
   - type: Documentation
