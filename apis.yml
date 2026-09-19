@@ -1225,6 +1225,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Data File
+  tags_raw:
   - Data - File
   properties:
   - type: OpenAPI
@@ -1921,6 +1923,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Downloads
+  tags_raw:
   - Download
   properties:
   - type: OpenAPI
@@ -2153,6 +2157,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Feed
+  tags_raw:
   - feed
   properties:
   - type: OpenAPI
@@ -2385,6 +2391,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Integration API
+  tags_raw:
   - Integration Api
   properties:
   - type: OpenAPI
@@ -4127,6 +4135,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Ontology
+  tags_raw:
   - ontology
   properties:
   - type: OpenAPI
@@ -4359,6 +4369,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Predictions
+  tags_raw:
   - prediction
   properties:
   - type: OpenAPI
@@ -4475,6 +4487,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -6564,6 +6578,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - Userspace
+  tags_raw:
   - User Space
   properties:
   - type: OpenAPI
@@ -7030,6 +7046,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
