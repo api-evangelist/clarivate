@@ -1,0 +1,287 @@
+openapi: 3.2.0
+info:
+  title: C3-AI Ontology API
+  version: 0.1.d982cc5-8
+servers:
+- url: https://api.clarivate.com/c3/ai
+security:
+- key: []
+tags:
+- name: ontology
+paths:
+  /c3/ai/info/{contentset}:
+    get:
+      tags:
+      - ontology
+      summary: Get Content Set Info
+      description: This endpoint will return information (metadata) from the content set
+      operationId: get_content_set_info_c3_ai_info__contentset__get
+      parameters:
+      - name: contentset
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Contentset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentSetInfoResponse'
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Authorization Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /c3/ai/ontology/{contentset}:
+    get:
+      tags:
+      - ontology
+      summary: Get Content Set Ontologies
+      description: This endpoint returns all the available ontologies from a content set
+      operationId: get_content_set_ontologies_c3_ai_ontology__contentset__get
+      parameters:
+      - name: contentset
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Contentset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentSetOntologiesResponse'
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Authorization Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /c3/ai/ontology/{contentset}/{ontology_name}:
+    get:
+      tags:
+      - ontology
+      summary: Get Content Set Ontology
+      description: 'This endpoint returns the vocabulary for a given ontology.
+
+        Additionally, a search parameter is allowed to filter down the search.
+
+        The search looks for the ontology vocabulary for any term
+
+        that contains the text introduced (non-case sensitive) which a minimum length of 3'
+      operationId: get_content_set_ontology_c3_ai_ontology__contentset___ontology_name__get
+      parameters:
+      - name: contentset
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Contentset
+      - name: ontology_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Ontology Name
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            minLength: 3
+          - type: 'null'
+          title: Search
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentSetOntologyResponse'
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Authorization Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ApiErrorEnum:
+      type: integer
+      enum:
+      - 1000
+      - 1001
+      - 1002
+      - 1003
+      - 1004
+      - 1005
+      - 1006
+      - 1007
+      - 2000
+      - 2001
+      - 2002
+      - 2003
+      - 2004
+      - 2005
+      - 2006
+      - 3000
+      title: ApiErrorEnum
+    ContentSetOntologiesResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: ContentSetOntologiesResponse
+    ErrorResponse:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: ErrorResponse
+      description: 'Customize Validation Error
+
+        https://github.com/tiangolo/fastapi/issues/1376'
+    Status:
+      type: string
+      enum:
+      - success
+      title: Status
+    ContentSetOntologiesResponseData:
+      properties:
+        name:
+          type: string
+          title: Name
+        list:
+          type: boolean
+          title: List
+      type: object
+      required:
+      - name
+      - list
+      title: ContentSetOntologiesResponseData
+    ContentSetOntologyResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: ContentSetOntologyResponse
+    ContentSetInfoResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - name
+      - description
+      title: ContentSetInfoResponse
+    Error:
+      properties:
+        code:
+          $ref: '#/components/schemas/ApiErrorEnum'
+        message:
+          type: string
+          title: Message
+        location:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

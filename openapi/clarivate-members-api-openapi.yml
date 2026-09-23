@@ -1,0 +1,143 @@
+openapi: 3.2.0
+info:
+  description: This API helps you harvest usage statistics from the Web of Science platform via the NISO SUSHI protocol in accordance with the COUNTER R5 Code of Practice
+  version: 1.0.0
+  title: Web of Science SUSHI COUNTER5 Members API
+  termsOfService: https://clarivate.com/wp-content/uploads/dlm_uploads/2018/12/End-User-Terms.pdf
+  contact:
+    name: Clarivate Customer Support
+    email: https://support.clarivate.com/ScientificandAcademicResearch/s/?language=en_US
+servers:
+- url: https://api.clarivate.com/api/counter/r5
+security:
+- key: []
+tags:
+- name: Members
+paths:
+  /members:
+    get:
+      operationId: getConsortiumMembers
+      description: This resource returns the list of consortium members related to a Customer_ID.
+      parameters:
+      - name: api_key
+        in: query
+        description: Developer key parameter, which authenticates you to use the service.
+        required: true
+        schema:
+          type: string
+      - name: customer_id
+        in: query
+        description: Identifies the customer to provide report data for.
+        required: true
+        schema:
+          type: string
+      - name: requestor_id
+        in: query
+        description: Identifies the requester (STeAM User Id) that is asking for report data
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of member accounts (sites) associated with the Customer_ID passed in as a parameter.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SUSHI_consortium_member_list'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SUSHI_error_model'
+      tags:
+      - Members
+      summary: Get consortium members
+      x-summary-source: derived
+components:
+  schemas:
+    SUSHI_org_identifiers:
+      type: object
+      description: Identifier for an organization.
+      required:
+      - Type
+      - Value
+      properties:
+        Type:
+          type: string
+          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
+          example: ISNI
+          enum:
+          - ISNI
+          - ISIL
+          - OCLC
+          - Proprietary
+        Value:
+          type: string
+          description: Value of the organization identifier
+          example: 1234 1234 1234 1234
+    SUSHI_consortium_member_list:
+      type: object
+      required:
+      - Customer_ID
+      - Name
+      properties:
+        Customer_ID:
+          type: string
+          description: Identifer for the consortium's member account.  This identifier would be used as the Customer_ID for subsequent report requests for the member.
+          example: 1557c9eebf17b8fc56da59756791b636
+        Requestor_ID:
+          type: string
+          description: The RequestorID to use to retrieve COUNTER stats the consortium's member account -- only include if different from the main consortium's RequestorID.  This identifier would be used as the Requestor for subsequent report requests for the member.
+          example: 158
+        Name:
+          type: string
+          description: Customer name assigned to the consortium member.
+          example: Mt. Laurel University Medical School
+        Notes:
+          type: string
+          description: Additional notes regarding the customer.
+          example: Usage pulled using content licensed by the consortium.
+          items:
+            $ref: '#/components/schemas/SUSHI_org_identifiers'
+    SUSHI_error_model:
+      type: object
+      description: Generalized format for presenting errors and exceptions.
+      required:
+      - Code
+      - Severity
+      - Message
+      properties:
+        Code:
+          type: integer
+          format: int32
+          description: Error number. See table of error.
+          example: 3040
+        Severity:
+          type: string
+          description: Severity of the error.
+          example: Warning
+          enum:
+          - Warning
+          - Error
+          - Fatal
+          - Debug
+          - Info
+        Message:
+          type: string
+          description: Text describing the error.
+          example: Partial Data Returned.
+        Help_URL:
+          type: string
+          description: URL describing error details.
+        Data:
+          type: string
+          description: Additional data provided by the server to clarify the error.
+          example: Usage data has not been processed for all requested months.
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

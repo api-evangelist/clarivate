@@ -1,0 +1,146 @@
+openapi: 3.2.0
+info:
+  title: lsh-download-ext-client History API
+  version: 1.0.0
+servers:
+- url: https://api.clarivate.com/lsh-ds
+security:
+- key: []
+tags:
+- name: History
+paths:
+  /history:
+    post:
+      description: Retrieve the history of LSH data export requests. This endpoint allows clients to query past export requests and their statuses.
+      parameters:
+      - name: X-ApiKey
+        in: header
+        required: true
+        description: API key for authentication.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: History records retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exportHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        requestId:
+                          type: integer
+                        jobStatus:
+                          type: string
+                        jobRequestPayload:
+                          type: string
+                        s3Key:
+                          type: string
+                        s3SignedUrl:
+                          type: string
+                        s3SignedUrlExpiry:
+                          type:
+                          - string
+                          - 'null'
+                          format: date-time
+                        exportFileName:
+                          type: string
+                        exportFormat:
+                          type: string
+                        exportFileSizeTxt:
+                          type:
+                          - string
+                          - 'null'
+                        createdOnTimestampMs:
+                          type: integer
+                          format: int64
+                        modifiedOnTimestampMs:
+                          type: integer
+                          format: int64
+                        errorDetails:
+                          type: string
+                        userId:
+                          type: string
+                        isExpired:
+                          type: boolean
+                  totalRowCount:
+                    type: integer
+                  moreDataAvailable:
+                    type: boolean
+                example:
+                  exportHistory:
+                  - requestId: 34380
+                    jobStatus: SUCCESSFUL
+                    jobRequestPayload: '{"tenantId":"pt-stryker","notificationTypes":["email"],"exportName":"pt_stryker_date_exportId.csv","exportFormat":"csv","params":{"notificationTypes":["email"]}}'
+                    s3Key: downloads_payload/pt-stryker_34380_20260311_144100_payload.json
+                    s3SignedUrl: signed_url_for_the_file
+                    s3SignedUrlExpiry: 1773845065863
+                    exportFileName: pt_stryker_date_exportId.csv
+                    exportFormat: csv
+                    exportFileSizeTxt: '936330936'
+                    createdOnTimestampMs: 1773240060264
+                    modifiedOnTimestampMs: 1773240060401
+                    errorDetails: null
+                    userId: user_id_for_the_file
+                    isExpired: false
+                  totalRowCount: 21
+                  moreDataAvailable: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                limit:
+                  type: integer
+                  format: int32
+                offset:
+                  type: integer
+                  format: int32
+                filterCriteria:
+                  type: object
+                  properties:
+                    jobStatus:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - SUCCESSFUL
+                        - FAILED
+                        - PROCESSING
+                    expired:
+                      type: boolean
+                    exportFormat:
+                      type: string
+              required:
+              - limit
+              - offset
+              - filterCriteria
+              example:
+                limit: 10
+                offset: 0
+                filterCriteria:
+                  jobStatus:
+                  - SUCCESSFUL
+                  - FAILED
+                  - PROCESSING
+                  expired: false
+                  exportFormat: csv
+        description: History request payload.
+        required: true
+      tags:
+      - History
+      summary: Create history
+      x-summary-source: derived
+      operationId: postHistory
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

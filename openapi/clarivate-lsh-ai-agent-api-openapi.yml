@@ -1,0 +1,224 @@
+openapi: 3.2.0
+info:
+  title: LSH AI Agent API
+  version: '0.1'
+servers:
+- url: https://api.clarivate.com
+security:
+- key: []
+tags:
+- name: LSH AI Agent
+paths:
+  /ric/lsh-ai-agent/v1/data-retrieval-agent:
+    post:
+      tags:
+      - LSH AI Agent
+      summary: Public endpoint for the data retrieval agent
+      operationId: public_data_retrieval_agent_endpoint_ric_lsh_ai_agent_v1_data_retrieval_agent_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicAgentRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/PublicAgentSuccessResponse'
+                - $ref: '#/components/schemas/PublicAgentMessageResponse'
+                title: Response Public Data Retrieval Agent Endpoint Ric Lsh Ai Agent V1 Data Retrieval Agent Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    PublicAgentRequest:
+      properties:
+        question:
+          type: string
+          title: Question
+          description: Natural language question
+        conversation_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Conversation Id
+          description: Existing conversation context ID
+      type: object
+      required:
+      - question
+      title: PublicAgentRequest
+    PublicAgentMessageResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/AgentStatus'
+        conversation_id:
+          type: string
+          title: Conversation Id
+        message:
+          type: string
+          title: Message
+        assumptions:
+          items:
+            type: string
+          type: array
+          title: Assumptions
+        intermediate_steps:
+          items:
+            $ref: '#/components/schemas/IntermediateStep'
+          type: array
+          title: Intermediate Steps
+        usage:
+          $ref: '#/components/schemas/PublicUsageInfo'
+      type: object
+      required:
+      - status
+      - conversation_id
+      - message
+      title: PublicAgentMessageResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    IntermediateStep:
+      properties:
+        tool:
+          type: string
+          title: Tool
+        reason:
+          type: string
+          title: Reason
+        duration:
+          type: number
+          title: Duration
+        query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query
+        count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Count
+        metadata:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Metadata
+          description: Tool-specific metadata (e.g., search indices, result details)
+      type: object
+      required:
+      - tool
+      - reason
+      - duration
+      title: IntermediateStep
+    AgentStatus:
+      type: string
+      enum:
+      - SUCCESS
+      - CLARIFICATION_REQUIRED
+      - NOT_FOUND
+      title: AgentStatus
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PublicAgentSuccessResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/AgentStatus'
+          default: SUCCESS
+        conversation_id:
+          type: string
+          title: Conversation Id
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+        assumptions:
+          items:
+            type: string
+          type: array
+          title: Assumptions
+        intermediate_steps:
+          items:
+            $ref: '#/components/schemas/IntermediateStep'
+          type: array
+          title: Intermediate Steps
+        cypher_query:
+          type: string
+          title: Cypher Query
+        usage:
+          $ref: '#/components/schemas/PublicUsageInfo'
+      type: object
+      required:
+      - conversation_id
+      - cypher_query
+      title: PublicAgentSuccessResponse
+    PublicUsageInfo:
+      properties:
+        request_input_tokens:
+          type: integer
+          title: Request Input Tokens
+          default: 0
+        request_output_tokens:
+          type: integer
+          title: Request Output Tokens
+          default: 0
+        conversation_input_tokens:
+          type: integer
+          title: Conversation Input Tokens
+          default: 0
+        conversation_output_tokens:
+          type: integer
+          title: Conversation Output Tokens
+          default: 0
+        total_duration:
+          type: number
+          title: Total Duration
+          default: 0
+      type: object
+      title: PublicUsageInfo
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

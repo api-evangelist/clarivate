@@ -1,0 +1,69 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Converis Additional Audit Info API
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/converisadditionalapi
+tags:
+- name: Audit Info
+  description: Get audit info for actions like DOWNLOAD.
+paths:
+  /{version}/logs/audit:
+    get:
+      summary: Retrieve audit information
+      operationId: getAuditInfo
+      tags:
+      - Audit Info
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: Currently supports 'v2'.
+      - name: logAction
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - DOWNLOAD
+        description: Type of log action. Currently supports 'DOWNLOAD'. Mandatory.
+      - name: count
+        in: query
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+        required: true
+        description: Number of audit information to be returned. Required. Default is 10 and maximum is 100.
+      - name: dataId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Get the audit information for a given data ID. Optional. If not given, the latest audit information will be returned.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                auditInfoList:
+                - data: '13856310'
+                  description: Research_Output.xls
+                  logAction: DOWNLOAD
+                  logDate: '2017-06-19T12:53:49.110Z'
+                  logIp: 10.0.0.1
+                  userInfo: configadmin
+                - data: '13474479'
+                  description: cv .pdf
+                  logAction: DOWNLOAD
+                  logDate: '2017-06-19T12:30:46.793Z'
+                  logIp: 10.0.0.5
+                  userInfo: N/A
+            text/plain:
+              example: object

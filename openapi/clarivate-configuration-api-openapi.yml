@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Converis Additional Configuration API
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/converisadditionalapi
+tags:
+- name: Configuration
+  description: Access PentahoParamTokenScheduler API via HTTPS with admin credentials.
+paths:
+  /{version}/config/pentahotokenremover/scheduler/start:
+    get:
+      summary: Start Pentaho parameter token scheduler
+      description: Message about successful start of the scheduler or error message response.
+      operationId: startPentahoScheduler
+      tags:
+      - Configuration
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+      responses:
+        '200':
+          description: ClearParamTokens is on
+          content:
+            application/json:
+              example:
+                message: Pentaho parameter token scheduler started successfully
+        '500':
+          description: ClearParamTokens can't be started
+          content:
+            application/json:
+              example:
+                error: Failed to start Pentaho parameter token scheduler
+  /{version}/config/pentahotokenremover/scheduler/status:
+    get:
+      summary: Get Pentaho parameter token scheduler status
+      description: Scheduler status response.
+      operationId: getPentahoSchedulerStatus
+      tags:
+      - Configuration
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+      responses:
+        '200':
+          description: ClearParamTokens is running
+          content:
+            application/json:
+              example:
+                status: Pentaho parameter token scheduler is running
+  /{version}/config/pentahotokenremover/scheduler/stop:
+    get:
+      summary: Stop Pentaho parameter token scheduler
+      description: Message about successful stop of the scheduler or error message response.
+      operationId: stopPentahoScheduler
+      tags:
+      - Configuration
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+      responses:
+        '200':
+          description: ClearParamTokens is off
+          content:
+            application/json:
+              example:
+                message: Pentaho parameter token scheduler stopped successfully
+        '500':
+          description: ClearParamTokens can't be stopped
+          content:
+            application/json:
+              example:
+                error: Failed to stop Pentaho parameter token scheduler

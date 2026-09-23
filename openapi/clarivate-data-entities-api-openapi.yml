@@ -1,0 +1,227 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Converis CUD Data Entities API
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/cudapi
+tags:
+- name: Data Entities
+  description: REST endpoints for data Entities
+paths:
+  /{version}/dataobject/dataentities:
+    delete:
+      summary: Delete existing data entities
+      operationId: deleteDataEntities
+      tags:
+      - Data Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      responses:
+        '200':
+          description: Successful deletion response
+          content:
+            application/json:
+              example:
+                infoResponse:
+                - id: '111'
+                  uuid: 452a0e5a-ca67-42cf-a49c-e6be896f0ff9
+                  responseStatus: DELETED
+                  type: Publication
+                - id: '222'
+                  uuid: 7dfa5738-6acb-41d2-b8df-37c76e3b2011
+                  responseStatus: DELETED
+                  type: cfLang
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.
+    options:
+      summary: Options for data entities
+      description: This endpoint provides information about the supported actions and request structure for data entities.
+      operationId: optionsDataEntities
+      tags:
+      - Data Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      responses:
+        '200':
+          description: Options response
+          content:
+            application/json:
+              example:
+                supported_actions:
+                - Create
+                - Update
+                - Delete
+                request_structure:
+                  Create:
+                    HTTP_method: POST
+                    endpoint: https://host:<port>/<converis_app_name>/ws/v2/dataobject/dataentities
+                    description: Send HTTP request using the HTTP method POST to create data entities.
+                  Update:
+                    HTTP_method: PUT
+                    endpoint: https://host:<port>/<converis_app_name>/ws/v2/dataobject/dataentities
+                    description: Send HTTP request using the HTTP method PUT to update data entities.
+                  Delete:
+                    HTTP_method: DELETE
+                    endpoint: https://host:<port>/<converis_app_name>/ws/v2/dataobject/dataentities
+                    description: Send HTTP request using the HTTP method DELETE to delete data entities.
+    post:
+      summary: Create new data entities
+      operationId: createDataEntities
+      tags:
+      - Data Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                            lang:
+                              type: string
+                          required:
+                          - name
+                          - value
+                    required:
+                    - type
+                    - attributes
+              required:
+              - entities
+      responses:
+        '200':
+          description: Successful creation response
+          content:
+            application/json:
+              example:
+                infoResponse:
+                - id: '111'
+                  uuid: 452a0e5a-ca67-42cf-a49c-e6be896f0ff9
+                  responseStatus: CREATED
+                  type: Publication
+                - id: '222'
+                  uuid: 7dfa5738-6acb-41d2-b8df-37c76e3b2011
+                  responseStatus: CREATED
+                  type: cfLang
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.
+    put:
+      summary: Update existing data entities
+      operationId: updateDataEntities
+      tags:
+      - Data Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                            lang:
+                              type: string
+                          required:
+                          - name
+                          - value
+                    required:
+                    - id
+                    - attributes
+              required:
+              - entities
+      responses:
+        '200':
+          description: Successful update response
+          content:
+            application/json:
+              example:
+                infoResponse:
+                - id: '111'
+                  uuid: 452a0e5a-ca67-42cf-a49c-e6be896f0ff9
+                  responseStatus: UPDATED
+                  type: Publication
+                - id: '222'
+                  uuid: 7dfa5738-6acb-41d2-b8df-37c76e3b2011
+                  responseStatus: UPDATED
+                  type: cfLang
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.

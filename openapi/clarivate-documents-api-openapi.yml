@@ -1,0 +1,547 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Web of Science™ Starter Documents API
+  description: The Web of Science™ Starter API provides basic metadata and search functionality for Web of Science™ Documents and Journals.
+  license:
+    name: Clarivate Content as a Service Licence
+    url: https://clarivate.com/download/web-of-science-incites-apis/
+servers:
+- url: https://api.clarivate.com/apis/wos-starter/v1
+- url: https://api.clarivate.com/apis/wos-starter/v2
+security:
+- key: []
+tags:
+- name: Documents
+  description: Web of Science Documents
+paths:
+  /documents:
+    get:
+      tags:
+      - Documents
+      summary: Query Web of Science documents
+      description: The endpoint allows to search, filter, or browse across the Web of Science document content by using advanced search query builder.
+      parameters:
+      - name: db
+        in: query
+        required: false
+        description: 'Web of Science Database abbreviation
+
+          * WOS - Web of Science Core collection
+
+          * BIOABS - Biological Abstracts
+
+          * BCI - BIOSIS Citation Index
+
+          * BIOSIS - BIOSIS Previews
+
+          * CCC - Current Contents Connect
+
+          * DIIDW - Derwent Innovations Index
+
+          * DRCI - Data Citation Index
+
+          * MEDLINE - MEDLINE The U.S. National Library of Medicine® (NLM®) premier life sciences database.
+
+          * ZOOREC - Zoological Records
+
+          * PPRN - Preprint Citation Index
+
+          * RC -  Research Commons
+
+          * WOK - All databases
+
+          '
+        schema:
+          type: string
+          enum:
+          - BCI
+          - BIOABS
+          - BIOSIS
+          - CCC
+          - DIIDW
+          - DRCI
+          - MEDLINE
+          - PPRN
+          - RC
+          - WOK
+          - WOS
+          - ZOOREC
+          default: WOS
+      - name: q
+        in: query
+        description: Web of Science advanced [advanced search query builder](https://webofscience.help.clarivate.com/en-us/Content/advanced-search.html). The supported field tags are listed in description.
+        required: true
+        schema:
+          type: string
+          example: PY=2020
+      - name: limit
+        description: set the limit of records on the page (1-50)
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+          minimum: 1
+          maximum: 50
+      - name: page
+        description: set the result page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: sortField
+        in: query
+        required: false
+        schema:
+          type: string
+        examples:
+          LoadDate:
+            value: LD+D
+            summary: Load Date (Descending)
+          LoadDate Asc:
+            value: LD+A
+            summary: Load Date (Ascending)
+          Author:
+            value: PY+D
+            summary: Publication Year (Descending)
+          Author Asc:
+            value: PY+A
+            summary: Publication Year (Ascending)
+          Rel D:
+            value: RS+D
+            summary: Relevance (Descending)
+          Rel A:
+            value: RS+A
+            summary: Relevance (Ascending)
+          TC D:
+            value: TC+D
+            summary: Times Cited (Descending)
+          TC A:
+            value: TC+A
+            summary: Times Cited (Ascending)
+        description: 'Order by field(s). Field name and order by clause separated by ''+'', use A for ASC and D for DESC, ex: PY+D. Multiple values are separated by comma. Supported fields:
+
+
+          * **LD** - Load Date
+
+          * **PY** - Publication Year
+
+          * **RS** - Relevance
+
+          * **TC** - Times Cited
+
+          '
+      - name: modifiedTimeSpan
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Defines a date range in which the results were most recently modified. Beginning and end dates must be specified in the yyyy-mm-dd format separated by '+' or ' ', e.g. 2023-01-01+2023-12-31. This parameter is not compatible with the all databases search, i.e. db=WOK is not compatible with this parameter.
+      - name: publishTimeSpan
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Defines a date range in which the results were published. Beginning and end dates must be specified in the yyyy-mm-dd format separated by '+' or ' ', e.g. 2023-01-01+2023-12-31. This parameter cannot be combined with modifiedTimeSpan
+      - name: tcModifiedTimeSpan
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Defines a date range in which times cited counts were modified. Beginning and end dates must be specified in the yyyy-mm-dd format separated by '+' or ' ', e.g. 2023-01-01+2023-12-31. This parameter is not compatible with the all databases search, i.e. db=WOK is not compatible with this parameter.
+      - name: detail
+        in: query
+        required: false
+        schema:
+          type: string
+        description: it will returns the full data by default, if detail=short it returns the limited data
+      - name: edition
+        in: query
+        description: 'Edition(s) to be searched. If null, user permissions will be substituted. Must include the name of the collection and edition name separated by ''+'' or '' '', ex: WOS+SCI. Multiple editions are separated by '',''. Editions available for collection (WOS) - AHCI,CCR,IC,ISSHP,ISTP,SCI,SSCI,BHCI,BSCI and ESCI.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentsList'
+              example:
+                metadata:
+                  total: 2
+                  page: 1
+                  limit: 10
+                hits:
+                - uid: WOS:A1993MM96800012
+                  title: '''EPITAFIO'''
+                  types:
+                  - Poetry
+                  sourceTypes:
+                  - Poetry
+                  source:
+                    sourceTitle: CUADERNOS HISPANOAMERICANOS
+                    publishYear: 1993
+                    publishMonth: NOV
+                    issue: '521'
+                    pages:
+                      range: 125-125
+                      begin: '125'
+                      end: '125'
+                      count: 1
+                  names:
+                    authors:
+                    - displayName: TOMLINSON, C
+                      wosStandard: TOMLINSON, C
+                      researcherId: GGU-9939-2022
+                  links:
+                    record: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:A1993MM96800012&DestLinkType=FullRecord&DestApp=WOS
+                  citations:
+                  - db: WOS
+                    count: 0
+                  identifiers:
+                    issn: 1131-6438
+                  keywords:
+                    authorKeywords: []
+                - uid: WOS:000222526200005
+                  title: 'Mapping the land of ''I-don''t remember'': For a re-evaluation of La ''Historia oficial'''
+                  types:
+                  - Article
+                  sourceTypes:
+                  - Article
+                  source:
+                    sourceTitle: BULLETIN OF HISPANIC STUDIES
+                    publishYear: 2004
+                    publishMonth: APR
+                    volume: '81'
+                    issue: '2'
+                    pages:
+                      range: 215-228
+                      begin: '215'
+                      end: '228'
+                      count: 14
+                  names:
+                    authors:
+                    - displayName: Tomlinson, E
+                      wosStandard: Tomlinson, E
+                      researcherId: AAG-1344-2019
+                    bookEditors:
+                    - displayName: Walker, J. M.
+                  links:
+                    record: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000222526200005&DestLinkType=FullRecord&DestApp=WOS
+                    citingArticles: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000222526200005&DestLinkType=CitingArticles&DestApp=WOS
+                    references: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000222526200005&DestLinkType=CitedReferences&DestApp=WOS
+                    related: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000222526200005&DestLinkType=RelatedRecords&DestApp=WOS
+                  citations:
+                  - db: WOS
+                    count: 3
+                  identifiers:
+                    doi: 10.3828/bhs.81.2.5
+                    issn: 1475-3839
+                  keywords:
+                    authorKeywords: []
+      operationId: getDocuments
+      x-operation-id-source: derived
+  /documents/{uid}:
+    get:
+      tags:
+      - Documents
+      summary: Get Web of Science document by Accesssion Number (UID)
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: Web of Science unique identifier (Accession Number)
+        schema:
+          type: string
+          example: WOS:000267144200002
+      - name: detail
+        in: query
+        required: false
+        schema:
+          type: string
+        description: it will returns the full data by default, if detail=short it returns the limited data
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+              example:
+                uid: WOS:000282418500002
+                title: 'Wild bird indicators: using composite population trends of birds as measures of environmental health'
+                types:
+                - Article
+                sourceTypes:
+                - Article
+                source:
+                  sourceTitle: ORNITHOLOGICAL SCIENCE
+                  publishYear: 2010
+                  publishMonth: JUN
+                  volume: '9'
+                  issue: '1'
+                  pages:
+                    range: 3-22
+                    begin: '3'
+                    end: '22'
+                    count: 20
+                names:
+                  authors:
+                  - displayName: Gregory, Richard D.
+                    wosStandard: Gregory, RD
+                    researcherId: AAG-1843-2020
+                links:
+                  record: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000282418500002&DestLinkType=FullRecord&DestApp=WOS
+                  citingArticles: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000282418500002&DestLinkType=CitingArticles&DestApp=WOS
+                  references: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000282418500002&DestLinkType=CitedReferences&DestApp=WOS
+                  related: https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=&SrcAuth=WosAPI&KeyUT=WOS:000282418500002&DestLinkType=RelatedRecords&DestApp=WOS
+                citations:
+                - db: WOS
+                  count: 145
+                identifiers:
+                  doi: 10.2326/osj.9.3
+                  issn: 1347-0558
+                keywords:
+                  authorKeywords:
+                  - Biodiversity targets
+                  - Birds
+                  - Environmental health
+                  - Population trends
+                  - Wild bird indicators
+      operationId: getDocumentsByUid
+      x-operation-id-source: derived
+components:
+  schemas:
+    OtherName:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Web of Science display name
+    Document:
+      type: object
+      required:
+      - uid
+      properties:
+        uid:
+          type: string
+          description: Web of Science Unique Identifier
+        title:
+          type: string
+          description: Document title
+        types:
+          type: array
+          description: Normalized Document Types
+          items:
+            type: string
+            description: Normalized Document type
+        sourceTypes:
+          type: array
+          description: Source Document Types
+          items:
+            type: string
+            description: Source Document type
+        source:
+          type: object
+          description: Web of Science document source metadata
+          properties:
+            sourceTitle:
+              type: string
+              description: Source title
+            publishYear:
+              type: integer
+              format: int32
+              description: Published Year
+            publishMonth:
+              type: string
+              description: Published Month
+            volume:
+              type: string
+              description: Volume
+            issue:
+              type: string
+              description: Issue
+            supplement:
+              type: string
+              description: Journal supplement
+            specialIssue:
+              type: string
+              description: Journal special issue
+            articleNumber:
+              type: string
+              description: Source Article Number
+            pages:
+              type: object
+              properties:
+                range:
+                  type: string
+                  description: Page range
+                begin:
+                  type: string
+                  description: Page begin
+                end:
+                  type: string
+                  description: Page end
+                count:
+                  type: integer
+                  format: int32
+                  description: Number of pages
+        names:
+          type: object
+          properties:
+            authors:
+              type: array
+              description: Authors of document
+              items:
+                $ref: '#/components/schemas/AuthorName'
+            contributors:
+              type: array
+              description: Contributors sourced from the ORCID feed. This field is available only in the `/v2` API endpoints.
+              items:
+                $ref: '#/components/schemas/AuthorName'
+            inventors:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            bookCorp:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            bookEditors:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            books:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            additionalAuthors:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            anonymous:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            assignees:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            corp:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            editors:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            investigators:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            sponsors:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+            issuingOrganizations:
+              type: array
+              items:
+                $ref: '#/components/schemas/OtherName'
+        links:
+          type: object
+          description: Web of Science URLs
+          properties:
+            record:
+              type: string
+            citingArticles:
+              type: string
+            references:
+              type: string
+            related:
+              type: string
+        citations:
+          type: array
+          description: Times Cited
+          items:
+            type: object
+            properties:
+              db:
+                type: string
+                description: Web of Science Citation Database (collection) Abbreviation Name
+                example: WOS
+              count:
+                type: integer
+                format: int32
+                description: Citation Count
+        identifiers:
+          type: object
+          description: Document and Source Identifiers
+          properties:
+            doi:
+              type: string
+            issn:
+              type: string
+            eissn:
+              type: string
+            isbn:
+              type: string
+            eisbn:
+              type: string
+            pmid:
+              type: string
+        keywords:
+          type: object
+          description: Author keywords
+          properties:
+            authorKeywords:
+              type: array
+              items:
+                type: string
+    AuthorName:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Web of Science display name
+        wosStandard:
+          type: string
+          description: Web of Science standard name
+        researcherId:
+          type: string
+          description: Web of Science ResearcherID
+    DocumentsList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+    Metadata:
+      type: object
+      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number
+      properties:
+        page:
+          type: integer
+          format: int32
+          description: Page number (default is 1)
+        limit:
+          type: integer
+          format: int32
+          description: Number of records on a page (default is 10).
+        total:
+          type: integer
+          format: int32
+          description: Total number of records for the request.
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

@@ -1,0 +1,51 @@
+openapi: 3.2.0
+info:
+  title: Derwent Sequence Search Session Info API
+  version: V1@2026-06-09
+  description: OpenAPI Docs & Interactive UI
+  license:
+    name: Commercially Licensed Product
+    url: https://clarivate.com/derwent/solutions/derwent-sequence-base/
+servers:
+- url: https://api.clarivate.com/derwent-sequence-search
+security:
+- key: []
+tags:
+- name: Session Info
+  description: Session information endpoints
+paths:
+  /info:
+    get:
+      summary: info session
+      tags:
+      - Session Info
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    truid: 377c53d1-9e5d-4fe1-8f1b-996c26c1eb30
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+        '401':
+          description: Unauthorized
+      operationId: getInfo
+      x-operation-id-source: derived
+components:
+  schemas:
+    SessionInfo:
+      type: object
+      required:
+      - truid
+      properties:
+        truid:
+          type: string
+          description: TRUID of the current user
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

@@ -1,0 +1,636 @@
+openapi: 3.2.0
+info:
+  title: Converis Web Services Administration - User Delegations API
+  description: This API Specification describes how to read data from Converis in order to use it in other systems.
+  contact:
+    email: converis-info@clarivate.com
+  version: '2.0'
+servers:
+- url: https://api.clarivate.com/converisreadapi
+tags:
+- name: Administration - User Delegations
+  description: Perform User Delegation operations
+paths:
+  /admin/users/delegation:
+    post:
+      tags:
+      - Administration - User Delegations
+      summary: Create a User Delegation
+      description: Create a User Delegation.
+      requestBody:
+        description: Details of the Delegation to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDelegation'
+            example:
+              fromUser:
+                userName: fromUserName
+              toUser:
+                userName: toUserName
+              role:
+                roleName: Researcher
+                entryPointId: 123124
+              validity:
+                startDate: '2022-10-10'
+                endDate: '2022-10-12'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 201
+                statusDescription: Created
+                message: Delegation successfully created.
+        '400':
+          description: This response is returned in case of errors with request data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 400
+                statusDescription: Bad Request
+                message: Error message.
+        '401':
+          description: Request is unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 401
+                statusDescription: Unauthorized
+                message: Full authentication is required to access this resource
+      security:
+      - BasicAuth: []
+      operationId: postAdminUsersDelegation
+      x-operation-id-source: derived
+    put:
+      tags:
+      - Administration - User Delegations
+      summary: Update a User Delegation
+      description: Update a User Delegation.
+      requestBody:
+        description: 'Update allowed to the date fields only.
+
+
+          Id of the delegation to be passed.
+
+
+          Validity is a mandatory field.
+
+
+          If start date is not passed, it is considered as starting from today.
+
+
+          If end date is not passed, it is stored as null.
+
+
+          Please pass the same old value if the date value has not changed.
+
+          '
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDelegation'
+            example:
+              delegationId: 1234
+              validity:
+                startDate: '2022-10-10'
+                endDate: '2022-10-12'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 200
+                statusDescription: Ok
+                message: Delegation successfully updated.
+        '400':
+          description: This response is returned in case of errors with request data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 400
+                statusDescription: Bad Request
+                message: Error message.
+        '401':
+          description: Request is unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 401
+                statusDescription: Unauthorized
+                message: Full authentication is required to access this resource
+      security:
+      - BasicAuth: []
+      operationId: putAdminUsersDelegation
+      x-operation-id-source: derived
+    get:
+      tags:
+      - Administration - User Delegations
+      summary: Fetch User Delegations
+      description: 'Get user delegations based on the input criteria.
+
+
+        The different combinations of input query parameters are as below. Any other input parameter combinations are not allowed.
+
+        - delegationId fetches only that specific delegation.
+
+
+        - fromUserName fetches delegations from this username.
+
+
+        - fromUserName, entryPointId, roleName combination fetches delegations of this role and entrypoint by user fromUserName.
+
+
+        - startDate fetches delegations that start on this date.
+
+
+        - endDate fetches delegations that end on this date.
+
+
+        - searchFromUser fetch the delegations where the username/firstname/lastname of the from user contains this string.
+
+        Maximum 2 search words are possible.
+
+        - searchToUser fetch the delegations where the username/firstname/lastname of the to user contains this string.
+
+        Maximum 2 search words are possible.
+
+        - startRecord and count fetch count number of delegations starting from the position of startRecord.
+
+        This can be combined with any other valid combination.
+
+        - No query parameters, fetch all the delegations.'
+      parameters:
+      - name: delegationId
+        in: query
+        description: 'Fetch only this delegation.
+
+
+          This parameter can be used only with startRecord and count
+
+          '
+        required: false
+        style: form
+        schema:
+          type: integer
+          example: 123
+          format: int64
+      - name: fromUserName
+        in: query
+        description: 'Fetch delegations from the user whose loginname is fromUserName.
+
+
+          If parameters roleName and entryPointId are also passed, fetch delegations of role roleName with entrypoint entryPointId from the user fromUserName.
+
+
+          This parameter can be used with startRecord and count.
+
+
+          If provided, roleName and entryPointId both have to be provided.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: string
+          example: userLoginName
+      - name: entryPointId
+        in: query
+        description: 'Used in combination with fromUserName and roleName.
+
+
+          Fetch delegations of roleName and entryPointId by fromUserName.
+
+
+          This parameter can be used with startRecord and count.
+
+
+          fromUserName and roleName are mandatory to be provided with this parameter.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: integer
+          example: 2345
+          format: int64
+      - name: roleName
+        in: query
+        description: 'Used in combination with fromUserName and entryPointId.
+
+
+          Fetch delegations of roleName and entryPointId by fromUserName.
+
+
+          This parameter can be used with startRecord and count.
+
+
+          fromUserName and entryPointId are mandatory to be provided with this parameter.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: string
+          example: researcher
+      - name: startDate
+        in: query
+        description: 'Fetch delegations that start on this date.
+
+
+          In the format yyyy-MM-dd
+
+
+          This parameter can be used only with startRecord and count.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: string
+          example: '2022-12-11T00:00:00.000Z'
+          format: date
+      - name: endDate
+        in: query
+        description: 'Fetch delegations that end on this date.
+
+
+          In the format yyyy-MM-dd
+
+
+          This parameter can be used only with startRecord and count.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: string
+          example: '2022-12-13T00:00:00.000Z'
+          format: date
+      - name: startRecord
+        in: query
+        description: 'Starting record.
+
+
+          Defaults to 1, the first record.
+
+          '
+        required: false
+        style: form
+        schema:
+          minimum: 1
+          type: integer
+          format: int32
+          default: 1
+      - name: count
+        in: query
+        description: 'Number of records to return.
+
+          '
+        required: false
+        style: form
+        schema:
+          maximum: 50
+          minimum: 1
+          type: integer
+          format: int32
+          default: 10
+      - name: searchFromUser
+        in: query
+        description: 'Delegations where from user''s login/first/last name contains this text are returned.
+
+
+          A maximum of 2 search words are possible together and they are seperated by a space.
+
+
+          This parameter can be used only with startRecord and count.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: string
+          example: from
+      - name: searchToUser
+        in: query
+        description: 'Delegations where to user''s login/first/last name contains this text are returned.
+
+
+          A maximum of 2 search words are possible together and they are seperated by a space.
+
+
+          This parameter can be used only with startRecord and count.
+
+          '
+        required: false
+        style: form
+        schema:
+          type: string
+          example: to
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDelegationList'
+        '400':
+          description: This response is returned in case of errors with request data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 400
+                statusDescription: Bad Request
+                message: Error message.
+        '401':
+          description: Request is unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation
+                status: 401
+                statusDescription: Unauthorized
+                message: Full authentication is required to access this resource
+      security:
+      - BasicAuth: []
+      operationId: getAdminUsersDelegation
+      x-operation-id-source: derived
+  /admin/users/delegation{delegation_id}:
+    delete:
+      tags:
+      - Administration - User Delegations
+      summary: Delete a User Delegation
+      description: 'Delete a User Delegation.
+
+
+        Id of the delegation to be passed.
+
+
+        ID should be valid.'
+      parameters:
+      - name: delegation_id
+        in: path
+        description: Id of the delegation to be deleted
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation/{delegation_id}
+                status: 200
+                statusDescription: Ok
+                message: Delegation successfully Deleted.
+        '400':
+          description: This response is returned in case of errors with request data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation/{delegation_id}
+                status: 400
+                statusDescription: Bad Request
+                message: Error message.
+        '401':
+          description: Request is unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+              example:
+                timestamp: '2017-07-21T17:32:28Z'
+                path: /converis-apis/ws/v2/admin/users/delegation/{delegation_id}
+                status: 401
+                statusDescription: Unauthorized
+                message: Full authentication is required to access this resource
+      security:
+      - BasicAuth: []
+      operationId: deleteAdminUsersDelegation{delegationId}
+      x-operation-id-source: derived
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userName:
+          type: string
+          maxLength: 255
+          example: loginname
+          description: It is required only for POST create user.
+        firstName:
+          type: string
+          maxLength: 255
+          example: First
+        lastName:
+          type: string
+          maxLength: 255
+          example: last
+        email:
+          type: string
+          format: email
+          example: first.last@converis.clarivate.com
+          description: For internal users, a notification with password will be sent to the email.
+        firstLogin:
+          type: boolean
+          example: true
+        preferredLanguage:
+          type: string
+          example: en_GB
+        active:
+          type: boolean
+          example: true
+        acceptedTC:
+          type: boolean
+          example: true
+        userType:
+          type: string
+          enum:
+          - INTERNAL
+          - EXTERNAL
+          example: INTERNAL
+          description: INTERNAL users are the users which directly login in Converis. External users are the users that login through SSO, e.g. Shibboleth
+        lastLogin:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28"
+          format: date-time
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRole'
+    UserDelegationList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+          description: The offset number from where the delegation record count begins.
+        count:
+          type: integer
+          example: 50
+          description: The max number of records to be returned
+        nrRecordsAll:
+          type: integer
+          example: 1540
+          description: Total delegations in the system
+        nrRecordsFound:
+          type: integer
+          example: 50
+          description: Total number of delegations returned for that request.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDelegation'
+    UserDelegation:
+      type: object
+      properties:
+        delegationId:
+          type: integer
+          example: 1234
+          format: int64
+          description: 'id of the delegation.
+
+
+            To be passed in the request only for edit and delete delegation.
+
+
+            Returned in the response for fetch API.
+
+            '
+        fromUser:
+          $ref: '#/components/schemas/User'
+        toUser:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/UserRole'
+        validity:
+          $ref: '#/components/schemas/UserDelegationValidity'
+    UserDelegationValidity:
+      type: object
+      properties:
+        startDate:
+          type: string
+          example: '2022-12-10'
+          description: 'The date when the role delegation starts. Values must follow the pattern yyyy-MM-dd.
+
+
+            If this date is not provided, it is defaulted to current date.
+
+
+            In case of update API, if there is no change in the start date, it is expected to send the existing unchanged value of the start date.
+
+            '
+          format: date
+        endDate:
+          type: string
+          example: '2022-12-14'
+          description: 'The date when the role delegation ends. Values must follow the pattern yyyy-MM-dd.
+
+
+            In case of update API, if there is no change in the end date, it is expected to send the existing unchanged value of the end date.
+
+            '
+          format: date
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+    UserRole:
+      properties:
+        roleName:
+          type: string
+          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
+          example: Researcher
+        entryPointId:
+          type: integer
+          format: int64
+          description: User entry point
+          example: 123456
+        entryPointDataUrl:
+          type: string
+          description: The entrypoint data url - only by GET Request
+          example: /converis-apis/ws/v2/data/entities/Person/123456
+        entryPointDefinitionUrl:
+          type: string
+          description: Entry point definition url - only by GET Request
+          example: /converis-apis/ws/v2/config/entities/Person
+  securitySchemes:
+    BasicAuth:
+      type: http
+      description: The authentication information has to be provided by the client application as Basic authentication header. This can be configured by an admin in Converis under Configuration -> API Authentication Info.
+      scheme: basic

@@ -6,6 +6,8 @@ source: >-
   https://developer.clarivate.com/apis/endnote and
   https://developer.clarivate.com/apis/ipdata-di-graphql-api, and the replacement
   notice on https://developer.clarivate.com/apis/woslite — all fetched 2026-09-05.
+  Re-run 2026-09-05: the 2023 SOAP sunset was additionally VERIFIED ON THE WIRE rather
+  than accepted from the release note — see soap_retirement_probe below.
 description: >-
   Clarivate runs a real deprecation practice — it has sunset a SOAP estate, retired
   Links AMR with scheduled brownouts and warning headers, and marks retired APIs in
@@ -50,6 +52,12 @@ deprecated_apis:
     state: deprecated
     evidence: Same "API deprecated" banner; POST /derwent-graphql can no longer be subscribed to.
     superseded_by: Intellectual Property (IP) Data API
+    detail: graphql/clarivate-graphql.yml
+    still_routed: >-
+      Confirmed 2026-09-05: the deprecated endpoint is still live on the gateway. A
+      POST returns Kong's 401 "No API key found in request" while an unrouted path on
+      the same host returns the Angular SPA shell, so the route exists — deprecated
+      means unsubscribable, not withdrawn.
   - name: Web of Science API Lite
     portal: https://developer.clarivate.com/apis/woslite
     state: superseded
@@ -67,6 +75,7 @@ deprecated_apis:
       scheduled brownouts; 2023-06-22 — three sunset-warning headers added to every
       response.
     superseded_by: Web of Science API Expanded (REST)
+    verified: soap_retirement_probe (no WSDL resolves; hosts dead or soft-200)
   - name: Links Article Match Retrieval (AMR)
     state: sunset
     evidence: >-
@@ -75,6 +84,81 @@ deprecated_apis:
       available on the deprecated Links AMR API".
     superseded_by: Web of Science Starter API (detail=short)
     archived_repo: https://github.com/clarivate/wos-amr
+soap_retirement_probe:
+  probed: '2026-09-05'
+  method: probed
+  question: >-
+    STEP 6b of the enrichment contract: does Clarivate still serve a WSDL anywhere? A
+    published SOAP contract counts as a contract, and enterprise research/IP vendors are
+    exactly where surviving WSDLs live, so the 2023 sunset was verified on the wire
+    rather than taken from the release note alone.
+  finding: >-
+    The Web of Science SOAP estate is gone, not merely deprecated. The documented WSDL
+    hosts either no longer resolve in DNS or answer every path with a 2-byte "Ok"
+    health responder. NO WSDL was retrieved, so no wsdl/ artifact is written — an
+    honest absence, and the correct outcome for a retirement Clarivate actually
+    completed.
+  documented_wsdl_locations:
+    - http://search.webofknowledge.com/esti/wokmws/ws/WokSearch?wsdl
+    - http://search.webofknowledge.com/esti/wokmws/ws/WokSearchLite?wsdl
+    - http://search.webofknowledge.com/esti/wokmws/ws/WOKMWSAuthenticate?wsdl
+  source_of_locations: >-
+    http://help.incites.clarivate.com/wosWebServicesExpanded/WebServicesExpandedOverviewGroup/Introduction/WSDLFileLocations.html
+    — Clarivate's own "WSDL File Locations" help page for Web of Science Web Services
+    Expanded. The host help.incites.clarivate.com NO LONGER RESOLVES (DNS NXDOMAIN),
+    so the documentation for the retired surface is gone along with the surface.
+  probes:
+    - url: https://search.webofknowledge.com/esti/wokmws/ws/WokSearch?wsdl
+      status: dns-nxdomain
+      note: >-
+        search.webofknowledge.com is a CNAME to ws.prod-wos.com, which itself has no
+        address record. The chain is dangling; nothing answers.
+    - url: https://search.webofknowledge.com/esti/wokmws/ws/WOKMWSAuthenticate?wsdl
+      status: dns-nxdomain
+    - url: https://wsearch.webofknowledge.com/esti/wokmws/ws/WokSearch?wsdl
+      status: dns-nxdomain
+    - url: http://help.incites.clarivate.com/wosWebServicesExpanded/WebServicesExpandedOverviewGroup/Introduction/WSDLFileLocations.html
+      status: dns-nxdomain
+      note: The help site documenting the WSDL locations is itself gone.
+    - url: https://ws.isiknowledge.com/esti/wokmws/ws/WokSearch?wsdl
+      status: 200
+      body: 'Ok'
+      bytes: 2
+      content_type: text/plain
+      document: false
+      note: >-
+        A soft-200. The legacy host still resolves (AWS ALB) but returns the same
+        2-byte "Ok" for every path — see the control below — so this is a health
+        responder, not a WSDL.
+    - url: https://ws.isiknowledge.com/esti/wokmws/ws/WOKMWSAuthenticate?wsdl
+      status: 200
+      body: 'Ok'
+      document: false
+    - url: https://ws.isiknowledge.com/esti/wokmws/ws/WokSearchLite?wsdl
+      status: 200
+      body: 'Ok'
+      document: false
+    - url: https://api.clarivate.com/?wsdl
+      status: 200
+      body: angular-spa-shell
+      document: false
+    - url: https://api.clarivate.com/api/wos?wsdl
+      status: 401
+      body: '{"message":"No API key found in request"}'
+      document: false
+      note: The REST gateway; ?wsdl is simply ignored as an unknown query parameter.
+  control:
+    url: https://ws.isiknowledge.com/this/path/cannot/exist-zzz9?wsdl
+    status: 200
+    body: 'Ok'
+    note: >-
+      Identical response to every "real" WSDL path. This control is what turns
+      "200 OK" from a false positive into a proven absence.
+  result: no-wsdl-published
+  consequence: >-
+    Clarivate publishes no SOAP contract today. Its machine-readable estate is the 26
+    REST/OpenAPI documents on developer.clarivate.com and two gated GraphQL endpoints
+    (graphql/clarivate-graphql.yml) — nothing else.
 sla:
   url: null
   public_uptime_target: null

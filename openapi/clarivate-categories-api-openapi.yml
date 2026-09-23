@@ -1,0 +1,919 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Web of Science™ Journals Categories API
+  description: This API provides journal-level metadata and metrics for all journals in the Journal Citation Reports™ covered in the Web of Science Core Collection, including the Journal Impact Factor™ and other new metrics.
+  license:
+    name: Clarivate Content as a Service Licence
+    url: https://clarivate.com/download/product-service-terms/
+servers:
+- url: https://api.clarivate.com/apis/wos-journals/v1
+security:
+- key: []
+tags:
+- name: Categories
+  description: Categories
+paths:
+  /categories:
+    get:
+      tags:
+      - Categories
+      summary: Search and filter across the journal categories
+      description: 'The endpoint allows to search, filter, or browse across the Categories content.
+
+
+        The endpoint doesn''t require any parameter to return results, although only main information for the first ten records sorted alphabetically will be retrieved.
+
+
+        To get comprehensive results, a set of parameters could be applied:
+
+        - `q`: Category name
+
+        - `edition`: filter by category edition
+
+        - `jcrYear`: filter by Category Report Year (since 203)
+
+        - `limit`: set the limit of records on the page (1-50)
+
+        - `page`: set the result page
+
+
+        By default, all the responses are sorted alphabetically, only in case of search the results will be sorted by relevance.
+
+
+        The response contains:
+
+        - Main information about the number of records found, page and limit
+
+        - Category unique ID (based on category code and edition)
+
+        - API Link to Category record
+
+        - Category title
+
+        - Search matches with the found phrase ***<em>*** *highlighted* ***</em>*** - only if parameter `q` is requested
+
+        - Edition information - only if the parameter `edition` is requested
+
+        - Link to the Category Report - only if parameter `jcrYear` is requested'
+      parameters:
+      - name: q
+        in: query
+        required: false
+        description: 'Free-text search by category name.
+
+
+          Search logic is described in the section [Search](#search).'
+        schema:
+          type: string
+      - name: edition
+        in: query
+        required: false
+        description: 'Filter by Web of Sceince Citation Index. The following indexes (editions) are presented:
+
+          - SCIE - Science Citation Index Expanded (ournals across more than 170 disciplines)
+
+          - SSCI - Social Sciences Citation Index (journals across more than 50 social science disciplines)
+
+
+          Multiple values are allowed, separated by semicolon ( **;** )'
+        schema:
+          type: string
+      - name: jcrYear
+        in: query
+        required: false
+        description: 'Filter by Category Citation Report year (from 2003).
+
+
+          Only one value is allowed.'
+        schema:
+          type: integer
+          format: int32
+      - name: page
+        in: query
+        required: false
+        description: Specifying a page to retrieve
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        description: Number of returned results, ranging from 1 to 50
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryList'
+              example:
+                metadata:
+                  total: 272
+                  limit: 10
+                  page: 1
+                hits:
+                - id: AAC
+                  self: /categories/AA_SCIE
+                  name: ACOUSTICS
+                - id: AFC
+                  self: /categories/AF_SCIE
+                  name: AGRICULTURAL ECONOMICS & POLICY
+                - id: AEC
+                  self: /categories/AE_SCIE
+                  name: AGRICULTURAL ENGINEERING
+                - id: ADC
+                  self: /categories/AD_SCIE
+                  name: AGRICULTURE DAIRY & ANIMAL SCIENCE
+                - id: AHC
+                  self: /categories/AH_SCIE
+                  name: AGRICULTURE MULTIDISCIPLINARY
+                - id: AMC
+                  self: /categories/AM_SCIE
+                  name: AGRONOMY
+                - id: AQC
+                  self: /categories/AQ_SCIE
+                  name: ALLERGY
+                - id: AYC
+                  self: /categories/AY_SCIE
+                  name: ANATOMY & MORPHOLOGY
+                - id: AZC
+                  self: /categories/AZ_SCIE
+                  name: ANDROLOGY
+      operationId: getCategories
+      x-operation-id-source: derived
+  /categories/{id}:
+    get:
+      tags:
+      - Categories
+      summary: Get a category
+      description: 'The category profile provides a comprehensive overview, beginning in 2003, for each of more than 230 different subject categories in the JCR.
+
+
+        Information contain the name, description and links to each JCR Category Year Report (starting from 2003)'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Category ID, consisting of a two-letter category code and four-letter edition, separated by **_** (i.e., ***RZ_SSCI*** or ***IP_SCIE***)
+        example: RU_SCIE
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryRecord'
+                example:
+                  id: RU_SCIE
+                  name: NEUROSCIENCES
+                  edition: SCIE
+                  categoryCode: RU
+                  description: Neurosciences covers resources on all areas of basic research on the brain, neural physiology, and function in health and disease. The areas of focus include neurotransmitters, neuropeptides, neurochemistry, neural development, and neural behavior. Coverage also includes resources in neuro-endocrine and neuro-immune systems, somatosensory system, motor system and sensory motor integration, autonomic system as well as diseases of the nervous system.
+                  categoryCitationReports:
+                  - year: 2019
+                    url: /categories/RU_SCIE/reports/year/2019
+                  - year: 2018
+                    url: /categories/RU_SCIE/reports/year/2018
+                  - year: 2017
+                    url: /categories/RU_SCIE/reports/year/2017
+      operationId: getCategoriesById
+      x-operation-id-source: derived
+  /categories/{id}/reports/year/{year}:
+    get:
+      tags:
+      - Categories
+      summary: Get category metrics for a year
+      description: 'For each JCR year all metrics related to a subject category in the Journal Citation Record are available, including: number of journals and articles in the category, Total Cites, Median Impact Factor, Aggregate Impact Factor, Aggregate Immediacy Index, and Cited and Citing category half-life.
+
+
+        Please find detailed information about the metrics in the Journals by JCR Year Report output'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Category ID
+        example: RU_SCIE
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        description: Category report year
+        example: 2016
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ' '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryReports'
+                example:
+                  year: 2014
+                  journals:
+                    count: 252
+                    url: /journals?category=RU_SCIE&jcrYear=2014
+                  articles: 36863
+                  cites: 1987755
+                  jif:
+                    median: 2.791
+                    aggregate:
+                      count: '4.010'
+                      citesYearAgo: 126389
+                      citesTwoYearsAgo: 158168
+                      publishedYearAgo: 35974
+                      publishedTwoYearsAgo: 34981
+                  immediacy:
+                    count: 0.853
+                    citesCurrentYear: 31453
+                    publishedCurrentYear: 36863
+                  halfLife:
+                    cited: 7.9
+                    citing: 8.3
+                  frequency:
+                    annual: 1
+                    hemiannual: 1
+                    triannual: 1
+                    semiannual: 22
+                    quarterly: 50
+                    bimonthly: 83
+                    monthly: 72
+                    biweekly: 0
+                    weekly: 3
+                    daily: 0
+                    irregular: 19
+                  sourceData:
+                    articles:
+                      count: 32596
+                      references: 1638387
+                    reviews:
+                      count: 4267
+                      references: 503851
+                    other:
+                      count: 16433
+                      references: 36810
+                  categoryData:
+                    cited:
+                      url: /categories/RU_SCIE/cited/year/2014
+                      count: 6112
+                    citing:
+                      url: /categories/RU_SCIE/citing/year/2014
+                      count: 12444
+      operationId: getCategoriesByIdReportsYearByYear
+      x-operation-id-source: derived
+  /categories/{id}/cited/year/{year}:
+    get:
+      tags:
+      - Categories
+      summary: Get journals that cite all journals in the category for the JCR year
+      description: 'The Cited Subject Category table lists journals that cite other journals in the subject category.
+
+
+        Category Cited data contains:
+
+
+        - Citing **Journal** with the link to WoS Journal API entity.
+
+        Citing journals are sorted in descending order. At the top is the journal with the largest number of citations to the subject category.
+
+        - **Cited journals**: The number of journals in the subject category.
+
+        - **Cited year (all)**: The total number of citations from the citing journal. This total includes the number shown under each year and the number in the "Rest".
+
+        - **Cited Year (10-year interval)**: The publication year of the cited articles.
+
+        - **Cited Year (rest)**: All publication years of cited articles prior to the ten-year period defined. For example, if the cited years are 2013-2004, the Rest number will show the number of citations from the citing journal in 2012 to articles published in 2003 and earlier in journals in the subject category.
+
+
+        Numbers in the "All Journals" are sums of the numbers for each year. "All others" refers to citing journals not listed by name.
+
+
+        For detailed information, please visit this page'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Category ID
+        example: RU_SCIE
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        description: JCR Year (from 2003)
+        example: 2014
+        schema:
+          type: integer
+          format: int32
+      - name: page
+        in: query
+        required: false
+        description: Specifying a page to retrieve
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        description: Number of returned results, ranging from 1 to 50
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesCited'
+                example:
+                  metadata:
+                    total: 6112
+                    page: 1
+                    limit: 10
+                  hits:
+                  - journal:
+                      name: ALL
+                    citing:
+                    - year: all
+                      count: 1987755
+                    - year: '2014'
+                      count: 31453
+                    - year: '2013'
+                      count: 126389
+                    - year: '2012'
+                      count: 158168
+                    - year: '2011'
+                      count: 155883
+                    - year: '2010'
+                      count: 148804
+                    - year: '2009'
+                      count: 139784
+                    - year: '2008'
+                      count: 127900
+                    - year: '2007'
+                      count: 123124
+                    - year: '2006'
+                      count: 111230
+                    - year: '2005'
+                      count: 103675
+                    - year: rest
+                      count: 761345
+                  - journal:
+                      name: ALL OTHERS (98798)
+                      citedJournals: 252
+                    citing:
+                    - year: all
+                      count: 98798
+                    - year: '2014'
+                      count: 1512
+                    - year: '2013'
+                      count: 6979
+                    - year: '2012'
+                      count: 8765
+                    - year: '2011'
+                      count: 8622
+                    - year: '2010'
+                      count: 8318
+                    - year: '2009'
+                      count: 7391
+                    - year: '2008'
+                      count: 6605
+                    - year: '2007'
+                      count: 6022
+                    - year: '2006'
+                      count: 5269
+                    - year: '2005'
+                      count: 5011
+                    - year: rest
+                      count: 34304
+                  - journal:
+                      name: PLoS One
+                      self: /journals/PLOS_ONE
+                      citedJournals: 248
+                    citing:
+                    - year: all
+                      count: 90348
+                    - year: '2014'
+                      count: 1223
+                    - year: '2013'
+                      count: 5514
+                    - year: '2012'
+                      count: 7198
+                    - year: '2011'
+                      count: 7147
+                    - year: '2010'
+                      count: 6751
+                    - year: '2009'
+                      count: 6368
+                    - year: '2008'
+                      count: 5775
+                    - year: '2007'
+                      count: 5729
+                    - year: '2006'
+                      count: 5192
+                    - year: '2005'
+                      count: 4769
+                    - year: rest
+                      count: 34682
+      operationId: getCategoriesByIdCitedYearByYear
+      x-operation-id-source: derived
+  /categories/{id}/citing/year/{year}:
+    get:
+      tags:
+      - Categories
+      summary: Get journals that were cited by all journals from the category for the JCR year
+      description: 'Category Citing data contains:
+
+
+        - Cited **Journal** with the link to WoS Journal API entity.
+
+        Cited journals are sorted in descending order. At the top is the journal with the largest number of citations to the subject category.
+
+        - **Citing journals**: The number of journals in the subject category.
+
+        - **Cited year (all)**: The total number of citations to the citing journal. This total includes the number shown under each year and the number in the "Rest".
+
+        - **Cited Year (10-year interval)**: The publication year of the cited articles.
+
+        - **Cited Year (rest)**: All publication years of cited articles prior to the ten-year period defined. For example, if the cited years are 2013-2004, the Rest number will show the number of citations from the citing journal in 2012 to articles published in 2003 and earlier in journals in the subject category.
+
+
+        Numbers in the "All Journals" are sums of the numbers for each year. "All others" refers to citing journals not listed by name.
+
+
+        For detailed information, please visit this page'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Category ID
+        example: RU_SCIE
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        description: JCR Year (from 2003)
+        example: 2014
+        schema:
+          type: integer
+          format: int32
+      - name: page
+        in: query
+        required: false
+        description: Specifying a page to retrieve
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        description: Number of returned results, ranging from 1 to 50
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesCiting'
+                example:
+                  metadata:
+                    total: 12444
+                    page: 1
+                    limit: 3
+                  hits:
+                  - journal:
+                      name: ALL
+                    cited:
+                    - year: all
+                      count: 2185712
+                    - year: '2014'
+                      count: 35156
+                    - year: '2013'
+                      count: 140694
+                    - year: '2012'
+                      count: 173001
+                    - year: '2011'
+                      count: 163869
+                    - year: '2010'
+                      count: 152487
+                    - year: '2009'
+                      count: 143292
+                    - year: '2008'
+                      count: 131515
+                    - year: '2007'
+                      count: 123498
+                    - year: '2006'
+                      count: 111806
+                    - year: '2005'
+                      count: 103837
+                    - year: rest
+                      count: 906557
+                  - journal:
+                      name: ALL OTHERS (185533)
+                      citingJournals: 251
+                    cited:
+                    - year: all
+                      count: 185533
+                    - year: '2014'
+                      count: 3737
+                    - year: '2013'
+                      count: 13047
+                    - year: '2012'
+                      count: 15306
+                    - year: '2011'
+                      count: 13431
+                    - year: '2010'
+                      count: 12141
+                    - year: '2009'
+                      count: 10607
+                    - year: '2008'
+                      count: 9585
+                    - year: '2007'
+                      count: 8707
+                    - year: '2006'
+                      count: 7826
+                    - year: '2005'
+                      count: 7299
+                    - year: rest
+                      count: 83847
+                  - journal:
+                      name: JOURNAL OF NEUROSCIENCE
+                      self: /journals/J_NEUROSCI
+                      citingJournals: 245
+                    cited:
+                    - year: all
+                      count: 97938
+                    - year: '2014'
+                      count: 1087
+                    - year: '2013'
+                      count: 5708
+                    - year: '2012'
+                      count: 7035
+                    - year: '2011'
+                      count: 8360
+                    - year: '2010'
+                      count: 7468
+                    - year: '2009'
+                      count: 7294
+                    - year: '2008'
+                      count: 6511
+                    - year: '2007'
+                      count: 6590
+                    - year: '2006'
+                      count: 5809
+                    - year: '2005'
+                      count: 5158
+                    - year: rest
+                      count: 36918
+      operationId: getCategoriesByIdCitingYearByYear
+      x-operation-id-source: derived
+components:
+  schemas:
+    Frequency:
+      type: object
+      description: Number of journals in the category according to the number of times per year published
+      properties:
+        annual:
+          type: integer
+          format: int32
+        hemiannual:
+          type: integer
+          format: int32
+        triannual:
+          type: integer
+          format: int32
+        semiannual:
+          type: integer
+          format: int32
+        quarterly:
+          type: integer
+          format: int32
+        bimonthly:
+          type: integer
+          format: int32
+        monthly:
+          type: integer
+          format: int32
+        biweekly:
+          type: integer
+          format: int32
+        weekly:
+          type: integer
+          format: int32
+        daily:
+          type: integer
+          format: int32
+        irregular:
+          type: integer
+          format: int32
+    CategoryReportsSourceData:
+      type: object
+      description: Aggregate Source Data counting the number of citable items and the number of cited references in each type of item.
+      properties:
+        articles:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total count of articles
+              format: int32
+            references:
+              type: integer
+              description: Total count of article references
+              format: int32
+        reviews:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total count of reviews
+              format: int32
+            references:
+              type: integer
+              description: Total count of review references
+              format: int32
+        other:
+          type: object
+          properties:
+            count:
+              type: integer
+              format: int32
+            references:
+              type: integer
+              format: int32
+    Jif:
+      type: object
+      properties:
+        median:
+          type: number
+          format: double
+        aggregate:
+          type: object
+          properties:
+            count:
+              type: string
+            citesYearAgo:
+              type: integer
+              format: int32
+            citesTwoYearsAgo:
+              type: integer
+              format: int32
+            publishedYearAgo:
+              type: integer
+              format: int32
+            publishedTwoYearsAgo:
+              type: integer
+              format: int32
+    Metadata:
+      type: object
+      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.
+      properties:
+        total:
+          type: integer
+          format: int32
+          description: Total number of records for the request.
+        page:
+          type: integer
+          format: int32
+          description: Page number (default is 1)
+        limit:
+          type: integer
+          format: int32
+          description: Number of records on a page (default is 10).
+    CitedData:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Link to the Cited endpoint for the JCR year.
+        count:
+          type: integer
+          format: int32
+          description: Number of cited journals
+    CategoryRecord:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Category unique identifier
+        name:
+          type: string
+          description: Category name
+        edition:
+          type: string
+          description: Category edition
+        categoryCode:
+          type: string
+          description: Two-letter category code
+        description:
+          type: string
+          description: Detailed information about a category
+        categoryCitationReports:
+          $ref: '#/components/schemas/CategoryCitationReports'
+    CategoryListRecord:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Category unique identifier
+        self:
+          type: string
+          description: Link to the category entity
+        matches:
+          type: array
+          description: Search string matches across category names
+          items:
+            $ref: '#/components/schemas/SearchMatch'
+        name:
+          type: string
+          description: Category name
+        edition:
+          type: string
+          description: Category edition (SCIE/SSCI)
+        categoryCitationReports:
+          $ref: '#/components/schemas/CategoryCitationReports'
+    CategoryCitationReports:
+      type: array
+      items:
+        type: object
+        description: List of reports available by JCR year
+        properties:
+          url:
+            type: string
+          year:
+            type: integer
+            format: int32
+    Cites:
+      type: array
+      items:
+        type: object
+        properties:
+          year:
+            type: string
+          count:
+            type: integer
+            format: int32
+    HalfLife:
+      type: object
+      properties:
+        cited:
+          type: number
+          format: double
+        citing:
+          type: number
+          format: double
+    CategoryReports:
+      type: object
+      required:
+      - year
+      properties:
+        year:
+          type: integer
+          format: int32
+        journals:
+          type: object
+          properties:
+            count:
+              type: integer
+              format: int32
+            url:
+              type: string
+        articles:
+          type: integer
+          format: int32
+        cites:
+          type: integer
+          format: int32
+        jif:
+          $ref: '#/components/schemas/Jif'
+        immediacy:
+          $ref: '#/components/schemas/Immediacy'
+        halfLife:
+          $ref: '#/components/schemas/HalfLife'
+        frequency:
+          $ref: '#/components/schemas/Frequency'
+        sourceData:
+          $ref: '#/components/schemas/CategoryReportsSourceData'
+        categoryData:
+          $ref: '#/components/schemas/CategoryData'
+    SearchMatch:
+      type: object
+      description: Displays the field and value matched to the search string
+      properties:
+        field:
+          type: string
+          description: Name of the matched field
+        value:
+          description: Array of matched values (if several) with the HTML highligthing
+          type: array
+          items:
+            type: string
+    CategoriesCiting:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            type: object
+            properties:
+              journal:
+                type: object
+                properties:
+                  self:
+                    type: string
+                  name:
+                    type: string
+                  citingJournals:
+                    type: integer
+                    format: int32
+              cited:
+                $ref: '#/components/schemas/Cites'
+    CategoryData:
+      type: object
+      properties:
+        cited:
+          $ref: '#/components/schemas/CitedData'
+        citing:
+          $ref: '#/components/schemas/CitingData'
+    Immediacy:
+      type: object
+      properties:
+        count:
+          type: number
+          format: double
+        citesCurrentYear:
+          type: integer
+          format: int32
+        publishedCurrentYear:
+          type: integer
+          format: int32
+    CitingData:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Link to the Citing endpoint for the JCR year.
+        count:
+          type: integer
+          format: int32
+          description: Number of citing journals
+    CategoriesCited:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            type: object
+            properties:
+              journal:
+                type: object
+                properties:
+                  self:
+                    type: string
+                  name:
+                    type: string
+                  citedJournals:
+                    type: integer
+                    format: int32
+              citing:
+                $ref: '#/components/schemas/Cites'
+    CategoryList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          description: List of retrieved categories
+          items:
+            $ref: '#/components/schemas/CategoryListRecord'
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

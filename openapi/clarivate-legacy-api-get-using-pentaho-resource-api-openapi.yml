@@ -1,0 +1,75 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: 'Converis Legacy Legacy API: get using pentaho resource API'
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/legacyapi
+tags:
+- name: 'Legacy API: get using pentaho resource'
+  description: ''
+paths:
+  /public/pentaho/auth:
+    post:
+      summary: Authenticate with Pentaho
+      operationId: authenticateWithPentaho
+      tags:
+      - 'Legacy API: get using pentaho resource'
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '201':
+          description: Successful authentication.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.
+  /public/pentaho/embeddedreport/{key}:
+    get:
+      summary: Retrieve embedded report information
+      operationId: getEmbeddedReportInfo
+      tags:
+      - 'Legacy API: get using pentaho resource'
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The key to identify the embedded report.
+      responses:
+        '200':
+          description: Successful retrieval of embedded report information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reportPath:
+                    type: string
+                    description: The path to the embedded report.
+                  queryParams:
+                    type: object
+                    description: Query parameters for the embedded report.
+                    additionalProperties:
+                      type: string
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.

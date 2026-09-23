@@ -1,0 +1,32 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: 'Converis Legacy Legacy API: get legacy api version API'
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/legacyapi
+tags:
+- name: 'Legacy API: get legacy api version'
+  description: Gets the version of Legacy API
+paths:
+  /public/getversion:
+    get:
+      summary: Retrieve the version of the public API
+      operationId: getPublicApiVersion
+      tags:
+      - 'Legacy API: get legacy api version'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.

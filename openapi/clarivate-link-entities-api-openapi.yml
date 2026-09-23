@@ -1,0 +1,229 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Converis CUD Link Entities API
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/cudapi
+tags:
+- name: Link Entities
+  description: REST endpoints for link entities.
+paths:
+  /{version}/dataobject/linkentities:
+    delete:
+      summary: Delete link entities
+      operationId: deleteLinkEntities
+      tags:
+      - Link Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      responses:
+        '200':
+          description: Successful deletion response
+          content:
+            application/json:
+              example:
+                infoResponse:
+                - id: '111'
+                  uuid: 452a0e5a-ca67-42cf-a49c-e6be896f0ff9
+                  responseStatus: DELETED
+                  type: PUBL_has_CARD
+                - id: '222'
+                  uuid: 7dfa5738-6acb-41d2-b8df-37c76e3b2011
+                  responseStatus: DELETED
+                  type: PUBL_has_CARD
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.
+    options:
+      summary: Options for link entities
+      description: This endpoint provides information about the supported actions and request structure for link entities.
+      operationId: optionsLinkEntities
+      tags:
+      - Link Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      responses:
+        '200':
+          description: Options response
+          content:
+            application/json:
+              example:
+                supported_actions:
+                - Create
+                - Update
+                - Delete
+                request_structure:
+                  Create:
+                    HTTP_method: POST
+                    endpoint: https://host:<port>/<converis_app_name>/ws/v2/dataobject/linkentities
+                    description: Send HTTP request using the HTTP method POST to create link entities.
+                  Update:
+                    HTTP_method: PUT
+                    endpoint: https://host:<port>/<converis_app_name>/ws/v2/dataobject/linkentities
+                    description: Send HTTP request using the HTTP method PUT to update link entities.
+                  Delete:
+                    HTTP_method: DELETE
+                    endpoint: https://host:<port>/<converis_app_name>/ws/v2/dataobject/linkentities
+                    description: Send HTTP request using the HTTP method DELETE to delete link entities.
+    post:
+      summary: Create new data entities
+      operationId: createLinkEntities
+      tags:
+      - Link Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      idLeft:
+                        type: string
+                      idRight:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                          - name
+                          - value
+                    required:
+                    - idLeft
+                    - idRight
+                    - type
+                    - attributes
+              required:
+              - entities
+      responses:
+        '200':
+          description: Successful creation response
+          content:
+            application/json:
+              example:
+                infoResponse:
+                - id: '555'
+                  uuid: 452a0e5a-ca67-42cf-a49c-e6be896f0ff9
+                  type: PERS_has_CARD
+                  responseStatus: CREATED
+                - id: '666'
+                  uuid: 7dfa5738-6acb-41d2-b8df-37c76e3b2011
+                  type: PERS_has_CARD
+                  responseStatus: CREATED
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.
+    put:
+      summary: Update existing data entities
+      operationId: updateLinkEntities
+      tags:
+      - Link Entities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+        description: API version. Currently supports 'v2'.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                          - name
+                          - value
+                    required:
+                    - id
+                    - attributes
+              required:
+              - entities
+      responses:
+        '200':
+          description: Successful update response
+          content:
+            application/json:
+              example:
+                infoResponse:
+                - id: '111'
+                  uuid: 452a0e5a-ca67-42cf-a49c-e6be896f0ff9
+                  responseStatus: UPDATED
+                  type: PUBL_has_CARD
+                - id: '222'
+                  uuid: 7dfa5738-6acb-41d2-b8df-37c76e3b2011
+                  responseStatus: UPDATED
+                  type: PUBL_has_CARD
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.

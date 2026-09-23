@@ -1,0 +1,52 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: 'Converis Legacy Legacy API: find By Pattern API'
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/legacyapi
+tags:
+- name: 'Legacy API: find By Pattern'
+  description: Retrieves representation of an instance of com.converis.ws.restful.pentaho.publicservice
+paths:
+  /public/infoobject/findsimple/{type}/{attribute}/{pattern}:
+    get:
+      summary: 'Legacy API: find by pattern'
+      operationId: findByPattern
+      tags:
+      - 'Legacy API: find By Pattern'
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Entity name
+      - name: attribute
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Attribute name
+      - name: pattern
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Search term
+      responses:
+        '200':
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: xml
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.

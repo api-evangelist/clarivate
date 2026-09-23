@@ -1,0 +1,108 @@
+openapi: 3.2.0
+info:
+  title: Converis Web Services Data - File API
+  description: This API Specification describes how to read data from Converis in order to use it in other systems.
+  contact:
+    email: converis-info@clarivate.com
+  version: '2.0'
+servers:
+- url: https://api.clarivate.com/converisreadapi
+tags:
+- name: Data File
+  description: Download files
+paths:
+  /data/file/{file_type}/{id}/download:
+    get:
+      tags:
+      - Data File
+      summary: Download the given file
+      description: Get or download the content of a file. If no revision is given, the last on will be choose. The content-type and content-length will be returned in the response header. The default content-type is application/octet-stream.
+      parameters:
+      - name: file_type
+        in: path
+        description: DataentityType of the file object to be downloaded. The DataEntityType must have a "Dms Id"- attribute.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: VersionedFile
+      - name: id
+        in: path
+        description: Dataentity id of the File entitytype.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: ver
+        in: query
+        description: File version number to download. If not specify, the latest version is choosen.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Converis-content-encoding
+        in: header
+        description: Encode the returned content. The content is not encoded by default.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: PLAIN
+          enum:
+          - PLAIN
+          - BASE64
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/octet-stream:
+              schema: {}
+        default:
+          description: Error response 400+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+      security:
+      - BasicAuth: []
+      operationId: getDataFileByFileTypeByIdDownload
+      x-operation-id-source: derived
+components:
+  schemas:
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+  securitySchemes:
+    BasicAuth:
+      type: http
+      description: The authentication information has to be provided by the client application as Basic authentication header. This can be configured by an admin in Converis under Configuration -> API Authentication Info.
+      scheme: basic

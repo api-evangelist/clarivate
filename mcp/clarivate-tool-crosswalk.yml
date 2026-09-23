@@ -44,6 +44,14 @@ surfaces:
         body: '{"message":"No API key found in request"}'
         result: gated
       sdl_captured: false
+  graphql_detail: graphql/clarivate-graphql.yml
+  graphql_note: >-
+    Re-probed 2026-09-05 with nonsense-path CONTROLS. api.clarivate.com returns a
+    1,038-byte Angular SPA shell (HTTP 200) for any unrouted path, so the Kong 401 on
+    /derwent-graphql positively confirms the route. A third candidate,
+    api.clarivate.com/ipdata/graphql, was ruled INCONCLUSIVE: the whole /ipdata/*
+    prefix returns the same 401 for paths that cannot exist. Full evidence in
+    graphql/clarivate-graphql.yml.
   mcp:
     exists: false
     note: See mcp/clarivate-mcp.yml — candidate only, mode none.

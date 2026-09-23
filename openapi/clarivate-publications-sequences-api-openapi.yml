@@ -1,0 +1,516 @@
+openapi: 3.2.0
+info:
+  title: Derwent Sequence Search Publications & Sequences API
+  version: V1@2026-06-09
+  description: OpenAPI Docs & Interactive UI
+  license:
+    name: Commercially Licensed Product
+    url: https://clarivate.com/derwent/solutions/derwent-sequence-base/
+servers:
+- url: https://api.clarivate.com/derwent-sequence-search
+security:
+- key: []
+tags:
+- name: Publications & Sequences
+  description: Publications & Sequences information endpoints
+paths:
+  /patents/{patent_id}:
+    parameters:
+    - name: patent_id
+      in: path
+      schema:
+        type: string
+        default: US20210368750
+      description: Publication Number
+      required: true
+    get:
+      summary: Show patent information for all sources
+      tags:
+      - Publications & Sequences
+      operationId: getPatentInfoFromAllSources
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                    - id: BE885196
+                      type: geneseq
+                      attributes:
+                        patent_id: BE885196
+                        kind: A
+                        patent_number: BE885196A
+                        document_type: Grant patent
+                        family_inpadoc: BE4322499
+                        family_dwpi: BE4322499
+                        publication_date: '1980-12-31'
+                        title: DNA transfer vectors contg. codes for human insulin
+                        assignees:
+                        - UNIV CALIFORNIA
+                        country: United States
+                        n_sequences_count: 0
+                        p_sequences_count: 1
+                        sequences_count: 1
+                        filing_date: '1979-09-12'
+                        earliest_priority_date: '1979-09-12'
+                        inventors:
+                        - Murray K
+                        - Schaller HE
+                        application_doc_number: 2023WO-US070508
+                        application_country: United States
+                      links:
+                        self: http://www.example.com/api/v1/patents/BE885196/geneseq
+                        record_view: http://www.example.com/user/documents/display?db=geneseq&patent_id=BE885196#sequences
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Patent'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              examples:
+                error_not_found:
+                  $ref: '#/components/examples/not_found_error_example'
+                no_route_matches:
+                  $ref: '#/components/examples/no_route_matches_error_example'
+              schema:
+                $ref: '#/components/schemas/errors'
+  /patents/{patent_id}/{db}:
+    parameters:
+    - $ref: '#/components/parameters/databases_with_patent_param'
+    - name: patent_id
+      in: path
+      schema:
+        type: string
+        default: US20210368750
+      description: Publication Number
+      required: true
+    get:
+      summary: Show patent information from a particular source
+      tags:
+      - Publications & Sequences
+      operationId: getPatentInfo
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                      id: BE885196
+                      type: geneseq
+                      attributes:
+                        patent_id: BE885196
+                        kind: A
+                        patent_number: BE885196A
+                        document_type: Grant patent
+                        family_inpadoc: BE4322499
+                        family_dwpi: BE4322499
+                        publication_date: '1980-12-31'
+                        title: DNA transfer vectors contg. codes for human insulin
+                        assignees:
+                        - UNIV CALIFORNIA
+                        country: United States
+                        n_sequences_count: 0
+                        p_sequences_count: 1
+                        sequences_count: 1
+                        filing_date: '1979-09-12'
+                        earliest_priority_date: '1979-09-12'
+                        inventors:
+                        - Murray K
+                        - Schaller HE
+                        application_doc_number: 2023WO-US070508
+                        application_country: United States
+                      links:
+                        self: http://www.example.com/api/v1/patents/BE885196/geneseq
+                        record_view: http://www.example.com/user/documents/display?db=geneseq&patent_id=BE885196#sequences
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Patent'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              examples:
+                error_not_found:
+                  $ref: '#/components/examples/not_found_error_example'
+                no_route_matches:
+                  $ref: '#/components/examples/no_route_matches_error_example'
+              schema:
+                $ref: '#/components/schemas/errors'
+  /sequences/{accession_number}/{db}:
+    parameters:
+    - $ref: '#/components/parameters/databases_param'
+    - name: accession_number
+      in: path
+      schema:
+        type: string
+        default: BKK35688
+      description: Sequence Accession Number
+      required: true
+    get:
+      summary: Show sequence information
+      tags:
+      - Publications & Sequences
+      operationId: getSequenceInfo
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                      id: AAP10010
+                      type: geneseq
+                      attributes:
+                        sequence_key: SBNN00000001
+                        accession_number: AAP10010
+                        organisms:
+                        - Homo sapiens
+                        molecule_type: protein
+                        description: Sequence of preproinsulin.
+                        location: null
+                        psl: Example; Fig 2; 50pp; French.
+                      links:
+                        self: http://www.example.com/api/v1/sequences/AAP10010/geneseq
+                        record_view: http://www.example.com/user/documents/display?accession_number=AAP10010&db=geneseq#sequences
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Sequence'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              examples:
+                error_not_found:
+                  $ref: '#/components/examples/not_found_error_example'
+                no_route_matches:
+                  $ref: '#/components/examples/no_route_matches_error_example'
+              schema:
+                $ref: '#/components/schemas/errors'
+components:
+  schemas:
+    Patent:
+      type: object
+      required:
+      - type
+      - id
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - patent_id
+          - patent_number
+          - n_sequences_count
+          - p_sequences_count
+          - sequences_count
+          properties:
+            patent_id:
+              type: string
+            kind:
+              oneOf:
+              - type: string
+              - type: 'null'
+            patent_number:
+              type: string
+            document_type:
+              oneOf:
+              - type: string
+              - type: 'null'
+            family_inpadoc:
+              oneOf:
+              - type: string
+              - type: 'null'
+            family_dwpi:
+              oneOf:
+              - type: string
+              - type: 'null'
+            publication_date:
+              oneOf:
+              - type: string
+                format: date
+              - type: 'null'
+            title:
+              oneOf:
+              - type: string
+              - type: 'null'
+            assignees:
+              oneOf:
+              - type: array
+                items:
+                  type: string
+              - type: 'null'
+            country:
+              oneOf:
+              - type: string
+              - type: 'null'
+            n_sequences_count:
+              type: integer
+            p_sequences_count:
+              type: integer
+            sequences_count:
+              type: integer
+            filing_date:
+              oneOf:
+              - type: string
+                format: date
+              - type: 'null'
+            earliest_priority_date:
+              oneOf:
+              - type: string
+                format: date
+              - type: 'null'
+            inventors:
+              oneOf:
+              - type: array
+                items:
+                  type: string
+              - type: 'null'
+            application_doc_number:
+              oneOf:
+              - type: string
+              - type: 'null'
+            application_country:
+              oneOf:
+              - type: string
+              - type: 'null'
+            qualifier:
+              oneOf:
+              - type: string
+              - type: 'null'
+            calculated_expiry_date:
+              oneOf:
+              - type: string
+                format: date
+              - type: 'null'
+            lang:
+              oneOf:
+              - type: string
+              - type: 'null'
+        links:
+          $ref: '#/components/schemas/links'
+        meta:
+          $ref: '#/components/schemas/meta'
+      additionalProperties: false
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
+    Sequence:
+      type: object
+      required:
+      - type
+      - id
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - sequence_key
+          - accession_number
+          - organisms
+          - molecule_type
+          properties:
+            sequence_key:
+              type: string
+            accession_number:
+              type: string
+            organisms:
+              type: array
+              items:
+                type: string
+            molecule_type:
+              type: string
+            description:
+              oneOf:
+              - type: string
+              - type: 'null'
+            location:
+              oneOf:
+              - type: string
+              - type: 'null'
+            psl:
+              oneOf:
+              - type: string
+              - type: 'null'
+            entry_date:
+              oneOf:
+              - type: string
+                format: date
+              - type: 'null'
+            division:
+              oneOf:
+              - type: string
+              - type: 'null'
+            modification_date:
+              oneOf:
+              - type: string
+                format: date
+              - type: 'null'
+            keywords:
+              oneOf:
+              - type: array
+                items:
+                  type: string
+              - type: 'null'
+            accessions:
+              oneOf:
+              - type: array
+                items:
+                  type: string
+              - type: 'null'
+            gi:
+              oneOf:
+              - type: string
+              - type: 'null'
+            authors:
+              oneOf:
+              - type: array
+                items:
+                  type: string
+              - type: 'null'
+            title:
+              oneOf:
+              - type: string
+              - type: 'null'
+            country:
+              oneOf:
+              - type: string
+              - type: 'null'
+        links:
+          $ref: '#/components/schemas/links'
+        meta:
+          $ref: '#/components/schemas/meta'
+      additionalProperties: false
+    meta:
+      description: Non-standard meta-information.
+      type: object
+      additionalProperties: true
+    link:
+      description: 'A link **MUST** be represented as either: a string containing the link''s URL or a link object.'
+      oneOf:
+      - description: A string containing the link's URL.
+        type: string
+        format: uri
+      - type: object
+        required:
+        - href
+        properties:
+          href:
+            description: A string containing the link's URL.
+            type: string
+            format: uri
+          meta:
+            $ref: '#/components/schemas/meta'
+    error:
+      type: object
+      properties:
+        status:
+          oneOf:
+          - type: string
+          - type: integer
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+        title:
+          type: string
+        detail:
+          oneOf:
+          - type: string
+          - type: array
+          - type: object
+        pointer:
+          type: string
+    links:
+      description: Each member of a links object is a “link”
+      type: object
+      properties:
+        self:
+          description: A `self` member, whose value is a URL for the relationship itself.
+          type: string
+          format: uri
+        related:
+          $ref: '#/components/schemas/link'
+      additionalProperties: true
+  examples:
+    not_found_error_example:
+      value:
+        errors:
+        - status: 404
+          code: 10404
+          detail: The request refers to one or more resources that were not found.
+          pointer: base
+      summary: Not Found Error
+    no_route_matches_error_example:
+      value:
+        errors:
+        - status: 404
+          code: 10404
+          detail: No route matches [GET] "/api/v2/patents/1/geneseq"
+          pointer: base
+      summary: No Route Matches Error
+  parameters:
+    databases_param:
+      in: path
+      name: db
+      schema:
+        type: string
+        enum:
+        - geneseq
+        - wipo
+        - usgene
+        - fastalert
+        - genbank
+        default: geneseq
+      description: Source database
+    databases_with_patent_param:
+      in: path
+      name: db
+      schema:
+        type: string
+        enum:
+        - geneseq
+        - wipo
+        - usgene
+        - fastalert
+        default: geneseq
+      description: Source database
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

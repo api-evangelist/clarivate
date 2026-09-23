@@ -1,0 +1,135 @@
+openapi: 3.2.0
+info:
+  description: This API helps you harvest usage statistics from the Web of Science platform via the NISO SUSHI protocol in accordance with the COUNTER R5 Code of Practice
+  version: 1.0.0
+  title: Web of Science SUSHI COUNTER5 Status API
+  termsOfService: https://clarivate.com/wp-content/uploads/dlm_uploads/2018/12/End-User-Terms.pdf
+  contact:
+    name: Clarivate Customer Support
+    email: https://support.clarivate.com/ScientificandAcademicResearch/s/?language=en_US
+servers:
+- url: https://api.clarivate.com/api/counter/r5
+security:
+- key: []
+tags:
+- name: Status
+paths:
+  /status:
+    get:
+      operationId: getAPIStatus
+      description: This resource returns the current status of the reporting service supported by this API.
+      parameters:
+      - name: api_key
+        in: query
+        description: Developer key parameter, which authenticates you to use the service.
+        required: true
+        schema:
+          type: string
+      - name: customer_id
+        in: query
+        description: Identifies the customer to provide report data for.
+        required: true
+        schema:
+          type: string
+      - name: requestor_id
+        in: query
+        description: Identifies the requester (STeAM User Id) that is asking for report data
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Status of the reporting service(s) supported by this API.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SUSHI_service_status'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SUSHI_error_model'
+      tags:
+      - Status
+      summary: Get API status
+      x-summary-source: derived
+components:
+  schemas:
+    SUSHI_service_status:
+      type: object
+      required:
+      - Service_Active
+      properties:
+        Description:
+          type: string
+          description: Description of the service.
+          example: COUNTER Usage Reports for Web of Science platform.
+        Service_Active:
+          type: boolean
+          description: Indicator if the service is currently able to deliver reports.
+          example: true
+        Registry_URL:
+          type: string
+          description: If available, the URL separate registry with additional information about the service.
+          example: https://www.projectcounter.org/counter-user/ebsco-database/
+        Note:
+          type: string
+          description: A general note about the service.
+          example: A given customer can request a maximum of 5 requests per day for a given report
+        Alerts:
+          type: array
+          description: Any alerts related to service interruptions and status.
+          items:
+            type: object
+            properties:
+              Date_Time:
+                type: string
+                format: dateTime
+                description: Date-time of the alert.
+                example: '2016-08-02: 12:54'
+              Alert:
+                type: string
+                description: Text of the alert.
+                example: Service will be unavailable Sunday midnight...
+    SUSHI_error_model:
+      type: object
+      description: Generalized format for presenting errors and exceptions.
+      required:
+      - Code
+      - Severity
+      - Message
+      properties:
+        Code:
+          type: integer
+          format: int32
+          description: Error number. See table of error.
+          example: 3040
+        Severity:
+          type: string
+          description: Severity of the error.
+          example: Warning
+          enum:
+          - Warning
+          - Error
+          - Fatal
+          - Debug
+          - Info
+        Message:
+          type: string
+          description: Text describing the error.
+          example: Partial Data Returned.
+        Help_URL:
+          type: string
+          description: URL describing error details.
+        Data:
+          type: string
+          description: Additional data provided by the server to clarify the error.
+          example: Usage data has not been processed for all requested months.
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

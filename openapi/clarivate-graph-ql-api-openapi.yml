@@ -1,0 +1,50 @@
+openapi: 3.2.0
+info:
+  description: This graphQL API provides a single access point to query various Clarivate content sets from multiple domains.
+  version: 1.0.0
+  title: LSH Data Product Search & Retrieve Graphql API
+servers:
+- url: https://api.clarivate.com/ric/searchretrieve/v1/
+security:
+- key: []
+tags:
+- name: Graph QL
+paths:
+  /graphql:
+    post:
+      summary: GraphQL
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphQLQuery'
+        description: GraphQL query
+        required: true
+      tags:
+      - Graph QL
+      operationId: postGraphql
+      x-operation-id-source: derived
+components:
+  schemas:
+    GraphQLQuery:
+      type: object
+      properties:
+        query:
+          type: string
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type: object
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

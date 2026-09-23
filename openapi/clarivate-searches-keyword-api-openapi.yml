@@ -1,0 +1,594 @@
+openapi: 3.2.0
+info:
+  title: Derwent Sequence Search Searches (Keyword) API
+  version: V1@2026-06-09
+  description: OpenAPI Docs & Interactive UI
+  license:
+    name: Commercially Licensed Product
+    url: https://clarivate.com/derwent/solutions/derwent-sequence-base/
+servers:
+- url: https://api.clarivate.com/derwent-sequence-search
+security:
+- key: []
+tags:
+- name: Searches (Keyword)
+paths:
+  /reports/{report_id}/searches/keyword:
+    parameters:
+    - name: report_id
+      in: path
+      description: Report ID
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Create Keyword (FTS) search
+      tags:
+      - Searches (Keyword)
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              examples:
+                created:
+                  value:
+                    data:
+                    - id: '59'
+                      type: search
+                      attributes:
+                        id: 59
+                        program: keyword
+                        title: Keyword search
+                        status: queued
+                        completion: 0
+                        search_results_count: 0
+                        redundant_search_results_count: 0
+                        created_at: '2026-06-09T06:50:50Z'
+                        started_at: null
+                        completed_at: null
+                  summary: Successful keyword search creation
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Search'
+                required:
+                - data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchCreateParams'
+            examples:
+              keyword_search:
+                summary: Keyword Search
+                value:
+                  search:
+                    title: Keyword search
+                    query: ALL=(Homo sapiens)
+                    databases:
+                    - usgene_patents
+                    query_builder:
+                      patents:
+                        '0':
+                          keyword: ALL
+                          boolean_operator: AND
+                          value: Homo sapiens
+                          position: '0'
+        required: true
+      operationId: postReportsByReportIdSearchesKeyword
+      x-operation-id-source: derived
+components:
+  schemas:
+    SearchAttributes:
+      type: object
+      required:
+      - id
+      - program
+      - title
+      - status
+      - completion
+      - search_results_count
+      - redundant_search_results_count
+      - created_at
+      properties:
+        id:
+          type: integer
+        program:
+          type: string
+        title:
+          type: string
+        status:
+          type: string
+        completion:
+          type: integer
+        search_results_count:
+          type: integer
+        redundant_search_results_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        started_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        completed_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+    SearchCreateSingleQueryParams:
+      type: object
+      required:
+      - search
+      properties:
+        search:
+          type: object
+          required:
+          - program
+          - query
+          properties:
+            title:
+              type: string
+              maxLength: 255
+              description: Search title
+            program:
+              type: string
+              enum:
+              - blastn
+              - blastp
+              - blastx
+              - tblastn
+              - tblastx
+              - swn
+              - swp
+              - cdrn
+              - cdrp
+              - motifn
+              - motifp
+              - bestseqn
+              - bestseqp
+              - keyword
+              - modification
+              - modificationn
+              - modificationp
+              example: blastn
+              description: Search algorithm
+            databases:
+              type: array
+              items:
+                type: string
+                enum:
+                - usgene_patents
+                - usgene_applications
+                - geneseq
+                - fastalert
+                - wogene
+                - genbank
+                - genbank_pat
+              description: Convenience shorthand for enabling specific databases (maps to search_options)
+            exclude_geneseq_from:
+              type: array
+              items:
+                type: string
+                enum:
+                - usgene
+                - wogene
+              description: Exclude GeneSeq documents from specified databases
+            search_options:
+              type: object
+              description: Search-level options (thresholds, database toggles, date filters, etc.)
+              properties:
+                query_coverage_threshold:
+                  type: number
+                  description: Minimum query coverage (%)
+                identities_percent_threshold:
+                  type: number
+                  description: Minimum identity (%)
+                auto_params_for_short_sequences:
+                  type: boolean
+                  description: Auto-tune parameters for short sequences (blastn/blastp)
+                search_usgene_patents:
+                  type: boolean
+                search_usgene_applications:
+                  type: boolean
+                search_geneseq:
+                  type: boolean
+                search_fastalert:
+                  type: boolean
+                search_wipo:
+                  type: boolean
+                search_genbank:
+                  type: boolean
+                search_genbank_pat:
+                  type: boolean
+                exclude_geneseq_documents_from_usgene:
+                  type: boolean
+                exclude_geneseq_documents_from_wipo:
+                  type: boolean
+                exclude_mega_patents:
+                  type: boolean
+                exclude_non_published_applications:
+                  type: boolean
+                patent_priority_date_from:
+                  type: string
+                  description: Filter by patent priority date (start)
+                patent_priority_date_to:
+                  type: string
+                  description: Filter by patent priority date (end)
+                patent_application_date_from:
+                  type: string
+                  description: Filter by patent application date (start)
+                patent_application_date_to:
+                  type: string
+                  description: Filter by patent application date (end)
+                patent_publication_date_from:
+                  type: string
+                  description: Filter by patent publication date (start)
+                patent_publication_date_to:
+                  type: string
+                  description: Filter by patent publication date (end)
+                cdr_mismatches:
+                  type: array
+                  items:
+                    type: integer
+                  description: Mismatch counts allowed per CDR region (heavy/light chains)
+                heavy_chain_identity:
+                  type: number
+                  description: Heavy chain identity threshold (%)
+                light_chain_identity:
+                  type: number
+                  description: Light chain identity threshold (%)
+                individual_identities:
+                  type: boolean
+                  description: Whether to evaluate individual identities (MSS)
+                individual_coverage:
+                  type: boolean
+                  description: Whether to evaluate individual query coverages (MSS)
+            program_options:
+              type: object
+              description: Program-specific options (varies by program). Common options include evalue, gapopen, gapextend, max_target_seqs, word_size, strand, matrix, etc.
+              properties:
+                evalue:
+                  type: number
+                  description: Expectation value threshold (BLAST programs)
+                gapopen:
+                  type: integer
+                  description: Gap opening penalty (BLAST programs)
+                gapextend:
+                  type: integer
+                  description: Gap extension penalty (BLAST programs)
+                max_target_seqs:
+                  type: integer
+                  minimum: 1
+                  description: Max target sequences (BLAST programs)
+                word_size:
+                  type: integer
+                  description: Word size for initial match
+                strand:
+                  type: string
+                  enum:
+                  - both
+                  - minus
+                  - plus
+                  description: Query strand (nucleotide programs)
+                matrix:
+                  type: string
+                  description: 'Scoring matrix (protein programs: PAM30, PAM70, BLOSUM45, BLOSUM62, BLOSUM80)'
+                task:
+                  type: string
+                  description: BLAST sub-task (e.g. blastn, megablast)
+                subject_length_min:
+                  type: integer
+                  minimum: 1
+                  maximum: 100000
+                  description: Minimum subject length
+                subject_length_max:
+                  type: integer
+                  minimum: 1
+                  maximum: 100000
+                  description: Maximum subject length
+                ungapped:
+                  type: boolean
+                  description: Perform ungapped alignment (BLAST programs)
+                mat:
+                  type: string
+                  description: 'Scoring matrix (SW programs: DNA, NUC.4.4)'
+                gapo:
+                  type: integer
+                  description: Gap opening penalty (SW programs)
+                gape:
+                  type: integer
+                  description: Gap extension penalty (SW programs)
+                min_score:
+                  type: integer
+                  minimum: 1
+                  description: Minimum alignment score (SW programs)
+                topscore_num:
+                  type: integer
+                  minimum: 1
+                  description: Number of top scoring sequences (SW programs)
+                reverse:
+                  type: boolean
+                  description: Search reverse complement (SW nucleotide)
+                sequences_type:
+                  type: string
+                  enum:
+                  - protein
+                  - nucleotide
+                  description: Sequences type for keyword/FTS search
+                max_documents_per_source:
+                  type: integer
+                  description: FTS limit on documents per database source
+            query_builder:
+              type: object
+              description: Advanced query builder filters for refining search scope
+            seqmod_query_builder:
+              type: object
+              description: Sequence modification query builder configuration (type, position, name)
+            monitor_options:
+              type: object
+              description: Search monitoring configuration for recurring searches
+            query:
+              type: string
+              example: CGCGGTCGGGTCGTG
+              description: Single sequence query string
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Search.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - search
+        attributes:
+          $ref: '#/components/schemas/SearchAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    SearchCreateMultiSequenceParams:
+      type: object
+      required:
+      - search
+      properties:
+        search:
+          type: object
+          required:
+          - program
+          - queries
+          - mss
+          properties:
+            title:
+              type: string
+              maxLength: 255
+              description: Search title
+            program:
+              type: string
+              enum:
+              - blastn
+              - blastp
+              - blastx
+              - tblastn
+              - tblastx
+              - swn
+              - swp
+              - cdrn
+              - cdrp
+              - motifn
+              - motifp
+              - bestseqn
+              - bestseqp
+              - keyword
+              - modification
+              - modificationn
+              - modificationp
+              example: blastn
+              description: Search algorithm
+            databases:
+              type: array
+              items:
+                type: string
+                enum:
+                - usgene_patents
+                - usgene_applications
+                - geneseq
+                - fastalert
+                - wogene
+                - genbank
+                - genbank_pat
+              description: Convenience shorthand for enabling specific databases (maps to search_options)
+            exclude_geneseq_from:
+              type: array
+              items:
+                type: string
+                enum:
+                - usgene
+                - wogene
+              description: Exclude GeneSeq documents from specified databases
+            search_options:
+              type: object
+              description: Search-level options (thresholds, database toggles, date filters, etc.)
+              properties:
+                query_coverage_threshold:
+                  type: number
+                  description: Minimum query coverage (%)
+                identities_percent_threshold:
+                  type: number
+                  description: Minimum identity (%)
+                auto_params_for_short_sequences:
+                  type: boolean
+                  description: Auto-tune parameters for short sequences (blastn/blastp)
+                search_usgene_patents:
+                  type: boolean
+                search_usgene_applications:
+                  type: boolean
+                search_geneseq:
+                  type: boolean
+                search_fastalert:
+                  type: boolean
+                search_wipo:
+                  type: boolean
+                search_genbank:
+                  type: boolean
+                search_genbank_pat:
+                  type: boolean
+                exclude_geneseq_documents_from_usgene:
+                  type: boolean
+                exclude_geneseq_documents_from_wipo:
+                  type: boolean
+                exclude_mega_patents:
+                  type: boolean
+                exclude_non_published_applications:
+                  type: boolean
+                patent_priority_date_from:
+                  type: string
+                  description: Filter by patent priority date (start)
+                patent_priority_date_to:
+                  type: string
+                  description: Filter by patent priority date (end)
+                patent_application_date_from:
+                  type: string
+                  description: Filter by patent application date (start)
+                patent_application_date_to:
+                  type: string
+                  description: Filter by patent application date (end)
+                patent_publication_date_from:
+                  type: string
+                  description: Filter by patent publication date (start)
+                patent_publication_date_to:
+                  type: string
+                  description: Filter by patent publication date (end)
+                cdr_mismatches:
+                  type: array
+                  items:
+                    type: integer
+                  description: Mismatch counts allowed per CDR region (heavy/light chains)
+                heavy_chain_identity:
+                  type: number
+                  description: Heavy chain identity threshold (%)
+                light_chain_identity:
+                  type: number
+                  description: Light chain identity threshold (%)
+                individual_identities:
+                  type: boolean
+                  description: Whether to evaluate individual identities (MSS)
+                individual_coverage:
+                  type: boolean
+                  description: Whether to evaluate individual query coverages (MSS)
+            program_options:
+              type: object
+              description: Program-specific options (varies by program). Common options include evalue, gapopen, gapextend, max_target_seqs, word_size, strand, matrix, etc.
+              properties:
+                evalue:
+                  type: number
+                  description: Expectation value threshold (BLAST programs)
+                gapopen:
+                  type: integer
+                  description: Gap opening penalty (BLAST programs)
+                gapextend:
+                  type: integer
+                  description: Gap extension penalty (BLAST programs)
+                max_target_seqs:
+                  type: integer
+                  minimum: 1
+                  description: Max target sequences (BLAST programs)
+                word_size:
+                  type: integer
+                  description: Word size for initial match
+                strand:
+                  type: string
+                  enum:
+                  - both
+                  - minus
+                  - plus
+                  description: Query strand (nucleotide programs)
+                matrix:
+                  type: string
+                  description: 'Scoring matrix (protein programs: PAM30, PAM70, BLOSUM45, BLOSUM62, BLOSUM80)'
+                task:
+                  type: string
+                  description: BLAST sub-task (e.g. blastn, megablast)
+                subject_length_min:
+                  type: integer
+                  minimum: 1
+                  maximum: 100000
+                  description: Minimum subject length
+                subject_length_max:
+                  type: integer
+                  minimum: 1
+                  maximum: 100000
+                  description: Maximum subject length
+                ungapped:
+                  type: boolean
+                  description: Perform ungapped alignment (BLAST programs)
+                mat:
+                  type: string
+                  description: 'Scoring matrix (SW programs: DNA, NUC.4.4)'
+                gapo:
+                  type: integer
+                  description: Gap opening penalty (SW programs)
+                gape:
+                  type: integer
+                  description: Gap extension penalty (SW programs)
+                min_score:
+                  type: integer
+                  minimum: 1
+                  description: Minimum alignment score (SW programs)
+                topscore_num:
+                  type: integer
+                  minimum: 1
+                  description: Number of top scoring sequences (SW programs)
+                reverse:
+                  type: boolean
+                  description: Search reverse complement (SW nucleotide)
+                sequences_type:
+                  type: string
+                  enum:
+                  - protein
+                  - nucleotide
+                  description: Sequences type for keyword/FTS search
+                max_documents_per_source:
+                  type: integer
+                  description: FTS limit on documents per database source
+            query_builder:
+              type: object
+              description: Advanced query builder filters for refining search scope
+            seqmod_query_builder:
+              type: object
+              description: Sequence modification query builder configuration (type, position, name)
+            monitor_options:
+              type: object
+              description: Search monitoring configuration for recurring searches
+            queries:
+              type: array
+              items:
+                type: string
+              minItems: 1
+              description: Multiple sequence queries in FASTA format
+            mss:
+              type: boolean
+              enum:
+              - true
+              description: Must be true for multi-sequence search mode
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

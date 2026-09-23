@@ -1,0 +1,88 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Converis Additional Version API
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/converisadditionalapi
+tags:
+- name: Version
+  description: Get Converis and component versions.
+paths:
+  /version:
+    get:
+      summary: Get Converis version
+      description: Converis version response.
+      operationId: getConverisVersion
+      tags:
+      - Version
+      responses:
+        '200':
+          description: Converis version retrieved successfully
+          content:
+            application/json:
+              example:
+                Converis:
+                  vendor: Clarivate
+                  version: converis-version
+  /version/{component}:
+    get:
+      summary: Get version of a specific component
+      description: All components versions response.
+      operationId: getComponentVersion
+      tags:
+      - Version
+      parameters:
+      - name: component
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Component version retrieved successfully
+          content:
+            application/json:
+              example:
+                Java:
+                  vendor: java-vendor
+                  version: java-version
+                Operating System:
+                  vendor: OS Vendor
+                  version: os-version
+                WebServer:
+                  vendor: webserver-vendor
+                  version: webserver-version
+                AppServer:
+                  vendor: WildFly Full
+                  version: appserver-version
+                Database:
+                  vendor: PostgreSQL
+                  version: db-version
+                Apache Kafka API:
+                  vendor: unknown
+                  version: kafka-version
+                Pentaho Data Integration & CRA:
+                  vendor: Pentaho
+                  version: pentaho-version
+                Converis:
+                  vendor: Clarivate
+                  version: converis-version
+                Converis Search:
+                  vendor: Clarivate
+                  version: converis-version
+                Apache Chemistry:
+                  vendor: chemistry-vendor
+                  version: chemistry-version
+                Incites Metrics Updater:
+                  vendor: Clarivate
+                  version: incites-version
+                Research-Professional Integrator:
+                  vendor: Clarivate
+                  version: rp-version
+                Automatic Publication Importer:
+                  vendor: Clarivate
+                  version: autopub-version
+                Converis Author Finder:
+                  vendor: Clarivate
+                  version: author-version

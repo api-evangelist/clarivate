@@ -1,0 +1,119 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Direct anonymous POST introspection against every GraphQL endpoint Clarivate's own
+  contracts and developer portal name — https://api.clarivate.com/ric/searchretrieve/v1/graphql
+  (declared in openapi/clarivate-ric-searchretrieve-api-openapi.json),
+  https://api.clarivate.com/derwent-graphql (declared on
+  https://developer.clarivate.com/apis/ipdata-di-graphql-api) and the conventional
+  https://api.clarivate.com/graphql — each with the body
+  {"query":"{__schema{queryType{name}}}"}, on 2026-09-05. Every probe was paired with a
+  nonsense-path CONTROL on the same host and prefix.
+description: >-
+  Clarivate operates GraphQL but publishes no SDL. Both named endpoints are API-key
+  gated at the Kong gateway and anonymous introspection is refused, so NO schema is
+  captured here and none is guessed. What the control probes add over a bare 401 is
+  discrimination: api.clarivate.com answers HTTP 200 with a 1,038-byte Angular SPA shell
+  for any path it does not route, so a route that answers 401 with Kong's JSON
+  "No API key found in request" is DEMONSTRABLY REGISTERED on the gateway rather than
+  merely plausible. /derwent-graphql passes that test. The /ipdata/* prefix does not —
+  it answers the same 401 "Unauthorized" for a path that cannot exist, so a GraphQL
+  route under it can be neither confirmed nor denied. One of the two confirmed surfaces
+  is already deprecated. Net effect for a consumer: Clarivate's GraphQL is real,
+  entitlement-gated, undocumented as a schema, and contributes nothing machine-readable
+  to the estate's contract surface.
+sdl_captured: false
+sdl_reason: anonymous-introspection-gated
+endpoints:
+  - name: LSH Data Product Search & Retrieve API (GraphQL)
+    endpoint: https://api.clarivate.com/ric/searchretrieve/v1/graphql
+    declared_in: openapi/clarivate-ric-searchretrieve-api-openapi.json
+    portal: https://developer.clarivate.com/apis/ric-searchretrieve-api
+    state: live
+    description: >-
+      "This graphQL API provides a single access point to query various Clarivate
+      content sets from multiple domains." — the spec's own summary.
+    introspection:
+      attempted: '2026-09-05'
+      method: POST {"query":"{__schema{queryType{name}}}"}
+      status: 401
+      body: '{"message":"No API key found in request"}'
+      result: gated
+      gateway: kong
+    route_confirmed: true
+    route_evidence: >-
+      Declared as a path in Clarivate's own published OpenAPI contract, and the host
+      answers a routed 401 rather than the unrouted SPA shell.
+  - name: DI GraphQL API (With Auth)
+    endpoint: https://api.clarivate.com/derwent-graphql
+    declared_in: https://developer.clarivate.com/apis/ipdata-di-graphql-api
+    portal: https://developer.clarivate.com/apis/ipdata-di-graphql-api
+    state: deprecated
+    description: >-
+      Portal listing reads "Authenticated access to POST /derwent-graphql" and
+      "Derwent related graphql api endpoint (POST method should be secured)", under an
+      "API deprecated — this API can no longer be subscribed to" banner.
+    superseded_by: Intellectual Property (IP) Data API
+    introspection:
+      attempted: '2026-09-05'
+      method: POST {"query":"{__schema{queryType{name}}}"}
+      status: 401
+      body: '{"message":"No API key found in request"}'
+      result: gated
+      gateway: kong
+    route_confirmed: true
+    route_evidence: >-
+      CONTROL: POST https://api.clarivate.com/derwent-zzz-nope on the same host and
+      prefix returned HTTP 200 with the 1,038-byte Angular SPA shell. The routed Kong
+      401 on /derwent-graphql is therefore a positive signal, not a blanket wall.
+  - name: conventional /graphql root
+    endpoint: https://api.clarivate.com/graphql
+    state: absent
+    introspection:
+      attempted: '2026-09-05'
+      status: 404
+      body: '{"message":"No static resource ui/ql."}'
+      result: not-a-graphql-endpoint
+    route_confirmed: false
+  - name: IP Data GraphQL under /ipdata (inconclusive)
+    endpoint: https://api.clarivate.com/ipdata/graphql
+    state: inconclusive
+    introspection:
+      attempted: '2026-09-05'
+      status: 401
+      body: '{"message":"Unauthorized"}'
+      result: gated
+    route_confirmed: false
+    route_evidence: >-
+      CONTROL: POST https://api.clarivate.com/ipdata/zzz-nope-9999 returned the SAME
+      HTTP 401 {"message":"Unauthorized"}. The /ipdata/* prefix wraps every path in an
+      auth wall, so this 401 is NOT evidence a GraphQL route exists. Recorded as
+      inconclusive rather than as a surface.
+controls:
+  - url: https://api.clarivate.com/zzz-nope-9999-graphql
+    status: 200
+    body: angular-spa-shell
+    note: Unrouted paths on api.clarivate.com return a 1,038-byte SPA shell, not a 404.
+  - url: https://api.clarivate.com/derwent-zzz-nope
+    status: 200
+    body: angular-spa-shell
+  - url: https://api.clarivate.com/ipdata/zzz-nope-9999
+    status: 401
+    body: '{"message":"Unauthorized"}'
+    note: Blanket auth wall on this prefix; 401 here carries no routing information.
+gap:
+  finding: >-
+    Two GraphQL endpoints, zero published schemas. Clarivate ships no .graphql SDL, no
+    schema download, and no introspection on an unauthenticated or trial credential, so
+    a prospective integrator cannot see a single field before signing a subscription —
+    and the catalog cannot score the GraphQL surface at all. Publishing the SDL as a
+    static file next to the swagger documents on developer.clarivate.com would cost
+    nothing operationally and would make the surface machine-readable.
+  remedy_owner: provider
+related:
+  - mcp/clarivate-tool-crosswalk.yml
+  - lifecycle/clarivate-lifecycle.yml
+  - openapi/clarivate-ric-searchretrieve-api-openapi.json
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,3292 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: Derwent.support@clarivate.com
+    name: Derwent API
+  description: Derwent APIs provide seamless access to enriched patent data, enabling users to enhance their research capabilities and make faster, more informed decisions.
+  termsOfService: https://clarivate.com/legal-center/terms-of-business/product-service-terms/
+  title: Intellectual Property (IP) Data Derwent API
+  version: 1.0.7
+servers:
+- url: https://api.clarivate.com
+security:
+- key: []
+tags:
+- name: Derwent API
+paths:
+  /ip/patents/derwent/document/images/{document_guid}:
+    get:
+      description: Fetch a list of the images associated with this document, as URLs
+      operationId: derwentGetDocumentImages
+      parameters:
+      - description: Unique document ID
+        in: path
+        name: document_guid
+        required: true
+        schema:
+          type: string
+      - default: 380
+        description: Requested image size in pixels
+        in: query
+        name: size
+        schema:
+          type: integer
+      - default: true
+        description: Return IP API wrapper URLs when true; return direct CLIPS URLs when false
+        in: query
+        name: wrap
+        schema:
+          type: boolean
+      - default: gif
+        description: Image format requested from CLIPS
+        example: gif
+        in: query
+        name: format
+        schema:
+          type: string
+      - default: normal
+        description: 'Image type to retrieve. Supported values: normal, inline'
+        example: inline
+        in: query
+        name: type
+        schema:
+          type: string
+      - default: 0
+        description: Front-page image flag. Use 1 for front-page images.
+        example: 1
+        in: query
+        name: fponly
+        schema:
+          type: integer
+      - description: DWPI image mode. Use 0 for DWPI front page or 1 for all DWPI images.
+        example: 1
+        in: query
+        name: dwpi
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/image_url_list_derwent_api'
+          description: Success
+        '400':
+          content:
+            application/json:
+              examples:
+                invalidImageType:
+                  summary: Invalid image type
+                  value:
+                    code: 2200
+                    error: Invalid image type requested
+              schema:
+                oneOf:
+                - properties:
+                    code:
+                      description: Application error code
+                      type: integer
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - code
+                  - error
+                  type: object
+                - properties:
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - error
+                  type: object
+          description: Invalid image request. Relevant Derwent error codes include 2200 for invalid values.
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              examples:
+                insufficientEntitlements:
+                  summary: Missing Derwent images entitlement
+                  value:
+                    code: 2400
+                    error: Insufficient entitlements to access this resource
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to retrieve images for patents using jwt authentication
+      tags:
+      - Derwent API
+    post:
+      description: Fetch Derwent image URLs for one or more patent IDs or publication numbers, including all-image and inline-image requests.
+      operationId: derwentPostDocumentImages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/derwent_images_request'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/image_url_list_derwent_api'
+          description: Success
+        '400':
+          content:
+            application/json:
+              examples:
+                countOutOfRange:
+                  summary: ids/pn count out of range
+                  value:
+                    error: ids/pn count must be between 1 and 500
+                idsAndPn:
+                  summary: Both ids and pn supplied
+                  value:
+                    error: Provide either ids or pn, not both
+                idsLimitExceeded:
+                  summary: IDs limit exceeded
+                  value:
+                    code: 2300
+                    error: The number of IDs in the request must not exceed {limit}
+                invalidImageType:
+                  summary: Invalid image type
+                  value:
+                    code: 2200
+                    error: Invalid image type requested
+                invalidRequestBody:
+                  summary: Request body is not a JSON object
+                  value:
+                    error: Request body must be a JSON object
+                invalidSize:
+                  summary: Invalid size parameter
+                  value:
+                    error: Invalid size parameter value
+                missingIdsOrPn:
+                  summary: ids or pn required
+                  value:
+                    error: Provide ids or pn
+                missingParams:
+                  summary: Missing params list
+                  value:
+                    error: Missing params list
+                pnsLimitExceeded:
+                  summary: PNs limit exceeded
+                  value:
+                    code: 2300
+                    error: The number of PNs in the request must not exceed {limit}
+              schema:
+                oneOf:
+                - properties:
+                    code:
+                      description: Application error code
+                      type: integer
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - code
+                  - error
+                  type: object
+                - properties:
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - error
+                  type: object
+          description: Invalid image request. Relevant Derwent error codes include 2200 for invalid values and 2300 for request limits.
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              examples:
+                insufficientEntitlements:
+                  summary: Missing Derwent images entitlement
+                  value:
+                    code: 2400
+                    error: Insufficient entitlements to access this resource
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to retrieve images for patents using jwt authentication using POST…
+      tags:
+      - Derwent API
+  /patents/derwent/class-browse:
+    post:
+      description: Request to provide a class lookup service that supports hierarchical classification code lists for a given classification code, e.g., ipc8
+      operationId: derwentClassBrowse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/class_browsing_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  classificationresponse:
+                    properties:
+                      classdescription:
+                        items:
+                          properties:
+                            child_count:
+                              description: Number of child classes
+                              example: 37
+                              type: integer
+                            classes:
+                              description: Classification code
+                              example: A01B
+                              type: string
+                            level:
+                              description: Classification level
+                              example: 3
+                              type: integer
+                            value:
+                              description: Description of the class
+                              example: SOIL WORKING IN AGRICULTURE OR FORESTRY; PARTS, DETAILS, OR ACCESSORIES OF AGRICULTURAL MACHINES OR IMPLEMENTS, IN GENERAL...
+                              type: string
+                          required:
+                          - classes
+                          - level
+                          - child_count
+                          - value
+                          type: object
+                        type: array
+                    type: object
+                  duration:
+                    description: Duration of the operation
+                    example: '17'
+                    type: string
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to perform class browsing service to support…
+      tags:
+      - Derwent API
+  /patents/derwent/class-search:
+    post:
+      description: Request to provide the ability to perform class searching service to support the search of keyword terms to retrieve matching 'classification codes', e.g., ipc8
+      operationId: derwentClassSearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/class_search_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  classificationresponse:
+                    properties:
+                      classdescription:
+                        items:
+                          properties:
+                            child_count:
+                              description: Number of child classes
+                              example: 0
+                              type: integer
+                            classes:
+                              description: Classification code
+                              example: A61K003658
+                              type: string
+                            level:
+                              description: Classification level
+                              example: 0
+                              type: integer
+                            value:
+                              description: Description of the class
+                              example: Meliaceae (Chinaberry or Mahogany family), e.g. Azadirachta (neem)
+                              type: string
+                          required:
+                          - classes
+                          - level
+                          - child_count
+                          - value
+                          type: object
+                        type: array
+                      searched:
+                        description: Number of items searched
+                        example: 0
+                        type: integer
+                      total:
+                        description: Total number of results
+                        example: 2
+                        type: integer
+                    type: object
+                  duration:
+                    description: Duration of the operation
+                    example: '17'
+                    type: string
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to perform class searching service to…
+      tags:
+      - Derwent API
+  /patents/derwent/combined-search:
+    post:
+      description: Request to provide the ability to search a combination of queries
+      operationId: derwentCombinedSearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/combined_search_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: USRE50627E1
+                                type: string
+                            required:
+                            - name
+                            - form
+                            - value
+                            type: object
+                          type: array
+                        id:
+                          description: Unique identifier for the record
+                          example: USRE50627E120251007
+                          type: string
+                        rank:
+                          description: Rank of the record
+                          example: 1
+                          type: integer
+                      required:
+                      - id
+                      - rank
+                      - field
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      duration:
+                        description: Duration of the operation in milliseconds
+                        example: '605'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: 28880,4731,216523,6601581
+                        type: string
+                      searched:
+                        description: Total number of items searched
+                        example: 177472411
+                        type: integer
+                      size:
+                        description: Number of items returned in this response
+                        example: 30000
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to search with combination of queries
+      tags:
+      - Derwent API
+  /patents/derwent/corporate-tree:
+    post:
+      description: Request to look-up entities as either code or terms within corporate tree resulting in tree structure
+      operationId: derwentCorporateTree
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/corporate_tree_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  corporateTreeResponse:
+                    properties:
+                      corporationDescription:
+                        items:
+                          properties:
+                            code:
+                              description: Corporation code
+                              example: MICROSOFT
+                              type: string
+                            docCount:
+                              description: Document count
+                              example: 0
+                              type: integer
+                            level:
+                              description: Hierarchy level
+                              example: 0
+                              type: integer
+                            spellings:
+                              properties:
+                                spelling:
+                                  items:
+                                    properties:
+                                      mapid:
+                                        description: Spelling map ID
+                                        example: '9264041'
+                                        type: string
+                                      value:
+                                        description: Spelling value
+                                        example: FSLOGIX INC
+                                        type: string
+                                    required:
+                                    - mapid
+                                    - value
+                                    type: object
+                                  type: array
+                              required:
+                              - spelling
+                              type: object
+                            title:
+                              properties:
+                                value:
+                                  description: Corporation title
+                                  example: Microsoft Corporation
+                                  type: string
+                              required:
+                              - value
+                              type: object
+                          required:
+                          - code
+                          - level
+                          - docCount
+                          - title
+                          - spellings
+                          type: object
+                        type: array
+                    type: object
+                  duration:
+                    description: Duration of the operation
+                    example: '315'
+                    type: string
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to lookup Entities within the corporate tree
+      tags:
+      - Derwent API
+  /patents/derwent/document/images:
+    post:
+      description: Fetch Derwent image URLs for one or more patent IDs or publication numbers, including all-image and inline-image requests.
+      operationId: derwentPostDocumentImages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/derwent_images_request'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/image_url_list_derwent_api'
+          description: Success
+        '400':
+          content:
+            application/json:
+              examples:
+                countOutOfRange:
+                  summary: ids/pn count out of range
+                  value:
+                    error: ids/pn count must be between 1 and 500
+                idsAndPn:
+                  summary: Both ids and pn supplied
+                  value:
+                    error: Provide either ids or pn, not both
+                idsLimitExceeded:
+                  summary: IDs limit exceeded
+                  value:
+                    code: 2300
+                    error: The number of IDs in the request must not exceed {limit}
+                invalidImageType:
+                  summary: Invalid image type
+                  value:
+                    code: 2200
+                    error: Invalid image type requested
+                invalidRequestBody:
+                  summary: Request body is not a JSON object
+                  value:
+                    error: Request body must be a JSON object
+                invalidSize:
+                  summary: Invalid size parameter
+                  value:
+                    error: Invalid size parameter value
+                missingIdsOrPn:
+                  summary: ids or pn required
+                  value:
+                    error: Provide ids or pn
+                missingParams:
+                  summary: Missing params list
+                  value:
+                    error: Missing params list
+                pnsLimitExceeded:
+                  summary: PNs limit exceeded
+                  value:
+                    code: 2300
+                    error: The number of PNs in the request must not exceed {limit}
+              schema:
+                oneOf:
+                - properties:
+                    code:
+                      description: Application error code
+                      type: integer
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - code
+                  - error
+                  type: object
+                - properties:
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - error
+                  type: object
+          description: Invalid image request. Relevant Derwent error codes include 2200 for invalid values and 2300 for request limits.
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              examples:
+                insufficientEntitlements:
+                  summary: Missing Derwent images entitlement
+                  value:
+                    code: 2400
+                    error: Insufficient entitlements to access this resource
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to retrieve images for patents
+      tags:
+      - Derwent API
+  /patents/derwent/document/images/{document_guid}:
+    get:
+      description: Fetch a list of the images associated with this document, as URLs
+      operationId: derwentGetDocumentImages
+      parameters:
+      - description: Unique document ID
+        in: path
+        name: document_guid
+        required: true
+        schema:
+          type: string
+      - default: 380
+        description: Requested image size in pixels
+        in: query
+        name: size
+        schema:
+          type: integer
+      - default: true
+        description: Return IP API wrapper URLs when true; return direct CLIPS URLs when false
+        in: query
+        name: wrap
+        schema:
+          type: boolean
+      - default: gif
+        description: Image format requested from CLIPS
+        example: gif
+        in: query
+        name: format
+        schema:
+          type: string
+      - default: normal
+        description: 'Image type to retrieve. Supported values: normal, inline'
+        example: inline
+        in: query
+        name: type
+        schema:
+          type: string
+      - default: 0
+        description: Front-page image flag. Use 1 for front-page images.
+        example: 1
+        in: query
+        name: fponly
+        schema:
+          type: integer
+      - description: DWPI image mode. Use 0 for DWPI front page or 1 for all DWPI images.
+        example: 1
+        in: query
+        name: dwpi
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/image_url_list_derwent_api'
+          description: Success
+        '400':
+          content:
+            application/json:
+              examples:
+                invalidImageType:
+                  summary: Invalid image type
+                  value:
+                    code: 2200
+                    error: Invalid image type requested
+              schema:
+                oneOf:
+                - properties:
+                    code:
+                      description: Application error code
+                      type: integer
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - code
+                  - error
+                  type: object
+                - properties:
+                    error:
+                      description: Error message
+                      type: string
+                  required:
+                  - error
+                  type: object
+          description: Invalid image request. Relevant Derwent error codes include 2200 for invalid values.
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              examples:
+                insufficientEntitlements:
+                  summary: Missing Derwent images entitlement
+                  value:
+                    code: 2400
+                    error: Insufficient entitlements to access this resource
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to retrieve images for patents
+      tags:
+      - Derwent API
+  /patents/derwent/document/pdf:
+    post:
+      description: Return PDF availability with direct DocDel URLs or wrapped URLs for one or more Derwent patents.
+      operationId: derwentGetDocumentsPdf
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/document_pdf_request_derwent_api_post'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/document_pdf_response_derwent_api_post'
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to retrieve PDF URLs for one or more Derwent patents
+      tags:
+      - Derwent API
+  /patents/derwent/document/pdf/{document_guid}:
+    get:
+      description: Fetch a PDF of the document specified by document_guid.
+      operationId: derwentGetDocumentPdf
+      parameters:
+      - description: Unique document ID
+        in: path
+        name: document_guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to retrieve PDF files for Derwent patents
+      tags:
+      - Derwent API
+  /patents/derwent/documents-IdMapping:
+    post:
+      description: Request to provide the ability to generate list of Derwent format GUID(s)
+      operationId: getPublicationIdMapping
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/doc_idmapping_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form (e.g., orig, docdb, dwpi)
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: EP4451620A1
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          description: Document GUID
+                          example: EP4451620A120241023
+                          type: string
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      download_details:
+                        properties:
+                          available_this_month:
+                            example: 199954
+                            type: integer
+                          available_this_year:
+                            example: 999369
+                            type: integer
+                          available_today:
+                            example: 59999
+                            type: integer
+                          downloaded_this_day:
+                            example: 1
+                            type: integer
+                          downloaded_this_month:
+                            example: 46
+                            type: integer
+                          downloaded_this_year:
+                            example: 631
+                            type: integer
+                          export_per_call:
+                            example: 100
+                            type: integer
+                          export_per_day:
+                            example: 60000
+                            type: integer
+                          export_per_month:
+                            example: 200000
+                            type: integer
+                          export_per_year:
+                            example: 1000000
+                            type: integer
+                        type: object
+                      duration:
+                        description: Duration of the operation
+                        example: '1'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '1'
+                        type: string
+                      response_id:
+                        description: Response identifier
+                        example: EP4451620A120241023
+                        type: string
+                      size:
+                        description: Size of the response
+                        example: 1
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: 'Derwent wrapper endpoint: ID mapping (proxies TSIP /id-mapping-proto)'
+      tags:
+      - Derwent API
+  /patents/derwent/documents-by-id:
+    post:
+      description: Request to provide the ability to download Document(s) based on the Derwent document GUID(s)
+      operationId: derwentDocumentsByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/document_by_ids_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form (e.g., orig, docdb, dwpi)
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: EP4451620A1
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          description: Document GUID
+                          example: EP4451620A120241023
+                          type: string
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      download_details:
+                        properties:
+                          available_this_month:
+                            example: 199954
+                            type: integer
+                          available_this_year:
+                            example: 999369
+                            type: integer
+                          available_today:
+                            example: 59999
+                            type: integer
+                          downloaded_this_day:
+                            example: 1
+                            type: integer
+                          downloaded_this_month:
+                            example: 46
+                            type: integer
+                          downloaded_this_year:
+                            example: 631
+                            type: integer
+                          export_per_call:
+                            example: 100
+                            type: integer
+                          export_per_day:
+                            example: 60000
+                            type: integer
+                          export_per_month:
+                            example: 200000
+                            type: integer
+                          export_per_year:
+                            example: 1000000
+                            type: integer
+                        type: object
+                      duration:
+                        description: Duration of the operation
+                        example: '1'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '1'
+                        type: string
+                      response_id:
+                        description: Response identifier
+                        example: EP4451620A120241023
+                        type: string
+                      size:
+                        description: Size of the response
+                        example: 1
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to download Document(s) based on document…
+      tags:
+      - Derwent API
+  /patents/derwent/documents-by-listref:
+    post:
+      description: Request to provide the ability to download Derwent Document(s) fields for document GUID's stored in a LISTREF
+      operationId: derwentDocumentsByListref
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/document_by_listref_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: USRE50627E1
+                                type: string
+                            required:
+                            - name
+                            - form
+                            - value
+                            type: object
+                          type: array
+                        id:
+                          description: Unique identifier for the record
+                          example: USRE50627E120251007
+                          type: string
+                        rank:
+                          description: Rank of the record
+                          example: 1
+                          type: integer
+                      required:
+                      - id
+                      - rank
+                      - field
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      duration:
+                        description: Duration of the operation in milliseconds
+                        example: '605'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '21142652'
+                        type: string
+                      searched:
+                        description: Total number of items searched
+                        example: 177472411
+                        type: integer
+                      size:
+                        description: Number of items returned in this response
+                        example: 30000
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to download Document(s) fields based on a…
+      tags:
+      - Derwent API
+  /patents/derwent/documents-by-pn:
+    post:
+      description: Request to provide the ability to download Document(s) based on patent or publication number(s)
+      operationId: derwentDocumentsByPns
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/document_by_pns_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form (e.g., orig, docdb, dwpi)
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: EP4451620A1
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          description: Document GUID
+                          example: EP4451620A120241023
+                          type: string
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      download_details:
+                        properties:
+                          available_this_month:
+                            example: 199954
+                            type: integer
+                          available_this_year:
+                            example: 999369
+                            type: integer
+                          available_today:
+                            example: 59999
+                            type: integer
+                          downloaded_this_day:
+                            example: 1
+                            type: integer
+                          downloaded_this_month:
+                            example: 46
+                            type: integer
+                          downloaded_this_year:
+                            example: 631
+                            type: integer
+                          export_per_call:
+                            example: 100
+                            type: integer
+                          export_per_day:
+                            example: 60000
+                            type: integer
+                          export_per_month:
+                            example: 200000
+                            type: integer
+                          export_per_year:
+                            example: 1000000
+                            type: integer
+                        type: object
+                      duration:
+                        description: Duration of the operation
+                        example: '1'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '1'
+                        type: string
+                      response_id:
+                        description: Response identifier
+                        example: EP4451620A120241023
+                        type: string
+                      size:
+                        description: Size of the response
+                        example: 1
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to download Document(s) based on patent…
+      tags:
+      - Derwent API
+  /patents/derwent/search-by-ids:
+    post:
+      description: Request to provide the ability to search by Derwent document GUIDs
+      operationId: derwentSearchByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/search_by_ids_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form (e.g., orig, docdb, dwpi)
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: EP4451620A1
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          description: Document GUID
+                          example: EP4451620A120241023
+                          type: string
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      download_details:
+                        properties:
+                          available_this_month:
+                            example: 199954
+                            type: integer
+                          available_this_year:
+                            example: 999369
+                            type: integer
+                          available_today:
+                            example: 59999
+                            type: integer
+                          downloaded_this_day:
+                            example: 1
+                            type: integer
+                          downloaded_this_month:
+                            example: 46
+                            type: integer
+                          downloaded_this_year:
+                            example: 631
+                            type: integer
+                          export_per_call:
+                            example: 100
+                            type: integer
+                          export_per_day:
+                            example: 60000
+                            type: integer
+                          export_per_month:
+                            example: 200000
+                            type: integer
+                          export_per_year:
+                            example: 1000000
+                            type: integer
+                        type: object
+                      duration:
+                        description: Duration of the operation
+                        example: '1'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '1'
+                        type: string
+                      response_id:
+                        description: Response identifier
+                        example: EP4451620A120241023
+                        type: string
+                      size:
+                        description: Size of the response
+                        example: 1
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to search by Document GUIDs
+      tags:
+      - Derwent API
+  /patents/derwent/search-by-pns:
+    post:
+      description: Request to provide the ability to search by patent or publication numbers
+      operationId: derwentSearchByPatentNumbers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/search_by_pns_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form (e.g., orig, docdb, dwpi)
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: EP4451620A1
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          description: Document GUID
+                          example: EP4451620A120241023
+                          type: string
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      download_details:
+                        properties:
+                          available_this_month:
+                            example: 199954
+                            type: integer
+                          available_this_year:
+                            example: 999369
+                            type: integer
+                          available_today:
+                            example: 59999
+                            type: integer
+                          downloaded_this_day:
+                            example: 1
+                            type: integer
+                          downloaded_this_month:
+                            example: 46
+                            type: integer
+                          downloaded_this_year:
+                            example: 631
+                            type: integer
+                          export_per_call:
+                            example: 100
+                            type: integer
+                          export_per_day:
+                            example: 60000
+                            type: integer
+                          export_per_month:
+                            example: 200000
+                            type: integer
+                          export_per_year:
+                            example: 1000000
+                            type: integer
+                        type: object
+                      duration:
+                        description: Duration of the operation
+                        example: '1'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '1'
+                        type: string
+                      response_id:
+                        description: Response identifier
+                        example: EP4451620A120241023
+                        type: string
+                      size:
+                        description: Size of the response
+                        example: 1
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to search by patent numbers
+      tags:
+      - Derwent API
+  /patents/derwent/search-by-query:
+    post:
+      description: Request to provide the ability to search by query
+      operationId: derwentSearchByQuery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/search_by_query_request_derwent_api'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    items:
+                      properties:
+                        field:
+                          items:
+                            properties:
+                              form:
+                                description: Field form
+                                example: orig
+                                type: string
+                              name:
+                                description: Field name
+                                example: pn
+                                type: string
+                              value:
+                                description: Field value
+                                example: USRE50627E1
+                                type: string
+                            required:
+                            - name
+                            - form
+                            - value
+                            type: object
+                          type: array
+                        id:
+                          description: Unique identifier for the record
+                          example: USRE50627E120251007
+                          type: string
+                        rank:
+                          description: Rank of the record
+                          example: 1
+                          type: integer
+                      required:
+                      - id
+                      - rank
+                      - field
+                      type: object
+                    type: array
+                  header:
+                    properties:
+                      duration:
+                        description: Duration of the operation in milliseconds
+                        example: '605'
+                        type: string
+                      found:
+                        description: Number of items found
+                        example: '21142652'
+                        type: string
+                      searched:
+                        description: Total number of items searched
+                        example: 177472411
+                        type: integer
+                      size:
+                        description: Number of items returned in this response
+                        example: 30000
+                        type: integer
+                    type: object
+                type: object
+          description: Success
+        '400':
+          content:
+            application/json:
+              example:
+                code: 1200
+                error: Invalid request. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Invalid request
+        '401':
+          content:
+            application/json:
+              example:
+                code: 1100
+                error: Insufficient permissions to access this resources. Please contact support if you believe this is an error.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              example:
+                code: 10200
+                error: Insufficient permissions to use attribute values in the resources request. Please contact support if you believe this is an error
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              example:
+                code: 1201
+                error: Endpoint not found
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Not found
+        '500':
+          content:
+            application/json:
+              example:
+                code: 1300
+                error: Something went wrong. Please try again, and contact support if error persists.
+              schema:
+                properties:
+                  code:
+                    description: Application error code
+                    type: integer
+                  error:
+                    description: Error message
+                    type: string
+                required:
+                - code
+                - error
+                type: object
+          description: Internal server error
+      summary: Derwent API to provide the ability to search by query
+      tags:
+      - Derwent API
+components:
+  schemas:
+    document_by_pns_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              pns:
+                description: Requested patent numbers
+                example: EP4451620A1
+                type: string
+              return-fields:
+                description: Requested retrieve-field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - pns
+            type: object
+          type: array
+      type: object
+    search_by_query_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: usapps,usgrants,epapps,epgrants,woapps
+                type: string
+              offset:
+                description: Starting range of the documents to be fetched
+                example: 0
+                type: number
+              query:
+                description: Requested query
+                example: pd>=(20180101)
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+              size:
+                description: Number of the documents to be fetched
+                example: 3
+                type: number
+            required:
+            - collections
+            - query
+            type: object
+          type: array
+      type: object
+    search_by_ids_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              ids:
+                description: Requested document ids
+                example: EP4451620A120241023
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - ids
+            type: object
+          type: array
+      type: object
+    document_by_ids_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              ids:
+                description: Requested document ids
+                example: EP4451620A120241023
+                type: string
+              return-fields:
+                description: Requested retrieve-field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - ids
+            type: object
+          type: array
+      type: object
+    class_search_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              query:
+                description: Requested classification level
+                example: ti=neem
+                type: string
+              type:
+                description: Requested classification type
+                example: ipc8
+                type: string
+            required:
+            - query
+            - type
+            type: object
+          type: array
+      type: object
+    doc_idmapping_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              pns:
+                description: Requested patent numbers
+                example: EP4451620A1
+                type: string
+            required:
+            - collections
+            - pns
+            type: object
+          type: array
+      type: object
+    image_url_list_derwent_api:
+      properties:
+        image_urls:
+          description: URL for an image
+          items:
+            description: URL for an image
+            example: https://
+            type: string
+          type: array
+        inline_image_urls:
+          description: URL result for inline Derwent images when type=inline
+          items:
+            description: URL result for inline Derwent images when type=inline
+            example: https://localhost/patents/derwent/document/images/file?patent=EP4451620A1&image_type=inline&token=...
+            type: string
+          type: array
+        missing_patent_numbers:
+          description: Patent numbers where no image was found
+          items:
+            description: Patent numbers where no image was found
+            example: EP0000000A1
+            type: string
+          type: array
+      type: object
+    derwent_images_request:
+      properties:
+        drawings:
+          description: Alias for fponly.
+          example: 1
+          type: integer
+        dwpi:
+          description: 0 for front page DWPI image, 1 for all DWPI images.
+          example: 1
+          type: integer
+        format:
+          default: gif
+          description: Image format requested from CLIPS.
+          example: gif
+          type: string
+        fponly:
+          description: Front-page image flag.
+          example: 1
+          type: integer
+        params:
+          items:
+            properties:
+              ids:
+                description: Requested document ids. Provide either ids or pn, not both.
+                example: EP4451620A120241023
+                type: string
+              pn:
+                description: Requested patent numbers. Provide either pn or ids, not both.
+                example: EP4451620A1
+                type: string
+            type: object
+          type: array
+        size:
+          default: 380
+          description: Requested image size.
+          type: integer
+        type:
+          description: Image type. Use 'normal' or 'inline'.
+          example: inline
+          type: string
+        wrap:
+          default: true
+          description: Return IP API wrapper URLs when true.
+          type: boolean
+      required:
+      - params
+      type: object
+    corporate_tree_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              code:
+                description: Requested corporate code
+                example: ARCO
+                type: string
+              terms:
+                description: Requested corporate terms
+                example: Microsoft
+                type: string
+            required:
+            - code
+            - terms
+            type: object
+          type: array
+      type: object
+    class_browsing_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              class-levels:
+                description: Requested classification level
+                example: '1'
+                type: string
+              classes:
+                description: Requested class code to be browsed
+                example: A01
+                type: string
+              type:
+                description: Requested classification type
+                example: ipc8
+                type: string
+            required:
+            - class-levels
+            - classes
+            - type
+            type: object
+          type: array
+      type: object
+    combined_search_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections1:
+                description: Requested Collection(s) number 1
+                example: usapps,usgrants,woapps
+                type: string
+              collections2:
+                description: Requested Collection(s) number 2
+                example: epapps,epgrants
+                type: string
+              collections3:
+                description: Requested Collection(s) number 3
+                example: usapps
+                type: string
+              combination:
+                description: Combination of all the requested query using boolean operators
+                example: ($1 AND $2 OR S3)
+                type: string
+              offset:
+                description: Starting range of the documents to be fetched
+                example: 0
+                type: number
+              query1:
+                description: Requested query number 1
+                example: pd>=(20180101)
+                type: string
+              query2:
+                description: Requested query number 2
+                example: pac=IN
+                type: string
+              query3:
+                description: Requested query number 3
+                example: pa=*US
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+              search-on-datatype1:
+                description: Requested search-on-datatype number 1
+                example: fld
+                type: string
+              search-on-datatype2:
+                description: Requested search-on-datatype number 2
+                example: fld
+                type: string
+              search-on-datatype3:
+                description: Requested search-on-datatype number 3
+                example: fld_dwpi
+                type: string
+              size:
+                description: Number of the documents to be fetched
+                example: 3
+                type: number
+            required:
+            - collections1
+            - query1
+            - collections2
+            - query2
+            type: object
+          type: array
+      type: object
+    document_pdf_response_derwent_api_post:
+      properties:
+        available:
+          description: Available PDF URLs
+          items:
+            properties:
+              pn:
+                description: Requested patent number
+                example: US12368967B2
+                type: string
+              url:
+                description: Returned PDF URL.
+                example: https://api.clarivate.com/patents/derwent/document/pdf/file?patent=US12368967B2&token=example-token
+                type: string
+            required:
+            - pn
+            - url
+            type: object
+          type: array
+        unavailable:
+          description: Requested patent numbers that are unavailable
+          items:
+            description: Requested patent numbers that are unavailable
+            example: BADPN123
+            type: string
+          type: array
+      required:
+      - available
+      type: object
+    document_by_listref_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: usapps,usgrants,epapps,epgrants,woapps
+                type: string
+              listref:
+                description: Reference of a resultset
+                example: 1770538450897-bi9q63lce0N
+                type: string
+              offset:
+                description: Starting range of the documents to be fetched
+                example: 0
+                type: number
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+              size:
+                description: Number of the documents to be fetched
+                example: 3
+                type: number
+            required:
+            - collections
+            - listref
+            type: object
+          type: array
+      type: object
+    search_by_pns_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              pns:
+                description: Requested patent numbers
+                example: EP4451620A1
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - pns
+            type: object
+          type: array
+      type: object
+    document_pdf_request_derwent_api_post:
+      properties:
+        params:
+          description: PDF request parameters
+          items:
+            properties:
+              pns:
+                description: Requested patent numbers. Accepts a comma-separated string or list.
+                example: US20110094542A1,US12368967B2
+                type: string
+            required:
+            - pns
+            type: object
+          type: array
+        wrap:
+          description: When true, return wrapped IP-API URLs instead of direct DocDel URLs.
+          example: 'true'
+          type: string
+      required:
+      - params
+      type: object
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey
+x-api-category: DERWENT API

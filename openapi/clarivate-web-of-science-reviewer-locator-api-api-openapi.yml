@@ -1,0 +1,453 @@
+openapi: 3.2.0
+info:
+  title: Web of Science Reviewer Locator API
+  description: 'Web of Science Reviewer Locator helps you to find, screen, and contact expert peer reviewers for your manuscripts or grant applications.
+
+
+    This API helps you to integrate Web of Science Reviewer Locator directly into your editorial or grant management system.'
+  contact:
+    name: Web of Science
+    email: wosg.support@clarivate.com
+  version: 2.0.0
+servers:
+- url: https://api.clarivate.com/api/wosrl
+security:
+- key: []
+tags:
+- name: Web of Science Reviewer Locator API
+paths:
+  /:
+    post:
+      tags:
+      - Web of Science Reviewer Locator API
+      summary: Generate reviewer recommendations for your manuscript or grant application
+      responses:
+        '200':
+          description: Successful response containing reviewer recommendations and search metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad request response containing error information.
+        '401':
+          description: Invalid credentials.
+        '403':
+          description: Valid credentials, but no entitlement
+        '429':
+          description: Request rate limit exceeded.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchInput'
+        description: "The API accepts the following parameters as JSON POST data.\n * Search input: Manuscript or grant application details.\n * Search filters: Excluded reviewers and filter countries.\n * Search configuration: Search years and number of recommendations to fetch."
+        required: true
+      operationId: postRoot
+      x-operation-id-source: derived
+  /{searchToken}/:
+    get:
+      tags:
+      - Web of Science Reviewer Locator API
+      summary: Retrieve reviewer recommendations for your manuscript or grant application for…
+      parameters:
+      - name: searchToken
+        in: path
+        description: Unique token identifying this search. When trouble-shooting or enquiring about a particular search with the Web of Science team please provide the search token in question.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response containing reviewer recommendations and search metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad request response containing error information.
+        '401':
+          description: Invalid credentials.
+        '403':
+          description: Valid credentials, but no entitlement
+        '404':
+          description: The search token doesn't exist
+        '429':
+          description: Request rate limit exceeded.
+      operationId: getBySearchToken
+      x-operation-id-source: derived
+components:
+  schemas:
+    Article:
+      type: object
+      required:
+      - title
+      - ut
+      - journal
+      - authors
+      properties:
+        title:
+          type: string
+          example: Publication title
+        doi:
+          type: string
+          format: DOI
+          example: 10.123/example.456
+        ut:
+          type: string
+          format: UT
+          example: WOS:000000000000001
+        journal:
+          $ref: '#/components/schemas/Journal'
+        authors:
+          type: array
+          items:
+            type: object
+            required:
+            - firstName
+            - lastName
+            properties:
+              firstName:
+                type: string
+                example: Researcher first name
+              lastName:
+                type: string
+                example: Researcher last name
+        publicationYear:
+          type: string
+          format: YYYY
+          example: '2019'
+    Response:
+      type: object
+      required:
+      - searchInput
+      - searchToken
+      - searchUrl
+      - recommendedReviewers
+      properties:
+        searchInput:
+          $ref: '#/components/schemas/SearchInput'
+        requestId:
+          type: string
+          description: Optional consumer defined request identifier. If provided in a request, will be returned in the response.
+        searchToken:
+          type: string
+          description: Unique token identifying this search. When trouble-shooting or enquiring about a particular search with the Web of Science team please provide the search token in question.
+          example: 7dd6f44b0b9346f6b75d6d0efb65ebc2
+        searchUrl:
+          type: string
+          description: URL for viewing and interacting with this search within the Web of Science Reviewer Locator web interface. Note that web interface permissions are required and are separate to your API key.
+          format: url
+          example: https://reviewerlocator.webofscience.com/7dd6f44b0b9346f6b75d6d0efb65ebc2/
+        recommendedReviewers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecommendedReviewer'
+    SearchInput:
+      type: object
+      required:
+      - searchArticle
+      properties:
+        requestId:
+          description: Optional consumer-defined request identifier. If provided in the request, will be returned in the response.
+          type: string
+        searchArticle:
+          $ref: '#/components/schemas/SearchArticle'
+        excludedReviewers:
+          type: array
+          description: List of additional individuals to exclude from the recommendations. Note that it is not necessary to re-list 'authors' here as they will already be excluded from the recommendations. Unlike 'authors', 'excludedReviewers' will not be used for conflict of interest checks.
+          items:
+            $ref: '#/components/schemas/ExcludedReviewer'
+        searchYears:
+          type: integer
+          description: Base reviewer recommendations on Web of Science publications published within the last 3, 4, or 5 years.
+          default: 3
+          minimum: 3
+          maximum: 5
+        numRecommendations:
+          type: integer
+          description: Number of recommendations to fetch. Note that the API will not always return the full number of recommendations requested.
+          default: 30
+          minimum: 15
+          maximum: 100
+        includedCountries:
+          type: array
+          description: If provided, reviewer recommendations will be restricted to researchers recently affiliated with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
+          items:
+            $ref: '#/components/schemas/Country'
+        excludedCountries:
+          type: array
+          description: If provided, reviewer recommendations will be restricted to researchers without recent affiliations with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
+          items:
+            $ref: '#/components/schemas/Country'
+    ExcludedReviewer:
+      type: object
+      required:
+      - firstName
+      - lastName
+      properties:
+        firstName:
+          type: string
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        email:
+          type: string
+          format: email
+          example: researcher@organization.edu
+    Country:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Country name
+    SearchArticle:
+      type: object
+      description: Input manuscript or grant application details.
+      required:
+      - title
+      - abstract
+      - journal
+      properties:
+        title:
+          type: string
+          example: Manuscript or grant application title
+        abstract:
+          type: string
+          example: Manuscript or grant application abstract
+        journal:
+          $ref: '#/components/schemas/JournalOrFunder'
+        authors:
+          type: array
+          description: List of manuscript authors or grant application applicants. Will be excluded from the recommendations. Will also be used to check for potential conflicts of interest by co-publication or co-affiliation.
+          items:
+            $ref: '#/components/schemas/AuthorOrApplicant'
+    AuthorOrganization:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Affiliated organization name
+    Organization:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Organization name
+        url:
+          type: string
+          format: url
+        firstYear:
+          type: string
+          description: First year of affiliation with this organization according to Web of Science publication data.
+          format: YYYY
+          example: '2019'
+        lastYear:
+          type: string
+          description: Last year of affiliation with this organization according to Web of Science publication data.
+          format: YYYY
+          example: '2021'
+        address:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+    JournalOrFunder:
+      type: object
+      description: Journal or funding agency.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Journal or funding agency name
+    Funder:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Funding agency name
+    RecommendedReviewer:
+      type: object
+      properties:
+        rank:
+          type: integer
+          description: Recommended reviewers are ordered and ranked numerically by relevance as determined by the Web of Science Reviewer Locator recommendation algorithm.
+          example: 1
+        firstName:
+          type: string
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        profileUrl:
+          type: string
+          description: URL for viewing this researcher's Web of Science Researcher Profile.
+          format: url
+          example: https://www.webofscience.com/wos/author/record/A-0000-2019
+        researcherId:
+          type: string
+          format: ResearcherID
+          example: A-0000-2019
+        orcid:
+          type: string
+          format: ORCID
+          example: 0000-0000-0000-0001
+        hIndex:
+          type: integer
+          description: Researcher's h-index in the Web of Science.
+          example: 10
+        recentOrganizations:
+          type: array
+          description: Affiliated organizations within the Web of Science.
+          items:
+            $ref: '#/components/schemas/Organization'
+        contact:
+          type: object
+          required:
+          - availableToReview
+          - emails
+          properties:
+            emails:
+              type: array
+              description: Latest Web of Science Author Record contact email address.
+              items:
+                type: object
+                required:
+                - email
+                properties:
+                  email:
+                    type: string
+                    format: email
+                    example: researcher@university.edu
+        numWosArticles:
+          type: integer
+          description: Number of authored publications within the Web of Science.
+          example: 1
+        relevantArticles:
+          type: array
+          description: Top three relevant authored publications within the Web of Science as determined by the Web of Science Reviewer Locator recommendation algorithm.
+          items:
+            $ref: '#/components/schemas/Article'
+        keywords:
+          type: array
+          description: Web of Science Author Record keywords.
+          items:
+            type: object
+            required:
+            - name
+            properties:
+              name:
+                type: string
+                example: Research keyword
+        numVerifiedReviews:
+          type: integer
+          description: Number of verified reviews on this researcher's Web of Science Researcher Profile.
+          example: 1
+        reviewerExperience:
+          type: array
+          description: Number of verified reviews on this researcher's Web of Science Researcher Profile broken down by journal.
+          items:
+            type: object
+            required:
+            - journal
+            - numVerifiedReviews
+            properties:
+              journal:
+                $ref: '#/components/schemas/Journal'
+              numVerifiedReviews:
+                type: integer
+                description: Number of verified reviews on this researcher's Web of Science Researcher Profile for this journal.
+                example: 1
+        editorialBoards:
+          type: array
+          description: Editorial board memberships listed on this researcher's Web of Science Researcher Profile.
+          items:
+            type: object
+            required:
+            - journal
+            properties:
+              journal:
+                $ref: '#/components/schemas/Journal'
+        grantReviewExperience:
+          type: array
+          description: Number of verified grant reviews on this researcher's Web of Science Researcher Profile broken down by funding agency.
+          items:
+            type: object
+            required:
+            - funder
+            - numGrantReviews
+            properties:
+              funder:
+                $ref: '#/components/schemas/Funder'
+              numGrantReviews:
+                type: integer
+                description: Number of verified grant reviews on this researcher's Web of Science Researcher Profile for this funding agency.
+                example: 1
+        publonsAcademy:
+          type: string
+          description: Indicates whether the recommended reviewer is a Publons Academy graduate, mentor, or both.
+          enum:
+          - Graduate
+          - Mentor
+          - Graduate and mentor
+          example: Graduate
+        conflictOfInterestArticles:
+          type: array
+          description: Authored publications within the Web of Science which represent a potential conflict of interest by co-publication with the search manuscript / grant application's authors / applicants.
+          items:
+            $ref: '#/components/schemas/Article'
+        conflictOfInterestOrganizations:
+          type: array
+          description: Affiliated organizations within the Web of Science which represent a potential conflict of interest by co-affiliation with the search manuscript / grant application's authors / applicants.
+          items:
+            $ref: '#/components/schemas/Organization'
+    AuthorOrApplicant:
+      type: object
+      required:
+      - firstName
+      - lastName
+      properties:
+        firstName:
+          type: string
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        email:
+          type: string
+          format: email
+          example: researcher@organization.edu
+        organizations:
+          type: array
+          description: Affiliated organizations. Used to check for potential conflicts of interest by co-affiliation.
+          items:
+            $ref: '#/components/schemas/AuthorOrganization'
+    Journal:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Journal name
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey
+externalDocs:
+  description: Read more about Web of Science Reviewer Locator
+  url: https://clarivate.com/academia-government/scientific-and-academic-research/publisher-solutions/web-of-science-reviewer-locator

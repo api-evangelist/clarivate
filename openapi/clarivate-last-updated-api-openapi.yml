@@ -1,0 +1,43 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Web of Science™ Journals Last Updated API
+  description: This API provides journal-level metadata and metrics for all journals in the Journal Citation Reports™ covered in the Web of Science Core Collection, including the Journal Impact Factor™ and other new metrics.
+  license:
+    name: Clarivate Content as a Service Licence
+    url: https://clarivate.com/download/product-service-terms/
+servers:
+- url: https://api.clarivate.com/apis/wos-journals/v1
+security:
+- key: []
+tags:
+- name: last-updated
+paths:
+  /last-updated:
+    get:
+      tags:
+      - last-updated
+      summary: Date of the last content update
+      description: Date of the last content update following the format YYYY-MM-DD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jcrDataUpdate:
+                    type: string
+              examples:
+                Last Update:
+                  value:
+                    jcrDataUpdate: '2022-05-27'
+      operationId: getLastUpdated
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

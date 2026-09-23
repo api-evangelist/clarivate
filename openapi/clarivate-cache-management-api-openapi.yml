@@ -1,0 +1,61 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Converis Additional Cache Management API
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/converisadditionalapi
+tags:
+- name: Cache Management
+  description: Service invalidates cache post data erasure for direct GDPR data deletion from database.
+paths:
+  /{version}/cache/converisuser/{username}:
+    delete:
+      summary: Remove user from cache
+      description: Remove a user from the cache by their username.
+      operationId: removeUserFromCache
+      tags:
+      - Cache Management
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+          description: Username of the user to remove from cache
+      responses:
+        '200':
+          description: User removed from cache successfully
+  /{version}/cache/person/{id}:
+    delete:
+      summary: Remove person from cache
+      description: Remove a person from the cache by their ID.
+      operationId: removePersonFromCache
+      tags:
+      - Cache Management
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - v2
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: ID of the person to remove from cache
+      responses:
+        '200':
+          description: Person removed from cache successfully
+        '400':
+          description: Person not found in cache

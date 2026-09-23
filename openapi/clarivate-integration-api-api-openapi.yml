@@ -1,0 +1,95 @@
+openapi: 3.2.0
+info:
+  title: twa-riskmark-integration Integration API
+  version: 1.0.0
+  description: APIs for integration of TWA with other applications.
+  contact:
+    name: Sasa Drobnjakovic
+    email: sasa.drobnjakovic@clarivate.com
+servers:
+- url: https://api.clarivate.com/integration-api
+security:
+- key: []
+tags:
+- name: Integration Api
+paths:
+  /integration-api/single-opposition/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Watch threat ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleOppositionResponse'
+        '500':
+          description: Internal Server Error
+      tags:
+      - Integration Api
+      summary: Get integration api single opposition by id
+      x-summary-source: derived
+      operationId: getIntegrationApiSingleOppositionById
+      x-operation-id-source: derived
+components:
+  schemas:
+    ApplicantInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        countryCode:
+          type: string
+        countryName:
+          type: string
+    SingleOppositionResponse:
+      type: object
+      properties:
+        jurisdictions:
+          type: array
+          items:
+            type: string
+        trademark1:
+          $ref: '#/components/schemas/Trademark'
+        trademark2:
+          $ref: '#/components/schemas/Trademark'
+    Trademark:
+      type: object
+      properties:
+        verbalElement:
+          type: string
+        goodsAndServices:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoodsAndService'
+        applicantInfos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantInfo'
+        applicationNumber:
+          type: string
+        registrationNumber:
+          type: string
+        guid:
+          type: string
+    GoodsAndService:
+      type: object
+      properties:
+        niceClass:
+          type: integer
+          format: int32
+        description:
+          type: string
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

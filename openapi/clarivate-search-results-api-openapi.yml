@@ -1,0 +1,1017 @@
+openapi: 3.2.0
+info:
+  title: Derwent Sequence Search Search Results API
+  version: V1@2026-06-09
+  description: OpenAPI Docs & Interactive UI
+  license:
+    name: Commercially Licensed Product
+    url: https://clarivate.com/derwent/solutions/derwent-sequence-base/
+servers:
+- url: https://api.clarivate.com/derwent-sequence-search
+security:
+- key: []
+tags:
+- name: Search Results
+  description: Search results management endpoints
+paths:
+  /reports/{report_id}/search_results/{search_id}:
+    parameters:
+    - name: report_id
+      in: path
+      description: Report ID
+      required: true
+      schema:
+        type: integer
+    - name: search_id
+      in: path
+      description: Search ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List search results
+      tags:
+      - Search Results
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 1
+        description: Page number for pagination
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                    - sequence_key: SBNN00000001
+                      subject_sequence_length: 20
+                      organisms:
+                      - Unknown
+                      molecule_type: ss-DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: '4320003.2'
+                      location: SEQ ID NO 2
+                      psl: SEQ ID NO 1
+                      database_name: USGENE
+                      country: United States
+                      sequences_count: 2
+                      patent_number: US4320003A
+                      title: Adrenocorticotropin-lipotropin precursor gene
+                      assignees:
+                      - The Regents of the University of California (Berkeley CA)
+                      inventors:
+                      - 1Baxter John D. (San Francisco CA);
+                      family_inpadoc: BE4322499
+                      earliest_priority_date: '1978-12-22'
+                      publication_date: '1982-03-30'
+                      filing_date: '1978-12-22'
+                      calculated_expiry_date: null
+                      document_type: Grant patent
+                    - sequence_key: SBNN00000001
+                      subject_sequence_length: 20
+                      organisms:
+                      - Homo sapiens
+                      molecule_type: protein
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: AAP10001
+                      location: null
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: GENESEQ
+                      country: United States
+                      sequences_count: 1
+                      patent_number: BE885190001A
+                      title: DNA transfer vectors contg. codes for human insulin
+                      assignees:
+                      - UNIV CALIFORNIA
+                      inventors:
+                      - Murray K
+                      - Schaller HE
+                      family_inpadoc: BE4322499
+                      earliest_priority_date: '1979-09-12'
+                      publication_date: '1980-12-31'
+                      filing_date: '1979-09-12'
+                      calculated_expiry_date: null
+                      document_type: Grant patent
+                    - sequence_key: SBNN00000001
+                      subject_sequence_length: 20
+                      organisms:
+                      - Not provided
+                      molecule_type: Nucleic acid
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: AU2012200001.1
+                      location: SEQ ID NO 1
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: GENESEQ FASTAlert
+                      country: Australia
+                      sequences_count: 188
+                      patent_number: AU2012200001A1
+                      title: New single chain polypeptide fusion protein having non-cytotoxic protease cleaving
+                      assignees:
+                      - ALLERGAN INC
+                      - UK SEC FOR HEALTH
+                      inventors: null
+                      family_inpadoc: AU4322499
+                      earliest_priority_date: '2015-12-01'
+                      publication_date: '2013-10-03'
+                      filing_date: null
+                      calculated_expiry_date: null
+                      document_type: Application
+                    - sequence_key: SBNN00000001
+                      subject_sequence_length: 20
+                      organisms:
+                      - Homo sapiens
+                      molecule_type: DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: WO2001050001.1
+                      location: SEQ ID NO 1
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: WOGENE
+                      country: WIPO
+                      sequences_count: 1040
+                      patent_number: WO2001050001A1
+                      title: Nucleic Acids, Proteins, and Antibodies
+                      assignees:
+                      - Human Genome Sciences, Inc., et al.
+                      inventors: []
+                      family_inpadoc: WO4322499
+                      earliest_priority_date: '2022-07-07'
+                      publication_date: '2001-08-02'
+                      filing_date: null
+                      calculated_expiry_date: null
+                      document_type: Application
+                    - sequence_key: SBNN00000001
+                      subject_sequence_length: 20
+                      organisms:
+                      - Mylossoma duriventre
+                      molecule_type: DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: KR070959_1.1
+                      location: null
+                      psl: VRT
+                      database_name: GenBank®
+                      country: 'Brazil: Goias, Aragarcas, Rio Araguaia, Rio Araguaia'
+                      sequences_count: 1
+                      patent_number: null
+                      title: 'Molecular identification of cryptic diversity in species of cis-Andean Mylossoma (Characiformes: Serrasalmidae)'
+                      assignees:
+                      - Mateussi, N.T.
+                      - Pavanelli, C.S.
+                      - Oliveira, C.
+                      inventors:
+                      - Mateussi, N.T.
+                      - Pavanelli, C.S.
+                      - Oliveira, C.
+                      family_inpadoc: null
+                      earliest_priority_date: '2015-04-06'
+                      publication_date: '2016-04-05'
+                      filing_date: '2015-04-06'
+                      calculated_expiry_date: null
+                      document_type: null
+                    - sequence_key: SBNN00000002
+                      subject_sequence_length: 20
+                      organisms:
+                      - Unknown
+                      molecule_type: ss-DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: '4320014.8'
+                      location: SEQ ID NO 8
+                      psl: SEQ ID NO 1
+                      database_name: USGENE
+                      country: United States
+                      sequences_count: 2
+                      patent_number: US4320014A
+                      title: Adrenocorticotropin-lipotropin precursor gene
+                      assignees:
+                      - The Regents of the University of California (Berkeley CA)
+                      inventors:
+                      - 1Baxter John D. (San Francisco CA);
+                      family_inpadoc: BE4322499
+                      earliest_priority_date: '1978-12-22'
+                      publication_date: '1982-03-30'
+                      filing_date: '1978-12-22'
+                      calculated_expiry_date: null
+                      document_type: Grant patent
+                    - sequence_key: SBNN00000002
+                      subject_sequence_length: 20
+                      organisms:
+                      - Homo sapiens
+                      molecule_type: protein
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: AAP10002
+                      location: null
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: GENESEQ
+                      country: United States
+                      sequences_count: 1
+                      patent_number: BE885190002A
+                      title: DNA transfer vectors contg. codes for human insulin
+                      assignees:
+                      - UNIV CALIFORNIA
+                      inventors:
+                      - Murray K
+                      - Schaller HE
+                      family_inpadoc: BE4322499
+                      earliest_priority_date: '1979-09-12'
+                      publication_date: '1980-12-31'
+                      filing_date: '1979-09-12'
+                      calculated_expiry_date: null
+                      document_type: Grant patent
+                    - sequence_key: SBNN00000002
+                      subject_sequence_length: 20
+                      organisms:
+                      - Not provided
+                      molecule_type: Nucleic acid
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: AU2012200002.2
+                      location: SEQ ID NO 2
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: GENESEQ FASTAlert
+                      country: Australia
+                      sequences_count: 188
+                      patent_number: AU2012200002A1
+                      title: New single chain polypeptide fusion protein having non-cytotoxic protease cleaving
+                      assignees:
+                      - ALLERGAN INC
+                      - UK SEC FOR HEALTH
+                      inventors: null
+                      family_inpadoc: AU4322499
+                      earliest_priority_date: '2015-12-01'
+                      publication_date: '2013-10-03'
+                      filing_date: null
+                      calculated_expiry_date: null
+                      document_type: Application
+                    - sequence_key: SBNN00000002
+                      subject_sequence_length: 20
+                      organisms:
+                      - Homo sapiens
+                      molecule_type: DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: WO2001050002.2
+                      location: SEQ ID NO 2
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: WOGENE
+                      country: WIPO
+                      sequences_count: 1040
+                      patent_number: WO2001050002A1
+                      title: Nucleic Acids, Proteins, and Antibodies
+                      assignees:
+                      - Human Genome Sciences, Inc., et al.
+                      inventors: []
+                      family_inpadoc: WO4322499
+                      earliest_priority_date: '2022-07-07'
+                      publication_date: '2001-08-02'
+                      filing_date: null
+                      calculated_expiry_date: null
+                      document_type: Application
+                    - sequence_key: SBNN00000002
+                      subject_sequence_length: 20
+                      organisms:
+                      - Mylossoma duriventre
+                      molecule_type: DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: KR070959_2.1
+                      location: null
+                      psl: VRT
+                      database_name: GenBank®
+                      country: 'Brazil: Goias, Aragarcas, Rio Araguaia, Rio Araguaia'
+                      sequences_count: 1
+                      patent_number: null
+                      title: 'Molecular identification of cryptic diversity in species of cis-Andean Mylossoma (Characiformes: Serrasalmidae)'
+                      assignees:
+                      - Mateussi, N.T.
+                      - Pavanelli, C.S.
+                      - Oliveira, C.
+                      inventors:
+                      - Mateussi, N.T.
+                      - Pavanelli, C.S.
+                      - Oliveira, C.
+                      family_inpadoc: null
+                      earliest_priority_date: '2015-04-06'
+                      publication_date: '2016-04-05'
+                      filing_date: '2015-04-06'
+                      calculated_expiry_date: null
+                      document_type: null
+                    - sequence_key: SBNN00000003
+                      subject_sequence_length: 20
+                      organisms:
+                      - Unknown
+                      molecule_type: ss-DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: '4320025.14'
+                      location: SEQ ID NO 14
+                      psl: SEQ ID NO 1
+                      database_name: USGENE
+                      country: United States
+                      sequences_count: 2
+                      patent_number: US4320025A
+                      title: Adrenocorticotropin-lipotropin precursor gene
+                      assignees:
+                      - The Regents of the University of California (Berkeley CA)
+                      inventors:
+                      - 1Baxter John D. (San Francisco CA);
+                      family_inpadoc: BE4322499
+                      earliest_priority_date: '1978-12-22'
+                      publication_date: '1982-03-30'
+                      filing_date: '1978-12-22'
+                      calculated_expiry_date: null
+                      document_type: Grant patent
+                    - sequence_key: SBNN00000003
+                      subject_sequence_length: 20
+                      organisms:
+                      - Homo sapiens
+                      molecule_type: protein
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: AAP10003
+                      location: null
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: GENESEQ
+                      country: United States
+                      sequences_count: 1
+                      patent_number: BE885190003A
+                      title: DNA transfer vectors contg. codes for human insulin
+                      assignees:
+                      - UNIV CALIFORNIA
+                      inventors:
+                      - Murray K
+                      - Schaller HE
+                      family_inpadoc: BE4322499
+                      earliest_priority_date: '1979-09-12'
+                      publication_date: '1980-12-31'
+                      filing_date: '1979-09-12'
+                      calculated_expiry_date: null
+                      document_type: Grant patent
+                    - sequence_key: SBNN00000003
+                      subject_sequence_length: 20
+                      organisms:
+                      - Not provided
+                      molecule_type: Nucleic acid
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: AU2012200003.3
+                      location: SEQ ID NO 3
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: GENESEQ FASTAlert
+                      country: Australia
+                      sequences_count: 188
+                      patent_number: AU2012200003A1
+                      title: New single chain polypeptide fusion protein having non-cytotoxic protease cleaving
+                      assignees:
+                      - ALLERGAN INC
+                      - UK SEC FOR HEALTH
+                      inventors: null
+                      family_inpadoc: AU4322499
+                      earliest_priority_date: '2015-12-01'
+                      publication_date: '2013-10-03'
+                      filing_date: null
+                      calculated_expiry_date: null
+                      document_type: Application
+                    - sequence_key: SBNN00000003
+                      subject_sequence_length: 20
+                      organisms:
+                      - Homo sapiens
+                      molecule_type: DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: WO2001050003.3
+                      location: SEQ ID NO 3
+                      psl: Example; Fig 2; 50pp; French.
+                      database_name: WOGENE
+                      country: WIPO
+                      sequences_count: 1040
+                      patent_number: WO2001050003A1
+                      title: Nucleic Acids, Proteins, and Antibodies
+                      assignees:
+                      - Human Genome Sciences, Inc., et al.
+                      inventors: []
+                      family_inpadoc: WO4322499
+                      earliest_priority_date: '2022-07-07'
+                      publication_date: '2001-08-02'
+                      filing_date: null
+                      calculated_expiry_date: null
+                      document_type: Application
+                    - sequence_key: SBNN00000003
+                      subject_sequence_length: 20
+                      organisms:
+                      - Mylossoma duriventre
+                      molecule_type: DNA
+                      query_coverage: 90
+                      score: 12
+                      bit_score: 19.9
+                      gaps: 0
+                      expect: 3.7
+                      identities: 15
+                      identities_percent: 83.33
+                      query_identities_percent: 83.33
+                      positives: 15
+                      positives_percent: 83.33
+                      alignments:
+                      - alignment_length: 18
+                        alignment: "Query:  2 TGGGGGATCCGGCTTGGG 19\n          ||||||| | |||| |||\nSbjct:  2 TGGGGGAACGGGCTAGGG 19\n\n"
+                        hit_from: 2
+                        hit_to: 19
+                        query_from: 2
+                        query_to: 19
+                        score: 12
+                        identities: 15
+                        positives: 15
+                        gaps: 0
+                        bit_score: 19.9
+                        expect: 3.7
+                        strand: plus
+                        query_frame: 1
+                        subject_frame: 1
+                      accession_number: KR070959_3.1
+                      location: null
+                      psl: VRT
+                      database_name: GenBank®
+                      country: 'Brazil: Goias, Aragarcas, Rio Araguaia, Rio Araguaia'
+                      sequences_count: 1
+                      patent_number: null
+                      title: 'Molecular identification of cryptic diversity in species of cis-Andean Mylossoma (Characiformes: Serrasalmidae)'
+                      assignees:
+                      - Mateussi, N.T.
+                      - Pavanelli, C.S.
+                      - Oliveira, C.
+                      inventors:
+                      - Mateussi, N.T.
+                      - Pavanelli, C.S.
+                      - Oliveira, C.
+                      family_inpadoc: null
+                      earliest_priority_date: '2015-04-06'
+                      publication_date: '2016-04-05'
+                      filing_date: '2015-04-06'
+                      calculated_expiry_date: null
+                      document_type: null
+                    meta:
+                      current_page: 1
+                      per_page: 25
+                      total_pages: 1
+                      total_entries: 15
+              schema:
+                type: object
+                required:
+                - meta
+                - data
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SearchResult'
+      operationId: getReportsByReportIdSearchResultsBySearchId
+      x-operation-id-source: derived
+components:
+  schemas:
+    SearchResultAlignment:
+      type: object
+      required:
+      - alignment_length
+      - alignment
+      - hit_from
+      - hit_to
+      properties:
+        alignment_length:
+          type: integer
+        alignment:
+          type: string
+        hit_from:
+          type: integer
+        hit_to:
+          type: integer
+        query_from:
+          type: integer
+        query_to:
+          type: integer
+        score:
+          type: integer
+        identities:
+          type: integer
+        positives:
+          type: integer
+        gaps:
+          type: integer
+        bit_score:
+          type: number
+        expect:
+          type: number
+        strand:
+          type: string
+        query_frame:
+          type: integer
+        subject_frame:
+          type: integer
+        reversed:
+          type: boolean
+      additionalProperties: false
+    SearchResult:
+      type: object
+      required:
+      - sequence_key
+      - subject_sequence_length
+      - organisms
+      - molecule_type
+      - alignments
+      - accession_number
+      - database_name
+      - sequences_count
+      - title
+      properties:
+        sequence_key:
+          type: string
+        subject_sequence_length:
+          type: integer
+        organisms:
+          type: array
+          items:
+            type: string
+        molecule_type:
+          type: string
+        query_coverage:
+          oneOf:
+          - type: number
+          - type: 'null'
+        score:
+          oneOf:
+          - type: integer
+          - type: 'null'
+        bit_score:
+          oneOf:
+          - type: number
+          - type: 'null'
+        expect:
+          oneOf:
+          - type: number
+          - type: 'null'
+        gaps:
+          oneOf:
+          - type: integer
+          - type: 'null'
+        identities:
+          oneOf:
+          - type: integer
+          - type: 'null'
+        positives:
+          oneOf:
+          - type: integer
+          - type: 'null'
+        query_identities_percent:
+          oneOf:
+          - type: number
+          - type: 'null'
+        identities_percent:
+          oneOf:
+          - type: number
+          - type: 'null'
+        positives_percent:
+          oneOf:
+          - type: number
+          - type: 'null'
+        alignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchResultAlignment'
+        accession_number:
+          type: string
+        location:
+          oneOf:
+          - type: string
+          - type: 'null'
+        psl:
+          oneOf:
+          - type: string
+          - type: 'null'
+        database_name:
+          type: string
+        country:
+          oneOf:
+          - type: string
+          - type: 'null'
+        sequences_count:
+          type: integer
+        patent_number:
+          oneOf:
+          - type: string
+          - type: 'null'
+        title:
+          type: string
+        assignees:
+          oneOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+        inventors:
+          oneOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+        family_inpadoc:
+          oneOf:
+          - type: string
+          - type: 'null'
+        family_dwpi:
+          oneOf:
+          - type: string
+          - type: 'null'
+        earliest_priority_date:
+          oneOf:
+          - type: string
+            format: date
+          - type: 'null'
+        publication_date:
+          oneOf:
+          - type: string
+            format: date
+          - type: 'null'
+        filing_date:
+          oneOf:
+          - type: string
+            format: date
+          - type: 'null'
+        calculated_expiry_date:
+          oneOf:
+          - type: string
+            format: date
+          - type: 'null'
+        document_type:
+          oneOf:
+          - type: string
+          - type: 'null'
+    PaginationMeta:
+      type: object
+      required:
+      - current_page
+      - per_page
+      - total_pages
+      - total_entries
+      properties:
+        current_page:
+          type: integer
+        per_page:
+          type: integer
+        total_pages:
+          type: integer
+        total_entries:
+          type: integer
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

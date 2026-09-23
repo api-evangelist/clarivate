@@ -1,0 +1,163 @@
+openapi: 3.2.0
+info:
+  title: EndNote REST API
+  description: Create and update references in an Endnote library
+  contact:
+    name: EndNote API Beta Coordinator
+    email: gillian.neff@clarivate.com
+  version: 1.0.0
+servers:
+- url: https://api.clarivate.com/api/endnote/v1
+security:
+- Log In, accessCode: []
+tags:
+- name: EndNote REST API
+paths:
+  /:
+    parameters:
+    - $ref: '#/components/parameters/routingHeader'
+    - $ref: '#/components/parameters/acceptHeader'
+    - $ref: '#/components/parameters/contentTypeHeader'
+    get:
+      summary: Retrieve the user's Library object
+      operationId: readLibrary
+      responses:
+        '200':
+          description: 'Retrieve the content of this resource. '
+          content:
+            application/json:
+              schema:
+                description: A resource is any object addressed by a URI. it is actually a wrapper of the object, and it can wrap either a single object or a collection of objects (Collection resource).It is basically the URI object with resource content. Properties id and display are not included because either are included in the resource content or are irrelevant.Property result value has the name of the property a GET operation will include resource data. Property on contains the timestamp when this request was processed by the server. Server has included this date in any property of type DATE processed by it (system or readOnly).  If the resource is collection, this object will have additional properties and uris, implementing Collection Iterator pattern.Property pageSize value is the amount of objets from the server.Property page value is the page number of the iteration.Property orderBy is a collection of ORDER object that specifies the collection sorting.If the size of the collection is smaller than pageSize value, property total will be included with the size of the collection, and server will include no other collection property but pageSize.first, previous, next, last are uri properties that replacing the current uri property will set the collection to first, previous, next or last page. Total uri will complete this object by including properties total and lastPage.
+                properties:
+                  results:
+                    description: Name of the property whose value will be the data of this resource.
+                    type: string
+                  data:
+                    $ref: '#/components/schemas/roalibrary'
+                  library:
+                    description: Set of URI to manage current user's library
+                    properties:
+                      totalSpace:
+                        format: int64
+                        description: Total attachment size allowed to have in User's workspace.A positive Number
+                        readOnly: true
+                        default: 0
+                        type: integer
+                      attachmentSizeTotalUri:
+                        $ref: '#/components/schemas/uri'
+                      referenceLimit:
+                        format: int64
+                        description: Total Amount of groups allowed to have in User's workspace.A positive Number
+                        readOnly: true
+                        default: 0
+                        type: integer
+                      unlimitedSpace:
+                        description: 'As true, the user has unlimited space for attachments. '
+                        readOnly: true
+                        default: false
+                        type: boolean
+                      referenceTotalUri:
+                        $ref: '#/components/schemas/uri'
+                      reference:
+                        $ref: '#/components/schemas/uri'
+                    type: object
+                  'on':
+                    format: int64
+                    description: 'TimeStamp of the processing of the current request. Its value is actually a date: milliseconds since 01/01/1970 in GMT'
+                    type: integer
+                type: object
+      tags:
+      - EndNote REST API
+components:
+  schemas:
+    roalibrary:
+      description: Libray object is a singleton that contains the user limits of space in the library, and a set of URIs to manage any ENWS objects.
+      properties:
+        totalSpace:
+          format: int64
+          description: Total attachment size allowed to have in User's workspace.A positive Number
+          readOnly: true
+          default: 0
+          type: integer
+        attachmentSizeTotalUri:
+          $ref: '#/components/schemas/uri'
+        referenceLimit:
+          format: int64
+          description: Total Amount of groups allowed to have in User's workspace.A positive Number
+          readOnly: true
+          default: 0
+          type: integer
+        unlimitedSpace:
+          description: 'As true, the user has unlimited space for attachments. '
+          readOnly: true
+          default: false
+          type: boolean
+        referenceTotalUri:
+          $ref: '#/components/schemas/uri'
+        reference:
+          $ref: '#/components/schemas/uri'
+      type: object
+    uri:
+      properties:
+        system:
+          description: As true, POST method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        readOnly:
+          description: As true, PUT method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        idValue:
+          description: Unique Identifier of a pointed resource
+          readOnly: true
+          type: string
+        hidden:
+          description: As true, GET method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        mandatory:
+          description: As true, DELETE method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        display:
+          description: Name of the resource to show users
+          readOnly: true
+          type: string
+        uri:
+          description: URL pointing to a resource
+          readOnly: true
+          type: string
+      type: object
+  parameters:
+    routingHeader:
+      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
+      name: x-enws-authorization
+      in: header
+      required: true
+      schema:
+        type: string
+    contentTypeHeader:
+      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
+      name: Content-Type
+      in: header
+      schema:
+        type: string
+    acceptHeader:
+      description: 'Contains the format of the data of the response or any error sent by the server placed in the response body. '
+      name: Accept
+      in: header
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    Log_In__accessCode:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
+          tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token

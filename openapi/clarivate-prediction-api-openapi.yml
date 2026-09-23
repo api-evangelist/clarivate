@@ -1,0 +1,318 @@
+openapi: 3.2.0
+info:
+  title: C3-AI Prediction API
+  version: 0.1.d982cc5-8
+servers:
+- url: https://api.clarivate.com/c3/ai
+security:
+- key: []
+tags:
+- name: Prediction
+paths:
+  /c3/ai/prediction:
+    get:
+      tags:
+      - Prediction
+      summary: Get Predictions
+      description: 'This endpoint returns the list of predictions that AI API supports, which user has access to.
+
+        Additionally, a content set can be passed to filter down the list'
+      operationId: get_predictions_c3_ai_prediction_get
+      parameters:
+      - name: contentset
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Contentset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionsResponse'
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Authorization Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /c3/ai/prediction/{prediction_name}:
+    post:
+      tags:
+      - Prediction
+      summary: Make Prediction
+      description: This endpoint runs the model inference given the model and inputs for the specific prediction
+      operationId: make_prediction_c3_ai_prediction__prediction_name__post
+      parameters:
+      - name: prediction_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Prediction Name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MakePredictionRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MakePredictionResponse'
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Authorization Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ApiErrorEnum:
+      type: integer
+      enum:
+      - 1000
+      - 1001
+      - 1002
+      - 1003
+      - 1004
+      - 1005
+      - 1006
+      - 1007
+      - 2000
+      - 2001
+      - 2002
+      - 2003
+      - 2004
+      - 2005
+      - 2006
+      - 3000
+      title: ApiErrorEnum
+    PredictionsResponseDataInput:
+      properties:
+        name:
+          type: string
+          title: Name
+        type:
+          type: string
+          title: Type
+        description:
+          type: string
+          title: Description
+        mandatory:
+          type: boolean
+          title: Mandatory
+      type: object
+      required:
+      - name
+      - type
+      - description
+      - mandatory
+      title: PredictionsResponseDataInput
+    Format:
+      type: string
+      enum:
+      - json
+      title: Format
+    MakePredictionResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/Prediction'
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: MakePredictionResponse
+    ErrorResponse:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: ErrorResponse
+      description: 'Customize Validation Error
+
+        https://github.com/tiangolo/fastapi/issues/1376'
+    Status:
+      type: string
+      enum:
+      - success
+      title: Status
+    PredictionsResponseDataModel:
+      properties:
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: PredictionsResponseDataModel
+    PredictionsResponseData:
+      properties:
+        content_set:
+          type: string
+          title: Content Set
+        name:
+          type: string
+          title: Name
+        models:
+          items:
+            $ref: '#/components/schemas/PredictionsResponseDataModel'
+          type: array
+          title: Models
+        inputs:
+          items:
+            $ref: '#/components/schemas/PredictionsResponseDataInput'
+          type: array
+          title: Inputs
+      type: object
+      required:
+      - content_set
+      - name
+      - models
+      - inputs
+      title: PredictionsResponseData
+    MakePredictionRequest:
+      properties:
+        model:
+          type: string
+          title: Model
+        format:
+          $ref: '#/components/schemas/Format'
+          default: json
+        inputs:
+          items:
+            $ref: '#/components/schemas/PredictionInput'
+          type: array
+          title: Inputs
+      additionalProperties: false
+      type: object
+      required:
+      - model
+      - inputs
+      title: MakePredictionRequest
+    OperationEnum:
+      type: string
+      enum:
+      - eq
+      - in
+      title: OperationEnum
+    PredictionInput:
+      properties:
+        field:
+          type: string
+          title: Field
+        op:
+          $ref: '#/components/schemas/OperationEnum'
+        value:
+          anyOf:
+          - type: string
+          - type: integer
+          - items:
+              type: string
+            type: array
+          - items:
+              type: integer
+            type: array
+          - type: 'null'
+          title: Value
+      additionalProperties: false
+      type: object
+      required:
+      - field
+      - op
+      - value
+      title: PredictionInput
+    Prediction:
+      additionalProperties: true
+      type: object
+    Error:
+      properties:
+        code:
+          $ref: '#/components/schemas/ApiErrorEnum'
+        message:
+          type: string
+          title: Message
+        location:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
+    PredictionsResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/PredictionsResponseData'
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: PredictionsResponse
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

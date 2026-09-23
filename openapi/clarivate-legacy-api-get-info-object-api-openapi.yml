@@ -1,0 +1,243 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: 'Converis Legacy Legacy API: get Info Object API'
+  description: This documentation is for viewing purposes only.
+servers:
+- url: https://api.clarivate.com/legacyapi
+tags:
+- name: 'Legacy API: get Info Object'
+  description: REST web service
+paths:
+  /public/infoobject/filterids:
+    get:
+      summary: Filter info object IDs
+      operationId: filterInfoObjectIds
+      tags:
+      - 'Legacy API: get Info Object'
+      parameters:
+      - name: content
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Query content for filtering
+      responses:
+        '200':
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: xml
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.
+  /public/infoobject/getfiltered:
+    put:
+      summary: Get filtered info objects
+      operationId: getFilteredInfoObjects
+      tags:
+      - 'Legacy API: get Info Object'
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              format: xml
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown Internal error occurred. Try again or contact the system administrator.
+  /public/infoobject/getfiltered/{start}:
+    put:
+      summary: Get filtered info objects starting from a specified point
+      operationId: getFilteredInfoObjectsthroughstart
+      tags:
+      - 'Legacy API: get Info Object'
+      parameters:
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Start point for retrieving filtered info objects.
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              format: xml
+      responses:
+        '204':
+          description: No content
+  /public/infoobject/get/{type}/{id}:
+    get:
+      summary: Get info object by type and ID
+      operationId: getInfoObject
+      tags:
+      - 'Legacy API: get Info Object'
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Entity type.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Entity ID.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: xml
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.
+  /public/infoobject/getfiltered/{start}/{count}:
+    put:
+      summary: Get filtered info objects with pagination
+      operationId: getFilteredInfoObjectsWithStartAndCount
+      tags:
+      - 'Legacy API: get Info Object'
+      parameters:
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Start index for pagination.
+      - name: count
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Number of items to retrieve.
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              format: xml
+      responses:
+        '204':
+          description: No content
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.
+  /public/infoobject/detail/{type}/{lang}/{id}:
+    get:
+      summary: Retrieves representation of an instance of com.converis.ws.GetInfoObject
+      operationId: getInfoObjectDetail
+      tags:
+      - 'Legacy API: get Info Object'
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Type of the info object.
+      - name: lang
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Language of the info object.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Identifier of the info object.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: xml
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.
+  /public/infoobject/filterlist/{lang}/{start}/{count}:
+    get:
+      summary: Retrieves a list of filtered info objects
+      operationId: filterInfoObjectList
+      tags:
+      - 'Legacy API: get Info Object'
+      parameters:
+      - name: lang
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Language of the info objects.
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+        description: Start index of the list.
+      - name: count
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+        description: Number of info objects to retrieve.
+      - name: content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Query content.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: xml
+        '400':
+          description: Request is not correct.
+        '403':
+          description: Your account does not have permissions to access the requested data.
+        '404':
+          description: Requested data is not found.
+        '500':
+          description: Unknown internal error occurred. Try again or contact the system administrator.

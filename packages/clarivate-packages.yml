@@ -6,7 +6,13 @@ source: >-
   the API detail pages of https://developer.clarivate.com/apis. Registry presence was
   checked directly against registry.npmjs.org, pypi.org/pypi/<pkg>/json and
   search.maven.org; package names and versions were read from each repository's own
-  setup.py / package.json / pom.xml on raw.githubusercontent.com.
+  setup.py / package.json / pom.xml on raw.githubusercontent.com. Re-run 2026-09-05:
+  the full organization was enumerated over the GitHub REST API
+  (api.github.com/orgs/clarivate/repos, 63 repositories, HTTP 200) rather than only the
+  repos the portal links, which surfaced ten further first-party API-consuming tools;
+  three previously-null versions were resolved from the repositories' own
+  pyproject.toml and DESCRIPTION manifests, and the two that remain null were
+  re-checked and confirmed to carry no versioned manifest at all.
 description: >-
   Clarivate's first-party client libraries are generated OpenAPI clients published as
   GITHUB SOURCE ONLY. Every name below was probed against its language registry and
@@ -16,7 +22,12 @@ description: >-
   `published:` is the repository's last push date (the only dated release signal that
   exists for these packages). Every WoS client still declares 1.0.0, and the four
   woslite clients wrap an API the developer portal now marks as replaced by the
-  Starter API.
+  Starter API. The tools[] block below is a fuller picture than the SDK block and a
+  more flattering one: Clarivate's genuinely maintained open-source output is
+  ANALYSIS AND INTEGRATION CODE against its own APIs, not the client libraries. Ten of
+  the thirteen tools were pushed since 2024 and four since 2026, while every SDK but
+  one has been untouched for a year or more. One tool, wos-amr, still ships publicly
+  for the Links AMR service Clarivate sunset in 2023 and carries no archive notice.
 registry_probe:
   note: >-
     Every package name below returned 404 from its registry metadata endpoint on
@@ -72,25 +83,38 @@ packages:
   - language: python
     registry: none
     distribution: github-source
-    name: clarivate-c3-ai-api-client-python
-    api: C3-AI-API
+    name: clarivate.aiapi
+    repo: clarivate-c3-ai-api-client-python
+    api: LSH AI API (ric_ai_api)
     url: https://github.com/clarivate/clarivate-c3-ai-api-client-python
     source: https://github.com/clarivate/clarivate-c3-ai-api-client-python
     official: true
-    version: null
+    version: 0.1.0
     published: '2024-02-14'
-    note: No package manifest version could be read; no registry release and no tags.
+    note: >-
+      Version read from pyproject.toml ([tool.poetry] version = "0.1.0"; project name
+      "clarivate.aiapi"). Never published to PyPI, no git tag, so `published` is the
+      repository's last push date. The repo's own README binds it to the portal
+      contract at https://developer.clarivate.com/apis/ric-download-api, which is why
+      it is mapped to the registered ric_ai_api / ric-download-api entries rather than
+      recorded as an unregistered API. A first-party client still at 0.1.0 after two
+      and a half years is a weak maintenance signal.
   - language: python
     registry: none
     distribution: github-source
-    name: clarivate-c3-datafeed-api-client-python
-    api: C3 Data Feed API
+    name: clarivate.datafeedapi
+    repo: clarivate-c3-datafeed-api-client-python
+    api: LSH Data Download API (ric-download-api)
     url: https://github.com/clarivate/clarivate-c3-datafeed-api-client-python
     source: https://github.com/clarivate/clarivate-c3-datafeed-api-client-python
     official: true
-    version: null
+    version: 1.0.0
     published: '2025-02-12'
-    note: No package manifest version could be read; no registry release and no tags.
+    note: >-
+      Version read from pyproject.toml ([tool.poetry] version = "1.0.0"; project name
+      "clarivate.datafeedapi"). Never published to PyPI and no git tag. Its README
+      points at https://developer.clarivate.com/apis/ric-download-api for the swagger,
+      binding it to an already-registered contract.
   - language: python
     registry: none
     distribution: github-source
@@ -138,7 +162,11 @@ packages:
     official: true
     version: null
     published: '2021-10-12'
-    note: No Maven coordinates confirmed; wraps the replaced WoS Lite API.
+    note: >-
+      Checked 2026-09-05: no pom.xml at the default branch root
+      (raw.githubusercontent.com returns 404), so no Maven coordinates and no version
+      can be read, and none is guessed. Not on Maven Central. Wraps the replaced
+      WoS Lite API.
   - language: javascript
     registry: none
     distribution: github-source
@@ -173,18 +201,28 @@ packages:
     official: true
     version: null
     published: '2021-01-25'
-    note: No NuGet package; wraps the replaced WoS Lite API.
+    note: >-
+      Checked 2026-09-05: the repository carries no .nuspec and no versioned manifest —
+      the solution is the swagger-codegen default IO.Swagger.sln — so there is no
+      version to record and none is guessed. No NuGet package. Wraps the replaced
+      WoS Lite API.
   - language: r
     registry: none
     distribution: github-source
-    name: woslite_r_client
+    name: wosliterclient
+    repo: woslite_r_client
     api: Web of Science API Lite
     url: https://github.com/clarivate/woslite_r_client
     source: https://github.com/clarivate/woslite_r_client
     official: true
-    version: null
+    version: 1.0.0
     published: '2021-07-21'
-    note: No CRAN release; wraps the replaced WoS Lite API.
+    note: >-
+      Package name and version read from the repository's DESCRIPTION file
+      (Package: wosliterclient, Version: 1.0.0). No CRAN release. The DESCRIPTION still
+      declares URL/BugReports against the retired github.com/Clarivate-SAR org and
+      credits the OpenAPI Generator community as author. Wraps the WoS Lite API, which
+      the portal marks as replaced by the Starter API.
 tools:
   - name: Web of Science API Exporter
     language: vue
@@ -205,6 +243,99 @@ tools:
     official: true
     published: '2026-04-07'
     note: Code snippets used with the Web of Science APIs; the most actively maintained sample repo.
+  - name: wose_citing_author_analysis
+    repo: wose_citing_author_analysis
+    language: python
+    api: Web of Science API Expanded
+    url: https://github.com/clarivate/wose_citing_author_analysis
+    official: true
+    published: '2026-08-26'
+    note: >-
+      Analyzes Web of Science source records and their citing articles to identify
+      frequent citing authors. The most recently pushed API-consuming repo in the org.
+  - name: wos_cited_refs_with_cited_doctypes
+    repo: wos_cited_refs_with_cited_doctypes
+    language: python
+    api: Web of Science API Expanded
+    url: https://github.com/clarivate/wos_cited_refs_with_cited_doctypes
+    official: true
+    published: '2026-08-19'
+  - name: affiliation_collaboration_analysis
+    repo: affiliation_collaboration_analysis
+    language: python
+    api: Web of Science API Expanded
+    url: https://github.com/clarivate/affiliation_collaboration_analysis
+    official: true
+    published: '2026-07-27'
+    note: Identifies multi-author collaborations from Web of Science Expanded API records.
+  - name: wose_sr_cr_analysis
+    repo: wose_sr_cr_analysis
+    language: python
+    api: Web of Science API Expanded
+    url: https://github.com/clarivate/wose_sr_cr_analysis
+    official: true
+    published: '2026-02-23'
+  - name: Web of Science Reviewer Recognition plugin for OJS 3
+    repo: wos_reviewer_recognition_plugin_ojs_3
+    language: php
+    api: Publons / Reviewer Connect
+    url: https://github.com/clarivate/wos_reviewer_recognition_plugin_ojs_3
+    official: true
+    published: '2026-02-23'
+    note: >-
+      Open Journal Systems plugin. Two superseded variants also exist in the org
+      (wos_reviewer_recognition_plugin_ojs_2, last push 2025-06-03, and
+      wos_reviewer_recognition_plugin_ojs_old for OJS 3.1-3.3, last push 2024-12-29).
+  - name: wos_starter_to_excel
+    repo: wos_starter_to_excel
+    language: python
+    api: Web of Science Starter API
+    url: https://github.com/clarivate/wos_starter_to_excel
+    official: true
+    published: '2025-12-17'
+    note: Exports Starter API results to a WoS-like Excel workbook.
+  - name: incites-to-openalex-apc
+    repo: incites-to-openalex-apc
+    language: python
+    api: InCites API
+    url: https://github.com/clarivate/incites-to-openalex-apc
+    official: true
+    published: '2025-10-20'
+    note: >-
+      Enriches InCites exports with Article Processing Charge data from OpenAlex — a
+      first-party tool that reaches outside Clarivate's own estate for the data.
+  - name: wosstarter2vivo
+    repo: wosstarter2vivo
+    language: python
+    api: Web of Science Starter API
+    url: https://github.com/clarivate/wosstarter2vivo
+    official: true
+    published: '2024-10-11'
+    note: >-
+      Harvests the Starter API into VIVO-compatible RDF. Part of a small VIVO family in
+      the org (wos2vivo 2023-03-07, incites2vivo 2021-01-20, Publons2VIVO 2021-01-20,
+      VIVO2MyOrg 2021-01-20), all now dormant.
+  - name: wos_grants_index_analytics
+    repo: wos_grants_index_analytics
+    language: python
+    api: Web of Science Grants Index
+    url: https://github.com/clarivate/wos_grants_index_analytics
+    official: true
+    published: '2024-04-25'
+    note: Flask application for analyzing Web of Science Grants Index data.
+  - name: wos-amr
+    repo: wos-amr
+    language: python
+    api: Links Article Match Retrieval (AMR)
+    url: https://github.com/clarivate/wos-amr
+    official: true
+    published: '2023-02-28'
+    state: orphaned
+    note: >-
+      Utility scripts for the Links AMR service, which Clarivate sunset in 2023 (see
+      lifecycle/clarivate-lifecycle.yml). The repo is still public and carries no
+      archive or deprecation notice, so it reads as usable tooling for an API that no
+      longer exists.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

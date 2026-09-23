@@ -1,0 +1,477 @@
+openapi: 3.2.0
+info:
+  title: Derwent Sequence Search Projects API
+  version: V1@2026-06-09
+  description: OpenAPI Docs & Interactive UI
+  license:
+    name: Commercially Licensed Product
+    url: https://clarivate.com/derwent/solutions/derwent-sequence-base/
+servers:
+- url: https://api.clarivate.com/derwent-sequence-search
+security:
+- key: []
+tags:
+- name: Projects
+  description: Projects management endpoints
+paths:
+  /reports:
+    get:
+      summary: List projects
+      tags:
+      - Projects
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 1
+        description: Page number for pagination
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+        description: Number of items per page
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                    - id: '6'
+                      type: report
+                      attributes:
+                        id: 6
+                        title: Regular API project
+                        author: Jordan Parker
+                        created_for: null
+                        type: ApiRegular
+                        shared: false
+                        searches_count: 0
+                        sequences_count: 0
+                        documents_count: 0
+                        created_at: '2026-06-09T06:50:48Z'
+                        updated_at: '2026-06-09T06:50:48Z'
+                    - id: '7'
+                      type: report
+                      attributes:
+                        id: 7
+                        title: Regular API project
+                        author: Jordan Parker
+                        created_for: null
+                        type: ApiRegular
+                        shared: false
+                        searches_count: 0
+                        sequences_count: 0
+                        documents_count: 0
+                        created_at: '2026-06-09T06:50:48Z'
+                        updated_at: '2026-06-09T06:50:48Z'
+                    - id: '8'
+                      type: report
+                      attributes:
+                        id: 8
+                        title: Regular API project
+                        author: Jordan Parker
+                        created_for: null
+                        type: ApiRegular
+                        shared: false
+                        searches_count: 0
+                        sequences_count: 0
+                        documents_count: 0
+                        created_at: '2026-06-09T06:50:48Z'
+                        updated_at: '2026-06-09T06:50:48Z'
+                    meta:
+                      total: 3
+                      total_pages: 1
+                    links:
+                      self: http://www.example.com/api/v1/reports?limit=10&page=1
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+                  meta:
+                    $ref: '#/components/schemas/JsonApiPaginationMeta'
+                  links:
+                    $ref: '#/components/schemas/PaginationLinks'
+                required:
+                - data
+                - meta
+                - links
+      operationId: getReports
+      x-operation-id-source: derived
+    post:
+      summary: Create project
+      tags:
+      - Projects
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              examples:
+                created:
+                  value:
+                    data:
+                      id: '13'
+                      type: report
+                      attributes:
+                        id: 13
+                        title: New API Project
+                        author: Test Author
+                        created_for: API Testing
+                        type: ApiRegular
+                        shared: false
+                        searches_count: 0
+                        sequences_count: 0
+                        documents_count: 0
+                        created_at: '2026-06-09T06:50:48Z'
+                        updated_at: '2026-06-09T06:50:48Z'
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Project'
+                required:
+                - data
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              examples:
+                unprocessable_entity:
+                  value:
+                    errors:
+                    - status: 422
+                      code: blank
+                      detail: Title can't be blank
+                      pointer: title
+              schema:
+                $ref: '#/components/schemas/errors'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                report:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    author:
+                      type: string
+                    created_for:
+                      type: string
+                  required:
+                  - title
+              required:
+              - report
+        required: true
+      operationId: postReports
+      x-operation-id-source: derived
+  /reports/{id}:
+    parameters:
+    - name: id
+      in: path
+      description: Project ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Show project
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                      id: '19'
+                      type: report
+                      attributes:
+                        id: 19
+                        title: Regular API project
+                        author: Kandi Mraz
+                        created_for: null
+                        type: ApiRegular
+                        shared: false
+                        searches_count: 0
+                        sequences_count: 0
+                        documents_count: 0
+                        created_at: '2026-06-09T06:50:48Z'
+                        updated_at: '2026-06-09T06:50:48Z'
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Project'
+                required:
+                - data
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+      operationId: getReportsById
+      x-operation-id-source: derived
+    patch:
+      summary: Update project
+      tags:
+      - Projects
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                      id: '27'
+                      type: report
+                      attributes:
+                        id: 27
+                        title: Updated Title
+                        author: Gladys Rutherford
+                        created_for: null
+                        type: ApiRegular
+                        shared: false
+                        searches_count: 0
+                        sequences_count: 0
+                        documents_count: 0
+                        created_at: '2026-06-09T06:50:48Z'
+                        updated_at: '2026-06-09T06:50:48Z'
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Project'
+                required:
+                - data
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              examples:
+                unprocessable_entity:
+                  value:
+                    errors:
+                    - status: 422
+                      code: blank
+                      detail: Title can't be blank
+                      pointer: title
+              schema:
+                $ref: '#/components/schemas/errors'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                report:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    author:
+                      type: string
+                    created_for:
+                      type: string
+              required:
+              - report
+        required: true
+      operationId: patchReportsById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete project
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    data:
+                      type: report
+                      id: '39'
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                    - id
+                    - type
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+      operationId: deleteReportsById
+      x-operation-id-source: derived
+components:
+  schemas:
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Report.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - report
+        attributes:
+          $ref: '#/components/schemas/ProjectAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    PaginationLinks:
+      description: Pagination navigation links for collection responses.
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: Link to the current page.
+        first:
+          type: string
+          format: uri
+          description: Link to the first page.
+        last:
+          type: string
+          format: uri
+          description: Link to the last page.
+        next:
+          type: string
+          format: uri
+          description: Link to the next page.
+        prev:
+          type: string
+          format: uri
+          description: Link to the previous page.
+    JsonApiPaginationMeta:
+      description: Pagination metadata for JSON:API collection responses.
+      type: object
+      required:
+      - total
+      - total_pages
+      properties:
+        total:
+          type: integer
+          description: Total number of records.
+        total_pages:
+          type: integer
+          description: Total number of pages.
+    ProjectAttributes:
+      type: object
+      required:
+      - id
+      - title
+      - type
+      - shared
+      - searches_count
+      - sequences_count
+      - documents_count
+      - created_at
+      - updated_at
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          oneOf:
+          - type: string
+          - type: 'null'
+        created_for:
+          oneOf:
+          - type: string
+          - type: 'null'
+        type:
+          type: string
+        shared:
+          type: boolean
+        searches_count:
+          type: integer
+        sequences_count:
+          type: integer
+        documents_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    error:
+      type: object
+      properties:
+        status:
+          oneOf:
+          - type: string
+          - type: integer
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+        title:
+          type: string
+        detail:
+          oneOf:
+          - type: string
+          - type: array
+          - type: object
+        pointer:
+          type: string
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey

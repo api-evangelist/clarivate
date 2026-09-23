@@ -1,0 +1,81 @@
+openapi: 3.2.0
+info:
+  title: lsh--ext-client Download API
+  version: 1.0.0
+servers:
+- url: https://api.clarivate.com/lsh-ds
+security:
+- key: []
+tags:
+- name: Download
+paths:
+  /download:
+    post:
+      description: Initiate a download request for LSH data exports. The request will be processed asynchronously, and the client can check the status and retrieve the download link using the history endpoint.
+      parameters:
+      - name: X-ApiKey
+        in: header
+        required: true
+        description: API key for authentication.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exportId:
+                    type: integer
+                example:
+                  exportId: 34377
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notificationTypes:
+                  type: array
+                  items:
+                    type: string
+                exportName:
+                  type: string
+                exportFormat:
+                  type: string
+                params:
+                  type: object
+                  properties:
+                    notificationTypes:
+                      type: array
+                      items:
+                        type: string
+              required:
+              - notificationTypes
+              - exportName
+              - exportFormat
+              - params
+              example:
+                notificationTypes:
+                - email
+                exportName: pt_stryker_date_exportId.csv
+                exportFormat: csv
+                params:
+                  notificationTypes:
+                  - email
+        description: Download request payload.
+        required: true
+      tags:
+      - Download
+      summary: Create download
+      x-summary-source: derived
+      operationId: postDownload
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    key:
+      type: apiKey
+      in: header
+      name: X-ApiKey
