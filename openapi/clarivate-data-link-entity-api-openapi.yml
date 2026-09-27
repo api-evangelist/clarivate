@@ -472,38 +472,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AttributeData:
-      required:
-      - attributeName
-      - attributeType
-      - value
-      type: object
-      properties:
-        attributeName:
-          type: string
-          description: Attribute name
-          example: cfTitle
-        attributeType:
-          type: string
-          description: Data type of the Attribute
-          example: STRING
-          enum:
-          - STRING
-          - TEXT
-          - CGV
-          - NUMBER
-          - DATE
-          - BOOLEAN
-        language:
-          type: string
-          description: language code of this attribute. Empty if not translatable
-          example: en_GB
-        value:
-          type: string
-          description: The value of the attribute data
-          example: An example Publication title
-        choiceGroupData:
-          $ref: '#/components/schemas/ChoiceGroupData'
     LinkEntityData:
       type: object
       properties:
@@ -549,30 +517,6 @@ components:
           description: list of attributes data for this entity data
           items:
             $ref: '#/components/schemas/AttributeData'
-    LinkEntityDataList:
-      required:
-      - count
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityData'
     LabelDefinition:
       required:
       - language
@@ -587,6 +531,38 @@ components:
           type: string
           description: The value of the label
           example: Publication
+    AttributeData:
+      required:
+      - attributeName
+      - attributeType
+      - value
+      type: object
+      properties:
+        attributeName:
+          type: string
+          description: Attribute name
+          example: cfTitle
+        attributeType:
+          type: string
+          description: Data type of the Attribute
+          example: STRING
+          enum:
+          - STRING
+          - TEXT
+          - CGV
+          - NUMBER
+          - DATE
+          - BOOLEAN
+        language:
+          type: string
+          description: language code of this attribute. Empty if not translatable
+          example: en_GB
+        value:
+          type: string
+          description: The value of the attribute data
+          example: An example Publication title
+        choiceGroupData:
+          $ref: '#/components/schemas/ChoiceGroupData'
     BasicData:
       required:
       - data
@@ -681,6 +657,30 @@ components:
           type: string
           description: is the complete endpoint path that uniquely defines the resource.
           example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
+    LinkEntityDataList:
+      required:
+      - count
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityData'
   securitySchemes:
     BasicAuth:
       type: http

@@ -78,30 +78,6 @@ components:
           type: string
           description: Value of the organization identifier
           example: 1234 1234 1234 1234
-    SUSHI_consortium_member_list:
-      type: object
-      required:
-      - Customer_ID
-      - Name
-      properties:
-        Customer_ID:
-          type: string
-          description: Identifer for the consortium's member account.  This identifier would be used as the Customer_ID for subsequent report requests for the member.
-          example: 1557c9eebf17b8fc56da59756791b636
-        Requestor_ID:
-          type: string
-          description: The RequestorID to use to retrieve COUNTER stats the consortium's member account -- only include if different from the main consortium's RequestorID.  This identifier would be used as the Requestor for subsequent report requests for the member.
-          example: 158
-        Name:
-          type: string
-          description: Customer name assigned to the consortium member.
-          example: Mt. Laurel University Medical School
-        Notes:
-          type: string
-          description: Additional notes regarding the customer.
-          example: Usage pulled using content licensed by the consortium.
-          items:
-            $ref: '#/components/schemas/SUSHI_org_identifiers'
     SUSHI_error_model:
       type: object
       description: Generalized format for presenting errors and exceptions.
@@ -136,6 +112,30 @@ components:
           type: string
           description: Additional data provided by the server to clarify the error.
           example: Usage data has not been processed for all requested months.
+    SUSHI_consortium_member_list:
+      type: object
+      required:
+      - Customer_ID
+      - Name
+      properties:
+        Customer_ID:
+          type: string
+          description: Identifer for the consortium's member account.  This identifier would be used as the Customer_ID for subsequent report requests for the member.
+          example: 1557c9eebf17b8fc56da59756791b636
+        Requestor_ID:
+          type: string
+          description: The RequestorID to use to retrieve COUNTER stats the consortium's member account -- only include if different from the main consortium's RequestorID.  This identifier would be used as the Requestor for subsequent report requests for the member.
+          example: 158
+        Name:
+          type: string
+          description: Customer name assigned to the consortium member.
+          example: Mt. Laurel University Medical School
+        Notes:
+          type: string
+          description: Additional notes regarding the customer.
+          example: Usage pulled using content licensed by the consortium.
+          items:
+            $ref: '#/components/schemas/SUSHI_org_identifiers'
   securitySchemes:
     key:
       type: apiKey

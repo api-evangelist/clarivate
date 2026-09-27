@@ -185,6 +185,49 @@ components:
             value: Validiert
           items:
             $ref: '#/components/schemas/LabelDefinition'
+    AttributeDefinition:
+      required:
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 16287
+        name:
+          type: string
+          example: acceptanceDate
+        dataInput:
+          $ref: '#/components/schemas/AttributeInputDefinition'
+        multilanguage:
+          type: boolean
+          example: false
+        description:
+          type: string
+          example: 'The date when the author received notice that the submitted proposal got accepted and following that he can submit a paper
+
+            '
+        labels:
+          type: array
+          example:
+          - language: en_US
+            value: Acceptance date
+          - language: de_DE
+            value: Datum
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
+        mandatory:
+          type: boolean
+          example: false
+        allowPublicSearch:
+          type: boolean
+          example: true
+        internallySearcheable:
+          type: boolean
+          example: true
+        includeInPageExport:
+          type: boolean
+          example: true
     EntityDefinition:
       required:
       - description
@@ -265,49 +308,34 @@ components:
           type: string
           description: The value of the label
           example: Publication
-    AttributeDefinition:
+    DefaultResponse:
       required:
-      - name
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
       type: object
       properties:
-        id:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
           type: integer
-          format: int64
-          example: 16287
-        name:
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
           type: string
-          example: acceptanceDate
-        dataInput:
-          $ref: '#/components/schemas/AttributeInputDefinition'
-        multilanguage:
-          type: boolean
-          example: false
-        description:
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
           type: string
-          example: 'The date when the author received notice that the submitted proposal got accepted and following that he can submit a paper
-
-            '
-        labels:
-          type: array
-          example:
-          - language: en_US
-            value: Acceptance date
-          - language: de_DE
-            value: Datum
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
-        mandatory:
-          type: boolean
-          example: false
-        allowPublicSearch:
-          type: boolean
-          example: true
-        internallySearcheable:
-          type: boolean
-          example: true
-        includeInPageExport:
-          type: boolean
-          example: true
+          description: The detailed description of the error
     AttributeInputDefinition:
       properties:
         dataType:
@@ -347,34 +375,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EntityDefinition'
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
     LinkReference:
       required:
       - rel

@@ -395,66 +395,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Percentiles:
+    UT:
       type: object
       properties:
-        SUBJECT:
-          type: string
-          description: Each Record has an index number corresponding to its position. Starts at index 1
-          example: History Of Social Sciences
-        CODE:
+        ISI_LOC:
           type: string
           description: Unique identifier for Web of Science Core Collection article (UID)
-          example: MR
-        CATPERCENTILE:
-          type: integer
-          description: The percentile in which the paper ranks in its category and database year, based on total citations received by the paper. The higher the number of citations, the *higher* the percentile number
-        IS_BEST:
-          type: string
-          description: Returns true if this category is the best
-          example: 'true'
-        CAT_EXP_CITATION:
-          type: integer
-          description: Citations expected for this document based on the citation received by documents published in the same year, document type and subject area
-        CNCI:
-          type: integer
-          description: The Category Normalized Citation Impact (CNCI) of a document is calculated by dividing the actual count of citing items by the expected citation rate for documents with the same document type, year of publication and subject area
-    OA_FLAG_DATA:
-      type: object
-      properties:
-        TYPE:
-          type: integer
-          description: Impact Story colour
-    ArrayOfDates:
-      type: array
-      items:
-        type: object
-        properties:
-          INCITES_DATASET_UPDATED:
-            type: string
-            description: The date of the last time the InCites Dataset was updated
-            example: 02-12-2018
-          WOS_DATASET_INDEXED:
-            type: string
-            description: The date of the last time the WoS Dataset was updated
-            example: 31/DEC/2017
-    ErrorMessage:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error Code
-        message:
-          type: string
-          description: Error Message
-    ArrayOfUTs:
-      type: array
-      items:
-        $ref: '#/components/schemas/UT'
+          example: 000188396500010
     ArrayOfRecords:
       type: array
       items:
         $ref: '#/components/schemas/Record'
+    ArrayOfUTs:
+      type: array
+      items:
+        $ref: '#/components/schemas/UT'
     Record:
       type: object
       properties:
@@ -528,13 +483,58 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Percentiles'
-    UT:
+    Percentiles:
       type: object
       properties:
-        ISI_LOC:
+        SUBJECT:
+          type: string
+          description: Each Record has an index number corresponding to its position. Starts at index 1
+          example: History Of Social Sciences
+        CODE:
           type: string
           description: Unique identifier for Web of Science Core Collection article (UID)
-          example: 000188396500010
+          example: MR
+        CATPERCENTILE:
+          type: integer
+          description: The percentile in which the paper ranks in its category and database year, based on total citations received by the paper. The higher the number of citations, the *higher* the percentile number
+        IS_BEST:
+          type: string
+          description: Returns true if this category is the best
+          example: 'true'
+        CAT_EXP_CITATION:
+          type: integer
+          description: Citations expected for this document based on the citation received by documents published in the same year, document type and subject area
+        CNCI:
+          type: integer
+          description: The Category Normalized Citation Impact (CNCI) of a document is calculated by dividing the actual count of citing items by the expected citation rate for documents with the same document type, year of publication and subject area
+    ArrayOfDates:
+      type: array
+      items:
+        type: object
+        properties:
+          INCITES_DATASET_UPDATED:
+            type: string
+            description: The date of the last time the InCites Dataset was updated
+            example: 02-12-2018
+          WOS_DATASET_INDEXED:
+            type: string
+            description: The date of the last time the WoS Dataset was updated
+            example: 31/DEC/2017
+    OA_FLAG_DATA:
+      type: object
+      properties:
+        TYPE:
+          type: integer
+          description: Impact Story colour
+    ErrorMessage:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error Code
+        message:
+          type: string
+          description: Error Message
   securitySchemes:
     key:
       type: apiKey

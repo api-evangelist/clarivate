@@ -345,70 +345,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    errors:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/error'
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Report.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - report
-        attributes:
-          $ref: '#/components/schemas/ProjectAttributes'
-      required:
-      - id
-      - type
-      - attributes
-    PaginationLinks:
-      description: Pagination navigation links for collection responses.
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: Link to the current page.
-        first:
-          type: string
-          format: uri
-          description: Link to the first page.
-        last:
-          type: string
-          format: uri
-          description: Link to the last page.
-        next:
-          type: string
-          format: uri
-          description: Link to the next page.
-        prev:
-          type: string
-          format: uri
-          description: Link to the previous page.
-    JsonApiPaginationMeta:
-      description: Pagination metadata for JSON:API collection responses.
-      type: object
-      required:
-      - total
-      - total_pages
-      properties:
-        total:
-          type: integer
-          description: Total number of records.
-        total_pages:
-          type: integer
-          description: Total number of pages.
     ProjectAttributes:
       type: object
       required:
@@ -450,6 +386,63 @@ components:
         updated_at:
           type: string
           format: date-time
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Report.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - report
+        attributes:
+          $ref: '#/components/schemas/ProjectAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    JsonApiPaginationMeta:
+      description: Pagination metadata for JSON:API collection responses.
+      type: object
+      required:
+      - total
+      - total_pages
+      properties:
+        total:
+          type: integer
+          description: Total number of records.
+        total_pages:
+          type: integer
+          description: Total number of pages.
+    PaginationLinks:
+      description: Pagination navigation links for collection responses.
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: Link to the current page.
+        first:
+          type: string
+          format: uri
+          description: Link to the first page.
+        last:
+          type: string
+          format: uri
+          description: Link to the last page.
+        next:
+          type: string
+          format: uri
+          description: Link to the next page.
+        prev:
+          type: string
+          format: uri
+          description: Link to the previous page.
     error:
       type: object
       properties:
@@ -470,6 +463,13 @@ components:
           - type: object
         pointer:
           type: string
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
   securitySchemes:
     key:
       type: apiKey

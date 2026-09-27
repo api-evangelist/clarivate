@@ -58,6 +58,40 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SUSHI_error_model:
+      type: object
+      description: Generalized format for presenting errors and exceptions.
+      required:
+      - Code
+      - Severity
+      - Message
+      properties:
+        Code:
+          type: integer
+          format: int32
+          description: Error number. See table of error.
+          example: 3040
+        Severity:
+          type: string
+          description: Severity of the error.
+          example: Warning
+          enum:
+          - Warning
+          - Error
+          - Fatal
+          - Debug
+          - Info
+        Message:
+          type: string
+          description: Text describing the error.
+          example: Partial Data Returned.
+        Help_URL:
+          type: string
+          description: URL describing error details.
+        Data:
+          type: string
+          description: Additional data provided by the server to clarify the error.
+          example: Usage data has not been processed for all requested months.
     SUSHI_service_status:
       type: object
       required:
@@ -94,40 +128,6 @@ components:
                 type: string
                 description: Text of the alert.
                 example: Service will be unavailable Sunday midnight...
-    SUSHI_error_model:
-      type: object
-      description: Generalized format for presenting errors and exceptions.
-      required:
-      - Code
-      - Severity
-      - Message
-      properties:
-        Code:
-          type: integer
-          format: int32
-          description: Error number. See table of error.
-          example: 3040
-        Severity:
-          type: string
-          description: Severity of the error.
-          example: Warning
-          enum:
-          - Warning
-          - Error
-          - Fatal
-          - Debug
-          - Info
-        Message:
-          type: string
-          description: Text describing the error.
-          example: Partial Data Returned.
-        Help_URL:
-          type: string
-          description: URL describing error details.
-        Data:
-          type: string
-          description: Additional data provided by the server to clarify the error.
-          example: Usage data has not been processed for all requested months.
   securitySchemes:
     key:
       type: apiKey

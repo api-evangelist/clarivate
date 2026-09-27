@@ -360,24 +360,12 @@ components:
               type: string
               example: CGCGGTCGGGTCGTG
               description: Single sequence query string
-    Search:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Search.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - search
-        attributes:
-          $ref: '#/components/schemas/SearchAttributes'
-      required:
-      - id
-      - type
-      - attributes
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
     SearchCreateMultiSequenceParams:
       type: object
       required:
@@ -602,12 +590,24 @@ components:
               enum:
               - true
               description: Must be true for multi-sequence search mode
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Search.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - search
+        attributes:
+          $ref: '#/components/schemas/SearchAttributes'
+      required:
+      - id
+      - type
+      - attributes
   securitySchemes:
     key:
       type: apiKey

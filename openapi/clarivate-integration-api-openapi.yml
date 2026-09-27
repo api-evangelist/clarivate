@@ -310,40 +310,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    WosSearchResponseXML:
-      type: object
-      xml:
-        name: response
-        namespace: http://www.isinet.com/xrpc42
-      properties:
-        map:
-          type: object
-          properties:
-            map:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: Data
-                  xml:
-                    attribute: true
-                val:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      example: Records
-                      xml:
-                        attribute: true
-                    records:
-                      type: object
-                      properties:
-                        REC:
-                          type: array
-                          items:
-                            $ref: '#/components/schemas/WosRecordXML'
-        QueryResult:
-          $ref: '#/components/schemas/QueryResult'
     errorMessage:
       type: object
       xml:
@@ -377,15 +343,6 @@ components:
                         $ref: '#/components/schemas/WosRecord'
         QueryResult:
           $ref: '#/components/schemas/QueryResult'
-    QueryResult:
-      type: object
-      properties:
-        QueryID:
-          type: string
-        RecordsSearched:
-          type: integer
-        RecordsFound:
-          type: integer
     WosRecordXML:
       type: object
       required:
@@ -1532,6 +1489,49 @@ components:
             date_loaded:
               type: string
               example: '2009-12-31T23:59:59.00000'
+    QueryResult:
+      type: object
+      properties:
+        QueryID:
+          type: string
+        RecordsSearched:
+          type: integer
+        RecordsFound:
+          type: integer
+    WosSearchResponseXML:
+      type: object
+      xml:
+        name: response
+        namespace: http://www.isinet.com/xrpc42
+      properties:
+        map:
+          type: object
+          properties:
+            map:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Data
+                  xml:
+                    attribute: true
+                val:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: Records
+                      xml:
+                        attribute: true
+                    records:
+                      type: object
+                      properties:
+                        REC:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/WosRecordXML'
+        QueryResult:
+          $ref: '#/components/schemas/QueryResult'
     WosShortSearchResponse:
       type: object
       properties:

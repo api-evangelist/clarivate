@@ -5891,257 +5891,6 @@ paths:
       - Patents
 components:
   schemas:
-    document_availability_request_patent:
-      properties:
-        collection:
-          description: Requested Collection
-          items:
-            description: Derwent Abstract Journal(DAJ)|Patent abstract Journal(PAJ)
-            example: DAJ|PAJ
-            type: string
-          type: array
-        input_type:
-          description: Type of input patents list
-          items:
-            description: Type of patents - Publication Number( default patent) or Accession Number (dwpan)
-            example: patent|dwpan
-            type: string
-          type: array
-        patents:
-          description: Patents to check
-          example:
-          - JP51021981B(197002753R)
-          - US3201444A(196617885F)
-          items:
-            description: List of Publication numbers or Accession numbers for patent
-            example: JP51021981B(197002753R)
-            type: string
-          type: array
-      type: object
-    match_patent:
-      properties:
-        MATCH:
-          properties:
-            ALG:
-              description: Matching algorithm (currently only "DEFAULT")
-              example: DEFAULT
-              type: string
-            MATCH_FIELDS:
-              description: Fields to match. Must be one of ('assignee', 'parent_assignee')
-              items:
-                description: Fields to match. Must be one of ('assignee', 'parent_assignee')
-                example: assignee
-                type: string
-              type: array
-            THRESHOLD:
-              description: Minimum match score
-              example: 0
-              type: number
-            TOPN:
-              default: 10
-              description: Maximum number of matches to return
-              example: 2
-              type: number
-            VALUE:
-              description: A field value to attempt to match
-              example: Microsoft
-              type: string
-          type: object
-      type: object
-    match_response_patent:
-      properties:
-        assignee:
-          items:
-            properties:
-              count:
-                description: Number of documents with this value
-                type: number
-              name:
-                description: Value of field assignee
-                type: string
-              score:
-                description: Match score
-                type: number
-            type: object
-          type: array
-        parent_assignee:
-          items:
-            properties:
-              count:
-                description: Number of documents with this value
-                type: number
-              name:
-                description: Value of field parent_assignee
-                type: string
-              score:
-                description: Match score
-                type: number
-            type: object
-          type: array
-      type: object
-    query_body_patent:
-      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
-      properties:
-        ALG:
-          description: Algorithm to use.
-          enum:
-          - BASIC
-          type: string
-        FIELD:
-          description: Field to query
-          enum:
-          - DPCI_CITING_COUNTS_PATENTS_TOTAL
-          - PUBLICATION_YEAR
-          - PUBLICATION_DATE
-          - DWPI_ACCESSION_NUMBER
-          - APPLICATION_REGISTRATION_OFFICE
-          - DSI_AVERAGE_SCORE
-          - ASSIGNEE_ORIGINAL_NATIONALITY
-          - DWPI_TITLE
-          - IPC_SUBCLASS_DESCRIPTION
-          - GUID
-          - DWPI_FAMILY_MEMBER_COUNT
-          - DEAD_ALIVE_STATUS
-          - DWPI_CLASS_SECTION_DESCRIPTION
-          - DWPI_ASSIGNEE_CODE_TYPE
-          - GRANTED
-          - INVENTOR_ADDRESS
-          - DSI_STRENGTH_INDEX
-          - IPC_SYMBOL
-          - ASSIGNEE_ORIGINAL_STATE
-          - INVENTOR_STATE
-          - KIND_CODE
-          - EXAMINER_SECONDARY
-          - IPC_SECTION
-          - GRANT_DATE
-          - DPCI_CITED_COUNTS_PATENTS_TOTAL
-          - JP_CLASS_F_TERM
-          - DWPI_APPLICATION_NUMBER_BASIC
-          - DWPI_MANUAL_CODE_4
-          - EARLIEST_PRIORITY_COUNTRY
-          - IPC_SUBCLASS
-          - EARLIEST_PRIORITY_NUMBER
-          - DWPI_ASSIGNEE_NAME
-          - ASSIGNEE_CURRENT_US
-          - DWPI_DESIGNATED_OFFICE_COUNT
-          - CPC_TYPE
-          - CORRESPONDENT_CITY
-          - DERWENT_FORWARD_CITATION_COUNT
-          - CORRESPONDENT_NAME
-          - AGENT_CITY
-          - ASSIGNEE_NAME
-          - DSI_INVENTION_INFLUENCE_SCORE
-          - DWPI_INVENTOR_NAME
-          - IPC_CURRENT
-          - ASSIGNEE_ORIGINAL_NAME
-          - IPC_CLASS
-          - SERIAL_NUMBER
-          - APPLICATION_NUMBER
-          - DSI_TECHNICAL_DISTINCTIVENESS_SCORE
-          - REGISTRATION_OFFICE
-          - ESTIMATED_EXPIRATION_DISCLAIMER_FLAG
-          - EXAMINER_MAIN
-          - EARLIEST_PRIORITY_YEAR
-          - ASSIGNEE_ORIGINAL_ZIP_CODE
-          - IPC_4
-          - DWPI_FAMILY_STATUS
-          - DOCUMENT_GUID
-          - INVENTOR_NATIONALITY
-          - AGENT_INID
-          - DPCI_CITED_COUNTS_AUTHORITIES_TOTAL
-          - INVENTOR_NAME
-          - ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM
-          - DPCI_CITED_COUNTS_NON_PATENTS_TOTAL
-          - IPC_DESCRIPTION
-          - ASSIGNEE_ORIGINAL_CITY
-          - DSI_AGE_DISCOUNT
-          - DWPI_ASSIGNEE_CODE
-          - PATENT_TYPE
-          - IPC_TYPE
-          - DWPI_REGISTRATION_OFFICE_BASIC
-          - AGENT_COUNTRY
-          - DWPI_CLASS_DESCRIPTION
-          - DOCDB_SIMPLE_FAMILY_ID
-          - JP_CLASS_FI_CODE
-          - CPC_4
-          - DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL
-          - OPTIMIZED_ASSIGNEES
-          - DSI_INVENTION_SUCCESS_SCORE
-          - IPC_SECTION_DESCRIPTION
-          - DWPI_CLASS
-          - DSI_INVENTION_GLOBALIZATION_SCORE
-          - DWPI_EARLIEST_PRIORITY_YEAR
-          - INVENTOR_CITY
-          - APPLICATION_DATE
-          - CORRESPONDENT_STATE
-          - CPC_SYMBOL
-          - PUBLICATION_TYPE
-          - CITATION_WOS_CLUSTERKEY
-          - DWPI_CLASS_SECTION
-          - INVENTOR_ZIP_CODE
-          - ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE
-          - ESTIMATED_EXPIRATION_DATE
-          - LAST_UPDATED_DATE
-          - CORRESPONDENT_ADDRESS
-          - ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT
-          - DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC
-          - DWPI_MANUAL_CODE_SECTION
-          - DWPI_MANUAL_CODE
-          - ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR
-          - PUBLICATION_LANGUAGE
-          - IPC_CLASS_DESCRIPTION
-          - AGENT_NAME
-          - DSI_YEARS_REMAINING
-          - AGENT_ADDRESS
-          - ASSIGNEE_ORIGINAL_ADDRESS
-          - CITATION_WOS_SCORE
-          - DWPI_KIND_CODE_BASIC
-          - DWPI_EARLIEST_PRIORITY_DATE
-          - DWPI_MANUAL_CODE_DESCRIPTION
-          - CORRESPONDENT_COUNTRY
-          - INPADOC_FAMILY_STATUS
-          - DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL
-          - DWPI_MANUAL_CODE_SECTION_DESCRIPTION
-          - ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE
-          - AGENT_ZIP_CODE
-          - GREEN_DATA_CATEGORY
-          - DWPI_PUBLICATION_NUMBER_BASIC
-          - CPC_CURRENT
-          - AGENT_STATE
-          - DPCI_CITING_COUNTS_AUTHORITIES_TOTAL
-          - ASSIGNEE_ORIGINAL_INID
-          - REPRESENTATIVE_NAME
-          - ASSIGNEE_ORIGINAL_COUNTRY
-          - INVENTOR_COUNTRY
-          - PUBLICATION_NUMBER
-          - CORRESPONDENT_ZIP_CODE
-          - EARLIEST_PRIORITY_DATE
-          - DERWENT_BACKWARD_CITATION_COUNT
-          - ULTIMATE_PARENT
-          - DWPI_MANUAL_CODE_CLASS
-          - DWPI_MANUAL_CODE_CLASS_DESCRIPTION
-          example: GUID
-          type: string
-        OP:
-          description: Operator
-          enum:
-          - LE
-          - GE
-          - NE
-          - GT
-          - IS
-          - LT
-          - EQ
-          - IN
-          type: string
-        VALUE:
-          description: Field value to match (based on operator)
-          example: WO2021243294A120211202
-          type: string
-      required:
-      - OP
-      - VALUE
-      type: object
     field_aliases_patent:
       properties:
         AGENT_ADDRESS:
@@ -6985,6 +6734,230 @@ components:
           type: array
       required:
       - GUIDS
+      type: object
+    match_patent:
+      properties:
+        MATCH:
+          properties:
+            ALG:
+              description: Matching algorithm (currently only "DEFAULT")
+              example: DEFAULT
+              type: string
+            MATCH_FIELDS:
+              description: Fields to match. Must be one of ('assignee', 'parent_assignee')
+              items:
+                description: Fields to match. Must be one of ('assignee', 'parent_assignee')
+                example: assignee
+                type: string
+              type: array
+            THRESHOLD:
+              description: Minimum match score
+              example: 0
+              type: number
+            TOPN:
+              default: 10
+              description: Maximum number of matches to return
+              example: 2
+              type: number
+            VALUE:
+              description: A field value to attempt to match
+              example: Microsoft
+              type: string
+          type: object
+      type: object
+    query_body_patent:
+      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
+      properties:
+        ALG:
+          description: Algorithm to use.
+          enum:
+          - BASIC
+          type: string
+        FIELD:
+          description: Field to query
+          enum:
+          - DPCI_CITING_COUNTS_PATENTS_TOTAL
+          - PUBLICATION_YEAR
+          - PUBLICATION_DATE
+          - DWPI_ACCESSION_NUMBER
+          - APPLICATION_REGISTRATION_OFFICE
+          - DSI_AVERAGE_SCORE
+          - ASSIGNEE_ORIGINAL_NATIONALITY
+          - DWPI_TITLE
+          - IPC_SUBCLASS_DESCRIPTION
+          - GUID
+          - DWPI_FAMILY_MEMBER_COUNT
+          - DEAD_ALIVE_STATUS
+          - DWPI_CLASS_SECTION_DESCRIPTION
+          - DWPI_ASSIGNEE_CODE_TYPE
+          - GRANTED
+          - INVENTOR_ADDRESS
+          - DSI_STRENGTH_INDEX
+          - IPC_SYMBOL
+          - ASSIGNEE_ORIGINAL_STATE
+          - INVENTOR_STATE
+          - KIND_CODE
+          - EXAMINER_SECONDARY
+          - IPC_SECTION
+          - GRANT_DATE
+          - DPCI_CITED_COUNTS_PATENTS_TOTAL
+          - JP_CLASS_F_TERM
+          - DWPI_APPLICATION_NUMBER_BASIC
+          - DWPI_MANUAL_CODE_4
+          - EARLIEST_PRIORITY_COUNTRY
+          - IPC_SUBCLASS
+          - EARLIEST_PRIORITY_NUMBER
+          - DWPI_ASSIGNEE_NAME
+          - ASSIGNEE_CURRENT_US
+          - DWPI_DESIGNATED_OFFICE_COUNT
+          - CPC_TYPE
+          - CORRESPONDENT_CITY
+          - DERWENT_FORWARD_CITATION_COUNT
+          - CORRESPONDENT_NAME
+          - AGENT_CITY
+          - ASSIGNEE_NAME
+          - DSI_INVENTION_INFLUENCE_SCORE
+          - DWPI_INVENTOR_NAME
+          - IPC_CURRENT
+          - ASSIGNEE_ORIGINAL_NAME
+          - IPC_CLASS
+          - SERIAL_NUMBER
+          - APPLICATION_NUMBER
+          - DSI_TECHNICAL_DISTINCTIVENESS_SCORE
+          - REGISTRATION_OFFICE
+          - ESTIMATED_EXPIRATION_DISCLAIMER_FLAG
+          - EXAMINER_MAIN
+          - EARLIEST_PRIORITY_YEAR
+          - ASSIGNEE_ORIGINAL_ZIP_CODE
+          - IPC_4
+          - DWPI_FAMILY_STATUS
+          - DOCUMENT_GUID
+          - INVENTOR_NATIONALITY
+          - AGENT_INID
+          - DPCI_CITED_COUNTS_AUTHORITIES_TOTAL
+          - INVENTOR_NAME
+          - ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM
+          - DPCI_CITED_COUNTS_NON_PATENTS_TOTAL
+          - IPC_DESCRIPTION
+          - ASSIGNEE_ORIGINAL_CITY
+          - DSI_AGE_DISCOUNT
+          - DWPI_ASSIGNEE_CODE
+          - PATENT_TYPE
+          - IPC_TYPE
+          - DWPI_REGISTRATION_OFFICE_BASIC
+          - AGENT_COUNTRY
+          - DWPI_CLASS_DESCRIPTION
+          - DOCDB_SIMPLE_FAMILY_ID
+          - JP_CLASS_FI_CODE
+          - CPC_4
+          - DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL
+          - OPTIMIZED_ASSIGNEES
+          - DSI_INVENTION_SUCCESS_SCORE
+          - IPC_SECTION_DESCRIPTION
+          - DWPI_CLASS
+          - DSI_INVENTION_GLOBALIZATION_SCORE
+          - DWPI_EARLIEST_PRIORITY_YEAR
+          - INVENTOR_CITY
+          - APPLICATION_DATE
+          - CORRESPONDENT_STATE
+          - CPC_SYMBOL
+          - PUBLICATION_TYPE
+          - CITATION_WOS_CLUSTERKEY
+          - DWPI_CLASS_SECTION
+          - INVENTOR_ZIP_CODE
+          - ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE
+          - ESTIMATED_EXPIRATION_DATE
+          - LAST_UPDATED_DATE
+          - CORRESPONDENT_ADDRESS
+          - ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT
+          - DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC
+          - DWPI_MANUAL_CODE_SECTION
+          - DWPI_MANUAL_CODE
+          - ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR
+          - PUBLICATION_LANGUAGE
+          - IPC_CLASS_DESCRIPTION
+          - AGENT_NAME
+          - DSI_YEARS_REMAINING
+          - AGENT_ADDRESS
+          - ASSIGNEE_ORIGINAL_ADDRESS
+          - CITATION_WOS_SCORE
+          - DWPI_KIND_CODE_BASIC
+          - DWPI_EARLIEST_PRIORITY_DATE
+          - DWPI_MANUAL_CODE_DESCRIPTION
+          - CORRESPONDENT_COUNTRY
+          - INPADOC_FAMILY_STATUS
+          - DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL
+          - DWPI_MANUAL_CODE_SECTION_DESCRIPTION
+          - ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE
+          - AGENT_ZIP_CODE
+          - GREEN_DATA_CATEGORY
+          - DWPI_PUBLICATION_NUMBER_BASIC
+          - CPC_CURRENT
+          - AGENT_STATE
+          - DPCI_CITING_COUNTS_AUTHORITIES_TOTAL
+          - ASSIGNEE_ORIGINAL_INID
+          - REPRESENTATIVE_NAME
+          - ASSIGNEE_ORIGINAL_COUNTRY
+          - INVENTOR_COUNTRY
+          - PUBLICATION_NUMBER
+          - CORRESPONDENT_ZIP_CODE
+          - EARLIEST_PRIORITY_DATE
+          - DERWENT_BACKWARD_CITATION_COUNT
+          - ULTIMATE_PARENT
+          - DWPI_MANUAL_CODE_CLASS
+          - DWPI_MANUAL_CODE_CLASS_DESCRIPTION
+          example: GUID
+          type: string
+        OP:
+          description: Operator
+          enum:
+          - LE
+          - GE
+          - NE
+          - GT
+          - IS
+          - LT
+          - EQ
+          - IN
+          type: string
+        VALUE:
+          description: Field value to match (based on operator)
+          example: WO2021243294A120211202
+          type: string
+      required:
+      - OP
+      - VALUE
+      type: object
+    match_response_patent:
+      properties:
+        assignee:
+          items:
+            properties:
+              count:
+                description: Number of documents with this value
+                type: number
+              name:
+                description: Value of field assignee
+                type: string
+              score:
+                description: Match score
+                type: number
+            type: object
+          type: array
+        parent_assignee:
+          items:
+            properties:
+              count:
+                description: Number of documents with this value
+                type: number
+              name:
+                description: Value of field parent_assignee
+                type: string
+              score:
+                description: Match score
+                type: number
+            type: object
+          type: array
       type: object
     search_request_patent:
       properties:
@@ -8118,6 +8091,33 @@ components:
               - $ref: '#/components/schemas/query_body_patent'
             type: array
           - $ref: '#/components/schemas/query_body_patent'
+      type: object
+    document_availability_request_patent:
+      properties:
+        collection:
+          description: Requested Collection
+          items:
+            description: Derwent Abstract Journal(DAJ)|Patent abstract Journal(PAJ)
+            example: DAJ|PAJ
+            type: string
+          type: array
+        input_type:
+          description: Type of input patents list
+          items:
+            description: Type of patents - Publication Number( default patent) or Accession Number (dwpan)
+            example: patent|dwpan
+            type: string
+          type: array
+        patents:
+          description: Patents to check
+          example:
+          - JP51021981B(197002753R)
+          - US3201444A(196617885F)
+          items:
+            description: List of Publication numbers or Accession numbers for patent
+            example: JP51021981B(197002753R)
+            type: string
+          type: array
       type: object
     image_url_list_patent:
       properties:

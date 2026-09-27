@@ -78,6 +78,68 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    SearchInput:
+      type: object
+      required:
+      - searchArticle
+      properties:
+        requestId:
+          description: Optional consumer-defined request identifier. If provided in the request, will be returned in the response.
+          type: string
+        searchArticle:
+          $ref: '#/components/schemas/SearchArticle'
+        excludedReviewers:
+          type: array
+          description: List of additional individuals to exclude from the recommendations. Note that it is not necessary to re-list 'authors' here as they will already be excluded from the recommendations. Unlike 'authors', 'excludedReviewers' will not be used for conflict of interest checks.
+          items:
+            $ref: '#/components/schemas/ExcludedReviewer'
+        searchYears:
+          type: integer
+          description: Base reviewer recommendations on Web of Science publications published within the last 3, 4, or 5 years.
+          default: 3
+          minimum: 3
+          maximum: 5
+        numRecommendations:
+          type: integer
+          description: Number of recommendations to fetch. Note that the API will not always return the full number of recommendations requested.
+          default: 30
+          minimum: 15
+          maximum: 100
+        includedCountries:
+          type: array
+          description: If provided, reviewer recommendations will be restricted to researchers recently affiliated with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
+          items:
+            $ref: '#/components/schemas/Country'
+        excludedCountries:
+          type: array
+          description: If provided, reviewer recommendations will be restricted to researchers without recent affiliations with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
+          items:
+            $ref: '#/components/schemas/Country'
+    JournalOrFunder:
+      type: object
+      description: Journal or funding agency.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Journal or funding agency name
+    ExcludedReviewer:
+      type: object
+      required:
+      - firstName
+      - lastName
+      properties:
+        firstName:
+          type: string
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        email:
+          type: string
+          format: email
+          example: researcher@organization.edu
     Article:
       type: object
       required:
@@ -117,6 +179,30 @@ components:
           type: string
           format: YYYY
           example: '2019'
+    AuthorOrganization:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Affiliated organization name
+    Journal:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Journal name
+    Country:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Country name
     Response:
       type: object
       required:
@@ -143,67 +229,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RecommendedReviewer'
-    SearchInput:
-      type: object
-      required:
-      - searchArticle
-      properties:
-        requestId:
-          description: Optional consumer-defined request identifier. If provided in the request, will be returned in the response.
-          type: string
-        searchArticle:
-          $ref: '#/components/schemas/SearchArticle'
-        excludedReviewers:
-          type: array
-          description: List of additional individuals to exclude from the recommendations. Note that it is not necessary to re-list 'authors' here as they will already be excluded from the recommendations. Unlike 'authors', 'excludedReviewers' will not be used for conflict of interest checks.
-          items:
-            $ref: '#/components/schemas/ExcludedReviewer'
-        searchYears:
-          type: integer
-          description: Base reviewer recommendations on Web of Science publications published within the last 3, 4, or 5 years.
-          default: 3
-          minimum: 3
-          maximum: 5
-        numRecommendations:
-          type: integer
-          description: Number of recommendations to fetch. Note that the API will not always return the full number of recommendations requested.
-          default: 30
-          minimum: 15
-          maximum: 100
-        includedCountries:
-          type: array
-          description: If provided, reviewer recommendations will be restricted to researchers recently affiliated with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
-          items:
-            $ref: '#/components/schemas/Country'
-        excludedCountries:
-          type: array
-          description: If provided, reviewer recommendations will be restricted to researchers without recent affiliations with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
-          items:
-            $ref: '#/components/schemas/Country'
-    ExcludedReviewer:
-      type: object
-      required:
-      - firstName
-      - lastName
-      properties:
-        firstName:
-          type: string
-          example: Researcher first name
-        lastName:
-          type: string
-          example: Researcher last name
-        email:
-          type: string
-          format: email
-          example: researcher@organization.edu
-    Country:
+    Funder:
       type: object
       required:
       - name
       properties:
         name:
           type: string
-          example: Country name
+          example: Funding agency name
     SearchArticle:
       type: object
       description: Input manuscript or grant application details.
@@ -225,14 +258,6 @@ components:
           description: List of manuscript authors or grant application applicants. Will be excluded from the recommendations. Will also be used to check for potential conflicts of interest by co-publication or co-affiliation.
           items:
             $ref: '#/components/schemas/AuthorOrApplicant'
-    AuthorOrganization:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Affiliated organization name
     Organization:
       type: object
       required:
@@ -262,23 +287,27 @@ components:
           type: string
         zip:
           type: string
-    JournalOrFunder:
-      type: object
-      description: Journal or funding agency.
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Journal or funding agency name
-    Funder:
+    AuthorOrApplicant:
       type: object
       required:
-      - name
+      - firstName
+      - lastName
       properties:
-        name:
+        firstName:
           type: string
-          example: Funding agency name
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        email:
+          type: string
+          format: email
+          example: researcher@organization.edu
+        organizations:
+          type: array
+          description: Affiliated organizations. Used to check for potential conflicts of interest by co-affiliation.
+          items:
+            $ref: '#/components/schemas/AuthorOrganization'
     RecommendedReviewer:
       type: object
       properties:
@@ -414,35 +443,6 @@ components:
           description: Affiliated organizations within the Web of Science which represent a potential conflict of interest by co-affiliation with the search manuscript / grant application's authors / applicants.
           items:
             $ref: '#/components/schemas/Organization'
-    AuthorOrApplicant:
-      type: object
-      required:
-      - firstName
-      - lastName
-      properties:
-        firstName:
-          type: string
-          example: Researcher first name
-        lastName:
-          type: string
-          example: Researcher last name
-        email:
-          type: string
-          format: email
-          example: researcher@organization.edu
-        organizations:
-          type: array
-          description: Affiliated organizations. Used to check for potential conflicts of interest by co-affiliation.
-          items:
-            $ref: '#/components/schemas/AuthorOrganization'
-    Journal:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Journal name
   securitySchemes:
     key:
       type: apiKey

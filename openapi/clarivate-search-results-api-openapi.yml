@@ -818,47 +818,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SearchResultAlignment:
-      type: object
-      required:
-      - alignment_length
-      - alignment
-      - hit_from
-      - hit_to
-      properties:
-        alignment_length:
-          type: integer
-        alignment:
-          type: string
-        hit_from:
-          type: integer
-        hit_to:
-          type: integer
-        query_from:
-          type: integer
-        query_to:
-          type: integer
-        score:
-          type: integer
-        identities:
-          type: integer
-        positives:
-          type: integer
-        gaps:
-          type: integer
-        bit_score:
-          type: number
-        expect:
-          type: number
-        strand:
-          type: string
-        query_frame:
-          type: integer
-        subject_frame:
-          type: integer
-        reversed:
-          type: boolean
-      additionalProperties: false
     SearchResult:
       type: object
       required:
@@ -994,6 +953,47 @@ components:
           oneOf:
           - type: string
           - type: 'null'
+    SearchResultAlignment:
+      type: object
+      required:
+      - alignment_length
+      - alignment
+      - hit_from
+      - hit_to
+      properties:
+        alignment_length:
+          type: integer
+        alignment:
+          type: string
+        hit_from:
+          type: integer
+        hit_to:
+          type: integer
+        query_from:
+          type: integer
+        query_to:
+          type: integer
+        score:
+          type: integer
+        identities:
+          type: integer
+        positives:
+          type: integer
+        gaps:
+          type: integer
+        bit_score:
+          type: number
+        expect:
+          type: number
+        strand:
+          type: string
+        query_frame:
+          type: integer
+        subject_frame:
+          type: integer
+        reversed:
+          type: boolean
+      additionalProperties: false
     PaginationMeta:
       type: object
       required:

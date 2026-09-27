@@ -500,6 +500,45 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    SearchAttributes:
+      type: object
+      required:
+      - id
+      - program
+      - title
+      - status
+      - completion
+      - search_results_count
+      - redundant_search_results_count
+      - created_at
+      properties:
+        id:
+          type: integer
+        program:
+          type: string
+        title:
+          type: string
+        status:
+          type: string
+        completion:
+          type: integer
+        search_results_count:
+          type: integer
+        redundant_search_results_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        started_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        completed_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
     SearchCreateSingleQueryParams:
       type: object
       required:
@@ -716,70 +755,51 @@ components:
               type: string
               example: CGCGGTCGGGTCGTG
               description: Single sequence query string
-    SearchAttributes:
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
+    JsonApiPaginationMeta:
+      description: Pagination metadata for JSON:API collection responses.
       type: object
       required:
-      - id
-      - program
-      - title
-      - status
-      - completion
-      - search_results_count
-      - redundant_search_results_count
-      - created_at
+      - total
+      - total_pages
       properties:
-        id:
+        total:
           type: integer
-        program:
-          type: string
-        title:
-          type: string
-        status:
-          type: string
-        completion:
+          description: Total number of records.
+        total_pages:
           type: integer
-        search_results_count:
-          type: integer
-        redundant_search_results_count:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        started_at:
-          oneOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        completed_at:
-          oneOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-    Search:
+          description: Total number of pages.
+    PaginationLinks:
+      description: Pagination navigation links for collection responses.
       type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Search.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - search
-        attributes:
-          $ref: '#/components/schemas/SearchAttributes'
       required:
-      - id
-      - type
-      - attributes
-    errors:
-      type: object
+      - self
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/error'
+        self:
+          type: string
+          format: uri
+          description: Link to the current page.
+        first:
+          type: string
+          format: uri
+          description: Link to the first page.
+        last:
+          type: string
+          format: uri
+          description: Link to the last page.
+        next:
+          type: string
+          format: uri
+          description: Link to the next page.
+        prev:
+          type: string
+          format: uri
+          description: Link to the previous page.
     SearchCreateMultiSequenceParams:
       type: object
       required:
@@ -1004,63 +1024,6 @@ components:
               enum:
               - true
               description: Must be true for multi-sequence search mode
-    PaginationLinks:
-      description: Pagination navigation links for collection responses.
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: Link to the current page.
-        first:
-          type: string
-          format: uri
-          description: Link to the first page.
-        last:
-          type: string
-          format: uri
-          description: Link to the last page.
-        next:
-          type: string
-          format: uri
-          description: Link to the next page.
-        prev:
-          type: string
-          format: uri
-          description: Link to the previous page.
-    SearchUpdateParams:
-      type: object
-      required:
-      - search
-      properties:
-        search:
-          type: object
-          properties:
-            title:
-              type: string
-              maxLength: 255
-              description: Search title
-    JsonApiPaginationMeta:
-      description: Pagination metadata for JSON:API collection responses.
-      type: object
-      required:
-      - total
-      - total_pages
-      properties:
-        total:
-          type: integer
-          description: Total number of records.
-        total_pages:
-          type: integer
-          description: Total number of pages.
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
     error:
       type: object
       properties:
@@ -1081,6 +1044,43 @@ components:
           - type: object
         pointer:
           type: string
+    SearchUpdateParams:
+      type: object
+      required:
+      - search
+      properties:
+        search:
+          type: object
+          properties:
+            title:
+              type: string
+              maxLength: 255
+              description: Search title
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Search.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - search
+        attributes:
+          $ref: '#/components/schemas/SearchAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
   securitySchemes:
     key:
       type: apiKey

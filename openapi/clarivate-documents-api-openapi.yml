@@ -318,12 +318,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OtherName:
+    DocumentsList:
       type: object
       properties:
-        displayName:
-          type: string
-          description: Web of Science display name
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
     Document:
       type: object
       required:
@@ -515,15 +518,6 @@ components:
         researcherId:
           type: string
           description: Web of Science ResearcherID
-    DocumentsList:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
     Metadata:
       type: object
       description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number
@@ -540,6 +534,12 @@ components:
           type: integer
           format: int32
           description: Total number of records for the request.
+    OtherName:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Web of Science display name
   securitySchemes:
     key:
       type: apiKey

@@ -186,20 +186,6 @@ components:
         includeInPageExport:
           type: boolean
           example: true
-    AttributeInputDefinition:
-      properties:
-        dataType:
-          type: string
-          example: DATE
-        renderingTypeHint:
-          type: string
-          example: Datepicker
-        inputPattern:
-          type: string
-          example: Date
-        defaultExpression:
-          type: string
-          example: 01-05-2019
     LabelDefinition:
       required:
       - language
@@ -214,31 +200,6 @@ components:
           type: string
           description: The value of the label
           example: Publication
-    LinkEntityDefinitionList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityDefinition'
     DefaultResponse:
       required:
       - statusDescirption
@@ -267,6 +228,45 @@ components:
         message:
           type: string
           description: The detailed description of the error
+    AttributeInputDefinition:
+      properties:
+        dataType:
+          type: string
+          example: DATE
+        renderingTypeHint:
+          type: string
+          example: Datepicker
+        inputPattern:
+          type: string
+          example: Date
+        defaultExpression:
+          type: string
+          example: 01-05-2019
+    LinkEntityDefinitionList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityDefinition'
     LinkEntityDefinition:
       required:
       - attributes

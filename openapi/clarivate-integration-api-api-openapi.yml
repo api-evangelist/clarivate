@@ -39,17 +39,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ApplicantInfo:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        countryCode:
-          type: string
-        countryName:
-          type: string
     SingleOppositionResponse:
       type: object
       properties:
@@ -61,6 +50,14 @@ components:
           $ref: '#/components/schemas/Trademark'
         trademark2:
           $ref: '#/components/schemas/Trademark'
+    GoodsAndService:
+      type: object
+      properties:
+        niceClass:
+          type: integer
+          format: int32
+        description:
+          type: string
     Trademark:
       type: object
       properties:
@@ -80,13 +77,16 @@ components:
           type: string
         guid:
           type: string
-    GoodsAndService:
+    ApplicantInfo:
       type: object
       properties:
-        niceClass:
-          type: integer
-          format: int32
-        description:
+        name:
+          type: string
+        address:
+          type: string
+        countryCode:
+          type: string
+        countryName:
           type: string
   securitySchemes:
     key:

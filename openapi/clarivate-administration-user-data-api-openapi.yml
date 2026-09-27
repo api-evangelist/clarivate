@@ -257,6 +257,53 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+    UserRole:
+      properties:
+        roleName:
+          type: string
+          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
+          example: Researcher
+        entryPointId:
+          type: integer
+          format: int64
+          description: User entry point
+          example: 123456
+        entryPointDataUrl:
+          type: string
+          description: The entrypoint data url - only by GET Request
+          example: /converis-apis/ws/v2/data/entities/Person/123456
+        entryPointDefinitionUrl:
+          type: string
+          description: Entry point definition url - only by GET Request
+          example: /converis-apis/ws/v2/config/entities/Person
     User:
       type: object
       properties:
@@ -305,34 +352,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserRole'
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
     UserList:
       required:
       - count
@@ -362,25 +381,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/User'
-    UserRole:
-      properties:
-        roleName:
-          type: string
-          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
-          example: Researcher
-        entryPointId:
-          type: integer
-          format: int64
-          description: User entry point
-          example: 123456
-        entryPointDataUrl:
-          type: string
-          description: The entrypoint data url - only by GET Request
-          example: /converis-apis/ws/v2/data/entities/Person/123456
-        entryPointDefinitionUrl:
-          type: string
-          description: Entry point definition url - only by GET Request
-          example: /converis-apis/ws/v2/config/entities/Person
   securitySchemes:
     BasicAuth:
       type: http

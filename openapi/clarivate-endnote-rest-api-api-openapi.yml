@@ -133,13 +133,6 @@ components:
           type: string
       type: object
   parameters:
-    routingHeader:
-      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
-      name: x-enws-authorization
-      in: header
-      required: true
-      schema:
-        type: string
     contentTypeHeader:
       description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
       name: Content-Type
@@ -149,6 +142,13 @@ components:
     acceptHeader:
       description: 'Contains the format of the data of the response or any error sent by the server placed in the response body. '
       name: Accept
+      in: header
+      required: true
+      schema:
+        type: string
+    routingHeader:
+      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
+      name: x-enws-authorization
       in: header
       required: true
       schema:

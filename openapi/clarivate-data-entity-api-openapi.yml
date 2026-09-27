@@ -532,6 +532,44 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    LabelDefinition:
+      required:
+      - language
+      - value
+      type: object
+      properties:
+        language:
+          type: string
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
+          example: Publication
+    EntityDataList:
+      required:
+      - count
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityData'
     AttributeData:
       required:
       - attributeName
@@ -564,20 +602,24 @@ components:
           example: An example Publication title
         choiceGroupData:
           $ref: '#/components/schemas/ChoiceGroupData'
-    LabelDefinition:
-      required:
-      - language
-      - value
+    ChoiceGroupData:
       type: object
       properties:
-        language:
+        choiceGroupName:
           type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
+          description: If the attribute is of type ChoiceGroup, then this should be filled.
+          example: Publication type
+        choiceGroupValue:
           type: string
-          description: The value of the label
-          example: Publication
+          description: default value
+          example: Journal article
+        choiceGroupValueLabels:
+          type: array
+          example:
+          - language: de_DE
+            value: Zeitschrift
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
     EntityData:
       required:
       - createdBy
@@ -665,24 +707,6 @@ components:
             href: /converis-api/ws/v2/data/entities/Publication/linked/PUBL_has_PUBL/56893426?directon=l2r
           items:
             $ref: '#/components/schemas/LinkReference'
-    ChoiceGroupData:
-      type: object
-      properties:
-        choiceGroupName:
-          type: string
-          description: If the attribute is of type ChoiceGroup, then this should be filled.
-          example: Publication type
-        choiceGroupValue:
-          type: string
-          description: default value
-          example: Journal article
-        choiceGroupValueLabels:
-          type: array
-          example:
-          - language: de_DE
-            value: Zeitschrift
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
     DefaultResponse:
       required:
       - statusDescirption
@@ -725,30 +749,6 @@ components:
           type: string
           description: is the complete endpoint path that uniquely defines the resource.
           example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
-    EntityDataList:
-      required:
-      - count
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityData'
   securitySchemes:
     BasicAuth:
       type: http

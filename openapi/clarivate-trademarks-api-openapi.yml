@@ -1409,193 +1409,276 @@ paths:
       - Trademarks
 components:
   schemas:
-    records_request_trademark:
+    field_aliases_trademark:
       properties:
-        FIELDS:
-          description: Fields to fetch
-          items:
-            description: Fields to fetch
-            enum:
-            - STATUS.PUBLICATION_DATE
-            - SECOND_LANGUAGE_CODE
-            - REPRESENTATIVES.NAME
-            - APPLICANTS.ADDRESS_LINE_TEXT
-            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS
-            - STATUS.CURRENT_STATUS
-            - WORD_MARK_SPECIFICATION.MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
-            - STATUS.APPLICATION_NUMBER_TEXT
-            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS.NAT_GOODS_SERVICES_DESCRIPTION
-            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
-            - FIGURATIVE_ELEMENTS
-            - FIGURATIVE_ELEMENTS.CLASSIFICATION
-            - APPLICANTS.NAME_NATIVE
-            - REPRESENTATIVES.NAME_NATIVE
-            - PRIORITIES.PRIORITY_DATE
-            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_DESCRIPTION
-            - STATUS.INITIAL_APPLICATION_DATE
-            - DESIGNATION_BASIS
-            - STATUS.REGISTRATION_NUMBER_TEXT
-            - WORD_MARK_SPECIFICATION
-            - STATUS.CURRENT_STATUS_DERIVED
-            - STATUS.INITIAL_REGISTRATION_DATE
-            - GOODS_SERVICES
-            - IMAGE_KIND
-            - APPLICANTS
-            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_LANGUAGE_CODE
-            - GUID
-            - WORD_MARK_SPECIFICATION.MARK_TRANSLATION_TEXT
-            - REPRESENTATIVE_CORRESPONDENTS
-            - IMAGES_TOTAL_QUANTITY
-            - WORD_MARK_SPECIFICATION.MARK_TRANSLITERATION_TEXT
-            - PRIORITIES.COUNTRY_CODE
-            - DISCLAIMERS
-            - REPRESENTATIVE_CORRESPONDENTS.NAME
-            - PRIORITIES.NUMBER_TEXT
-            - APPLICANTS.NAME
-            - STATUS.RENEWAL_DATE
-            - STATUS.APPLICATION_DATE
-            - STATUS.PUBLICATION_YEAR
-            - STATUS.APPLICATION_ABANDONED_DATE
-            - MARK_FEATURE
-            - STATUS
-            - PRIORITIES
-            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
-            - APPLICANTS.ADDRESS_COUNTRY_CODE
-            - APPLICATION_LANGUAGE_CODE
-            - FIGURATIVE_ELEMENTS.CLASSIFICATION_CODES_ENRICHED
-            - REGISTRATION_OFFICE_CODE
-            - REPRESENTATIVES.ADDRESS_COUNTRY_CODE
-            - STATUS.EXPIRY_DATE
-            - STATUS.CANCELLATION_DATE
-            - REPRESENTATIVE_CORRESPONDENTS.ADDRESS_COUNTRY_CODE
-            - ID
-            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS
-            - STATUS.LAST_PUBLICATION_DATE
-            - REPRESENTATIVES
-            - REPRESENTATIVES.ADDRESS_NATIVE_LINE_TEXT
-            - REPRESENTATIVES.ADDRESS_LINE_TEXT
-            - LAST_UPDATED_DATE
-            - STATUS.REGISTRATION_DATE
-            - APPLICANTS.ADDRESS_NATIVE_LINE_TEXT
-            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS.NAT_GOODS_SERVICES_LANGUAGE_CODE
-            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS.NAT_CLASS_NUMBER
-            - STATUS.RENEWAL_PUBLISHED_DATE
-            - WORD_MARK_SPECIFICATION.MARK_VERBAL_ELEMENT_TEXT
-            - STATUS.FILING_DATE_DERIVED
-            - REPRESENTATIVE_CORRESPONDENTS.ADDRESS_LINE_TEXT
-            - DESIGNATED_COUNTRY_CODE
-            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_CLASS_NUMBER
-            type: string
-          type: array
-        GUIDS:
-          description: Document(s) to retrieve
-          items:
-            description: Unique ID of trademark document
-            example: USAFI65E053B1C87611DEB9C6000D609921FB
-            type: string
-          type: array
-      required:
-      - GUIDS
-      type: object
-    query_body_trademark:
-      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
-      properties:
-        ALG:
-          description: Algorithm to use.
-          enum:
-          - BASIC
+        APPLICANT_ADDRESS_COUNTRY_CODE:
+          description: Alias for APPLICANT_ADDRESS_COUNTRY_CODE
+          example: APPLICANT_ADDRESS_COUNTRY_CODE_ALIAS
           type: string
-        FIELD:
-          description: Field to query
-          enum:
-          - SECOND_LANGUAGE_CODE
-          - APPLICANT_NAME
-          - CLASSIFICATION_CODE_ENRICHED
-          - ID_DERIVED
-          - PUBLICATION_YEAR
-          - PUBLICATION_DATE
-          - LAST_PUBLICATION_DATE
-          - REGISTRATION_NUMBER_TEXT
-          - COUNTRY_ISO_3166_ALPHA2
-          - RENEWAL_DATE
-          - APPLICANT_ADDRESS_COUNTRY_CODE
-          - DESIGNATION_BASIS
-          - PRIORITY_NUMBER_TEXT
-          - NAT_GOODS_SERVICES_LANGUAGE_CODE
-          - INITIAL_REGISTRATION_DATE
-          - APPLICANT_ADDRESS_NATIVE_LINE_TEXT
-          - IMAGE_KIND
-          - REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT
-          - REPRESENTATIVE_ADDRESS_LINE_TEXT
-          - GUID
-          - INT_CLASS_NUMBER
-          - NAT_GOODS_SERVICES_DESCRIPTION
-          - REGISTRATION_OFFICE_CODE_DERIVED
-          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
-          - APPLICATION_NUMBER_TEXT
-          - REGISTRATION_DATE
-          - INT_CLASS_HEADING_DERIVED
-          - REPRESENTATIVE_CORRESPONDENT_NAME
-          - APPLICANT_ADDRESS_LINE_TEXT
-          - IMAGES_TOTAL_QUANTITY
-          - CANCELLATION_DATE
-          - EXPIRY_DATE
-          - GUID_DERIVED
-          - DISCLAIMERS
-          - CLASSIFICATION
-          - FILING_DATE_DERIVED
-          - MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
-          - APPLICATION_ABANDONED_DATE
-          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE
-          - COUNTRY_TEXT
-          - INITIAL_APPLICATION_DATE
-          - COUNTRY_ISO_3166_ALPHA3
-          - APPLICATION_DATE
-          - CURRENT_STATUS_DERIVED
-          - APPLICATION_LANGUAGE_CODE
-          - REGISTRATION_OFFICE_CODE
-          - ID
-          - MARK_VERBAL_ELEMENT_TEXT
-          - INT_GOODS_SERVICES_DESCRIPTION
-          - INT_CLASS_TYPE_DERIVED
-          - PRIORITY_DATE
-          - REPRESENTATIVE_NAME
-          - PRIORITY_COUNTRY_CODE
-          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT
-          - CURRENT_STATUS
-          - INT_GOODS_SERVICES_LANGUAGE_CODE
-          - REPRESENTATIVE_ADDRESS_COUNTRY_CODE
-          - RENEWAL_PUBLISHED_DATE
-          - LAST_UPDATED_DATE
-          - MARK_TRANSLATION_TEXT
-          - REPRESENTATIVE_NAME_NATIVE
-          - MARK_TRANSLITERATION_TEXT
-          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
-          - NAT_CLASS_NUMBER
-          - MARK_FEATURE
-          - DESIGNATED_COUNTRY_CODE
-          - APPLICANT_NAME_NATIVE
-          example: GUID
+        APPLICANT_ADDRESS_LINE_TEXT:
+          description: Alias for APPLICANT_ADDRESS_LINE_TEXT
+          example: APPLICANT_ADDRESS_LINE_TEXT_ALIAS
           type: string
-        OP:
-          description: Operator
-          enum:
-          - LE
-          - GE
-          - NE
-          - GT
-          - IS
-          - LT
-          - EQ
-          - IN
+        APPLICANT_ADDRESS_NATIVE_LINE_TEXT:
+          description: Alias for APPLICANT_ADDRESS_NATIVE_LINE_TEXT
+          example: APPLICANT_ADDRESS_NATIVE_LINE_TEXT_ALIAS
           type: string
-        VALUE:
-          description: Field value to match (based on operator)
-          example: USAFI65E053B1C87611DEB9C6000D609921FB
+        APPLICANT_NAME:
+          description: Alias for APPLICANT_NAME
+          example: APPLICANT_NAME_ALIAS
           type: string
-      required:
-      - OP
-      - VALUE
+        APPLICANT_NAME_NATIVE:
+          description: Alias for APPLICANT_NAME_NATIVE
+          example: APPLICANT_NAME_NATIVE_ALIAS
+          type: string
+        APPLICATION_ABANDONED_DATE:
+          description: Alias for APPLICATION_ABANDONED_DATE
+          example: APPLICATION_ABANDONED_DATE_ALIAS
+          type: string
+        APPLICATION_DATE:
+          description: Alias for APPLICATION_DATE
+          example: APPLICATION_DATE_ALIAS
+          type: string
+        APPLICATION_LANGUAGE_CODE:
+          description: Alias for APPLICATION_LANGUAGE_CODE
+          example: APPLICATION_LANGUAGE_CODE_ALIAS
+          type: string
+        APPLICATION_NUMBER_TEXT:
+          description: Alias for APPLICATION_NUMBER_TEXT
+          example: APPLICATION_NUMBER_TEXT_ALIAS
+          type: string
+        CANCELLATION_DATE:
+          description: Alias for CANCELLATION_DATE
+          example: CANCELLATION_DATE_ALIAS
+          type: string
+        CLASSIFICATION:
+          description: Alias for CLASSIFICATION
+          example: CLASSIFICATION_ALIAS
+          type: string
+        CLASSIFICATION_CODE_ENRICHED:
+          description: Alias for CLASSIFICATION_CODE_ENRICHED
+          example: CLASSIFICATION_CODE_ENRICHED_ALIAS
+          type: string
+        COUNTRY_ISO_3166_ALPHA2:
+          description: Alias for COUNTRY_ISO_3166_ALPHA2
+          example: COUNTRY_ISO_3166_ALPHA2_ALIAS
+          type: string
+        COUNTRY_ISO_3166_ALPHA3:
+          description: Alias for COUNTRY_ISO_3166_ALPHA3
+          example: COUNTRY_ISO_3166_ALPHA3_ALIAS
+          type: string
+        COUNTRY_TEXT:
+          description: Alias for COUNTRY_TEXT
+          example: COUNTRY_TEXT_ALIAS
+          type: string
+        CURRENT_STATUS:
+          description: Alias for CURRENT_STATUS
+          example: CURRENT_STATUS_ALIAS
+          type: string
+        CURRENT_STATUS_DERIVED:
+          description: Alias for CURRENT_STATUS_DERIVED
+          example: CURRENT_STATUS_DERIVED_ALIAS
+          type: string
+        DESIGNATED_COUNTRY_CODE:
+          description: Alias for DESIGNATED_COUNTRY_CODE
+          example: DESIGNATED_COUNTRY_CODE_ALIAS
+          type: string
+        DESIGNATION_BASIS:
+          description: Alias for DESIGNATION_BASIS
+          example: DESIGNATION_BASIS_ALIAS
+          type: string
+        DISCLAIMERS:
+          description: Alias for DISCLAIMERS
+          example: DISCLAIMERS_ALIAS
+          type: string
+        EXPIRY_DATE:
+          description: Alias for EXPIRY_DATE
+          example: EXPIRY_DATE_ALIAS
+          type: string
+        FILING_DATE_DERIVED:
+          description: Alias for FILING_DATE_DERIVED
+          example: FILING_DATE_DERIVED_ALIAS
+          type: string
+        GUID:
+          description: Alias for GUID
+          example: GUID_ALIAS
+          type: string
+        GUID_DERIVED:
+          description: Alias for GUID_DERIVED
+          example: GUID_DERIVED_ALIAS
+          type: string
+        ID:
+          description: Alias for ID
+          example: ID_ALIAS
+          type: string
+        ID_DERIVED:
+          description: Alias for ID_DERIVED
+          example: ID_DERIVED_ALIAS
+          type: string
+        IMAGES_TOTAL_QUANTITY:
+          description: Alias for IMAGES_TOTAL_QUANTITY
+          example: IMAGES_TOTAL_QUANTITY_ALIAS
+          type: string
+        IMAGE_KIND:
+          description: Alias for IMAGE_KIND
+          example: IMAGE_KIND_ALIAS
+          type: string
+        INITIAL_APPLICATION_DATE:
+          description: Alias for INITIAL_APPLICATION_DATE
+          example: INITIAL_APPLICATION_DATE_ALIAS
+          type: string
+        INITIAL_REGISTRATION_DATE:
+          description: Alias for INITIAL_REGISTRATION_DATE
+          example: INITIAL_REGISTRATION_DATE_ALIAS
+          type: string
+        INT_CLASS_HEADING_DERIVED:
+          description: Alias for INT_CLASS_HEADING_DERIVED
+          example: INT_CLASS_HEADING_DERIVED_ALIAS
+          type: string
+        INT_CLASS_NUMBER:
+          description: Alias for INT_CLASS_NUMBER
+          example: INT_CLASS_NUMBER_ALIAS
+          type: string
+        INT_CLASS_TYPE_DERIVED:
+          description: Alias for INT_CLASS_TYPE_DERIVED
+          example: INT_CLASS_TYPE_DERIVED_ALIAS
+          type: string
+        INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION:
+          description: Alias for INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
+          example: INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION_ALIAS
+          type: string
+        INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE:
+          description: Alias for INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
+          example: INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE_ALIAS
+          type: string
+        INT_GOODS_SERVICES_DESCRIPTION:
+          description: Alias for INT_GOODS_SERVICES_DESCRIPTION
+          example: INT_GOODS_SERVICES_DESCRIPTION_ALIAS
+          type: string
+        INT_GOODS_SERVICES_LANGUAGE_CODE:
+          description: Alias for INT_GOODS_SERVICES_LANGUAGE_CODE
+          example: INT_GOODS_SERVICES_LANGUAGE_CODE_ALIAS
+          type: string
+        LAST_PUBLICATION_DATE:
+          description: Alias for LAST_PUBLICATION_DATE
+          example: LAST_PUBLICATION_DATE_ALIAS
+          type: string
+        LAST_UPDATED_DATE:
+          description: Alias for LAST_UPDATED_DATE
+          example: LAST_UPDATED_DATE_ALIAS
+          type: string
+        MARK_FEATURE:
+          description: Alias for MARK_FEATURE
+          example: MARK_FEATURE_ALIAS
+          type: string
+        MARK_TRANSLATION_TEXT:
+          description: Alias for MARK_TRANSLATION_TEXT
+          example: MARK_TRANSLATION_TEXT_ALIAS
+          type: string
+        MARK_TRANSLITERATION_TEXT:
+          description: Alias for MARK_TRANSLITERATION_TEXT
+          example: MARK_TRANSLITERATION_TEXT_ALIAS
+          type: string
+        MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED:
+          description: Alias for MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
+          example: MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED_ALIAS
+          type: string
+        MARK_VERBAL_ELEMENT_TEXT:
+          description: Alias for MARK_VERBAL_ELEMENT_TEXT
+          example: MARK_VERBAL_ELEMENT_TEXT_ALIAS
+          type: string
+        NAT_CLASS_NUMBER:
+          description: Alias for NAT_CLASS_NUMBER
+          example: NAT_CLASS_NUMBER_ALIAS
+          type: string
+        NAT_GOODS_SERVICES_DESCRIPTION:
+          description: Alias for NAT_GOODS_SERVICES_DESCRIPTION
+          example: NAT_GOODS_SERVICES_DESCRIPTION_ALIAS
+          type: string
+        NAT_GOODS_SERVICES_LANGUAGE_CODE:
+          description: Alias for NAT_GOODS_SERVICES_LANGUAGE_CODE
+          example: NAT_GOODS_SERVICES_LANGUAGE_CODE_ALIAS
+          type: string
+        PRIORITY_COUNTRY_CODE:
+          description: Alias for PRIORITY_COUNTRY_CODE
+          example: PRIORITY_COUNTRY_CODE_ALIAS
+          type: string
+        PRIORITY_DATE:
+          description: Alias for PRIORITY_DATE
+          example: PRIORITY_DATE_ALIAS
+          type: string
+        PRIORITY_NUMBER_TEXT:
+          description: Alias for PRIORITY_NUMBER_TEXT
+          example: PRIORITY_NUMBER_TEXT_ALIAS
+          type: string
+        PUBLICATION_DATE:
+          description: Alias for PUBLICATION_DATE
+          example: PUBLICATION_DATE_ALIAS
+          type: string
+        PUBLICATION_YEAR:
+          description: Alias for PUBLICATION_YEAR
+          example: PUBLICATION_YEAR_ALIAS
+          type: string
+        REGISTRATION_DATE:
+          description: Alias for REGISTRATION_DATE
+          example: REGISTRATION_DATE_ALIAS
+          type: string
+        REGISTRATION_NUMBER_TEXT:
+          description: Alias for REGISTRATION_NUMBER_TEXT
+          example: REGISTRATION_NUMBER_TEXT_ALIAS
+          type: string
+        REGISTRATION_OFFICE_CODE:
+          description: Alias for REGISTRATION_OFFICE_CODE
+          example: REGISTRATION_OFFICE_CODE_ALIAS
+          type: string
+        REGISTRATION_OFFICE_CODE_DERIVED:
+          description: Alias for REGISTRATION_OFFICE_CODE_DERIVED
+          example: REGISTRATION_OFFICE_CODE_DERIVED_ALIAS
+          type: string
+        RENEWAL_DATE:
+          description: Alias for RENEWAL_DATE
+          example: RENEWAL_DATE_ALIAS
+          type: string
+        RENEWAL_PUBLISHED_DATE:
+          description: Alias for RENEWAL_PUBLISHED_DATE
+          example: RENEWAL_PUBLISHED_DATE_ALIAS
+          type: string
+        REPRESENTATIVE_ADDRESS_COUNTRY_CODE:
+          description: Alias for REPRESENTATIVE_ADDRESS_COUNTRY_CODE
+          example: REPRESENTATIVE_ADDRESS_COUNTRY_CODE_ALIAS
+          type: string
+        REPRESENTATIVE_ADDRESS_LINE_TEXT:
+          description: Alias for REPRESENTATIVE_ADDRESS_LINE_TEXT
+          example: REPRESENTATIVE_ADDRESS_LINE_TEXT_ALIAS
+          type: string
+        REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT:
+          description: Alias for REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT
+          example: REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT_ALIAS
+          type: string
+        REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE:
+          description: Alias for REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE
+          example: REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE_ALIAS
+          type: string
+        REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT:
+          description: Alias for REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT
+          example: REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT_ALIAS
+          type: string
+        REPRESENTATIVE_CORRESPONDENT_NAME:
+          description: Alias for REPRESENTATIVE_CORRESPONDENT_NAME
+          example: REPRESENTATIVE_CORRESPONDENT_NAME_ALIAS
+          type: string
+        REPRESENTATIVE_NAME:
+          description: Alias for REPRESENTATIVE_NAME
+          example: REPRESENTATIVE_NAME_ALIAS
+          type: string
+        REPRESENTATIVE_NAME_NATIVE:
+          description: Alias for REPRESENTATIVE_NAME_NATIVE
+          example: REPRESENTATIVE_NAME_NATIVE_ALIAS
+          type: string
+        SECOND_LANGUAGE_CODE:
+          description: Alias for SECOND_LANGUAGE_CODE
+          example: SECOND_LANGUAGE_CODE_ALIAS
+          type: string
       type: object
     search_request_trademark:
       properties:
@@ -2211,276 +2294,193 @@ components:
             type: array
           - $ref: '#/components/schemas/query_body_trademark'
       type: object
-    field_aliases_trademark:
+    records_request_trademark:
       properties:
-        APPLICANT_ADDRESS_COUNTRY_CODE:
-          description: Alias for APPLICANT_ADDRESS_COUNTRY_CODE
-          example: APPLICANT_ADDRESS_COUNTRY_CODE_ALIAS
-          type: string
-        APPLICANT_ADDRESS_LINE_TEXT:
-          description: Alias for APPLICANT_ADDRESS_LINE_TEXT
-          example: APPLICANT_ADDRESS_LINE_TEXT_ALIAS
-          type: string
-        APPLICANT_ADDRESS_NATIVE_LINE_TEXT:
-          description: Alias for APPLICANT_ADDRESS_NATIVE_LINE_TEXT
-          example: APPLICANT_ADDRESS_NATIVE_LINE_TEXT_ALIAS
-          type: string
-        APPLICANT_NAME:
-          description: Alias for APPLICANT_NAME
-          example: APPLICANT_NAME_ALIAS
-          type: string
-        APPLICANT_NAME_NATIVE:
-          description: Alias for APPLICANT_NAME_NATIVE
-          example: APPLICANT_NAME_NATIVE_ALIAS
-          type: string
-        APPLICATION_ABANDONED_DATE:
-          description: Alias for APPLICATION_ABANDONED_DATE
-          example: APPLICATION_ABANDONED_DATE_ALIAS
-          type: string
-        APPLICATION_DATE:
-          description: Alias for APPLICATION_DATE
-          example: APPLICATION_DATE_ALIAS
-          type: string
-        APPLICATION_LANGUAGE_CODE:
-          description: Alias for APPLICATION_LANGUAGE_CODE
-          example: APPLICATION_LANGUAGE_CODE_ALIAS
-          type: string
-        APPLICATION_NUMBER_TEXT:
-          description: Alias for APPLICATION_NUMBER_TEXT
-          example: APPLICATION_NUMBER_TEXT_ALIAS
-          type: string
-        CANCELLATION_DATE:
-          description: Alias for CANCELLATION_DATE
-          example: CANCELLATION_DATE_ALIAS
-          type: string
-        CLASSIFICATION:
-          description: Alias for CLASSIFICATION
-          example: CLASSIFICATION_ALIAS
-          type: string
-        CLASSIFICATION_CODE_ENRICHED:
-          description: Alias for CLASSIFICATION_CODE_ENRICHED
-          example: CLASSIFICATION_CODE_ENRICHED_ALIAS
-          type: string
-        COUNTRY_ISO_3166_ALPHA2:
-          description: Alias for COUNTRY_ISO_3166_ALPHA2
-          example: COUNTRY_ISO_3166_ALPHA2_ALIAS
-          type: string
-        COUNTRY_ISO_3166_ALPHA3:
-          description: Alias for COUNTRY_ISO_3166_ALPHA3
-          example: COUNTRY_ISO_3166_ALPHA3_ALIAS
-          type: string
-        COUNTRY_TEXT:
-          description: Alias for COUNTRY_TEXT
-          example: COUNTRY_TEXT_ALIAS
-          type: string
-        CURRENT_STATUS:
-          description: Alias for CURRENT_STATUS
-          example: CURRENT_STATUS_ALIAS
-          type: string
-        CURRENT_STATUS_DERIVED:
-          description: Alias for CURRENT_STATUS_DERIVED
-          example: CURRENT_STATUS_DERIVED_ALIAS
-          type: string
-        DESIGNATED_COUNTRY_CODE:
-          description: Alias for DESIGNATED_COUNTRY_CODE
-          example: DESIGNATED_COUNTRY_CODE_ALIAS
-          type: string
-        DESIGNATION_BASIS:
-          description: Alias for DESIGNATION_BASIS
-          example: DESIGNATION_BASIS_ALIAS
-          type: string
-        DISCLAIMERS:
-          description: Alias for DISCLAIMERS
-          example: DISCLAIMERS_ALIAS
-          type: string
-        EXPIRY_DATE:
-          description: Alias for EXPIRY_DATE
-          example: EXPIRY_DATE_ALIAS
-          type: string
-        FILING_DATE_DERIVED:
-          description: Alias for FILING_DATE_DERIVED
-          example: FILING_DATE_DERIVED_ALIAS
-          type: string
-        GUID:
-          description: Alias for GUID
-          example: GUID_ALIAS
-          type: string
-        GUID_DERIVED:
-          description: Alias for GUID_DERIVED
-          example: GUID_DERIVED_ALIAS
-          type: string
-        ID:
-          description: Alias for ID
-          example: ID_ALIAS
-          type: string
-        ID_DERIVED:
-          description: Alias for ID_DERIVED
-          example: ID_DERIVED_ALIAS
-          type: string
-        IMAGES_TOTAL_QUANTITY:
-          description: Alias for IMAGES_TOTAL_QUANTITY
-          example: IMAGES_TOTAL_QUANTITY_ALIAS
-          type: string
-        IMAGE_KIND:
-          description: Alias for IMAGE_KIND
-          example: IMAGE_KIND_ALIAS
-          type: string
-        INITIAL_APPLICATION_DATE:
-          description: Alias for INITIAL_APPLICATION_DATE
-          example: INITIAL_APPLICATION_DATE_ALIAS
-          type: string
-        INITIAL_REGISTRATION_DATE:
-          description: Alias for INITIAL_REGISTRATION_DATE
-          example: INITIAL_REGISTRATION_DATE_ALIAS
-          type: string
-        INT_CLASS_HEADING_DERIVED:
-          description: Alias for INT_CLASS_HEADING_DERIVED
-          example: INT_CLASS_HEADING_DERIVED_ALIAS
-          type: string
-        INT_CLASS_NUMBER:
-          description: Alias for INT_CLASS_NUMBER
-          example: INT_CLASS_NUMBER_ALIAS
-          type: string
-        INT_CLASS_TYPE_DERIVED:
-          description: Alias for INT_CLASS_TYPE_DERIVED
-          example: INT_CLASS_TYPE_DERIVED_ALIAS
-          type: string
-        INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION:
-          description: Alias for INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
-          example: INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION_ALIAS
-          type: string
-        INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE:
-          description: Alias for INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
-          example: INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE_ALIAS
-          type: string
-        INT_GOODS_SERVICES_DESCRIPTION:
-          description: Alias for INT_GOODS_SERVICES_DESCRIPTION
-          example: INT_GOODS_SERVICES_DESCRIPTION_ALIAS
-          type: string
-        INT_GOODS_SERVICES_LANGUAGE_CODE:
-          description: Alias for INT_GOODS_SERVICES_LANGUAGE_CODE
-          example: INT_GOODS_SERVICES_LANGUAGE_CODE_ALIAS
-          type: string
-        LAST_PUBLICATION_DATE:
-          description: Alias for LAST_PUBLICATION_DATE
-          example: LAST_PUBLICATION_DATE_ALIAS
-          type: string
-        LAST_UPDATED_DATE:
-          description: Alias for LAST_UPDATED_DATE
-          example: LAST_UPDATED_DATE_ALIAS
-          type: string
-        MARK_FEATURE:
-          description: Alias for MARK_FEATURE
-          example: MARK_FEATURE_ALIAS
-          type: string
-        MARK_TRANSLATION_TEXT:
-          description: Alias for MARK_TRANSLATION_TEXT
-          example: MARK_TRANSLATION_TEXT_ALIAS
-          type: string
-        MARK_TRANSLITERATION_TEXT:
-          description: Alias for MARK_TRANSLITERATION_TEXT
-          example: MARK_TRANSLITERATION_TEXT_ALIAS
-          type: string
-        MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED:
-          description: Alias for MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
-          example: MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED_ALIAS
-          type: string
-        MARK_VERBAL_ELEMENT_TEXT:
-          description: Alias for MARK_VERBAL_ELEMENT_TEXT
-          example: MARK_VERBAL_ELEMENT_TEXT_ALIAS
-          type: string
-        NAT_CLASS_NUMBER:
-          description: Alias for NAT_CLASS_NUMBER
-          example: NAT_CLASS_NUMBER_ALIAS
-          type: string
-        NAT_GOODS_SERVICES_DESCRIPTION:
-          description: Alias for NAT_GOODS_SERVICES_DESCRIPTION
-          example: NAT_GOODS_SERVICES_DESCRIPTION_ALIAS
-          type: string
-        NAT_GOODS_SERVICES_LANGUAGE_CODE:
-          description: Alias for NAT_GOODS_SERVICES_LANGUAGE_CODE
-          example: NAT_GOODS_SERVICES_LANGUAGE_CODE_ALIAS
-          type: string
-        PRIORITY_COUNTRY_CODE:
-          description: Alias for PRIORITY_COUNTRY_CODE
-          example: PRIORITY_COUNTRY_CODE_ALIAS
-          type: string
-        PRIORITY_DATE:
-          description: Alias for PRIORITY_DATE
-          example: PRIORITY_DATE_ALIAS
-          type: string
-        PRIORITY_NUMBER_TEXT:
-          description: Alias for PRIORITY_NUMBER_TEXT
-          example: PRIORITY_NUMBER_TEXT_ALIAS
-          type: string
-        PUBLICATION_DATE:
-          description: Alias for PUBLICATION_DATE
-          example: PUBLICATION_DATE_ALIAS
-          type: string
-        PUBLICATION_YEAR:
-          description: Alias for PUBLICATION_YEAR
-          example: PUBLICATION_YEAR_ALIAS
-          type: string
-        REGISTRATION_DATE:
-          description: Alias for REGISTRATION_DATE
-          example: REGISTRATION_DATE_ALIAS
-          type: string
-        REGISTRATION_NUMBER_TEXT:
-          description: Alias for REGISTRATION_NUMBER_TEXT
-          example: REGISTRATION_NUMBER_TEXT_ALIAS
-          type: string
-        REGISTRATION_OFFICE_CODE:
-          description: Alias for REGISTRATION_OFFICE_CODE
-          example: REGISTRATION_OFFICE_CODE_ALIAS
-          type: string
-        REGISTRATION_OFFICE_CODE_DERIVED:
-          description: Alias for REGISTRATION_OFFICE_CODE_DERIVED
-          example: REGISTRATION_OFFICE_CODE_DERIVED_ALIAS
-          type: string
-        RENEWAL_DATE:
-          description: Alias for RENEWAL_DATE
-          example: RENEWAL_DATE_ALIAS
-          type: string
-        RENEWAL_PUBLISHED_DATE:
-          description: Alias for RENEWAL_PUBLISHED_DATE
-          example: RENEWAL_PUBLISHED_DATE_ALIAS
-          type: string
-        REPRESENTATIVE_ADDRESS_COUNTRY_CODE:
-          description: Alias for REPRESENTATIVE_ADDRESS_COUNTRY_CODE
-          example: REPRESENTATIVE_ADDRESS_COUNTRY_CODE_ALIAS
-          type: string
-        REPRESENTATIVE_ADDRESS_LINE_TEXT:
-          description: Alias for REPRESENTATIVE_ADDRESS_LINE_TEXT
-          example: REPRESENTATIVE_ADDRESS_LINE_TEXT_ALIAS
-          type: string
-        REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT:
-          description: Alias for REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT
-          example: REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT_ALIAS
-          type: string
-        REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE:
-          description: Alias for REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE
-          example: REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE_ALIAS
-          type: string
-        REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT:
-          description: Alias for REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT
-          example: REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT_ALIAS
-          type: string
-        REPRESENTATIVE_CORRESPONDENT_NAME:
-          description: Alias for REPRESENTATIVE_CORRESPONDENT_NAME
-          example: REPRESENTATIVE_CORRESPONDENT_NAME_ALIAS
-          type: string
-        REPRESENTATIVE_NAME:
-          description: Alias for REPRESENTATIVE_NAME
-          example: REPRESENTATIVE_NAME_ALIAS
-          type: string
-        REPRESENTATIVE_NAME_NATIVE:
-          description: Alias for REPRESENTATIVE_NAME_NATIVE
-          example: REPRESENTATIVE_NAME_NATIVE_ALIAS
-          type: string
-        SECOND_LANGUAGE_CODE:
-          description: Alias for SECOND_LANGUAGE_CODE
-          example: SECOND_LANGUAGE_CODE_ALIAS
-          type: string
+        FIELDS:
+          description: Fields to fetch
+          items:
+            description: Fields to fetch
+            enum:
+            - STATUS.PUBLICATION_DATE
+            - SECOND_LANGUAGE_CODE
+            - REPRESENTATIVES.NAME
+            - APPLICANTS.ADDRESS_LINE_TEXT
+            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS
+            - STATUS.CURRENT_STATUS
+            - WORD_MARK_SPECIFICATION.MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
+            - STATUS.APPLICATION_NUMBER_TEXT
+            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS.NAT_GOODS_SERVICES_DESCRIPTION
+            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
+            - FIGURATIVE_ELEMENTS
+            - FIGURATIVE_ELEMENTS.CLASSIFICATION
+            - APPLICANTS.NAME_NATIVE
+            - REPRESENTATIVES.NAME_NATIVE
+            - PRIORITIES.PRIORITY_DATE
+            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_DESCRIPTION
+            - STATUS.INITIAL_APPLICATION_DATE
+            - DESIGNATION_BASIS
+            - STATUS.REGISTRATION_NUMBER_TEXT
+            - WORD_MARK_SPECIFICATION
+            - STATUS.CURRENT_STATUS_DERIVED
+            - STATUS.INITIAL_REGISTRATION_DATE
+            - GOODS_SERVICES
+            - IMAGE_KIND
+            - APPLICANTS
+            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_LANGUAGE_CODE
+            - GUID
+            - WORD_MARK_SPECIFICATION.MARK_TRANSLATION_TEXT
+            - REPRESENTATIVE_CORRESPONDENTS
+            - IMAGES_TOTAL_QUANTITY
+            - WORD_MARK_SPECIFICATION.MARK_TRANSLITERATION_TEXT
+            - PRIORITIES.COUNTRY_CODE
+            - DISCLAIMERS
+            - REPRESENTATIVE_CORRESPONDENTS.NAME
+            - PRIORITIES.NUMBER_TEXT
+            - APPLICANTS.NAME
+            - STATUS.RENEWAL_DATE
+            - STATUS.APPLICATION_DATE
+            - STATUS.PUBLICATION_YEAR
+            - STATUS.APPLICATION_ABANDONED_DATE
+            - MARK_FEATURE
+            - STATUS
+            - PRIORITIES
+            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
+            - APPLICANTS.ADDRESS_COUNTRY_CODE
+            - APPLICATION_LANGUAGE_CODE
+            - FIGURATIVE_ELEMENTS.CLASSIFICATION_CODES_ENRICHED
+            - REGISTRATION_OFFICE_CODE
+            - REPRESENTATIVES.ADDRESS_COUNTRY_CODE
+            - STATUS.EXPIRY_DATE
+            - STATUS.CANCELLATION_DATE
+            - REPRESENTATIVE_CORRESPONDENTS.ADDRESS_COUNTRY_CODE
+            - ID
+            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS
+            - STATUS.LAST_PUBLICATION_DATE
+            - REPRESENTATIVES
+            - REPRESENTATIVES.ADDRESS_NATIVE_LINE_TEXT
+            - REPRESENTATIVES.ADDRESS_LINE_TEXT
+            - LAST_UPDATED_DATE
+            - STATUS.REGISTRATION_DATE
+            - APPLICANTS.ADDRESS_NATIVE_LINE_TEXT
+            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS.NAT_GOODS_SERVICES_LANGUAGE_CODE
+            - GOODS_SERVICES.NAT_CLASS_DESCRIPTIONS.NAT_CLASS_NUMBER
+            - STATUS.RENEWAL_PUBLISHED_DATE
+            - WORD_MARK_SPECIFICATION.MARK_VERBAL_ELEMENT_TEXT
+            - STATUS.FILING_DATE_DERIVED
+            - REPRESENTATIVE_CORRESPONDENTS.ADDRESS_LINE_TEXT
+            - DESIGNATED_COUNTRY_CODE
+            - GOODS_SERVICES.INT_CLASS_DESCRIPTIONS.INT_CLASS_NUMBER
+            type: string
+          type: array
+        GUIDS:
+          description: Document(s) to retrieve
+          items:
+            description: Unique ID of trademark document
+            example: USAFI65E053B1C87611DEB9C6000D609921FB
+            type: string
+          type: array
+      required:
+      - GUIDS
+      type: object
+    query_body_trademark:
+      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
+      properties:
+        ALG:
+          description: Algorithm to use.
+          enum:
+          - BASIC
+          type: string
+        FIELD:
+          description: Field to query
+          enum:
+          - SECOND_LANGUAGE_CODE
+          - APPLICANT_NAME
+          - CLASSIFICATION_CODE_ENRICHED
+          - ID_DERIVED
+          - PUBLICATION_YEAR
+          - PUBLICATION_DATE
+          - LAST_PUBLICATION_DATE
+          - REGISTRATION_NUMBER_TEXT
+          - COUNTRY_ISO_3166_ALPHA2
+          - RENEWAL_DATE
+          - APPLICANT_ADDRESS_COUNTRY_CODE
+          - DESIGNATION_BASIS
+          - PRIORITY_NUMBER_TEXT
+          - NAT_GOODS_SERVICES_LANGUAGE_CODE
+          - INITIAL_REGISTRATION_DATE
+          - APPLICANT_ADDRESS_NATIVE_LINE_TEXT
+          - IMAGE_KIND
+          - REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT
+          - REPRESENTATIVE_ADDRESS_LINE_TEXT
+          - GUID
+          - INT_CLASS_NUMBER
+          - NAT_GOODS_SERVICES_DESCRIPTION
+          - REGISTRATION_OFFICE_CODE_DERIVED
+          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
+          - APPLICATION_NUMBER_TEXT
+          - REGISTRATION_DATE
+          - INT_CLASS_HEADING_DERIVED
+          - REPRESENTATIVE_CORRESPONDENT_NAME
+          - APPLICANT_ADDRESS_LINE_TEXT
+          - IMAGES_TOTAL_QUANTITY
+          - CANCELLATION_DATE
+          - EXPIRY_DATE
+          - GUID_DERIVED
+          - DISCLAIMERS
+          - CLASSIFICATION
+          - FILING_DATE_DERIVED
+          - MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
+          - APPLICATION_ABANDONED_DATE
+          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE
+          - COUNTRY_TEXT
+          - INITIAL_APPLICATION_DATE
+          - COUNTRY_ISO_3166_ALPHA3
+          - APPLICATION_DATE
+          - CURRENT_STATUS_DERIVED
+          - APPLICATION_LANGUAGE_CODE
+          - REGISTRATION_OFFICE_CODE
+          - ID
+          - MARK_VERBAL_ELEMENT_TEXT
+          - INT_GOODS_SERVICES_DESCRIPTION
+          - INT_CLASS_TYPE_DERIVED
+          - PRIORITY_DATE
+          - REPRESENTATIVE_NAME
+          - PRIORITY_COUNTRY_CODE
+          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT
+          - CURRENT_STATUS
+          - INT_GOODS_SERVICES_LANGUAGE_CODE
+          - REPRESENTATIVE_ADDRESS_COUNTRY_CODE
+          - RENEWAL_PUBLISHED_DATE
+          - LAST_UPDATED_DATE
+          - MARK_TRANSLATION_TEXT
+          - REPRESENTATIVE_NAME_NATIVE
+          - MARK_TRANSLITERATION_TEXT
+          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
+          - NAT_CLASS_NUMBER
+          - MARK_FEATURE
+          - DESIGNATED_COUNTRY_CODE
+          - APPLICANT_NAME_NATIVE
+          example: GUID
+          type: string
+        OP:
+          description: Operator
+          enum:
+          - LE
+          - GE
+          - NE
+          - GT
+          - IS
+          - LT
+          - EQ
+          - IN
+          type: string
+        VALUE:
+          description: Field value to match (based on operator)
+          example: USAFI65E053B1C87611DEB9C6000D609921FB
+          type: string
+      required:
+      - OP
+      - VALUE
       type: object
   securitySchemes:
     key:

@@ -127,7 +127,63 @@ paths:
       tags:
       - References
 components:
+  parameters:
+    contentTypeHeader:
+      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
+      name: Content-Type
+      in: header
+      schema:
+        type: string
+    acceptHeader:
+      description: 'Contains the format of the data of the response or any error sent by the server placed in the response body. '
+      name: Accept
+      in: header
+      required: true
+      schema:
+        type: string
+    routingHeader:
+      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
+      name: x-enws-authorization
+      in: header
+      required: true
+      schema:
+        type: string
   schemas:
+    uri:
+      properties:
+        system:
+          description: As true, POST method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        readOnly:
+          description: As true, PUT method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        idValue:
+          description: Unique Identifier of a pointed resource
+          readOnly: true
+          type: string
+        hidden:
+          description: As true, GET method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        mandatory:
+          description: As true, DELETE method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        display:
+          description: Name of the resource to show users
+          readOnly: true
+          type: string
+        uri:
+          description: URL pointing to a resource
+          readOnly: true
+          type: string
+      type: object
     roareference:
       description: 'Metadata of a bibliographic content. This object wraps a bibliographic content adding a set of fields for ENWS Services processing. While bibliographic content is an agnostic set of fields for any environment, Reference object contains a set of fields for ENWS Services. '
       properties:
@@ -317,62 +373,6 @@ components:
         fileFactoryUri:
           $ref: '#/components/schemas/uri'
       type: object
-    uri:
-      properties:
-        system:
-          description: As true, POST method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        readOnly:
-          description: As true, PUT method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        idValue:
-          description: Unique Identifier of a pointed resource
-          readOnly: true
-          type: string
-        hidden:
-          description: As true, GET method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        mandatory:
-          description: As true, DELETE method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        display:
-          description: Name of the resource to show users
-          readOnly: true
-          type: string
-        uri:
-          description: URL pointing to a resource
-          readOnly: true
-          type: string
-      type: object
-  parameters:
-    routingHeader:
-      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
-      name: x-enws-authorization
-      in: header
-      required: true
-      schema:
-        type: string
-    contentTypeHeader:
-      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
-      name: Content-Type
-      in: header
-      schema:
-        type: string
-    acceptHeader:
-      description: 'Contains the format of the data of the response or any error sent by the server placed in the response body. '
-      name: Accept
-      in: header
-      required: true
-      schema:
-        type: string
   securitySchemes:
     Log_In__accessCode:
       type: oauth2

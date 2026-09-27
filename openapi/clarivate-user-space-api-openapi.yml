@@ -310,13 +310,6 @@ paths:
       - User Space
 components:
   parameters:
-    routingHeader:
-      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
-      name: x-enws-authorization
-      in: header
-      required: true
-      schema:
-        type: string
     contentTypeHeader:
       description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
       name: Content-Type
@@ -330,7 +323,49 @@ components:
       required: true
       schema:
         type: string
+    routingHeader:
+      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
+      name: x-enws-authorization
+      in: header
+      required: true
+      schema:
+        type: string
   schemas:
+    uri:
+      properties:
+        system:
+          description: As true, POST method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        readOnly:
+          description: As true, PUT method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        idValue:
+          description: Unique Identifier of a pointed resource
+          readOnly: true
+          type: string
+        hidden:
+          description: As true, GET method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        mandatory:
+          description: As true, DELETE method is not allowed
+          readOnly: true
+          default: false
+          type: boolean
+        display:
+          description: Name of the resource to show users
+          readOnly: true
+          type: string
+        uri:
+          description: URL pointing to a resource
+          readOnly: true
+          type: string
+      type: object
     userspaceresource:
       description: 'Retrieve a set of fields related to User''s workspace. '
       properties:
@@ -379,41 +414,6 @@ components:
           readOnly: true
           default: 0
           type: integer
-      type: object
-    uri:
-      properties:
-        system:
-          description: As true, POST method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        readOnly:
-          description: As true, PUT method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        idValue:
-          description: Unique Identifier of a pointed resource
-          readOnly: true
-          type: string
-        hidden:
-          description: As true, GET method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        mandatory:
-          description: As true, DELETE method is not allowed
-          readOnly: true
-          default: false
-          type: boolean
-        display:
-          description: Name of the resource to show users
-          readOnly: true
-          type: string
-        uri:
-          description: URL pointing to a resource
-          readOnly: true
-          type: string
       type: object
   securitySchemes:
     Log_In__accessCode:

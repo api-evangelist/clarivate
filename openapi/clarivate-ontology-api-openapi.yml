@@ -167,6 +167,99 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ContentSetInfoResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - name
+      - description
+      title: ContentSetInfoResponse
+    ContentSetOntologyResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: ContentSetOntologyResponse
+    ErrorResponse:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: ErrorResponse
+      description: 'Customize Validation Error
+
+        https://github.com/tiangolo/fastapi/issues/1376'
+    Error:
+      properties:
+        code:
+          $ref: '#/components/schemas/ApiErrorEnum'
+        message:
+          type: string
+          title: Message
+        location:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
+    ContentSetOntologiesResponseData:
+      properties:
+        name:
+          type: string
+          title: Name
+        list:
+          type: boolean
+          title: List
+      type: object
+      required:
+      - name
+      - list
+      title: ContentSetOntologiesResponseData
+    Status:
+      type: string
+      enum:
+      - success
+      title: Status
+    ContentSetOntologiesResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: ContentSetOntologiesResponse
     ApiErrorEnum:
       type: integer
       enum:
@@ -187,99 +280,6 @@ components:
       - 2006
       - 3000
       title: ApiErrorEnum
-    ContentSetOntologiesResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-          default: success
-        data:
-          items:
-            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
-          type: array
-          title: Data
-      type: object
-      required:
-      - data
-      title: ContentSetOntologiesResponse
-    ErrorResponse:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/Error'
-          type: array
-          title: Errors
-      type: object
-      required:
-      - errors
-      title: ErrorResponse
-      description: 'Customize Validation Error
-
-        https://github.com/tiangolo/fastapi/issues/1376'
-    Status:
-      type: string
-      enum:
-      - success
-      title: Status
-    ContentSetOntologiesResponseData:
-      properties:
-        name:
-          type: string
-          title: Name
-        list:
-          type: boolean
-          title: List
-      type: object
-      required:
-      - name
-      - list
-      title: ContentSetOntologiesResponseData
-    ContentSetOntologyResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-          default: success
-        data:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Data
-      type: object
-      required:
-      - data
-      title: ContentSetOntologyResponse
-    ContentSetInfoResponse:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - name
-      - description
-      title: ContentSetInfoResponse
-    Error:
-      properties:
-        code:
-          $ref: '#/components/schemas/ApiErrorEnum'
-        message:
-          type: string
-          title: Message
-        location:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-      type: object
-      required:
-      - code
-      - message
-      title: Error
   securitySchemes:
     key:
       type: apiKey

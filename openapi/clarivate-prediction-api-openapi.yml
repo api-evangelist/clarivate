@@ -111,66 +111,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ApiErrorEnum:
-      type: integer
-      enum:
-      - 1000
-      - 1001
-      - 1002
-      - 1003
-      - 1004
-      - 1005
-      - 1006
-      - 1007
-      - 2000
-      - 2001
-      - 2002
-      - 2003
-      - 2004
-      - 2005
-      - 2006
-      - 3000
-      title: ApiErrorEnum
-    PredictionsResponseDataInput:
-      properties:
-        name:
-          type: string
-          title: Name
-        type:
-          type: string
-          title: Type
-        description:
-          type: string
-          title: Description
-        mandatory:
-          type: boolean
-          title: Mandatory
-      type: object
-      required:
-      - name
-      - type
-      - description
-      - mandatory
-      title: PredictionsResponseDataInput
-    Format:
-      type: string
-      enum:
-      - json
-      title: Format
-    MakePredictionResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-          default: success
-        data:
-          items:
-            $ref: '#/components/schemas/Prediction'
-          type: array
-          title: Data
-      type: object
-      required:
-      - data
-      title: MakePredictionResponse
     ErrorResponse:
       properties:
         errors:
@@ -185,20 +125,88 @@ components:
       description: 'Customize Validation Error
 
         https://github.com/tiangolo/fastapi/issues/1376'
+    Format:
+      type: string
+      enum:
+      - json
+      title: Format
+    MakePredictionRequest:
+      properties:
+        model:
+          type: string
+          title: Model
+        format:
+          $ref: '#/components/schemas/Format'
+          default: json
+        inputs:
+          items:
+            $ref: '#/components/schemas/PredictionInput'
+          type: array
+          title: Inputs
+      additionalProperties: false
+      type: object
+      required:
+      - model
+      - inputs
+      title: MakePredictionRequest
+    MakePredictionResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/Prediction'
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: MakePredictionResponse
+    OperationEnum:
+      type: string
+      enum:
+      - eq
+      - in
+      title: OperationEnum
+    Error:
+      properties:
+        code:
+          $ref: '#/components/schemas/ApiErrorEnum'
+        message:
+          type: string
+          title: Message
+        location:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
     Status:
       type: string
       enum:
       - success
       title: Status
-    PredictionsResponseDataModel:
+    PredictionsResponse:
       properties:
-        name:
-          type: string
-          title: Name
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/PredictionsResponseData'
+          type: array
+          title: Data
       type: object
       required:
-      - name
-      title: PredictionsResponseDataModel
+      - data
+      title: PredictionsResponse
     PredictionsResponseData:
       properties:
         content_set:
@@ -224,31 +232,26 @@ components:
       - models
       - inputs
       title: PredictionsResponseData
-    MakePredictionRequest:
-      properties:
-        model:
-          type: string
-          title: Model
-        format:
-          $ref: '#/components/schemas/Format'
-          default: json
-        inputs:
-          items:
-            $ref: '#/components/schemas/PredictionInput'
-          type: array
-          title: Inputs
-      additionalProperties: false
-      type: object
-      required:
-      - model
-      - inputs
-      title: MakePredictionRequest
-    OperationEnum:
-      type: string
+    ApiErrorEnum:
+      type: integer
       enum:
-      - eq
-      - in
-      title: OperationEnum
+      - 1000
+      - 1001
+      - 1002
+      - 1003
+      - 1004
+      - 1005
+      - 1006
+      - 1007
+      - 2000
+      - 2001
+      - 2002
+      - 2003
+      - 2004
+      - 2005
+      - 2006
+      - 3000
+      title: ApiErrorEnum
     PredictionInput:
       properties:
         field:
@@ -275,42 +278,39 @@ components:
       - op
       - value
       title: PredictionInput
+    PredictionsResponseDataInput:
+      properties:
+        name:
+          type: string
+          title: Name
+        type:
+          type: string
+          title: Type
+        description:
+          type: string
+          title: Description
+        mandatory:
+          type: boolean
+          title: Mandatory
+      type: object
+      required:
+      - name
+      - type
+      - description
+      - mandatory
+      title: PredictionsResponseDataInput
+    PredictionsResponseDataModel:
+      properties:
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: PredictionsResponseDataModel
     Prediction:
       additionalProperties: true
       type: object
-    Error:
-      properties:
-        code:
-          $ref: '#/components/schemas/ApiErrorEnum'
-        message:
-          type: string
-          title: Message
-        location:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-      type: object
-      required:
-      - code
-      - message
-      title: Error
-    PredictionsResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-          default: success
-        data:
-          items:
-            $ref: '#/components/schemas/PredictionsResponseData'
-          type: array
-          title: Data
-      type: object
-      required:
-      - data
-      title: PredictionsResponse
   securitySchemes:
     key:
       type: apiKey

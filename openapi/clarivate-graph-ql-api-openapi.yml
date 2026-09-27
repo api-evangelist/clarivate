@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   description: This graphQL API provides a single access point to query various Clarivate content sets from multiple domains.
   version: 1.0.0
-  title: LSH Data Product Search & Retrieve Graphql API
+  title: LSH Data Product Search & Retrieve GraphQL API
 servers:
 - url: https://api.clarivate.com/ric/searchretrieve/v1/
 security:

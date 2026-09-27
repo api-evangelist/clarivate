@@ -186,32 +186,123 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    FilterGroup:
+      items:
+        anyOf:
+        - $ref: '#/components/schemas/Filter'
+        - $ref: '#/components/schemas/ConjunctionEnum'
+        - $ref: '#/components/schemas/FilterGroup'
+      type: array
+      minLength: 0
+      title: FilterGroup
+    StatusEnum:
+      type: string
+      enum:
+      - pending
+      - running
+      - done
+      - failed
+      - outdated
+      - done-no-match
+      title: StatusEnum
+    ContentSubscriptionResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: Name of the subscribed dataset
+        contentSet:
+          type: string
+          title: Contentset
+          description: Name of the content set parameter to be passed in the API calls
+        preset:
+          type: string
+          title: Preset
+          description: Name of the preset parameter to be passed in the API calls
+        description:
+          type: string
+          title: Description
+          description: 'Description of the subscribed dataset '
+      type: object
+      required:
+      - name
+      - contentSet
+      - preset
+      - description
+      title: ContentSubscriptionResponse
+    ErrorResponse:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: ErrorResponse
+      description: 'Customize Validation Error
+
+        https://github.com/tiangolo/fastapi/issues/1376'
     Format:
       type: string
       enum:
       - json
       - parquet
       title: Format
-    Filter:
+    ConjunctionEnum:
+      type: string
+      enum:
+      - OR
+      - AND
+      title: ConjunctionEnum
+    OperationEnum:
+      type: string
+      enum:
+      - eq
+      - lt
+      - gt
+      - le
+      - ge
+      - ne
+      - in
+      - is
+      - like
+      - any of
+      - not in
+      - is not
+      - not like
+      title: OperationEnum
+    FileTypeEnum:
+      type: string
+      enum:
+      - json
+      - parquet
+      - resources
+      - schema
+      title: FileTypeEnum
+    Error:
       properties:
-        field:
+        code:
+          type: integer
+          title: Code
+        message:
           type: string
-          title: Field
-          description: Name of the filter. Only "internalChangeNumber" is currently supported.
-        op:
-          allOf:
-          - $ref: '#/components/schemas/OperationEnum'
-          description: Filter's operator. Possible values are 'gt' (greater than), 'lt' (lower than).
-        value:
-          title: Value
-          description: Filter's value corresponding to the maxInternalChangeNumber field value returned from a previous call by the checkPackageStatus endpoint.
-      additionalProperties: false
+          title: Message
+        location:
+          anyOf:
+          - items:
+              anyOf:
+              - type: string
+              - type: integer
+            type: array
+          - type: 'null'
+          title: Location
       type: object
       required:
-      - field
-      - op
-      - value
-      title: Filter
+      - code
+      - message
+      title: Error
     RequestPackageInput:
       properties:
         requestId:
@@ -251,31 +342,6 @@ components:
       - contentSet
       - preset
       title: RequestPackageInput
-    RequestPackageResult:
-      properties:
-        token:
-          type: string
-          format: uuid4
-          title: Token
-          description: Unique identifier in uuid4 format representing a data feed package that has been requested.
-      type: object
-      required:
-      - token
-      title: RequestPackageResult
-    ErrorResponse:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/Error'
-          type: array
-          title: Errors
-      type: object
-      required:
-      - errors
-      title: ErrorResponse
-      description: 'Customize Validation Error
-
-        https://github.com/tiangolo/fastapi/issues/1376'
     CheckPackageStatusResult:
       properties:
         status:
@@ -309,104 +375,6 @@ components:
       - maxInternalChangeNumber
       - files
       title: CheckPackageStatusResult
-    ConjunctionEnum:
-      type: string
-      enum:
-      - OR
-      - AND
-      title: ConjunctionEnum
-    FileTypeEnum:
-      type: string
-      enum:
-      - json
-      - parquet
-      - resources
-      - schema
-      title: FileTypeEnum
-    StatusEnum:
-      type: string
-      enum:
-      - pending
-      - running
-      - done
-      - failed
-      - outdated
-      - done-no-match
-      title: StatusEnum
-    ContentSubscriptionResponse:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: Name of the subscribed dataset
-        contentSet:
-          type: string
-          title: Contentset
-          description: Name of the content set parameter to be passed in the API calls
-        preset:
-          type: string
-          title: Preset
-          description: Name of the preset parameter to be passed in the API calls
-        description:
-          type: string
-          title: Description
-          description: 'Description of the subscribed dataset '
-      type: object
-      required:
-      - name
-      - contentSet
-      - preset
-      - description
-      title: ContentSubscriptionResponse
-    SubscriptionsInfoResult:
-      properties:
-        subscriptions:
-          items:
-            $ref: '#/components/schemas/ContentSubscriptionResponse'
-          type: array
-          title: Subscriptions
-          description: List of subscribed datasets
-      type: object
-      required:
-      - subscriptions
-      title: SubscriptionsInfoResult
-    OperationEnum:
-      type: string
-      enum:
-      - eq
-      - lt
-      - gt
-      - le
-      - ge
-      - ne
-      - in
-      - is
-      - like
-      - any of
-      - not in
-      - is not
-      - not like
-      title: OperationEnum
-    MaxInternalChangeNumber:
-      properties:
-        contentSet:
-          type: string
-          title: Contentset
-          description: Content set/data set name (value could be "custom").
-        preset:
-          type: string
-          title: Preset
-          description: Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset).
-        value:
-          type: integer
-          title: Value
-          description: Maximal Internal Change Number value.
-      type: object
-      required:
-      - contentSet
-      - preset
-      - value
-      title: MaxInternalChangeNumber
     CheckPackageStatusResultFile:
       properties:
         token:
@@ -464,37 +432,69 @@ components:
       - checksum
       - numberOfRecords
       title: CheckPackageStatusResultFile
-    Error:
+    MaxInternalChangeNumber:
       properties:
-        code:
-          type: integer
-          title: Code
-        message:
+        contentSet:
           type: string
-          title: Message
-        location:
-          anyOf:
-          - items:
-              anyOf:
-              - type: string
-              - type: integer
-            type: array
-          - type: 'null'
-          title: Location
+          title: Contentset
+          description: Content set/data set name (value could be "custom").
+        preset:
+          type: string
+          title: Preset
+          description: Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset).
+        value:
+          type: integer
+          title: Value
+          description: Maximal Internal Change Number value.
       type: object
       required:
-      - code
-      - message
-      title: Error
-    FilterGroup:
-      items:
-        anyOf:
-        - $ref: '#/components/schemas/Filter'
-        - $ref: '#/components/schemas/ConjunctionEnum'
-        - $ref: '#/components/schemas/FilterGroup'
-      type: array
-      minLength: 0
-      title: FilterGroup
+      - contentSet
+      - preset
+      - value
+      title: MaxInternalChangeNumber
+    Filter:
+      properties:
+        field:
+          type: string
+          title: Field
+          description: Name of the filter. Only "internalChangeNumber" is currently supported.
+        op:
+          allOf:
+          - $ref: '#/components/schemas/OperationEnum'
+          description: Filter's operator. Possible values are 'gt' (greater than), 'lt' (lower than).
+        value:
+          title: Value
+          description: Filter's value corresponding to the maxInternalChangeNumber field value returned from a previous call by the checkPackageStatus endpoint.
+      additionalProperties: false
+      type: object
+      required:
+      - field
+      - op
+      - value
+      title: Filter
+    SubscriptionsInfoResult:
+      properties:
+        subscriptions:
+          items:
+            $ref: '#/components/schemas/ContentSubscriptionResponse'
+          type: array
+          title: Subscriptions
+          description: List of subscribed datasets
+      type: object
+      required:
+      - subscriptions
+      title: SubscriptionsInfoResult
+    RequestPackageResult:
+      properties:
+        token:
+          type: string
+          format: uuid4
+          title: Token
+          description: Unique identifier in uuid4 format representing a data feed package that has been requested.
+      type: object
+      required:
+      - token
+      title: RequestPackageResult
   securitySchemes:
     key:
       type: apiKey

@@ -455,54 +455,34 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    User:
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
       type: object
       properties:
-        userName:
+        timestamp:
           type: string
-          maxLength: 255
-          example: loginname
-          description: It is required only for POST create user.
-        firstName:
-          type: string
-          maxLength: 255
-          example: First
-        lastName:
-          type: string
-          maxLength: 255
-          example: last
-        email:
-          type: string
-          format: email
-          example: first.last@converis.clarivate.com
-          description: For internal users, a notification with password will be sent to the email.
-        firstLogin:
-          type: boolean
-          example: true
-        preferredLanguage:
-          type: string
-          example: en_GB
-        active:
-          type: boolean
-          example: true
-        acceptedTC:
-          type: boolean
-          example: true
-        userType:
-          type: string
-          enum:
-          - INTERNAL
-          - EXTERNAL
-          example: INTERNAL
-          description: INTERNAL users are the users which directly login in Converis. External users are the users that login through SSO, e.g. Shibboleth
-        lastLogin:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28"
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
           format: date-time
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRole'
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
     UserDelegationList:
       required:
       - count
@@ -582,34 +562,54 @@ components:
 
             '
           format: date
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
+    User:
       type: object
       properties:
-        timestamp:
+        userName:
           type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          maxLength: 255
+          example: loginname
+          description: It is required only for POST create user.
+        firstName:
+          type: string
+          maxLength: 255
+          example: First
+        lastName:
+          type: string
+          maxLength: 255
+          example: last
+        email:
+          type: string
+          format: email
+          example: first.last@converis.clarivate.com
+          description: For internal users, a notification with password will be sent to the email.
+        firstLogin:
+          type: boolean
+          example: true
+        preferredLanguage:
+          type: string
+          example: en_GB
+        active:
+          type: boolean
+          example: true
+        acceptedTC:
+          type: boolean
+          example: true
+        userType:
+          type: string
+          enum:
+          - INTERNAL
+          - EXTERNAL
+          example: INTERNAL
+          description: INTERNAL users are the users which directly login in Converis. External users are the users that login through SSO, e.g. Shibboleth
+        lastLogin:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28"
           format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRole'
     UserRole:
       properties:
         roleName:

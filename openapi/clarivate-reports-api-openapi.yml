@@ -354,70 +354,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    COUNTER_database_report:
-      type: object
-      description: Describes the formatting needs for the COUNTER Database Report - the Report_Header and Report_Items (usage stats).
-      required:
-      - Report_Header
-      - Report_Items
-      properties:
-        Report_Header:
-          $ref: '#/components/schemas/SUSHI_report_header'
-        Report_Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/COUNTER_database_usage'
-    SUSHI_org_identifiers:
-      type: object
-      description: Identifier for an organization.
-      required:
-      - Type
-      - Value
-      properties:
-        Type:
-          type: string
-          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
-          example: ISNI
-          enum:
-          - ISNI
-          - ISIL
-          - OCLC
-          - Proprietary
-        Value:
-          type: string
-          description: Value of the organization identifier
-          example: 1234 1234 1234 1234
-    COUNTER_database_usage:
-      type: object
-      description: Defines the output for the Report_Items being returned in a Database Report.
-      required:
-      - Database
-      - Publisher
-      - Platform
-      - Performance
-      properties:
-        Database:
-          type: string
-          description: Name of the database or collection being reported on.
-          example: Web of Science Core Collection
-        Platform:
-          type: string
-          description: Name of the platform
-          example: Web of Science
-        Publisher:
-          type: string
-          description: Name of the organization that creates the database
-          example: Clarivate
-        Publisher_ID:
-          type: array
-          items:
-            $ref: '#/components/schemas/COUNTER_publisher_identifiers'
-          description: The identifier for the publisher.
-        Performance:
-          type: array
-          items:
-            $ref: '#/components/schemas/COUNTER_item_performance'
-          description: The usage data related to the report item
     COUNTER_platform_report:
       type: object
       description: Describes the formatting needs for the COUNTER Platform Report - the Report_Header and Report_Items (usage stats).
@@ -507,50 +443,6 @@ components:
           description: Series of exceptions encounted when preparing the report.
           items:
             $ref: '#/components/schemas/SUSHI_error_model'
-    COUNTER_platform_usage:
-      type: object
-      description: Defines the output for the Report_Items being returned in a Platform Report.
-      required:
-      - Platform
-      - Performance
-      properties:
-        Platform:
-          type: string
-          description: Name of the platform
-          example: Web of Science
-        Performance:
-          type: array
-          items:
-            $ref: '#/components/schemas/COUNTER_item_performance'
-          description: The usage data related to the report item
-    SUSHI_report_list:
-      type: object
-      required:
-      - Report_ID
-      - Report_Name
-      - Release
-      - Report_Description
-      properties:
-        Report_Name:
-          type: string
-          description: The long name of the report
-          example: Database Search and Item Usage
-        Report_ID:
-          type: string
-          description: The code, ID or short name of the report that is be used in the request to identify the report.
-          example: DR_D1
-        Release:
-          type: string
-          description: The release or version number of the report.
-          example: '5'
-        Report_Description:
-          type: string
-          description: A short sentence describing the report.
-          example: Total and Monthly Searches and Item Usage for each Web of Science Database
-        Path:
-          type: string
-          description: The path to use when requesting this report on this service. Optional but recommended for custom reports.
-          example: /reports/dr_d1
     SUSHI_error_model:
       type: object
       description: Generalized format for presenting errors and exceptions.
@@ -585,22 +477,6 @@ components:
           type: string
           description: Additional data provided by the server to clarify the error.
           example: Usage data has not been processed for all requested months.
-    COUNTER_publisher_identifiers:
-      type: object
-      required:
-      - Type
-      - Value
-      properties:
-        Type:
-          type: string
-          example: ISNI
-          enum:
-          - ISNI
-          - Proprietary
-        Value:
-          type: string
-          description: Value of the publisher identifier
-          example: 1234 1234 1234 1234
     COUNTER_item_performance:
       type: object
       required:
@@ -650,6 +526,130 @@ components:
                 type: integer
                 description: Usage count > 0.  If count is zero, the Intance element should be excluded.
                 example: 21
+    COUNTER_database_report:
+      type: object
+      description: Describes the formatting needs for the COUNTER Database Report - the Report_Header and Report_Items (usage stats).
+      required:
+      - Report_Header
+      - Report_Items
+      properties:
+        Report_Header:
+          $ref: '#/components/schemas/SUSHI_report_header'
+        Report_Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/COUNTER_database_usage'
+    SUSHI_org_identifiers:
+      type: object
+      description: Identifier for an organization.
+      required:
+      - Type
+      - Value
+      properties:
+        Type:
+          type: string
+          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
+          example: ISNI
+          enum:
+          - ISNI
+          - ISIL
+          - OCLC
+          - Proprietary
+        Value:
+          type: string
+          description: Value of the organization identifier
+          example: 1234 1234 1234 1234
+    SUSHI_report_list:
+      type: object
+      required:
+      - Report_ID
+      - Report_Name
+      - Release
+      - Report_Description
+      properties:
+        Report_Name:
+          type: string
+          description: The long name of the report
+          example: Database Search and Item Usage
+        Report_ID:
+          type: string
+          description: The code, ID or short name of the report that is be used in the request to identify the report.
+          example: DR_D1
+        Release:
+          type: string
+          description: The release or version number of the report.
+          example: '5'
+        Report_Description:
+          type: string
+          description: A short sentence describing the report.
+          example: Total and Monthly Searches and Item Usage for each Web of Science Database
+        Path:
+          type: string
+          description: The path to use when requesting this report on this service. Optional but recommended for custom reports.
+          example: /reports/dr_d1
+    COUNTER_platform_usage:
+      type: object
+      description: Defines the output for the Report_Items being returned in a Platform Report.
+      required:
+      - Platform
+      - Performance
+      properties:
+        Platform:
+          type: string
+          description: Name of the platform
+          example: Web of Science
+        Performance:
+          type: array
+          items:
+            $ref: '#/components/schemas/COUNTER_item_performance'
+          description: The usage data related to the report item
+    COUNTER_database_usage:
+      type: object
+      description: Defines the output for the Report_Items being returned in a Database Report.
+      required:
+      - Database
+      - Publisher
+      - Platform
+      - Performance
+      properties:
+        Database:
+          type: string
+          description: Name of the database or collection being reported on.
+          example: Web of Science Core Collection
+        Platform:
+          type: string
+          description: Name of the platform
+          example: Web of Science
+        Publisher:
+          type: string
+          description: Name of the organization that creates the database
+          example: Clarivate
+        Publisher_ID:
+          type: array
+          items:
+            $ref: '#/components/schemas/COUNTER_publisher_identifiers'
+          description: The identifier for the publisher.
+        Performance:
+          type: array
+          items:
+            $ref: '#/components/schemas/COUNTER_item_performance'
+          description: The usage data related to the report item
+    COUNTER_publisher_identifiers:
+      type: object
+      required:
+      - Type
+      - Value
+      properties:
+        Type:
+          type: string
+          example: ISNI
+          enum:
+          - ISNI
+          - Proprietary
+        Value:
+          type: string
+          description: Value of the publisher identifier
+          example: 1234 1234 1234 1234
   securitySchemes:
     key:
       type: apiKey

@@ -39,22 +39,30 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PublicAgentRequest:
+    PublicUsageInfo:
       properties:
-        question:
-          type: string
-          title: Question
-          description: Natural language question
-        conversation_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Conversation Id
-          description: Existing conversation context ID
+        request_input_tokens:
+          type: integer
+          title: Request Input Tokens
+          default: 0
+        request_output_tokens:
+          type: integer
+          title: Request Output Tokens
+          default: 0
+        conversation_input_tokens:
+          type: integer
+          title: Conversation Input Tokens
+          default: 0
+        conversation_output_tokens:
+          type: integer
+          title: Conversation Output Tokens
+          default: 0
+        total_duration:
+          type: number
+          title: Total Duration
+          default: 0
       type: object
-      required:
-      - question
-      title: PublicAgentRequest
+      title: PublicUsageInfo
     PublicAgentMessageResponse:
       properties:
         status:
@@ -143,6 +151,22 @@ components:
       - reason
       - duration
       title: IntermediateStep
+    PublicAgentRequest:
+      properties:
+        question:
+          type: string
+          title: Question
+          description: Natural language question
+        conversation_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Conversation Id
+          description: Existing conversation context ID
+      type: object
+      required:
+      - question
+      title: PublicAgentRequest
     AgentStatus:
       type: string
       enum:
@@ -150,15 +174,6 @@ components:
       - CLARIFICATION_REQUIRED
       - NOT_FOUND
       title: AgentStatus
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     PublicAgentSuccessResponse:
       properties:
         status:
@@ -193,30 +208,15 @@ components:
       - conversation_id
       - cypher_query
       title: PublicAgentSuccessResponse
-    PublicUsageInfo:
+    HTTPValidationError:
       properties:
-        request_input_tokens:
-          type: integer
-          title: Request Input Tokens
-          default: 0
-        request_output_tokens:
-          type: integer
-          title: Request Output Tokens
-          default: 0
-        conversation_input_tokens:
-          type: integer
-          title: Conversation Input Tokens
-          default: 0
-        conversation_output_tokens:
-          type: integer
-          title: Conversation Output Tokens
-          default: 0
-        total_duration:
-          type: number
-          title: Total Duration
-          default: 0
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      title: PublicUsageInfo
+      title: HTTPValidationError
   securitySchemes:
     key:
       type: apiKey
