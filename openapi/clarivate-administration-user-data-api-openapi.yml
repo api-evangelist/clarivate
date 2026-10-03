@@ -285,6 +285,35 @@ components:
         message:
           type: string
           description: The detailed description of the error
+    UserList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+          description: only for GET response
+        count:
+          type: integer
+          example: 50
+          description: only for GET response
+        nrRecordsAll:
+          type: integer
+          example: 1540
+          description: only for GET response
+        nrRecordsFound:
+          type: integer
+          example: 50
+          description: only for GET response
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
     UserRole:
       properties:
         roleName:
@@ -352,35 +381,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserRole'
-    UserList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-          description: only for GET response
-        count:
-          type: integer
-          example: 50
-          description: only for GET response
-        nrRecordsAll:
-          type: integer
-          example: 1540
-          description: only for GET response
-        nrRecordsFound:
-          type: integer
-          example: 50
-          description: only for GET response
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
   securitySchemes:
     BasicAuth:
       type: http

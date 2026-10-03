@@ -143,6 +143,120 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    LinkEntityDefinitionList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityDefinition'
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+    LinkEntityDefinition:
+      required:
+      - attributes
+      - description
+      - id
+      - isTree
+      - leftDefinitionUrl
+      - name
+      - rightDefinitionUrl
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1231421421
+        name:
+          type: string
+          example: PUBL_has_CARD
+        isTree:
+          type: boolean
+          example: false
+        description:
+          type: string
+        leftDefinitionUrl:
+          type: string
+          example: /converis-apis/ws/v2/config/entities/Publication
+        rightDefinitionUrl:
+          type: string
+          example: /converis-apis/ws/v2/config/entities/Card
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttributeDefinition'
+    AttributeInputDefinition:
+      properties:
+        dataType:
+          type: string
+          example: DATE
+        renderingTypeHint:
+          type: string
+          example: Datepicker
+        inputPattern:
+          type: string
+          example: Date
+        defaultExpression:
+          type: string
+          example: 01-05-2019
+    LabelDefinition:
+      required:
+      - language
+      - value
+      type: object
+      properties:
+        language:
+          type: string
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
+          example: Publication
     AttributeDefinition:
       required:
       - name
@@ -186,120 +300,6 @@ components:
         includeInPageExport:
           type: boolean
           example: true
-    LabelDefinition:
-      required:
-      - language
-      - value
-      type: object
-      properties:
-        language:
-          type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
-          type: string
-          description: The value of the label
-          example: Publication
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
-    AttributeInputDefinition:
-      properties:
-        dataType:
-          type: string
-          example: DATE
-        renderingTypeHint:
-          type: string
-          example: Datepicker
-        inputPattern:
-          type: string
-          example: Date
-        defaultExpression:
-          type: string
-          example: 01-05-2019
-    LinkEntityDefinitionList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityDefinition'
-    LinkEntityDefinition:
-      required:
-      - attributes
-      - description
-      - id
-      - isTree
-      - leftDefinitionUrl
-      - name
-      - rightDefinitionUrl
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 1231421421
-        name:
-          type: string
-          example: PUBL_has_CARD
-        isTree:
-          type: boolean
-          example: false
-        description:
-          type: string
-        leftDefinitionUrl:
-          type: string
-          example: /converis-apis/ws/v2/config/entities/Publication
-        rightDefinitionUrl:
-          type: string
-          example: /converis-apis/ws/v2/config/entities/Card
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttributeDefinition'
   securitySchemes:
     BasicAuth:
       type: http

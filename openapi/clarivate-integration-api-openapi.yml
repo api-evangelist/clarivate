@@ -325,22 +325,38 @@ components:
         id:
           type: string
           description: Request Id
-    WosSearchResponse:
+    WosSearchResponseXML:
       type: object
+      xml:
+        name: response
+        namespace: http://www.isinet.com/xrpc42
       properties:
-        Data:
+        map:
           type: object
           properties:
-            Records:
+            map:
               type: object
               properties:
-                records:
+                name:
+                  type: string
+                  example: Data
+                  xml:
+                    attribute: true
+                val:
                   type: object
                   properties:
-                    REC:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/WosRecord'
+                    name:
+                      type: string
+                      example: Records
+                      xml:
+                        attribute: true
+                    records:
+                      type: object
+                      properties:
+                        REC:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/WosRecordXML'
         QueryResult:
           $ref: '#/components/schemas/QueryResult'
     WosRecordXML:
@@ -1498,261 +1514,6 @@ components:
           type: integer
         RecordsFound:
           type: integer
-    WosSearchResponseXML:
-      type: object
-      xml:
-        name: response
-        namespace: http://www.isinet.com/xrpc42
-      properties:
-        map:
-          type: object
-          properties:
-            map:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: Data
-                  xml:
-                    attribute: true
-                val:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      example: Records
-                      xml:
-                        attribute: true
-                    records:
-                      type: object
-                      properties:
-                        REC:
-                          type: array
-                          items:
-                            $ref: '#/components/schemas/WosRecordXML'
-        QueryResult:
-          $ref: '#/components/schemas/QueryResult'
-    WosShortSearchResponse:
-      type: object
-      properties:
-        Data:
-          type: object
-          properties:
-            Records:
-              type: object
-              properties:
-                records:
-                  type: object
-                  properties:
-                    REC:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/WosShortRecord'
-        QueryResult:
-          $ref: '#/components/schemas/QueryResult'
-    WosShortRecord:
-      type: object
-      required:
-      - UID
-      - static_data
-      - r_id_disclaimer
-      - dynamic_data
-      properties:
-        UID:
-          type: string
-          example: WOS:001020694100001
-        static_data:
-          type: object
-          properties:
-            summary:
-              type: object
-              properties:
-                pub_info:
-                  type: object
-                  properties:
-                    vol:
-                      type: integer
-                      example: 203
-                      xml:
-                        attribute: true
-                    pubyear:
-                      type: integer
-                      example: 2019
-                      xml:
-                        attribute: true
-                    issue:
-                      type: integer
-                      example: 27
-                      xml:
-                        attribute: true
-                    pubtype:
-                      type: string
-                      example: Journal
-                      xml:
-                        attribute: true
-                names:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    name:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          seq_no:
-                            type: integer
-                          role:
-                            type: string
-                          display_name:
-                            type: string
-                          wos_standard:
-                            type: string
-                          r_id:
-                            type: string
-                          daisng_id:
-                            type: integer
-                doctypes:
-                  type: object
-                  properties:
-                    doctype:
-                      type: array
-                      items:
-                        type: string
-                    count:
-                      type: integer
-                titles:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    title:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          type:
-                            type: string
-                          content:
-                            type: string
-            fullrecord_metadata:
-              type: object
-              properties:
-                keywords:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    keyword:
-                      type: array
-                      items:
-                        type: string
-                refs:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                normalized_doctypes:
-                  type: object
-                  properties:
-                    doctype:
-                      oneOf:
-                      - type: string
-                      - type: array
-                      items:
-                        type: string
-                    count:
-                      type: integer
-        r_id_disclaimer:
-          type: string
-          example: ResearcherID data provided by Clarivate Analytics
-          xml:
-            attribute: true
-        dynamic_data:
-          type: object
-          properties:
-            citation_related:
-              type: object
-              properties:
-                tc_list_cc:
-                  type: object
-                  description: Citation classifications - describe why it has beed cited. More details [here](https://clarivate.com/webofsciencegroup/release-notes/wos/new-wos-may-12-release-notes/)
-                  properties:
-                    dedup_total_count:
-                      type: integer
-                      description: Overall number of citing items with citation context
-                    function_tc:
-                      type: array
-                      description: Breakdown of how this article has been mentioned
-                      items:
-                        type: object
-                        properties:
-                          local_count:
-                            type: integer
-                            description: The number of citations in this context
-                          func_class:
-                            type: string
-                            enum:
-                            - background
-                            - basis
-                            - discuss
-                            - support
-                            - differ
-                            description: '* background - previously published research that orients the current study within a scholarly area.
-
-                              * basis - references that report the data sets, methods, concepts and ideas that the author is using for her work directly or on which the author bases her work
-
-                              * discuss - references mentioned because the current study is going into a more detailed discussion.
-
-                              * support - references which the current study reports to have similar results to. This may also refer to similarities in methodology or in some cases replication of results.
-
-                              * differ - references which the current study reports to have differing results to. This may also refer to differences in methodology or differences in sample sizes, affecting results.
-
-                              '
-                citation_topics:
-                  type: object
-                  properties:
-                    subj-group:
-                      type: object
-                      properties:
-                        subject:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              content-type:
-                                type: string
-                              content-id:
-                                type: string
-                              content:
-                                type: string
-                tc_list:
-                  type: object
-                  properties:
-                    silo_tc:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          coll_id:
-                            type: string
-                          local_count:
-                            type: integer
-            cluster_related:
-              type: object
-              properties:
-                identifiers:
-                  type: object
-                  properties:
-                    identifier:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          type:
-                            type: string
-                          value:
-                            type: string
     WosRecord:
       type: object
       required:
@@ -2606,6 +2367,245 @@ components:
                   type: integer
                 alltime:
                   type: integer
+    WosShortRecord:
+      type: object
+      required:
+      - UID
+      - static_data
+      - r_id_disclaimer
+      - dynamic_data
+      properties:
+        UID:
+          type: string
+          example: WOS:001020694100001
+        static_data:
+          type: object
+          properties:
+            summary:
+              type: object
+              properties:
+                pub_info:
+                  type: object
+                  properties:
+                    vol:
+                      type: integer
+                      example: 203
+                      xml:
+                        attribute: true
+                    pubyear:
+                      type: integer
+                      example: 2019
+                      xml:
+                        attribute: true
+                    issue:
+                      type: integer
+                      example: 27
+                      xml:
+                        attribute: true
+                    pubtype:
+                      type: string
+                      example: Journal
+                      xml:
+                        attribute: true
+                names:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    name:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          seq_no:
+                            type: integer
+                          role:
+                            type: string
+                          display_name:
+                            type: string
+                          wos_standard:
+                            type: string
+                          r_id:
+                            type: string
+                          daisng_id:
+                            type: integer
+                doctypes:
+                  type: object
+                  properties:
+                    doctype:
+                      type: array
+                      items:
+                        type: string
+                    count:
+                      type: integer
+                titles:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    title:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          content:
+                            type: string
+            fullrecord_metadata:
+              type: object
+              properties:
+                keywords:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    keyword:
+                      type: array
+                      items:
+                        type: string
+                refs:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                normalized_doctypes:
+                  type: object
+                  properties:
+                    doctype:
+                      oneOf:
+                      - type: string
+                      - type: array
+                      items:
+                        type: string
+                    count:
+                      type: integer
+        r_id_disclaimer:
+          type: string
+          example: ResearcherID data provided by Clarivate Analytics
+          xml:
+            attribute: true
+        dynamic_data:
+          type: object
+          properties:
+            citation_related:
+              type: object
+              properties:
+                tc_list_cc:
+                  type: object
+                  description: Citation classifications - describe why it has beed cited. More details [here](https://clarivate.com/webofsciencegroup/release-notes/wos/new-wos-may-12-release-notes/)
+                  properties:
+                    dedup_total_count:
+                      type: integer
+                      description: Overall number of citing items with citation context
+                    function_tc:
+                      type: array
+                      description: Breakdown of how this article has been mentioned
+                      items:
+                        type: object
+                        properties:
+                          local_count:
+                            type: integer
+                            description: The number of citations in this context
+                          func_class:
+                            type: string
+                            enum:
+                            - background
+                            - basis
+                            - discuss
+                            - support
+                            - differ
+                            description: '* background - previously published research that orients the current study within a scholarly area.
+
+                              * basis - references that report the data sets, methods, concepts and ideas that the author is using for her work directly or on which the author bases her work
+
+                              * discuss - references mentioned because the current study is going into a more detailed discussion.
+
+                              * support - references which the current study reports to have similar results to. This may also refer to similarities in methodology or in some cases replication of results.
+
+                              * differ - references which the current study reports to have differing results to. This may also refer to differences in methodology or differences in sample sizes, affecting results.
+
+                              '
+                citation_topics:
+                  type: object
+                  properties:
+                    subj-group:
+                      type: object
+                      properties:
+                        subject:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              content-type:
+                                type: string
+                              content-id:
+                                type: string
+                              content:
+                                type: string
+                tc_list:
+                  type: object
+                  properties:
+                    silo_tc:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          coll_id:
+                            type: string
+                          local_count:
+                            type: integer
+            cluster_related:
+              type: object
+              properties:
+                identifiers:
+                  type: object
+                  properties:
+                    identifier:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          value:
+                            type: string
+    WosShortSearchResponse:
+      type: object
+      properties:
+        Data:
+          type: object
+          properties:
+            Records:
+              type: object
+              properties:
+                records:
+                  type: object
+                  properties:
+                    REC:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/WosShortRecord'
+        QueryResult:
+          $ref: '#/components/schemas/QueryResult'
+    WosSearchResponse:
+      type: object
+      properties:
+        Data:
+          type: object
+          properties:
+            Records:
+              type: object
+              properties:
+                records:
+                  type: object
+                  properties:
+                    REC:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/WosRecord'
+        QueryResult:
+          $ref: '#/components/schemas/QueryResult'
   securitySchemes:
     key:
       type: apiKey

@@ -50,6 +50,17 @@ components:
           $ref: '#/components/schemas/Trademark'
         trademark2:
           $ref: '#/components/schemas/Trademark'
+    ApplicantInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        countryCode:
+          type: string
+        countryName:
+          type: string
     GoodsAndService:
       type: object
       properties:
@@ -76,17 +87,6 @@ components:
         registrationNumber:
           type: string
         guid:
-          type: string
-    ApplicantInfo:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        countryCode:
-          type: string
-        countryName:
           type: string
   securitySchemes:
     key:

@@ -210,49 +210,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/errors'
 components:
-  examples:
-    not_found_error_example:
-      value:
-        errors:
-        - status: 404
-          code: 10404
-          detail: The request refers to one or more resources that were not found.
-          pointer: base
-      summary: Not Found Error
-    no_route_matches_error_example:
-      value:
-        errors:
-        - status: 404
-          code: 10404
-          detail: No route matches [GET] "/api/v2/patents/1/geneseq"
-          pointer: base
-      summary: No Route Matches Error
-  parameters:
-    databases_param:
-      in: path
-      name: db
-      schema:
-        type: string
-        enum:
-        - geneseq
-        - wipo
-        - usgene
-        - fastalert
-        - genbank
-        default: geneseq
-      description: Source database
-    databases_with_patent_param:
-      in: path
-      name: db
-      schema:
-        type: string
-        enum:
-        - geneseq
-        - wipo
-        - usgene
-        - fastalert
-        default: geneseq
-      description: Source database
   schemas:
     links:
       description: Each member of a links object is a “link”
@@ -265,6 +222,26 @@ components:
         related:
           $ref: '#/components/schemas/link'
       additionalProperties: true
+    error:
+      type: object
+      properties:
+        status:
+          oneOf:
+          - type: string
+          - type: integer
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+        title:
+          type: string
+        detail:
+          oneOf:
+          - type: string
+          - type: array
+          - type: object
+        pointer:
+          type: string
     Sequence:
       type: object
       required:
@@ -355,30 +332,33 @@ components:
         meta:
           $ref: '#/components/schemas/meta'
       additionalProperties: false
+    link:
+      description: 'A link **MUST** be represented as either: a string containing the link''s URL or a link object.'
+      oneOf:
+      - description: A string containing the link's URL.
+        type: string
+        format: uri
+      - type: object
+        required:
+        - href
+        properties:
+          href:
+            description: A string containing the link's URL.
+            type: string
+            format: uri
+          meta:
+            $ref: '#/components/schemas/meta'
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
     meta:
       description: Non-standard meta-information.
       type: object
       additionalProperties: true
-    error:
-      type: object
-      properties:
-        status:
-          oneOf:
-          - type: string
-          - type: integer
-        code:
-          oneOf:
-          - type: string
-          - type: integer
-        title:
-          type: string
-        detail:
-          oneOf:
-          - type: string
-          - type: array
-          - type: object
-        pointer:
-          type: string
     Patent:
       type: object
       required:
@@ -486,29 +466,49 @@ components:
         meta:
           $ref: '#/components/schemas/meta'
       additionalProperties: false
-    link:
-      description: 'A link **MUST** be represented as either: a string containing the link''s URL or a link object.'
-      oneOf:
-      - description: A string containing the link's URL.
+  parameters:
+    databases_param:
+      in: path
+      name: db
+      schema:
         type: string
-        format: uri
-      - type: object
-        required:
-        - href
-        properties:
-          href:
-            description: A string containing the link's URL.
-            type: string
-            format: uri
-          meta:
-            $ref: '#/components/schemas/meta'
-    errors:
-      type: object
-      properties:
+        enum:
+        - geneseq
+        - wipo
+        - usgene
+        - fastalert
+        - genbank
+        default: geneseq
+      description: Source database
+    databases_with_patent_param:
+      in: path
+      name: db
+      schema:
+        type: string
+        enum:
+        - geneseq
+        - wipo
+        - usgene
+        - fastalert
+        default: geneseq
+      description: Source database
+  examples:
+    no_route_matches_error_example:
+      value:
         errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/error'
+        - status: 404
+          code: 10404
+          detail: No route matches [GET] "/api/v2/patents/1/geneseq"
+          pointer: base
+      summary: No Route Matches Error
+    not_found_error_example:
+      value:
+        errors:
+        - status: 404
+          code: 10404
+          detail: The request refers to one or more resources that were not found.
+          pointer: base
+      summary: Not Found Error
   securitySchemes:
     key:
       type: apiKey

@@ -483,85 +483,6 @@ components:
         message:
           type: string
           description: The detailed description of the error
-    UserDelegationList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-          description: The offset number from where the delegation record count begins.
-        count:
-          type: integer
-          example: 50
-          description: The max number of records to be returned
-        nrRecordsAll:
-          type: integer
-          example: 1540
-          description: Total delegations in the system
-        nrRecordsFound:
-          type: integer
-          example: 50
-          description: Total number of delegations returned for that request.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDelegation'
-    UserDelegation:
-      type: object
-      properties:
-        delegationId:
-          type: integer
-          example: 1234
-          format: int64
-          description: 'id of the delegation.
-
-
-            To be passed in the request only for edit and delete delegation.
-
-
-            Returned in the response for fetch API.
-
-            '
-        fromUser:
-          $ref: '#/components/schemas/User'
-        toUser:
-          $ref: '#/components/schemas/User'
-        role:
-          $ref: '#/components/schemas/UserRole'
-        validity:
-          $ref: '#/components/schemas/UserDelegationValidity'
-    UserDelegationValidity:
-      type: object
-      properties:
-        startDate:
-          type: string
-          example: '2022-12-10'
-          description: 'The date when the role delegation starts. Values must follow the pattern yyyy-MM-dd.
-
-
-            If this date is not provided, it is defaulted to current date.
-
-
-            In case of update API, if there is no change in the start date, it is expected to send the existing unchanged value of the start date.
-
-            '
-          format: date
-        endDate:
-          type: string
-          example: '2022-12-14'
-          description: 'The date when the role delegation ends. Values must follow the pattern yyyy-MM-dd.
-
-
-            In case of update API, if there is no change in the end date, it is expected to send the existing unchanged value of the end date.
-
-            '
-          format: date
     User:
       type: object
       properties:
@@ -610,6 +531,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserRole'
+    UserDelegationList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+          description: The offset number from where the delegation record count begins.
+        count:
+          type: integer
+          example: 50
+          description: The max number of records to be returned
+        nrRecordsAll:
+          type: integer
+          example: 1540
+          description: Total delegations in the system
+        nrRecordsFound:
+          type: integer
+          example: 50
+          description: Total number of delegations returned for that request.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDelegation'
     UserRole:
       properties:
         roleName:
@@ -629,6 +579,56 @@ components:
           type: string
           description: Entry point definition url - only by GET Request
           example: /converis-apis/ws/v2/config/entities/Person
+    UserDelegationValidity:
+      type: object
+      properties:
+        startDate:
+          type: string
+          example: '2022-12-10'
+          description: 'The date when the role delegation starts. Values must follow the pattern yyyy-MM-dd.
+
+
+            If this date is not provided, it is defaulted to current date.
+
+
+            In case of update API, if there is no change in the start date, it is expected to send the existing unchanged value of the start date.
+
+            '
+          format: date
+        endDate:
+          type: string
+          example: '2022-12-14'
+          description: 'The date when the role delegation ends. Values must follow the pattern yyyy-MM-dd.
+
+
+            In case of update API, if there is no change in the end date, it is expected to send the existing unchanged value of the end date.
+
+            '
+          format: date
+    UserDelegation:
+      type: object
+      properties:
+        delegationId:
+          type: integer
+          example: 1234
+          format: int64
+          description: 'id of the delegation.
+
+
+            To be passed in the request only for edit and delete delegation.
+
+
+            Returned in the response for fetch API.
+
+            '
+        fromUser:
+          $ref: '#/components/schemas/User'
+        toUser:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/UserRole'
+        validity:
+          $ref: '#/components/schemas/UserDelegationValidity'
   securitySchemes:
     BasicAuth:
       type: http

@@ -167,48 +167,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ContentSetInfoResponse:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - name
-      - description
-      title: ContentSetInfoResponse
-    ContentSetOntologyResponse:
+    ContentSetOntologiesResponse:
       properties:
         status:
           $ref: '#/components/schemas/Status'
           default: success
         data:
           items:
-            additionalProperties: true
-            type: object
+            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
           type: array
           title: Data
       type: object
       required:
       - data
-      title: ContentSetOntologyResponse
-    ErrorResponse:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/Error'
-          type: array
-          title: Errors
-      type: object
-      required:
-      - errors
-      title: ErrorResponse
-      description: 'Customize Validation Error
-
-        https://github.com/tiangolo/fastapi/issues/1376'
+      title: ContentSetOntologiesResponse
     Error:
       properties:
         code:
@@ -228,38 +200,19 @@ components:
       - code
       - message
       title: Error
-    ContentSetOntologiesResponseData:
+    ContentSetInfoResponse:
       properties:
         name:
           type: string
           title: Name
-        list:
-          type: boolean
-          title: List
+        description:
+          type: string
+          title: Description
       type: object
       required:
       - name
-      - list
-      title: ContentSetOntologiesResponseData
-    Status:
-      type: string
-      enum:
-      - success
-      title: Status
-    ContentSetOntologiesResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-          default: success
-        data:
-          items:
-            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
-          type: array
-          title: Data
-      type: object
-      required:
-      - data
-      title: ContentSetOntologiesResponse
+      - description
+      title: ContentSetInfoResponse
     ApiErrorEnum:
       type: integer
       enum:
@@ -280,6 +233,53 @@ components:
       - 2006
       - 3000
       title: ApiErrorEnum
+    ContentSetOntologiesResponseData:
+      properties:
+        name:
+          type: string
+          title: Name
+        list:
+          type: boolean
+          title: List
+      type: object
+      required:
+      - name
+      - list
+      title: ContentSetOntologiesResponseData
+    ErrorResponse:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: ErrorResponse
+      description: 'Customize Validation Error
+
+        https://github.com/tiangolo/fastapi/issues/1376'
+    ContentSetOntologyResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: ContentSetOntologyResponse
+    Status:
+      type: string
+      enum:
+      - success
+      title: Status
   securitySchemes:
     key:
       type: apiKey

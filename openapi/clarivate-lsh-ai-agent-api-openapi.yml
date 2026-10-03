@@ -39,84 +39,29 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PublicUsageInfo:
+    AgentStatus:
+      type: string
+      enum:
+      - SUCCESS
+      - CLARIFICATION_REQUIRED
+      - NOT_FOUND
+      title: AgentStatus
+    PublicAgentRequest:
       properties:
-        request_input_tokens:
-          type: integer
-          title: Request Input Tokens
-          default: 0
-        request_output_tokens:
-          type: integer
-          title: Request Output Tokens
-          default: 0
-        conversation_input_tokens:
-          type: integer
-          title: Conversation Input Tokens
-          default: 0
-        conversation_output_tokens:
-          type: integer
-          title: Conversation Output Tokens
-          default: 0
-        total_duration:
-          type: number
-          title: Total Duration
-          default: 0
-      type: object
-      title: PublicUsageInfo
-    PublicAgentMessageResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/AgentStatus'
+        question:
+          type: string
+          title: Question
+          description: Natural language question
         conversation_id:
-          type: string
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Conversation Id
-        message:
-          type: string
-          title: Message
-        assumptions:
-          items:
-            type: string
-          type: array
-          title: Assumptions
-        intermediate_steps:
-          items:
-            $ref: '#/components/schemas/IntermediateStep'
-          type: array
-          title: Intermediate Steps
-        usage:
-          $ref: '#/components/schemas/PublicUsageInfo'
+          description: Existing conversation context ID
       type: object
       required:
-      - status
-      - conversation_id
-      - message
-      title: PublicAgentMessageResponse
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - question
+      title: PublicAgentRequest
     IntermediateStep:
       properties:
         tool:
@@ -151,29 +96,93 @@ components:
       - reason
       - duration
       title: IntermediateStep
-    PublicAgentRequest:
+    PublicUsageInfo:
       properties:
-        question:
+        request_input_tokens:
+          type: integer
+          title: Request Input Tokens
+          default: 0
+        request_output_tokens:
+          type: integer
+          title: Request Output Tokens
+          default: 0
+        conversation_input_tokens:
+          type: integer
+          title: Conversation Input Tokens
+          default: 0
+        conversation_output_tokens:
+          type: integer
+          title: Conversation Output Tokens
+          default: 0
+        total_duration:
+          type: number
+          title: Total Duration
+          default: 0
+      type: object
+      title: PublicUsageInfo
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Question
-          description: Natural language question
-        conversation_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Conversation Id
-          description: Existing conversation context ID
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
-      - question
-      title: PublicAgentRequest
-    AgentStatus:
-      type: string
-      enum:
-      - SUCCESS
-      - CLARIFICATION_REQUIRED
-      - NOT_FOUND
-      title: AgentStatus
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PublicAgentMessageResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/AgentStatus'
+        conversation_id:
+          type: string
+          title: Conversation Id
+        message:
+          type: string
+          title: Message
+        assumptions:
+          items:
+            type: string
+          type: array
+          title: Assumptions
+        intermediate_steps:
+          items:
+            $ref: '#/components/schemas/IntermediateStep'
+          type: array
+          title: Intermediate Steps
+        usage:
+          $ref: '#/components/schemas/PublicUsageInfo'
+      type: object
+      required:
+      - status
+      - conversation_id
+      - message
+      title: PublicAgentMessageResponse
     PublicAgentSuccessResponse:
       properties:
         status:
@@ -208,15 +217,6 @@ components:
       - conversation_id
       - cypher_query
       title: PublicAgentSuccessResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
   securitySchemes:
     key:
       type: apiKey

@@ -5266,895 +5266,6 @@ paths:
       - IP Cases
 components:
   schemas:
-    records_request_caselaw:
-      properties:
-        FIELDS:
-          description: Fields to fetch
-          items:
-            description: Fields to fetch
-            enum:
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.OUTCOMES.NEGATIVE
-            - BINDER.RIGHTS.PATENTS.TITLES.LANGUAGE
-            - BINDER.PATENT_ASSERTIONS
-            - BINDER.RIGHTS.COPYRIGHTS.ANONYMOUS
-            - BINDER.DOCKETS.DOCUMENTS.REFUSAL
-            - BINDER.CASE_STATUS
-            - BINDER.RIGHTS.COPYRIGHTS.DESCRIPTION
-            - BINDER.DOCKETS.DOCUMENTS.DECLARATORY
-            - BINDER.RIGHTS.PATENTS.REFERENCES.AUTHORITY
-            - BINDER.PARTIES.ROLE
-            - BINDER.DOCKETS.COURT.COURT_COUNTRY
-            - BINDER.RIGHTS.TRADEMARKS.NICE_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.SIMILAR
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.PREFIX
-            - BINDER.PARTIES.TYPE
-            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.PROFESSIONAL_CONSUMER
-            - GUID
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.NATURE
-            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.INFRINGEMENT
-            - BINDER.PARTIES.COUNTRY
-            - BINDER.DOCKETS.DOCUMENTS.DOCUMENT_DATE
-            - BINDER.LAST_EVENT_DATE
-            - BINDER.RIGHTS.PATENTS.NATURE
-            - BINDER.EARLIEST_EVENT_DATE
-            - BINDER.RIGHTS.PATENTS.EXTENDED_FAMILY_ID
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.CONFIDENCE_LEVEL
-            - BINDER.TOTAL_DAMAGES.CURRENCY
-            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.MEANS_PLUS_FUNCTION
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.AMOUNT
-            - BINDER.RIGHTS.PATENTS.AMENDED_CLAIMS
-            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.AGREED
-            - BINDER.PARTIES_DEFENDANT.TYPE
-            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.TARGET_DECISION
-            - BINDER.PARTIES_PLAINTIFF.NATIONALITY
-            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.RATING
-            - BINDER.DOCKETS.REFERENCE
-            - BINDER.RIGHTS.PATENTS.SOURCE
-            - BINDER.PARTIES.REPRESENTATIVES.COUNTRY
-            - BINDER.DOCKET_COURT_NAMES
-            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.AWARENESS
-            - BINDER.DOCKET_COURT_COUNTRIES
-            - BINDER.EU_TRADEMARK
-            - BINDER.RIGHTS.COPYRIGHTS.ROLE
-            - BINDER.SETTLED
-            - BINDER.RIGHTS.DESIGNS.ANONYMOUS
-            - BINDER.RIGHTS.PATENTS.APPLICATION_NUMBER
-            - BINDER.PARTIES_PLAINTIFF
-            - BINDER.RIGHTS.PATENTS.APPLICATION_ID
-            - BINDER.CASE_REFERENCES
-            - BINDER.WITHDRAWN
-            - BINDER.PARTIES.ULTIMATE_PARENT
-            - BINDER.RIGHTS.PATENTS.REFERENCES.ORIGINAL
-            - BINDER.RIGHTS.TRADEMARKS.REGISTRATION_NUMBER
-            - BINDER.RIGHTS.PATENTS.REFERENCES.NUMBER
-            - BINDER.PARTIES_DEFENDANT
-            - BINDER.RIGHTS.PATENTS.OPTIMIZED_TITLE
-            - BINDER.RIGHTS.DESIGNS.REGISTRATION_OFFICE
-            - BINDER.DOCKETS.DOCUMENTS.WINNER
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.OUTCOMES.OUTCOME
-            - BINDER.TOTAL_DAMAGES.TYPE
-            - BINDER.RIGHTS.DESIGNS.LOCARNO_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.AVERAGE_CONSUMER
-            - BINDER.CASE_RESOLUTION
-            - BINDER.AREA
-            - BINDER.CASE_NAME
-            - BINDER.DOCKETS.DOCUMENTS.DEFAULT_JUDGEMENT
-            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_B.NICE_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENT_EUR_EQUIVALENT
-            - BINDER.RIGHTS.DOMAIN_NAMES.DOMAIN_NAME
-            - BINDER.PATENT_DAMAGES_ASSIGNED
-            - BINDER.DOCKETS.COURT.COURT_COUNTRY_DERIVED.COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2
-            - BINDER.RIGHTS.DOMAIN_NAMES.ROLE
-            - BINDER.RIGHTS.DESIGNS.VIENNA_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.LEVEL
-            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.NICE_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.NAME
-            - BINDER.PARTIES.LEGAL_FORM
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.OUTCOMES.POSITIVE
-            - BINDER.RIGHTS.PATENTS.REFERENCES.KIND
-            - BINDER.DOCKETS.DOCUMENTS.TRADEMARK_REPUTATION
-            - BINDER.RIGHTS.DESIGNS.VERBAL_ELEMENT
-            - BINDER.RIGHTS.TRADEMARKS.LOCARNO_CLASSES
-            - BINDER.RIGHTS.PATENTS.VALIDITY
-            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.AMENDED_CLAIMS
-            - BINDER.RIGHTS.PATENTS.DWPI_APPLICATION_NUMBER
-            - BINDER.PARTIES.OPTIMIZED_NAME
-            - BINDER.DOCKETS.DOCUMENTS.CITATION_REFERENCE
-            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.TERM
-            - BINDER.PARTIES_DEFENDANT.NATIONALITY
-            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.PARENT_PATH
-            - BINDER.RIGHTS.DOMAIN_NAMES.TLD
-            - BINDER.RIGHTS.TRADEMARKS.COMPUMARK_GUID
-            - BINDER.NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO
-            - BINDER.PARTIES.ALTERNATIVE_ULTIMATE_PARENT
-            - BINDER.RIGHTS.PATENTS.ROLE
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENCY
-            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.RIGHT_ASSESSMENT_INDEX
-            - BINDER.DOCKETS.DOCUMENTS.STATE
-            - BINDER.RIGHTS.DESIGNS.PRODUCT_LANGUAGE
-            - BINDER.PARTIES_PLAINTIFF.NAME
-            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.RELATION
-            - BINDER.TOTAL_DAMAGES.AMOUNT
-            - BINDER.RIGHTS.TRADEMARKS.VERBAL_ELEMENT
-            - BINDER.RIGHTS.DESIGNS.ROLE
-            - BINDER.NUMBER_PLAINTIFFS
-            - BINDER.PARTIES_PLAINTIFF.ACTOR_ID
-            - BINDER.RIGHTS.PATENTS.SIMPLE_FAMILY_ID
-            - BINDER.DOCKETS.COURT.AREA
-            - BINDER.PARTIES_PLAINTIFF.TYPE
-            - BINDER.DOCKETS.COURT.COURT_COUNTRY_TEXT
-            - BINDER.RIGHTS.TRADEMARKS.VIENNA_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.TYPES.LATER
-            - BINDER.DOCKETS.DOCUMENTS.CITABLE
-            - BINDER.RIGHTS.TRADEMARKS.ROLE
-            - BINDER.PARTIES.EX_OFFICIO
-            - BINDER.TOTAL_DAMAGES
-            - BINDER.PARTIES_DEFENDANT.LEGAL_FORM
-            - BINDER.PARTIES_DEFENDANT.NAME
-            - BINDER.RIGHTS.DESIGNS.REGISTRATION_STATUS
-            - BINDER.RIGHTS.PATENTS.INVENTION_ID
-            - BINDER.RIGHTS.PATENTS.INFRINGEMENT
-            - BINDER.RIGHTS.PATENTS.INDEX
-            - BINDER.DOCKETS.DOCUMENTS.SUBTYPE
-            - BINDER.DOCKETS.COURT.NAME
-            - BINDER.RIGHTS.DESIGNS.REGISTRATION_NUMBER
-            - BINDER.FIRST_ACTION_DATE
-            - BINDER.RIGHTS.PATENTS.TITLES.TITLE
-            - BINDER.PARTIES.REPRESENTATIVES.TYPE
-            - BINDER.RIGHTS.COPYRIGHTS.TITLE
-            - BINDER.PATENT_VALIDITY_CHALLENGES
-            - BINDER.RIGHTS.COPYRIGHTS.TYPE
-            - BINDER.RIGHTS.DOMAIN_NAMES.ANONYMOUS
-            - BINDER.PARTIES.REPRESENTATIVES.OPTIMIZED_NAME
-            - BINDER.REMEDY
-            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_B.DESCRIPTION
-            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.DEFINITION
-            - BINDER.RIGHTS.PATENTS.IPC_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.TARGET_REFERENCE
-            - BINDER.DOCKETS.COURT.PATH
-            - BINDER.NUMBER_DEFENDANTS
-            - BINDER.PARTIES.REPRESENTATIVES.LEGAL_FORM
-            - BINDER.PARTIES_PLAINTIFF.LEGAL_FORM
-            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.VALIDITY
-            - BINDER.PARTIES.ANONYMOUS
-            - BINDER.LAST_UPDATED_DATE
-            - EXPORT_TIMESTAMP
-            - BINDER.RIGHTS.TRADEMARKS.REGISTRATION_OFFICE
-            - BINDER.DOCKETS.COURT.COURT_COUNTRY_DERIVED.COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3
-            - BINDER.RIGHTS.DESIGNS.PRODUCT
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENT_USD_EQUIVALENT
-            - BINDER.CLOSED
-            - BINDER.PARTIES.ACTOR_ID
-            - BINDER.EX_OFFICIO
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CALCULATION_METHOD
-            - BINDER.RIGHTS.PATENTS.PUBLICATION_NUMBER
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.TYPES.REQUESTED
-            - BINDER.FIRST_ACTION_TYPE
-            - BINDER.RIGHTS.PATENTS.REFERENCES.TYPE
-            - BINDER.RIGHTS.TRADEMARKS.TYPE
-            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_A.NICE_CLASSES
-            - BINDER.DOCKETS.DOCUMENTS.DOCUMENT_TYPE
-            - BINDER.PARTIES_DEFENDANT.ACTOR_ID
-            - BINDER.DOCKETS.COURT.TYPES
-            - BINDER.RIGHTS.PATENTS.ANONYMOUS
-            - BINDER.RIGHTS.TRADEMARKS.ANONYMOUS
-            - BINDER.CASE_DOMAINS
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENT_CNY_EQUIVALENT
-            - BINDER.CASE_STAGE
-            - BINDER.DOCKETS.COURT.COURT_COUNTRY_DERIVED.COURT_COUNTRY_DERIVED_TEXT
-            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.NOT_NECESSARY
-            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.TYPES.PARTIAL
-            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_A.DESCRIPTION
-            type: string
-          type: array
-        GUIDS:
-          description: Document(s) to retrieve
-          items:
-            description: Unique ID of caselaw document
-            example: '2706413'
-            type: string
-          type: array
-      required:
-      - GUIDS
-      type: object
-    field_aliases_caselaw:
-      properties:
-        AREA:
-          description: Alias for AREA
-          example: AREA_ALIAS
-          type: string
-        BINDER_ID:
-          description: Alias for BINDER_ID
-          example: BINDER_ID_ALIAS
-          type: string
-        CASE_DOMAIN:
-          description: Alias for CASE_DOMAIN
-          example: CASE_DOMAIN_ALIAS
-          type: string
-        CASE_NAME:
-          description: Alias for CASE_NAME
-          example: CASE_NAME_ALIAS
-          type: string
-        CASE_RESOLUTION:
-          description: Alias for CASE_RESOLUTION
-          example: CASE_RESOLUTION_ALIAS
-          type: string
-        CASE_STAGE:
-          description: Alias for CASE_STAGE
-          example: CASE_STAGE_ALIAS
-          type: string
-        CASE_STATUS:
-          description: Alias for CASE_STATUS
-          example: CASE_STATUS_ALIAS
-          type: string
-        CLAIM_CONSTRUCTION_AGREED:
-          description: Alias for CLAIM_CONSTRUCTION_AGREED
-          example: CLAIM_CONSTRUCTION_AGREED_ALIAS
-          type: string
-        CLAIM_CONSTRUCTION_DEFINITION:
-          description: Alias for CLAIM_CONSTRUCTION_DEFINITION
-          example: CLAIM_CONSTRUCTION_DEFINITION_ALIAS
-          type: string
-        CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION:
-          description: Alias for CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION
-          example: CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION_ALIAS
-          type: string
-        CLAIM_CONSTRUCTION_NOT_NECESSARY:
-          description: Alias for CLAIM_CONSTRUCTION_NOT_NECESSARY
-          example: CLAIM_CONSTRUCTION_NOT_NECESSARY_ALIAS
-          type: string
-        CLAIM_CONSTRUCTION_TERM:
-          description: Alias for CLAIM_CONSTRUCTION_TERM
-          example: CLAIM_CONSTRUCTION_TERM_ALIAS
-          type: string
-        CLOSED:
-          description: Alias for CLOSED
-          example: CLOSED_ALIAS
-          type: string
-        COPYRIGHT_ANONYMOUS:
-          description: Alias for COPYRIGHT_ANONYMOUS
-          example: COPYRIGHT_ANONYMOUS_ALIAS
-          type: string
-        COPYRIGHT_DESCRIPTION:
-          description: Alias for COPYRIGHT_DESCRIPTION
-          example: COPYRIGHT_DESCRIPTION_ALIAS
-          type: string
-        COPYRIGHT_ROLE:
-          description: Alias for COPYRIGHT_ROLE
-          example: COPYRIGHT_ROLE_ALIAS
-          type: string
-        COPYRIGHT_TITLE:
-          description: Alias for COPYRIGHT_TITLE
-          example: COPYRIGHT_TITLE_ALIAS
-          type: string
-        COPYRIGHT_TYPE:
-          description: Alias for COPYRIGHT_TYPE
-          example: COPYRIGHT_TYPE_ALIAS
-          type: string
-        DAMAGE_AMOUNT:
-          description: Alias for DAMAGE_AMOUNT
-          example: DAMAGE_AMOUNT_ALIAS
-          type: string
-        DAMAGE_CALCULATION_METHOD:
-          description: Alias for DAMAGE_CALCULATION_METHOD
-          example: DAMAGE_CALCULATION_METHOD_ALIAS
-          type: string
-        DAMAGE_CURRENCY:
-          description: Alias for DAMAGE_CURRENCY
-          example: DAMAGE_CURRENCY_ALIAS
-          type: string
-        DAMAGE_CURRENT_CNY_EQUIVALENT:
-          description: Alias for DAMAGE_CURRENT_CNY_EQUIVALENT
-          example: DAMAGE_CURRENT_CNY_EQUIVALENT_ALIAS
-          type: string
-        DAMAGE_CURRENT_EUR_EQUIVALENT:
-          description: Alias for DAMAGE_CURRENT_EUR_EQUIVALENT
-          example: DAMAGE_CURRENT_EUR_EQUIVALENT_ALIAS
-          type: string
-        DAMAGE_CURRENT_USD_EQUIVALENT:
-          description: Alias for DAMAGE_CURRENT_USD_EQUIVALENT
-          example: DAMAGE_CURRENT_USD_EQUIVALENT_ALIAS
-          type: string
-        DAMAGE_LATER:
-          description: Alias for DAMAGE_LATER
-          example: DAMAGE_LATER_ALIAS
-          type: string
-        DAMAGE_NATURE:
-          description: Alias for DAMAGE_NATURE
-          example: DAMAGE_NATURE_ALIAS
-          type: string
-        DAMAGE_PARTIAL:
-          description: Alias for DAMAGE_PARTIAL
-          example: DAMAGE_PARTIAL_ALIAS
-          type: string
-        DAMAGE_REQUESTED:
-          description: Alias for DAMAGE_REQUESTED
-          example: DAMAGE_REQUESTED_ALIAS
-          type: string
-        DESIGN_ANONYMOUS:
-          description: Alias for DESIGN_ANONYMOUS
-          example: DESIGN_ANONYMOUS_ALIAS
-          type: string
-        DESIGN_LOCARNO_CLASS:
-          description: Alias for DESIGN_LOCARNO_CLASS
-          example: DESIGN_LOCARNO_CLASS_ALIAS
-          type: string
-        DESIGN_PRODUCT:
-          description: Alias for DESIGN_PRODUCT
-          example: DESIGN_PRODUCT_ALIAS
-          type: string
-        DESIGN_PRODUCT_LANGUAGE:
-          description: Alias for DESIGN_PRODUCT_LANGUAGE
-          example: DESIGN_PRODUCT_LANGUAGE_ALIAS
-          type: string
-        DESIGN_REGISTRATION_NUMBER:
-          description: Alias for DESIGN_REGISTRATION_NUMBER
-          example: DESIGN_REGISTRATION_NUMBER_ALIAS
-          type: string
-        DESIGN_REGISTRATION_OFFICE:
-          description: Alias for DESIGN_REGISTRATION_OFFICE
-          example: DESIGN_REGISTRATION_OFFICE_ALIAS
-          type: string
-        DESIGN_REGISTRATION_STATUS:
-          description: Alias for DESIGN_REGISTRATION_STATUS
-          example: DESIGN_REGISTRATION_STATUS_ALIAS
-          type: string
-        DESIGN_ROLE:
-          description: Alias for DESIGN_ROLE
-          example: DESIGN_ROLE_ALIAS
-          type: string
-        DESIGN_VERBAL_ELEMENT:
-          description: Alias for DESIGN_VERBAL_ELEMENT
-          example: DESIGN_VERBAL_ELEMENT_ALIAS
-          type: string
-        DESIGN_VIENNA_CLASS:
-          description: Alias for DESIGN_VIENNA_CLASS
-          example: DESIGN_VIENNA_CLASS_ALIAS
-          type: string
-        DOCKET_COURT_AREA:
-          description: Alias for DOCKET_COURT_AREA
-          example: DOCKET_COURT_AREA_ALIAS
-          type: string
-        DOCKET_COURT_COUNTRY:
-          description: Alias for DOCKET_COURT_COUNTRY
-          example: DOCKET_COURT_COUNTRY_ALIAS
-          type: string
-        DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2:
-          description: Alias for DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2
-          example: DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2_ALIAS
-          type: string
-        DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3:
-          description: Alias for DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3
-          example: DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3_ALIAS
-          type: string
-        DOCKET_COURT_COUNTRY_DERIVED_TEXT:
-          description: Alias for DOCKET_COURT_COUNTRY_DERIVED_TEXT
-          example: DOCKET_COURT_COUNTRY_DERIVED_TEXT_ALIAS
-          type: string
-        DOCKET_COURT_COUNTRY_TEXT:
-          description: Alias for DOCKET_COURT_COUNTRY_TEXT
-          example: DOCKET_COURT_COUNTRY_TEXT_ALIAS
-          type: string
-        DOCKET_COURT_NAME:
-          description: Alias for DOCKET_COURT_NAME
-          example: DOCKET_COURT_NAME_ALIAS
-          type: string
-        DOCKET_COURT_PATH:
-          description: Alias for DOCKET_COURT_PATH
-          example: DOCKET_COURT_PATH_ALIAS
-          type: string
-        DOCKET_COURT_TYPE_ADMINISTRATIVE:
-          description: Alias for DOCKET_COURT_TYPE_ADMINISTRATIVE
-          example: DOCKET_COURT_TYPE_ADMINISTRATIVE_ALIAS
-          type: string
-        DOCKET_COURT_TYPE_ARBITRATION:
-          description: Alias for DOCKET_COURT_TYPE_ARBITRATION
-          example: DOCKET_COURT_TYPE_ARBITRATION_ALIAS
-          type: string
-        DOCKET_COURT_TYPE_JUDICIAL:
-          description: Alias for DOCKET_COURT_TYPE_JUDICIAL
-          example: DOCKET_COURT_TYPE_JUDICIAL_ALIAS
-          type: string
-        DOCKET_REFERENCE:
-          description: Alias for DOCKET_REFERENCE
-          example: DOCKET_REFERENCE_ALIAS
-          type: string
-        DOCUMENT_CITABLE:
-          description: Alias for DOCUMENT_CITABLE
-          example: DOCUMENT_CITABLE_ALIAS
-          type: string
-        DOCUMENT_CITATION_REFERENCE:
-          description: Alias for DOCUMENT_CITATION_REFERENCE
-          example: DOCUMENT_CITATION_REFERENCE_ALIAS
-          type: string
-        DOCUMENT_DATE:
-          description: Alias for DOCUMENT_DATE
-          example: DOCUMENT_DATE_ALIAS
-          type: string
-        DOCUMENT_DECLARATORY:
-          description: Alias for DOCUMENT_DECLARATORY
-          example: DOCUMENT_DECLARATORY_ALIAS
-          type: string
-        DOCUMENT_DEFAULT_JUDGEMENT:
-          description: Alias for DOCUMENT_DEFAULT_JUDGEMENT
-          example: DOCUMENT_DEFAULT_JUDGEMENT_ALIAS
-          type: string
-        DOCUMENT_LEVEL:
-          description: Alias for DOCUMENT_LEVEL
-          example: DOCUMENT_LEVEL_ALIAS
-          type: string
-        DOCUMENT_REFUSAL:
-          description: Alias for DOCUMENT_REFUSAL
-          example: DOCUMENT_REFUSAL_ALIAS
-          type: string
-        DOCUMENT_STATE:
-          description: Alias for DOCUMENT_STATE
-          example: DOCUMENT_STATE_ALIAS
-          type: string
-        DOCUMENT_SUBTYPE:
-          description: Alias for DOCUMENT_SUBTYPE
-          example: DOCUMENT_SUBTYPE_ALIAS
-          type: string
-        DOCUMENT_TRADEMARK_REPUTATION:
-          description: Alias for DOCUMENT_TRADEMARK_REPUTATION
-          example: DOCUMENT_TRADEMARK_REPUTATION_ALIAS
-          type: string
-        DOCUMENT_TYPE:
-          description: Alias for DOCUMENT_TYPE
-          example: DOCUMENT_TYPE_ALIAS
-          type: string
-        DOCUMENT_WINNER:
-          description: Alias for DOCUMENT_WINNER
-          example: DOCUMENT_WINNER_ALIAS
-          type: string
-        DOMAIN_IS_COPYRIGHT:
-          description: Alias for DOMAIN_IS_COPYRIGHT
-          example: DOMAIN_IS_COPYRIGHT_ALIAS
-          type: string
-        DOMAIN_IS_DESIGN_MODEL:
-          description: Alias for DOMAIN_IS_DESIGN_MODEL
-          example: DOMAIN_IS_DESIGN_MODEL_ALIAS
-          type: string
-        DOMAIN_IS_DOMAIN_NAME:
-          description: Alias for DOMAIN_IS_DOMAIN_NAME
-          example: DOMAIN_IS_DOMAIN_NAME_ALIAS
-          type: string
-        DOMAIN_IS_OTHER:
-          description: Alias for DOMAIN_IS_OTHER
-          example: DOMAIN_IS_OTHER_ALIAS
-          type: string
-        DOMAIN_IS_PATENT:
-          description: Alias for DOMAIN_IS_PATENT
-          example: DOMAIN_IS_PATENT_ALIAS
-          type: string
-        DOMAIN_IS_TRADEMARK:
-          description: Alias for DOMAIN_IS_TRADEMARK
-          example: DOMAIN_IS_TRADEMARK_ALIAS
-          type: string
-        DOMAIN_IS_UNFAIR_COMPETITION:
-          description: Alias for DOMAIN_IS_UNFAIR_COMPETITION
-          example: DOMAIN_IS_UNFAIR_COMPETITION_ALIAS
-          type: string
-        DOMAIN_NAME:
-          description: Alias for DOMAIN_NAME
-          example: DOMAIN_NAME_ALIAS
-          type: string
-        DOMAIN_NAME_ANONYMOUS:
-          description: Alias for DOMAIN_NAME_ANONYMOUS
-          example: DOMAIN_NAME_ANONYMOUS_ALIAS
-          type: string
-        DOMAIN_NAME_ROLE:
-          description: Alias for DOMAIN_NAME_ROLE
-          example: DOMAIN_NAME_ROLE_ALIAS
-          type: string
-        DOMAIN_NAME_TLD:
-          description: Alias for DOMAIN_NAME_TLD
-          example: DOMAIN_NAME_TLD_ALIAS
-          type: string
-        EARLIEST_EVENT_DATE:
-          description: Alias for EARLIEST_EVENT_DATE
-          example: EARLIEST_EVENT_DATE_ALIAS
-          type: string
-        EU_TRADEMARK:
-          description: Alias for EU_TRADEMARK
-          example: EU_TRADEMARK_ALIAS
-          type: string
-        EX_OFFICIO:
-          description: Alias for EX_OFFICIO
-          example: EX_OFFICIO_ALIAS
-          type: string
-        FIRST_ACTION_DATE:
-          description: Alias for FIRST_ACTION_DATE
-          example: FIRST_ACTION_DATE_ALIAS
-          type: string
-        FIRST_ACTION_TYPE:
-          description: Alias for FIRST_ACTION_TYPE
-          example: FIRST_ACTION_TYPE_ALIAS
-          type: string
-        GUID:
-          description: Alias for GUID
-          example: GUID_ALIAS
-          type: string
-        IPC_CLASS_CODE:
-          description: Alias for IPC_CLASS_CODE
-          example: IPC_CLASS_CODE_ALIAS
-          type: string
-        IPC_CLASS_INDUSTRY_AREA:
-          description: Alias for IPC_CLASS_INDUSTRY_AREA
-          example: IPC_CLASS_INDUSTRY_AREA_ALIAS
-          type: string
-        IPC_CLASS_INDUSTRY_FIELD:
-          description: Alias for IPC_CLASS_INDUSTRY_FIELD
-          example: IPC_CLASS_INDUSTRY_FIELD_ALIAS
-          type: string
-        LAST_EVENT_DATE:
-          description: Alias for LAST_EVENT_DATE
-          example: LAST_EVENT_DATE_ALIAS
-          type: string
-        LAST_UPDATED_DATE:
-          description: Alias for LAST_UPDATED_DATE
-          example: LAST_UPDATED_DATE_ALIAS
-          type: string
-        NUMBER_DEFENDANTS:
-          description: Alias for NUMBER_DEFENDANTS
-          example: NUMBER_DEFENDANTS_ALIAS
-          type: string
-        NUMBER_PLAINTIFFS:
-          description: Alias for NUMBER_PLAINTIFFS
-          example: NUMBER_PLAINTIFFS_ALIAS
-          type: string
-        NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO:
-          description: Alias for NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO
-          example: NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO_ALIAS
-          type: string
-        PARTY_ALTERNATIVE_ULTIMATE_PARENT:
-          description: Alias for PARTY_ALTERNATIVE_ULTIMATE_PARENT
-          example: PARTY_ALTERNATIVE_ULTIMATE_PARENT_ALIAS
-          type: string
-        PARTY_COUNTRY:
-          description: Alias for PARTY_COUNTRY
-          example: PARTY_COUNTRY_ALIAS
-          type: string
-        PARTY_DEFENDANT_NAME:
-          description: Alias for PARTY_DEFENDANT_NAME
-          example: PARTY_DEFENDANT_NAME_ALIAS
-          type: string
-        PARTY_DEFENDANT_ULTIMATE_PARENT:
-          description: Alias for PARTY_DEFENDANT_ULTIMATE_PARENT
-          example: PARTY_DEFENDANT_ULTIMATE_PARENT_ALIAS
-          type: string
-        PARTY_IS_ANONYMOUS:
-          description: Alias for PARTY_IS_ANONYMOUS
-          example: PARTY_IS_ANONYMOUS_ALIAS
-          type: string
-        PARTY_IS_EX_OFFICIO:
-          description: Alias for PARTY_IS_EX_OFFICIO
-          example: PARTY_IS_EX_OFFICIO_ALIAS
-          type: string
-        PARTY_LEGAL_FORM:
-          description: Alias for PARTY_LEGAL_FORM
-          example: PARTY_LEGAL_FORM_ALIAS
-          type: string
-        PARTY_OPTIMIZED_NAME:
-          description: Alias for PARTY_OPTIMIZED_NAME
-          example: PARTY_OPTIMIZED_NAME_ALIAS
-          type: string
-        PARTY_OPTIMIZED_NAMES:
-          description: Alias for PARTY_OPTIMIZED_NAMES
-          example: PARTY_OPTIMIZED_NAMES_ALIAS
-          type: string
-        PARTY_PLAINTIFF_NAME:
-          description: Alias for PARTY_PLAINTIFF_NAME
-          example: PARTY_PLAINTIFF_NAME_ALIAS
-          type: string
-        PARTY_PLAINTIFF_ULTIMATE_PARENT:
-          description: Alias for PARTY_PLAINTIFF_ULTIMATE_PARENT
-          example: PARTY_PLAINTIFF_ULTIMATE_PARENT_ALIAS
-          type: string
-        PARTY_ROLE:
-          description: Alias for PARTY_ROLE
-          example: PARTY_ROLE_ALIAS
-          type: string
-        PARTY_TYPE:
-          description: Alias for PARTY_TYPE
-          example: PARTY_TYPE_ALIAS
-          type: string
-        PARTY_ULTIMATE_PARENT:
-          description: Alias for PARTY_ULTIMATE_PARENT
-          example: PARTY_ULTIMATE_PARENT_ALIAS
-          type: string
-        PATENT_ANONYMOUS:
-          description: Alias for PATENT_ANONYMOUS
-          example: PATENT_ANONYMOUS_ALIAS
-          type: string
-        PATENT_APPLICATION_ID:
-          description: Alias for PATENT_APPLICATION_ID
-          example: PATENT_APPLICATION_ID_ALIAS
-          type: string
-        PATENT_APPLICATION_NUMBER:
-          description: Alias for PATENT_APPLICATION_NUMBER
-          example: PATENT_APPLICATION_NUMBER_ALIAS
-          type: string
-        PATENT_ASSERTIONS:
-          description: Alias for PATENT_ASSERTIONS
-          example: PATENT_ASSERTIONS_ALIAS
-          type: string
-        PATENT_DAMAGES_ASSIGNED:
-          description: Alias for PATENT_DAMAGES_ASSIGNED
-          example: PATENT_DAMAGES_ASSIGNED_ALIAS
-          type: string
-        PATENT_DOCDB_FAMILY_ID:
-          description: Alias for PATENT_DOCDB_FAMILY_ID
-          example: PATENT_DOCDB_FAMILY_ID_ALIAS
-          type: string
-        PATENT_DWPI_APPLICATION_NUMBER:
-          description: Alias for PATENT_DWPI_APPLICATION_NUMBER
-          example: PATENT_DWPI_APPLICATION_NUMBER_ALIAS
-          type: string
-        PATENT_INDEX:
-          description: Alias for PATENT_INDEX
-          example: PATENT_INDEX_ALIAS
-          type: string
-        PATENT_INFRINGEMENT:
-          description: Alias for PATENT_INFRINGEMENT
-          example: PATENT_INFRINGEMENT_ALIAS
-          type: string
-        PATENT_INPADOC_FAMILY_ID:
-          description: Alias for PATENT_INPADOC_FAMILY_ID
-          example: PATENT_INPADOC_FAMILY_ID_ALIAS
-          type: string
-        PATENT_INVENTION_ID:
-          description: Alias for PATENT_INVENTION_ID
-          example: PATENT_INVENTION_ID_ALIAS
-          type: string
-        PATENT_OPTIMIZED_TITLE:
-          description: Alias for PATENT_OPTIMIZED_TITLE
-          example: PATENT_OPTIMIZED_TITLE_ALIAS
-          type: string
-        PATENT_PUBLICATION_NUMBER:
-          description: Alias for PATENT_PUBLICATION_NUMBER
-          example: PATENT_PUBLICATION_NUMBER_ALIAS
-          type: string
-        PATENT_REFERENCE_AUTHORITY:
-          description: Alias for PATENT_REFERENCE_AUTHORITY
-          example: PATENT_REFERENCE_AUTHORITY_ALIAS
-          type: string
-        PATENT_REFERENCE_KIND:
-          description: Alias for PATENT_REFERENCE_KIND
-          example: PATENT_REFERENCE_KIND_ALIAS
-          type: string
-        PATENT_REFERENCE_NUMBER:
-          description: Alias for PATENT_REFERENCE_NUMBER
-          example: PATENT_REFERENCE_NUMBER_ALIAS
-          type: string
-        PATENT_REFERENCE_ORIGINAL:
-          description: Alias for PATENT_REFERENCE_ORIGINAL
-          example: PATENT_REFERENCE_ORIGINAL_ALIAS
-          type: string
-        PATENT_REFERENCE_TYPE:
-          description: Alias for PATENT_REFERENCE_TYPE
-          example: PATENT_REFERENCE_TYPE_ALIAS
-          type: string
-        PATENT_ROLE:
-          description: Alias for PATENT_ROLE
-          example: PATENT_ROLE_ALIAS
-          type: string
-        PATENT_SOURCE:
-          description: Alias for PATENT_SOURCE
-          example: PATENT_SOURCE_ALIAS
-          type: string
-        PATENT_TITLE:
-          description: Alias for PATENT_TITLE
-          example: PATENT_TITLE_ALIAS
-          type: string
-        PATENT_TITLE_LANGUAGE:
-          description: Alias for PATENT_TITLE_LANGUAGE
-          example: PATENT_TITLE_LANGUAGE_ALIAS
-          type: string
-        PATENT_TYPE:
-          description: Alias for PATENT_TYPE
-          example: PATENT_TYPE_ALIAS
-          type: string
-        PATENT_VALIDITY:
-          description: Alias for PATENT_VALIDITY
-          example: PATENT_VALIDITY_ALIAS
-          type: string
-        PATENT_VALIDITY_CHALLENGES:
-          description: Alias for PATENT_VALIDITY_CHALLENGES
-          example: PATENT_VALIDITY_CHALLENGES_ALIAS
-          type: string
-        POINT_OF_LAW_CONFIDENCE_LEVEL:
-          description: Alias for POINT_OF_LAW_CONFIDENCE_LEVEL
-          example: POINT_OF_LAW_CONFIDENCE_LEVEL_ALIAS
-          type: string
-        POINT_OF_LAW_NAME:
-          description: Alias for POINT_OF_LAW_NAME
-          example: POINT_OF_LAW_NAME_ALIAS
-          type: string
-        POINT_OF_LAW_OUTCOME:
-          description: Alias for POINT_OF_LAW_OUTCOME
-          example: POINT_OF_LAW_OUTCOME_ALIAS
-          type: string
-        POINT_OF_LAW_OUTCOME_NEGATIVE:
-          description: Alias for POINT_OF_LAW_OUTCOME_NEGATIVE
-          example: POINT_OF_LAW_OUTCOME_NEGATIVE_ALIAS
-          type: string
-        POINT_OF_LAW_OUTCOME_POSITIVE:
-          description: Alias for POINT_OF_LAW_OUTCOME_POSITIVE
-          example: POINT_OF_LAW_OUTCOME_POSITIVE_ALIAS
-          type: string
-        POINT_OF_LAW_PARENT_PATH:
-          description: Alias for POINT_OF_LAW_PARENT_PATH
-          example: POINT_OF_LAW_PARENT_PATH_ALIAS
-          type: string
-        POINT_OF_LAW_PREFIX:
-          description: Alias for POINT_OF_LAW_PREFIX
-          example: POINT_OF_LAW_PREFIX_ALIAS
-          type: string
-        PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION:
-          description: Alias for PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION
-          example: PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION_ALIAS
-          type: string
-        PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS:
-          description: Alias for PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS
-          example: PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS_ALIAS
-          type: string
-        PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION:
-          description: Alias for PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION
-          example: PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION_ALIAS
-          type: string
-        PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS:
-          description: Alias for PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS
-          example: PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS_ALIAS
-          type: string
-        PRODUCT_COMPARISON_SIMILAR:
-          description: Alias for PRODUCT_COMPARISON_SIMILAR
-          example: PRODUCT_COMPARISON_SIMILAR_ALIAS
-          type: string
-        RELATION_RATING:
-          description: Alias for RELATION_RATING
-          example: RELATION_RATING_ALIAS
-          type: string
-        RELATION_RELATION:
-          description: Alias for RELATION_RELATION
-          example: RELATION_RELATION_ALIAS
-          type: string
-        RELATION_TARGET_DECISION:
-          description: Alias for RELATION_TARGET_DECISION
-          example: RELATION_TARGET_DECISION_ALIAS
-          type: string
-        RELATION_TARGET_REFERENCE:
-          description: Alias for RELATION_TARGET_REFERENCE
-          example: RELATION_TARGET_REFERENCE_ALIAS
-          type: string
-        RELEVANT_PUBLIC_AVERAGE_CONSUMER:
-          description: Alias for RELEVANT_PUBLIC_AVERAGE_CONSUMER
-          example: RELEVANT_PUBLIC_AVERAGE_CONSUMER_ALIAS
-          type: string
-        RELEVANT_PUBLIC_AWARENESS:
-          description: Alias for RELEVANT_PUBLIC_AWARENESS
-          example: RELEVANT_PUBLIC_AWARENESS_ALIAS
-          type: string
-        RELEVANT_PUBLIC_NICE_CLASS:
-          description: Alias for RELEVANT_PUBLIC_NICE_CLASS
-          example: RELEVANT_PUBLIC_NICE_CLASS_ALIAS
-          type: string
-        RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER:
-          description: Alias for RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER
-          example: RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER_ALIAS
-          type: string
-        REMEDY:
-          description: Alias for REMEDY
-          example: REMEDY_ALIAS
-          type: string
-        REPRESENTATIVE_COUNTRY:
-          description: Alias for REPRESENTATIVE_COUNTRY
-          example: REPRESENTATIVE_COUNTRY_ALIAS
-          type: string
-        REPRESENTATIVE_LEGAL_FORM:
-          description: Alias for REPRESENTATIVE_LEGAL_FORM
-          example: REPRESENTATIVE_LEGAL_FORM_ALIAS
-          type: string
-        REPRESENTATIVE_OPTIMIZED_NAME:
-          description: Alias for REPRESENTATIVE_OPTIMIZED_NAME
-          example: REPRESENTATIVE_OPTIMIZED_NAME_ALIAS
-          type: string
-        REPRESENTATIVE_TYPE:
-          description: Alias for REPRESENTATIVE_TYPE
-          example: REPRESENTATIVE_TYPE_ALIAS
-          type: string
-        RIGHT_ASSESSMENT_AMENDED_CLAIMS:
-          description: Alias for RIGHT_ASSESSMENT_AMENDED_CLAIMS
-          example: RIGHT_ASSESSMENT_AMENDED_CLAIMS_ALIAS
-          type: string
-        RIGHT_ASSESSMENT_INFRINGEMENT:
-          description: Alias for RIGHT_ASSESSMENT_INFRINGEMENT
-          example: RIGHT_ASSESSMENT_INFRINGEMENT_ALIAS
-          type: string
-        RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX:
-          description: Alias for RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX
-          example: RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX_ALIAS
-          type: string
-        RIGHT_ASSESSMENT_VALIDITY:
-          description: Alias for RIGHT_ASSESSMENT_VALIDITY
-          example: RIGHT_ASSESSMENT_VALIDITY_ALIAS
-          type: string
-        SETTLED:
-          description: Alias for SETTLED
-          example: SETTLED_ALIAS
-          type: string
-        TOTAL_DAMAGE_AMOUNT:
-          description: Alias for TOTAL_DAMAGE_AMOUNT
-          example: TOTAL_DAMAGE_AMOUNT_ALIAS
-          type: string
-        TOTAL_DAMAGE_CURRENCY:
-          description: Alias for TOTAL_DAMAGE_CURRENCY
-          example: TOTAL_DAMAGE_CURRENCY_ALIAS
-          type: string
-        TOTAL_DAMAGE_TYPE:
-          description: Alias for TOTAL_DAMAGE_TYPE
-          example: TOTAL_DAMAGE_TYPE_ALIAS
-          type: string
-        TRADEMARK_ANONYMOUS:
-          description: Alias for TRADEMARK_ANONYMOUS
-          example: TRADEMARK_ANONYMOUS_ALIAS
-          type: string
-        TRADEMARK_ID:
-          description: Alias for TRADEMARK_ID
-          example: TRADEMARK_ID_ALIAS
-          type: string
-        TRADEMARK_LOCARNO_CLASS:
-          description: Alias for TRADEMARK_LOCARNO_CLASS
-          example: TRADEMARK_LOCARNO_CLASS_ALIAS
-          type: string
-        TRADEMARK_NICE_CLASS:
-          description: Alias for TRADEMARK_NICE_CLASS
-          example: TRADEMARK_NICE_CLASS_ALIAS
-          type: string
-        TRADEMARK_REGISTRATION_NUMBER:
-          description: Alias for TRADEMARK_REGISTRATION_NUMBER
-          example: TRADEMARK_REGISTRATION_NUMBER_ALIAS
-          type: string
-        TRADEMARK_REGISTRATION_OFFICE:
-          description: Alias for TRADEMARK_REGISTRATION_OFFICE
-          example: TRADEMARK_REGISTRATION_OFFICE_ALIAS
-          type: string
-        TRADEMARK_ROLE:
-          description: Alias for TRADEMARK_ROLE
-          example: TRADEMARK_ROLE_ALIAS
-          type: string
-        TRADEMARK_TYPE:
-          description: Alias for TRADEMARK_TYPE
-          example: TRADEMARK_TYPE_ALIAS
-          type: string
-        TRADEMARK_VERBAL_ELEMENT:
-          description: Alias for TRADEMARK_VERBAL_ELEMENT
-          example: TRADEMARK_VERBAL_ELEMENT_ALIAS
-          type: string
-        TRADEMARK_VIENNA_CLASS:
-          description: Alias for TRADEMARK_VIENNA_CLASS
-          example: TRADEMARK_VIENNA_CLASS_ALIAS
-          type: string
-        WITHDRAWN:
-          description: Alias for WITHDRAWN
-          example: WITHDRAWN_ALIAS
-          type: string
-      type: object
-    document_availability_request_caselaw:
-      properties:
-        GUIDS:
-          description: Documents to check
-          items:
-            description: Unique ID of caselaw document
-            example: '2706413'
-            type: string
-          type: array
-        SINCE_LAST_UPDATED:
-          description: Show only documents updated since this date
-          example: '2023-07-23'
-          format: date
-          type: string
-      type: object
     search_request_caselaw:
       properties:
         AGG:
@@ -7792,6 +6903,895 @@ components:
       required:
       - OP
       - VALUE
+      type: object
+    document_availability_request_caselaw:
+      properties:
+        GUIDS:
+          description: Documents to check
+          items:
+            description: Unique ID of caselaw document
+            example: '2706413'
+            type: string
+          type: array
+        SINCE_LAST_UPDATED:
+          description: Show only documents updated since this date
+          example: '2023-07-23'
+          format: date
+          type: string
+      type: object
+    field_aliases_caselaw:
+      properties:
+        AREA:
+          description: Alias for AREA
+          example: AREA_ALIAS
+          type: string
+        BINDER_ID:
+          description: Alias for BINDER_ID
+          example: BINDER_ID_ALIAS
+          type: string
+        CASE_DOMAIN:
+          description: Alias for CASE_DOMAIN
+          example: CASE_DOMAIN_ALIAS
+          type: string
+        CASE_NAME:
+          description: Alias for CASE_NAME
+          example: CASE_NAME_ALIAS
+          type: string
+        CASE_RESOLUTION:
+          description: Alias for CASE_RESOLUTION
+          example: CASE_RESOLUTION_ALIAS
+          type: string
+        CASE_STAGE:
+          description: Alias for CASE_STAGE
+          example: CASE_STAGE_ALIAS
+          type: string
+        CASE_STATUS:
+          description: Alias for CASE_STATUS
+          example: CASE_STATUS_ALIAS
+          type: string
+        CLAIM_CONSTRUCTION_AGREED:
+          description: Alias for CLAIM_CONSTRUCTION_AGREED
+          example: CLAIM_CONSTRUCTION_AGREED_ALIAS
+          type: string
+        CLAIM_CONSTRUCTION_DEFINITION:
+          description: Alias for CLAIM_CONSTRUCTION_DEFINITION
+          example: CLAIM_CONSTRUCTION_DEFINITION_ALIAS
+          type: string
+        CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION:
+          description: Alias for CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION
+          example: CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION_ALIAS
+          type: string
+        CLAIM_CONSTRUCTION_NOT_NECESSARY:
+          description: Alias for CLAIM_CONSTRUCTION_NOT_NECESSARY
+          example: CLAIM_CONSTRUCTION_NOT_NECESSARY_ALIAS
+          type: string
+        CLAIM_CONSTRUCTION_TERM:
+          description: Alias for CLAIM_CONSTRUCTION_TERM
+          example: CLAIM_CONSTRUCTION_TERM_ALIAS
+          type: string
+        CLOSED:
+          description: Alias for CLOSED
+          example: CLOSED_ALIAS
+          type: string
+        COPYRIGHT_ANONYMOUS:
+          description: Alias for COPYRIGHT_ANONYMOUS
+          example: COPYRIGHT_ANONYMOUS_ALIAS
+          type: string
+        COPYRIGHT_DESCRIPTION:
+          description: Alias for COPYRIGHT_DESCRIPTION
+          example: COPYRIGHT_DESCRIPTION_ALIAS
+          type: string
+        COPYRIGHT_ROLE:
+          description: Alias for COPYRIGHT_ROLE
+          example: COPYRIGHT_ROLE_ALIAS
+          type: string
+        COPYRIGHT_TITLE:
+          description: Alias for COPYRIGHT_TITLE
+          example: COPYRIGHT_TITLE_ALIAS
+          type: string
+        COPYRIGHT_TYPE:
+          description: Alias for COPYRIGHT_TYPE
+          example: COPYRIGHT_TYPE_ALIAS
+          type: string
+        DAMAGE_AMOUNT:
+          description: Alias for DAMAGE_AMOUNT
+          example: DAMAGE_AMOUNT_ALIAS
+          type: string
+        DAMAGE_CALCULATION_METHOD:
+          description: Alias for DAMAGE_CALCULATION_METHOD
+          example: DAMAGE_CALCULATION_METHOD_ALIAS
+          type: string
+        DAMAGE_CURRENCY:
+          description: Alias for DAMAGE_CURRENCY
+          example: DAMAGE_CURRENCY_ALIAS
+          type: string
+        DAMAGE_CURRENT_CNY_EQUIVALENT:
+          description: Alias for DAMAGE_CURRENT_CNY_EQUIVALENT
+          example: DAMAGE_CURRENT_CNY_EQUIVALENT_ALIAS
+          type: string
+        DAMAGE_CURRENT_EUR_EQUIVALENT:
+          description: Alias for DAMAGE_CURRENT_EUR_EQUIVALENT
+          example: DAMAGE_CURRENT_EUR_EQUIVALENT_ALIAS
+          type: string
+        DAMAGE_CURRENT_USD_EQUIVALENT:
+          description: Alias for DAMAGE_CURRENT_USD_EQUIVALENT
+          example: DAMAGE_CURRENT_USD_EQUIVALENT_ALIAS
+          type: string
+        DAMAGE_LATER:
+          description: Alias for DAMAGE_LATER
+          example: DAMAGE_LATER_ALIAS
+          type: string
+        DAMAGE_NATURE:
+          description: Alias for DAMAGE_NATURE
+          example: DAMAGE_NATURE_ALIAS
+          type: string
+        DAMAGE_PARTIAL:
+          description: Alias for DAMAGE_PARTIAL
+          example: DAMAGE_PARTIAL_ALIAS
+          type: string
+        DAMAGE_REQUESTED:
+          description: Alias for DAMAGE_REQUESTED
+          example: DAMAGE_REQUESTED_ALIAS
+          type: string
+        DESIGN_ANONYMOUS:
+          description: Alias for DESIGN_ANONYMOUS
+          example: DESIGN_ANONYMOUS_ALIAS
+          type: string
+        DESIGN_LOCARNO_CLASS:
+          description: Alias for DESIGN_LOCARNO_CLASS
+          example: DESIGN_LOCARNO_CLASS_ALIAS
+          type: string
+        DESIGN_PRODUCT:
+          description: Alias for DESIGN_PRODUCT
+          example: DESIGN_PRODUCT_ALIAS
+          type: string
+        DESIGN_PRODUCT_LANGUAGE:
+          description: Alias for DESIGN_PRODUCT_LANGUAGE
+          example: DESIGN_PRODUCT_LANGUAGE_ALIAS
+          type: string
+        DESIGN_REGISTRATION_NUMBER:
+          description: Alias for DESIGN_REGISTRATION_NUMBER
+          example: DESIGN_REGISTRATION_NUMBER_ALIAS
+          type: string
+        DESIGN_REGISTRATION_OFFICE:
+          description: Alias for DESIGN_REGISTRATION_OFFICE
+          example: DESIGN_REGISTRATION_OFFICE_ALIAS
+          type: string
+        DESIGN_REGISTRATION_STATUS:
+          description: Alias for DESIGN_REGISTRATION_STATUS
+          example: DESIGN_REGISTRATION_STATUS_ALIAS
+          type: string
+        DESIGN_ROLE:
+          description: Alias for DESIGN_ROLE
+          example: DESIGN_ROLE_ALIAS
+          type: string
+        DESIGN_VERBAL_ELEMENT:
+          description: Alias for DESIGN_VERBAL_ELEMENT
+          example: DESIGN_VERBAL_ELEMENT_ALIAS
+          type: string
+        DESIGN_VIENNA_CLASS:
+          description: Alias for DESIGN_VIENNA_CLASS
+          example: DESIGN_VIENNA_CLASS_ALIAS
+          type: string
+        DOCKET_COURT_AREA:
+          description: Alias for DOCKET_COURT_AREA
+          example: DOCKET_COURT_AREA_ALIAS
+          type: string
+        DOCKET_COURT_COUNTRY:
+          description: Alias for DOCKET_COURT_COUNTRY
+          example: DOCKET_COURT_COUNTRY_ALIAS
+          type: string
+        DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2:
+          description: Alias for DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2
+          example: DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2_ALIAS
+          type: string
+        DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3:
+          description: Alias for DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3
+          example: DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3_ALIAS
+          type: string
+        DOCKET_COURT_COUNTRY_DERIVED_TEXT:
+          description: Alias for DOCKET_COURT_COUNTRY_DERIVED_TEXT
+          example: DOCKET_COURT_COUNTRY_DERIVED_TEXT_ALIAS
+          type: string
+        DOCKET_COURT_COUNTRY_TEXT:
+          description: Alias for DOCKET_COURT_COUNTRY_TEXT
+          example: DOCKET_COURT_COUNTRY_TEXT_ALIAS
+          type: string
+        DOCKET_COURT_NAME:
+          description: Alias for DOCKET_COURT_NAME
+          example: DOCKET_COURT_NAME_ALIAS
+          type: string
+        DOCKET_COURT_PATH:
+          description: Alias for DOCKET_COURT_PATH
+          example: DOCKET_COURT_PATH_ALIAS
+          type: string
+        DOCKET_COURT_TYPE_ADMINISTRATIVE:
+          description: Alias for DOCKET_COURT_TYPE_ADMINISTRATIVE
+          example: DOCKET_COURT_TYPE_ADMINISTRATIVE_ALIAS
+          type: string
+        DOCKET_COURT_TYPE_ARBITRATION:
+          description: Alias for DOCKET_COURT_TYPE_ARBITRATION
+          example: DOCKET_COURT_TYPE_ARBITRATION_ALIAS
+          type: string
+        DOCKET_COURT_TYPE_JUDICIAL:
+          description: Alias for DOCKET_COURT_TYPE_JUDICIAL
+          example: DOCKET_COURT_TYPE_JUDICIAL_ALIAS
+          type: string
+        DOCKET_REFERENCE:
+          description: Alias for DOCKET_REFERENCE
+          example: DOCKET_REFERENCE_ALIAS
+          type: string
+        DOCUMENT_CITABLE:
+          description: Alias for DOCUMENT_CITABLE
+          example: DOCUMENT_CITABLE_ALIAS
+          type: string
+        DOCUMENT_CITATION_REFERENCE:
+          description: Alias for DOCUMENT_CITATION_REFERENCE
+          example: DOCUMENT_CITATION_REFERENCE_ALIAS
+          type: string
+        DOCUMENT_DATE:
+          description: Alias for DOCUMENT_DATE
+          example: DOCUMENT_DATE_ALIAS
+          type: string
+        DOCUMENT_DECLARATORY:
+          description: Alias for DOCUMENT_DECLARATORY
+          example: DOCUMENT_DECLARATORY_ALIAS
+          type: string
+        DOCUMENT_DEFAULT_JUDGEMENT:
+          description: Alias for DOCUMENT_DEFAULT_JUDGEMENT
+          example: DOCUMENT_DEFAULT_JUDGEMENT_ALIAS
+          type: string
+        DOCUMENT_LEVEL:
+          description: Alias for DOCUMENT_LEVEL
+          example: DOCUMENT_LEVEL_ALIAS
+          type: string
+        DOCUMENT_REFUSAL:
+          description: Alias for DOCUMENT_REFUSAL
+          example: DOCUMENT_REFUSAL_ALIAS
+          type: string
+        DOCUMENT_STATE:
+          description: Alias for DOCUMENT_STATE
+          example: DOCUMENT_STATE_ALIAS
+          type: string
+        DOCUMENT_SUBTYPE:
+          description: Alias for DOCUMENT_SUBTYPE
+          example: DOCUMENT_SUBTYPE_ALIAS
+          type: string
+        DOCUMENT_TRADEMARK_REPUTATION:
+          description: Alias for DOCUMENT_TRADEMARK_REPUTATION
+          example: DOCUMENT_TRADEMARK_REPUTATION_ALIAS
+          type: string
+        DOCUMENT_TYPE:
+          description: Alias for DOCUMENT_TYPE
+          example: DOCUMENT_TYPE_ALIAS
+          type: string
+        DOCUMENT_WINNER:
+          description: Alias for DOCUMENT_WINNER
+          example: DOCUMENT_WINNER_ALIAS
+          type: string
+        DOMAIN_IS_COPYRIGHT:
+          description: Alias for DOMAIN_IS_COPYRIGHT
+          example: DOMAIN_IS_COPYRIGHT_ALIAS
+          type: string
+        DOMAIN_IS_DESIGN_MODEL:
+          description: Alias for DOMAIN_IS_DESIGN_MODEL
+          example: DOMAIN_IS_DESIGN_MODEL_ALIAS
+          type: string
+        DOMAIN_IS_DOMAIN_NAME:
+          description: Alias for DOMAIN_IS_DOMAIN_NAME
+          example: DOMAIN_IS_DOMAIN_NAME_ALIAS
+          type: string
+        DOMAIN_IS_OTHER:
+          description: Alias for DOMAIN_IS_OTHER
+          example: DOMAIN_IS_OTHER_ALIAS
+          type: string
+        DOMAIN_IS_PATENT:
+          description: Alias for DOMAIN_IS_PATENT
+          example: DOMAIN_IS_PATENT_ALIAS
+          type: string
+        DOMAIN_IS_TRADEMARK:
+          description: Alias for DOMAIN_IS_TRADEMARK
+          example: DOMAIN_IS_TRADEMARK_ALIAS
+          type: string
+        DOMAIN_IS_UNFAIR_COMPETITION:
+          description: Alias for DOMAIN_IS_UNFAIR_COMPETITION
+          example: DOMAIN_IS_UNFAIR_COMPETITION_ALIAS
+          type: string
+        DOMAIN_NAME:
+          description: Alias for DOMAIN_NAME
+          example: DOMAIN_NAME_ALIAS
+          type: string
+        DOMAIN_NAME_ANONYMOUS:
+          description: Alias for DOMAIN_NAME_ANONYMOUS
+          example: DOMAIN_NAME_ANONYMOUS_ALIAS
+          type: string
+        DOMAIN_NAME_ROLE:
+          description: Alias for DOMAIN_NAME_ROLE
+          example: DOMAIN_NAME_ROLE_ALIAS
+          type: string
+        DOMAIN_NAME_TLD:
+          description: Alias for DOMAIN_NAME_TLD
+          example: DOMAIN_NAME_TLD_ALIAS
+          type: string
+        EARLIEST_EVENT_DATE:
+          description: Alias for EARLIEST_EVENT_DATE
+          example: EARLIEST_EVENT_DATE_ALIAS
+          type: string
+        EU_TRADEMARK:
+          description: Alias for EU_TRADEMARK
+          example: EU_TRADEMARK_ALIAS
+          type: string
+        EX_OFFICIO:
+          description: Alias for EX_OFFICIO
+          example: EX_OFFICIO_ALIAS
+          type: string
+        FIRST_ACTION_DATE:
+          description: Alias for FIRST_ACTION_DATE
+          example: FIRST_ACTION_DATE_ALIAS
+          type: string
+        FIRST_ACTION_TYPE:
+          description: Alias for FIRST_ACTION_TYPE
+          example: FIRST_ACTION_TYPE_ALIAS
+          type: string
+        GUID:
+          description: Alias for GUID
+          example: GUID_ALIAS
+          type: string
+        IPC_CLASS_CODE:
+          description: Alias for IPC_CLASS_CODE
+          example: IPC_CLASS_CODE_ALIAS
+          type: string
+        IPC_CLASS_INDUSTRY_AREA:
+          description: Alias for IPC_CLASS_INDUSTRY_AREA
+          example: IPC_CLASS_INDUSTRY_AREA_ALIAS
+          type: string
+        IPC_CLASS_INDUSTRY_FIELD:
+          description: Alias for IPC_CLASS_INDUSTRY_FIELD
+          example: IPC_CLASS_INDUSTRY_FIELD_ALIAS
+          type: string
+        LAST_EVENT_DATE:
+          description: Alias for LAST_EVENT_DATE
+          example: LAST_EVENT_DATE_ALIAS
+          type: string
+        LAST_UPDATED_DATE:
+          description: Alias for LAST_UPDATED_DATE
+          example: LAST_UPDATED_DATE_ALIAS
+          type: string
+        NUMBER_DEFENDANTS:
+          description: Alias for NUMBER_DEFENDANTS
+          example: NUMBER_DEFENDANTS_ALIAS
+          type: string
+        NUMBER_PLAINTIFFS:
+          description: Alias for NUMBER_PLAINTIFFS
+          example: NUMBER_PLAINTIFFS_ALIAS
+          type: string
+        NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO:
+          description: Alias for NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO
+          example: NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO_ALIAS
+          type: string
+        PARTY_ALTERNATIVE_ULTIMATE_PARENT:
+          description: Alias for PARTY_ALTERNATIVE_ULTIMATE_PARENT
+          example: PARTY_ALTERNATIVE_ULTIMATE_PARENT_ALIAS
+          type: string
+        PARTY_COUNTRY:
+          description: Alias for PARTY_COUNTRY
+          example: PARTY_COUNTRY_ALIAS
+          type: string
+        PARTY_DEFENDANT_NAME:
+          description: Alias for PARTY_DEFENDANT_NAME
+          example: PARTY_DEFENDANT_NAME_ALIAS
+          type: string
+        PARTY_DEFENDANT_ULTIMATE_PARENT:
+          description: Alias for PARTY_DEFENDANT_ULTIMATE_PARENT
+          example: PARTY_DEFENDANT_ULTIMATE_PARENT_ALIAS
+          type: string
+        PARTY_IS_ANONYMOUS:
+          description: Alias for PARTY_IS_ANONYMOUS
+          example: PARTY_IS_ANONYMOUS_ALIAS
+          type: string
+        PARTY_IS_EX_OFFICIO:
+          description: Alias for PARTY_IS_EX_OFFICIO
+          example: PARTY_IS_EX_OFFICIO_ALIAS
+          type: string
+        PARTY_LEGAL_FORM:
+          description: Alias for PARTY_LEGAL_FORM
+          example: PARTY_LEGAL_FORM_ALIAS
+          type: string
+        PARTY_OPTIMIZED_NAME:
+          description: Alias for PARTY_OPTIMIZED_NAME
+          example: PARTY_OPTIMIZED_NAME_ALIAS
+          type: string
+        PARTY_OPTIMIZED_NAMES:
+          description: Alias for PARTY_OPTIMIZED_NAMES
+          example: PARTY_OPTIMIZED_NAMES_ALIAS
+          type: string
+        PARTY_PLAINTIFF_NAME:
+          description: Alias for PARTY_PLAINTIFF_NAME
+          example: PARTY_PLAINTIFF_NAME_ALIAS
+          type: string
+        PARTY_PLAINTIFF_ULTIMATE_PARENT:
+          description: Alias for PARTY_PLAINTIFF_ULTIMATE_PARENT
+          example: PARTY_PLAINTIFF_ULTIMATE_PARENT_ALIAS
+          type: string
+        PARTY_ROLE:
+          description: Alias for PARTY_ROLE
+          example: PARTY_ROLE_ALIAS
+          type: string
+        PARTY_TYPE:
+          description: Alias for PARTY_TYPE
+          example: PARTY_TYPE_ALIAS
+          type: string
+        PARTY_ULTIMATE_PARENT:
+          description: Alias for PARTY_ULTIMATE_PARENT
+          example: PARTY_ULTIMATE_PARENT_ALIAS
+          type: string
+        PATENT_ANONYMOUS:
+          description: Alias for PATENT_ANONYMOUS
+          example: PATENT_ANONYMOUS_ALIAS
+          type: string
+        PATENT_APPLICATION_ID:
+          description: Alias for PATENT_APPLICATION_ID
+          example: PATENT_APPLICATION_ID_ALIAS
+          type: string
+        PATENT_APPLICATION_NUMBER:
+          description: Alias for PATENT_APPLICATION_NUMBER
+          example: PATENT_APPLICATION_NUMBER_ALIAS
+          type: string
+        PATENT_ASSERTIONS:
+          description: Alias for PATENT_ASSERTIONS
+          example: PATENT_ASSERTIONS_ALIAS
+          type: string
+        PATENT_DAMAGES_ASSIGNED:
+          description: Alias for PATENT_DAMAGES_ASSIGNED
+          example: PATENT_DAMAGES_ASSIGNED_ALIAS
+          type: string
+        PATENT_DOCDB_FAMILY_ID:
+          description: Alias for PATENT_DOCDB_FAMILY_ID
+          example: PATENT_DOCDB_FAMILY_ID_ALIAS
+          type: string
+        PATENT_DWPI_APPLICATION_NUMBER:
+          description: Alias for PATENT_DWPI_APPLICATION_NUMBER
+          example: PATENT_DWPI_APPLICATION_NUMBER_ALIAS
+          type: string
+        PATENT_INDEX:
+          description: Alias for PATENT_INDEX
+          example: PATENT_INDEX_ALIAS
+          type: string
+        PATENT_INFRINGEMENT:
+          description: Alias for PATENT_INFRINGEMENT
+          example: PATENT_INFRINGEMENT_ALIAS
+          type: string
+        PATENT_INPADOC_FAMILY_ID:
+          description: Alias for PATENT_INPADOC_FAMILY_ID
+          example: PATENT_INPADOC_FAMILY_ID_ALIAS
+          type: string
+        PATENT_INVENTION_ID:
+          description: Alias for PATENT_INVENTION_ID
+          example: PATENT_INVENTION_ID_ALIAS
+          type: string
+        PATENT_OPTIMIZED_TITLE:
+          description: Alias for PATENT_OPTIMIZED_TITLE
+          example: PATENT_OPTIMIZED_TITLE_ALIAS
+          type: string
+        PATENT_PUBLICATION_NUMBER:
+          description: Alias for PATENT_PUBLICATION_NUMBER
+          example: PATENT_PUBLICATION_NUMBER_ALIAS
+          type: string
+        PATENT_REFERENCE_AUTHORITY:
+          description: Alias for PATENT_REFERENCE_AUTHORITY
+          example: PATENT_REFERENCE_AUTHORITY_ALIAS
+          type: string
+        PATENT_REFERENCE_KIND:
+          description: Alias for PATENT_REFERENCE_KIND
+          example: PATENT_REFERENCE_KIND_ALIAS
+          type: string
+        PATENT_REFERENCE_NUMBER:
+          description: Alias for PATENT_REFERENCE_NUMBER
+          example: PATENT_REFERENCE_NUMBER_ALIAS
+          type: string
+        PATENT_REFERENCE_ORIGINAL:
+          description: Alias for PATENT_REFERENCE_ORIGINAL
+          example: PATENT_REFERENCE_ORIGINAL_ALIAS
+          type: string
+        PATENT_REFERENCE_TYPE:
+          description: Alias for PATENT_REFERENCE_TYPE
+          example: PATENT_REFERENCE_TYPE_ALIAS
+          type: string
+        PATENT_ROLE:
+          description: Alias for PATENT_ROLE
+          example: PATENT_ROLE_ALIAS
+          type: string
+        PATENT_SOURCE:
+          description: Alias for PATENT_SOURCE
+          example: PATENT_SOURCE_ALIAS
+          type: string
+        PATENT_TITLE:
+          description: Alias for PATENT_TITLE
+          example: PATENT_TITLE_ALIAS
+          type: string
+        PATENT_TITLE_LANGUAGE:
+          description: Alias for PATENT_TITLE_LANGUAGE
+          example: PATENT_TITLE_LANGUAGE_ALIAS
+          type: string
+        PATENT_TYPE:
+          description: Alias for PATENT_TYPE
+          example: PATENT_TYPE_ALIAS
+          type: string
+        PATENT_VALIDITY:
+          description: Alias for PATENT_VALIDITY
+          example: PATENT_VALIDITY_ALIAS
+          type: string
+        PATENT_VALIDITY_CHALLENGES:
+          description: Alias for PATENT_VALIDITY_CHALLENGES
+          example: PATENT_VALIDITY_CHALLENGES_ALIAS
+          type: string
+        POINT_OF_LAW_CONFIDENCE_LEVEL:
+          description: Alias for POINT_OF_LAW_CONFIDENCE_LEVEL
+          example: POINT_OF_LAW_CONFIDENCE_LEVEL_ALIAS
+          type: string
+        POINT_OF_LAW_NAME:
+          description: Alias for POINT_OF_LAW_NAME
+          example: POINT_OF_LAW_NAME_ALIAS
+          type: string
+        POINT_OF_LAW_OUTCOME:
+          description: Alias for POINT_OF_LAW_OUTCOME
+          example: POINT_OF_LAW_OUTCOME_ALIAS
+          type: string
+        POINT_OF_LAW_OUTCOME_NEGATIVE:
+          description: Alias for POINT_OF_LAW_OUTCOME_NEGATIVE
+          example: POINT_OF_LAW_OUTCOME_NEGATIVE_ALIAS
+          type: string
+        POINT_OF_LAW_OUTCOME_POSITIVE:
+          description: Alias for POINT_OF_LAW_OUTCOME_POSITIVE
+          example: POINT_OF_LAW_OUTCOME_POSITIVE_ALIAS
+          type: string
+        POINT_OF_LAW_PARENT_PATH:
+          description: Alias for POINT_OF_LAW_PARENT_PATH
+          example: POINT_OF_LAW_PARENT_PATH_ALIAS
+          type: string
+        POINT_OF_LAW_PREFIX:
+          description: Alias for POINT_OF_LAW_PREFIX
+          example: POINT_OF_LAW_PREFIX_ALIAS
+          type: string
+        PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION:
+          description: Alias for PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION
+          example: PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION_ALIAS
+          type: string
+        PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS:
+          description: Alias for PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS
+          example: PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS_ALIAS
+          type: string
+        PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION:
+          description: Alias for PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION
+          example: PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION_ALIAS
+          type: string
+        PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS:
+          description: Alias for PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS
+          example: PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS_ALIAS
+          type: string
+        PRODUCT_COMPARISON_SIMILAR:
+          description: Alias for PRODUCT_COMPARISON_SIMILAR
+          example: PRODUCT_COMPARISON_SIMILAR_ALIAS
+          type: string
+        RELATION_RATING:
+          description: Alias for RELATION_RATING
+          example: RELATION_RATING_ALIAS
+          type: string
+        RELATION_RELATION:
+          description: Alias for RELATION_RELATION
+          example: RELATION_RELATION_ALIAS
+          type: string
+        RELATION_TARGET_DECISION:
+          description: Alias for RELATION_TARGET_DECISION
+          example: RELATION_TARGET_DECISION_ALIAS
+          type: string
+        RELATION_TARGET_REFERENCE:
+          description: Alias for RELATION_TARGET_REFERENCE
+          example: RELATION_TARGET_REFERENCE_ALIAS
+          type: string
+        RELEVANT_PUBLIC_AVERAGE_CONSUMER:
+          description: Alias for RELEVANT_PUBLIC_AVERAGE_CONSUMER
+          example: RELEVANT_PUBLIC_AVERAGE_CONSUMER_ALIAS
+          type: string
+        RELEVANT_PUBLIC_AWARENESS:
+          description: Alias for RELEVANT_PUBLIC_AWARENESS
+          example: RELEVANT_PUBLIC_AWARENESS_ALIAS
+          type: string
+        RELEVANT_PUBLIC_NICE_CLASS:
+          description: Alias for RELEVANT_PUBLIC_NICE_CLASS
+          example: RELEVANT_PUBLIC_NICE_CLASS_ALIAS
+          type: string
+        RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER:
+          description: Alias for RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER
+          example: RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER_ALIAS
+          type: string
+        REMEDY:
+          description: Alias for REMEDY
+          example: REMEDY_ALIAS
+          type: string
+        REPRESENTATIVE_COUNTRY:
+          description: Alias for REPRESENTATIVE_COUNTRY
+          example: REPRESENTATIVE_COUNTRY_ALIAS
+          type: string
+        REPRESENTATIVE_LEGAL_FORM:
+          description: Alias for REPRESENTATIVE_LEGAL_FORM
+          example: REPRESENTATIVE_LEGAL_FORM_ALIAS
+          type: string
+        REPRESENTATIVE_OPTIMIZED_NAME:
+          description: Alias for REPRESENTATIVE_OPTIMIZED_NAME
+          example: REPRESENTATIVE_OPTIMIZED_NAME_ALIAS
+          type: string
+        REPRESENTATIVE_TYPE:
+          description: Alias for REPRESENTATIVE_TYPE
+          example: REPRESENTATIVE_TYPE_ALIAS
+          type: string
+        RIGHT_ASSESSMENT_AMENDED_CLAIMS:
+          description: Alias for RIGHT_ASSESSMENT_AMENDED_CLAIMS
+          example: RIGHT_ASSESSMENT_AMENDED_CLAIMS_ALIAS
+          type: string
+        RIGHT_ASSESSMENT_INFRINGEMENT:
+          description: Alias for RIGHT_ASSESSMENT_INFRINGEMENT
+          example: RIGHT_ASSESSMENT_INFRINGEMENT_ALIAS
+          type: string
+        RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX:
+          description: Alias for RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX
+          example: RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX_ALIAS
+          type: string
+        RIGHT_ASSESSMENT_VALIDITY:
+          description: Alias for RIGHT_ASSESSMENT_VALIDITY
+          example: RIGHT_ASSESSMENT_VALIDITY_ALIAS
+          type: string
+        SETTLED:
+          description: Alias for SETTLED
+          example: SETTLED_ALIAS
+          type: string
+        TOTAL_DAMAGE_AMOUNT:
+          description: Alias for TOTAL_DAMAGE_AMOUNT
+          example: TOTAL_DAMAGE_AMOUNT_ALIAS
+          type: string
+        TOTAL_DAMAGE_CURRENCY:
+          description: Alias for TOTAL_DAMAGE_CURRENCY
+          example: TOTAL_DAMAGE_CURRENCY_ALIAS
+          type: string
+        TOTAL_DAMAGE_TYPE:
+          description: Alias for TOTAL_DAMAGE_TYPE
+          example: TOTAL_DAMAGE_TYPE_ALIAS
+          type: string
+        TRADEMARK_ANONYMOUS:
+          description: Alias for TRADEMARK_ANONYMOUS
+          example: TRADEMARK_ANONYMOUS_ALIAS
+          type: string
+        TRADEMARK_ID:
+          description: Alias for TRADEMARK_ID
+          example: TRADEMARK_ID_ALIAS
+          type: string
+        TRADEMARK_LOCARNO_CLASS:
+          description: Alias for TRADEMARK_LOCARNO_CLASS
+          example: TRADEMARK_LOCARNO_CLASS_ALIAS
+          type: string
+        TRADEMARK_NICE_CLASS:
+          description: Alias for TRADEMARK_NICE_CLASS
+          example: TRADEMARK_NICE_CLASS_ALIAS
+          type: string
+        TRADEMARK_REGISTRATION_NUMBER:
+          description: Alias for TRADEMARK_REGISTRATION_NUMBER
+          example: TRADEMARK_REGISTRATION_NUMBER_ALIAS
+          type: string
+        TRADEMARK_REGISTRATION_OFFICE:
+          description: Alias for TRADEMARK_REGISTRATION_OFFICE
+          example: TRADEMARK_REGISTRATION_OFFICE_ALIAS
+          type: string
+        TRADEMARK_ROLE:
+          description: Alias for TRADEMARK_ROLE
+          example: TRADEMARK_ROLE_ALIAS
+          type: string
+        TRADEMARK_TYPE:
+          description: Alias for TRADEMARK_TYPE
+          example: TRADEMARK_TYPE_ALIAS
+          type: string
+        TRADEMARK_VERBAL_ELEMENT:
+          description: Alias for TRADEMARK_VERBAL_ELEMENT
+          example: TRADEMARK_VERBAL_ELEMENT_ALIAS
+          type: string
+        TRADEMARK_VIENNA_CLASS:
+          description: Alias for TRADEMARK_VIENNA_CLASS
+          example: TRADEMARK_VIENNA_CLASS_ALIAS
+          type: string
+        WITHDRAWN:
+          description: Alias for WITHDRAWN
+          example: WITHDRAWN_ALIAS
+          type: string
+      type: object
+    records_request_caselaw:
+      properties:
+        FIELDS:
+          description: Fields to fetch
+          items:
+            description: Fields to fetch
+            enum:
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.OUTCOMES.NEGATIVE
+            - BINDER.RIGHTS.PATENTS.TITLES.LANGUAGE
+            - BINDER.PATENT_ASSERTIONS
+            - BINDER.RIGHTS.COPYRIGHTS.ANONYMOUS
+            - BINDER.DOCKETS.DOCUMENTS.REFUSAL
+            - BINDER.CASE_STATUS
+            - BINDER.RIGHTS.COPYRIGHTS.DESCRIPTION
+            - BINDER.DOCKETS.DOCUMENTS.DECLARATORY
+            - BINDER.RIGHTS.PATENTS.REFERENCES.AUTHORITY
+            - BINDER.PARTIES.ROLE
+            - BINDER.DOCKETS.COURT.COURT_COUNTRY
+            - BINDER.RIGHTS.TRADEMARKS.NICE_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.SIMILAR
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.PREFIX
+            - BINDER.PARTIES.TYPE
+            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.PROFESSIONAL_CONSUMER
+            - GUID
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.NATURE
+            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.INFRINGEMENT
+            - BINDER.PARTIES.COUNTRY
+            - BINDER.DOCKETS.DOCUMENTS.DOCUMENT_DATE
+            - BINDER.LAST_EVENT_DATE
+            - BINDER.RIGHTS.PATENTS.NATURE
+            - BINDER.EARLIEST_EVENT_DATE
+            - BINDER.RIGHTS.PATENTS.EXTENDED_FAMILY_ID
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.CONFIDENCE_LEVEL
+            - BINDER.TOTAL_DAMAGES.CURRENCY
+            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.MEANS_PLUS_FUNCTION
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.AMOUNT
+            - BINDER.RIGHTS.PATENTS.AMENDED_CLAIMS
+            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.AGREED
+            - BINDER.PARTIES_DEFENDANT.TYPE
+            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.TARGET_DECISION
+            - BINDER.PARTIES_PLAINTIFF.NATIONALITY
+            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.RATING
+            - BINDER.DOCKETS.REFERENCE
+            - BINDER.RIGHTS.PATENTS.SOURCE
+            - BINDER.PARTIES.REPRESENTATIVES.COUNTRY
+            - BINDER.DOCKET_COURT_NAMES
+            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.AWARENESS
+            - BINDER.DOCKET_COURT_COUNTRIES
+            - BINDER.EU_TRADEMARK
+            - BINDER.RIGHTS.COPYRIGHTS.ROLE
+            - BINDER.SETTLED
+            - BINDER.RIGHTS.DESIGNS.ANONYMOUS
+            - BINDER.RIGHTS.PATENTS.APPLICATION_NUMBER
+            - BINDER.PARTIES_PLAINTIFF
+            - BINDER.RIGHTS.PATENTS.APPLICATION_ID
+            - BINDER.CASE_REFERENCES
+            - BINDER.WITHDRAWN
+            - BINDER.PARTIES.ULTIMATE_PARENT
+            - BINDER.RIGHTS.PATENTS.REFERENCES.ORIGINAL
+            - BINDER.RIGHTS.TRADEMARKS.REGISTRATION_NUMBER
+            - BINDER.RIGHTS.PATENTS.REFERENCES.NUMBER
+            - BINDER.PARTIES_DEFENDANT
+            - BINDER.RIGHTS.PATENTS.OPTIMIZED_TITLE
+            - BINDER.RIGHTS.DESIGNS.REGISTRATION_OFFICE
+            - BINDER.DOCKETS.DOCUMENTS.WINNER
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.OUTCOMES.OUTCOME
+            - BINDER.TOTAL_DAMAGES.TYPE
+            - BINDER.RIGHTS.DESIGNS.LOCARNO_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.AVERAGE_CONSUMER
+            - BINDER.CASE_RESOLUTION
+            - BINDER.AREA
+            - BINDER.CASE_NAME
+            - BINDER.DOCKETS.DOCUMENTS.DEFAULT_JUDGEMENT
+            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_B.NICE_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENT_EUR_EQUIVALENT
+            - BINDER.RIGHTS.DOMAIN_NAMES.DOMAIN_NAME
+            - BINDER.PATENT_DAMAGES_ASSIGNED
+            - BINDER.DOCKETS.COURT.COURT_COUNTRY_DERIVED.COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2
+            - BINDER.RIGHTS.DOMAIN_NAMES.ROLE
+            - BINDER.RIGHTS.DESIGNS.VIENNA_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.LEVEL
+            - BINDER.DOCKETS.DOCUMENTS.RELEVANT_PUBLIC.NICE_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.NAME
+            - BINDER.PARTIES.LEGAL_FORM
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.OUTCOMES.POSITIVE
+            - BINDER.RIGHTS.PATENTS.REFERENCES.KIND
+            - BINDER.DOCKETS.DOCUMENTS.TRADEMARK_REPUTATION
+            - BINDER.RIGHTS.DESIGNS.VERBAL_ELEMENT
+            - BINDER.RIGHTS.TRADEMARKS.LOCARNO_CLASSES
+            - BINDER.RIGHTS.PATENTS.VALIDITY
+            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.AMENDED_CLAIMS
+            - BINDER.RIGHTS.PATENTS.DWPI_APPLICATION_NUMBER
+            - BINDER.PARTIES.OPTIMIZED_NAME
+            - BINDER.DOCKETS.DOCUMENTS.CITATION_REFERENCE
+            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.TERM
+            - BINDER.PARTIES_DEFENDANT.NATIONALITY
+            - BINDER.DOCKETS.DOCUMENTS.POINT_OF_LAWS.PARENT_PATH
+            - BINDER.RIGHTS.DOMAIN_NAMES.TLD
+            - BINDER.RIGHTS.TRADEMARKS.COMPUMARK_GUID
+            - BINDER.NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO
+            - BINDER.PARTIES.ALTERNATIVE_ULTIMATE_PARENT
+            - BINDER.RIGHTS.PATENTS.ROLE
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENCY
+            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.RIGHT_ASSESSMENT_INDEX
+            - BINDER.DOCKETS.DOCUMENTS.STATE
+            - BINDER.RIGHTS.DESIGNS.PRODUCT_LANGUAGE
+            - BINDER.PARTIES_PLAINTIFF.NAME
+            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.RELATION
+            - BINDER.TOTAL_DAMAGES.AMOUNT
+            - BINDER.RIGHTS.TRADEMARKS.VERBAL_ELEMENT
+            - BINDER.RIGHTS.DESIGNS.ROLE
+            - BINDER.NUMBER_PLAINTIFFS
+            - BINDER.PARTIES_PLAINTIFF.ACTOR_ID
+            - BINDER.RIGHTS.PATENTS.SIMPLE_FAMILY_ID
+            - BINDER.DOCKETS.COURT.AREA
+            - BINDER.PARTIES_PLAINTIFF.TYPE
+            - BINDER.DOCKETS.COURT.COURT_COUNTRY_TEXT
+            - BINDER.RIGHTS.TRADEMARKS.VIENNA_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.TYPES.LATER
+            - BINDER.DOCKETS.DOCUMENTS.CITABLE
+            - BINDER.RIGHTS.TRADEMARKS.ROLE
+            - BINDER.PARTIES.EX_OFFICIO
+            - BINDER.TOTAL_DAMAGES
+            - BINDER.PARTIES_DEFENDANT.LEGAL_FORM
+            - BINDER.PARTIES_DEFENDANT.NAME
+            - BINDER.RIGHTS.DESIGNS.REGISTRATION_STATUS
+            - BINDER.RIGHTS.PATENTS.INVENTION_ID
+            - BINDER.RIGHTS.PATENTS.INFRINGEMENT
+            - BINDER.RIGHTS.PATENTS.INDEX
+            - BINDER.DOCKETS.DOCUMENTS.SUBTYPE
+            - BINDER.DOCKETS.COURT.NAME
+            - BINDER.RIGHTS.DESIGNS.REGISTRATION_NUMBER
+            - BINDER.FIRST_ACTION_DATE
+            - BINDER.RIGHTS.PATENTS.TITLES.TITLE
+            - BINDER.PARTIES.REPRESENTATIVES.TYPE
+            - BINDER.RIGHTS.COPYRIGHTS.TITLE
+            - BINDER.PATENT_VALIDITY_CHALLENGES
+            - BINDER.RIGHTS.COPYRIGHTS.TYPE
+            - BINDER.RIGHTS.DOMAIN_NAMES.ANONYMOUS
+            - BINDER.PARTIES.REPRESENTATIVES.OPTIMIZED_NAME
+            - BINDER.REMEDY
+            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_B.DESCRIPTION
+            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.DEFINITION
+            - BINDER.RIGHTS.PATENTS.IPC_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.RELATIONS.TARGET_REFERENCE
+            - BINDER.DOCKETS.COURT.PATH
+            - BINDER.NUMBER_DEFENDANTS
+            - BINDER.PARTIES.REPRESENTATIVES.LEGAL_FORM
+            - BINDER.PARTIES_PLAINTIFF.LEGAL_FORM
+            - BINDER.DOCKETS.DOCUMENTS.RIGHT_ASSESSMENTS.VALIDITY
+            - BINDER.PARTIES.ANONYMOUS
+            - BINDER.LAST_UPDATED_DATE
+            - EXPORT_TIMESTAMP
+            - BINDER.RIGHTS.TRADEMARKS.REGISTRATION_OFFICE
+            - BINDER.DOCKETS.COURT.COURT_COUNTRY_DERIVED.COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3
+            - BINDER.RIGHTS.DESIGNS.PRODUCT
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENT_USD_EQUIVALENT
+            - BINDER.CLOSED
+            - BINDER.PARTIES.ACTOR_ID
+            - BINDER.EX_OFFICIO
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CALCULATION_METHOD
+            - BINDER.RIGHTS.PATENTS.PUBLICATION_NUMBER
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.TYPES.REQUESTED
+            - BINDER.FIRST_ACTION_TYPE
+            - BINDER.RIGHTS.PATENTS.REFERENCES.TYPE
+            - BINDER.RIGHTS.TRADEMARKS.TYPE
+            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_A.NICE_CLASSES
+            - BINDER.DOCKETS.DOCUMENTS.DOCUMENT_TYPE
+            - BINDER.PARTIES_DEFENDANT.ACTOR_ID
+            - BINDER.DOCKETS.COURT.TYPES
+            - BINDER.RIGHTS.PATENTS.ANONYMOUS
+            - BINDER.RIGHTS.TRADEMARKS.ANONYMOUS
+            - BINDER.CASE_DOMAINS
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.CURRENT_CNY_EQUIVALENT
+            - BINDER.CASE_STAGE
+            - BINDER.DOCKETS.COURT.COURT_COUNTRY_DERIVED.COURT_COUNTRY_DERIVED_TEXT
+            - BINDER.DOCKETS.DOCUMENTS.CLAIM_CONSTRUCTIONS.NOT_NECESSARY
+            - BINDER.DOCKETS.DOCUMENTS.DAMAGES.TYPES.PARTIAL
+            - BINDER.DOCKETS.DOCUMENTS.PRODUCT_COMPARISONS.PRODUCT_A.DESCRIPTION
+            type: string
+          type: array
+        GUIDS:
+          description: Document(s) to retrieve
+          items:
+            description: Unique ID of caselaw document
+            example: '2706413'
+            type: string
+          type: array
+      required:
+      - GUIDS
       type: object
   securitySchemes:
     key:

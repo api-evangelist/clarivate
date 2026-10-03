@@ -386,37 +386,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Report.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - report
-        attributes:
-          $ref: '#/components/schemas/ProjectAttributes'
-      required:
-      - id
-      - type
-      - attributes
-    JsonApiPaginationMeta:
-      description: Pagination metadata for JSON:API collection responses.
-      type: object
-      required:
-      - total
-      - total_pages
-      properties:
-        total:
-          type: integer
-          description: Total number of records.
-        total_pages:
-          type: integer
-          description: Total number of pages.
     PaginationLinks:
       description: Pagination navigation links for collection responses.
       type: object
@@ -443,6 +412,44 @@ components:
           type: string
           format: uri
           description: Link to the previous page.
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Report.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - report
+        attributes:
+          $ref: '#/components/schemas/ProjectAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
+    JsonApiPaginationMeta:
+      description: Pagination metadata for JSON:API collection responses.
+      type: object
+      required:
+      - total
+      - total_pages
+      properties:
+        total:
+          type: integer
+          description: Total number of records.
+        total_pages:
+          type: integer
+          description: Total number of pages.
     error:
       type: object
       properties:
@@ -463,13 +470,6 @@ components:
           - type: object
         pointer:
           type: string
-    errors:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/error'
   securitySchemes:
     key:
       type: apiKey

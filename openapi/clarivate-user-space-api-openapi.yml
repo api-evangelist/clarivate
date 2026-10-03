@@ -310,10 +310,11 @@ paths:
       - User Space
 components:
   parameters:
-    contentTypeHeader:
-      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
-      name: Content-Type
+    routingHeader:
+      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
+      name: x-enws-authorization
       in: header
+      required: true
       schema:
         type: string
     acceptHeader:
@@ -323,11 +324,10 @@ components:
       required: true
       schema:
         type: string
-    routingHeader:
-      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
-      name: x-enws-authorization
+    contentTypeHeader:
+      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
+      name: Content-Type
       in: header
-      required: true
       schema:
         type: string
   schemas:

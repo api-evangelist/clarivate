@@ -69,6 +69,27 @@ paths:
       tags:
       - EndNote REST API
 components:
+  parameters:
+    routingHeader:
+      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
+      name: x-enws-authorization
+      in: header
+      required: true
+      schema:
+        type: string
+    acceptHeader:
+      description: 'Contains the format of the data of the response or any error sent by the server placed in the response body. '
+      name: Accept
+      in: header
+      required: true
+      schema:
+        type: string
+    contentTypeHeader:
+      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
+      name: Content-Type
+      in: header
+      schema:
+        type: string
   schemas:
     roalibrary:
       description: Libray object is a singleton that contains the user limits of space in the library, and a set of URIs to manage any ENWS objects.
@@ -132,27 +153,6 @@ components:
           readOnly: true
           type: string
       type: object
-  parameters:
-    contentTypeHeader:
-      description: 'Contains the format of the data sent in the request body. This header has no effect when GET or OPTIONS methods. '
-      name: Content-Type
-      in: header
-      schema:
-        type: string
-    acceptHeader:
-      description: 'Contains the format of the data of the response or any error sent by the server placed in the response body. '
-      name: Accept
-      in: header
-      required: true
-      schema:
-        type: string
-    routingHeader:
-      description: 'Routing header. This header is generated in a response when not included in the request (first request), and it must be included in the next request. Request that include this header will be be faster. '
-      name: x-enws-authorization
-      in: header
-      required: true
-      schema:
-        type: string
   securitySchemes:
     Log_In__accessCode:
       type: oauth2

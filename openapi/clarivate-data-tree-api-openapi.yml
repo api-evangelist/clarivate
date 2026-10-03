@@ -194,44 +194,48 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    LabelDefinition:
+    DefaultResponse:
       required:
-      - language
-      - value
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
       type: object
       properties:
-        language:
+        timestamp:
           type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
           type: string
-          description: The value of the label
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+    LinkReference:
+      required:
+      - rel
+      - href
+      type: object
+      properties:
+        rel:
+          type: string
+          description: Describes the type of relationship.
           example: Publication
-    EntityDataList:
-      required:
-      - count
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityData'
+        href:
+          type: string
+          description: is the complete endpoint path that uniquely defines the resource.
+          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
     AttributeData:
       required:
       - attributeName
@@ -369,48 +373,44 @@ components:
             href: /converis-api/ws/v2/data/entities/Publication/linked/PUBL_has_PUBL/56893426?directon=l2r
           items:
             $ref: '#/components/schemas/LinkReference'
-    DefaultResponse:
+    EntityDataList:
       required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
+      - count
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
       type: object
       properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
+        startRecord:
           type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
-    LinkReference:
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityData'
+    LabelDefinition:
       required:
-      - rel
-      - href
+      - language
+      - value
       type: object
       properties:
-        rel:
+        language:
           type: string
-          description: Describes the type of relationship.
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
           example: Publication
-        href:
-          type: string
-          description: is the complete endpoint path that uniquely defines the resource.
-          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
   securitySchemes:
     BasicAuth:
       type: http

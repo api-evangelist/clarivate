@@ -2867,210 +2867,6 @@ paths:
       - Derwent API
 components:
   schemas:
-    document_pdf_response_derwent_api_post:
-      properties:
-        available:
-          description: Available PDF URLs
-          items:
-            properties:
-              pn:
-                description: Requested patent number
-                example: US12368967B2
-                type: string
-              url:
-                description: Returned PDF URL.
-                example: https://api.clarivate.com/patents/derwent/document/pdf/file?patent=US12368967B2&token=example-token
-                type: string
-            required:
-            - pn
-            - url
-            type: object
-          type: array
-        unavailable:
-          description: Requested patent numbers that are unavailable
-          items:
-            description: Requested patent numbers that are unavailable
-            example: BADPN123
-            type: string
-          type: array
-      required:
-      - available
-      type: object
-    class_browsing_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              class-levels:
-                description: Requested classification level
-                example: '1'
-                type: string
-              classes:
-                description: Requested class code to be browsed
-                example: A01
-                type: string
-              type:
-                description: Requested classification type
-                example: ipc8
-                type: string
-            required:
-            - class-levels
-            - classes
-            - type
-            type: object
-          type: array
-      type: object
-    image_url_list_derwent_api:
-      properties:
-        image_urls:
-          description: URL for an image
-          items:
-            description: URL for an image
-            example: https://
-            type: string
-          type: array
-        inline_image_urls:
-          description: URL result for inline Derwent images when type=inline
-          items:
-            description: URL result for inline Derwent images when type=inline
-            example: https://localhost/patents/derwent/document/images/file?patent=EP4451620A1&image_type=inline&token=...
-            type: string
-          type: array
-        missing_patent_numbers:
-          description: Patent numbers where no image was found
-          items:
-            description: Patent numbers where no image was found
-            example: EP0000000A1
-            type: string
-          type: array
-      type: object
-    document_by_listref_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: usapps,usgrants,epapps,epgrants,woapps
-                type: string
-              listref:
-                description: Reference of a resultset
-                example: 1770538450897-bi9q63lce0N
-                type: string
-              offset:
-                description: Starting range of the documents to be fetched
-                example: 0
-                type: number
-              return-fields:
-                description: Requested resultset field(s)
-                example: pn,pd
-                type: string
-              size:
-                description: Number of the documents to be fetched
-                example: 3
-                type: number
-            required:
-            - collections
-            - listref
-            type: object
-          type: array
-      type: object
-    doc_idmapping_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
-                type: string
-              pns:
-                description: Requested patent numbers
-                example: EP4451620A1
-                type: string
-            required:
-            - collections
-            - pns
-            type: object
-          type: array
-      type: object
-    search_by_pns_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
-                type: string
-              pns:
-                description: Requested patent numbers
-                example: EP4451620A1
-                type: string
-              return-fields:
-                description: Requested resultset field(s)
-                example: pn,pd
-                type: string
-            required:
-            - collections
-            - pns
-            type: object
-          type: array
-      type: object
-    search_by_query_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: usapps,usgrants,epapps,epgrants,woapps
-                type: string
-              offset:
-                description: Starting range of the documents to be fetched
-                example: 0
-                type: number
-              query:
-                description: Requested query
-                example: pd>=(20180101)
-                type: string
-              return-fields:
-                description: Requested resultset field(s)
-                example: pn,pd
-                type: string
-              size:
-                description: Number of the documents to be fetched
-                example: 3
-                type: number
-            required:
-            - collections
-            - query
-            type: object
-          type: array
-      type: object
-    document_by_ids_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
-                type: string
-              ids:
-                description: Requested document ids
-                example: EP4451620A120241023
-                type: string
-              return-fields:
-                description: Requested retrieve-field(s)
-                example: pn,pd
-                type: string
-            required:
-            - collections
-            - ids
-            type: object
-          type: array
-      type: object
     corporate_tree_request_derwent_api:
       properties:
         params:
@@ -3087,92 +2883,6 @@ components:
             required:
             - code
             - terms
-            type: object
-          type: array
-      type: object
-    class_search_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              query:
-                description: Requested classification level
-                example: ti=neem
-                type: string
-              type:
-                description: Requested classification type
-                example: ipc8
-                type: string
-            required:
-            - query
-            - type
-            type: object
-          type: array
-      type: object
-    document_pdf_request_derwent_api_post:
-      properties:
-        params:
-          description: PDF request parameters
-          items:
-            properties:
-              pns:
-                description: Requested patent numbers. Accepts a comma-separated string or list.
-                example: US20110094542A1,US12368967B2
-                type: string
-            required:
-            - pns
-            type: object
-          type: array
-        wrap:
-          description: When true, return wrapped IP-API URLs instead of direct DocDel URLs.
-          example: 'true'
-          type: string
-      required:
-      - params
-      type: object
-    document_by_pns_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
-                type: string
-              pns:
-                description: Requested patent numbers
-                example: EP4451620A1
-                type: string
-              return-fields:
-                description: Requested retrieve-field(s)
-                example: pn,pd
-                type: string
-            required:
-            - collections
-            - pns
-            type: object
-          type: array
-      type: object
-    search_by_ids_request_derwent_api:
-      properties:
-        params:
-          items:
-            properties:
-              collections:
-                description: Requested Collection(s)
-                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
-                type: string
-              ids:
-                description: Requested document ids
-                example: EP4451620A120241023
-                type: string
-              return-fields:
-                description: Requested resultset field(s)
-                example: pn,pd
-                type: string
-            required:
-            - collections
-            - ids
             type: object
           type: array
       type: object
@@ -3241,6 +2951,273 @@ components:
             type: object
           type: array
       type: object
+    document_by_listref_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: usapps,usgrants,epapps,epgrants,woapps
+                type: string
+              listref:
+                description: Reference of a resultset
+                example: 1770538450897-bi9q63lce0N
+                type: string
+              offset:
+                description: Starting range of the documents to be fetched
+                example: 0
+                type: number
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+              size:
+                description: Number of the documents to be fetched
+                example: 3
+                type: number
+            required:
+            - collections
+            - listref
+            type: object
+          type: array
+      type: object
+    class_search_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              query:
+                description: Requested classification level
+                example: ti=neem
+                type: string
+              type:
+                description: Requested classification type
+                example: ipc8
+                type: string
+            required:
+            - query
+            - type
+            type: object
+          type: array
+      type: object
+    search_by_query_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: usapps,usgrants,epapps,epgrants,woapps
+                type: string
+              offset:
+                description: Starting range of the documents to be fetched
+                example: 0
+                type: number
+              query:
+                description: Requested query
+                example: pd>=(20180101)
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+              size:
+                description: Number of the documents to be fetched
+                example: 3
+                type: number
+            required:
+            - collections
+            - query
+            type: object
+          type: array
+      type: object
+    document_by_pns_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              pns:
+                description: Requested patent numbers
+                example: EP4451620A1
+                type: string
+              return-fields:
+                description: Requested retrieve-field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - pns
+            type: object
+          type: array
+      type: object
+    document_by_ids_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              ids:
+                description: Requested document ids
+                example: EP4451620A120241023
+                type: string
+              return-fields:
+                description: Requested retrieve-field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - ids
+            type: object
+          type: array
+      type: object
+    class_browsing_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              class-levels:
+                description: Requested classification level
+                example: '1'
+                type: string
+              classes:
+                description: Requested class code to be browsed
+                example: A01
+                type: string
+              type:
+                description: Requested classification type
+                example: ipc8
+                type: string
+            required:
+            - class-levels
+            - classes
+            - type
+            type: object
+          type: array
+      type: object
+    document_pdf_response_derwent_api_post:
+      properties:
+        available:
+          description: Available PDF URLs
+          items:
+            properties:
+              pn:
+                description: Requested patent number
+                example: US12368967B2
+                type: string
+              url:
+                description: Returned PDF URL.
+                example: https://api.clarivate.com/patents/derwent/document/pdf/file?patent=US12368967B2&token=example-token
+                type: string
+            required:
+            - pn
+            - url
+            type: object
+          type: array
+        unavailable:
+          description: Requested patent numbers that are unavailable
+          items:
+            description: Requested patent numbers that are unavailable
+            example: BADPN123
+            type: string
+          type: array
+      required:
+      - available
+      type: object
+    search_by_ids_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              ids:
+                description: Requested document ids
+                example: EP4451620A120241023
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - ids
+            type: object
+          type: array
+      type: object
+    image_url_list_derwent_api:
+      properties:
+        image_urls:
+          description: URL for an image
+          items:
+            description: URL for an image
+            example: https://
+            type: string
+          type: array
+        inline_image_urls:
+          description: URL result for inline Derwent images when type=inline
+          items:
+            description: URL result for inline Derwent images when type=inline
+            example: https://localhost/patents/derwent/document/images/file?patent=EP4451620A1&image_type=inline&token=...
+            type: string
+          type: array
+        missing_patent_numbers:
+          description: Patent numbers where no image was found
+          items:
+            description: Patent numbers where no image was found
+            example: EP0000000A1
+            type: string
+          type: array
+      type: object
+    doc_idmapping_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              pns:
+                description: Requested patent numbers
+                example: EP4451620A1
+                type: string
+            required:
+            - collections
+            - pns
+            type: object
+          type: array
+      type: object
+    document_pdf_request_derwent_api_post:
+      properties:
+        params:
+          description: PDF request parameters
+          items:
+            properties:
+              pns:
+                description: Requested patent numbers. Accepts a comma-separated string or list.
+                example: US20110094542A1,US12368967B2
+                type: string
+            required:
+            - pns
+            type: object
+          type: array
+        wrap:
+          description: When true, return wrapped IP-API URLs instead of direct DocDel URLs.
+          example: 'true'
+          type: string
+      required:
+      - params
+      type: object
     derwent_images_request:
       properties:
         drawings:
@@ -3287,6 +3264,29 @@ components:
           type: boolean
       required:
       - params
+      type: object
+    search_by_pns_request_derwent_api:
+      properties:
+        params:
+          items:
+            properties:
+              collections:
+                description: Requested Collection(s)
+                example: arapps, arutils, apgrants, amgrants, auapps, augrants, auinnov, atapps, atgrants, atutils, bygrants, byutils, beapps, begrants, brapps, brgrants, brutils, bgapps, bggrants, bgutils, caapps, cagrants, cnapps, cngrants, cnutils, coapps, crapps, crutils, hrapps, hrgrants, hrutils, cuapps, cugrants, czapps, czgrants, czutils, csgrants, dkapps, dkgrants, dkutils, epapps, epgrants, eeapps, eegrants, eeutils, eagrants, fiapps, figrants, frapps, frgrants, gegrants, ddapps, ddgrants, deapps, degrants, deutils, gbapps, gbgrants, grapps, grgrants, gcgrants, hkapps, hkgrants, hkutils, hugrants, isgrants, inapps, ingrants, idapps, idsimple, ieapps, iegrants, ieutils, ilgrants, itgrants, jpapps, jpgrants, jputils, krapps, krgrants, krutils, lvgrants, ltgrants, luapps, lugrants, myapps, mygrants, mxapps, mxgrants, mdgrants, mdutils, mcgrants, mngrants, mnutils, maapps, magrants, nlapps, nlgrants, nzgrants, noapps, nogrants, oagrants, phapps, phgrants, phutils, plgrants, plutils, ptapps, ptgrants, ptutils, roapps, rogrants, routils, ruapps, rugrants, ruutils, saapps, sagrants, rsapps, rsgrants, rsutils, sgapps, sggrants, skapps, skgrants, skutils, sigrants, siutils, zaapps, sugrants, esapps, esgrants, esutils, seapps, segrants, chapps, chgrants, twapps, twgrants, twutils, thapps, thgrants, thutils, tnapps, trapps, trgrants, trutils, uagrants, uautils, usapps, usgrants, uyapps, vnapps, vngrants, vnutils, woapps, derwent, inpadoc
+                type: string
+              pns:
+                description: Requested patent numbers
+                example: EP4451620A1
+                type: string
+              return-fields:
+                description: Requested resultset field(s)
+                example: pn,pd
+                type: string
+            required:
+            - collections
+            - pns
+            type: object
+          type: array
       type: object
   securitySchemes:
     key:

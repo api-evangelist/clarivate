@@ -186,25 +186,54 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    FilterGroup:
-      items:
-        anyOf:
-        - $ref: '#/components/schemas/Filter'
-        - $ref: '#/components/schemas/ConjunctionEnum'
-        - $ref: '#/components/schemas/FilterGroup'
-      type: array
-      minLength: 0
-      title: FilterGroup
-    StatusEnum:
+    ConjunctionEnum:
       type: string
       enum:
-      - pending
-      - running
-      - done
-      - failed
-      - outdated
-      - done-no-match
-      title: StatusEnum
+      - OR
+      - AND
+      title: ConjunctionEnum
+    Error:
+      properties:
+        code:
+          type: integer
+          title: Code
+        message:
+          type: string
+          title: Message
+        location:
+          anyOf:
+          - items:
+              anyOf:
+              - type: string
+              - type: integer
+            type: array
+          - type: 'null'
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
+    MaxInternalChangeNumber:
+      properties:
+        contentSet:
+          type: string
+          title: Contentset
+          description: Content set/data set name (value could be "custom").
+        preset:
+          type: string
+          title: Preset
+          description: Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset).
+        value:
+          type: integer
+          title: Value
+          description: Maximal Internal Change Number value.
+      type: object
+      required:
+      - contentSet
+      - preset
+      - value
+      title: MaxInternalChangeNumber
     ContentSubscriptionResponse:
       properties:
         name:
@@ -230,32 +259,20 @@ components:
       - preset
       - description
       title: ContentSubscriptionResponse
-    ErrorResponse:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/Error'
-          type: array
-          title: Errors
-      type: object
-      required:
-      - errors
-      title: ErrorResponse
-      description: 'Customize Validation Error
-
-        https://github.com/tiangolo/fastapi/issues/1376'
+    FileTypeEnum:
+      type: string
+      enum:
+      - json
+      - parquet
+      - resources
+      - schema
+      title: FileTypeEnum
     Format:
       type: string
       enum:
       - json
       - parquet
       title: Format
-    ConjunctionEnum:
-      type: string
-      enum:
-      - OR
-      - AND
-      title: ConjunctionEnum
     OperationEnum:
       type: string
       enum:
@@ -273,36 +290,49 @@ components:
       - is not
       - not like
       title: OperationEnum
-    FileTypeEnum:
+    StatusEnum:
       type: string
       enum:
-      - json
-      - parquet
-      - resources
-      - schema
-      title: FileTypeEnum
-    Error:
+      - pending
+      - running
+      - done
+      - failed
+      - outdated
+      - done-no-match
+      title: StatusEnum
+    CheckPackageStatusResult:
       properties:
-        code:
-          type: integer
-          title: Code
-        message:
-          type: string
-          title: Message
-        location:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          description: 'Status of the package preparation.values can be: pending, running, done-no-match or done.'
+        dateCompleted:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Datecompleted
+          description: Date-time the package preparation completed.
+        maxInternalChangeNumber:
           anyOf:
           - items:
-              anyOf:
-              - type: string
-              - type: integer
+              $ref: '#/components/schemas/MaxInternalChangeNumber'
             type: array
           - type: 'null'
-          title: Location
+          title: Maxinternalchangenumber
+          description: Maximal value of the internal Change Number field.
+        files:
+          items:
+            $ref: '#/components/schemas/CheckPackageStatusResultFile'
+          type: array
+          title: Files
+          description: List of files that can be downloaded.
       type: object
       required:
-      - code
-      - message
-      title: Error
+      - status
+      - dateCompleted
+      - maxInternalChangeNumber
+      - files
+      title: CheckPackageStatusResult
     RequestPackageInput:
       properties:
         requestId:
@@ -342,39 +372,6 @@ components:
       - contentSet
       - preset
       title: RequestPackageInput
-    CheckPackageStatusResult:
-      properties:
-        status:
-          allOf:
-          - $ref: '#/components/schemas/StatusEnum'
-          description: 'Status of the package preparation.values can be: pending, running, done-no-match or done.'
-        dateCompleted:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Datecompleted
-          description: Date-time the package preparation completed.
-        maxInternalChangeNumber:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/MaxInternalChangeNumber'
-            type: array
-          - type: 'null'
-          title: Maxinternalchangenumber
-          description: Maximal value of the internal Change Number field.
-        files:
-          items:
-            $ref: '#/components/schemas/CheckPackageStatusResultFile'
-          type: array
-          title: Files
-          description: List of files that can be downloaded.
-      type: object
-      required:
-      - status
-      - dateCompleted
-      - maxInternalChangeNumber
-      - files
-      title: CheckPackageStatusResult
     CheckPackageStatusResultFile:
       properties:
         token:
@@ -432,26 +429,52 @@ components:
       - checksum
       - numberOfRecords
       title: CheckPackageStatusResultFile
-    MaxInternalChangeNumber:
+    ErrorResponse:
       properties:
-        contentSet:
-          type: string
-          title: Contentset
-          description: Content set/data set name (value could be "custom").
-        preset:
-          type: string
-          title: Preset
-          description: Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset).
-        value:
-          type: integer
-          title: Value
-          description: Maximal Internal Change Number value.
+        errors:
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+          title: Errors
       type: object
       required:
-      - contentSet
-      - preset
-      - value
-      title: MaxInternalChangeNumber
+      - errors
+      title: ErrorResponse
+      description: 'Customize Validation Error
+
+        https://github.com/tiangolo/fastapi/issues/1376'
+    FilterGroup:
+      items:
+        anyOf:
+        - $ref: '#/components/schemas/Filter'
+        - $ref: '#/components/schemas/ConjunctionEnum'
+        - $ref: '#/components/schemas/FilterGroup'
+      type: array
+      minLength: 0
+      title: FilterGroup
+    RequestPackageResult:
+      properties:
+        token:
+          type: string
+          format: uuid4
+          title: Token
+          description: Unique identifier in uuid4 format representing a data feed package that has been requested.
+      type: object
+      required:
+      - token
+      title: RequestPackageResult
+    SubscriptionsInfoResult:
+      properties:
+        subscriptions:
+          items:
+            $ref: '#/components/schemas/ContentSubscriptionResponse'
+          type: array
+          title: Subscriptions
+          description: List of subscribed datasets
+      type: object
+      required:
+      - subscriptions
+      title: SubscriptionsInfoResult
     Filter:
       properties:
         field:
@@ -472,29 +495,6 @@ components:
       - op
       - value
       title: Filter
-    SubscriptionsInfoResult:
-      properties:
-        subscriptions:
-          items:
-            $ref: '#/components/schemas/ContentSubscriptionResponse'
-          type: array
-          title: Subscriptions
-          description: List of subscribed datasets
-      type: object
-      required:
-      - subscriptions
-      title: SubscriptionsInfoResult
-    RequestPackageResult:
-      properties:
-        token:
-          type: string
-          format: uuid4
-          title: Token
-          description: Unique identifier in uuid4 format representing a data feed package that has been requested.
-      type: object
-      required:
-      - token
-      title: RequestPackageResult
   securitySchemes:
     key:
       type: apiKey

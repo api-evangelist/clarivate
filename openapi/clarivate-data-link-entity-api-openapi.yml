@@ -472,6 +472,156 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    LinkEntityDataList:
+      required:
+      - count
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityData'
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+    BasicData:
+      required:
+      - data
+      - entityName
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Converis ID of the data entity
+          example: 56893426
+        entityName:
+          type: string
+          description: Entity name of this data
+          example: Publication
+        status:
+          type: integer
+          description: Status of the given data
+          example: 3
+        data:
+          type: object
+          $ref: '#/components/schemas/LinkReference'
+          example:
+          - rel: Publication
+          - href: /converis-apis/ws/v2/data/entities/Publication/12345
+        shortDescription:
+          type: array
+          description: list of short descriptions in different languages
+          example:
+          - language: en_GB
+            value: Some short description
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
+    LinkReference:
+      required:
+      - rel
+      - href
+      type: object
+      properties:
+        rel:
+          type: string
+          description: Describes the type of relationship.
+          example: Publication
+        href:
+          type: string
+          description: is the complete endpoint path that uniquely defines the resource.
+          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
+    AttributeData:
+      required:
+      - attributeName
+      - attributeType
+      - value
+      type: object
+      properties:
+        attributeName:
+          type: string
+          description: Attribute name
+          example: cfTitle
+        attributeType:
+          type: string
+          description: Data type of the Attribute
+          example: STRING
+          enum:
+          - STRING
+          - TEXT
+          - CGV
+          - NUMBER
+          - DATE
+          - BOOLEAN
+        language:
+          type: string
+          description: language code of this attribute. Empty if not translatable
+          example: en_GB
+        value:
+          type: string
+          description: The value of the attribute data
+          example: An example Publication title
+        choiceGroupData:
+          $ref: '#/components/schemas/ChoiceGroupData'
+    ChoiceGroupData:
+      type: object
+      properties:
+        choiceGroupName:
+          type: string
+          description: If the attribute is of type ChoiceGroup, then this should be filled.
+          example: Publication type
+        choiceGroupValue:
+          type: string
+          description: default value
+          example: Journal article
+        choiceGroupValueLabels:
+          type: array
+          example:
+          - language: de_DE
+            value: Zeitschrift
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
     LinkEntityData:
       type: object
       properties:
@@ -531,156 +681,6 @@ components:
           type: string
           description: The value of the label
           example: Publication
-    AttributeData:
-      required:
-      - attributeName
-      - attributeType
-      - value
-      type: object
-      properties:
-        attributeName:
-          type: string
-          description: Attribute name
-          example: cfTitle
-        attributeType:
-          type: string
-          description: Data type of the Attribute
-          example: STRING
-          enum:
-          - STRING
-          - TEXT
-          - CGV
-          - NUMBER
-          - DATE
-          - BOOLEAN
-        language:
-          type: string
-          description: language code of this attribute. Empty if not translatable
-          example: en_GB
-        value:
-          type: string
-          description: The value of the attribute data
-          example: An example Publication title
-        choiceGroupData:
-          $ref: '#/components/schemas/ChoiceGroupData'
-    BasicData:
-      required:
-      - data
-      - entityName
-      - id
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: Converis ID of the data entity
-          example: 56893426
-        entityName:
-          type: string
-          description: Entity name of this data
-          example: Publication
-        status:
-          type: integer
-          description: Status of the given data
-          example: 3
-        data:
-          type: object
-          $ref: '#/components/schemas/LinkReference'
-          example:
-          - rel: Publication
-          - href: /converis-apis/ws/v2/data/entities/Publication/12345
-        shortDescription:
-          type: array
-          description: list of short descriptions in different languages
-          example:
-          - language: en_GB
-            value: Some short description
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
-    ChoiceGroupData:
-      type: object
-      properties:
-        choiceGroupName:
-          type: string
-          description: If the attribute is of type ChoiceGroup, then this should be filled.
-          example: Publication type
-        choiceGroupValue:
-          type: string
-          description: default value
-          example: Journal article
-        choiceGroupValueLabels:
-          type: array
-          example:
-          - language: de_DE
-            value: Zeitschrift
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
-    LinkReference:
-      required:
-      - rel
-      - href
-      type: object
-      properties:
-        rel:
-          type: string
-          description: Describes the type of relationship.
-          example: Publication
-        href:
-          type: string
-          description: is the complete endpoint path that uniquely defines the resource.
-          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
-    LinkEntityDataList:
-      required:
-      - count
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityData'
   securitySchemes:
     BasicAuth:
       type: http

@@ -58,26 +58,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SUSHI_org_identifiers:
-      type: object
-      description: Identifier for an organization.
-      required:
-      - Type
-      - Value
-      properties:
-        Type:
-          type: string
-          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
-          example: ISNI
-          enum:
-          - ISNI
-          - ISIL
-          - OCLC
-          - Proprietary
-        Value:
-          type: string
-          description: Value of the organization identifier
-          example: 1234 1234 1234 1234
     SUSHI_error_model:
       type: object
       description: Generalized format for presenting errors and exceptions.
@@ -136,6 +116,26 @@ components:
           example: Usage pulled using content licensed by the consortium.
           items:
             $ref: '#/components/schemas/SUSHI_org_identifiers'
+    SUSHI_org_identifiers:
+      type: object
+      description: Identifier for an organization.
+      required:
+      - Type
+      - Value
+      properties:
+        Type:
+          type: string
+          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
+          example: ISNI
+          enum:
+          - ISNI
+          - ISIL
+          - OCLC
+          - Proprietary
+        Value:
+          type: string
+          description: Value of the organization identifier
+          example: 1234 1234 1234 1234
   securitySchemes:
     key:
       type: apiKey
