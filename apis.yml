@@ -7046,6 +7046,8 @@ apis:
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
@@ -7157,6 +7159,9 @@ apis:
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
 common:
+  - type: CapabilityMap
+    url: capabilities/clarivate-capability-edges.yml
+    name: Clarivate Business Capability Map
   - type: Overlay
     url: overlays/clarivate-ipdata-api-overlay.yaml
   - type: Overlay
