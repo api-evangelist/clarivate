@@ -2023,106 +2023,6 @@ components:
             type: array
           - $ref: '#/components/schemas/query_body_trademark'
       type: object
-    query_body_trademark:
-      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
-      properties:
-        ALG:
-          description: Algorithm to use.
-          enum:
-          - BASIC
-          type: string
-        FIELD:
-          description: Field to query
-          enum:
-          - SECOND_LANGUAGE_CODE
-          - APPLICANT_NAME
-          - CLASSIFICATION_CODE_ENRICHED
-          - ID_DERIVED
-          - PUBLICATION_YEAR
-          - PUBLICATION_DATE
-          - LAST_PUBLICATION_DATE
-          - REGISTRATION_NUMBER_TEXT
-          - COUNTRY_ISO_3166_ALPHA2
-          - RENEWAL_DATE
-          - APPLICANT_ADDRESS_COUNTRY_CODE
-          - DESIGNATION_BASIS
-          - PRIORITY_NUMBER_TEXT
-          - NAT_GOODS_SERVICES_LANGUAGE_CODE
-          - INITIAL_REGISTRATION_DATE
-          - APPLICANT_ADDRESS_NATIVE_LINE_TEXT
-          - IMAGE_KIND
-          - REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT
-          - REPRESENTATIVE_ADDRESS_LINE_TEXT
-          - GUID
-          - INT_CLASS_NUMBER
-          - NAT_GOODS_SERVICES_DESCRIPTION
-          - REGISTRATION_OFFICE_CODE_DERIVED
-          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
-          - APPLICATION_NUMBER_TEXT
-          - REGISTRATION_DATE
-          - INT_CLASS_HEADING_DERIVED
-          - REPRESENTATIVE_CORRESPONDENT_NAME
-          - APPLICANT_ADDRESS_LINE_TEXT
-          - IMAGES_TOTAL_QUANTITY
-          - CANCELLATION_DATE
-          - EXPIRY_DATE
-          - GUID_DERIVED
-          - DISCLAIMERS
-          - CLASSIFICATION
-          - FILING_DATE_DERIVED
-          - MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
-          - APPLICATION_ABANDONED_DATE
-          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE
-          - COUNTRY_TEXT
-          - INITIAL_APPLICATION_DATE
-          - COUNTRY_ISO_3166_ALPHA3
-          - APPLICATION_DATE
-          - CURRENT_STATUS_DERIVED
-          - APPLICATION_LANGUAGE_CODE
-          - REGISTRATION_OFFICE_CODE
-          - ID
-          - MARK_VERBAL_ELEMENT_TEXT
-          - INT_GOODS_SERVICES_DESCRIPTION
-          - INT_CLASS_TYPE_DERIVED
-          - PRIORITY_DATE
-          - REPRESENTATIVE_NAME
-          - PRIORITY_COUNTRY_CODE
-          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT
-          - CURRENT_STATUS
-          - INT_GOODS_SERVICES_LANGUAGE_CODE
-          - REPRESENTATIVE_ADDRESS_COUNTRY_CODE
-          - RENEWAL_PUBLISHED_DATE
-          - LAST_UPDATED_DATE
-          - MARK_TRANSLATION_TEXT
-          - REPRESENTATIVE_NAME_NATIVE
-          - MARK_TRANSLITERATION_TEXT
-          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
-          - NAT_CLASS_NUMBER
-          - MARK_FEATURE
-          - DESIGNATED_COUNTRY_CODE
-          - APPLICANT_NAME_NATIVE
-          example: GUID
-          type: string
-        OP:
-          description: Operator
-          enum:
-          - LE
-          - GE
-          - NE
-          - GT
-          - IS
-          - LT
-          - EQ
-          - IN
-          type: string
-        VALUE:
-          description: Field value to match (based on operator)
-          example: USAFI65E053B1C87611DEB9C6000D609921FB
-          type: string
-      required:
-      - OP
-      - VALUE
-      type: object
     field_aliases_trademark:
       properties:
         APPLICANT_ADDRESS_COUNTRY_CODE:
@@ -2481,6 +2381,106 @@ components:
           type: array
       required:
       - GUIDS
+      type: object
+    query_body_trademark:
+      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
+      properties:
+        ALG:
+          description: Algorithm to use.
+          enum:
+          - BASIC
+          type: string
+        FIELD:
+          description: Field to query
+          enum:
+          - SECOND_LANGUAGE_CODE
+          - APPLICANT_NAME
+          - CLASSIFICATION_CODE_ENRICHED
+          - ID_DERIVED
+          - PUBLICATION_YEAR
+          - PUBLICATION_DATE
+          - LAST_PUBLICATION_DATE
+          - REGISTRATION_NUMBER_TEXT
+          - COUNTRY_ISO_3166_ALPHA2
+          - RENEWAL_DATE
+          - APPLICANT_ADDRESS_COUNTRY_CODE
+          - DESIGNATION_BASIS
+          - PRIORITY_NUMBER_TEXT
+          - NAT_GOODS_SERVICES_LANGUAGE_CODE
+          - INITIAL_REGISTRATION_DATE
+          - APPLICANT_ADDRESS_NATIVE_LINE_TEXT
+          - IMAGE_KIND
+          - REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT
+          - REPRESENTATIVE_ADDRESS_LINE_TEXT
+          - GUID
+          - INT_CLASS_NUMBER
+          - NAT_GOODS_SERVICES_DESCRIPTION
+          - REGISTRATION_OFFICE_CODE_DERIVED
+          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE
+          - APPLICATION_NUMBER_TEXT
+          - REGISTRATION_DATE
+          - INT_CLASS_HEADING_DERIVED
+          - REPRESENTATIVE_CORRESPONDENT_NAME
+          - APPLICANT_ADDRESS_LINE_TEXT
+          - IMAGES_TOTAL_QUANTITY
+          - CANCELLATION_DATE
+          - EXPIRY_DATE
+          - GUID_DERIVED
+          - DISCLAIMERS
+          - CLASSIFICATION
+          - FILING_DATE_DERIVED
+          - MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED
+          - APPLICATION_ABANDONED_DATE
+          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE
+          - COUNTRY_TEXT
+          - INITIAL_APPLICATION_DATE
+          - COUNTRY_ISO_3166_ALPHA3
+          - APPLICATION_DATE
+          - CURRENT_STATUS_DERIVED
+          - APPLICATION_LANGUAGE_CODE
+          - REGISTRATION_OFFICE_CODE
+          - ID
+          - MARK_VERBAL_ELEMENT_TEXT
+          - INT_GOODS_SERVICES_DESCRIPTION
+          - INT_CLASS_TYPE_DERIVED
+          - PRIORITY_DATE
+          - REPRESENTATIVE_NAME
+          - PRIORITY_COUNTRY_CODE
+          - REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT
+          - CURRENT_STATUS
+          - INT_GOODS_SERVICES_LANGUAGE_CODE
+          - REPRESENTATIVE_ADDRESS_COUNTRY_CODE
+          - RENEWAL_PUBLISHED_DATE
+          - LAST_UPDATED_DATE
+          - MARK_TRANSLATION_TEXT
+          - REPRESENTATIVE_NAME_NATIVE
+          - MARK_TRANSLITERATION_TEXT
+          - INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION
+          - NAT_CLASS_NUMBER
+          - MARK_FEATURE
+          - DESIGNATED_COUNTRY_CODE
+          - APPLICANT_NAME_NATIVE
+          example: GUID
+          type: string
+        OP:
+          description: Operator
+          enum:
+          - LE
+          - GE
+          - NE
+          - GT
+          - IS
+          - LT
+          - EQ
+          - IN
+          type: string
+        VALUE:
+          description: Field value to match (based on operator)
+          example: USAFI65E053B1C87611DEB9C6000D609921FB
+          type: string
+      required:
+      - OP
+      - VALUE
       type: object
   securitySchemes:
     key:

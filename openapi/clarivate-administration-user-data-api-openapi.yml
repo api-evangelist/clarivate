@@ -257,34 +257,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
     UserList:
       required:
       - count
@@ -333,6 +305,34 @@ components:
           type: string
           description: Entry point definition url - only by GET Request
           example: /converis-apis/ws/v2/config/entities/Person
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
     User:
       type: object
       properties:

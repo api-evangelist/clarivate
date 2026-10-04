@@ -168,34 +168,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
     WorkflowStep:
       required:
       - label
@@ -213,45 +185,6 @@ components:
             value: Validiert
           items:
             $ref: '#/components/schemas/LabelDefinition'
-    LinkReference:
-      required:
-      - rel
-      - href
-      type: object
-      properties:
-        rel:
-          type: string
-          description: Describes the type of relationship.
-          example: Publication
-        href:
-          type: string
-          description: is the complete endpoint path that uniquely defines the resource.
-          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
-    EntityDefinitionList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityDefinition'
     EntityDefinition:
       required:
       - description
@@ -318,20 +251,59 @@ components:
             href: /converis-api/ws/v2/config/linkentities/PUBL_has_ORGA
           items:
             $ref: '#/components/schemas/LinkReference'
-    AttributeInputDefinition:
+    EntityDefinitionList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
       properties:
-        dataType:
+        startRecord:
+          type: integer
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityDefinition'
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
           type: string
-          example: DATE
-        renderingTypeHint:
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
           type: string
-          example: Datepicker
-        inputPattern:
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
           type: string
-          example: Date
-        defaultExpression:
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
           type: string
-          example: 01-05-2019
+          description: The detailed description of the error
     LabelDefinition:
       required:
       - language
@@ -346,6 +318,20 @@ components:
           type: string
           description: The value of the label
           example: Publication
+    LinkReference:
+      required:
+      - rel
+      - href
+      type: object
+      properties:
+        rel:
+          type: string
+          description: Describes the type of relationship.
+          example: Publication
+        href:
+          type: string
+          description: is the complete endpoint path that uniquely defines the resource.
+          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
     AttributeDefinition:
       required:
       - name
@@ -389,6 +375,20 @@ components:
         includeInPageExport:
           type: boolean
           example: true
+    AttributeInputDefinition:
+      properties:
+        dataType:
+          type: string
+          example: DATE
+        renderingTypeHint:
+          type: string
+          example: Datepicker
+        inputPattern:
+          type: string
+          example: Date
+        defaultExpression:
+          type: string
+          example: 01-05-2019
   securitySchemes:
     BasicAuth:
       type: http

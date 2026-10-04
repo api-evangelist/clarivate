@@ -455,6 +455,54 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    UserRole:
+      properties:
+        roleName:
+          type: string
+          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
+          example: Researcher
+        entryPointId:
+          type: integer
+          format: int64
+          description: User entry point
+          example: 123456
+        entryPointDataUrl:
+          type: string
+          description: The entrypoint data url - only by GET Request
+          example: /converis-apis/ws/v2/data/entities/Person/123456
+        entryPointDefinitionUrl:
+          type: string
+          description: Entry point definition url - only by GET Request
+          example: /converis-apis/ws/v2/config/entities/Person
+    UserDelegationList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+          description: The offset number from where the delegation record count begins.
+        count:
+          type: integer
+          example: 50
+          description: The max number of records to be returned
+        nrRecordsAll:
+          type: integer
+          example: 1540
+          description: Total delegations in the system
+        nrRecordsFound:
+          type: integer
+          example: 50
+          description: Total number of delegations returned for that request.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDelegation'
     DefaultResponse:
       required:
       - statusDescirption
@@ -531,54 +579,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserRole'
-    UserDelegationList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-          description: The offset number from where the delegation record count begins.
-        count:
-          type: integer
-          example: 50
-          description: The max number of records to be returned
-        nrRecordsAll:
-          type: integer
-          example: 1540
-          description: Total delegations in the system
-        nrRecordsFound:
-          type: integer
-          example: 50
-          description: Total number of delegations returned for that request.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDelegation'
-    UserRole:
-      properties:
-        roleName:
-          type: string
-          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
-          example: Researcher
-        entryPointId:
-          type: integer
-          format: int64
-          description: User entry point
-          example: 123456
-        entryPointDataUrl:
-          type: string
-          description: The entrypoint data url - only by GET Request
-          example: /converis-apis/ws/v2/data/entities/Person/123456
-        entryPointDefinitionUrl:
-          type: string
-          description: Entry point definition url - only by GET Request
-          example: /converis-apis/ws/v2/config/entities/Person
     UserDelegationValidity:
       type: object
       properties:

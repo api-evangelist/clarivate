@@ -395,6 +395,32 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    UT:
+      type: object
+      properties:
+        ISI_LOC:
+          type: string
+          description: Unique identifier for Web of Science Core Collection article (UID)
+          example: 000188396500010
+    ArrayOfUTs:
+      type: array
+      items:
+        $ref: '#/components/schemas/UT'
+    OA_FLAG_DATA:
+      type: object
+      properties:
+        TYPE:
+          type: integer
+          description: Impact Story colour
+    ErrorMessage:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error Code
+        message:
+          type: string
+          description: Error Message
     Record:
       type: object
       properties:
@@ -468,32 +494,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Percentiles'
-    ErrorMessage:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error Code
-        message:
-          type: string
-          description: Error Message
-    OA_FLAG_DATA:
-      type: object
-      properties:
-        TYPE:
-          type: integer
-          description: Impact Story colour
-    ArrayOfUTs:
+    ArrayOfRecords:
       type: array
       items:
-        $ref: '#/components/schemas/UT'
-    UT:
-      type: object
-      properties:
-        ISI_LOC:
-          type: string
-          description: Unique identifier for Web of Science Core Collection article (UID)
-          example: 000188396500010
+        $ref: '#/components/schemas/Record'
     Percentiles:
       type: object
       properties:
@@ -518,10 +522,6 @@ components:
         CNCI:
           type: integer
           description: The Category Normalized Citation Impact (CNCI) of a document is calculated by dividing the actual count of citing items by the expected citation rate for documents with the same document type, year of publication and subject area
-    ArrayOfRecords:
-      type: array
-      items:
-        $ref: '#/components/schemas/Record'
     ArrayOfDates:
       type: array
       items:

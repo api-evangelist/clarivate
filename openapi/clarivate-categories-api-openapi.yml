@@ -622,26 +622,85 @@ components:
           $ref: '#/components/schemas/CategoryReportsSourceData'
         categoryData:
           $ref: '#/components/schemas/CategoryData'
-    Cites:
-      type: array
-      items:
-        type: object
-        properties:
-          year:
-            type: string
-          count:
-            type: integer
-            format: int32
-    CitedData:
+    Immediacy:
       type: object
       properties:
-        url:
-          type: string
-          description: Link to the Cited endpoint for the JCR year.
         count:
+          type: number
+          format: double
+        citesCurrentYear:
           type: integer
           format: int32
-          description: Number of cited journals
+        publishedCurrentYear:
+          type: integer
+          format: int32
+    CategoriesCiting:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            type: object
+            properties:
+              journal:
+                type: object
+                properties:
+                  self:
+                    type: string
+                  name:
+                    type: string
+                  citingJournals:
+                    type: integer
+                    format: int32
+              cited:
+                $ref: '#/components/schemas/Cites'
+    Jif:
+      type: object
+      properties:
+        median:
+          type: number
+          format: double
+        aggregate:
+          type: object
+          properties:
+            count:
+              type: string
+            citesYearAgo:
+              type: integer
+              format: int32
+            citesTwoYearsAgo:
+              type: integer
+              format: int32
+            publishedYearAgo:
+              type: integer
+              format: int32
+            publishedTwoYearsAgo:
+              type: integer
+              format: int32
+    CategoryListRecord:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Category unique identifier
+        self:
+          type: string
+          description: Link to the category entity
+        matches:
+          type: array
+          description: Search string matches across category names
+          items:
+            $ref: '#/components/schemas/SearchMatch'
+        name:
+          type: string
+          description: Category name
+        edition:
+          type: string
+          description: Category edition (SCIE/SSCI)
+        categoryCitationReports:
+          $ref: '#/components/schemas/CategoryCitationReports'
     CategoryReportsSourceData:
       type: object
       description: Aggregate Source Data counting the number of citable items and the number of cited references in each type of item.
@@ -677,26 +736,36 @@ components:
             references:
               type: integer
               format: int32
-    CategoryListRecord:
+    Cites:
+      type: array
+      items:
+        type: object
+        properties:
+          year:
+            type: string
+          count:
+            type: integer
+            format: int32
+    CategoryRecord:
       type: object
+      required:
+      - id
       properties:
         id:
           type: string
           description: Category unique identifier
-        self:
-          type: string
-          description: Link to the category entity
-        matches:
-          type: array
-          description: Search string matches across category names
-          items:
-            $ref: '#/components/schemas/SearchMatch'
         name:
           type: string
           description: Category name
         edition:
           type: string
-          description: Category edition (SCIE/SSCI)
+          description: Category edition
+        categoryCode:
+          type: string
+          description: Two-letter category code
+        description:
+          type: string
+          description: Detailed information about a category
         categoryCitationReports:
           $ref: '#/components/schemas/CategoryCitationReports'
     Frequency:
@@ -736,48 +805,6 @@ components:
         irregular:
           type: integer
           format: int32
-    Jif:
-      type: object
-      properties:
-        median:
-          type: number
-          format: double
-        aggregate:
-          type: object
-          properties:
-            count:
-              type: string
-            citesYearAgo:
-              type: integer
-              format: int32
-            citesTwoYearsAgo:
-              type: integer
-              format: int32
-            publishedYearAgo:
-              type: integer
-              format: int32
-            publishedTwoYearsAgo:
-              type: integer
-              format: int32
-    CategoryData:
-      type: object
-      properties:
-        cited:
-          $ref: '#/components/schemas/CitedData'
-        citing:
-          $ref: '#/components/schemas/CitingData'
-    SearchMatch:
-      type: object
-      description: Displays the field and value matched to the search string
-      properties:
-        field:
-          type: string
-          description: Name of the matched field
-        value:
-          description: Array of matched values (if several) with the HTML highligthing
-          type: array
-          items:
-            type: string
     CategoryCitationReports:
       type: array
       items:
@@ -789,81 +816,23 @@ components:
           year:
             type: integer
             format: int32
-    CategoryRecord:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: Category unique identifier
-        name:
-          type: string
-          description: Category name
-        edition:
-          type: string
-          description: Category edition
-        categoryCode:
-          type: string
-          description: Two-letter category code
-        description:
-          type: string
-          description: Detailed information about a category
-        categoryCitationReports:
-          $ref: '#/components/schemas/CategoryCitationReports'
-    Immediacy:
+    CategoryData:
       type: object
       properties:
-        count:
-          type: number
-          format: double
-        citesCurrentYear:
-          type: integer
-          format: int32
-        publishedCurrentYear:
-          type: integer
-          format: int32
-    CitingData:
+        cited:
+          $ref: '#/components/schemas/CitedData'
+        citing:
+          $ref: '#/components/schemas/CitingData'
+    CitedData:
       type: object
       properties:
         url:
           type: string
-          description: Link to the Citing endpoint for the JCR year.
+          description: Link to the Cited endpoint for the JCR year.
         count:
           type: integer
           format: int32
-          description: Number of citing journals
-    HalfLife:
-      type: object
-      properties:
-        cited:
-          type: number
-          format: double
-        citing:
-          type: number
-          format: double
-    CategoriesCiting:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
-          type: array
-          items:
-            type: object
-            properties:
-              journal:
-                type: object
-                properties:
-                  self:
-                    type: string
-                  name:
-                    type: string
-                  citingJournals:
-                    type: integer
-                    format: int32
-              cited:
-                $ref: '#/components/schemas/Cites'
+          description: Number of cited journals
     Metadata:
       type: object
       description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.
@@ -880,6 +849,28 @@ components:
           type: integer
           format: int32
           description: Number of records on a page (default is 10).
+    CitingData:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Link to the Citing endpoint for the JCR year.
+        count:
+          type: integer
+          format: int32
+          description: Number of citing journals
+    SearchMatch:
+      type: object
+      description: Displays the field and value matched to the search string
+      properties:
+        field:
+          type: string
+          description: Name of the matched field
+        value:
+          description: Array of matched values (if several) with the HTML highligthing
+          type: array
+          items:
+            type: string
     CategoryList:
       type: object
       properties:
@@ -912,6 +903,15 @@ components:
                     format: int32
               citing:
                 $ref: '#/components/schemas/Cites'
+    HalfLife:
+      type: object
+      properties:
+        cited:
+          type: number
+          format: double
+        citing:
+          type: number
+          format: double
   securitySchemes:
     key:
       type: apiKey

@@ -143,31 +143,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    LinkEntityDefinitionList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityDefinition'
     DefaultResponse:
       required:
       - statusDescirption
@@ -196,6 +171,20 @@ components:
         message:
           type: string
           description: The detailed description of the error
+    LabelDefinition:
+      required:
+      - language
+      - value
+      type: object
+      properties:
+        language:
+          type: string
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
+          example: Publication
     LinkEntityDefinition:
       required:
       - attributes
@@ -229,34 +218,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttributeDefinition'
-    AttributeInputDefinition:
-      properties:
-        dataType:
-          type: string
-          example: DATE
-        renderingTypeHint:
-          type: string
-          example: Datepicker
-        inputPattern:
-          type: string
-          example: Date
-        defaultExpression:
-          type: string
-          example: 01-05-2019
-    LabelDefinition:
-      required:
-      - language
-      - value
-      type: object
-      properties:
-        language:
-          type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
-          type: string
-          description: The value of the label
-          example: Publication
     AttributeDefinition:
       required:
       - name
@@ -300,6 +261,45 @@ components:
         includeInPageExport:
           type: boolean
           example: true
+    LinkEntityDefinitionList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityDefinition'
+    AttributeInputDefinition:
+      properties:
+        dataType:
+          type: string
+          example: DATE
+        renderingTypeHint:
+          type: string
+          example: Datepicker
+        inputPattern:
+          type: string
+          example: Date
+        defaultExpression:
+          type: string
+          example: 01-05-2019
   securitySchemes:
     BasicAuth:
       type: http

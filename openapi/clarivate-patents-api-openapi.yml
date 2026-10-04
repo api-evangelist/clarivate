@@ -5891,16 +5891,6 @@ paths:
       - Patents
 components:
   schemas:
-    image_url_list_patent:
-      properties:
-        image_urls:
-          description: URL for an image
-          items:
-            description: URL for an image
-            example: https://
-            type: string
-          type: array
-      type: object
     document_availability_request_patent:
       properties:
         collection:
@@ -5926,761 +5916,6 @@ components:
             description: List of Publication numbers or Accession numbers for patent
             example: JP51021981B(197002753R)
             type: string
-          type: array
-      type: object
-    query_body_patent:
-      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
-      properties:
-        ALG:
-          description: Algorithm to use.
-          enum:
-          - BASIC
-          type: string
-        FIELD:
-          description: Field to query
-          enum:
-          - DPCI_CITING_COUNTS_PATENTS_TOTAL
-          - PUBLICATION_YEAR
-          - PUBLICATION_DATE
-          - DWPI_ACCESSION_NUMBER
-          - APPLICATION_REGISTRATION_OFFICE
-          - DSI_AVERAGE_SCORE
-          - ASSIGNEE_ORIGINAL_NATIONALITY
-          - DWPI_TITLE
-          - IPC_SUBCLASS_DESCRIPTION
-          - GUID
-          - DWPI_FAMILY_MEMBER_COUNT
-          - DEAD_ALIVE_STATUS
-          - DWPI_CLASS_SECTION_DESCRIPTION
-          - DWPI_ASSIGNEE_CODE_TYPE
-          - GRANTED
-          - INVENTOR_ADDRESS
-          - DSI_STRENGTH_INDEX
-          - IPC_SYMBOL
-          - ASSIGNEE_ORIGINAL_STATE
-          - INVENTOR_STATE
-          - KIND_CODE
-          - EXAMINER_SECONDARY
-          - IPC_SECTION
-          - GRANT_DATE
-          - DPCI_CITED_COUNTS_PATENTS_TOTAL
-          - JP_CLASS_F_TERM
-          - DWPI_APPLICATION_NUMBER_BASIC
-          - DWPI_MANUAL_CODE_4
-          - EARLIEST_PRIORITY_COUNTRY
-          - IPC_SUBCLASS
-          - EARLIEST_PRIORITY_NUMBER
-          - DWPI_ASSIGNEE_NAME
-          - ASSIGNEE_CURRENT_US
-          - DWPI_DESIGNATED_OFFICE_COUNT
-          - CPC_TYPE
-          - CORRESPONDENT_CITY
-          - DERWENT_FORWARD_CITATION_COUNT
-          - CORRESPONDENT_NAME
-          - AGENT_CITY
-          - ASSIGNEE_NAME
-          - DSI_INVENTION_INFLUENCE_SCORE
-          - DWPI_INVENTOR_NAME
-          - IPC_CURRENT
-          - ASSIGNEE_ORIGINAL_NAME
-          - IPC_CLASS
-          - SERIAL_NUMBER
-          - APPLICATION_NUMBER
-          - DSI_TECHNICAL_DISTINCTIVENESS_SCORE
-          - REGISTRATION_OFFICE
-          - ESTIMATED_EXPIRATION_DISCLAIMER_FLAG
-          - EXAMINER_MAIN
-          - EARLIEST_PRIORITY_YEAR
-          - ASSIGNEE_ORIGINAL_ZIP_CODE
-          - IPC_4
-          - DWPI_FAMILY_STATUS
-          - DOCUMENT_GUID
-          - INVENTOR_NATIONALITY
-          - AGENT_INID
-          - DPCI_CITED_COUNTS_AUTHORITIES_TOTAL
-          - INVENTOR_NAME
-          - ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM
-          - DPCI_CITED_COUNTS_NON_PATENTS_TOTAL
-          - IPC_DESCRIPTION
-          - ASSIGNEE_ORIGINAL_CITY
-          - DSI_AGE_DISCOUNT
-          - DWPI_ASSIGNEE_CODE
-          - PATENT_TYPE
-          - IPC_TYPE
-          - DWPI_REGISTRATION_OFFICE_BASIC
-          - AGENT_COUNTRY
-          - DWPI_CLASS_DESCRIPTION
-          - DOCDB_SIMPLE_FAMILY_ID
-          - JP_CLASS_FI_CODE
-          - CPC_4
-          - DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL
-          - OPTIMIZED_ASSIGNEES
-          - DSI_INVENTION_SUCCESS_SCORE
-          - IPC_SECTION_DESCRIPTION
-          - DWPI_CLASS
-          - DSI_INVENTION_GLOBALIZATION_SCORE
-          - DWPI_EARLIEST_PRIORITY_YEAR
-          - INVENTOR_CITY
-          - APPLICATION_DATE
-          - CORRESPONDENT_STATE
-          - CPC_SYMBOL
-          - PUBLICATION_TYPE
-          - CITATION_WOS_CLUSTERKEY
-          - DWPI_CLASS_SECTION
-          - INVENTOR_ZIP_CODE
-          - ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE
-          - ESTIMATED_EXPIRATION_DATE
-          - LAST_UPDATED_DATE
-          - CORRESPONDENT_ADDRESS
-          - ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT
-          - DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC
-          - DWPI_MANUAL_CODE_SECTION
-          - DWPI_MANUAL_CODE
-          - ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR
-          - PUBLICATION_LANGUAGE
-          - IPC_CLASS_DESCRIPTION
-          - AGENT_NAME
-          - DSI_YEARS_REMAINING
-          - AGENT_ADDRESS
-          - ASSIGNEE_ORIGINAL_ADDRESS
-          - CITATION_WOS_SCORE
-          - DWPI_KIND_CODE_BASIC
-          - DWPI_EARLIEST_PRIORITY_DATE
-          - DWPI_MANUAL_CODE_DESCRIPTION
-          - CORRESPONDENT_COUNTRY
-          - INPADOC_FAMILY_STATUS
-          - DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL
-          - DWPI_MANUAL_CODE_SECTION_DESCRIPTION
-          - ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE
-          - AGENT_ZIP_CODE
-          - GREEN_DATA_CATEGORY
-          - DWPI_PUBLICATION_NUMBER_BASIC
-          - CPC_CURRENT
-          - AGENT_STATE
-          - DPCI_CITING_COUNTS_AUTHORITIES_TOTAL
-          - ASSIGNEE_ORIGINAL_INID
-          - REPRESENTATIVE_NAME
-          - ASSIGNEE_ORIGINAL_COUNTRY
-          - INVENTOR_COUNTRY
-          - PUBLICATION_NUMBER
-          - CORRESPONDENT_ZIP_CODE
-          - EARLIEST_PRIORITY_DATE
-          - DERWENT_BACKWARD_CITATION_COUNT
-          - ULTIMATE_PARENT
-          - DWPI_MANUAL_CODE_CLASS
-          - DWPI_MANUAL_CODE_CLASS_DESCRIPTION
-          example: GUID
-          type: string
-        OP:
-          description: Operator
-          enum:
-          - LE
-          - GE
-          - NE
-          - GT
-          - IS
-          - LT
-          - EQ
-          - IN
-          type: string
-        VALUE:
-          description: Field value to match (based on operator)
-          example: WO2021243294A120211202
-          type: string
-      required:
-      - OP
-      - VALUE
-      type: object
-    field_aliases_patent:
-      properties:
-        AGENT_ADDRESS:
-          description: Alias for AGENT_ADDRESS
-          example: AGENT_ADDRESS_ALIAS
-          type: string
-        AGENT_CITY:
-          description: Alias for AGENT_CITY
-          example: AGENT_CITY_ALIAS
-          type: string
-        AGENT_COUNTRY:
-          description: Alias for AGENT_COUNTRY
-          example: AGENT_COUNTRY_ALIAS
-          type: string
-        AGENT_INID:
-          description: Alias for AGENT_INID
-          example: AGENT_INID_ALIAS
-          type: string
-        AGENT_NAME:
-          description: Alias for AGENT_NAME
-          example: AGENT_NAME_ALIAS
-          type: string
-        AGENT_STATE:
-          description: Alias for AGENT_STATE
-          example: AGENT_STATE_ALIAS
-          type: string
-        AGENT_ZIP_CODE:
-          description: Alias for AGENT_ZIP_CODE
-          example: AGENT_ZIP_CODE_ALIAS
-          type: string
-        APPLICATION_DATE:
-          description: Alias for APPLICATION_DATE
-          example: APPLICATION_DATE_ALIAS
-          type: string
-        APPLICATION_NUMBER:
-          description: Alias for APPLICATION_NUMBER
-          example: APPLICATION_NUMBER_ALIAS
-          type: string
-        APPLICATION_REGISTRATION_OFFICE:
-          description: Alias for APPLICATION_REGISTRATION_OFFICE
-          example: APPLICATION_REGISTRATION_OFFICE_ALIAS
-          type: string
-        ASSIGNEE_CURRENT_US:
-          description: Alias for ASSIGNEE_CURRENT_US
-          example: ASSIGNEE_CURRENT_US_ALIAS
-          type: string
-        ASSIGNEE_NAME:
-          description: Alias for ASSIGNEE_NAME
-          example: ASSIGNEE_NAME_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_ADDRESS:
-          description: Alias for ASSIGNEE_ORIGINAL_ADDRESS
-          example: ASSIGNEE_ORIGINAL_ADDRESS_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_CITY:
-          description: Alias for ASSIGNEE_ORIGINAL_CITY
-          example: ASSIGNEE_ORIGINAL_CITY_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_COUNTRY:
-          description: Alias for ASSIGNEE_ORIGINAL_COUNTRY
-          example: ASSIGNEE_ORIGINAL_COUNTRY_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_INID:
-          description: Alias for ASSIGNEE_ORIGINAL_INID
-          example: ASSIGNEE_ORIGINAL_INID_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_NAME:
-          description: Alias for ASSIGNEE_ORIGINAL_NAME
-          example: ASSIGNEE_ORIGINAL_NAME_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_NATIONALITY:
-          description: Alias for ASSIGNEE_ORIGINAL_NATIONALITY
-          example: ASSIGNEE_ORIGINAL_NATIONALITY_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_STATE:
-          description: Alias for ASSIGNEE_ORIGINAL_STATE
-          example: ASSIGNEE_ORIGINAL_STATE_ALIAS
-          type: string
-        ASSIGNEE_ORIGINAL_ZIP_CODE:
-          description: Alias for ASSIGNEE_ORIGINAL_ZIP_CODE
-          example: ASSIGNEE_ORIGINAL_ZIP_CODE_ALIAS
-          type: string
-        CITATION_WOS_CLUSTERKEY:
-          description: Alias for CITATION_WOS_CLUSTERKEY
-          example: CITATION_WOS_CLUSTERKEY_ALIAS
-          type: string
-        CITATION_WOS_SCORE:
-          description: Alias for CITATION_WOS_SCORE
-          example: CITATION_WOS_SCORE_ALIAS
-          type: string
-        CORRESPONDENT_ADDRESS:
-          description: Alias for CORRESPONDENT_ADDRESS
-          example: CORRESPONDENT_ADDRESS_ALIAS
-          type: string
-        CORRESPONDENT_CITY:
-          description: Alias for CORRESPONDENT_CITY
-          example: CORRESPONDENT_CITY_ALIAS
-          type: string
-        CORRESPONDENT_COUNTRY:
-          description: Alias for CORRESPONDENT_COUNTRY
-          example: CORRESPONDENT_COUNTRY_ALIAS
-          type: string
-        CORRESPONDENT_NAME:
-          description: Alias for CORRESPONDENT_NAME
-          example: CORRESPONDENT_NAME_ALIAS
-          type: string
-        CORRESPONDENT_STATE:
-          description: Alias for CORRESPONDENT_STATE
-          example: CORRESPONDENT_STATE_ALIAS
-          type: string
-        CORRESPONDENT_ZIP_CODE:
-          description: Alias for CORRESPONDENT_ZIP_CODE
-          example: CORRESPONDENT_ZIP_CODE_ALIAS
-          type: string
-        CPC_4:
-          description: Alias for CPC_4
-          example: CPC_4_ALIAS
-          type: string
-        CPC_CURRENT:
-          description: Alias for CPC_CURRENT
-          example: CPC_CURRENT_ALIAS
-          type: string
-        CPC_SYMBOL:
-          description: Alias for CPC_SYMBOL
-          example: CPC_SYMBOL_ALIAS
-          type: string
-        CPC_TYPE:
-          description: Alias for CPC_TYPE
-          example: CPC_TYPE_ALIAS
-          type: string
-        DEAD_ALIVE_STATUS:
-          description: Alias for DEAD_ALIVE_STATUS
-          example: DEAD_ALIVE_STATUS_ALIAS
-          type: string
-        DERWENT_BACKWARD_CITATION_COUNT:
-          description: Alias for DERWENT_BACKWARD_CITATION_COUNT
-          example: DERWENT_BACKWARD_CITATION_COUNT_ALIAS
-          type: string
-        DERWENT_FORWARD_CITATION_COUNT:
-          description: Alias for DERWENT_FORWARD_CITATION_COUNT
-          example: DERWENT_FORWARD_CITATION_COUNT_ALIAS
-          type: string
-        DOCDB_SIMPLE_FAMILY_ID:
-          description: Alias for DOCDB_SIMPLE_FAMILY_ID
-          example: DOCDB_SIMPLE_FAMILY_ID_ALIAS
-          type: string
-        DOCUMENT_GUID:
-          description: Alias for DOCUMENT_GUID
-          example: DOCUMENT_GUID_ALIAS
-          type: string
-        DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL:
-          description: Alias for DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL
-          example: DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL_ALIAS
-          type: string
-        DPCI_CITED_COUNTS_AUTHORITIES_TOTAL:
-          description: Alias for DPCI_CITED_COUNTS_AUTHORITIES_TOTAL
-          example: DPCI_CITED_COUNTS_AUTHORITIES_TOTAL_ALIAS
-          type: string
-        DPCI_CITED_COUNTS_NON_PATENTS_TOTAL:
-          description: Alias for DPCI_CITED_COUNTS_NON_PATENTS_TOTAL
-          example: DPCI_CITED_COUNTS_NON_PATENTS_TOTAL_ALIAS
-          type: string
-        DPCI_CITED_COUNTS_PATENTS_TOTAL:
-          description: Alias for DPCI_CITED_COUNTS_PATENTS_TOTAL
-          example: DPCI_CITED_COUNTS_PATENTS_TOTAL_ALIAS
-          type: string
-        DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL:
-          description: Alias for DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL
-          example: DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL_ALIAS
-          type: string
-        DPCI_CITING_COUNTS_AUTHORITIES_TOTAL:
-          description: Alias for DPCI_CITING_COUNTS_AUTHORITIES_TOTAL
-          example: DPCI_CITING_COUNTS_AUTHORITIES_TOTAL_ALIAS
-          type: string
-        DPCI_CITING_COUNTS_PATENTS_TOTAL:
-          description: Alias for DPCI_CITING_COUNTS_PATENTS_TOTAL
-          example: DPCI_CITING_COUNTS_PATENTS_TOTAL_ALIAS
-          type: string
-        DSI_AGE_DISCOUNT:
-          description: Alias for DSI_AGE_DISCOUNT
-          example: DSI_AGE_DISCOUNT_ALIAS
-          type: string
-        DSI_AVERAGE_SCORE:
-          description: Alias for DSI_AVERAGE_SCORE
-          example: DSI_AVERAGE_SCORE_ALIAS
-          type: string
-        DSI_INVENTION_GLOBALIZATION_SCORE:
-          description: Alias for DSI_INVENTION_GLOBALIZATION_SCORE
-          example: DSI_INVENTION_GLOBALIZATION_SCORE_ALIAS
-          type: string
-        DSI_INVENTION_INFLUENCE_SCORE:
-          description: Alias for DSI_INVENTION_INFLUENCE_SCORE
-          example: DSI_INVENTION_INFLUENCE_SCORE_ALIAS
-          type: string
-        DSI_INVENTION_SUCCESS_SCORE:
-          description: Alias for DSI_INVENTION_SUCCESS_SCORE
-          example: DSI_INVENTION_SUCCESS_SCORE_ALIAS
-          type: string
-        DSI_STRENGTH_INDEX:
-          description: Alias for DSI_STRENGTH_INDEX
-          example: DSI_STRENGTH_INDEX_ALIAS
-          type: string
-        DSI_TECHNICAL_DISTINCTIVENESS_SCORE:
-          description: Alias for DSI_TECHNICAL_DISTINCTIVENESS_SCORE
-          example: DSI_TECHNICAL_DISTINCTIVENESS_SCORE_ALIAS
-          type: string
-        DSI_YEARS_REMAINING:
-          description: Alias for DSI_YEARS_REMAINING
-          example: DSI_YEARS_REMAINING_ALIAS
-          type: string
-        DWPI_ACCESSION_NUMBER:
-          description: Alias for DWPI_ACCESSION_NUMBER
-          example: DWPI_ACCESSION_NUMBER_ALIAS
-          type: string
-        DWPI_APPLICATION_NUMBER_BASIC:
-          description: Alias for DWPI_APPLICATION_NUMBER_BASIC
-          example: DWPI_APPLICATION_NUMBER_BASIC_ALIAS
-          type: string
-        DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC:
-          description: Alias for DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC
-          example: DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC_ALIAS
-          type: string
-        DWPI_ASSIGNEE_CODE:
-          description: Alias for DWPI_ASSIGNEE_CODE
-          example: DWPI_ASSIGNEE_CODE_ALIAS
-          type: string
-        DWPI_ASSIGNEE_CODE_TYPE:
-          description: Alias for DWPI_ASSIGNEE_CODE_TYPE
-          example: DWPI_ASSIGNEE_CODE_TYPE_ALIAS
-          type: string
-        DWPI_ASSIGNEE_NAME:
-          description: Alias for DWPI_ASSIGNEE_NAME
-          example: DWPI_ASSIGNEE_NAME_ALIAS
-          type: string
-        DWPI_CLASS:
-          description: Alias for DWPI_CLASS
-          example: DWPI_CLASS_ALIAS
-          type: string
-        DWPI_CLASS_DESCRIPTION:
-          description: Alias for DWPI_CLASS_DESCRIPTION
-          example: DWPI_CLASS_DESCRIPTION_ALIAS
-          type: string
-        DWPI_CLASS_SECTION:
-          description: Alias for DWPI_CLASS_SECTION
-          example: DWPI_CLASS_SECTION_ALIAS
-          type: string
-        DWPI_CLASS_SECTION_DESCRIPTION:
-          description: Alias for DWPI_CLASS_SECTION_DESCRIPTION
-          example: DWPI_CLASS_SECTION_DESCRIPTION_ALIAS
-          type: string
-        DWPI_DESIGNATED_OFFICE_COUNT:
-          description: Alias for DWPI_DESIGNATED_OFFICE_COUNT
-          example: DWPI_DESIGNATED_OFFICE_COUNT_ALIAS
-          type: string
-        DWPI_EARLIEST_PRIORITY_DATE:
-          description: Alias for DWPI_EARLIEST_PRIORITY_DATE
-          example: DWPI_EARLIEST_PRIORITY_DATE_ALIAS
-          type: string
-        DWPI_EARLIEST_PRIORITY_YEAR:
-          description: Alias for DWPI_EARLIEST_PRIORITY_YEAR
-          example: DWPI_EARLIEST_PRIORITY_YEAR_ALIAS
-          type: string
-        DWPI_FAMILY_MEMBER_COUNT:
-          description: Alias for DWPI_FAMILY_MEMBER_COUNT
-          example: DWPI_FAMILY_MEMBER_COUNT_ALIAS
-          type: string
-        DWPI_FAMILY_STATUS:
-          description: Alias for DWPI_FAMILY_STATUS
-          example: DWPI_FAMILY_STATUS_ALIAS
-          type: string
-        DWPI_INVENTOR_NAME:
-          description: Alias for DWPI_INVENTOR_NAME
-          example: DWPI_INVENTOR_NAME_ALIAS
-          type: string
-        DWPI_KIND_CODE_BASIC:
-          description: Alias for DWPI_KIND_CODE_BASIC
-          example: DWPI_KIND_CODE_BASIC_ALIAS
-          type: string
-        DWPI_MANUAL_CODE:
-          description: Alias for DWPI_MANUAL_CODE
-          example: DWPI_MANUAL_CODE_ALIAS
-          type: string
-        DWPI_MANUAL_CODE_4:
-          description: Alias for DWPI_MANUAL_CODE_4
-          example: DWPI_MANUAL_CODE_4_ALIAS
-          type: string
-        DWPI_MANUAL_CODE_CLASS:
-          description: Alias for DWPI_MANUAL_CODE_CLASS
-          example: DWPI_MANUAL_CODE_CLASS_ALIAS
-          type: string
-        DWPI_MANUAL_CODE_CLASS_DESCRIPTION:
-          description: Alias for DWPI_MANUAL_CODE_CLASS_DESCRIPTION
-          example: DWPI_MANUAL_CODE_CLASS_DESCRIPTION_ALIAS
-          type: string
-        DWPI_MANUAL_CODE_DESCRIPTION:
-          description: Alias for DWPI_MANUAL_CODE_DESCRIPTION
-          example: DWPI_MANUAL_CODE_DESCRIPTION_ALIAS
-          type: string
-        DWPI_MANUAL_CODE_SECTION:
-          description: Alias for DWPI_MANUAL_CODE_SECTION
-          example: DWPI_MANUAL_CODE_SECTION_ALIAS
-          type: string
-        DWPI_MANUAL_CODE_SECTION_DESCRIPTION:
-          description: Alias for DWPI_MANUAL_CODE_SECTION_DESCRIPTION
-          example: DWPI_MANUAL_CODE_SECTION_DESCRIPTION_ALIAS
-          type: string
-        DWPI_PUBLICATION_NUMBER_BASIC:
-          description: Alias for DWPI_PUBLICATION_NUMBER_BASIC
-          example: DWPI_PUBLICATION_NUMBER_BASIC_ALIAS
-          type: string
-        DWPI_REGISTRATION_OFFICE_BASIC:
-          description: Alias for DWPI_REGISTRATION_OFFICE_BASIC
-          example: DWPI_REGISTRATION_OFFICE_BASIC_ALIAS
-          type: string
-        DWPI_TITLE:
-          description: Alias for DWPI_TITLE
-          example: DWPI_TITLE_ALIAS
-          type: string
-        DWPI_UPDATE:
-          description: Alias for DWPI_UPDATE
-          example: DWPI_UPDATE_ALIAS
-          type: string
-        DWPI_UPDATE_BASIC:
-          description: Alias for DWPI_UPDATE_BASIC
-          example: DWPI_UPDATE_BASIC_ALIAS
-          type: string
-        EARLIEST_PRIORITY_COUNTRY:
-          description: Alias for EARLIEST_PRIORITY_COUNTRY
-          example: EARLIEST_PRIORITY_COUNTRY_ALIAS
-          type: string
-        EARLIEST_PRIORITY_DATE:
-          description: Alias for EARLIEST_PRIORITY_DATE
-          example: EARLIEST_PRIORITY_DATE_ALIAS
-          type: string
-        EARLIEST_PRIORITY_NUMBER:
-          description: Alias for EARLIEST_PRIORITY_NUMBER
-          example: EARLIEST_PRIORITY_NUMBER_ALIAS
-          type: string
-        EARLIEST_PRIORITY_YEAR:
-          description: Alias for EARLIEST_PRIORITY_YEAR
-          example: EARLIEST_PRIORITY_YEAR_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR:
-          description: Alias for ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR
-          example: ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_DATE:
-          description: Alias for ESTIMATED_EXPIRATION_DATE
-          example: ESTIMATED_EXPIRATION_DATE_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_DISCLAIMER_FLAG:
-          description: Alias for ESTIMATED_EXPIRATION_DISCLAIMER_FLAG
-          example: ESTIMATED_EXPIRATION_DISCLAIMER_FLAG_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM:
-          description: Alias for ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM
-          example: ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE:
-          description: Alias for ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE
-          example: ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT:
-          description: Alias for ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT
-          example: ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT_ALIAS
-          type: string
-        ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE:
-          description: Alias for ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE
-          example: ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE_ALIAS
-          type: string
-        EXAMINER_MAIN:
-          description: Alias for EXAMINER_MAIN
-          example: EXAMINER_MAIN_ALIAS
-          type: string
-        EXAMINER_SECONDARY:
-          description: Alias for EXAMINER_SECONDARY
-          example: EXAMINER_SECONDARY_ALIAS
-          type: string
-        GRANTED:
-          description: Alias for GRANTED
-          example: GRANTED_ALIAS
-          type: string
-        GRANT_DATE:
-          description: Alias for GRANT_DATE
-          example: GRANT_DATE_ALIAS
-          type: string
-        GREEN_DATA_CATEGORY:
-          description: Alias for GREEN_DATA_CATEGORY
-          example: GREEN_DATA_CATEGORY_ALIAS
-          type: string
-        GUID:
-          description: Alias for GUID
-          example: GUID_ALIAS
-          type: string
-        INPADOC_FAMILY_STATUS:
-          description: Alias for INPADOC_FAMILY_STATUS
-          example: INPADOC_FAMILY_STATUS_ALIAS
-          type: string
-        INVENTOR_ADDRESS:
-          description: Alias for INVENTOR_ADDRESS
-          example: INVENTOR_ADDRESS_ALIAS
-          type: string
-        INVENTOR_CITY:
-          description: Alias for INVENTOR_CITY
-          example: INVENTOR_CITY_ALIAS
-          type: string
-        INVENTOR_COUNTRY:
-          description: Alias for INVENTOR_COUNTRY
-          example: INVENTOR_COUNTRY_ALIAS
-          type: string
-        INVENTOR_NAME:
-          description: Alias for INVENTOR_NAME
-          example: INVENTOR_NAME_ALIAS
-          type: string
-        INVENTOR_NATIONALITY:
-          description: Alias for INVENTOR_NATIONALITY
-          example: INVENTOR_NATIONALITY_ALIAS
-          type: string
-        INVENTOR_STATE:
-          description: Alias for INVENTOR_STATE
-          example: INVENTOR_STATE_ALIAS
-          type: string
-        INVENTOR_ZIP_CODE:
-          description: Alias for INVENTOR_ZIP_CODE
-          example: INVENTOR_ZIP_CODE_ALIAS
-          type: string
-        IPC_4:
-          description: Alias for IPC_4
-          example: IPC_4_ALIAS
-          type: string
-        IPC_CLASS:
-          description: Alias for IPC_CLASS
-          example: IPC_CLASS_ALIAS
-          type: string
-        IPC_CLASS_DESCRIPTION:
-          description: Alias for IPC_CLASS_DESCRIPTION
-          example: IPC_CLASS_DESCRIPTION_ALIAS
-          type: string
-        IPC_CURRENT:
-          description: Alias for IPC_CURRENT
-          example: IPC_CURRENT_ALIAS
-          type: string
-        IPC_DESCRIPTION:
-          description: Alias for IPC_DESCRIPTION
-          example: IPC_DESCRIPTION_ALIAS
-          type: string
-        IPC_SECTION:
-          description: Alias for IPC_SECTION
-          example: IPC_SECTION_ALIAS
-          type: string
-        IPC_SECTION_DESCRIPTION:
-          description: Alias for IPC_SECTION_DESCRIPTION
-          example: IPC_SECTION_DESCRIPTION_ALIAS
-          type: string
-        IPC_SUBCLASS:
-          description: Alias for IPC_SUBCLASS
-          example: IPC_SUBCLASS_ALIAS
-          type: string
-        IPC_SUBCLASS_DESCRIPTION:
-          description: Alias for IPC_SUBCLASS_DESCRIPTION
-          example: IPC_SUBCLASS_DESCRIPTION_ALIAS
-          type: string
-        IPC_SYMBOL:
-          description: Alias for IPC_SYMBOL
-          example: IPC_SYMBOL_ALIAS
-          type: string
-        IPC_TYPE:
-          description: Alias for IPC_TYPE
-          example: IPC_TYPE_ALIAS
-          type: string
-        JP_CLASS_FI_CODE:
-          description: Alias for JP_CLASS_FI_CODE
-          example: JP_CLASS_FI_CODE_ALIAS
-          type: string
-        JP_CLASS_F_TERM:
-          description: Alias for JP_CLASS_F_TERM
-          example: JP_CLASS_F_TERM_ALIAS
-          type: string
-        KIND_CODE:
-          description: Alias for KIND_CODE
-          example: KIND_CODE_ALIAS
-          type: string
-        LAST_UPDATED_DATE:
-          description: Alias for LAST_UPDATED_DATE
-          example: LAST_UPDATED_DATE_ALIAS
-          type: string
-        OPTIMIZED_ASSIGNEES:
-          description: Alias for OPTIMIZED_ASSIGNEES
-          example: OPTIMIZED_ASSIGNEES_ALIAS
-          type: string
-        PATENT_TYPE:
-          description: Alias for PATENT_TYPE
-          example: PATENT_TYPE_ALIAS
-          type: string
-        PUBLICATION_DATE:
-          description: Alias for PUBLICATION_DATE
-          example: PUBLICATION_DATE_ALIAS
-          type: string
-        PUBLICATION_LANGUAGE:
-          description: Alias for PUBLICATION_LANGUAGE
-          example: PUBLICATION_LANGUAGE_ALIAS
-          type: string
-        PUBLICATION_NUMBER:
-          description: Alias for PUBLICATION_NUMBER
-          example: PUBLICATION_NUMBER_ALIAS
-          type: string
-        PUBLICATION_TYPE:
-          description: Alias for PUBLICATION_TYPE
-          example: PUBLICATION_TYPE_ALIAS
-          type: string
-        PUBLICATION_YEAR:
-          description: Alias for PUBLICATION_YEAR
-          example: PUBLICATION_YEAR_ALIAS
-          type: string
-        REGISTRATION_OFFICE:
-          description: Alias for REGISTRATION_OFFICE
-          example: REGISTRATION_OFFICE_ALIAS
-          type: string
-        REPRESENTATIVE_NAME:
-          description: Alias for REPRESENTATIVE_NAME
-          example: REPRESENTATIVE_NAME_ALIAS
-          type: string
-        SERIAL_NUMBER:
-          description: Alias for SERIAL_NUMBER
-          example: SERIAL_NUMBER_ALIAS
-          type: string
-        ULTIMATE_PARENT:
-          description: Alias for ULTIMATE_PARENT
-          example: ULTIMATE_PARENT_ALIAS
-          type: string
-      type: object
-    match_patent:
-      properties:
-        MATCH:
-          properties:
-            ALG:
-              description: Matching algorithm (currently only "DEFAULT")
-              example: DEFAULT
-              type: string
-            MATCH_FIELDS:
-              description: Fields to match. Must be one of ('assignee', 'parent_assignee')
-              items:
-                description: Fields to match. Must be one of ('assignee', 'parent_assignee')
-                example: assignee
-                type: string
-              type: array
-            THRESHOLD:
-              description: Minimum match score
-              example: 0
-              type: number
-            TOPN:
-              default: 10
-              description: Maximum number of matches to return
-              example: 2
-              type: number
-            VALUE:
-              description: A field value to attempt to match
-              example: Microsoft
-              type: string
-          type: object
-      type: object
-    match_response_patent:
-      properties:
-        assignee:
-          items:
-            properties:
-              count:
-                description: Number of documents with this value
-                type: number
-              name:
-                description: Value of field assignee
-                type: string
-              score:
-                description: Match score
-                type: number
-            type: object
-          type: array
-        parent_assignee:
-          items:
-            properties:
-              count:
-                description: Number of documents with this value
-                type: number
-              name:
-                description: Value of field parent_assignee
-                type: string
-              score:
-                description: Match score
-                type: number
-            type: object
           type: array
       type: object
     records_request_patent:
@@ -6995,6 +6230,36 @@ components:
           type: array
       required:
       - GUIDS
+      type: object
+    match_patent:
+      properties:
+        MATCH:
+          properties:
+            ALG:
+              description: Matching algorithm (currently only "DEFAULT")
+              example: DEFAULT
+              type: string
+            MATCH_FIELDS:
+              description: Fields to match. Must be one of ('assignee', 'parent_assignee')
+              items:
+                description: Fields to match. Must be one of ('assignee', 'parent_assignee')
+                example: assignee
+                type: string
+              type: array
+            THRESHOLD:
+              description: Minimum match score
+              example: 0
+              type: number
+            TOPN:
+              default: 10
+              description: Maximum number of matches to return
+              example: 2
+              type: number
+            VALUE:
+              description: A field value to attempt to match
+              example: Microsoft
+              type: string
+          type: object
       type: object
     search_request_patent:
       properties:
@@ -8128,6 +7393,741 @@ components:
               - $ref: '#/components/schemas/query_body_patent'
             type: array
           - $ref: '#/components/schemas/query_body_patent'
+      type: object
+    field_aliases_patent:
+      properties:
+        AGENT_ADDRESS:
+          description: Alias for AGENT_ADDRESS
+          example: AGENT_ADDRESS_ALIAS
+          type: string
+        AGENT_CITY:
+          description: Alias for AGENT_CITY
+          example: AGENT_CITY_ALIAS
+          type: string
+        AGENT_COUNTRY:
+          description: Alias for AGENT_COUNTRY
+          example: AGENT_COUNTRY_ALIAS
+          type: string
+        AGENT_INID:
+          description: Alias for AGENT_INID
+          example: AGENT_INID_ALIAS
+          type: string
+        AGENT_NAME:
+          description: Alias for AGENT_NAME
+          example: AGENT_NAME_ALIAS
+          type: string
+        AGENT_STATE:
+          description: Alias for AGENT_STATE
+          example: AGENT_STATE_ALIAS
+          type: string
+        AGENT_ZIP_CODE:
+          description: Alias for AGENT_ZIP_CODE
+          example: AGENT_ZIP_CODE_ALIAS
+          type: string
+        APPLICATION_DATE:
+          description: Alias for APPLICATION_DATE
+          example: APPLICATION_DATE_ALIAS
+          type: string
+        APPLICATION_NUMBER:
+          description: Alias for APPLICATION_NUMBER
+          example: APPLICATION_NUMBER_ALIAS
+          type: string
+        APPLICATION_REGISTRATION_OFFICE:
+          description: Alias for APPLICATION_REGISTRATION_OFFICE
+          example: APPLICATION_REGISTRATION_OFFICE_ALIAS
+          type: string
+        ASSIGNEE_CURRENT_US:
+          description: Alias for ASSIGNEE_CURRENT_US
+          example: ASSIGNEE_CURRENT_US_ALIAS
+          type: string
+        ASSIGNEE_NAME:
+          description: Alias for ASSIGNEE_NAME
+          example: ASSIGNEE_NAME_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_ADDRESS:
+          description: Alias for ASSIGNEE_ORIGINAL_ADDRESS
+          example: ASSIGNEE_ORIGINAL_ADDRESS_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_CITY:
+          description: Alias for ASSIGNEE_ORIGINAL_CITY
+          example: ASSIGNEE_ORIGINAL_CITY_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_COUNTRY:
+          description: Alias for ASSIGNEE_ORIGINAL_COUNTRY
+          example: ASSIGNEE_ORIGINAL_COUNTRY_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_INID:
+          description: Alias for ASSIGNEE_ORIGINAL_INID
+          example: ASSIGNEE_ORIGINAL_INID_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_NAME:
+          description: Alias for ASSIGNEE_ORIGINAL_NAME
+          example: ASSIGNEE_ORIGINAL_NAME_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_NATIONALITY:
+          description: Alias for ASSIGNEE_ORIGINAL_NATIONALITY
+          example: ASSIGNEE_ORIGINAL_NATIONALITY_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_STATE:
+          description: Alias for ASSIGNEE_ORIGINAL_STATE
+          example: ASSIGNEE_ORIGINAL_STATE_ALIAS
+          type: string
+        ASSIGNEE_ORIGINAL_ZIP_CODE:
+          description: Alias for ASSIGNEE_ORIGINAL_ZIP_CODE
+          example: ASSIGNEE_ORIGINAL_ZIP_CODE_ALIAS
+          type: string
+        CITATION_WOS_CLUSTERKEY:
+          description: Alias for CITATION_WOS_CLUSTERKEY
+          example: CITATION_WOS_CLUSTERKEY_ALIAS
+          type: string
+        CITATION_WOS_SCORE:
+          description: Alias for CITATION_WOS_SCORE
+          example: CITATION_WOS_SCORE_ALIAS
+          type: string
+        CORRESPONDENT_ADDRESS:
+          description: Alias for CORRESPONDENT_ADDRESS
+          example: CORRESPONDENT_ADDRESS_ALIAS
+          type: string
+        CORRESPONDENT_CITY:
+          description: Alias for CORRESPONDENT_CITY
+          example: CORRESPONDENT_CITY_ALIAS
+          type: string
+        CORRESPONDENT_COUNTRY:
+          description: Alias for CORRESPONDENT_COUNTRY
+          example: CORRESPONDENT_COUNTRY_ALIAS
+          type: string
+        CORRESPONDENT_NAME:
+          description: Alias for CORRESPONDENT_NAME
+          example: CORRESPONDENT_NAME_ALIAS
+          type: string
+        CORRESPONDENT_STATE:
+          description: Alias for CORRESPONDENT_STATE
+          example: CORRESPONDENT_STATE_ALIAS
+          type: string
+        CORRESPONDENT_ZIP_CODE:
+          description: Alias for CORRESPONDENT_ZIP_CODE
+          example: CORRESPONDENT_ZIP_CODE_ALIAS
+          type: string
+        CPC_4:
+          description: Alias for CPC_4
+          example: CPC_4_ALIAS
+          type: string
+        CPC_CURRENT:
+          description: Alias for CPC_CURRENT
+          example: CPC_CURRENT_ALIAS
+          type: string
+        CPC_SYMBOL:
+          description: Alias for CPC_SYMBOL
+          example: CPC_SYMBOL_ALIAS
+          type: string
+        CPC_TYPE:
+          description: Alias for CPC_TYPE
+          example: CPC_TYPE_ALIAS
+          type: string
+        DEAD_ALIVE_STATUS:
+          description: Alias for DEAD_ALIVE_STATUS
+          example: DEAD_ALIVE_STATUS_ALIAS
+          type: string
+        DERWENT_BACKWARD_CITATION_COUNT:
+          description: Alias for DERWENT_BACKWARD_CITATION_COUNT
+          example: DERWENT_BACKWARD_CITATION_COUNT_ALIAS
+          type: string
+        DERWENT_FORWARD_CITATION_COUNT:
+          description: Alias for DERWENT_FORWARD_CITATION_COUNT
+          example: DERWENT_FORWARD_CITATION_COUNT_ALIAS
+          type: string
+        DOCDB_SIMPLE_FAMILY_ID:
+          description: Alias for DOCDB_SIMPLE_FAMILY_ID
+          example: DOCDB_SIMPLE_FAMILY_ID_ALIAS
+          type: string
+        DOCUMENT_GUID:
+          description: Alias for DOCUMENT_GUID
+          example: DOCUMENT_GUID_ALIAS
+          type: string
+        DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL:
+          description: Alias for DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL
+          example: DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL_ALIAS
+          type: string
+        DPCI_CITED_COUNTS_AUTHORITIES_TOTAL:
+          description: Alias for DPCI_CITED_COUNTS_AUTHORITIES_TOTAL
+          example: DPCI_CITED_COUNTS_AUTHORITIES_TOTAL_ALIAS
+          type: string
+        DPCI_CITED_COUNTS_NON_PATENTS_TOTAL:
+          description: Alias for DPCI_CITED_COUNTS_NON_PATENTS_TOTAL
+          example: DPCI_CITED_COUNTS_NON_PATENTS_TOTAL_ALIAS
+          type: string
+        DPCI_CITED_COUNTS_PATENTS_TOTAL:
+          description: Alias for DPCI_CITED_COUNTS_PATENTS_TOTAL
+          example: DPCI_CITED_COUNTS_PATENTS_TOTAL_ALIAS
+          type: string
+        DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL:
+          description: Alias for DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL
+          example: DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL_ALIAS
+          type: string
+        DPCI_CITING_COUNTS_AUTHORITIES_TOTAL:
+          description: Alias for DPCI_CITING_COUNTS_AUTHORITIES_TOTAL
+          example: DPCI_CITING_COUNTS_AUTHORITIES_TOTAL_ALIAS
+          type: string
+        DPCI_CITING_COUNTS_PATENTS_TOTAL:
+          description: Alias for DPCI_CITING_COUNTS_PATENTS_TOTAL
+          example: DPCI_CITING_COUNTS_PATENTS_TOTAL_ALIAS
+          type: string
+        DSI_AGE_DISCOUNT:
+          description: Alias for DSI_AGE_DISCOUNT
+          example: DSI_AGE_DISCOUNT_ALIAS
+          type: string
+        DSI_AVERAGE_SCORE:
+          description: Alias for DSI_AVERAGE_SCORE
+          example: DSI_AVERAGE_SCORE_ALIAS
+          type: string
+        DSI_INVENTION_GLOBALIZATION_SCORE:
+          description: Alias for DSI_INVENTION_GLOBALIZATION_SCORE
+          example: DSI_INVENTION_GLOBALIZATION_SCORE_ALIAS
+          type: string
+        DSI_INVENTION_INFLUENCE_SCORE:
+          description: Alias for DSI_INVENTION_INFLUENCE_SCORE
+          example: DSI_INVENTION_INFLUENCE_SCORE_ALIAS
+          type: string
+        DSI_INVENTION_SUCCESS_SCORE:
+          description: Alias for DSI_INVENTION_SUCCESS_SCORE
+          example: DSI_INVENTION_SUCCESS_SCORE_ALIAS
+          type: string
+        DSI_STRENGTH_INDEX:
+          description: Alias for DSI_STRENGTH_INDEX
+          example: DSI_STRENGTH_INDEX_ALIAS
+          type: string
+        DSI_TECHNICAL_DISTINCTIVENESS_SCORE:
+          description: Alias for DSI_TECHNICAL_DISTINCTIVENESS_SCORE
+          example: DSI_TECHNICAL_DISTINCTIVENESS_SCORE_ALIAS
+          type: string
+        DSI_YEARS_REMAINING:
+          description: Alias for DSI_YEARS_REMAINING
+          example: DSI_YEARS_REMAINING_ALIAS
+          type: string
+        DWPI_ACCESSION_NUMBER:
+          description: Alias for DWPI_ACCESSION_NUMBER
+          example: DWPI_ACCESSION_NUMBER_ALIAS
+          type: string
+        DWPI_APPLICATION_NUMBER_BASIC:
+          description: Alias for DWPI_APPLICATION_NUMBER_BASIC
+          example: DWPI_APPLICATION_NUMBER_BASIC_ALIAS
+          type: string
+        DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC:
+          description: Alias for DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC
+          example: DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC_ALIAS
+          type: string
+        DWPI_ASSIGNEE_CODE:
+          description: Alias for DWPI_ASSIGNEE_CODE
+          example: DWPI_ASSIGNEE_CODE_ALIAS
+          type: string
+        DWPI_ASSIGNEE_CODE_TYPE:
+          description: Alias for DWPI_ASSIGNEE_CODE_TYPE
+          example: DWPI_ASSIGNEE_CODE_TYPE_ALIAS
+          type: string
+        DWPI_ASSIGNEE_NAME:
+          description: Alias for DWPI_ASSIGNEE_NAME
+          example: DWPI_ASSIGNEE_NAME_ALIAS
+          type: string
+        DWPI_CLASS:
+          description: Alias for DWPI_CLASS
+          example: DWPI_CLASS_ALIAS
+          type: string
+        DWPI_CLASS_DESCRIPTION:
+          description: Alias for DWPI_CLASS_DESCRIPTION
+          example: DWPI_CLASS_DESCRIPTION_ALIAS
+          type: string
+        DWPI_CLASS_SECTION:
+          description: Alias for DWPI_CLASS_SECTION
+          example: DWPI_CLASS_SECTION_ALIAS
+          type: string
+        DWPI_CLASS_SECTION_DESCRIPTION:
+          description: Alias for DWPI_CLASS_SECTION_DESCRIPTION
+          example: DWPI_CLASS_SECTION_DESCRIPTION_ALIAS
+          type: string
+        DWPI_DESIGNATED_OFFICE_COUNT:
+          description: Alias for DWPI_DESIGNATED_OFFICE_COUNT
+          example: DWPI_DESIGNATED_OFFICE_COUNT_ALIAS
+          type: string
+        DWPI_EARLIEST_PRIORITY_DATE:
+          description: Alias for DWPI_EARLIEST_PRIORITY_DATE
+          example: DWPI_EARLIEST_PRIORITY_DATE_ALIAS
+          type: string
+        DWPI_EARLIEST_PRIORITY_YEAR:
+          description: Alias for DWPI_EARLIEST_PRIORITY_YEAR
+          example: DWPI_EARLIEST_PRIORITY_YEAR_ALIAS
+          type: string
+        DWPI_FAMILY_MEMBER_COUNT:
+          description: Alias for DWPI_FAMILY_MEMBER_COUNT
+          example: DWPI_FAMILY_MEMBER_COUNT_ALIAS
+          type: string
+        DWPI_FAMILY_STATUS:
+          description: Alias for DWPI_FAMILY_STATUS
+          example: DWPI_FAMILY_STATUS_ALIAS
+          type: string
+        DWPI_INVENTOR_NAME:
+          description: Alias for DWPI_INVENTOR_NAME
+          example: DWPI_INVENTOR_NAME_ALIAS
+          type: string
+        DWPI_KIND_CODE_BASIC:
+          description: Alias for DWPI_KIND_CODE_BASIC
+          example: DWPI_KIND_CODE_BASIC_ALIAS
+          type: string
+        DWPI_MANUAL_CODE:
+          description: Alias for DWPI_MANUAL_CODE
+          example: DWPI_MANUAL_CODE_ALIAS
+          type: string
+        DWPI_MANUAL_CODE_4:
+          description: Alias for DWPI_MANUAL_CODE_4
+          example: DWPI_MANUAL_CODE_4_ALIAS
+          type: string
+        DWPI_MANUAL_CODE_CLASS:
+          description: Alias for DWPI_MANUAL_CODE_CLASS
+          example: DWPI_MANUAL_CODE_CLASS_ALIAS
+          type: string
+        DWPI_MANUAL_CODE_CLASS_DESCRIPTION:
+          description: Alias for DWPI_MANUAL_CODE_CLASS_DESCRIPTION
+          example: DWPI_MANUAL_CODE_CLASS_DESCRIPTION_ALIAS
+          type: string
+        DWPI_MANUAL_CODE_DESCRIPTION:
+          description: Alias for DWPI_MANUAL_CODE_DESCRIPTION
+          example: DWPI_MANUAL_CODE_DESCRIPTION_ALIAS
+          type: string
+        DWPI_MANUAL_CODE_SECTION:
+          description: Alias for DWPI_MANUAL_CODE_SECTION
+          example: DWPI_MANUAL_CODE_SECTION_ALIAS
+          type: string
+        DWPI_MANUAL_CODE_SECTION_DESCRIPTION:
+          description: Alias for DWPI_MANUAL_CODE_SECTION_DESCRIPTION
+          example: DWPI_MANUAL_CODE_SECTION_DESCRIPTION_ALIAS
+          type: string
+        DWPI_PUBLICATION_NUMBER_BASIC:
+          description: Alias for DWPI_PUBLICATION_NUMBER_BASIC
+          example: DWPI_PUBLICATION_NUMBER_BASIC_ALIAS
+          type: string
+        DWPI_REGISTRATION_OFFICE_BASIC:
+          description: Alias for DWPI_REGISTRATION_OFFICE_BASIC
+          example: DWPI_REGISTRATION_OFFICE_BASIC_ALIAS
+          type: string
+        DWPI_TITLE:
+          description: Alias for DWPI_TITLE
+          example: DWPI_TITLE_ALIAS
+          type: string
+        DWPI_UPDATE:
+          description: Alias for DWPI_UPDATE
+          example: DWPI_UPDATE_ALIAS
+          type: string
+        DWPI_UPDATE_BASIC:
+          description: Alias for DWPI_UPDATE_BASIC
+          example: DWPI_UPDATE_BASIC_ALIAS
+          type: string
+        EARLIEST_PRIORITY_COUNTRY:
+          description: Alias for EARLIEST_PRIORITY_COUNTRY
+          example: EARLIEST_PRIORITY_COUNTRY_ALIAS
+          type: string
+        EARLIEST_PRIORITY_DATE:
+          description: Alias for EARLIEST_PRIORITY_DATE
+          example: EARLIEST_PRIORITY_DATE_ALIAS
+          type: string
+        EARLIEST_PRIORITY_NUMBER:
+          description: Alias for EARLIEST_PRIORITY_NUMBER
+          example: EARLIEST_PRIORITY_NUMBER_ALIAS
+          type: string
+        EARLIEST_PRIORITY_YEAR:
+          description: Alias for EARLIEST_PRIORITY_YEAR
+          example: EARLIEST_PRIORITY_YEAR_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR:
+          description: Alias for ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR
+          example: ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_DATE:
+          description: Alias for ESTIMATED_EXPIRATION_DATE
+          example: ESTIMATED_EXPIRATION_DATE_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_DISCLAIMER_FLAG:
+          description: Alias for ESTIMATED_EXPIRATION_DISCLAIMER_FLAG
+          example: ESTIMATED_EXPIRATION_DISCLAIMER_FLAG_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM:
+          description: Alias for ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM
+          example: ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE:
+          description: Alias for ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE
+          example: ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT:
+          description: Alias for ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT
+          example: ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT_ALIAS
+          type: string
+        ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE:
+          description: Alias for ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE
+          example: ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE_ALIAS
+          type: string
+        EXAMINER_MAIN:
+          description: Alias for EXAMINER_MAIN
+          example: EXAMINER_MAIN_ALIAS
+          type: string
+        EXAMINER_SECONDARY:
+          description: Alias for EXAMINER_SECONDARY
+          example: EXAMINER_SECONDARY_ALIAS
+          type: string
+        GRANTED:
+          description: Alias for GRANTED
+          example: GRANTED_ALIAS
+          type: string
+        GRANT_DATE:
+          description: Alias for GRANT_DATE
+          example: GRANT_DATE_ALIAS
+          type: string
+        GREEN_DATA_CATEGORY:
+          description: Alias for GREEN_DATA_CATEGORY
+          example: GREEN_DATA_CATEGORY_ALIAS
+          type: string
+        GUID:
+          description: Alias for GUID
+          example: GUID_ALIAS
+          type: string
+        INPADOC_FAMILY_STATUS:
+          description: Alias for INPADOC_FAMILY_STATUS
+          example: INPADOC_FAMILY_STATUS_ALIAS
+          type: string
+        INVENTOR_ADDRESS:
+          description: Alias for INVENTOR_ADDRESS
+          example: INVENTOR_ADDRESS_ALIAS
+          type: string
+        INVENTOR_CITY:
+          description: Alias for INVENTOR_CITY
+          example: INVENTOR_CITY_ALIAS
+          type: string
+        INVENTOR_COUNTRY:
+          description: Alias for INVENTOR_COUNTRY
+          example: INVENTOR_COUNTRY_ALIAS
+          type: string
+        INVENTOR_NAME:
+          description: Alias for INVENTOR_NAME
+          example: INVENTOR_NAME_ALIAS
+          type: string
+        INVENTOR_NATIONALITY:
+          description: Alias for INVENTOR_NATIONALITY
+          example: INVENTOR_NATIONALITY_ALIAS
+          type: string
+        INVENTOR_STATE:
+          description: Alias for INVENTOR_STATE
+          example: INVENTOR_STATE_ALIAS
+          type: string
+        INVENTOR_ZIP_CODE:
+          description: Alias for INVENTOR_ZIP_CODE
+          example: INVENTOR_ZIP_CODE_ALIAS
+          type: string
+        IPC_4:
+          description: Alias for IPC_4
+          example: IPC_4_ALIAS
+          type: string
+        IPC_CLASS:
+          description: Alias for IPC_CLASS
+          example: IPC_CLASS_ALIAS
+          type: string
+        IPC_CLASS_DESCRIPTION:
+          description: Alias for IPC_CLASS_DESCRIPTION
+          example: IPC_CLASS_DESCRIPTION_ALIAS
+          type: string
+        IPC_CURRENT:
+          description: Alias for IPC_CURRENT
+          example: IPC_CURRENT_ALIAS
+          type: string
+        IPC_DESCRIPTION:
+          description: Alias for IPC_DESCRIPTION
+          example: IPC_DESCRIPTION_ALIAS
+          type: string
+        IPC_SECTION:
+          description: Alias for IPC_SECTION
+          example: IPC_SECTION_ALIAS
+          type: string
+        IPC_SECTION_DESCRIPTION:
+          description: Alias for IPC_SECTION_DESCRIPTION
+          example: IPC_SECTION_DESCRIPTION_ALIAS
+          type: string
+        IPC_SUBCLASS:
+          description: Alias for IPC_SUBCLASS
+          example: IPC_SUBCLASS_ALIAS
+          type: string
+        IPC_SUBCLASS_DESCRIPTION:
+          description: Alias for IPC_SUBCLASS_DESCRIPTION
+          example: IPC_SUBCLASS_DESCRIPTION_ALIAS
+          type: string
+        IPC_SYMBOL:
+          description: Alias for IPC_SYMBOL
+          example: IPC_SYMBOL_ALIAS
+          type: string
+        IPC_TYPE:
+          description: Alias for IPC_TYPE
+          example: IPC_TYPE_ALIAS
+          type: string
+        JP_CLASS_FI_CODE:
+          description: Alias for JP_CLASS_FI_CODE
+          example: JP_CLASS_FI_CODE_ALIAS
+          type: string
+        JP_CLASS_F_TERM:
+          description: Alias for JP_CLASS_F_TERM
+          example: JP_CLASS_F_TERM_ALIAS
+          type: string
+        KIND_CODE:
+          description: Alias for KIND_CODE
+          example: KIND_CODE_ALIAS
+          type: string
+        LAST_UPDATED_DATE:
+          description: Alias for LAST_UPDATED_DATE
+          example: LAST_UPDATED_DATE_ALIAS
+          type: string
+        OPTIMIZED_ASSIGNEES:
+          description: Alias for OPTIMIZED_ASSIGNEES
+          example: OPTIMIZED_ASSIGNEES_ALIAS
+          type: string
+        PATENT_TYPE:
+          description: Alias for PATENT_TYPE
+          example: PATENT_TYPE_ALIAS
+          type: string
+        PUBLICATION_DATE:
+          description: Alias for PUBLICATION_DATE
+          example: PUBLICATION_DATE_ALIAS
+          type: string
+        PUBLICATION_LANGUAGE:
+          description: Alias for PUBLICATION_LANGUAGE
+          example: PUBLICATION_LANGUAGE_ALIAS
+          type: string
+        PUBLICATION_NUMBER:
+          description: Alias for PUBLICATION_NUMBER
+          example: PUBLICATION_NUMBER_ALIAS
+          type: string
+        PUBLICATION_TYPE:
+          description: Alias for PUBLICATION_TYPE
+          example: PUBLICATION_TYPE_ALIAS
+          type: string
+        PUBLICATION_YEAR:
+          description: Alias for PUBLICATION_YEAR
+          example: PUBLICATION_YEAR_ALIAS
+          type: string
+        REGISTRATION_OFFICE:
+          description: Alias for REGISTRATION_OFFICE
+          example: REGISTRATION_OFFICE_ALIAS
+          type: string
+        REPRESENTATIVE_NAME:
+          description: Alias for REPRESENTATIVE_NAME
+          example: REPRESENTATIVE_NAME_ALIAS
+          type: string
+        SERIAL_NUMBER:
+          description: Alias for SERIAL_NUMBER
+          example: SERIAL_NUMBER_ALIAS
+          type: string
+        ULTIMATE_PARENT:
+          description: Alias for ULTIMATE_PARENT
+          example: ULTIMATE_PARENT_ALIAS
+          type: string
+      type: object
+    image_url_list_patent:
+      properties:
+        image_urls:
+          description: URL for an image
+          items:
+            description: URL for an image
+            example: https://
+            type: string
+          type: array
+      type: object
+    query_body_patent:
+      description: Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR
+      properties:
+        ALG:
+          description: Algorithm to use.
+          enum:
+          - BASIC
+          type: string
+        FIELD:
+          description: Field to query
+          enum:
+          - DPCI_CITING_COUNTS_PATENTS_TOTAL
+          - PUBLICATION_YEAR
+          - PUBLICATION_DATE
+          - DWPI_ACCESSION_NUMBER
+          - APPLICATION_REGISTRATION_OFFICE
+          - DSI_AVERAGE_SCORE
+          - ASSIGNEE_ORIGINAL_NATIONALITY
+          - DWPI_TITLE
+          - IPC_SUBCLASS_DESCRIPTION
+          - GUID
+          - DWPI_FAMILY_MEMBER_COUNT
+          - DEAD_ALIVE_STATUS
+          - DWPI_CLASS_SECTION_DESCRIPTION
+          - DWPI_ASSIGNEE_CODE_TYPE
+          - GRANTED
+          - INVENTOR_ADDRESS
+          - DSI_STRENGTH_INDEX
+          - IPC_SYMBOL
+          - ASSIGNEE_ORIGINAL_STATE
+          - INVENTOR_STATE
+          - KIND_CODE
+          - EXAMINER_SECONDARY
+          - IPC_SECTION
+          - GRANT_DATE
+          - DPCI_CITED_COUNTS_PATENTS_TOTAL
+          - JP_CLASS_F_TERM
+          - DWPI_APPLICATION_NUMBER_BASIC
+          - DWPI_MANUAL_CODE_4
+          - EARLIEST_PRIORITY_COUNTRY
+          - IPC_SUBCLASS
+          - EARLIEST_PRIORITY_NUMBER
+          - DWPI_ASSIGNEE_NAME
+          - ASSIGNEE_CURRENT_US
+          - DWPI_DESIGNATED_OFFICE_COUNT
+          - CPC_TYPE
+          - CORRESPONDENT_CITY
+          - DERWENT_FORWARD_CITATION_COUNT
+          - CORRESPONDENT_NAME
+          - AGENT_CITY
+          - ASSIGNEE_NAME
+          - DSI_INVENTION_INFLUENCE_SCORE
+          - DWPI_INVENTOR_NAME
+          - IPC_CURRENT
+          - ASSIGNEE_ORIGINAL_NAME
+          - IPC_CLASS
+          - SERIAL_NUMBER
+          - APPLICATION_NUMBER
+          - DSI_TECHNICAL_DISTINCTIVENESS_SCORE
+          - REGISTRATION_OFFICE
+          - ESTIMATED_EXPIRATION_DISCLAIMER_FLAG
+          - EXAMINER_MAIN
+          - EARLIEST_PRIORITY_YEAR
+          - ASSIGNEE_ORIGINAL_ZIP_CODE
+          - IPC_4
+          - DWPI_FAMILY_STATUS
+          - DOCUMENT_GUID
+          - INVENTOR_NATIONALITY
+          - AGENT_INID
+          - DPCI_CITED_COUNTS_AUTHORITIES_TOTAL
+          - INVENTOR_NAME
+          - ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM
+          - DPCI_CITED_COUNTS_NON_PATENTS_TOTAL
+          - IPC_DESCRIPTION
+          - ASSIGNEE_ORIGINAL_CITY
+          - DSI_AGE_DISCOUNT
+          - DWPI_ASSIGNEE_CODE
+          - PATENT_TYPE
+          - IPC_TYPE
+          - DWPI_REGISTRATION_OFFICE_BASIC
+          - AGENT_COUNTRY
+          - DWPI_CLASS_DESCRIPTION
+          - DOCDB_SIMPLE_FAMILY_ID
+          - JP_CLASS_FI_CODE
+          - CPC_4
+          - DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL
+          - OPTIMIZED_ASSIGNEES
+          - DSI_INVENTION_SUCCESS_SCORE
+          - IPC_SECTION_DESCRIPTION
+          - DWPI_CLASS
+          - DSI_INVENTION_GLOBALIZATION_SCORE
+          - DWPI_EARLIEST_PRIORITY_YEAR
+          - INVENTOR_CITY
+          - APPLICATION_DATE
+          - CORRESPONDENT_STATE
+          - CPC_SYMBOL
+          - PUBLICATION_TYPE
+          - CITATION_WOS_CLUSTERKEY
+          - DWPI_CLASS_SECTION
+          - INVENTOR_ZIP_CODE
+          - ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE
+          - ESTIMATED_EXPIRATION_DATE
+          - LAST_UPDATED_DATE
+          - CORRESPONDENT_ADDRESS
+          - ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT
+          - DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC
+          - DWPI_MANUAL_CODE_SECTION
+          - DWPI_MANUAL_CODE
+          - ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR
+          - PUBLICATION_LANGUAGE
+          - IPC_CLASS_DESCRIPTION
+          - AGENT_NAME
+          - DSI_YEARS_REMAINING
+          - AGENT_ADDRESS
+          - ASSIGNEE_ORIGINAL_ADDRESS
+          - CITATION_WOS_SCORE
+          - DWPI_KIND_CODE_BASIC
+          - DWPI_EARLIEST_PRIORITY_DATE
+          - DWPI_MANUAL_CODE_DESCRIPTION
+          - CORRESPONDENT_COUNTRY
+          - INPADOC_FAMILY_STATUS
+          - DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL
+          - DWPI_MANUAL_CODE_SECTION_DESCRIPTION
+          - ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE
+          - AGENT_ZIP_CODE
+          - GREEN_DATA_CATEGORY
+          - DWPI_PUBLICATION_NUMBER_BASIC
+          - CPC_CURRENT
+          - AGENT_STATE
+          - DPCI_CITING_COUNTS_AUTHORITIES_TOTAL
+          - ASSIGNEE_ORIGINAL_INID
+          - REPRESENTATIVE_NAME
+          - ASSIGNEE_ORIGINAL_COUNTRY
+          - INVENTOR_COUNTRY
+          - PUBLICATION_NUMBER
+          - CORRESPONDENT_ZIP_CODE
+          - EARLIEST_PRIORITY_DATE
+          - DERWENT_BACKWARD_CITATION_COUNT
+          - ULTIMATE_PARENT
+          - DWPI_MANUAL_CODE_CLASS
+          - DWPI_MANUAL_CODE_CLASS_DESCRIPTION
+          example: GUID
+          type: string
+        OP:
+          description: Operator
+          enum:
+          - LE
+          - GE
+          - NE
+          - GT
+          - IS
+          - LT
+          - EQ
+          - IN
+          type: string
+        VALUE:
+          description: Field value to match (based on operator)
+          example: WO2021243294A120211202
+          type: string
+      required:
+      - OP
+      - VALUE
+      type: object
+    match_response_patent:
+      properties:
+        assignee:
+          items:
+            properties:
+              count:
+                description: Number of documents with this value
+                type: number
+              name:
+                description: Value of field assignee
+                type: string
+              score:
+                description: Match score
+                type: number
+            type: object
+          type: array
+        parent_assignee:
+          items:
+            properties:
+              count:
+                description: Number of documents with this value
+                type: number
+              name:
+                description: Value of field parent_assignee
+                type: string
+              score:
+                description: Match score
+                type: number
+            type: object
+          type: array
       type: object
   securitySchemes:
     key:

@@ -182,6 +182,26 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    error:
+      type: object
+      properties:
+        status:
+          oneOf:
+          - type: string
+          - type: integer
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+        title:
+          type: string
+        detail:
+          oneOf:
+          - type: string
+          - type: array
+          - type: object
+        pointer:
+          type: string
     SearchCreateMultiSequenceParams:
       type: object
       required:
@@ -622,12 +642,6 @@ components:
               type: string
               example: CGCGGTCGGGTCGTG
               description: Single sequence query string
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
     Search:
       type: object
       properties:
@@ -646,6 +660,12 @@ components:
       - id
       - type
       - attributes
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
     errors:
       type: object
       properties:
@@ -692,26 +712,6 @@ components:
           - type: string
             format: date-time
           - type: 'null'
-    error:
-      type: object
-      properties:
-        status:
-          oneOf:
-          - type: string
-          - type: integer
-        code:
-          oneOf:
-          - type: string
-          - type: integer
-        title:
-          type: string
-        detail:
-          oneOf:
-          - type: string
-          - type: array
-          - type: object
-        pointer:
-          type: string
   securitySchemes:
     key:
       type: apiKey

@@ -330,6 +330,31 @@ components:
         researcherId:
           type: string
           description: Web of Science ResearcherID
+    Metadata:
+      type: object
+      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number
+      properties:
+        page:
+          type: integer
+          format: int32
+          description: Page number (default is 1)
+        limit:
+          type: integer
+          format: int32
+          description: Number of records on a page (default is 10).
+        total:
+          type: integer
+          format: int32
+          description: Total number of records for the request.
+    DocumentsList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
     Document:
       type: object
       required:
@@ -515,31 +540,6 @@ components:
         displayName:
           type: string
           description: Web of Science display name
-    Metadata:
-      type: object
-      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number
-      properties:
-        page:
-          type: integer
-          format: int32
-          description: Page number (default is 1)
-        limit:
-          type: integer
-          format: int32
-          description: Number of records on a page (default is 10).
-        total:
-          type: integer
-          format: int32
-          description: Total number of records for the request.
-    DocumentsList:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
   securitySchemes:
     key:
       type: apiKey

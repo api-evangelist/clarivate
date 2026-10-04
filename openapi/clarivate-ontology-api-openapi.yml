@@ -167,72 +167,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ContentSetOntologiesResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-          default: success
-        data:
-          items:
-            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
-          type: array
-          title: Data
-      type: object
-      required:
-      - data
-      title: ContentSetOntologiesResponse
-    Error:
-      properties:
-        code:
-          $ref: '#/components/schemas/ApiErrorEnum'
-        message:
-          type: string
-          title: Message
-        location:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-      type: object
-      required:
-      - code
-      - message
-      title: Error
-    ContentSetInfoResponse:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - name
-      - description
-      title: ContentSetInfoResponse
-    ApiErrorEnum:
-      type: integer
-      enum:
-      - 1000
-      - 1001
-      - 1002
-      - 1003
-      - 1004
-      - 1005
-      - 1006
-      - 1007
-      - 2000
-      - 2001
-      - 2002
-      - 2003
-      - 2004
-      - 2005
-      - 2006
-      - 3000
-      title: ApiErrorEnum
     ContentSetOntologiesResponseData:
       properties:
         name:
@@ -246,6 +180,11 @@ components:
       - name
       - list
       title: ContentSetOntologiesResponseData
+    Status:
+      type: string
+      enum:
+      - success
+      title: Status
     ErrorResponse:
       properties:
         errors:
@@ -275,11 +214,72 @@ components:
       required:
       - data
       title: ContentSetOntologyResponse
-    Status:
-      type: string
+    ApiErrorEnum:
+      type: integer
       enum:
-      - success
-      title: Status
+      - 1000
+      - 1001
+      - 1002
+      - 1003
+      - 1004
+      - 1005
+      - 1006
+      - 1007
+      - 2000
+      - 2001
+      - 2002
+      - 2003
+      - 2004
+      - 2005
+      - 2006
+      - 3000
+      title: ApiErrorEnum
+    ContentSetInfoResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - name
+      - description
+      title: ContentSetInfoResponse
+    Error:
+      properties:
+        code:
+          $ref: '#/components/schemas/ApiErrorEnum'
+        message:
+          type: string
+          title: Message
+        location:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
+    ContentSetOntologiesResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+          default: success
+        data:
+          items:
+            $ref: '#/components/schemas/ContentSetOntologiesResponseData'
+          type: array
+          title: Data
+      type: object
+      required:
+      - data
+      title: ContentSetOntologiesResponse
   securitySchemes:
     key:
       type: apiKey

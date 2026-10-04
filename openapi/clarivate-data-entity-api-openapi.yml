@@ -532,48 +532,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
-    LinkReference:
-      required:
-      - rel
-      - href
-      type: object
-      properties:
-        rel:
-          type: string
-          description: Describes the type of relationship.
-          example: Publication
-        href:
-          type: string
-          description: is the complete endpoint path that uniquely defines the resource.
-          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
     AttributeData:
       required:
       - attributeName
@@ -606,24 +564,6 @@ components:
           example: An example Publication title
         choiceGroupData:
           $ref: '#/components/schemas/ChoiceGroupData'
-    ChoiceGroupData:
-      type: object
-      properties:
-        choiceGroupName:
-          type: string
-          description: If the attribute is of type ChoiceGroup, then this should be filled.
-          example: Publication type
-        choiceGroupValue:
-          type: string
-          description: default value
-          example: Journal article
-        choiceGroupValueLabels:
-          type: array
-          example:
-          - language: de_DE
-            value: Zeitschrift
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
     EntityData:
       required:
       - createdBy
@@ -711,6 +651,62 @@ components:
             href: /converis-api/ws/v2/data/entities/Publication/linked/PUBL_has_PUBL/56893426?directon=l2r
           items:
             $ref: '#/components/schemas/LinkReference'
+    LabelDefinition:
+      required:
+      - language
+      - value
+      type: object
+      properties:
+        language:
+          type: string
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
+          example: Publication
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
+    LinkReference:
+      required:
+      - rel
+      - href
+      type: object
+      properties:
+        rel:
+          type: string
+          description: Describes the type of relationship.
+          example: Publication
+        href:
+          type: string
+          description: is the complete endpoint path that uniquely defines the resource.
+          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
     EntityDataList:
       required:
       - count
@@ -735,20 +731,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EntityData'
-    LabelDefinition:
-      required:
-      - language
-      - value
+    ChoiceGroupData:
       type: object
       properties:
-        language:
+        choiceGroupName:
           type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
+          description: If the attribute is of type ChoiceGroup, then this should be filled.
+          example: Publication type
+        choiceGroupValue:
           type: string
-          description: The value of the label
-          example: Publication
+          description: default value
+          example: Journal article
+        choiceGroupValueLabels:
+          type: array
+          example:
+          - language: de_DE
+            value: Zeitschrift
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
   securitySchemes:
     BasicAuth:
       type: http

@@ -1836,158 +1836,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    PeerReview:
-      type: object
-      properties:
-        journal:
-          type: string
-          example: IEEE Transactions on Emerging Topics in Computing
-        publisher:
-          type: string
-          example: Institute of Electrical and Electronics Engineers Inc. (IEEE)
-        dateOfReview:
-          type: string
-          example: 2021
-        verified:
-          type: string
-          example: true
-        articleTitle:
-          type: string
-          example: Evidence for a limit to human lifespan
-        articleDOI:
-          type: string
-          example: 10.1038/NATURE19793
-    ResearcherListRecord:
-      type: object
-      description: Object with basic researcher metadata in the list.
-      properties:
-        rid:
-          type: array
-          items:
-            type: string
-          description: Web of Science ResearcherID
-          example: A-1009-2008
-        orcids:
-          type: array
-          description: ORCID
-          items:
-            type: string
-          example: 0000-0000-000-0000
-        fullName:
-          type: string
-          description: Full name
-          example: Eugene Garfield
-        primaryAffiliation:
-          type: array
-          items:
-            type: string
-            description: Primary affiliation
-            example: Institute for Scientific Information (ISI)
-        self:
-          type: string
-          description: ResearcherID endpoint with full information
-          example: /researchers/A-1009-2008
-        hIndex:
-          type: integer
-          description: 'The h-index (also known as Hirsch index) was introduced by J. Hirsch in 2005 and can be defined as follows: A researcher has an h-index, if they have at least h publications for which they have received at least h citations. For example, Researcher A has an h-index = 13 if they have published at least 13 documents for which they have received at least 13 citations.
-
-
-            >h-index is calculated using citation data from Web of Science Core Collection (including self-citations).
-
-            '
-          example: 242
-          format: int32
-        documentsCount:
-          $ref: '#/components/schemas/DocumentsCount'
-        totalTimesCited:
-          format: int32
-          type: integer
-          description: Total number of citations in Web of Science
-          example: 15604
-        matches:
-          type: array
-          description: Feedback about search match
-          items:
-            $ref: '#/components/schemas/SearchMatch'
-          example:
-          - field: lastName
-            value:
-            - <emp>Garfield</emp>
-          - field: organization
-            value:
-            - Institute for Scientific Information (<emp>ISI</emp>)
-        authorships:
-          type: array
-          description: Feedback about search match in the case of a topic search
-          items:
-            $ref: '#/components/schemas/AuthorshipSearchMatch'
-    ResearcherDocumentRecord:
-      type: object
-      description: Object with basic researcher documents metadata in the list.
-      properties:
-        uid:
-          type: string
-          description: Researcher document UID
-        title:
-          type: string
-          description: Researcher document title
-        types:
-          type: array
-          description: Researcher document doctypes
-          items:
-            type: string
-        source:
-          type: object
-          properties:
-            sourceTitle:
-              type: string
-            publishYear:
-              format: int32
-              type: integer
-            sortDate:
-              type: string
-            volume:
-              type: string
-            issue:
-              type: string
-        collection:
-          type: string
-        citations:
-          type: array
-          items:
-            type: object
-            properties:
-              db:
-                type: string
-              count:
-                type: integer
-                format: int32
-        identifiers:
-          type: object
-          properties:
-            doi:
-              type: string
-    DocumentsCount:
-      type: object
-      description: Number of documents for a Researcher
-      properties:
-        count:
-          type: string
-          description: Number of documents
-          example: 1549
-        self:
-          type: string
-          description: Reference URL to fetch documents of that researcher
-          example: /researchers/A-1009-2008/documents
-    PeerReviewList:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/PeerReview'
     ResearcherRecord:
       type: object
       description: Object with basic researcher metadata in the list.
@@ -2066,6 +1914,195 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/HighlyCitedResearcherYear'
+    DocumentsCount:
+      type: object
+      description: Number of documents for a Researcher
+      properties:
+        count:
+          type: string
+          description: Number of documents
+          example: 1549
+        self:
+          type: string
+          description: Reference URL to fetch documents of that researcher
+          example: /researchers/A-1009-2008/documents
+    Ids:
+      type: object
+      description: Researcher IDs
+      properties:
+        rids:
+          type: array
+          description: Researcher ID
+          items:
+            type: string
+          example:
+          - A-1009-2008
+        orcids:
+          type: array
+          description: ORCID
+          items:
+            type: string
+          example:
+          - 0000-0000-000-0000
+        internalId:
+          type: integer
+          format: int32
+          example: 1951254
+    HighlyCitedResearcherYear:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Bibliometrics
+        year:
+          type: string
+          example: 2000
+    ResearcherListRecord:
+      type: object
+      description: Object with basic researcher metadata in the list.
+      properties:
+        rid:
+          type: array
+          items:
+            type: string
+          description: Web of Science ResearcherID
+          example: A-1009-2008
+        orcids:
+          type: array
+          description: ORCID
+          items:
+            type: string
+          example: 0000-0000-000-0000
+        fullName:
+          type: string
+          description: Full name
+          example: Eugene Garfield
+        primaryAffiliation:
+          type: array
+          items:
+            type: string
+            description: Primary affiliation
+            example: Institute for Scientific Information (ISI)
+        self:
+          type: string
+          description: ResearcherID endpoint with full information
+          example: /researchers/A-1009-2008
+        hIndex:
+          type: integer
+          description: 'The h-index (also known as Hirsch index) was introduced by J. Hirsch in 2005 and can be defined as follows: A researcher has an h-index, if they have at least h publications for which they have received at least h citations. For example, Researcher A has an h-index = 13 if they have published at least 13 documents for which they have received at least 13 citations.
+
+
+            >h-index is calculated using citation data from Web of Science Core Collection (including self-citations).
+
+            '
+          example: 242
+          format: int32
+        documentsCount:
+          $ref: '#/components/schemas/DocumentsCount'
+        totalTimesCited:
+          format: int32
+          type: integer
+          description: Total number of citations in Web of Science
+          example: 15604
+        matches:
+          type: array
+          description: Feedback about search match
+          items:
+            $ref: '#/components/schemas/SearchMatch'
+          example:
+          - field: lastName
+            value:
+            - <emp>Garfield</emp>
+          - field: organization
+            value:
+            - Institute for Scientific Information (<emp>ISI</emp>)
+        authorships:
+          type: array
+          description: Feedback about search match in the case of a topic search
+          items:
+            $ref: '#/components/schemas/AuthorshipSearchMatch'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 404
+            title:
+              type: string
+              example: Resource couldn't be found
+            details:
+              type: string
+              example: Researcher with rid 'Rid(value=ABC-0000-0000)' not found
+    PeerReviewList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeerReview'
+    PeerReview:
+      type: object
+      properties:
+        journal:
+          type: string
+          example: IEEE Transactions on Emerging Topics in Computing
+        publisher:
+          type: string
+          example: Institute of Electrical and Electronics Engineers Inc. (IEEE)
+        dateOfReview:
+          type: string
+          example: 2021
+        verified:
+          type: string
+          example: true
+        articleTitle:
+          type: string
+          example: Evidence for a limit to human lifespan
+        articleDOI:
+          type: string
+          example: 10.1038/NATURE19793
+    Metadata:
+      type: object
+      description: Information about total numbers in the retrieve, number of records on the page, and the page number.
+      properties:
+        total:
+          type: integer
+          format: int32
+          description: Total number of records for the request.
+        page:
+          type: integer
+          format: int32
+          description: Page number (default is 1)
+        limit:
+          type: integer
+          format: int32
+          description: Number of records on a page (default is 10).
+    Affiliation:
+      type: object
+      properties:
+        startYear:
+          type: integer
+          format: int32
+          description: Start year
+          example: 20016
+        endYear:
+          type: integer
+          format: int32
+          description: End year
+          example: 2016
+        organization:
+          type: string
+          description: Organization name
+          example: University of Barcelona
+        numberOfDocuments:
+          type: integer
+          format: int32
+          description: to be filled
     SearchMatch:
       type: object
       description: Displays the field and value matched to the search string
@@ -2078,34 +2115,68 @@ components:
           type: array
           items:
             type: string
-    Name:
+    AuthorshipSearchMatch:
       type: object
-      description: Details about Researcher names used for publishing
+      description: A match when searching by topic, displays top documents from Web of Science Core Collection
       properties:
-        fullName:
+        ut:
           type: string
-          description: Full name
-          example: Eugene Garfield
-        firstName:
+          description: Accession number
+        title:
           type: string
-          description: First name
-          example: Eugene
-        lastName:
+        abstract:
           type: string
-          description: Last
-          example: Garfield
-        alternativeNames:
+        matches:
+          description: Array of matched values (if several) with the HTML highlighting
           type: array
-          description: The alternative names used in their publications
+          items:
+            $ref: '#/components/schemas/SearchMatch'
+    ResearcherDocumentRecord:
+      type: object
+      description: Object with basic researcher documents metadata in the list.
+      properties:
+        uid:
+          type: string
+          description: Researcher document UID
+        title:
+          type: string
+          description: Researcher document title
+        types:
+          type: array
+          description: Researcher document doctypes
+          items:
+            type: string
+        source:
+          type: object
+          properties:
+            sourceTitle:
+              type: string
+            publishYear:
+              format: int32
+              type: integer
+            sortDate:
+              type: string
+            volume:
+              type: string
+            issue:
+              type: string
+        collection:
+          type: string
+        citations:
+          type: array
           items:
             type: object
-            description: Name and number of documents this name appears
             properties:
-              name:
+              db:
                 type: string
-              numberOfDocuments:
+              count:
                 type: integer
                 format: int32
+        identifiers:
+          type: object
+          properties:
+            doi:
+              type: string
     ResearcherAllTimeMetrics:
       type: object
       properties:
@@ -2154,115 +2225,34 @@ components:
           description: Times cited without self-citations
           type: integer
           format: int32
-    ResearcherDocument:
+    Name:
       type: object
-      description: A list of researcher output based on query and filters
+      description: Details about Researcher names used for publishing
       properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
+        fullName:
+          type: string
+          description: Full name
+          example: Eugene Garfield
+        firstName:
+          type: string
+          description: First name
+          example: Eugene
+        lastName:
+          type: string
+          description: Last
+          example: Garfield
+        alternativeNames:
           type: array
+          description: The alternative names used in their publications
           items:
-            $ref: '#/components/schemas/ResearcherDocumentRecord'
-    Affiliation:
-      type: object
-      properties:
-        startYear:
-          type: integer
-          format: int32
-          description: Start year
-          example: 20016
-        endYear:
-          type: integer
-          format: int32
-          description: End year
-          example: 2016
-        organization:
-          type: string
-          description: Organization name
-          example: University of Barcelona
-        numberOfDocuments:
-          type: integer
-          format: int32
-          description: to be filled
-    HighlyCitedResearcherYear:
-      type: object
-      properties:
-        category:
-          type: string
-          example: Bibliometrics
-        year:
-          type: string
-          example: 2000
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              example: 404
-            title:
-              type: string
-              example: Resource couldn't be found
-            details:
-              type: string
-              example: Researcher with rid 'Rid(value=ABC-0000-0000)' not found
-    Metadata:
-      type: object
-      description: Information about total numbers in the retrieve, number of records on the page, and the page number.
-      properties:
-        total:
-          type: integer
-          format: int32
-          description: Total number of records for the request.
-        page:
-          type: integer
-          format: int32
-          description: Page number (default is 1)
-        limit:
-          type: integer
-          format: int32
-          description: Number of records on a page (default is 10).
-    AuthorshipSearchMatch:
-      type: object
-      description: A match when searching by topic, displays top documents from Web of Science Core Collection
-      properties:
-        ut:
-          type: string
-          description: Accession number
-        title:
-          type: string
-        abstract:
-          type: string
-        matches:
-          description: Array of matched values (if several) with the HTML highlighting
-          type: array
-          items:
-            $ref: '#/components/schemas/SearchMatch'
-    Ids:
-      type: object
-      description: Researcher IDs
-      properties:
-        rids:
-          type: array
-          description: Researcher ID
-          items:
-            type: string
-          example:
-          - A-1009-2008
-        orcids:
-          type: array
-          description: ORCID
-          items:
-            type: string
-          example:
-          - 0000-0000-000-0000
-        internalId:
-          type: integer
-          format: int32
-          example: 1951254
+            type: object
+            description: Name and number of documents this name appears
+            properties:
+              name:
+                type: string
+              numberOfDocuments:
+                type: integer
+                format: int32
     Position:
       type: object
       properties:
@@ -2282,6 +2272,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResearcherListRecord'
+    ResearcherDocument:
+      type: object
+      description: A list of researcher output based on query and filters
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResearcherDocumentRecord'
   securitySchemes:
     key:
       type: apiKey

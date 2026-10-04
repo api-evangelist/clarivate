@@ -500,6 +500,32 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    PaginationLinks:
+      description: Pagination navigation links for collection responses.
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: Link to the current page.
+        first:
+          type: string
+          format: uri
+          description: Link to the first page.
+        last:
+          type: string
+          format: uri
+          description: Link to the last page.
+        next:
+          type: string
+          format: uri
+          description: Link to the next page.
+        prev:
+          type: string
+          format: uri
+          description: Link to the previous page.
     SearchCreateMultiSequenceParams:
       type: object
       required:
@@ -724,6 +750,19 @@ components:
               enum:
               - true
               description: Must be true for multi-sequence search mode
+    JsonApiPaginationMeta:
+      description: Pagination metadata for JSON:API collection responses.
+      type: object
+      required:
+      - total
+      - total_pages
+      properties:
+        total:
+          type: integer
+          description: Total number of records.
+        total_pages:
+          type: integer
+          description: Total number of pages.
     SearchCreateSingleQueryParams:
       type: object
       required:
@@ -940,38 +979,18 @@ components:
               type: string
               example: CGCGGTCGGGTCGTG
               description: Single sequence query string
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
-    PaginationLinks:
-      description: Pagination navigation links for collection responses.
+    SearchUpdateParams:
       type: object
       required:
-      - self
+      - search
       properties:
-        self:
-          type: string
-          format: uri
-          description: Link to the current page.
-        first:
-          type: string
-          format: uri
-          description: Link to the first page.
-        last:
-          type: string
-          format: uri
-          description: Link to the last page.
-        next:
-          type: string
-          format: uri
-          description: Link to the next page.
-        prev:
-          type: string
-          format: uri
-          description: Link to the previous page.
+        search:
+          type: object
+          properties:
+            title:
+              type: string
+              maxLength: 255
+              description: Search title
     Search:
       type: object
       properties:
@@ -990,26 +1009,12 @@ components:
       - id
       - type
       - attributes
-    JsonApiPaginationMeta:
-      description: Pagination metadata for JSON:API collection responses.
-      type: object
-      required:
-      - total
-      - total_pages
-      properties:
-        total:
-          type: integer
-          description: Total number of records.
-        total_pages:
-          type: integer
-          description: Total number of pages.
-    errors:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/error'
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
     SearchAttributes:
       type: object
       required:
@@ -1049,6 +1054,13 @@ components:
           - type: string
             format: date-time
           - type: 'null'
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
     error:
       type: object
       properties:
@@ -1069,18 +1081,6 @@ components:
           - type: object
         pointer:
           type: string
-    SearchUpdateParams:
-      type: object
-      required:
-      - search
-      properties:
-        search:
-          type: object
-          properties:
-            title:
-              type: string
-              maxLength: 255
-              description: Search title
   securitySchemes:
     key:
       type: apiKey

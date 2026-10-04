@@ -345,6 +345,90 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    PaginationLinks:
+      description: Pagination navigation links for collection responses.
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: Link to the current page.
+        first:
+          type: string
+          format: uri
+          description: Link to the first page.
+        last:
+          type: string
+          format: uri
+          description: Link to the last page.
+        next:
+          type: string
+          format: uri
+          description: Link to the next page.
+        prev:
+          type: string
+          format: uri
+          description: Link to the previous page.
+    JsonApiPaginationMeta:
+      description: Pagination metadata for JSON:API collection responses.
+      type: object
+      required:
+      - total
+      - total_pages
+      properties:
+        total:
+          type: integer
+          description: Total number of records.
+        total_pages:
+          type: integer
+          description: Total number of pages.
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Report.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - report
+        attributes:
+          $ref: '#/components/schemas/ProjectAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
+    error:
+      type: object
+      properties:
+        status:
+          oneOf:
+          - type: string
+          - type: integer
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+        title:
+          type: string
+        detail:
+          oneOf:
+          - type: string
+          - type: array
+          - type: object
+        pointer:
+          type: string
     ProjectAttributes:
       type: object
       required:
@@ -386,90 +470,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    PaginationLinks:
-      description: Pagination navigation links for collection responses.
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: Link to the current page.
-        first:
-          type: string
-          format: uri
-          description: Link to the first page.
-        last:
-          type: string
-          format: uri
-          description: Link to the last page.
-        next:
-          type: string
-          format: uri
-          description: Link to the next page.
-        prev:
-          type: string
-          format: uri
-          description: Link to the previous page.
-    Project:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Report.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - report
-        attributes:
-          $ref: '#/components/schemas/ProjectAttributes'
-      required:
-      - id
-      - type
-      - attributes
-    errors:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/error'
-    JsonApiPaginationMeta:
-      description: Pagination metadata for JSON:API collection responses.
-      type: object
-      required:
-      - total
-      - total_pages
-      properties:
-        total:
-          type: integer
-          description: Total number of records.
-        total_pages:
-          type: integer
-          description: Total number of pages.
-    error:
-      type: object
-      properties:
-        status:
-          oneOf:
-          - type: string
-          - type: integer
-        code:
-          oneOf:
-          - type: string
-          - type: integer
-        title:
-          type: string
-        detail:
-          oneOf:
-          - type: string
-          - type: array
-          - type: object
-        pointer:
-          type: string
   securitySchemes:
     key:
       type: apiKey

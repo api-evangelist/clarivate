@@ -186,192 +186,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ConjunctionEnum:
-      type: string
-      enum:
-      - OR
-      - AND
-      title: ConjunctionEnum
-    Error:
+    SubscriptionsInfoResult:
       properties:
-        code:
-          type: integer
-          title: Code
-        message:
-          type: string
-          title: Message
-        location:
-          anyOf:
-          - items:
-              anyOf:
-              - type: string
-              - type: integer
-            type: array
-          - type: 'null'
-          title: Location
-      type: object
-      required:
-      - code
-      - message
-      title: Error
-    MaxInternalChangeNumber:
-      properties:
-        contentSet:
-          type: string
-          title: Contentset
-          description: Content set/data set name (value could be "custom").
-        preset:
-          type: string
-          title: Preset
-          description: Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset).
-        value:
-          type: integer
-          title: Value
-          description: Maximal Internal Change Number value.
-      type: object
-      required:
-      - contentSet
-      - preset
-      - value
-      title: MaxInternalChangeNumber
-    ContentSubscriptionResponse:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: Name of the subscribed dataset
-        contentSet:
-          type: string
-          title: Contentset
-          description: Name of the content set parameter to be passed in the API calls
-        preset:
-          type: string
-          title: Preset
-          description: Name of the preset parameter to be passed in the API calls
-        description:
-          type: string
-          title: Description
-          description: 'Description of the subscribed dataset '
-      type: object
-      required:
-      - name
-      - contentSet
-      - preset
-      - description
-      title: ContentSubscriptionResponse
-    FileTypeEnum:
-      type: string
-      enum:
-      - json
-      - parquet
-      - resources
-      - schema
-      title: FileTypeEnum
-    Format:
-      type: string
-      enum:
-      - json
-      - parquet
-      title: Format
-    OperationEnum:
-      type: string
-      enum:
-      - eq
-      - lt
-      - gt
-      - le
-      - ge
-      - ne
-      - in
-      - is
-      - like
-      - any of
-      - not in
-      - is not
-      - not like
-      title: OperationEnum
-    StatusEnum:
-      type: string
-      enum:
-      - pending
-      - running
-      - done
-      - failed
-      - outdated
-      - done-no-match
-      title: StatusEnum
-    CheckPackageStatusResult:
-      properties:
-        status:
-          allOf:
-          - $ref: '#/components/schemas/StatusEnum'
-          description: 'Status of the package preparation.values can be: pending, running, done-no-match or done.'
-        dateCompleted:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Datecompleted
-          description: Date-time the package preparation completed.
-        maxInternalChangeNumber:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/MaxInternalChangeNumber'
-            type: array
-          - type: 'null'
-          title: Maxinternalchangenumber
-          description: Maximal value of the internal Change Number field.
-        files:
+        subscriptions:
           items:
-            $ref: '#/components/schemas/CheckPackageStatusResultFile'
+            $ref: '#/components/schemas/ContentSubscriptionResponse'
           type: array
-          title: Files
-          description: List of files that can be downloaded.
+          title: Subscriptions
+          description: List of subscribed datasets
       type: object
       required:
-      - status
-      - dateCompleted
-      - maxInternalChangeNumber
-      - files
-      title: CheckPackageStatusResult
-    RequestPackageInput:
-      properties:
-        requestId:
-          anyOf:
-          - type: string
-            maxLength: 40
-            minLength: 1
-          - type: 'null'
-          title: Requestid
-          description: Request Id
-        contentSet:
-          type: string
-          title: Contentset
-          description: Name of the subscribed content set/data set.
-        preset:
-          type: string
-          title: Preset
-          description: Name of the preset (E.g., Standard, Full, or the name of the custom dataset).
-        format:
-          allOf:
-          - $ref: '#/components/schemas/Format'
-          description: File output format (E.g., JSON, parquet). Default value is JSON.
-          default: json
-        splitFiles:
-          type: boolean
-          title: Splitfiles
-          description: true or false (default). Return big files in chunks of 1GB each.
-          default: false
-        filters:
-          anyOf:
-          - $ref: '#/components/schemas/FilterGroup'
-          - type: 'null'
-          description: List of filtering options that can be passed
-      additionalProperties: false
-      type: object
-      required:
-      - contentSet
-      - preset
-      title: RequestPackageInput
+      - subscriptions
+      title: SubscriptionsInfoResult
     CheckPackageStatusResultFile:
       properties:
         token:
@@ -429,6 +255,95 @@ components:
       - checksum
       - numberOfRecords
       title: CheckPackageStatusResultFile
+    RequestPackageInput:
+      properties:
+        requestId:
+          anyOf:
+          - type: string
+            maxLength: 40
+            minLength: 1
+          - type: 'null'
+          title: Requestid
+          description: Request Id
+        contentSet:
+          type: string
+          title: Contentset
+          description: Name of the subscribed content set/data set.
+        preset:
+          type: string
+          title: Preset
+          description: Name of the preset (E.g., Standard, Full, or the name of the custom dataset).
+        format:
+          allOf:
+          - $ref: '#/components/schemas/Format'
+          description: File output format (E.g., JSON, parquet). Default value is JSON.
+          default: json
+        splitFiles:
+          type: boolean
+          title: Splitfiles
+          description: true or false (default). Return big files in chunks of 1GB each.
+          default: false
+        filters:
+          anyOf:
+          - $ref: '#/components/schemas/FilterGroup'
+          - type: 'null'
+          description: List of filtering options that can be passed
+      additionalProperties: false
+      type: object
+      required:
+      - contentSet
+      - preset
+      title: RequestPackageInput
+    CheckPackageStatusResult:
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          description: 'Status of the package preparation.values can be: pending, running, done-no-match or done.'
+        dateCompleted:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Datecompleted
+          description: Date-time the package preparation completed.
+        maxInternalChangeNumber:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MaxInternalChangeNumber'
+            type: array
+          - type: 'null'
+          title: Maxinternalchangenumber
+          description: Maximal value of the internal Change Number field.
+        files:
+          items:
+            $ref: '#/components/schemas/CheckPackageStatusResultFile'
+          type: array
+          title: Files
+          description: List of files that can be downloaded.
+      type: object
+      required:
+      - status
+      - dateCompleted
+      - maxInternalChangeNumber
+      - files
+      title: CheckPackageStatusResult
+    OperationEnum:
+      type: string
+      enum:
+      - eq
+      - lt
+      - gt
+      - le
+      - ge
+      - ne
+      - in
+      - is
+      - like
+      - any of
+      - not in
+      - is not
+      - not like
+      title: OperationEnum
     ErrorResponse:
       properties:
         errors:
@@ -443,6 +358,47 @@ components:
       description: 'Customize Validation Error
 
         https://github.com/tiangolo/fastapi/issues/1376'
+    ConjunctionEnum:
+      type: string
+      enum:
+      - OR
+      - AND
+      title: ConjunctionEnum
+    ContentSubscriptionResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: Name of the subscribed dataset
+        contentSet:
+          type: string
+          title: Contentset
+          description: Name of the content set parameter to be passed in the API calls
+        preset:
+          type: string
+          title: Preset
+          description: Name of the preset parameter to be passed in the API calls
+        description:
+          type: string
+          title: Description
+          description: 'Description of the subscribed dataset '
+      type: object
+      required:
+      - name
+      - contentSet
+      - preset
+      - description
+      title: ContentSubscriptionResponse
+    StatusEnum:
+      type: string
+      enum:
+      - pending
+      - running
+      - done
+      - failed
+      - outdated
+      - done-no-match
+      title: StatusEnum
     FilterGroup:
       items:
         anyOf:
@@ -452,29 +408,6 @@ components:
       type: array
       minLength: 0
       title: FilterGroup
-    RequestPackageResult:
-      properties:
-        token:
-          type: string
-          format: uuid4
-          title: Token
-          description: Unique identifier in uuid4 format representing a data feed package that has been requested.
-      type: object
-      required:
-      - token
-      title: RequestPackageResult
-    SubscriptionsInfoResult:
-      properties:
-        subscriptions:
-          items:
-            $ref: '#/components/schemas/ContentSubscriptionResponse'
-          type: array
-          title: Subscriptions
-          description: List of subscribed datasets
-      type: object
-      required:
-      - subscriptions
-      title: SubscriptionsInfoResult
     Filter:
       properties:
         field:
@@ -495,6 +428,73 @@ components:
       - op
       - value
       title: Filter
+    Format:
+      type: string
+      enum:
+      - json
+      - parquet
+      title: Format
+    MaxInternalChangeNumber:
+      properties:
+        contentSet:
+          type: string
+          title: Contentset
+          description: Content set/data set name (value could be "custom").
+        preset:
+          type: string
+          title: Preset
+          description: Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset).
+        value:
+          type: integer
+          title: Value
+          description: Maximal Internal Change Number value.
+      type: object
+      required:
+      - contentSet
+      - preset
+      - value
+      title: MaxInternalChangeNumber
+    Error:
+      properties:
+        code:
+          type: integer
+          title: Code
+        message:
+          type: string
+          title: Message
+        location:
+          anyOf:
+          - items:
+              anyOf:
+              - type: string
+              - type: integer
+            type: array
+          - type: 'null'
+          title: Location
+      type: object
+      required:
+      - code
+      - message
+      title: Error
+    FileTypeEnum:
+      type: string
+      enum:
+      - json
+      - parquet
+      - resources
+      - schema
+      title: FileTypeEnum
+    RequestPackageResult:
+      properties:
+        token:
+          type: string
+          format: uuid4
+          title: Token
+          description: Unique identifier in uuid4 format representing a data feed package that has been requested.
+      type: object
+      required:
+      - token
+      title: RequestPackageResult
   securitySchemes:
     key:
       type: apiKey

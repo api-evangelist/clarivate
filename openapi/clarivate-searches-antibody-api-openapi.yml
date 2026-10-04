@@ -545,12 +545,6 @@ components:
               type: string
               example: CGCGGTCGGGTCGTG
               description: Single sequence query string
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
     Search:
       type: object
       properties:
@@ -569,6 +563,12 @@ components:
       - id
       - type
       - attributes
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
     SearchAttributes:
       type: object
       required:

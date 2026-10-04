@@ -33,16 +33,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GraphQLQuery:
-      type: object
-      properties:
-        query:
-          type: string
     GraphQLResponse:
       type: object
       properties:
         data:
           type: object
+    GraphQLQuery:
+      type: object
+      properties:
+        query:
+          type: string
   securitySchemes:
     key:
       type: apiKey

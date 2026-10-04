@@ -39,13 +39,40 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    AgentStatus:
-      type: string
-      enum:
-      - SUCCESS
-      - CLARIFICATION_REQUIRED
-      - NOT_FOUND
-      title: AgentStatus
+    PublicAgentSuccessResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/AgentStatus'
+          default: SUCCESS
+        conversation_id:
+          type: string
+          title: Conversation Id
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+        assumptions:
+          items:
+            type: string
+          type: array
+          title: Assumptions
+        intermediate_steps:
+          items:
+            $ref: '#/components/schemas/IntermediateStep'
+          type: array
+          title: Intermediate Steps
+        cypher_query:
+          type: string
+          title: Cypher Query
+        usage:
+          $ref: '#/components/schemas/PublicUsageInfo'
+      type: object
+      required:
+      - conversation_id
+      - cypher_query
+      title: PublicAgentSuccessResponse
     PublicAgentRequest:
       properties:
         question:
@@ -146,15 +173,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     PublicAgentMessageResponse:
       properties:
         status:
@@ -183,40 +201,22 @@ components:
       - conversation_id
       - message
       title: PublicAgentMessageResponse
-    PublicAgentSuccessResponse:
+    HTTPValidationError:
       properties:
-        status:
-          $ref: '#/components/schemas/AgentStatus'
-          default: SUCCESS
-        conversation_id:
-          type: string
-          title: Conversation Id
-        data:
+        detail:
           items:
-            additionalProperties: true
-            type: object
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Data
-        assumptions:
-          items:
-            type: string
-          type: array
-          title: Assumptions
-        intermediate_steps:
-          items:
-            $ref: '#/components/schemas/IntermediateStep'
-          type: array
-          title: Intermediate Steps
-        cypher_query:
-          type: string
-          title: Cypher Query
-        usage:
-          $ref: '#/components/schemas/PublicUsageInfo'
+          title: Detail
       type: object
-      required:
-      - conversation_id
-      - cypher_query
-      title: PublicAgentSuccessResponse
+      title: HTTPValidationError
+    AgentStatus:
+      type: string
+      enum:
+      - SUCCESS
+      - CLARIFICATION_REQUIRED
+      - NOT_FOUND
+      title: AgentStatus
   securitySchemes:
     key:
       type: apiKey
