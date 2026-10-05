@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/lsh-download-ext-client/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/lsh-download-ext-client/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 3861,
+ "sha256": "1cfa5b68ea536cfee98efa1b8b2a1a26bec90dbdbf6eabb188514c4a8db6f094",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

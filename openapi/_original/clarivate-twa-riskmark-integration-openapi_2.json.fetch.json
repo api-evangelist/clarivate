@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/twa-riskmark-integration/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/twa-riskmark-integration/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 1603,
+ "sha256": "6586c4686feb7a77b3605285c1dc8088e39d5f5b00ddb8702b253859eebd2caf",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

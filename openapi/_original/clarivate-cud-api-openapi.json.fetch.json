@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/cud_api/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/cud_api/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 11624,
+ "sha256": "9ba5d28ea9bb7a1b4cf0ce8ddbc5abe8abf7eee845f7b8b7be17b5eb24d9b3e3",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

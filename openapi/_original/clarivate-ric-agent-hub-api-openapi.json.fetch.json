@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/ric-agent-hub-api/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/ric-agent-hub-api/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 4421,
+ "sha256": "1781fe6746c1662ca27cf011c0762a354ddb0e7134e01f896241c347a1c4f0f2",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

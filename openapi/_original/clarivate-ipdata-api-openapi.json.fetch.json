@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/ipdata-api/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/ipdata-api/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 582052,
+ "sha256": "617433f7d09d656e94d1f4e1f60a842f3a6068df21e17f961ea3a43291e873c6",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/wos-researcher/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/wos-researcher/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 64418,
+ "sha256": "39deefbd6837e492de3382f73bc49775da38451b3050a52e66b3a151d019a6a4",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

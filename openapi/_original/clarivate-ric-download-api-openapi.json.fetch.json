@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/ric-download-api/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/ric-download-api/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 11094,
+ "sha256": "8d88b01229570f5b888d9996b756f5aad4a3808161bc2067d5f301826441a543",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/cddi-counter-five/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/cddi-counter-five/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 11589,
+ "sha256": "e5e2ee014b3fc9e989fd74c892d0d248b6f1badbc548fa96b713983fdda5b0ba",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

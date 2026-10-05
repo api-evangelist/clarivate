@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.clarivate.com/apis/patentmonitor-innography/swagger",
+ "requested_url": "https://developer.clarivate.com/apis/patentmonitor-innography/swagger",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 371,
+ "sha256": "ce744b3fd18cfa3140efbfe3fb3508fdd74f9c9bb1d5a7531bb9a8c49f4f9a72",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
