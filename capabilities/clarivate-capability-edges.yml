@@ -1,0 +1,50 @@
+slug: clarivate
+provider: Clarivate
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Integration Api
+  spec_file: clarivate-integration-api-api-openapi.yml
+  capability_id: BC-840.20
+  capability_id_l1: BC-840
+  capability_name: Trademark Management
+  confidence: 0.8
+  evidence: '"Get integration api single opposition by id"; schemas "SingleOppositionResponse", "Trademark",
+    "ApplicantInfo", "GoodsAndService"'
+  reason: Trademark opposition records with applicant and goods/services detail is trademark watch/defence
+    data, mapping to Trademark Management despite the generic 'Integration Api' tag.
+- tag: Derwent API
+  spec_file: clarivate-derwent-api-api-openapi.yml
+  capability_id: BC-840
+  capability_id_l1: BC-840
+  capability_name: Intellectual Property Management
+  confidence: 0.75
+  evidence: '"Derwent APIs provide seamless access to enriched patent data"; "Derwent API to provide the
+    ability to perform class searching service"; "Derwent API to lookup Entities within the corporate
+    tree"'
+  reason: Operations search, browse and retrieve patent documents, patent classifications and assignee
+    corporate trees — patent intelligence squarely within Intellectual Property Management. L2 left null
+    because the surface is patent search/retrieval rather than explicitly portfolio filing/maintenance
+    or enforcement.
+- tag: Patents
+  spec_file: clarivate-patents-api-openapi.yml
+  capability_id: BC-840
+  capability_id_l1: BC-840
+  capability_name: Intellectual Property Management
+  confidence: 0.7
+  evidence: POST /patents/search — "Search patents, analytic format"; "Derwent APIs provide seamless access
+    to enriched patent data"
+  reason: Operations search, match and retrieve full patent documents, abstracts, images and PDFs — patent
+    information intelligence. Intellectual Property Management is the closest L1; the surface is data
+    access for patent research rather than specifically filing/maintenance of an owned portfolio, so no
+    L2 is asserted.
