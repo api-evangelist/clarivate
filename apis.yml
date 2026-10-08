@@ -7157,6 +7157,8 @@ apis:
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
 common:
+  - type: FinOps
+    url: finops/clarivate-finops.yml
   - type: CapabilityMap
     url: capabilities/clarivate-capability-edges.yml
     name: Clarivate Business Capability Map
