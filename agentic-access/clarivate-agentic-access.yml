@@ -1,4 +1,4 @@
-generated: '2026-09-16'
+generated: '2026-09-23'
 method: generated
 source: openapi/clarivate-administration-user-data-api-openapi.yml, openapi/clarivate-administration-user-delegations-api-openapi.yml,
   openapi/clarivate-audit-info-api-openapi.yml, openapi/clarivate-cache-management-api-openapi.yml,
@@ -34,12 +34,12 @@ description: Recommended x-agentic-access execution contracts, classified heuris
 summary:
   operations: 186
   by_action_class:
-    connected: 115
-    acting: 71
+    connected: 125
+    acting: 61
   by_consequence:
-    read: 115
-    write: 68
-    physical: 3
+    read: 125
+    write: 60
+    physical: 1
   human_in_the_loop_required: 0
 operations:
 - path: /admin/users
@@ -402,18 +402,12 @@ operations:
   method: post
   operationId: postDataEntitiesByTypeQuery
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /data/entities/{type}/{id}
   method: get
   operationId: getDataEntitiesByTypeById
@@ -486,18 +480,12 @@ operations:
   method: post
   operationId: postDataLinkentitiesByLinkTypeQuery
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /data/linkentities/{link_type}/{id}
   method: get
   operationId: getEntityByName
@@ -684,18 +672,12 @@ operations:
   method: post
   operationId: getPublicationIdMapping
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /patents/derwent/documents-by-id
   method: post
   operationId: derwentDocumentsByIds
@@ -966,18 +948,12 @@ operations:
   method: post
   operationId: getCaselawDocuments
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /caselaw/document/json/{binder_id}
   method: get
   operationId: getCaselawDocument
@@ -992,18 +968,12 @@ operations:
   method: post
   operationId: searchCaselaw
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /journals
   method: get
   operationId: getJournals
@@ -1448,18 +1418,12 @@ operations:
   method: post
   operationId: getPatentDocuments
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /patents/document/json/{document_guid}
   method: get
   operationId: getPatentDocument
@@ -1484,18 +1448,12 @@ operations:
   method: post
   operationId: getMatchPatentEntities
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /patents/match_entity/{entity}
   method: get
   operationId: getMatchPatentEntity
@@ -1510,18 +1468,12 @@ operations:
   method: post
   operationId: searchPatents
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /c3/ai/prediction
   method: get
   operationId: get_predictions_c3_ai_prediction_get
@@ -2156,20 +2108,12 @@ operations:
   method: post
   operationId: getTrademarkDocuments
   x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /trademarks/document/json/{document_guid}
   method: get
   operationId: getTrademarkDocument
@@ -2184,20 +2128,12 @@ operations:
   method: post
   operationId: searchTrademarks
   x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /user_space/attachment_size
   method: get
   operationId: readuserAttachmentSize

@@ -322,3 +322,147 @@ notes:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - prepaid
+  units:
+  - rate
+  - request
+  plans:
+  - name: Free Trial Plan
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - rate
+    - request
+    periods:
+    - day
+    - second
+  - name: Free Institutional Member Plan
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - rate
+    - request
+    periods:
+    - day
+    - second
+  - name: Free Institutional Integration Plan
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - rate
+    - request
+    periods:
+    - day
+    - second
+  - name: Basic
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    periods:
+    - second
+    - year
+  - name: Intermediate
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    periods:
+    - second
+    - year
+  - name: Advanced
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    periods:
+    - second
+    - year
+  - name: Premium
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    periods:
+    - second
+    - year
+  - name: Essentials 1
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    - request
+    periods:
+    - day
+    - month
+    - second
+  - name: Essentials 2
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    - request
+    periods:
+    - day
+    - month
+    - second
+  - name: Essentials 3
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - other
+    - rate
+    - request
+    periods:
+    - day
+    - month
+    - second
+  - name: Journals API Plan
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - rate
+    periods:
+    - second
+  - name: Researcher API Plan
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - rate
+    - request
+    periods:
+    - day
+    - second
+  - name: Standard InCites Subscription
+    access: other
+    model: prepaid
+    model_how: stated
+    units:
+    - rate
+    - request
+    periods:
+    - day
+    - second

@@ -9,10 +9,14 @@ front_door_ai:
   final_host: clarivate.com
   ownership: own
   owner: clarivate
-  shares_host_with: null
+  shares_host_with:
+  - web-of-science-apis
   inherited_from: null
+  alias_of: null
   verdict: scored
   score: 28
+  band: 6
+  band_label: dominant
   host_score: 28
   density: 7.88
   words: 3553
