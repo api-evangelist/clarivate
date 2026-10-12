@@ -1,0 +1,1167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-search-request-trademark-schema.json",
+  "title": "search_request_trademark",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-trademarks-api-openapi.yml#/components/schemas/search_request_trademark",
+  "properties": {
+    "AGG": {
+      "description": "A list of aggregations",
+      "items": {
+        "properties": {
+          "ALIAS": {
+            "description": "Field name alias",
+            "type": "string"
+          },
+          "FIELD": {
+            "description": "Field to query",
+            "enum": [
+              "SECOND_LANGUAGE_CODE",
+              "APPLICANT_NAME",
+              "CLASSIFICATION_CODE_ENRICHED",
+              "ID_DERIVED",
+              "PUBLICATION_YEAR",
+              "PUBLICATION_DATE",
+              "LAST_PUBLICATION_DATE",
+              "REGISTRATION_NUMBER_TEXT",
+              "COUNTRY_ISO_3166_ALPHA2",
+              "RENEWAL_DATE",
+              "APPLICANT_ADDRESS_COUNTRY_CODE",
+              "DESIGNATION_BASIS",
+              "PRIORITY_NUMBER_TEXT",
+              "NAT_GOODS_SERVICES_LANGUAGE_CODE",
+              "INITIAL_REGISTRATION_DATE",
+              "APPLICANT_ADDRESS_NATIVE_LINE_TEXT",
+              "IMAGE_KIND",
+              "REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT",
+              "REPRESENTATIVE_ADDRESS_LINE_TEXT",
+              "GUID",
+              "INT_CLASS_NUMBER",
+              "NAT_GOODS_SERVICES_DESCRIPTION",
+              "REGISTRATION_OFFICE_CODE_DERIVED",
+              "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE",
+              "APPLICATION_NUMBER_TEXT",
+              "REGISTRATION_DATE",
+              "INT_CLASS_HEADING_DERIVED",
+              "REPRESENTATIVE_CORRESPONDENT_NAME",
+              "APPLICANT_ADDRESS_LINE_TEXT",
+              "IMAGES_TOTAL_QUANTITY",
+              "CANCELLATION_DATE",
+              "EXPIRY_DATE",
+              "GUID_DERIVED",
+              "DISCLAIMERS",
+              "CLASSIFICATION",
+              "FILING_DATE_DERIVED",
+              "MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED",
+              "APPLICATION_ABANDONED_DATE",
+              "REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE",
+              "COUNTRY_TEXT",
+              "INITIAL_APPLICATION_DATE",
+              "COUNTRY_ISO_3166_ALPHA3",
+              "APPLICATION_DATE",
+              "CURRENT_STATUS_DERIVED",
+              "APPLICATION_LANGUAGE_CODE",
+              "REGISTRATION_OFFICE_CODE",
+              "ID",
+              "MARK_VERBAL_ELEMENT_TEXT",
+              "INT_GOODS_SERVICES_DESCRIPTION",
+              "INT_CLASS_TYPE_DERIVED",
+              "PRIORITY_DATE",
+              "REPRESENTATIVE_NAME",
+              "PRIORITY_COUNTRY_CODE",
+              "REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT",
+              "CURRENT_STATUS",
+              "INT_GOODS_SERVICES_LANGUAGE_CODE",
+              "REPRESENTATIVE_ADDRESS_COUNTRY_CODE",
+              "RENEWAL_PUBLISHED_DATE",
+              "LAST_UPDATED_DATE",
+              "MARK_TRANSLATION_TEXT",
+              "REPRESENTATIVE_NAME_NATIVE",
+              "MARK_TRANSLITERATION_TEXT",
+              "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION",
+              "NAT_CLASS_NUMBER",
+              "MARK_FEATURE",
+              "DESIGNATED_COUNTRY_CODE",
+              "APPLICANT_NAME_NATIVE"
+            ],
+            "type": "string"
+          },
+          "FUNC": {
+            "description": "Aggregation function",
+            "type": "string"
+          }
+        },
+        "required": [
+          "FIELD",
+          "FUNC"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "FIELDS": {
+      "oneOf": [
+        {
+          "description": "Fields to fetch. This may also be a structure of type field_aliases_trademark, rather than an array, in which case the fields will be renamed.",
+          "items": {
+            "default": "GUID",
+            "description": "Fields to fetch. This may also be a structure of type field_aliases_trademark, rather than an array, in which case the fields will be renamed.",
+            "enum": [
+              "SECOND_LANGUAGE_CODE",
+              "APPLICANT_NAME",
+              "CLASSIFICATION_CODE_ENRICHED",
+              "ID_DERIVED",
+              "PUBLICATION_YEAR",
+              "PUBLICATION_DATE",
+              "LAST_PUBLICATION_DATE",
+              "REGISTRATION_NUMBER_TEXT",
+              "COUNTRY_ISO_3166_ALPHA2",
+              "RENEWAL_DATE",
+              "APPLICANT_ADDRESS_COUNTRY_CODE",
+              "DESIGNATION_BASIS",
+              "PRIORITY_NUMBER_TEXT",
+              "NAT_GOODS_SERVICES_LANGUAGE_CODE",
+              "INITIAL_REGISTRATION_DATE",
+              "APPLICANT_ADDRESS_NATIVE_LINE_TEXT",
+              "IMAGE_KIND",
+              "REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT",
+              "REPRESENTATIVE_ADDRESS_LINE_TEXT",
+              "GUID",
+              "INT_CLASS_NUMBER",
+              "NAT_GOODS_SERVICES_DESCRIPTION",
+              "REGISTRATION_OFFICE_CODE_DERIVED",
+              "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE",
+              "APPLICATION_NUMBER_TEXT",
+              "REGISTRATION_DATE",
+              "INT_CLASS_HEADING_DERIVED",
+              "REPRESENTATIVE_CORRESPONDENT_NAME",
+              "APPLICANT_ADDRESS_LINE_TEXT",
+              "IMAGES_TOTAL_QUANTITY",
+              "CANCELLATION_DATE",
+              "EXPIRY_DATE",
+              "GUID_DERIVED",
+              "DISCLAIMERS",
+              "CLASSIFICATION",
+              "FILING_DATE_DERIVED",
+              "MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED",
+              "APPLICATION_ABANDONED_DATE",
+              "REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE",
+              "COUNTRY_TEXT",
+              "INITIAL_APPLICATION_DATE",
+              "COUNTRY_ISO_3166_ALPHA3",
+              "APPLICATION_DATE",
+              "CURRENT_STATUS_DERIVED",
+              "APPLICATION_LANGUAGE_CODE",
+              "REGISTRATION_OFFICE_CODE",
+              "ID",
+              "MARK_VERBAL_ELEMENT_TEXT",
+              "INT_GOODS_SERVICES_DESCRIPTION",
+              "INT_CLASS_TYPE_DERIVED",
+              "PRIORITY_DATE",
+              "REPRESENTATIVE_NAME",
+              "PRIORITY_COUNTRY_CODE",
+              "REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT",
+              "CURRENT_STATUS",
+              "INT_GOODS_SERVICES_LANGUAGE_CODE",
+              "REPRESENTATIVE_ADDRESS_COUNTRY_CODE",
+              "RENEWAL_PUBLISHED_DATE",
+              "LAST_UPDATED_DATE",
+              "MARK_TRANSLATION_TEXT",
+              "REPRESENTATIVE_NAME_NATIVE",
+              "MARK_TRANSLITERATION_TEXT",
+              "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION",
+              "NAT_CLASS_NUMBER",
+              "MARK_FEATURE",
+              "DESIGNATED_COUNTRY_CODE",
+              "APPLICANT_NAME_NATIVE"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/field_aliases_trademark"
+        }
+      ]
+    },
+    "GROUPBY": {
+      "description": "Group by fields (for aggregation)",
+      "items": {
+        "description": "Group by fields (for aggregation)",
+        "enum": [
+          "SECOND_LANGUAGE_CODE",
+          "APPLICANT_NAME",
+          "CLASSIFICATION_CODE_ENRICHED",
+          "ID_DERIVED",
+          "PUBLICATION_YEAR",
+          "PUBLICATION_DATE",
+          "LAST_PUBLICATION_DATE",
+          "REGISTRATION_NUMBER_TEXT",
+          "COUNTRY_ISO_3166_ALPHA2",
+          "RENEWAL_DATE",
+          "APPLICANT_ADDRESS_COUNTRY_CODE",
+          "DESIGNATION_BASIS",
+          "PRIORITY_NUMBER_TEXT",
+          "NAT_GOODS_SERVICES_LANGUAGE_CODE",
+          "INITIAL_REGISTRATION_DATE",
+          "IMAGE_KIND",
+          "GUID",
+          "INT_CLASS_NUMBER",
+          "REGISTRATION_OFFICE_CODE_DERIVED",
+          "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE",
+          "APPLICATION_NUMBER_TEXT",
+          "REGISTRATION_DATE",
+          "INT_CLASS_HEADING_DERIVED",
+          "REPRESENTATIVE_CORRESPONDENT_NAME",
+          "IMAGES_TOTAL_QUANTITY",
+          "EXPIRY_DATE",
+          "CANCELLATION_DATE",
+          "GUID_DERIVED",
+          "CLASSIFICATION",
+          "FILING_DATE_DERIVED",
+          "MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED",
+          "APPLICATION_ABANDONED_DATE",
+          "REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE",
+          "COUNTRY_TEXT",
+          "INITIAL_APPLICATION_DATE",
+          "COUNTRY_ISO_3166_ALPHA3",
+          "APPLICATION_DATE",
+          "CURRENT_STATUS_DERIVED",
+          "APPLICATION_LANGUAGE_CODE",
+          "REGISTRATION_OFFICE_CODE",
+          "ID",
+          "MARK_VERBAL_ELEMENT_TEXT",
+          "PRIORITY_DATE",
+          "INT_GOODS_SERVICES_DESCRIPTION",
+          "INT_CLASS_TYPE_DERIVED",
+          "REPRESENTATIVE_NAME",
+          "PRIORITY_COUNTRY_CODE",
+          "CURRENT_STATUS",
+          "INT_GOODS_SERVICES_LANGUAGE_CODE",
+          "REPRESENTATIVE_ADDRESS_COUNTRY_CODE",
+          "RENEWAL_PUBLISHED_DATE",
+          "LAST_UPDATED_DATE",
+          "MARK_TRANSLATION_TEXT",
+          "REPRESENTATIVE_NAME_NATIVE",
+          "MARK_TRANSLITERATION_TEXT",
+          "NAT_CLASS_NUMBER",
+          "MARK_FEATURE",
+          "DESIGNATED_COUNTRY_CODE",
+          "APPLICANT_NAME_NATIVE"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIMIT": {
+      "default": 10,
+      "description": "Maximum documents to retrieve",
+      "type": "number"
+    },
+    "OFFSET": {
+      "default": 0,
+      "description": "How many items to skip at the beginning (for pagination)",
+      "type": "number"
+    },
+    "ORDERBY": {
+      "description": "Order by fields (for aggregation)",
+      "items": {
+        "properties": {
+          "APPLICANT_ADDRESS_COUNTRY_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICANT_ADDRESS_LINE_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICANT_ADDRESS_NATIVE_LINE_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICANT_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICANT_NAME_NATIVE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICATION_ABANDONED_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "APPLICATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "APPLICATION_LANGUAGE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICATION_NUMBER_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CANCELLATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "CLASSIFICATION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLASSIFICATION_CODE_ENRICHED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COUNTRY_ISO_3166_ALPHA2": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COUNTRY_ISO_3166_ALPHA3": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COUNTRY_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CURRENT_STATUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CURRENT_STATUS_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGNATED_COUNTRY_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGNATION_BASIS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DISCLAIMERS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EXPIRY_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "FILING_DATE_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "GUID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "GUID_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ID_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IMAGES_TOTAL_QUANTITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IMAGE_KIND": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INITIAL_APPLICATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "INITIAL_REGISTRATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "INT_CLASS_HEADING_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INT_CLASS_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INT_CLASS_TYPE_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INT_GOODS_SERVICES_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INT_GOODS_SERVICES_LANGUAGE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "LAST_PUBLICATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "LAST_UPDATED_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "MARK_FEATURE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "MARK_TRANSLATION_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "MARK_TRANSLITERATION_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "MARK_VERBAL_ELEMENT_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "NAT_CLASS_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "NAT_GOODS_SERVICES_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "NAT_GOODS_SERVICES_LANGUAGE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRIORITY_COUNTRY_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRIORITY_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "PRIORITY_NUMBER_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PUBLICATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "PUBLICATION_YEAR": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REGISTRATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "REGISTRATION_NUMBER_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REGISTRATION_OFFICE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REGISTRATION_OFFICE_CODE_DERIVED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RENEWAL_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "RENEWAL_PUBLISHED_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "REPRESENTATIVE_ADDRESS_COUNTRY_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_ADDRESS_LINE_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_CORRESPONDENT_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_NAME_NATIVE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "SECOND_LANGUAGE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "QUERY": {
+      "description": "Either a query_body_trademark object or an array of one or more query_body_trademark objects separated by strings consisting of boolean operators.",
+      "oneOf": [
+        {
+          "items": {
+            "anyOf": [
+              {
+                "description": "boolean operator",
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/query_body_trademark"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/query_body_trademark"
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "field_aliases_trademark": {
+      "properties": {
+        "APPLICANT_ADDRESS_COUNTRY_CODE": {
+          "description": "Alias for APPLICANT_ADDRESS_COUNTRY_CODE",
+          "type": "string"
+        },
+        "APPLICANT_ADDRESS_LINE_TEXT": {
+          "description": "Alias for APPLICANT_ADDRESS_LINE_TEXT",
+          "type": "string"
+        },
+        "APPLICANT_ADDRESS_NATIVE_LINE_TEXT": {
+          "description": "Alias for APPLICANT_ADDRESS_NATIVE_LINE_TEXT",
+          "type": "string"
+        },
+        "APPLICANT_NAME": {
+          "description": "Alias for APPLICANT_NAME",
+          "type": "string"
+        },
+        "APPLICANT_NAME_NATIVE": {
+          "description": "Alias for APPLICANT_NAME_NATIVE",
+          "type": "string"
+        },
+        "APPLICATION_ABANDONED_DATE": {
+          "description": "Alias for APPLICATION_ABANDONED_DATE",
+          "type": "string"
+        },
+        "APPLICATION_DATE": {
+          "description": "Alias for APPLICATION_DATE",
+          "type": "string"
+        },
+        "APPLICATION_LANGUAGE_CODE": {
+          "description": "Alias for APPLICATION_LANGUAGE_CODE",
+          "type": "string"
+        },
+        "APPLICATION_NUMBER_TEXT": {
+          "description": "Alias for APPLICATION_NUMBER_TEXT",
+          "type": "string"
+        },
+        "CANCELLATION_DATE": {
+          "description": "Alias for CANCELLATION_DATE",
+          "type": "string"
+        },
+        "CLASSIFICATION": {
+          "description": "Alias for CLASSIFICATION",
+          "type": "string"
+        },
+        "CLASSIFICATION_CODE_ENRICHED": {
+          "description": "Alias for CLASSIFICATION_CODE_ENRICHED",
+          "type": "string"
+        },
+        "COUNTRY_ISO_3166_ALPHA2": {
+          "description": "Alias for COUNTRY_ISO_3166_ALPHA2",
+          "type": "string"
+        },
+        "COUNTRY_ISO_3166_ALPHA3": {
+          "description": "Alias for COUNTRY_ISO_3166_ALPHA3",
+          "type": "string"
+        },
+        "COUNTRY_TEXT": {
+          "description": "Alias for COUNTRY_TEXT",
+          "type": "string"
+        },
+        "CURRENT_STATUS": {
+          "description": "Alias for CURRENT_STATUS",
+          "type": "string"
+        },
+        "CURRENT_STATUS_DERIVED": {
+          "description": "Alias for CURRENT_STATUS_DERIVED",
+          "type": "string"
+        },
+        "DESIGNATED_COUNTRY_CODE": {
+          "description": "Alias for DESIGNATED_COUNTRY_CODE",
+          "type": "string"
+        },
+        "DESIGNATION_BASIS": {
+          "description": "Alias for DESIGNATION_BASIS",
+          "type": "string"
+        },
+        "DISCLAIMERS": {
+          "description": "Alias for DISCLAIMERS",
+          "type": "string"
+        },
+        "EXPIRY_DATE": {
+          "description": "Alias for EXPIRY_DATE",
+          "type": "string"
+        },
+        "FILING_DATE_DERIVED": {
+          "description": "Alias for FILING_DATE_DERIVED",
+          "type": "string"
+        },
+        "GUID": {
+          "description": "Alias for GUID",
+          "type": "string"
+        },
+        "GUID_DERIVED": {
+          "description": "Alias for GUID_DERIVED",
+          "type": "string"
+        },
+        "ID": {
+          "description": "Alias for ID",
+          "type": "string"
+        },
+        "ID_DERIVED": {
+          "description": "Alias for ID_DERIVED",
+          "type": "string"
+        },
+        "IMAGES_TOTAL_QUANTITY": {
+          "description": "Alias for IMAGES_TOTAL_QUANTITY",
+          "type": "string"
+        },
+        "IMAGE_KIND": {
+          "description": "Alias for IMAGE_KIND",
+          "type": "string"
+        },
+        "INITIAL_APPLICATION_DATE": {
+          "description": "Alias for INITIAL_APPLICATION_DATE",
+          "type": "string"
+        },
+        "INITIAL_REGISTRATION_DATE": {
+          "description": "Alias for INITIAL_REGISTRATION_DATE",
+          "type": "string"
+        },
+        "INT_CLASS_HEADING_DERIVED": {
+          "description": "Alias for INT_CLASS_HEADING_DERIVED",
+          "type": "string"
+        },
+        "INT_CLASS_NUMBER": {
+          "description": "Alias for INT_CLASS_NUMBER",
+          "type": "string"
+        },
+        "INT_CLASS_TYPE_DERIVED": {
+          "description": "Alias for INT_CLASS_TYPE_DERIVED",
+          "type": "string"
+        },
+        "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION": {
+          "description": "Alias for INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION",
+          "type": "string"
+        },
+        "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE": {
+          "description": "Alias for INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE",
+          "type": "string"
+        },
+        "INT_GOODS_SERVICES_DESCRIPTION": {
+          "description": "Alias for INT_GOODS_SERVICES_DESCRIPTION",
+          "type": "string"
+        },
+        "INT_GOODS_SERVICES_LANGUAGE_CODE": {
+          "description": "Alias for INT_GOODS_SERVICES_LANGUAGE_CODE",
+          "type": "string"
+        },
+        "LAST_PUBLICATION_DATE": {
+          "description": "Alias for LAST_PUBLICATION_DATE",
+          "type": "string"
+        },
+        "LAST_UPDATED_DATE": {
+          "description": "Alias for LAST_UPDATED_DATE",
+          "type": "string"
+        },
+        "MARK_FEATURE": {
+          "description": "Alias for MARK_FEATURE",
+          "type": "string"
+        },
+        "MARK_TRANSLATION_TEXT": {
+          "description": "Alias for MARK_TRANSLATION_TEXT",
+          "type": "string"
+        },
+        "MARK_TRANSLITERATION_TEXT": {
+          "description": "Alias for MARK_TRANSLITERATION_TEXT",
+          "type": "string"
+        },
+        "MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED": {
+          "description": "Alias for MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED",
+          "type": "string"
+        },
+        "MARK_VERBAL_ELEMENT_TEXT": {
+          "description": "Alias for MARK_VERBAL_ELEMENT_TEXT",
+          "type": "string"
+        },
+        "NAT_CLASS_NUMBER": {
+          "description": "Alias for NAT_CLASS_NUMBER",
+          "type": "string"
+        },
+        "NAT_GOODS_SERVICES_DESCRIPTION": {
+          "description": "Alias for NAT_GOODS_SERVICES_DESCRIPTION",
+          "type": "string"
+        },
+        "NAT_GOODS_SERVICES_LANGUAGE_CODE": {
+          "description": "Alias for NAT_GOODS_SERVICES_LANGUAGE_CODE",
+          "type": "string"
+        },
+        "PRIORITY_COUNTRY_CODE": {
+          "description": "Alias for PRIORITY_COUNTRY_CODE",
+          "type": "string"
+        },
+        "PRIORITY_DATE": {
+          "description": "Alias for PRIORITY_DATE",
+          "type": "string"
+        },
+        "PRIORITY_NUMBER_TEXT": {
+          "description": "Alias for PRIORITY_NUMBER_TEXT",
+          "type": "string"
+        },
+        "PUBLICATION_DATE": {
+          "description": "Alias for PUBLICATION_DATE",
+          "type": "string"
+        },
+        "PUBLICATION_YEAR": {
+          "description": "Alias for PUBLICATION_YEAR",
+          "type": "string"
+        },
+        "REGISTRATION_DATE": {
+          "description": "Alias for REGISTRATION_DATE",
+          "type": "string"
+        },
+        "REGISTRATION_NUMBER_TEXT": {
+          "description": "Alias for REGISTRATION_NUMBER_TEXT",
+          "type": "string"
+        },
+        "REGISTRATION_OFFICE_CODE": {
+          "description": "Alias for REGISTRATION_OFFICE_CODE",
+          "type": "string"
+        },
+        "REGISTRATION_OFFICE_CODE_DERIVED": {
+          "description": "Alias for REGISTRATION_OFFICE_CODE_DERIVED",
+          "type": "string"
+        },
+        "RENEWAL_DATE": {
+          "description": "Alias for RENEWAL_DATE",
+          "type": "string"
+        },
+        "RENEWAL_PUBLISHED_DATE": {
+          "description": "Alias for RENEWAL_PUBLISHED_DATE",
+          "type": "string"
+        },
+        "REPRESENTATIVE_ADDRESS_COUNTRY_CODE": {
+          "description": "Alias for REPRESENTATIVE_ADDRESS_COUNTRY_CODE",
+          "type": "string"
+        },
+        "REPRESENTATIVE_ADDRESS_LINE_TEXT": {
+          "description": "Alias for REPRESENTATIVE_ADDRESS_LINE_TEXT",
+          "type": "string"
+        },
+        "REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT": {
+          "description": "Alias for REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT",
+          "type": "string"
+        },
+        "REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE": {
+          "description": "Alias for REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE",
+          "type": "string"
+        },
+        "REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT": {
+          "description": "Alias for REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT",
+          "type": "string"
+        },
+        "REPRESENTATIVE_CORRESPONDENT_NAME": {
+          "description": "Alias for REPRESENTATIVE_CORRESPONDENT_NAME",
+          "type": "string"
+        },
+        "REPRESENTATIVE_NAME": {
+          "description": "Alias for REPRESENTATIVE_NAME",
+          "type": "string"
+        },
+        "REPRESENTATIVE_NAME_NATIVE": {
+          "description": "Alias for REPRESENTATIVE_NAME_NATIVE",
+          "type": "string"
+        },
+        "SECOND_LANGUAGE_CODE": {
+          "description": "Alias for SECOND_LANGUAGE_CODE",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "query_body_trademark": {
+      "description": "Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR",
+      "properties": {
+        "ALG": {
+          "description": "Algorithm to use.",
+          "enum": [
+            "BASIC"
+          ],
+          "type": "string"
+        },
+        "FIELD": {
+          "description": "Field to query",
+          "enum": [
+            "SECOND_LANGUAGE_CODE",
+            "APPLICANT_NAME",
+            "CLASSIFICATION_CODE_ENRICHED",
+            "ID_DERIVED",
+            "PUBLICATION_YEAR",
+            "PUBLICATION_DATE",
+            "LAST_PUBLICATION_DATE",
+            "REGISTRATION_NUMBER_TEXT",
+            "COUNTRY_ISO_3166_ALPHA2",
+            "RENEWAL_DATE",
+            "APPLICANT_ADDRESS_COUNTRY_CODE",
+            "DESIGNATION_BASIS",
+            "PRIORITY_NUMBER_TEXT",
+            "NAT_GOODS_SERVICES_LANGUAGE_CODE",
+            "INITIAL_REGISTRATION_DATE",
+            "APPLICANT_ADDRESS_NATIVE_LINE_TEXT",
+            "IMAGE_KIND",
+            "REPRESENTATIVE_ADDRESS_NATIVE_LINE_TEXT",
+            "REPRESENTATIVE_ADDRESS_LINE_TEXT",
+            "GUID",
+            "INT_CLASS_NUMBER",
+            "NAT_GOODS_SERVICES_DESCRIPTION",
+            "REGISTRATION_OFFICE_CODE_DERIVED",
+            "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_LANGUAGE_CODE",
+            "APPLICATION_NUMBER_TEXT",
+            "REGISTRATION_DATE",
+            "INT_CLASS_HEADING_DERIVED",
+            "REPRESENTATIVE_CORRESPONDENT_NAME",
+            "APPLICANT_ADDRESS_LINE_TEXT",
+            "IMAGES_TOTAL_QUANTITY",
+            "CANCELLATION_DATE",
+            "EXPIRY_DATE",
+            "GUID_DERIVED",
+            "DISCLAIMERS",
+            "CLASSIFICATION",
+            "FILING_DATE_DERIVED",
+            "MARK_VERBAL_ELEMENT_CROSS_REFERENCES_ENRICHED",
+            "APPLICATION_ABANDONED_DATE",
+            "REPRESENTATIVE_CORRESPONDENT_ADDRESS_COUNTRY_CODE",
+            "COUNTRY_TEXT",
+            "INITIAL_APPLICATION_DATE",
+            "COUNTRY_ISO_3166_ALPHA3",
+            "APPLICATION_DATE",
+            "CURRENT_STATUS_DERIVED",
+            "APPLICATION_LANGUAGE_CODE",
+            "REGISTRATION_OFFICE_CODE",
+            "ID",
+            "MARK_VERBAL_ELEMENT_TEXT",
+            "INT_GOODS_SERVICES_DESCRIPTION",
+            "INT_CLASS_TYPE_DERIVED",
+            "PRIORITY_DATE",
+            "REPRESENTATIVE_NAME",
+            "PRIORITY_COUNTRY_CODE",
+            "REPRESENTATIVE_CORRESPONDENT_ADDRESS_LINE_TEXT",
+            "CURRENT_STATUS",
+            "INT_GOODS_SERVICES_LANGUAGE_CODE",
+            "REPRESENTATIVE_ADDRESS_COUNTRY_CODE",
+            "RENEWAL_PUBLISHED_DATE",
+            "LAST_UPDATED_DATE",
+            "MARK_TRANSLATION_TEXT",
+            "REPRESENTATIVE_NAME_NATIVE",
+            "MARK_TRANSLITERATION_TEXT",
+            "INT_GOODS_SERVICES_COMPUTER_TRANSLATION_ENRICHED_DESCRIPTION",
+            "NAT_CLASS_NUMBER",
+            "MARK_FEATURE",
+            "DESIGNATED_COUNTRY_CODE",
+            "APPLICANT_NAME_NATIVE"
+          ],
+          "type": "string"
+        },
+        "OP": {
+          "description": "Operator",
+          "enum": [
+            "LE",
+            "GE",
+            "NE",
+            "GT",
+            "IS",
+            "LT",
+            "EQ",
+            "IN"
+          ],
+          "type": "string"
+        },
+        "VALUE": {
+          "description": "Field value to match (based on operator)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "OP",
+        "VALUE"
+      ],
+      "type": "object"
+    }
+  }
+}

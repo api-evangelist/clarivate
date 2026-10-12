@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-predictions-response-schema.json",
+  "title": "PredictionsResponse",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-prediction-api-openapi.yml#/components/schemas/PredictionsResponse",
+  "properties": {
+    "status": {
+      "$ref": "#/$defs/Status",
+      "default": "success"
+    },
+    "data": {
+      "items": {
+        "$ref": "#/$defs/PredictionsResponseData"
+      },
+      "type": "array",
+      "title": "Data"
+    }
+  },
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "$defs": {
+    "PredictionsResponseData": {
+      "properties": {
+        "content_set": {
+          "type": "string",
+          "title": "Content Set"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "models": {
+          "items": {
+            "$ref": "#/$defs/PredictionsResponseDataModel"
+          },
+          "type": "array",
+          "title": "Models"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/PredictionsResponseDataInput"
+          },
+          "type": "array",
+          "title": "Inputs"
+        }
+      },
+      "type": "object",
+      "required": [
+        "content_set",
+        "name",
+        "models",
+        "inputs"
+      ],
+      "title": "PredictionsResponseData"
+    },
+    "PredictionsResponseDataInput": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "type": {
+          "type": "string",
+          "title": "Type"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description"
+        },
+        "mandatory": {
+          "type": "boolean",
+          "title": "Mandatory"
+        }
+      },
+      "type": "object",
+      "required": [
+        "name",
+        "type",
+        "description",
+        "mandatory"
+      ],
+      "title": "PredictionsResponseDataInput"
+    },
+    "PredictionsResponseDataModel": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name"
+        }
+      },
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "title": "PredictionsResponseDataModel"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "success"
+      ],
+      "title": "Status"
+    }
+  }
+}

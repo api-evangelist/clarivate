@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-public-agent-success-response-schema.json",
+  "title": "PublicAgentSuccessResponse",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-lsh-ai-agent-api-openapi.yml#/components/schemas/PublicAgentSuccessResponse",
+  "properties": {
+    "status": {
+      "$ref": "#/$defs/AgentStatus",
+      "default": "SUCCESS"
+    },
+    "conversation_id": {
+      "type": "string",
+      "title": "Conversation Id"
+    },
+    "data": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array",
+      "title": "Data"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "title": "Assumptions"
+    },
+    "intermediate_steps": {
+      "items": {
+        "$ref": "#/$defs/IntermediateStep"
+      },
+      "type": "array",
+      "title": "Intermediate Steps"
+    },
+    "cypher_query": {
+      "type": "string",
+      "title": "Cypher Query"
+    },
+    "usage": {
+      "$ref": "#/$defs/PublicUsageInfo"
+    }
+  },
+  "type": "object",
+  "required": [
+    "conversation_id",
+    "cypher_query"
+  ],
+  "$defs": {
+    "AgentStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "CLARIFICATION_REQUIRED",
+        "NOT_FOUND"
+      ],
+      "title": "AgentStatus"
+    },
+    "IntermediateStep": {
+      "properties": {
+        "tool": {
+          "type": "string",
+          "title": "Tool"
+        },
+        "reason": {
+          "type": "string",
+          "title": "Reason"
+        },
+        "duration": {
+          "type": "number",
+          "title": "Duration"
+        },
+        "query": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Query"
+        },
+        "count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Count"
+        },
+        "metadata": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Metadata",
+          "description": "Tool-specific metadata (e.g., search indices, result details)"
+        }
+      },
+      "type": "object",
+      "required": [
+        "tool",
+        "reason",
+        "duration"
+      ],
+      "title": "IntermediateStep"
+    },
+    "PublicUsageInfo": {
+      "properties": {
+        "request_input_tokens": {
+          "type": "integer",
+          "title": "Request Input Tokens",
+          "default": 0
+        },
+        "request_output_tokens": {
+          "type": "integer",
+          "title": "Request Output Tokens",
+          "default": 0
+        },
+        "conversation_input_tokens": {
+          "type": "integer",
+          "title": "Conversation Input Tokens",
+          "default": 0
+        },
+        "conversation_output_tokens": {
+          "type": "integer",
+          "title": "Conversation Output Tokens",
+          "default": 0
+        },
+        "total_duration": {
+          "type": "number",
+          "title": "Total Duration",
+          "default": 0
+        }
+      },
+      "type": "object",
+      "title": "PublicUsageInfo"
+    }
+  }
+}

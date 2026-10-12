@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-sushi-service-status-schema.json",
+  "title": "SUSHI_service_status",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-status-api-openapi.yml#/components/schemas/SUSHI_service_status",
+  "type": "object",
+  "required": [
+    "Service_Active"
+  ],
+  "properties": {
+    "Description": {
+      "type": "string",
+      "description": "Description of the service."
+    },
+    "Service_Active": {
+      "type": "boolean",
+      "description": "Indicator if the service is currently able to deliver reports."
+    },
+    "Registry_URL": {
+      "type": "string",
+      "description": "If available, the URL separate registry with additional information about the service."
+    },
+    "Note": {
+      "type": "string",
+      "description": "A general note about the service."
+    },
+    "Alerts": {
+      "type": "array",
+      "description": "Any alerts related to service interruptions and status.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Date_Time": {
+            "type": "string",
+            "format": "dateTime",
+            "description": "Date-time of the alert."
+          },
+          "Alert": {
+            "type": "string",
+            "description": "Text of the alert."
+          }
+        }
+      }
+    }
+  }
+}

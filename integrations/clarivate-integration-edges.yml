@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/clarivate/integrations
+- https://n8n.io/integrations/clarivate/
+- https://composio.dev/toolkits/clarivate
+- https://monid.ai/tools/clarivate
+checked:
+- https://composio.dev/toolkits/clarivate
+- https://monid.ai/tools/clarivate
+- https://n8n.io/integrations/clarivate/
+- https://zapier.com/apps/clarivate/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

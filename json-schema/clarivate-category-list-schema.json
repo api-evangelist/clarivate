@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-category-list-schema.json",
+  "title": "CategoryList",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryList",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/Metadata"
+    },
+    "hits": {
+      "type": "array",
+      "description": "List of retrieved categories",
+      "items": {
+        "$ref": "#/$defs/CategoryListRecord"
+      }
+    }
+  },
+  "$defs": {
+    "CategoryCitationReports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "List of reports available by JCR year",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "CategoryListRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Category unique identifier"
+        },
+        "self": {
+          "type": "string",
+          "description": "Link to the category entity"
+        },
+        "matches": {
+          "type": "array",
+          "description": "Search string matches across category names",
+          "items": {
+            "$ref": "#/$defs/SearchMatch"
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Category name"
+        },
+        "edition": {
+          "type": "string",
+          "description": "Category edition (SCIE/SSCI)"
+        },
+        "categoryCitationReports": {
+          "$ref": "#/$defs/CategoryCitationReports"
+        }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "description": "Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of records for the request."
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Page number (default is 1)"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of records on a page (default is 10)."
+        }
+      }
+    },
+    "SearchMatch": {
+      "type": "object",
+      "description": "Displays the field and value matched to the search string",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Name of the matched field"
+        },
+        "value": {
+          "description": "Array of matched values (if several) with the HTML highligthing",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

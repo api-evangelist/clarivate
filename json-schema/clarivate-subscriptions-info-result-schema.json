@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-subscriptions-info-result-schema.json",
+  "title": "SubscriptionsInfoResult",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-feed-api-openapi.yml#/components/schemas/SubscriptionsInfoResult",
+  "properties": {
+    "subscriptions": {
+      "items": {
+        "$ref": "#/$defs/ContentSubscriptionResponse"
+      },
+      "type": "array",
+      "title": "Subscriptions",
+      "description": "List of subscribed datasets"
+    }
+  },
+  "type": "object",
+  "required": [
+    "subscriptions"
+  ],
+  "$defs": {
+    "ContentSubscriptionResponse": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "Name of the subscribed dataset"
+        },
+        "contentSet": {
+          "type": "string",
+          "title": "Contentset",
+          "description": "Name of the content set parameter to be passed in the API calls"
+        },
+        "preset": {
+          "type": "string",
+          "title": "Preset",
+          "description": "Name of the preset parameter to be passed in the API calls"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Description of the subscribed dataset "
+        }
+      },
+      "type": "object",
+      "required": [
+        "name",
+        "contentSet",
+        "preset",
+        "description"
+      ],
+      "title": "ContentSubscriptionResponse"
+    }
+  }
+}

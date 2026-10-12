@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-doc-idmapping-request-derwent-api-schema.json",
+  "title": "doc_idmapping_request_derwent_api",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/doc_idmapping_request_derwent_api",
+  "properties": {
+    "params": {
+      "items": {
+        "properties": {
+          "collections": {
+            "description": "Requested Collection(s)",
+            "type": "string"
+          },
+          "pns": {
+            "description": "Requested patent numbers",
+            "type": "string"
+          }
+        },
+        "required": [
+          "collections",
+          "pns"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

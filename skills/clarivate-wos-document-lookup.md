@@ -1,24 +1,22 @@
 ---
 name: clarivate-wos-document-lookup
-description: >-
-  Verify a publication against the Web of Science Core Collection and retrieve its
-  citation counts, using the Web of Science Starter API. Use when you have a DOI,
-  title, ISSN or Web of Science UID and need authoritative bibliographic metadata or a
-  times-cited figure.
+description: Verify a publication against the Web of Science Core Collection and retrieve
+  its citation counts, using the Web of Science Starter API. Use when you have a DOI,
+  title, ISSN or Web of Science UID and need authoritative bibliographic metadata
+  or a times-cited figure.
 api: Web of Science Starter API
 spec: openapi/clarivate-wos-starter-openapi.json
 base_url: https://api.clarivate.com/apis/wos-starter/v1
 operations:
-  - GET /documents
-  - GET /documents/{uid}
-  - GET /journals
-  - GET /journals/{id}
+- getDocuments
+- getDocumentsByUid
+- getJournals
+- getJournalsById
 generated: '2026-09-05'
 method: generated
-source: >-
-  https://developer.clarivate.com/apis/wos-starter/swagger — operations verified
-  against the harvested contract. Clarivate declares NO operationId on any Starter API
-  operation, so operations are addressed by method + path.
+source: https://developer.clarivate.com/apis/wos-starter/swagger — operations verified
+  against the harvested contract. Clarivate declares NO operationId on any Starter
+  API operation, so operations are addressed by method + path.
 ---
 
 # Look up a Web of Science document

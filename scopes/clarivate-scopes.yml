@@ -1,5 +1,5 @@
 generated: '2026-09-05'
-method: derived
+method: none
 source: openapi/clarivate-endnote-openapi.json
 schemes:
 - name: Log In, accessCode
@@ -9,3 +9,4 @@ schemes:
     authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
     tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token
 scopes: []
+note: OAuth2 schemes declared but no scopes named in any spec

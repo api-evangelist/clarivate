@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-request-package-result-schema.json",
+  "title": "RequestPackageResult",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-feed-api-openapi.yml#/components/schemas/RequestPackageResult",
+  "properties": {
+    "token": {
+      "type": "string",
+      "format": "uuid4",
+      "title": "Token",
+      "description": "Unique identifier in uuid4 format representing a data feed package that has been requested."
+    }
+  },
+  "type": "object",
+  "required": [
+    "token"
+  ]
+}

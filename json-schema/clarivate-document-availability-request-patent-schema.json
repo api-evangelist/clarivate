@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-document-availability-request-patent-schema.json",
+  "title": "document_availability_request_patent",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-patents-api-openapi.yml#/components/schemas/document_availability_request_patent",
+  "properties": {
+    "collection": {
+      "description": "Requested Collection",
+      "items": {
+        "description": "Derwent Abstract Journal(DAJ)|Patent abstract Journal(PAJ)",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "input_type": {
+      "description": "Type of input patents list",
+      "items": {
+        "description": "Type of patents - Publication Number( default patent) or Accession Number (dwpan)",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "patents": {
+      "description": "Patents to check",
+      "items": {
+        "description": "List of Publication numbers or Accession numbers for patent",
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

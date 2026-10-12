@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-search-update-params-schema.json",
+  "title": "SearchUpdateParams",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-searches-api-openapi.yml#/components/schemas/SearchUpdateParams",
+  "type": "object",
+  "required": [
+    "search"
+  ],
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "Search title"
+        }
+      }
+    }
+  }
+}

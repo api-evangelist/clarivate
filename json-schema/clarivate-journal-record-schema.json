@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-journal-record-schema.json",
+  "title": "JournalRecord",
+  "description": " ",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-journals-api-openapi.yml#/components/schemas/JournalRecord",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Journal unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Journal title"
+    },
+    "jcrTitle": {
+      "type": "string",
+      "description": "Journal JCR abbreviation"
+    },
+    "isoTitle": {
+      "type": "string",
+      "description": "Journal title in [ISO format](https://www.issn.org/services/online-services/access-to-the-ltwa/)"
+    },
+    "issn": {
+      "type": "string",
+      "description": "Current [ISSN identifier](https://www.issn.org/understanding-the-issn/what-is-an-issn/)"
+    },
+    "previousIssn": {
+      "type": "array",
+      "description": "Previously assignled ISSN identifiers",
+      "items": {
+        "type": "string"
+      }
+    },
+    "eIssn": {
+      "type": "string",
+      "description": "(For online journals) [Electronic ISSN](https://www.issn.org/understanding-the-issn/assignment-rules/the-issn-for-electronic-media/) identifier"
+    },
+    "publisher": {
+      "$ref": "#/$defs/Publisher"
+    },
+    "frequency": {
+      "type": "integer",
+      "description": "Number of times per year the journal is published",
+      "format": "int32"
+    },
+    "firstIssueYear": {
+      "type": "integer",
+      "description": "First year the journal was published",
+      "format": "int32"
+    },
+    "language": {
+      "type": "string",
+      "description": "Journal publication language"
+    },
+    "openAccess": {
+      "$ref": "#/$defs/OpenAccess"
+    },
+    "categories": {
+      "$ref": "#/$defs/Categories"
+    },
+    "journalCitationReports": {
+      "$ref": "#/$defs/JournalCitationReport"
+    }
+  },
+  "$defs": {
+    "Categories": {
+      "type": "array",
+      "description": "List of journal categories with related editions/databases",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Link to the JCR Category"
+          },
+          "name": {
+            "type": "string",
+            "description": "Category name"
+          },
+          "edition": {
+            "type": "string",
+            "description": "Edition/database name"
+          }
+        }
+      }
+    },
+    "JournalCitationReport": {
+      "type": "array",
+      "description": "List of all available Journal Citation Reports by year",
+      "items": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "description": "Journal Citation Report year (1997-2020)",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string",
+            "description": "Link to the report"
+          }
+        }
+      }
+    },
+    "OpenAccess": {
+      "type": "object",
+      "description": "Journal open access status",
+      "properties": {
+        "startYear": {
+          "type": "integer",
+          "description": "First year of journal open access",
+          "format": "int32"
+        },
+        "endYear": {
+          "type": "integer",
+          "description": "Last year of journal open access",
+          "format": "int32"
+        }
+      }
+    },
+    "Publisher": {
+      "type": "object",
+      "description": "Information about the journal publisher",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Publisher unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Publisher name"
+        },
+        "address": {
+          "type": "string",
+          "description": "Publisher address"
+        },
+        "countryRegion": {
+          "type": "string",
+          "description": "Publisher country/region"
+        }
+      }
+    }
+  }
+}

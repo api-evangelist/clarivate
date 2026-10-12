@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-entity-data-list-schema.json",
+  "title": "EntityDataList",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-data-entity-api-openapi.yml#/components/schemas/EntityDataList",
+  "required": [
+    "count",
+    "nrRecordsAll",
+    "nrRecordsFound",
+    "startRecord"
+  ],
+  "type": "object",
+  "properties": {
+    "startRecord": {
+      "type": "integer"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "nrRecordsAll": {
+      "type": "integer"
+    },
+    "nrRecordsFound": {
+      "type": "integer"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EntityData"
+      }
+    }
+  },
+  "$defs": {
+    "AttributeData": {
+      "required": [
+        "attributeName",
+        "attributeType",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "attributeName": {
+          "type": "string",
+          "description": "Attribute name"
+        },
+        "attributeType": {
+          "type": "string",
+          "description": "Data type of the Attribute",
+          "enum": [
+            "STRING",
+            "TEXT",
+            "CGV",
+            "NUMBER",
+            "DATE",
+            "BOOLEAN"
+          ]
+        },
+        "language": {
+          "type": "string",
+          "description": "language code of this attribute. Empty if not translatable"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the attribute data"
+        },
+        "choiceGroupData": {
+          "$ref": "#/$defs/ChoiceGroupData"
+        }
+      }
+    },
+    "ChoiceGroupData": {
+      "type": "object",
+      "properties": {
+        "choiceGroupName": {
+          "type": "string",
+          "description": "If the attribute is of type ChoiceGroup, then this should be filled."
+        },
+        "choiceGroupValue": {
+          "type": "string",
+          "description": "default value"
+        },
+        "choiceGroupValueLabels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        }
+      }
+    },
+    "EntityData": {
+      "required": [
+        "createdBy",
+        "createdOn",
+        "entityName",
+        "id",
+        "intern",
+        "public",
+        "shortDescription",
+        "status",
+        "updatedBy",
+        "updatedOn"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Converis ID of the data entity"
+        },
+        "entityName": {
+          "type": "string",
+          "description": "Entity name of this data"
+        },
+        "status": {
+          "type": "integer",
+          "description": "Status of the given data"
+        },
+        "statusLabels": {
+          "type": "array",
+          "description": "list of short descriptions in different languages",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Is the data visible for public"
+        },
+        "intern": {
+          "type": "boolean",
+          "description": "Is the data visible for intern"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User who created this data"
+        },
+        "createdOn": {
+          "type": "string",
+          "description": "Creation date of this data",
+          "format": "date-time"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "User who last updated this data"
+        },
+        "updatedOn": {
+          "type": "string",
+          "description": "Last updation date of this data",
+          "format": "date-time"
+        },
+        "shortDescription": {
+          "type": "array",
+          "description": "list of short descriptions in different languages",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "description": "list of attributes data for this entity data",
+          "items": {
+            "$ref": "#/$defs/AttributeData"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LinkReference"
+          }
+        }
+      }
+    },
+    "LabelDefinition": {
+      "required": [
+        "language",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "The system language abbreviation"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the label"
+        }
+      }
+    },
+    "LinkReference": {
+      "required": [
+        "rel",
+        "href"
+      ],
+      "type": "object",
+      "properties": {
+        "rel": {
+          "type": "string",
+          "description": "Describes the type of relationship."
+        },
+        "href": {
+          "type": "string",
+          "description": "is the complete endpoint path that uniquely defines the resource."
+        }
+      }
+    }
+  }
+}

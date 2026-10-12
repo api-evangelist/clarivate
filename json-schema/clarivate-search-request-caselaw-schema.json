@@ -1,0 +1,2709 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-search-request-caselaw-schema.json",
+  "title": "search_request_caselaw",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-ip-cases-api-openapi.yml#/components/schemas/search_request_caselaw",
+  "properties": {
+    "AGG": {
+      "description": "A list of aggregations",
+      "items": {
+        "properties": {
+          "ALIAS": {
+            "description": "Field name alias",
+            "type": "string"
+          },
+          "FIELD": {
+            "description": "Field to query",
+            "enum": [
+              "CLAIM_CONSTRUCTION_DEFINITION",
+              "RIGHT_ASSESSMENT_AMENDED_CLAIMS",
+              "REPRESENTATIVE_LEGAL_FORM",
+              "PARTY_DEFENDANT_ULTIMATE_PARENT",
+              "PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS",
+              "RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER",
+              "PATENT_INDEX",
+              "DOMAIN_IS_UNFAIR_COMPETITION",
+              "CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION",
+              "POINT_OF_LAW_OUTCOME_NEGATIVE",
+              "RELEVANT_PUBLIC_AVERAGE_CONSUMER",
+              "DESIGN_REGISTRATION_OFFICE",
+              "IPC_CLASS_INDUSTRY_AREA",
+              "GUID",
+              "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3",
+              "DAMAGE_NATURE",
+              "DAMAGE_CURRENT_CNY_EQUIVALENT",
+              "DOCKET_COURT_TYPE_JUDICIAL",
+              "RELATION_RATING",
+              "PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION",
+              "TRADEMARK_VERBAL_ELEMENT",
+              "BINDER_ID",
+              "DOCUMENT_DEFAULT_JUDGEMENT",
+              "DOMAIN_IS_DESIGN_MODEL",
+              "DOMAIN_NAME_ROLE",
+              "PATENT_APPLICATION_ID",
+              "EARLIEST_EVENT_DATE",
+              "REPRESENTATIVE_TYPE",
+              "RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX",
+              "DOCUMENT_TYPE",
+              "COPYRIGHT_ANONYMOUS",
+              "DOCKET_COURT_PATH",
+              "RELEVANT_PUBLIC_NICE_CLASS",
+              "RELATION_RELATION",
+              "TOTAL_DAMAGE_TYPE",
+              "DOCKET_COURT_TYPE_ADMINISTRATIVE",
+              "DAMAGE_CURRENT_USD_EQUIVALENT",
+              "POINT_OF_LAW_OUTCOME",
+              "DESIGN_ANONYMOUS",
+              "PATENT_TITLE_LANGUAGE",
+              "PATENT_ASSERTIONS",
+              "CASE_NAME",
+              "REPRESENTATIVE_COUNTRY",
+              "DESIGN_VIENNA_CLASS",
+              "TRADEMARK_VIENNA_CLASS",
+              "PATENT_SOURCE",
+              "FIRST_ACTION_TYPE",
+              "PATENT_ROLE",
+              "DOCKET_COURT_COUNTRY",
+              "DESIGN_VERBAL_ELEMENT",
+              "RELATION_TARGET_REFERENCE",
+              "PARTY_ALTERNATIVE_ULTIMATE_PARENT",
+              "PATENT_DAMAGES_ASSIGNED",
+              "PATENT_REFERENCE_ORIGINAL",
+              "WITHDRAWN",
+              "DESIGN_LOCARNO_CLASS",
+              "DOCUMENT_DECLARATORY",
+              "PARTY_OPTIMIZED_NAME",
+              "PATENT_APPLICATION_NUMBER",
+              "COPYRIGHT_TITLE",
+              "TOTAL_DAMAGE_AMOUNT",
+              "PARTY_OPTIMIZED_NAMES",
+              "POINT_OF_LAW_CONFIDENCE_LEVEL",
+              "AREA",
+              "REMEDY",
+              "PARTY_PLAINTIFF_NAME",
+              "DOMAIN_NAME_TLD",
+              "DOCKET_COURT_AREA",
+              "NUMBER_DEFENDANTS",
+              "PARTY_COUNTRY",
+              "DESIGN_PRODUCT",
+              "PATENT_INVENTION_ID",
+              "COPYRIGHT_DESCRIPTION",
+              "COPYRIGHT_ROLE",
+              "DOCUMENT_LEVEL",
+              "DAMAGE_LATER",
+              "COPYRIGHT_TYPE",
+              "IPC_CLASS_INDUSTRY_FIELD",
+              "TRADEMARK_ANONYMOUS",
+              "PATENT_TYPE",
+              "TRADEMARK_TYPE",
+              "DOCUMENT_CITABLE",
+              "IPC_CLASS_CODE",
+              "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2",
+              "POINT_OF_LAW_PREFIX",
+              "PATENT_PUBLICATION_NUMBER",
+              "DOMAIN_IS_COPYRIGHT",
+              "PATENT_INFRINGEMENT",
+              "PATENT_REFERENCE_AUTHORITY",
+              "CLOSED",
+              "RELEVANT_PUBLIC_AWARENESS",
+              "TRADEMARK_ROLE",
+              "REPRESENTATIVE_OPTIMIZED_NAME",
+              "DOCUMENT_REFUSAL",
+              "DOCKET_COURT_TYPE_ARBITRATION",
+              "PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS",
+              "RIGHT_ASSESSMENT_INFRINGEMENT",
+              "PARTY_IS_EX_OFFICIO",
+              "PATENT_VALIDITY",
+              "DOCKET_REFERENCE",
+              "PATENT_ANONYMOUS",
+              "POINT_OF_LAW_PARENT_PATH",
+              "LAST_EVENT_DATE",
+              "CLAIM_CONSTRUCTION_AGREED",
+              "CASE_DOMAIN",
+              "DOMAIN_NAME_ANONYMOUS",
+              "PARTY_IS_ANONYMOUS",
+              "NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO",
+              "DOCUMENT_SUBTYPE",
+              "PARTY_PLAINTIFF_ULTIMATE_PARENT",
+              "PARTY_LEGAL_FORM",
+              "DAMAGE_REQUESTED",
+              "CASE_STATUS",
+              "FIRST_ACTION_DATE",
+              "DAMAGE_PARTIAL",
+              "PARTY_ROLE",
+              "LAST_UPDATED_DATE",
+              "DAMAGE_AMOUNT",
+              "DOCKET_COURT_COUNTRY_TEXT",
+              "DAMAGE_CALCULATION_METHOD",
+              "RIGHT_ASSESSMENT_VALIDITY",
+              "EU_TRADEMARK",
+              "DOCKET_COURT_COUNTRY_DERIVED_TEXT",
+              "PATENT_TITLE",
+              "DOMAIN_IS_TRADEMARK",
+              "TRADEMARK_LOCARNO_CLASS",
+              "CASE_RESOLUTION",
+              "CASE_STAGE",
+              "DESIGN_PRODUCT_LANGUAGE",
+              "TOTAL_DAMAGE_CURRENCY",
+              "PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION",
+              "PATENT_DOCDB_FAMILY_ID",
+              "PATENT_OPTIMIZED_TITLE",
+              "PATENT_DWPI_APPLICATION_NUMBER",
+              "NUMBER_PLAINTIFFS",
+              "PATENT_REFERENCE_KIND",
+              "PARTY_DEFENDANT_NAME",
+              "DESIGN_ROLE",
+              "TRADEMARK_REGISTRATION_NUMBER",
+              "SETTLED",
+              "DOMAIN_IS_PATENT",
+              "DOCKET_COURT_NAME",
+              "PARTY_ULTIMATE_PARENT",
+              "TRADEMARK_NICE_CLASS",
+              "PARTY_TYPE",
+              "DAMAGE_CURRENCY",
+              "PATENT_INPADOC_FAMILY_ID",
+              "RELATION_TARGET_DECISION",
+              "PATENT_VALIDITY_CHALLENGES",
+              "POINT_OF_LAW_OUTCOME_POSITIVE",
+              "PATENT_REFERENCE_NUMBER",
+              "DESIGN_REGISTRATION_NUMBER",
+              "CLAIM_CONSTRUCTION_TERM",
+              "DOCUMENT_WINNER",
+              "DOCUMENT_CITATION_REFERENCE",
+              "DOCUMENT_DATE",
+              "POINT_OF_LAW_NAME",
+              "TRADEMARK_REGISTRATION_OFFICE",
+              "CLAIM_CONSTRUCTION_NOT_NECESSARY",
+              "DAMAGE_CURRENT_EUR_EQUIVALENT",
+              "DOMAIN_IS_OTHER",
+              "PATENT_REFERENCE_TYPE",
+              "DESIGN_REGISTRATION_STATUS",
+              "EX_OFFICIO",
+              "DOMAIN_NAME",
+              "PRODUCT_COMPARISON_SIMILAR",
+              "DOMAIN_IS_DOMAIN_NAME",
+              "TRADEMARK_ID",
+              "DOCUMENT_STATE",
+              "DOCUMENT_TRADEMARK_REPUTATION"
+            ],
+            "type": "string"
+          },
+          "FUNC": {
+            "description": "Aggregation function",
+            "type": "string"
+          }
+        },
+        "required": [
+          "FIELD",
+          "FUNC"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "FIELDS": {
+      "oneOf": [
+        {
+          "description": "Fields to fetch. This may also be a structure of type field_aliases_caselaw, rather than an array, in which case the fields will be renamed.",
+          "items": {
+            "default": "GUID",
+            "description": "Fields to fetch. This may also be a structure of type field_aliases_caselaw, rather than an array, in which case the fields will be renamed.",
+            "enum": [
+              "CLAIM_CONSTRUCTION_DEFINITION",
+              "RIGHT_ASSESSMENT_AMENDED_CLAIMS",
+              "REPRESENTATIVE_LEGAL_FORM",
+              "PARTY_DEFENDANT_ULTIMATE_PARENT",
+              "PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS",
+              "RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER",
+              "PATENT_INDEX",
+              "DOMAIN_IS_UNFAIR_COMPETITION",
+              "CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION",
+              "POINT_OF_LAW_OUTCOME_NEGATIVE",
+              "RELEVANT_PUBLIC_AVERAGE_CONSUMER",
+              "DESIGN_REGISTRATION_OFFICE",
+              "IPC_CLASS_INDUSTRY_AREA",
+              "GUID",
+              "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3",
+              "DAMAGE_NATURE",
+              "DAMAGE_CURRENT_CNY_EQUIVALENT",
+              "DOCKET_COURT_TYPE_JUDICIAL",
+              "RELATION_RATING",
+              "PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION",
+              "TRADEMARK_VERBAL_ELEMENT",
+              "BINDER_ID",
+              "DOCUMENT_DEFAULT_JUDGEMENT",
+              "DOMAIN_IS_DESIGN_MODEL",
+              "DOMAIN_NAME_ROLE",
+              "PATENT_APPLICATION_ID",
+              "EARLIEST_EVENT_DATE",
+              "REPRESENTATIVE_TYPE",
+              "RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX",
+              "DOCUMENT_TYPE",
+              "COPYRIGHT_ANONYMOUS",
+              "DOCKET_COURT_PATH",
+              "RELEVANT_PUBLIC_NICE_CLASS",
+              "RELATION_RELATION",
+              "TOTAL_DAMAGE_TYPE",
+              "DOCKET_COURT_TYPE_ADMINISTRATIVE",
+              "DAMAGE_CURRENT_USD_EQUIVALENT",
+              "POINT_OF_LAW_OUTCOME",
+              "DESIGN_ANONYMOUS",
+              "PATENT_TITLE_LANGUAGE",
+              "PATENT_ASSERTIONS",
+              "CASE_NAME",
+              "REPRESENTATIVE_COUNTRY",
+              "DESIGN_VIENNA_CLASS",
+              "TRADEMARK_VIENNA_CLASS",
+              "PATENT_SOURCE",
+              "FIRST_ACTION_TYPE",
+              "PATENT_ROLE",
+              "DOCKET_COURT_COUNTRY",
+              "DESIGN_VERBAL_ELEMENT",
+              "RELATION_TARGET_REFERENCE",
+              "PARTY_ALTERNATIVE_ULTIMATE_PARENT",
+              "PATENT_DAMAGES_ASSIGNED",
+              "PATENT_REFERENCE_ORIGINAL",
+              "WITHDRAWN",
+              "DESIGN_LOCARNO_CLASS",
+              "DOCUMENT_DECLARATORY",
+              "PARTY_OPTIMIZED_NAME",
+              "PATENT_APPLICATION_NUMBER",
+              "COPYRIGHT_TITLE",
+              "TOTAL_DAMAGE_AMOUNT",
+              "PARTY_OPTIMIZED_NAMES",
+              "POINT_OF_LAW_CONFIDENCE_LEVEL",
+              "AREA",
+              "REMEDY",
+              "PARTY_PLAINTIFF_NAME",
+              "DOMAIN_NAME_TLD",
+              "DOCKET_COURT_AREA",
+              "NUMBER_DEFENDANTS",
+              "PARTY_COUNTRY",
+              "DESIGN_PRODUCT",
+              "PATENT_INVENTION_ID",
+              "COPYRIGHT_DESCRIPTION",
+              "COPYRIGHT_ROLE",
+              "DOCUMENT_LEVEL",
+              "DAMAGE_LATER",
+              "COPYRIGHT_TYPE",
+              "IPC_CLASS_INDUSTRY_FIELD",
+              "TRADEMARK_ANONYMOUS",
+              "PATENT_TYPE",
+              "TRADEMARK_TYPE",
+              "DOCUMENT_CITABLE",
+              "IPC_CLASS_CODE",
+              "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2",
+              "POINT_OF_LAW_PREFIX",
+              "PATENT_PUBLICATION_NUMBER",
+              "DOMAIN_IS_COPYRIGHT",
+              "PATENT_INFRINGEMENT",
+              "PATENT_REFERENCE_AUTHORITY",
+              "CLOSED",
+              "RELEVANT_PUBLIC_AWARENESS",
+              "TRADEMARK_ROLE",
+              "REPRESENTATIVE_OPTIMIZED_NAME",
+              "DOCUMENT_REFUSAL",
+              "DOCKET_COURT_TYPE_ARBITRATION",
+              "PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS",
+              "RIGHT_ASSESSMENT_INFRINGEMENT",
+              "PARTY_IS_EX_OFFICIO",
+              "PATENT_VALIDITY",
+              "DOCKET_REFERENCE",
+              "PATENT_ANONYMOUS",
+              "POINT_OF_LAW_PARENT_PATH",
+              "LAST_EVENT_DATE",
+              "CLAIM_CONSTRUCTION_AGREED",
+              "CASE_DOMAIN",
+              "DOMAIN_NAME_ANONYMOUS",
+              "PARTY_IS_ANONYMOUS",
+              "NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO",
+              "DOCUMENT_SUBTYPE",
+              "PARTY_PLAINTIFF_ULTIMATE_PARENT",
+              "PARTY_LEGAL_FORM",
+              "DAMAGE_REQUESTED",
+              "CASE_STATUS",
+              "FIRST_ACTION_DATE",
+              "DAMAGE_PARTIAL",
+              "PARTY_ROLE",
+              "LAST_UPDATED_DATE",
+              "DAMAGE_AMOUNT",
+              "DOCKET_COURT_COUNTRY_TEXT",
+              "DAMAGE_CALCULATION_METHOD",
+              "RIGHT_ASSESSMENT_VALIDITY",
+              "EU_TRADEMARK",
+              "DOCKET_COURT_COUNTRY_DERIVED_TEXT",
+              "PATENT_TITLE",
+              "DOMAIN_IS_TRADEMARK",
+              "TRADEMARK_LOCARNO_CLASS",
+              "CASE_RESOLUTION",
+              "CASE_STAGE",
+              "DESIGN_PRODUCT_LANGUAGE",
+              "TOTAL_DAMAGE_CURRENCY",
+              "PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION",
+              "PATENT_DOCDB_FAMILY_ID",
+              "PATENT_OPTIMIZED_TITLE",
+              "PATENT_DWPI_APPLICATION_NUMBER",
+              "NUMBER_PLAINTIFFS",
+              "PATENT_REFERENCE_KIND",
+              "PARTY_DEFENDANT_NAME",
+              "DESIGN_ROLE",
+              "TRADEMARK_REGISTRATION_NUMBER",
+              "SETTLED",
+              "DOMAIN_IS_PATENT",
+              "DOCKET_COURT_NAME",
+              "PARTY_ULTIMATE_PARENT",
+              "TRADEMARK_NICE_CLASS",
+              "PARTY_TYPE",
+              "DAMAGE_CURRENCY",
+              "PATENT_INPADOC_FAMILY_ID",
+              "RELATION_TARGET_DECISION",
+              "PATENT_VALIDITY_CHALLENGES",
+              "POINT_OF_LAW_OUTCOME_POSITIVE",
+              "PATENT_REFERENCE_NUMBER",
+              "DESIGN_REGISTRATION_NUMBER",
+              "CLAIM_CONSTRUCTION_TERM",
+              "DOCUMENT_WINNER",
+              "DOCUMENT_CITATION_REFERENCE",
+              "DOCUMENT_DATE",
+              "POINT_OF_LAW_NAME",
+              "TRADEMARK_REGISTRATION_OFFICE",
+              "CLAIM_CONSTRUCTION_NOT_NECESSARY",
+              "DAMAGE_CURRENT_EUR_EQUIVALENT",
+              "DOMAIN_IS_OTHER",
+              "PATENT_REFERENCE_TYPE",
+              "DESIGN_REGISTRATION_STATUS",
+              "EX_OFFICIO",
+              "DOMAIN_NAME",
+              "PRODUCT_COMPARISON_SIMILAR",
+              "DOMAIN_IS_DOMAIN_NAME",
+              "TRADEMARK_ID",
+              "DOCUMENT_STATE",
+              "DOCUMENT_TRADEMARK_REPUTATION"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/field_aliases_caselaw"
+        }
+      ]
+    },
+    "GROUPBY": {
+      "description": "Group by fields (for aggregation)",
+      "items": {
+        "description": "Group by fields (for aggregation)",
+        "enum": [
+          "CLAIM_CONSTRUCTION_DEFINITION",
+          "RIGHT_ASSESSMENT_AMENDED_CLAIMS",
+          "REPRESENTATIVE_LEGAL_FORM",
+          "PARTY_DEFENDANT_ULTIMATE_PARENT",
+          "PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS",
+          "RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER",
+          "PATENT_INDEX",
+          "DOMAIN_IS_UNFAIR_COMPETITION",
+          "CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION",
+          "POINT_OF_LAW_OUTCOME_NEGATIVE",
+          "RELEVANT_PUBLIC_AVERAGE_CONSUMER",
+          "DESIGN_REGISTRATION_OFFICE",
+          "IPC_CLASS_INDUSTRY_AREA",
+          "GUID",
+          "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3",
+          "DAMAGE_NATURE",
+          "DAMAGE_CURRENT_CNY_EQUIVALENT",
+          "DOCKET_COURT_TYPE_JUDICIAL",
+          "RELATION_RATING",
+          "PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION",
+          "TRADEMARK_VERBAL_ELEMENT",
+          "BINDER_ID",
+          "DOCUMENT_DEFAULT_JUDGEMENT",
+          "DOMAIN_IS_DESIGN_MODEL",
+          "DOMAIN_NAME_ROLE",
+          "PATENT_APPLICATION_ID",
+          "EARLIEST_EVENT_DATE",
+          "REPRESENTATIVE_TYPE",
+          "RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX",
+          "DOCUMENT_TYPE",
+          "COPYRIGHT_ANONYMOUS",
+          "DOCKET_COURT_PATH",
+          "RELATION_RELATION",
+          "TOTAL_DAMAGE_TYPE",
+          "DOCKET_COURT_TYPE_ADMINISTRATIVE",
+          "DAMAGE_CURRENT_USD_EQUIVALENT",
+          "POINT_OF_LAW_OUTCOME",
+          "DESIGN_ANONYMOUS",
+          "PATENT_TITLE_LANGUAGE",
+          "PATENT_ASSERTIONS",
+          "CASE_NAME",
+          "REPRESENTATIVE_COUNTRY",
+          "DESIGN_VIENNA_CLASS",
+          "TRADEMARK_VIENNA_CLASS",
+          "PATENT_SOURCE",
+          "FIRST_ACTION_TYPE",
+          "PATENT_ROLE",
+          "DOCKET_COURT_COUNTRY",
+          "DESIGN_VERBAL_ELEMENT",
+          "RELATION_TARGET_REFERENCE",
+          "PATENT_DAMAGES_ASSIGNED",
+          "PATENT_REFERENCE_ORIGINAL",
+          "WITHDRAWN",
+          "DESIGN_LOCARNO_CLASS",
+          "DOCUMENT_DECLARATORY",
+          "PARTY_OPTIMIZED_NAME",
+          "PATENT_APPLICATION_NUMBER",
+          "COPYRIGHT_TITLE",
+          "TOTAL_DAMAGE_AMOUNT",
+          "PARTY_OPTIMIZED_NAMES",
+          "POINT_OF_LAW_CONFIDENCE_LEVEL",
+          "AREA",
+          "REMEDY",
+          "PARTY_PLAINTIFF_NAME",
+          "DOMAIN_NAME_TLD",
+          "DOCKET_COURT_AREA",
+          "NUMBER_DEFENDANTS",
+          "PARTY_COUNTRY",
+          "DESIGN_PRODUCT",
+          "PATENT_INVENTION_ID",
+          "COPYRIGHT_DESCRIPTION",
+          "COPYRIGHT_ROLE",
+          "DOCUMENT_LEVEL",
+          "DAMAGE_LATER",
+          "COPYRIGHT_TYPE",
+          "IPC_CLASS_INDUSTRY_FIELD",
+          "TRADEMARK_ANONYMOUS",
+          "PATENT_TYPE",
+          "TRADEMARK_TYPE",
+          "DOCUMENT_CITABLE",
+          "IPC_CLASS_CODE",
+          "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2",
+          "POINT_OF_LAW_PREFIX",
+          "PATENT_PUBLICATION_NUMBER",
+          "DOMAIN_IS_COPYRIGHT",
+          "PATENT_INFRINGEMENT",
+          "PATENT_REFERENCE_AUTHORITY",
+          "CLOSED",
+          "RELEVANT_PUBLIC_AWARENESS",
+          "TRADEMARK_ROLE",
+          "REPRESENTATIVE_OPTIMIZED_NAME",
+          "DOCUMENT_REFUSAL",
+          "DOCKET_COURT_TYPE_ARBITRATION",
+          "PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS",
+          "RIGHT_ASSESSMENT_INFRINGEMENT",
+          "PARTY_IS_EX_OFFICIO",
+          "PATENT_VALIDITY",
+          "DOCKET_REFERENCE",
+          "PATENT_ANONYMOUS",
+          "POINT_OF_LAW_PARENT_PATH",
+          "LAST_EVENT_DATE",
+          "CLAIM_CONSTRUCTION_AGREED",
+          "CASE_DOMAIN",
+          "DOMAIN_NAME_ANONYMOUS",
+          "PARTY_IS_ANONYMOUS",
+          "NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO",
+          "DOCUMENT_SUBTYPE",
+          "PARTY_PLAINTIFF_ULTIMATE_PARENT",
+          "PARTY_LEGAL_FORM",
+          "DAMAGE_REQUESTED",
+          "CASE_STATUS",
+          "FIRST_ACTION_DATE",
+          "DAMAGE_PARTIAL",
+          "PARTY_ROLE",
+          "LAST_UPDATED_DATE",
+          "DAMAGE_AMOUNT",
+          "DOCKET_COURT_COUNTRY_TEXT",
+          "DAMAGE_CALCULATION_METHOD",
+          "RIGHT_ASSESSMENT_VALIDITY",
+          "EU_TRADEMARK",
+          "DOCKET_COURT_COUNTRY_DERIVED_TEXT",
+          "PATENT_TITLE",
+          "DOMAIN_IS_TRADEMARK",
+          "TRADEMARK_LOCARNO_CLASS",
+          "CASE_RESOLUTION",
+          "CASE_STAGE",
+          "DESIGN_PRODUCT_LANGUAGE",
+          "TOTAL_DAMAGE_CURRENCY",
+          "PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION",
+          "PATENT_DOCDB_FAMILY_ID",
+          "PATENT_OPTIMIZED_TITLE",
+          "PATENT_DWPI_APPLICATION_NUMBER",
+          "NUMBER_PLAINTIFFS",
+          "PATENT_REFERENCE_KIND",
+          "PARTY_DEFENDANT_NAME",
+          "DESIGN_ROLE",
+          "TRADEMARK_REGISTRATION_NUMBER",
+          "SETTLED",
+          "DOMAIN_IS_PATENT",
+          "DOCKET_COURT_NAME",
+          "PARTY_ULTIMATE_PARENT",
+          "TRADEMARK_NICE_CLASS",
+          "PARTY_TYPE",
+          "DAMAGE_CURRENCY",
+          "PATENT_INPADOC_FAMILY_ID",
+          "RELATION_TARGET_DECISION",
+          "PATENT_VALIDITY_CHALLENGES",
+          "POINT_OF_LAW_OUTCOME_POSITIVE",
+          "PATENT_REFERENCE_NUMBER",
+          "DESIGN_REGISTRATION_NUMBER",
+          "CLAIM_CONSTRUCTION_TERM",
+          "DOCUMENT_WINNER",
+          "DOCUMENT_CITATION_REFERENCE",
+          "DOCUMENT_DATE",
+          "POINT_OF_LAW_NAME",
+          "TRADEMARK_REGISTRATION_OFFICE",
+          "CLAIM_CONSTRUCTION_NOT_NECESSARY",
+          "DAMAGE_CURRENT_EUR_EQUIVALENT",
+          "DOMAIN_IS_OTHER",
+          "PATENT_REFERENCE_TYPE",
+          "DESIGN_REGISTRATION_STATUS",
+          "EX_OFFICIO",
+          "DOMAIN_NAME",
+          "PRODUCT_COMPARISON_SIMILAR",
+          "DOMAIN_IS_DOMAIN_NAME",
+          "TRADEMARK_ID",
+          "DOCUMENT_STATE",
+          "DOCUMENT_TRADEMARK_REPUTATION"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIMIT": {
+      "default": 10,
+      "description": "Maximum documents to retrieve",
+      "type": "number"
+    },
+    "OFFSET": {
+      "default": 0,
+      "description": "How many items to skip at the beginning (for pagination)",
+      "type": "number"
+    },
+    "ORDERBY": {
+      "description": "Order by fields (for aggregation)",
+      "items": {
+        "properties": {
+          "AREA": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "BINDER_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CASE_DOMAIN": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CASE_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CASE_RESOLUTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CASE_STAGE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CASE_STATUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLAIM_CONSTRUCTION_AGREED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLAIM_CONSTRUCTION_DEFINITION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLAIM_CONSTRUCTION_NOT_NECESSARY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLAIM_CONSTRUCTION_TERM": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CLOSED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COPYRIGHT_ANONYMOUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COPYRIGHT_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COPYRIGHT_ROLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COPYRIGHT_TITLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "COPYRIGHT_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_AMOUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_CALCULATION_METHOD": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_CURRENCY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_CURRENT_CNY_EQUIVALENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_CURRENT_EUR_EQUIVALENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_CURRENT_USD_EQUIVALENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_LATER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_NATURE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_PARTIAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DAMAGE_REQUESTED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_ANONYMOUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_LOCARNO_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_PRODUCT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_PRODUCT_LANGUAGE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_REGISTRATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_REGISTRATION_OFFICE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_REGISTRATION_STATUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_ROLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_VERBAL_ELEMENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DESIGN_VIENNA_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_AREA": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_COUNTRY_DERIVED_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_COUNTRY_TEXT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_PATH": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_TYPE_ADMINISTRATIVE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_TYPE_ARBITRATION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_COURT_TYPE_JUDICIAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCKET_REFERENCE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_CITABLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_CITATION_REFERENCE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "DOCUMENT_DECLARATORY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_DEFAULT_JUDGEMENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_LEVEL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_REFUSAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_STATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_SUBTYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_TRADEMARK_REPUTATION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_WINNER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_COPYRIGHT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_DESIGN_MODEL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_DOMAIN_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_OTHER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_PATENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_TRADEMARK": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_IS_UNFAIR_COMPETITION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_NAME_ANONYMOUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_NAME_ROLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOMAIN_NAME_TLD": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EARLIEST_EVENT_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "EU_TRADEMARK": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EX_OFFICIO": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "FIRST_ACTION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "FIRST_ACTION_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "GUID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_CLASS_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_CLASS_INDUSTRY_AREA": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_CLASS_INDUSTRY_FIELD": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "LAST_EVENT_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "LAST_UPDATED_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "NUMBER_DEFENDANTS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "NUMBER_PLAINTIFFS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_ALTERNATIVE_ULTIMATE_PARENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_DEFENDANT_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_DEFENDANT_ULTIMATE_PARENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_IS_ANONYMOUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_IS_EX_OFFICIO": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_LEGAL_FORM": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_OPTIMIZED_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_OPTIMIZED_NAMES": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_PLAINTIFF_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_PLAINTIFF_ULTIMATE_PARENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_ROLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PARTY_ULTIMATE_PARENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_ANONYMOUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_APPLICATION_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_APPLICATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_ASSERTIONS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_DAMAGES_ASSIGNED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_DOCDB_FAMILY_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_DWPI_APPLICATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_INDEX": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_INFRINGEMENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_INPADOC_FAMILY_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_INVENTION_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_OPTIMIZED_TITLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_PUBLICATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_REFERENCE_AUTHORITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_REFERENCE_KIND": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_REFERENCE_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_REFERENCE_ORIGINAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_REFERENCE_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_ROLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_SOURCE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_TITLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_TITLE_LANGUAGE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_VALIDITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_VALIDITY_CHALLENGES": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_CONFIDENCE_LEVEL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_OUTCOME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_OUTCOME_NEGATIVE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_OUTCOME_POSITIVE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_PARENT_PATH": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "POINT_OF_LAW_PREFIX": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PRODUCT_COMPARISON_SIMILAR": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELATION_RATING": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELATION_RELATION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELATION_TARGET_DECISION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELATION_TARGET_REFERENCE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELEVANT_PUBLIC_AVERAGE_CONSUMER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELEVANT_PUBLIC_AWARENESS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELEVANT_PUBLIC_NICE_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REMEDY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_LEGAL_FORM": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_OPTIMIZED_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RIGHT_ASSESSMENT_AMENDED_CLAIMS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RIGHT_ASSESSMENT_INFRINGEMENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "RIGHT_ASSESSMENT_VALIDITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "SETTLED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TOTAL_DAMAGE_AMOUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TOTAL_DAMAGE_CURRENCY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TOTAL_DAMAGE_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_ANONYMOUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_LOCARNO_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_NICE_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_REGISTRATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_REGISTRATION_OFFICE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_ROLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_VERBAL_ELEMENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "TRADEMARK_VIENNA_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "WITHDRAWN": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "QUERY": {
+      "description": "Either a query_body_caselaw object or an array of one or more query_body_caselaw objects separated by strings consisting of boolean operators.",
+      "oneOf": [
+        {
+          "items": {
+            "anyOf": [
+              {
+                "description": "boolean operator",
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/query_body_caselaw"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/query_body_caselaw"
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "field_aliases_caselaw": {
+      "properties": {
+        "AREA": {
+          "description": "Alias for AREA",
+          "type": "string"
+        },
+        "BINDER_ID": {
+          "description": "Alias for BINDER_ID",
+          "type": "string"
+        },
+        "CASE_DOMAIN": {
+          "description": "Alias for CASE_DOMAIN",
+          "type": "string"
+        },
+        "CASE_NAME": {
+          "description": "Alias for CASE_NAME",
+          "type": "string"
+        },
+        "CASE_RESOLUTION": {
+          "description": "Alias for CASE_RESOLUTION",
+          "type": "string"
+        },
+        "CASE_STAGE": {
+          "description": "Alias for CASE_STAGE",
+          "type": "string"
+        },
+        "CASE_STATUS": {
+          "description": "Alias for CASE_STATUS",
+          "type": "string"
+        },
+        "CLAIM_CONSTRUCTION_AGREED": {
+          "description": "Alias for CLAIM_CONSTRUCTION_AGREED",
+          "type": "string"
+        },
+        "CLAIM_CONSTRUCTION_DEFINITION": {
+          "description": "Alias for CLAIM_CONSTRUCTION_DEFINITION",
+          "type": "string"
+        },
+        "CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION": {
+          "description": "Alias for CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION",
+          "type": "string"
+        },
+        "CLAIM_CONSTRUCTION_NOT_NECESSARY": {
+          "description": "Alias for CLAIM_CONSTRUCTION_NOT_NECESSARY",
+          "type": "string"
+        },
+        "CLAIM_CONSTRUCTION_TERM": {
+          "description": "Alias for CLAIM_CONSTRUCTION_TERM",
+          "type": "string"
+        },
+        "CLOSED": {
+          "description": "Alias for CLOSED",
+          "type": "string"
+        },
+        "COPYRIGHT_ANONYMOUS": {
+          "description": "Alias for COPYRIGHT_ANONYMOUS",
+          "type": "string"
+        },
+        "COPYRIGHT_DESCRIPTION": {
+          "description": "Alias for COPYRIGHT_DESCRIPTION",
+          "type": "string"
+        },
+        "COPYRIGHT_ROLE": {
+          "description": "Alias for COPYRIGHT_ROLE",
+          "type": "string"
+        },
+        "COPYRIGHT_TITLE": {
+          "description": "Alias for COPYRIGHT_TITLE",
+          "type": "string"
+        },
+        "COPYRIGHT_TYPE": {
+          "description": "Alias for COPYRIGHT_TYPE",
+          "type": "string"
+        },
+        "DAMAGE_AMOUNT": {
+          "description": "Alias for DAMAGE_AMOUNT",
+          "type": "string"
+        },
+        "DAMAGE_CALCULATION_METHOD": {
+          "description": "Alias for DAMAGE_CALCULATION_METHOD",
+          "type": "string"
+        },
+        "DAMAGE_CURRENCY": {
+          "description": "Alias for DAMAGE_CURRENCY",
+          "type": "string"
+        },
+        "DAMAGE_CURRENT_CNY_EQUIVALENT": {
+          "description": "Alias for DAMAGE_CURRENT_CNY_EQUIVALENT",
+          "type": "string"
+        },
+        "DAMAGE_CURRENT_EUR_EQUIVALENT": {
+          "description": "Alias for DAMAGE_CURRENT_EUR_EQUIVALENT",
+          "type": "string"
+        },
+        "DAMAGE_CURRENT_USD_EQUIVALENT": {
+          "description": "Alias for DAMAGE_CURRENT_USD_EQUIVALENT",
+          "type": "string"
+        },
+        "DAMAGE_LATER": {
+          "description": "Alias for DAMAGE_LATER",
+          "type": "string"
+        },
+        "DAMAGE_NATURE": {
+          "description": "Alias for DAMAGE_NATURE",
+          "type": "string"
+        },
+        "DAMAGE_PARTIAL": {
+          "description": "Alias for DAMAGE_PARTIAL",
+          "type": "string"
+        },
+        "DAMAGE_REQUESTED": {
+          "description": "Alias for DAMAGE_REQUESTED",
+          "type": "string"
+        },
+        "DESIGN_ANONYMOUS": {
+          "description": "Alias for DESIGN_ANONYMOUS",
+          "type": "string"
+        },
+        "DESIGN_LOCARNO_CLASS": {
+          "description": "Alias for DESIGN_LOCARNO_CLASS",
+          "type": "string"
+        },
+        "DESIGN_PRODUCT": {
+          "description": "Alias for DESIGN_PRODUCT",
+          "type": "string"
+        },
+        "DESIGN_PRODUCT_LANGUAGE": {
+          "description": "Alias for DESIGN_PRODUCT_LANGUAGE",
+          "type": "string"
+        },
+        "DESIGN_REGISTRATION_NUMBER": {
+          "description": "Alias for DESIGN_REGISTRATION_NUMBER",
+          "type": "string"
+        },
+        "DESIGN_REGISTRATION_OFFICE": {
+          "description": "Alias for DESIGN_REGISTRATION_OFFICE",
+          "type": "string"
+        },
+        "DESIGN_REGISTRATION_STATUS": {
+          "description": "Alias for DESIGN_REGISTRATION_STATUS",
+          "type": "string"
+        },
+        "DESIGN_ROLE": {
+          "description": "Alias for DESIGN_ROLE",
+          "type": "string"
+        },
+        "DESIGN_VERBAL_ELEMENT": {
+          "description": "Alias for DESIGN_VERBAL_ELEMENT",
+          "type": "string"
+        },
+        "DESIGN_VIENNA_CLASS": {
+          "description": "Alias for DESIGN_VIENNA_CLASS",
+          "type": "string"
+        },
+        "DOCKET_COURT_AREA": {
+          "description": "Alias for DOCKET_COURT_AREA",
+          "type": "string"
+        },
+        "DOCKET_COURT_COUNTRY": {
+          "description": "Alias for DOCKET_COURT_COUNTRY",
+          "type": "string"
+        },
+        "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2": {
+          "description": "Alias for DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2",
+          "type": "string"
+        },
+        "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3": {
+          "description": "Alias for DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3",
+          "type": "string"
+        },
+        "DOCKET_COURT_COUNTRY_DERIVED_TEXT": {
+          "description": "Alias for DOCKET_COURT_COUNTRY_DERIVED_TEXT",
+          "type": "string"
+        },
+        "DOCKET_COURT_COUNTRY_TEXT": {
+          "description": "Alias for DOCKET_COURT_COUNTRY_TEXT",
+          "type": "string"
+        },
+        "DOCKET_COURT_NAME": {
+          "description": "Alias for DOCKET_COURT_NAME",
+          "type": "string"
+        },
+        "DOCKET_COURT_PATH": {
+          "description": "Alias for DOCKET_COURT_PATH",
+          "type": "string"
+        },
+        "DOCKET_COURT_TYPE_ADMINISTRATIVE": {
+          "description": "Alias for DOCKET_COURT_TYPE_ADMINISTRATIVE",
+          "type": "string"
+        },
+        "DOCKET_COURT_TYPE_ARBITRATION": {
+          "description": "Alias for DOCKET_COURT_TYPE_ARBITRATION",
+          "type": "string"
+        },
+        "DOCKET_COURT_TYPE_JUDICIAL": {
+          "description": "Alias for DOCKET_COURT_TYPE_JUDICIAL",
+          "type": "string"
+        },
+        "DOCKET_REFERENCE": {
+          "description": "Alias for DOCKET_REFERENCE",
+          "type": "string"
+        },
+        "DOCUMENT_CITABLE": {
+          "description": "Alias for DOCUMENT_CITABLE",
+          "type": "string"
+        },
+        "DOCUMENT_CITATION_REFERENCE": {
+          "description": "Alias for DOCUMENT_CITATION_REFERENCE",
+          "type": "string"
+        },
+        "DOCUMENT_DATE": {
+          "description": "Alias for DOCUMENT_DATE",
+          "type": "string"
+        },
+        "DOCUMENT_DECLARATORY": {
+          "description": "Alias for DOCUMENT_DECLARATORY",
+          "type": "string"
+        },
+        "DOCUMENT_DEFAULT_JUDGEMENT": {
+          "description": "Alias for DOCUMENT_DEFAULT_JUDGEMENT",
+          "type": "string"
+        },
+        "DOCUMENT_LEVEL": {
+          "description": "Alias for DOCUMENT_LEVEL",
+          "type": "string"
+        },
+        "DOCUMENT_REFUSAL": {
+          "description": "Alias for DOCUMENT_REFUSAL",
+          "type": "string"
+        },
+        "DOCUMENT_STATE": {
+          "description": "Alias for DOCUMENT_STATE",
+          "type": "string"
+        },
+        "DOCUMENT_SUBTYPE": {
+          "description": "Alias for DOCUMENT_SUBTYPE",
+          "type": "string"
+        },
+        "DOCUMENT_TRADEMARK_REPUTATION": {
+          "description": "Alias for DOCUMENT_TRADEMARK_REPUTATION",
+          "type": "string"
+        },
+        "DOCUMENT_TYPE": {
+          "description": "Alias for DOCUMENT_TYPE",
+          "type": "string"
+        },
+        "DOCUMENT_WINNER": {
+          "description": "Alias for DOCUMENT_WINNER",
+          "type": "string"
+        },
+        "DOMAIN_IS_COPYRIGHT": {
+          "description": "Alias for DOMAIN_IS_COPYRIGHT",
+          "type": "string"
+        },
+        "DOMAIN_IS_DESIGN_MODEL": {
+          "description": "Alias for DOMAIN_IS_DESIGN_MODEL",
+          "type": "string"
+        },
+        "DOMAIN_IS_DOMAIN_NAME": {
+          "description": "Alias for DOMAIN_IS_DOMAIN_NAME",
+          "type": "string"
+        },
+        "DOMAIN_IS_OTHER": {
+          "description": "Alias for DOMAIN_IS_OTHER",
+          "type": "string"
+        },
+        "DOMAIN_IS_PATENT": {
+          "description": "Alias for DOMAIN_IS_PATENT",
+          "type": "string"
+        },
+        "DOMAIN_IS_TRADEMARK": {
+          "description": "Alias for DOMAIN_IS_TRADEMARK",
+          "type": "string"
+        },
+        "DOMAIN_IS_UNFAIR_COMPETITION": {
+          "description": "Alias for DOMAIN_IS_UNFAIR_COMPETITION",
+          "type": "string"
+        },
+        "DOMAIN_NAME": {
+          "description": "Alias for DOMAIN_NAME",
+          "type": "string"
+        },
+        "DOMAIN_NAME_ANONYMOUS": {
+          "description": "Alias for DOMAIN_NAME_ANONYMOUS",
+          "type": "string"
+        },
+        "DOMAIN_NAME_ROLE": {
+          "description": "Alias for DOMAIN_NAME_ROLE",
+          "type": "string"
+        },
+        "DOMAIN_NAME_TLD": {
+          "description": "Alias for DOMAIN_NAME_TLD",
+          "type": "string"
+        },
+        "EARLIEST_EVENT_DATE": {
+          "description": "Alias for EARLIEST_EVENT_DATE",
+          "type": "string"
+        },
+        "EU_TRADEMARK": {
+          "description": "Alias for EU_TRADEMARK",
+          "type": "string"
+        },
+        "EX_OFFICIO": {
+          "description": "Alias for EX_OFFICIO",
+          "type": "string"
+        },
+        "FIRST_ACTION_DATE": {
+          "description": "Alias for FIRST_ACTION_DATE",
+          "type": "string"
+        },
+        "FIRST_ACTION_TYPE": {
+          "description": "Alias for FIRST_ACTION_TYPE",
+          "type": "string"
+        },
+        "GUID": {
+          "description": "Alias for GUID",
+          "type": "string"
+        },
+        "IPC_CLASS_CODE": {
+          "description": "Alias for IPC_CLASS_CODE",
+          "type": "string"
+        },
+        "IPC_CLASS_INDUSTRY_AREA": {
+          "description": "Alias for IPC_CLASS_INDUSTRY_AREA",
+          "type": "string"
+        },
+        "IPC_CLASS_INDUSTRY_FIELD": {
+          "description": "Alias for IPC_CLASS_INDUSTRY_FIELD",
+          "type": "string"
+        },
+        "LAST_EVENT_DATE": {
+          "description": "Alias for LAST_EVENT_DATE",
+          "type": "string"
+        },
+        "LAST_UPDATED_DATE": {
+          "description": "Alias for LAST_UPDATED_DATE",
+          "type": "string"
+        },
+        "NUMBER_DEFENDANTS": {
+          "description": "Alias for NUMBER_DEFENDANTS",
+          "type": "string"
+        },
+        "NUMBER_PLAINTIFFS": {
+          "description": "Alias for NUMBER_PLAINTIFFS",
+          "type": "string"
+        },
+        "NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO": {
+          "description": "Alias for NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO",
+          "type": "string"
+        },
+        "PARTY_ALTERNATIVE_ULTIMATE_PARENT": {
+          "description": "Alias for PARTY_ALTERNATIVE_ULTIMATE_PARENT",
+          "type": "string"
+        },
+        "PARTY_COUNTRY": {
+          "description": "Alias for PARTY_COUNTRY",
+          "type": "string"
+        },
+        "PARTY_DEFENDANT_NAME": {
+          "description": "Alias for PARTY_DEFENDANT_NAME",
+          "type": "string"
+        },
+        "PARTY_DEFENDANT_ULTIMATE_PARENT": {
+          "description": "Alias for PARTY_DEFENDANT_ULTIMATE_PARENT",
+          "type": "string"
+        },
+        "PARTY_IS_ANONYMOUS": {
+          "description": "Alias for PARTY_IS_ANONYMOUS",
+          "type": "string"
+        },
+        "PARTY_IS_EX_OFFICIO": {
+          "description": "Alias for PARTY_IS_EX_OFFICIO",
+          "type": "string"
+        },
+        "PARTY_LEGAL_FORM": {
+          "description": "Alias for PARTY_LEGAL_FORM",
+          "type": "string"
+        },
+        "PARTY_OPTIMIZED_NAME": {
+          "description": "Alias for PARTY_OPTIMIZED_NAME",
+          "type": "string"
+        },
+        "PARTY_OPTIMIZED_NAMES": {
+          "description": "Alias for PARTY_OPTIMIZED_NAMES",
+          "type": "string"
+        },
+        "PARTY_PLAINTIFF_NAME": {
+          "description": "Alias for PARTY_PLAINTIFF_NAME",
+          "type": "string"
+        },
+        "PARTY_PLAINTIFF_ULTIMATE_PARENT": {
+          "description": "Alias for PARTY_PLAINTIFF_ULTIMATE_PARENT",
+          "type": "string"
+        },
+        "PARTY_ROLE": {
+          "description": "Alias for PARTY_ROLE",
+          "type": "string"
+        },
+        "PARTY_TYPE": {
+          "description": "Alias for PARTY_TYPE",
+          "type": "string"
+        },
+        "PARTY_ULTIMATE_PARENT": {
+          "description": "Alias for PARTY_ULTIMATE_PARENT",
+          "type": "string"
+        },
+        "PATENT_ANONYMOUS": {
+          "description": "Alias for PATENT_ANONYMOUS",
+          "type": "string"
+        },
+        "PATENT_APPLICATION_ID": {
+          "description": "Alias for PATENT_APPLICATION_ID",
+          "type": "string"
+        },
+        "PATENT_APPLICATION_NUMBER": {
+          "description": "Alias for PATENT_APPLICATION_NUMBER",
+          "type": "string"
+        },
+        "PATENT_ASSERTIONS": {
+          "description": "Alias for PATENT_ASSERTIONS",
+          "type": "string"
+        },
+        "PATENT_DAMAGES_ASSIGNED": {
+          "description": "Alias for PATENT_DAMAGES_ASSIGNED",
+          "type": "string"
+        },
+        "PATENT_DOCDB_FAMILY_ID": {
+          "description": "Alias for PATENT_DOCDB_FAMILY_ID",
+          "type": "string"
+        },
+        "PATENT_DWPI_APPLICATION_NUMBER": {
+          "description": "Alias for PATENT_DWPI_APPLICATION_NUMBER",
+          "type": "string"
+        },
+        "PATENT_INDEX": {
+          "description": "Alias for PATENT_INDEX",
+          "type": "string"
+        },
+        "PATENT_INFRINGEMENT": {
+          "description": "Alias for PATENT_INFRINGEMENT",
+          "type": "string"
+        },
+        "PATENT_INPADOC_FAMILY_ID": {
+          "description": "Alias for PATENT_INPADOC_FAMILY_ID",
+          "type": "string"
+        },
+        "PATENT_INVENTION_ID": {
+          "description": "Alias for PATENT_INVENTION_ID",
+          "type": "string"
+        },
+        "PATENT_OPTIMIZED_TITLE": {
+          "description": "Alias for PATENT_OPTIMIZED_TITLE",
+          "type": "string"
+        },
+        "PATENT_PUBLICATION_NUMBER": {
+          "description": "Alias for PATENT_PUBLICATION_NUMBER",
+          "type": "string"
+        },
+        "PATENT_REFERENCE_AUTHORITY": {
+          "description": "Alias for PATENT_REFERENCE_AUTHORITY",
+          "type": "string"
+        },
+        "PATENT_REFERENCE_KIND": {
+          "description": "Alias for PATENT_REFERENCE_KIND",
+          "type": "string"
+        },
+        "PATENT_REFERENCE_NUMBER": {
+          "description": "Alias for PATENT_REFERENCE_NUMBER",
+          "type": "string"
+        },
+        "PATENT_REFERENCE_ORIGINAL": {
+          "description": "Alias for PATENT_REFERENCE_ORIGINAL",
+          "type": "string"
+        },
+        "PATENT_REFERENCE_TYPE": {
+          "description": "Alias for PATENT_REFERENCE_TYPE",
+          "type": "string"
+        },
+        "PATENT_ROLE": {
+          "description": "Alias for PATENT_ROLE",
+          "type": "string"
+        },
+        "PATENT_SOURCE": {
+          "description": "Alias for PATENT_SOURCE",
+          "type": "string"
+        },
+        "PATENT_TITLE": {
+          "description": "Alias for PATENT_TITLE",
+          "type": "string"
+        },
+        "PATENT_TITLE_LANGUAGE": {
+          "description": "Alias for PATENT_TITLE_LANGUAGE",
+          "type": "string"
+        },
+        "PATENT_TYPE": {
+          "description": "Alias for PATENT_TYPE",
+          "type": "string"
+        },
+        "PATENT_VALIDITY": {
+          "description": "Alias for PATENT_VALIDITY",
+          "type": "string"
+        },
+        "PATENT_VALIDITY_CHALLENGES": {
+          "description": "Alias for PATENT_VALIDITY_CHALLENGES",
+          "type": "string"
+        },
+        "POINT_OF_LAW_CONFIDENCE_LEVEL": {
+          "description": "Alias for POINT_OF_LAW_CONFIDENCE_LEVEL",
+          "type": "string"
+        },
+        "POINT_OF_LAW_NAME": {
+          "description": "Alias for POINT_OF_LAW_NAME",
+          "type": "string"
+        },
+        "POINT_OF_LAW_OUTCOME": {
+          "description": "Alias for POINT_OF_LAW_OUTCOME",
+          "type": "string"
+        },
+        "POINT_OF_LAW_OUTCOME_NEGATIVE": {
+          "description": "Alias for POINT_OF_LAW_OUTCOME_NEGATIVE",
+          "type": "string"
+        },
+        "POINT_OF_LAW_OUTCOME_POSITIVE": {
+          "description": "Alias for POINT_OF_LAW_OUTCOME_POSITIVE",
+          "type": "string"
+        },
+        "POINT_OF_LAW_PARENT_PATH": {
+          "description": "Alias for POINT_OF_LAW_PARENT_PATH",
+          "type": "string"
+        },
+        "POINT_OF_LAW_PREFIX": {
+          "description": "Alias for POINT_OF_LAW_PREFIX",
+          "type": "string"
+        },
+        "PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION": {
+          "description": "Alias for PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION",
+          "type": "string"
+        },
+        "PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS": {
+          "description": "Alias for PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS",
+          "type": "string"
+        },
+        "PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION": {
+          "description": "Alias for PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION",
+          "type": "string"
+        },
+        "PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS": {
+          "description": "Alias for PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS",
+          "type": "string"
+        },
+        "PRODUCT_COMPARISON_SIMILAR": {
+          "description": "Alias for PRODUCT_COMPARISON_SIMILAR",
+          "type": "string"
+        },
+        "RELATION_RATING": {
+          "description": "Alias for RELATION_RATING",
+          "type": "string"
+        },
+        "RELATION_RELATION": {
+          "description": "Alias for RELATION_RELATION",
+          "type": "string"
+        },
+        "RELATION_TARGET_DECISION": {
+          "description": "Alias for RELATION_TARGET_DECISION",
+          "type": "string"
+        },
+        "RELATION_TARGET_REFERENCE": {
+          "description": "Alias for RELATION_TARGET_REFERENCE",
+          "type": "string"
+        },
+        "RELEVANT_PUBLIC_AVERAGE_CONSUMER": {
+          "description": "Alias for RELEVANT_PUBLIC_AVERAGE_CONSUMER",
+          "type": "string"
+        },
+        "RELEVANT_PUBLIC_AWARENESS": {
+          "description": "Alias for RELEVANT_PUBLIC_AWARENESS",
+          "type": "string"
+        },
+        "RELEVANT_PUBLIC_NICE_CLASS": {
+          "description": "Alias for RELEVANT_PUBLIC_NICE_CLASS",
+          "type": "string"
+        },
+        "RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER": {
+          "description": "Alias for RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER",
+          "type": "string"
+        },
+        "REMEDY": {
+          "description": "Alias for REMEDY",
+          "type": "string"
+        },
+        "REPRESENTATIVE_COUNTRY": {
+          "description": "Alias for REPRESENTATIVE_COUNTRY",
+          "type": "string"
+        },
+        "REPRESENTATIVE_LEGAL_FORM": {
+          "description": "Alias for REPRESENTATIVE_LEGAL_FORM",
+          "type": "string"
+        },
+        "REPRESENTATIVE_OPTIMIZED_NAME": {
+          "description": "Alias for REPRESENTATIVE_OPTIMIZED_NAME",
+          "type": "string"
+        },
+        "REPRESENTATIVE_TYPE": {
+          "description": "Alias for REPRESENTATIVE_TYPE",
+          "type": "string"
+        },
+        "RIGHT_ASSESSMENT_AMENDED_CLAIMS": {
+          "description": "Alias for RIGHT_ASSESSMENT_AMENDED_CLAIMS",
+          "type": "string"
+        },
+        "RIGHT_ASSESSMENT_INFRINGEMENT": {
+          "description": "Alias for RIGHT_ASSESSMENT_INFRINGEMENT",
+          "type": "string"
+        },
+        "RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX": {
+          "description": "Alias for RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX",
+          "type": "string"
+        },
+        "RIGHT_ASSESSMENT_VALIDITY": {
+          "description": "Alias for RIGHT_ASSESSMENT_VALIDITY",
+          "type": "string"
+        },
+        "SETTLED": {
+          "description": "Alias for SETTLED",
+          "type": "string"
+        },
+        "TOTAL_DAMAGE_AMOUNT": {
+          "description": "Alias for TOTAL_DAMAGE_AMOUNT",
+          "type": "string"
+        },
+        "TOTAL_DAMAGE_CURRENCY": {
+          "description": "Alias for TOTAL_DAMAGE_CURRENCY",
+          "type": "string"
+        },
+        "TOTAL_DAMAGE_TYPE": {
+          "description": "Alias for TOTAL_DAMAGE_TYPE",
+          "type": "string"
+        },
+        "TRADEMARK_ANONYMOUS": {
+          "description": "Alias for TRADEMARK_ANONYMOUS",
+          "type": "string"
+        },
+        "TRADEMARK_ID": {
+          "description": "Alias for TRADEMARK_ID",
+          "type": "string"
+        },
+        "TRADEMARK_LOCARNO_CLASS": {
+          "description": "Alias for TRADEMARK_LOCARNO_CLASS",
+          "type": "string"
+        },
+        "TRADEMARK_NICE_CLASS": {
+          "description": "Alias for TRADEMARK_NICE_CLASS",
+          "type": "string"
+        },
+        "TRADEMARK_REGISTRATION_NUMBER": {
+          "description": "Alias for TRADEMARK_REGISTRATION_NUMBER",
+          "type": "string"
+        },
+        "TRADEMARK_REGISTRATION_OFFICE": {
+          "description": "Alias for TRADEMARK_REGISTRATION_OFFICE",
+          "type": "string"
+        },
+        "TRADEMARK_ROLE": {
+          "description": "Alias for TRADEMARK_ROLE",
+          "type": "string"
+        },
+        "TRADEMARK_TYPE": {
+          "description": "Alias for TRADEMARK_TYPE",
+          "type": "string"
+        },
+        "TRADEMARK_VERBAL_ELEMENT": {
+          "description": "Alias for TRADEMARK_VERBAL_ELEMENT",
+          "type": "string"
+        },
+        "TRADEMARK_VIENNA_CLASS": {
+          "description": "Alias for TRADEMARK_VIENNA_CLASS",
+          "type": "string"
+        },
+        "WITHDRAWN": {
+          "description": "Alias for WITHDRAWN",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "query_body_caselaw": {
+      "description": "Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR",
+      "properties": {
+        "ALG": {
+          "description": "Algorithm to use.",
+          "enum": [
+            "BASIC"
+          ],
+          "type": "string"
+        },
+        "FIELD": {
+          "description": "Field to query",
+          "enum": [
+            "CLAIM_CONSTRUCTION_DEFINITION",
+            "RIGHT_ASSESSMENT_AMENDED_CLAIMS",
+            "REPRESENTATIVE_LEGAL_FORM",
+            "PARTY_DEFENDANT_ULTIMATE_PARENT",
+            "PRODUCT_COMPARISON_PRODUCT_A_NICE_CLASS",
+            "RELEVANT_PUBLIC_PROFESSIONAL_CONSUMER",
+            "PATENT_INDEX",
+            "DOMAIN_IS_UNFAIR_COMPETITION",
+            "CLAIM_CONSTRUCTION_MEANS_PLUS_FUNCTION",
+            "POINT_OF_LAW_OUTCOME_NEGATIVE",
+            "RELEVANT_PUBLIC_AVERAGE_CONSUMER",
+            "DESIGN_REGISTRATION_OFFICE",
+            "IPC_CLASS_INDUSTRY_AREA",
+            "GUID",
+            "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA3",
+            "DAMAGE_NATURE",
+            "DAMAGE_CURRENT_CNY_EQUIVALENT",
+            "DOCKET_COURT_TYPE_JUDICIAL",
+            "RELATION_RATING",
+            "PRODUCT_COMPARISON_PRODUCT_B_DESCRIPTION",
+            "TRADEMARK_VERBAL_ELEMENT",
+            "BINDER_ID",
+            "DOCUMENT_DEFAULT_JUDGEMENT",
+            "DOMAIN_IS_DESIGN_MODEL",
+            "DOMAIN_NAME_ROLE",
+            "PATENT_APPLICATION_ID",
+            "EARLIEST_EVENT_DATE",
+            "REPRESENTATIVE_TYPE",
+            "RIGHT_ASSESSMENT_RIGHT_ASSESSMENT_INDEX",
+            "DOCUMENT_TYPE",
+            "COPYRIGHT_ANONYMOUS",
+            "DOCKET_COURT_PATH",
+            "RELEVANT_PUBLIC_NICE_CLASS",
+            "RELATION_RELATION",
+            "TOTAL_DAMAGE_TYPE",
+            "DOCKET_COURT_TYPE_ADMINISTRATIVE",
+            "DAMAGE_CURRENT_USD_EQUIVALENT",
+            "POINT_OF_LAW_OUTCOME",
+            "DESIGN_ANONYMOUS",
+            "PATENT_TITLE_LANGUAGE",
+            "PATENT_ASSERTIONS",
+            "CASE_NAME",
+            "REPRESENTATIVE_COUNTRY",
+            "DESIGN_VIENNA_CLASS",
+            "TRADEMARK_VIENNA_CLASS",
+            "PATENT_SOURCE",
+            "FIRST_ACTION_TYPE",
+            "PATENT_ROLE",
+            "DOCKET_COURT_COUNTRY",
+            "DESIGN_VERBAL_ELEMENT",
+            "RELATION_TARGET_REFERENCE",
+            "PARTY_ALTERNATIVE_ULTIMATE_PARENT",
+            "PATENT_DAMAGES_ASSIGNED",
+            "PATENT_REFERENCE_ORIGINAL",
+            "WITHDRAWN",
+            "DESIGN_LOCARNO_CLASS",
+            "DOCUMENT_DECLARATORY",
+            "PARTY_OPTIMIZED_NAME",
+            "PATENT_APPLICATION_NUMBER",
+            "COPYRIGHT_TITLE",
+            "TOTAL_DAMAGE_AMOUNT",
+            "PARTY_OPTIMIZED_NAMES",
+            "POINT_OF_LAW_CONFIDENCE_LEVEL",
+            "AREA",
+            "REMEDY",
+            "PARTY_PLAINTIFF_NAME",
+            "DOMAIN_NAME_TLD",
+            "DOCKET_COURT_AREA",
+            "NUMBER_DEFENDANTS",
+            "PARTY_COUNTRY",
+            "DESIGN_PRODUCT",
+            "PATENT_INVENTION_ID",
+            "COPYRIGHT_DESCRIPTION",
+            "COPYRIGHT_ROLE",
+            "DOCUMENT_LEVEL",
+            "DAMAGE_LATER",
+            "COPYRIGHT_TYPE",
+            "IPC_CLASS_INDUSTRY_FIELD",
+            "TRADEMARK_ANONYMOUS",
+            "PATENT_TYPE",
+            "TRADEMARK_TYPE",
+            "DOCUMENT_CITABLE",
+            "IPC_CLASS_CODE",
+            "DOCKET_COURT_COUNTRY_DERIVED_ISO_3166_ALPHA2",
+            "POINT_OF_LAW_PREFIX",
+            "PATENT_PUBLICATION_NUMBER",
+            "DOMAIN_IS_COPYRIGHT",
+            "PATENT_INFRINGEMENT",
+            "PATENT_REFERENCE_AUTHORITY",
+            "CLOSED",
+            "RELEVANT_PUBLIC_AWARENESS",
+            "TRADEMARK_ROLE",
+            "REPRESENTATIVE_OPTIMIZED_NAME",
+            "DOCUMENT_REFUSAL",
+            "DOCKET_COURT_TYPE_ARBITRATION",
+            "PRODUCT_COMPARISON_PRODUCT_B_NICE_CLASS",
+            "RIGHT_ASSESSMENT_INFRINGEMENT",
+            "PARTY_IS_EX_OFFICIO",
+            "PATENT_VALIDITY",
+            "DOCKET_REFERENCE",
+            "PATENT_ANONYMOUS",
+            "POINT_OF_LAW_PARENT_PATH",
+            "LAST_EVENT_DATE",
+            "CLAIM_CONSTRUCTION_AGREED",
+            "CASE_DOMAIN",
+            "DOMAIN_NAME_ANONYMOUS",
+            "PARTY_IS_ANONYMOUS",
+            "NUMBER_PLAINTIFFS_INCLUDE_EX_OFFICIO",
+            "DOCUMENT_SUBTYPE",
+            "PARTY_PLAINTIFF_ULTIMATE_PARENT",
+            "PARTY_LEGAL_FORM",
+            "DAMAGE_REQUESTED",
+            "CASE_STATUS",
+            "FIRST_ACTION_DATE",
+            "DAMAGE_PARTIAL",
+            "PARTY_ROLE",
+            "LAST_UPDATED_DATE",
+            "DAMAGE_AMOUNT",
+            "DOCKET_COURT_COUNTRY_TEXT",
+            "DAMAGE_CALCULATION_METHOD",
+            "RIGHT_ASSESSMENT_VALIDITY",
+            "EU_TRADEMARK",
+            "DOCKET_COURT_COUNTRY_DERIVED_TEXT",
+            "PATENT_TITLE",
+            "DOMAIN_IS_TRADEMARK",
+            "TRADEMARK_LOCARNO_CLASS",
+            "CASE_RESOLUTION",
+            "CASE_STAGE",
+            "DESIGN_PRODUCT_LANGUAGE",
+            "TOTAL_DAMAGE_CURRENCY",
+            "PRODUCT_COMPARISON_PRODUCT_A_DESCRIPTION",
+            "PATENT_DOCDB_FAMILY_ID",
+            "PATENT_OPTIMIZED_TITLE",
+            "PATENT_DWPI_APPLICATION_NUMBER",
+            "NUMBER_PLAINTIFFS",
+            "PATENT_REFERENCE_KIND",
+            "PARTY_DEFENDANT_NAME",
+            "DESIGN_ROLE",
+            "TRADEMARK_REGISTRATION_NUMBER",
+            "SETTLED",
+            "DOMAIN_IS_PATENT",
+            "DOCKET_COURT_NAME",
+            "PARTY_ULTIMATE_PARENT",
+            "TRADEMARK_NICE_CLASS",
+            "PARTY_TYPE",
+            "DAMAGE_CURRENCY",
+            "PATENT_INPADOC_FAMILY_ID",
+            "RELATION_TARGET_DECISION",
+            "PATENT_VALIDITY_CHALLENGES",
+            "POINT_OF_LAW_OUTCOME_POSITIVE",
+            "PATENT_REFERENCE_NUMBER",
+            "DESIGN_REGISTRATION_NUMBER",
+            "CLAIM_CONSTRUCTION_TERM",
+            "DOCUMENT_WINNER",
+            "DOCUMENT_CITATION_REFERENCE",
+            "DOCUMENT_DATE",
+            "POINT_OF_LAW_NAME",
+            "TRADEMARK_REGISTRATION_OFFICE",
+            "CLAIM_CONSTRUCTION_NOT_NECESSARY",
+            "DAMAGE_CURRENT_EUR_EQUIVALENT",
+            "DOMAIN_IS_OTHER",
+            "PATENT_REFERENCE_TYPE",
+            "DESIGN_REGISTRATION_STATUS",
+            "EX_OFFICIO",
+            "DOMAIN_NAME",
+            "PRODUCT_COMPARISON_SIMILAR",
+            "DOMAIN_IS_DOMAIN_NAME",
+            "TRADEMARK_ID",
+            "DOCUMENT_STATE",
+            "DOCUMENT_TRADEMARK_REPUTATION"
+          ],
+          "type": "string"
+        },
+        "OP": {
+          "description": "Operator",
+          "enum": [
+            "LE",
+            "GE",
+            "NE",
+            "GT",
+            "IS",
+            "LT",
+            "EQ",
+            "IN"
+          ],
+          "type": "string"
+        },
+        "VALUE": {
+          "description": "Field value to match (based on operator)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "OP",
+        "VALUE"
+      ],
+      "type": "object"
+    }
+  }
+}

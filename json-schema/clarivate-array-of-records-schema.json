@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-array-of-records-schema.json",
+  "title": "ArrayOfRecords",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-json-api-openapi.yml#/components/schemas/ArrayOfRecords",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/Record"
+  },
+  "$defs": {
+    "OA_FLAG_DATA": {
+      "type": "object",
+      "properties": {
+        "TYPE": {
+          "type": "integer",
+          "description": "Impact Story colour"
+        }
+      }
+    },
+    "Percentiles": {
+      "type": "object",
+      "properties": {
+        "SUBJECT": {
+          "type": "string",
+          "description": "Each Record has an index number corresponding to its position. Starts at index 1"
+        },
+        "CODE": {
+          "type": "string",
+          "description": "Unique identifier for Web of Science Core Collection article (UID)"
+        },
+        "CATPERCENTILE": {
+          "type": "integer",
+          "description": "The percentile in which the paper ranks in its category and database year, based on total citations received by the paper. The higher the number of citations, the *higher* the percentile number"
+        },
+        "IS_BEST": {
+          "type": "string",
+          "description": "Returns true if this category is the best"
+        },
+        "CAT_EXP_CITATION": {
+          "type": "integer",
+          "description": "Citations expected for this document based on the citation received by documents published in the same year, document type and subject area"
+        },
+        "CNCI": {
+          "type": "integer",
+          "description": "The Category Normalized Citation Impact (CNCI) of a document is calculated by dividing the actual count of citing items by the expected citation rate for documents with the same document type, year of publication and subject area"
+        }
+      }
+    },
+    "Record": {
+      "type": "object",
+      "properties": {
+        "ACCESSION_NUMBER": {
+          "type": "string",
+          "description": "Unique identifier for Web of Science Core Collection article (UID)"
+        },
+        "DOCUMENT_TYPE": {
+          "type": "string",
+          "description": "Bibliographic term denoting the type of article"
+        },
+        "TIMES_CITED": {
+          "type": "integer",
+          "description": "Number of times an article has been cited"
+        },
+        "JOURNAL_EXPECTED_CITATIONS": {
+          "type": "number",
+          "description": "Average number of citations to articles of the same document type from the same journal in the same database year"
+        },
+        "JNCI": {
+          "type": "integer",
+          "description": "Citation impact (citations per paper) normalized for journal, year and document type subject"
+        },
+        "IMPACT_FACTOR": {
+          "type": "number",
+          "description": "Average number of times articles from a journal published in the past two years have been cited in the JCR year"
+        },
+        "HARMEAN_CAT_EXP_CITATION": {
+          "type": "number",
+          "description": "The harmonic mean of citation rate values for all research fields to which an article is assigned.  For more information about the citation rate metric, see the <a href='http://ipscience-help.thomsonreuters.com/inCites2Live/indicatorsGroup/aboutHandbook/usingCitationIndicatorsWisely/baselines.html'>InCites Help File</a>"
+        },
+        "AVG_CNCI": {
+          "type": "number",
+          "description": "Citation impact (citations per paper) normalized for subject, year and document type"
+        },
+        "ESI_HIGHLY_CITED_PAPER": {
+          "type": "integer",
+          "description": "Entities that are included in ESI (top 1% for authors and institutions, top 50% for nations and journals). 0=No; 1=Yes"
+        },
+        "ESI_HOT_PAPER": {
+          "type": "integer",
+          "description": "The paper is an ESI Hot Paper, ranked in the top 1% by citations for field and age. 0=No; 1=Yes"
+        },
+        "IS_INTERNATIONAL_COLLAB": {
+          "type": "integer",
+          "description": "Publication has at least two different countries among the affiliations of the co-authors. 0=No; 1=Yes"
+        },
+        "IS_INSTITUTION_COLLAB": {
+          "type": "integer",
+          "description": "Indicates that more than one institution has contributed to the document. 0=No; 1=Yes"
+        },
+        "IS_INDUSTRY_COLLAB": {
+          "type": "integer",
+          "description": "Papers that list their organization type as a corporate for one or more of the co-authors affiliations. 0=No; 1=Yes"
+        },
+        "OPEN_ACCESS": {
+          "type": "object",
+          "properties": {
+            "OA_FLAG": {
+              "type": "integer",
+              "description": "The document is published in an Open Access journal. Open Access Journals in InCites 2.0 are identical to Open Access Journals in InCites JCR - Gold Open Access. 0=No; 1=Yes"
+            },
+            "STATUS": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/OA_FLAG_DATA"
+              }
+            }
+          }
+        },
+        "RNUM": {
+          "type": "integer",
+          "description": "Each Record has an index number corresponding to its position. Starts at index 1"
+        },
+        "PERCENTILE": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Percentiles"
+          }
+        }
+      }
+    }
+  }
+}

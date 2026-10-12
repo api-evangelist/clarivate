@@ -1,0 +1,358 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-search-result-schema.json",
+  "title": "SearchResult",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-search-results-api-openapi.yml#/components/schemas/SearchResult",
+  "type": "object",
+  "required": [
+    "sequence_key",
+    "subject_sequence_length",
+    "organisms",
+    "molecule_type",
+    "alignments",
+    "accession_number",
+    "database_name",
+    "sequences_count",
+    "title"
+  ],
+  "properties": {
+    "sequence_key": {
+      "type": "string"
+    },
+    "subject_sequence_length": {
+      "type": "integer"
+    },
+    "organisms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "molecule_type": {
+      "type": "string"
+    },
+    "query_coverage": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "score": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bit_score": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expect": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gaps": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "identities": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "positives": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "query_identities_percent": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "identities_percent": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "positives_percent": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "alignments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SearchResultAlignment"
+      }
+    },
+    "accession_number": {
+      "type": "string"
+    },
+    "location": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "psl": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "database_name": {
+      "type": "string"
+    },
+    "country": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sequences_count": {
+      "type": "integer"
+    },
+    "patent_number": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "assignees": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "inventors": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "family_inpadoc": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "family_dwpi": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "earliest_priority_date": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "publication_date": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "filing_date": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "calculated_expiry_date": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "document_type": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "SearchResultAlignment": {
+      "type": "object",
+      "required": [
+        "alignment_length",
+        "alignment",
+        "hit_from",
+        "hit_to"
+      ],
+      "properties": {
+        "alignment_length": {
+          "type": "integer"
+        },
+        "alignment": {
+          "type": "string"
+        },
+        "hit_from": {
+          "type": "integer"
+        },
+        "hit_to": {
+          "type": "integer"
+        },
+        "query_from": {
+          "type": "integer"
+        },
+        "query_to": {
+          "type": "integer"
+        },
+        "score": {
+          "type": "integer"
+        },
+        "identities": {
+          "type": "integer"
+        },
+        "positives": {
+          "type": "integer"
+        },
+        "gaps": {
+          "type": "integer"
+        },
+        "bit_score": {
+          "type": "number"
+        },
+        "expect": {
+          "type": "number"
+        },
+        "strand": {
+          "type": "string"
+        },
+        "query_frame": {
+          "type": "integer"
+        },
+        "subject_frame": {
+          "type": "integer"
+        },
+        "reversed": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

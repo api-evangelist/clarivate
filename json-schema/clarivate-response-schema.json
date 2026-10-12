@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-response-schema.json",
+  "title": "Response",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-web-of-science-reviewer-locator-api-api-openapi.yml#/components/schemas/Response",
+  "type": "object",
+  "required": [
+    "searchInput",
+    "searchToken",
+    "searchUrl",
+    "recommendedReviewers"
+  ],
+  "properties": {
+    "searchInput": {
+      "$ref": "#/$defs/SearchInput"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "Optional consumer defined request identifier. If provided in a request, will be returned in the response."
+    },
+    "searchToken": {
+      "type": "string",
+      "description": "Unique token identifying this search. When trouble-shooting or enquiring about a particular search with the Web of Science team please provide the search token in question."
+    },
+    "searchUrl": {
+      "type": "string",
+      "description": "URL for viewing and interacting with this search within the Web of Science Reviewer Locator web interface. Note that web interface permissions are required and are separate to your API key.",
+      "format": "url"
+    },
+    "recommendedReviewers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RecommendedReviewer"
+      }
+    }
+  },
+  "$defs": {
+    "Article": {
+      "type": "object",
+      "required": [
+        "title",
+        "ut",
+        "journal",
+        "authors"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "doi": {
+          "type": "string",
+          "format": "DOI"
+        },
+        "ut": {
+          "type": "string",
+          "format": "UT"
+        },
+        "journal": {
+          "$ref": "#/$defs/Journal"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "firstName",
+              "lastName"
+            ],
+            "properties": {
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "publicationYear": {
+          "type": "string",
+          "format": "YYYY"
+        }
+      }
+    },
+    "AuthorOrApplicant": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "organizations": {
+          "type": "array",
+          "description": "Affiliated organizations. Used to check for potential conflicts of interest by co-affiliation.",
+          "items": {
+            "$ref": "#/$defs/AuthorOrganization"
+          }
+        }
+      }
+    },
+    "AuthorOrganization": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Country": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ExcludedReviewer": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "Funder": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Journal": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "JournalOrFunder": {
+      "type": "object",
+      "description": "Journal or funding agency.",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "url"
+        },
+        "firstYear": {
+          "type": "string",
+          "description": "First year of affiliation with this organization according to Web of Science publication data.",
+          "format": "YYYY"
+        },
+        "lastYear": {
+          "type": "string",
+          "description": "Last year of affiliation with this organization according to Web of Science publication data.",
+          "format": "YYYY"
+        },
+        "address": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        }
+      }
+    },
+    "RecommendedReviewer": {
+      "type": "object",
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "description": "Recommended reviewers are ordered and ranked numerically by relevance as determined by the Web of Science Reviewer Locator recommendation algorithm."
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "profileUrl": {
+          "type": "string",
+          "description": "URL for viewing this researcher's Web of Science Researcher Profile.",
+          "format": "url"
+        },
+        "researcherId": {
+          "type": "string",
+          "format": "ResearcherID"
+        },
+        "orcid": {
+          "type": "string",
+          "format": "ORCID"
+        },
+        "hIndex": {
+          "type": "integer",
+          "description": "Researcher's h-index in the Web of Science."
+        },
+        "recentOrganizations": {
+          "type": "array",
+          "description": "Affiliated organizations within the Web of Science.",
+          "items": {
+            "$ref": "#/$defs/Organization"
+          }
+        },
+        "contact": {
+          "type": "object",
+          "required": [
+            "availableToReview",
+            "emails"
+          ],
+          "properties": {
+            "emails": {
+              "type": "array",
+              "description": "Latest Web of Science Author Record contact email address.",
+              "items": {
+                "type": "object",
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "numWosArticles": {
+          "type": "integer",
+          "description": "Number of authored publications within the Web of Science."
+        },
+        "relevantArticles": {
+          "type": "array",
+          "description": "Top three relevant authored publications within the Web of Science as determined by the Web of Science Reviewer Locator recommendation algorithm.",
+          "items": {
+            "$ref": "#/$defs/Article"
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "description": "Web of Science Author Record keywords.",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "numVerifiedReviews": {
+          "type": "integer",
+          "description": "Number of verified reviews on this researcher's Web of Science Researcher Profile."
+        },
+        "reviewerExperience": {
+          "type": "array",
+          "description": "Number of verified reviews on this researcher's Web of Science Researcher Profile broken down by journal.",
+          "items": {
+            "type": "object",
+            "required": [
+              "journal",
+              "numVerifiedReviews"
+            ],
+            "properties": {
+              "journal": {
+                "$ref": "#/$defs/Journal"
+              },
+              "numVerifiedReviews": {
+                "type": "integer",
+                "description": "Number of verified reviews on this researcher's Web of Science Researcher Profile for this journal."
+              }
+            }
+          }
+        },
+        "editorialBoards": {
+          "type": "array",
+          "description": "Editorial board memberships listed on this researcher's Web of Science Researcher Profile.",
+          "items": {
+            "type": "object",
+            "required": [
+              "journal"
+            ],
+            "properties": {
+              "journal": {
+                "$ref": "#/$defs/Journal"
+              }
+            }
+          }
+        },
+        "grantReviewExperience": {
+          "type": "array",
+          "description": "Number of verified grant reviews on this researcher's Web of Science Researcher Profile broken down by funding agency.",
+          "items": {
+            "type": "object",
+            "required": [
+              "funder",
+              "numGrantReviews"
+            ],
+            "properties": {
+              "funder": {
+                "$ref": "#/$defs/Funder"
+              },
+              "numGrantReviews": {
+                "type": "integer",
+                "description": "Number of verified grant reviews on this researcher's Web of Science Researcher Profile for this funding agency."
+              }
+            }
+          }
+        },
+        "publonsAcademy": {
+          "type": "string",
+          "description": "Indicates whether the recommended reviewer is a Publons Academy graduate, mentor, or both.",
+          "enum": [
+            "Graduate",
+            "Mentor",
+            "Graduate and mentor"
+          ]
+        },
+        "conflictOfInterestArticles": {
+          "type": "array",
+          "description": "Authored publications within the Web of Science which represent a potential conflict of interest by co-publication with the search manuscript / grant application's authors / applicants.",
+          "items": {
+            "$ref": "#/$defs/Article"
+          }
+        },
+        "conflictOfInterestOrganizations": {
+          "type": "array",
+          "description": "Affiliated organizations within the Web of Science which represent a potential conflict of interest by co-affiliation with the search manuscript / grant application's authors / applicants.",
+          "items": {
+            "$ref": "#/$defs/Organization"
+          }
+        }
+      }
+    },
+    "SearchArticle": {
+      "type": "object",
+      "description": "Input manuscript or grant application details.",
+      "required": [
+        "title",
+        "abstract",
+        "journal"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "journal": {
+          "$ref": "#/$defs/JournalOrFunder"
+        },
+        "authors": {
+          "type": "array",
+          "description": "List of manuscript authors or grant application applicants. Will be excluded from the recommendations. Will also be used to check for potential conflicts of interest by co-publication or co-affiliation.",
+          "items": {
+            "$ref": "#/$defs/AuthorOrApplicant"
+          }
+        }
+      }
+    },
+    "SearchInput": {
+      "type": "object",
+      "required": [
+        "searchArticle"
+      ],
+      "properties": {
+        "requestId": {
+          "description": "Optional consumer-defined request identifier. If provided in the request, will be returned in the response.",
+          "type": "string"
+        },
+        "searchArticle": {
+          "$ref": "#/$defs/SearchArticle"
+        },
+        "excludedReviewers": {
+          "type": "array",
+          "description": "List of additional individuals to exclude from the recommendations. Note that it is not necessary to re-list 'authors' here as they will already be excluded from the recommendations. Unlike 'authors', 'excludedReviewers' will not be used for conflict of interest checks.",
+          "items": {
+            "$ref": "#/$defs/ExcludedReviewer"
+          }
+        },
+        "searchYears": {
+          "type": "integer",
+          "description": "Base reviewer recommendations on Web of Science publications published within the last 3, 4, or 5 years.",
+          "default": 3,
+          "minimum": 3,
+          "maximum": 5
+        },
+        "numRecommendations": {
+          "type": "integer",
+          "description": "Number of recommendations to fetch. Note that the API will not always return the full number of recommendations requested.",
+          "default": 30,
+          "minimum": 15,
+          "maximum": 100
+        },
+        "includedCountries": {
+          "type": "array",
+          "description": "If provided, reviewer recommendations will be restricted to researchers recently affiliated with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.",
+          "items": {
+            "$ref": "#/$defs/Country"
+          }
+        },
+        "excludedCountries": {
+          "type": "array",
+          "description": "If provided, reviewer recommendations will be restricted to researchers without recent affiliations with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.",
+          "items": {
+            "$ref": "#/$defs/Country"
+          }
+        }
+      }
+    }
+  }
+}

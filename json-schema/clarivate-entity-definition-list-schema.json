@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-entity-definition-list-schema.json",
+  "title": "EntityDefinitionList",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/EntityDefinitionList",
+  "required": [
+    "count",
+    "data",
+    "nrRecordsAll",
+    "nrRecordsFound",
+    "startRecord"
+  ],
+  "type": "object",
+  "properties": {
+    "startRecord": {
+      "type": "integer"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "nrRecordsAll": {
+      "type": "integer"
+    },
+    "nrRecordsFound": {
+      "type": "integer"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EntityDefinition"
+      }
+    }
+  },
+  "$defs": {
+    "AttributeDefinition": {
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dataInput": {
+          "$ref": "#/$defs/AttributeInputDefinition"
+        },
+        "multilanguage": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "allowPublicSearch": {
+          "type": "boolean"
+        },
+        "internallySearcheable": {
+          "type": "boolean"
+        },
+        "includeInPageExport": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AttributeInputDefinition": {
+      "properties": {
+        "dataType": {
+          "type": "string"
+        },
+        "renderingTypeHint": {
+          "type": "string"
+        },
+        "inputPattern": {
+          "type": "string"
+        },
+        "defaultExpression": {
+          "type": "string"
+        }
+      }
+    },
+    "EntityDefinition": {
+      "required": [
+        "description",
+        "dynamicTypeSelector",
+        "id",
+        "isVersionableFile",
+        "linkEntityReferences",
+        "name",
+        "plural",
+        "singular",
+        "workflowSteps"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isVersionableFile": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "maximumStatusStep": {
+          "type": "integer"
+        },
+        "dynamicTypeSelector": {
+          "type": "string"
+        },
+        "singular": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        },
+        "plural": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        },
+        "workflowSteps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WorkflowStep"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AttributeDefinition"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LinkReference"
+          }
+        }
+      }
+    },
+    "LabelDefinition": {
+      "required": [
+        "language",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "The system language abbreviation"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the label"
+        }
+      }
+    },
+    "LinkReference": {
+      "required": [
+        "rel",
+        "href"
+      ],
+      "type": "object",
+      "properties": {
+        "rel": {
+          "type": "string",
+          "description": "Describes the type of relationship."
+        },
+        "href": {
+          "type": "string",
+          "description": "is the complete endpoint path that uniquely defines the resource."
+        }
+      }
+    },
+    "WorkflowStep": {
+      "required": [
+        "label",
+        "stepNr"
+      ],
+      "properties": {
+        "stepNr": {
+          "type": "integer"
+        },
+        "label": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LabelDefinition"
+          }
+        }
+      }
+    }
+  }
+}

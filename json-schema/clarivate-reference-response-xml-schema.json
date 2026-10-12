@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-reference-response-xml-schema.json",
+  "title": "ReferenceResponseXML",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-search-api-openapi.yml#/components/schemas/ReferenceResponseXML",
+  "type": "object",
+  "properties": {
+    "map": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "map": {
+          "type": "object",
+          "properties": {
+            "val": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "list": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "map": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "val": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

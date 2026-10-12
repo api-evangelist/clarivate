@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-combined-search-request-derwent-api-schema.json",
+  "title": "combined_search_request_derwent_api",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/combined_search_request_derwent_api",
+  "properties": {
+    "params": {
+      "items": {
+        "properties": {
+          "collections1": {
+            "description": "Requested Collection(s) number 1",
+            "type": "string"
+          },
+          "collections2": {
+            "description": "Requested Collection(s) number 2",
+            "type": "string"
+          },
+          "collections3": {
+            "description": "Requested Collection(s) number 3",
+            "type": "string"
+          },
+          "combination": {
+            "description": "Combination of all the requested query using boolean operators",
+            "type": "string"
+          },
+          "offset": {
+            "description": "Starting range of the documents to be fetched",
+            "type": "number"
+          },
+          "query1": {
+            "description": "Requested query number 1",
+            "type": "string"
+          },
+          "query2": {
+            "description": "Requested query number 2",
+            "type": "string"
+          },
+          "query3": {
+            "description": "Requested query number 3",
+            "type": "string"
+          },
+          "return-fields": {
+            "description": "Requested resultset field(s)",
+            "type": "string"
+          },
+          "search-on-datatype1": {
+            "description": "Requested search-on-datatype number 1",
+            "type": "string"
+          },
+          "search-on-datatype2": {
+            "description": "Requested search-on-datatype number 2",
+            "type": "string"
+          },
+          "search-on-datatype3": {
+            "description": "Requested search-on-datatype number 3",
+            "type": "string"
+          },
+          "size": {
+            "description": "Number of the documents to be fetched",
+            "type": "number"
+          }
+        },
+        "required": [
+          "collections1",
+          "query1",
+          "collections2",
+          "query2"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

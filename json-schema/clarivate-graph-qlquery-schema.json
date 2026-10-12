@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-graph-qlquery-schema.json",
+  "title": "GraphQLQuery",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-graph-ql-api-openapi.yml#/components/schemas/GraphQLQuery",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-user-delegation-schema.json",
+  "title": "UserDelegation",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-administration-user-delegations-api-openapi.yml#/components/schemas/UserDelegation",
+  "type": "object",
+  "properties": {
+    "delegationId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "id of the delegation.\n\nTo be passed in the request only for edit and delete delegation.\n\nReturned in the response for fetch API.\n"
+    },
+    "fromUser": {
+      "$ref": "#/$defs/User"
+    },
+    "toUser": {
+      "$ref": "#/$defs/User"
+    },
+    "role": {
+      "$ref": "#/$defs/UserRole"
+    },
+    "validity": {
+      "$ref": "#/$defs/UserDelegationValidity"
+    }
+  },
+  "$defs": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "It is required only for POST create user."
+        },
+        "firstName": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "lastName": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "For internal users, a notification with password will be sent to the email."
+        },
+        "firstLogin": {
+          "type": "boolean"
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "acceptedTC": {
+          "type": "boolean"
+        },
+        "userType": {
+          "type": "string",
+          "enum": [
+            "INTERNAL",
+            "EXTERNAL"
+          ],
+          "description": "INTERNAL users are the users which directly login in Converis. External users are the users that login through SSO, e.g. Shibboleth"
+        },
+        "lastLogin": {
+          "type": "string",
+          "description": "The date-time notation as defined by RFC 3339, section 5.6, e.g. \"2017-07-21T17:32:28\"",
+          "format": "date-time"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/UserRole"
+          }
+        }
+      }
+    },
+    "UserDelegationValidity": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "The date when the role delegation starts. Values must follow the pattern yyyy-MM-dd.\n\nIf this date is not provided, it is defaulted to current date.\n\nIn case of update API, if there is no change in the start date, it is expected to send the existing unchanged value of the start date.\n",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "The date when the role delegation ends. Values must follow the pattern yyyy-MM-dd.\n\nIn case of update API, if there is no change in the end date, it is expected to send the existing unchanged value of the end date.\n",
+          "format": "date"
+        }
+      }
+    },
+    "UserRole": {
+      "properties": {
+        "roleName": {
+          "type": "string",
+          "description": "Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed."
+        },
+        "entryPointId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "User entry point"
+        },
+        "entryPointDataUrl": {
+          "type": "string",
+          "description": "The entrypoint data url - only by GET Request"
+        },
+        "entryPointDefinitionUrl": {
+          "type": "string",
+          "description": "Entry point definition url - only by GET Request"
+        }
+      }
+    }
+  }
+}

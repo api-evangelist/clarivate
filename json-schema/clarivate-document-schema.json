@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-document-schema.json",
+  "title": "Document",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-documents-api-openapi.yml#/components/schemas/Document",
+  "type": "object",
+  "required": [
+    "uid"
+  ],
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Web of Science Unique Identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Document title"
+    },
+    "types": {
+      "type": "array",
+      "description": "Normalized Document Types",
+      "items": {
+        "type": "string",
+        "description": "Normalized Document type"
+      }
+    },
+    "sourceTypes": {
+      "type": "array",
+      "description": "Source Document Types",
+      "items": {
+        "type": "string",
+        "description": "Source Document type"
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "Web of Science document source metadata",
+      "properties": {
+        "sourceTitle": {
+          "type": "string",
+          "description": "Source title"
+        },
+        "publishYear": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Published Year"
+        },
+        "publishMonth": {
+          "type": "string",
+          "description": "Published Month"
+        },
+        "volume": {
+          "type": "string",
+          "description": "Volume"
+        },
+        "issue": {
+          "type": "string",
+          "description": "Issue"
+        },
+        "supplement": {
+          "type": "string",
+          "description": "Journal supplement"
+        },
+        "specialIssue": {
+          "type": "string",
+          "description": "Journal special issue"
+        },
+        "articleNumber": {
+          "type": "string",
+          "description": "Source Article Number"
+        },
+        "pages": {
+          "type": "object",
+          "properties": {
+            "range": {
+              "type": "string",
+              "description": "Page range"
+            },
+            "begin": {
+              "type": "string",
+              "description": "Page begin"
+            },
+            "end": {
+              "type": "string",
+              "description": "Page end"
+            },
+            "count": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Number of pages"
+            }
+          }
+        }
+      }
+    },
+    "names": {
+      "type": "object",
+      "properties": {
+        "authors": {
+          "type": "array",
+          "description": "Authors of document",
+          "items": {
+            "$ref": "#/$defs/AuthorName"
+          }
+        },
+        "contributors": {
+          "type": "array",
+          "description": "Contributors sourced from the ORCID feed. This field is available only in the `/v2` API endpoints.",
+          "items": {
+            "$ref": "#/$defs/AuthorName"
+          }
+        },
+        "inventors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "bookCorp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "bookEditors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "additionalAuthors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "anonymous": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "assignees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "corp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "editors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "investigators": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "sponsors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        },
+        "issuingOrganizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OtherName"
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "Web of Science URLs",
+      "properties": {
+        "record": {
+          "type": "string"
+        },
+        "citingArticles": {
+          "type": "string"
+        },
+        "references": {
+          "type": "string"
+        },
+        "related": {
+          "type": "string"
+        }
+      }
+    },
+    "citations": {
+      "type": "array",
+      "description": "Times Cited",
+      "items": {
+        "type": "object",
+        "properties": {
+          "db": {
+            "type": "string",
+            "description": "Web of Science Citation Database (collection) Abbreviation Name"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Citation Count"
+          }
+        }
+      }
+    },
+    "identifiers": {
+      "type": "object",
+      "description": "Document and Source Identifiers",
+      "properties": {
+        "doi": {
+          "type": "string"
+        },
+        "issn": {
+          "type": "string"
+        },
+        "eissn": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "eisbn": {
+          "type": "string"
+        },
+        "pmid": {
+          "type": "string"
+        }
+      }
+    },
+    "keywords": {
+      "type": "object",
+      "description": "Author keywords",
+      "properties": {
+        "authorKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "AuthorName": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "Web of Science display name"
+        },
+        "wosStandard": {
+          "type": "string",
+          "description": "Web of Science standard name"
+        },
+        "researcherId": {
+          "type": "string",
+          "description": "Web of Science ResearcherID"
+        }
+      }
+    },
+    "OtherName": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "Web of Science display name"
+        }
+      }
+    }
+  }
+}

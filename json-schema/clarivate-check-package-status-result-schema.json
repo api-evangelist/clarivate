@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-check-package-status-result-schema.json",
+  "title": "CheckPackageStatusResult",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-feed-api-openapi.yml#/components/schemas/CheckPackageStatusResult",
+  "properties": {
+    "status": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/StatusEnum"
+        }
+      ],
+      "description": "Status of the package preparation.values can be: pending, running, done-no-match or done."
+    },
+    "dateCompleted": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Datecompleted",
+      "description": "Date-time the package preparation completed."
+    },
+    "maxInternalChangeNumber": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/MaxInternalChangeNumber"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Maxinternalchangenumber",
+      "description": "Maximal value of the internal Change Number field."
+    },
+    "files": {
+      "items": {
+        "$ref": "#/$defs/CheckPackageStatusResultFile"
+      },
+      "type": "array",
+      "title": "Files",
+      "description": "List of files that can be downloaded."
+    }
+  },
+  "type": "object",
+  "required": [
+    "status",
+    "dateCompleted",
+    "maxInternalChangeNumber",
+    "files"
+  ],
+  "$defs": {
+    "CheckPackageStatusResultFile": {
+      "properties": {
+        "token": {
+          "type": "string",
+          "format": "uuid4",
+          "title": "Token",
+          "description": "Unique identifier in uuid4 format representing a generated file."
+        },
+        "tokenUsed": {
+          "type": "boolean",
+          "title": "Tokenused",
+          "description": "Flag which shows if the file has been downloaded already at least once."
+        },
+        "fileName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Filename",
+          "description": "File name."
+        },
+        "fileType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FileTypeEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "File output format (E.g., JSON, parquet)."
+        },
+        "fileSize": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Filesize",
+          "description": "Size of the file in Kilo Bytes."
+        },
+        "checksumName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Checksumname",
+          "description": "Checksum name."
+        },
+        "checksum": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Checksum",
+          "description": "Checksum."
+        },
+        "numberOfRecords": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Numberofrecords",
+          "description": "Number of records."
+        }
+      },
+      "type": "object",
+      "required": [
+        "token",
+        "tokenUsed",
+        "fileName",
+        "fileType",
+        "fileSize",
+        "checksumName",
+        "checksum",
+        "numberOfRecords"
+      ],
+      "title": "CheckPackageStatusResultFile"
+    },
+    "FileTypeEnum": {
+      "type": "string",
+      "enum": [
+        "json",
+        "parquet",
+        "resources",
+        "schema"
+      ],
+      "title": "FileTypeEnum"
+    },
+    "MaxInternalChangeNumber": {
+      "properties": {
+        "contentSet": {
+          "type": "string",
+          "title": "Contentset",
+          "description": "Content set/data set name (value could be \"custom\")."
+        },
+        "preset": {
+          "type": "string",
+          "title": "Preset",
+          "description": "Preset of the dataset (E.g., Standard, Full, or the name of the custom dataset)."
+        },
+        "value": {
+          "type": "integer",
+          "title": "Value",
+          "description": "Maximal Internal Change Number value."
+        }
+      },
+      "type": "object",
+      "required": [
+        "contentSet",
+        "preset",
+        "value"
+      ],
+      "title": "MaxInternalChangeNumber"
+    },
+    "StatusEnum": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "done",
+        "failed",
+        "outdated",
+        "done-no-match"
+      ],
+      "title": "StatusEnum"
+    }
+  }
+}

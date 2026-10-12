@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-request-package-input-schema.json",
+  "title": "RequestPackageInput",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-feed-api-openapi.yml#/components/schemas/RequestPackageInput",
+  "properties": {
+    "requestId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 40,
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Requestid",
+      "description": "Request Id"
+    },
+    "contentSet": {
+      "type": "string",
+      "title": "Contentset",
+      "description": "Name of the subscribed content set/data set."
+    },
+    "preset": {
+      "type": "string",
+      "title": "Preset",
+      "description": "Name of the preset (E.g., Standard, Full, or the name of the custom dataset)."
+    },
+    "format": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Format"
+        }
+      ],
+      "description": "File output format (E.g., JSON, parquet). Default value is JSON.",
+      "default": "json"
+    },
+    "splitFiles": {
+      "type": "boolean",
+      "title": "Splitfiles",
+      "description": "true or false (default). Return big files in chunks of 1GB each.",
+      "default": false
+    },
+    "filters": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FilterGroup"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "List of filtering options that can be passed"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "contentSet",
+    "preset"
+  ],
+  "$defs": {
+    "ConjunctionEnum": {
+      "type": "string",
+      "enum": [
+        "OR",
+        "AND"
+      ],
+      "title": "ConjunctionEnum"
+    },
+    "Filter": {
+      "properties": {
+        "field": {
+          "type": "string",
+          "title": "Field",
+          "description": "Name of the filter. Only \"internalChangeNumber\" is currently supported."
+        },
+        "op": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/OperationEnum"
+            }
+          ],
+          "description": "Filter's operator. Possible values are 'gt' (greater than), 'lt' (lower than)."
+        },
+        "value": {
+          "title": "Value",
+          "description": "Filter's value corresponding to the maxInternalChangeNumber field value returned from a previous call by the checkPackageStatus endpoint."
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "field",
+        "op",
+        "value"
+      ],
+      "title": "Filter"
+    },
+    "FilterGroup": {
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Filter"
+          },
+          {
+            "$ref": "#/$defs/ConjunctionEnum"
+          },
+          {
+            "$ref": "#/$defs/FilterGroup"
+          }
+        ]
+      },
+      "type": "array",
+      "minLength": 0,
+      "title": "FilterGroup"
+    },
+    "Format": {
+      "type": "string",
+      "enum": [
+        "json",
+        "parquet"
+      ],
+      "title": "Format"
+    },
+    "OperationEnum": {
+      "type": "string",
+      "enum": [
+        "eq",
+        "lt",
+        "gt",
+        "le",
+        "ge",
+        "ne",
+        "in",
+        "is",
+        "like",
+        "any of",
+        "not in",
+        "is not",
+        "not like"
+      ],
+      "title": "OperationEnum"
+    }
+  }
+}

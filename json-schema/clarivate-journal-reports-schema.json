@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-journal-reports-schema.json",
+  "title": "JournalReports",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-journals-api-openapi.yml#/components/schemas/JournalReports",
+  "type": "object",
+  "properties": {
+    "year": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Report year"
+    },
+    "suppressed": {
+      "type": "boolean",
+      "description": "Suppressed Title. Read more at in [JCR Help](https://jcr.help.clarivate.com/Content/title-suppressions.htm)"
+    },
+    "onHold": {
+      "type": "boolean",
+      "description": "Indicates the journal was on hold for evaluation at the point of JCR release. Source:- JCR_ON_HOLD_JOURNALS."
+    },
+    "delisted": {
+      "type": "boolean",
+      "description": "Indicates the journal has been dropped from the Web of Science Core Collection. Source:- JCR_WOS_DROPPED_JOURNALS."
+    },
+    "journal": {
+      "$ref": "#/$defs/JournalReportsJournal"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Key metrics information, including Impact Metrics (such as Journal Impact Factor), Influence Metrics (such as Eigen Factor), and Source Metrics (such as Citation Half-Life)",
+      "properties": {
+        "impactMetrics": {
+          "$ref": "#/$defs/ImpactMetrics"
+        },
+        "influenceMetrics": {
+          "$ref": "#/$defs/InfluenceMetrics"
+        },
+        "sourceMetrics": {
+          "$ref": "#/$defs/SourceMetrics"
+        },
+        "citationDistribution": {
+          "$ref": "#/$defs/CitationDistribution"
+        }
+      }
+    },
+    "ranks": {
+      "$ref": "#/$defs/Ranks"
+    },
+    "journalData": {
+      "$ref": "#/$defs/JournalData"
+    },
+    "sourceData": {
+      "$ref": "#/$defs/SourceData"
+    },
+    "journalProfile": {
+      "$ref": "#/$defs/JournalProfile"
+    }
+  },
+  "$defs": {
+    "CitationDistribution": {
+      "type": "object",
+      "properties": {
+        "articleCitationMedian": {
+          "type": "number",
+          "format": "double"
+        },
+        "reviewCitationMedian": {
+          "type": "number",
+          "format": "double"
+        },
+        "unlinkedCitations": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "timesCited": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "articles": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reviews": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "other": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "CitedData": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Link to the Cited endpoint for the JCR year."
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of cited journals"
+        }
+      }
+    },
+    "CitingData": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Link to the Citing endpoint for the JCR year."
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of citing journals"
+        }
+      }
+    },
+    "HalfLife": {
+      "type": "object",
+      "properties": {
+        "cited": {
+          "type": "number",
+          "format": "double"
+        },
+        "citing": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ImpactMetrics": {
+      "type": "object",
+      "properties": {
+        "totalCites": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The total number of times that a journal has been cited by all journals included in the database in the JCR year. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor38)"
+        },
+        "jif": {
+          "type": "string",
+          "description": "Journal Impact Factor. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor28)"
+        },
+        "jifWithoutSelfCitations": {
+          "type": "string",
+          "description": "Journal Impact Factor without self cites."
+        },
+        "jif5Years": {
+          "type": "number",
+          "format": "double",
+          "description": "Average number of times articles from the journal published in the past five years have been cited in the JCR year"
+        },
+        "immediacyIndex": {
+          "type": "number",
+          "format": "double",
+          "description": "Average number of times an article is cited in the year it is published. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor25)"
+        },
+        "jci": {
+          "type": "number",
+          "format": "double",
+          "description": "The Journal Citation Indicator is a new field-normalized metric that is calculated for all journals in the Web of Science Core Collection. The value represents the average category-normalized citation impact for papers published in the prior three-year period."
+        }
+      }
+    },
+    "InfluenceMetrics": {
+      "type": "object",
+      "properties": {
+        "eigenFactor": {
+          "type": "object",
+          "description": "Eigenfactor score metrics (score and normalized score), available for journals reports dated 2007 or later. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor23)",
+          "properties": {
+            "score": {
+              "type": "number",
+              "format": "double",
+              "description": "Eigenfactor score. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor24)"
+            },
+            "normalized": {
+              "type": "number",
+              "format": "double",
+              "description": "Normalized Eigenfactor score. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor33)"
+            }
+          }
+        },
+        "articleInfluence": {
+          "type": "number",
+          "format": "double",
+          "description": "Article influence metrics. For more information, please visit [this page](http://jcr.help.clarivate.com/Content/glossary-article-influence-score.htm)"
+        }
+      }
+    },
+    "JournalData": {
+      "type": "object",
+      "description": "Links to the Cited and Citing endpoints, with the total count of records.",
+      "properties": {
+        "cited": {
+          "$ref": "#/$defs/CitedData"
+        },
+        "citing": {
+          "$ref": "#/$defs/CitingData"
+        }
+      }
+    },
+    "JournalProfile": {
+      "type": "object",
+      "description": "Journal Profile uses JCR year source data, and the two prior years to develop a picture of the countries, regions, and organizations that have published materials in this journal in the past three years.",
+      "properties": {
+        "startYear": {
+          "type": "integer",
+          "description": "First year of the profile",
+          "format": "int32"
+        },
+        "endYear": {
+          "type": "integer",
+          "description": "Last year of the profile (equal to the Report year)",
+          "format": "int32"
+        },
+        "citableItems": {
+          "type": "object",
+          "description": "Open access citable items for the three years. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/open-access.htm)",
+          "properties": {
+            "goldOA": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "subscription": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "other": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "citations": {
+          "type": "object",
+          "description": "Open access citations for the three years. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/open-access.htm)",
+          "properties": {
+            "goldOA": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "subscription": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "other": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "unlinked": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "occurrenceCountries": {
+          "type": "array",
+          "description": "Information about of the top 10 countries and regions that have published materials in this journal in the past three years.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "countryRegion": {
+                "type": "string",
+                "description": "Country/region name"
+              },
+              "occurrence": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Number of country/region's articles/reviews/etc"
+              }
+            }
+          }
+        },
+        "occurrenceOrganizations": {
+          "type": "array",
+          "description": "Information about of the top 10 organizations that have published materials in this journal in the past three years.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "organization": {
+                "type": "string",
+                "description": "Organization name"
+              },
+              "occurrence": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Number of organization's articles/reviews/etc"
+              }
+            }
+          }
+        }
+      }
+    },
+    "JournalReportsJournal": {
+      "type": "object",
+      "description": "Main information about the report journal",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Journal unique identifier"
+        },
+        "self": {
+          "type": "string",
+          "description": "Journals API link to the journal entity"
+        },
+        "name": {
+          "type": "string",
+          "description": "Journal title"
+        }
+      }
+    },
+    "RankQuartileData": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "edition": {
+          "type": "string"
+        },
+        "self": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "string"
+        },
+        "quartile": {
+          "type": "string"
+        }
+      }
+    },
+    "Ranks": {
+      "type": "object",
+      "description": "JCR rank and ESI Total cites. Detailed information could be found on [this page](http://jcr.help.clarivate.com/Content/journal-profile-rank.htm)",
+      "properties": {
+        "jif": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "edition": {
+                "type": "string"
+              },
+              "self": {
+                "type": "string"
+              },
+              "rank": {
+                "type": "string"
+              },
+              "quartile": {
+                "type": "string"
+              },
+              "jifPercentile": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          }
+        },
+        "articleInfluence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RankQuartileData"
+          }
+        },
+        "eigenFactorScore": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RankQuartileData"
+          }
+        },
+        "immediacyIndex": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RankQuartileData"
+          }
+        },
+        "jci": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "rank": {
+                "type": "string"
+              },
+              "quartile": {
+                "type": "string"
+              },
+              "jciPercentile": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          }
+        },
+        "esiCitations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "rank": {
+                "type": "string"
+              },
+              "quartile": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "SourceData": {
+      "type": "object",
+      "description": "Information about number of citable items in the JCR year. For the detailed description how this data is calculated please visit [this page](http://jcr.help.clarivate.com/Content/source-data.htm?Highlight=Source%20Data)",
+      "properties": {
+        "articles": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "references": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "reviews": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "references": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "other": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "references": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      }
+    },
+    "SourceMetrics": {
+      "type": "object",
+      "properties": {
+        "citableItems": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "articlesPercentage": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "jifPercentile": {
+          "type": "number",
+          "format": "double",
+          "description": "Average Journal Impact Factor Percentile. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/glossary-average-jif-percentile.htm)"
+        },
+        "halfLife": {
+          "$ref": "#/$defs/HalfLife"
+        }
+      }
+    }
+  }
+}

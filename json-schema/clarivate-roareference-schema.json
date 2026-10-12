@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-roareference-schema.json",
+  "title": "roareference",
+  "description": "Metadata of a bibliographic content. This object wraps a bibliographic content adding a set of fields for ENWS Services processing. While bibliographic content is an agnostic set of fields for any environment, Reference object contains a set of fields for ENWS Services. ",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-reference-api-openapi.yml#/components/schemas/roareference",
+  "properties": {
+    "guid": {
+      "description": "Unique identifier of this reference. in ENWS Services. ",
+      "readOnly": true,
+      "type": "string"
+    },
+    "updated": {
+      "format": "int64",
+      "description": "Date of the lastest change of this reference. Its value is actually a date: milliseconds since 01/01/1970 in GMT",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "created": {
+      "format": "int64",
+      "description": "Date when this reference was added to the user's library. Its value is actually a date: milliseconds since 01/01/1970 in GMT",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "biblioContent": {
+      "description": "Object that contains all bibliografic fields of this reference. When created this field is mandatory and at least one of its field must have a value. ",
+      "properties": {
+        "custom1": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "edition": {
+          "description": "Edition of the book referred by this reference",
+          "type": "string"
+        },
+        "custom2": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "custom3": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "secondaryTitle": {
+          "description": "Secondary title of this reference",
+          "type": "string"
+        },
+        "custom4": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "custom5": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "custom6": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "custom7": {
+          "description": "If client application needs bibliocontent fields not included in this object, it can use this field to store its values. ",
+          "type": "string"
+        },
+        "databaseProvider": {
+          "description": "Provider of the database of this reference",
+          "type": "string"
+        },
+        "custom8": {
+          "description": "Last Date modified",
+          "type": "string"
+        },
+        "researchNotes": {
+          "description": "Research notes",
+          "type": "string"
+        },
+        "authors": {
+          "description": "Collection of authors",
+          "type": "string"
+        },
+        "callNumber": {
+          "description": "Call number",
+          "type": "string"
+        },
+        "year": {
+          "description": "Year of the publication",
+          "type": "string"
+        },
+        "electronicResourceNumber": {
+          "description": "Electronic Resource Number",
+          "type": "string"
+        },
+        "nameOfDatabase": {
+          "description": "Name of the database where to find this reference",
+          "type": "string"
+        },
+        "keywords": {
+          "description": "Collection of keywords of the paper",
+          "type": "string"
+        },
+        "tertiaryTitle": {
+          "description": "Tertiary title of this reference",
+          "type": "string"
+        },
+        "label": {
+          "description": "Label",
+          "type": "string"
+        },
+        "number": {
+          "description": "Number",
+          "type": "string"
+        },
+        "accessDate": {
+          "description": "Date of access",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL",
+          "type": "string"
+        },
+        "subsidiaryAuthors": {
+          "description": "Subsidiary authors",
+          "type": "string"
+        },
+        "accessionNumber": {
+          "description": "Accession number",
+          "type": "string"
+        },
+        "language": {
+          "description": "Language",
+          "type": "string"
+        },
+        "secondaryAuthors": {
+          "description": "Collection of secondary authors",
+          "type": "string"
+        },
+        "alternateTitle": {
+          "description": "Alternative title of publication",
+          "type": "string"
+        },
+        "placePublished": {
+          "description": "Place of publication",
+          "type": "string"
+        },
+        "originalPublication": {
+          "description": "Original Publication",
+          "type": "string"
+        },
+        "date": {
+          "description": "Date",
+          "type": "string"
+        },
+        "publisher": {
+          "description": "Publisher",
+          "type": "string"
+        },
+        "title": {
+          "description": "Title of this reference",
+          "type": "string"
+        },
+        "referenceType": {
+          "format": "int64",
+          "description": "Type of Reference. Client Application may use GET in /reference/types URI in order to get the list of types. When creating a new reference the value of this field must be one of the field value of that list of types. This field is not madatory. By default, it will be 17, Journal Article. A positive Number",
+          "default": 0,
+          "type": "integer"
+        },
+        "isbn": {
+          "description": "ISBN",
+          "type": "string"
+        },
+        "abstract": {
+          "description": "Abstract of the paper",
+          "type": "string"
+        },
+        "reviewedItem": {
+          "description": "Reviewed Item",
+          "type": "string"
+        },
+        "translatedTitle": {
+          "description": "Translated title",
+          "type": "string"
+        },
+        "translatedAuthors": {
+          "description": "Collection of translated authors",
+          "type": "string"
+        },
+        "tertiaryAuthors": {
+          "description": "Tertiary authors",
+          "type": "string"
+        },
+        "pages": {
+          "description": "Total pages of publication",
+          "type": "string"
+        },
+        "reprintEdition": {
+          "description": "Reprinted Edition",
+          "type": "string"
+        },
+        "caption": {
+          "description": "Caption",
+          "type": "string"
+        },
+        "section": {
+          "description": "Section where to find this reference",
+          "type": "string"
+        },
+        "numberOfVolumes": {
+          "description": "Total of volumes",
+          "type": "string"
+        },
+        "shortTitle": {
+          "description": "Short title of the publication",
+          "type": "string"
+        },
+        "volume": {
+          "description": "Volumen of the book",
+          "type": "string"
+        },
+        "typeOfWork": {
+          "description": "Type of publication",
+          "type": "string"
+        },
+        "notes": {
+          "description": "Notes",
+          "type": "string"
+        },
+        "authorAddress": {
+          "description": "Author address",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "updateSequenceNum": {
+      "format": "int64",
+      "description": "This number represent the current state of this reference. Changes in any field of this reference will make this number increase.,When user wants to perform a change in this reference, client application must submit this field with the changes of the user If the submitting value of this field from client application matches with the value of this field stored in the server, the server will perform requested changes, and update this field. If both values are not matchings, the server will response with HTTP response code 409, and it will include in the response payload, the current state of this reference.,Server will response with a conflict (409) when this reference were change by other application after getting this reference state. As client application has missed this later changes, server cannot decide if accept this changes or reject them, so respond sending the current state of the object. Client may ignore this conflict and override the state of the reference by including the value of this field. Client may track the first reference state, the changes made of the user, and the current state of the reference. If there is no conflict, submit the changes by including the last updateSequenceNum. Otherwise. it may show the conflicts to the user in order to make a decission. A positive Number",
+      "readOnly": true,
+      "default": 0,
+      "type": "integer"
+    },
+    "uri": {
+      "$ref": "#/$defs/uri"
+    },
+    "fileCount": {
+      "format": "int64",
+      "description": "Number of files currently attached to this reference. A positive Number",
+      "default": 0,
+      "type": "integer"
+    },
+    "fileFactoryUri": {
+      "$ref": "#/$defs/uri"
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "uri": {
+      "properties": {
+        "system": {
+          "description": "As true, POST method is not allowed",
+          "readOnly": true,
+          "default": false,
+          "type": "boolean"
+        },
+        "readOnly": {
+          "description": "As true, PUT method is not allowed",
+          "readOnly": true,
+          "default": false,
+          "type": "boolean"
+        },
+        "idValue": {
+          "description": "Unique Identifier of a pointed resource",
+          "readOnly": true,
+          "type": "string"
+        },
+        "hidden": {
+          "description": "As true, GET method is not allowed",
+          "readOnly": true,
+          "default": false,
+          "type": "boolean"
+        },
+        "mandatory": {
+          "description": "As true, DELETE method is not allowed",
+          "readOnly": true,
+          "default": false,
+          "type": "boolean"
+        },
+        "display": {
+          "description": "Name of the resource to show users",
+          "readOnly": true,
+          "type": "string"
+        },
+        "uri": {
+          "description": "URL pointing to a resource",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

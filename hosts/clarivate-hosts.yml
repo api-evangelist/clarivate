@@ -1,0 +1,104 @@
+generated: '2026-10-12'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 7
+  own: 5
+  other_domain: 0
+  platform: 2
+  roles:
+  - api
+  - other
+  - portal
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: api.clarivate.com
+  found_by:
+  - apis[]
+  - vendor-detect
+  types: []
+  serves:
+  - api
+  - api-gateway
+  - cdn
+  vendor: kong
+  registrable_domain: clarivate.com
+  role: api
+  relation: own
+- host: clarivate.com
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - Website
+  - Blog
+  - Newsroom
+  - TermsOfService
+  - PrivacyPolicy
+  - InterfaceLicense
+  - ReleaseNotes
+  - Compliance
+  - Trust
+  serves:
+  - cdn
+  vendor: fastly
+  registrable_domain: clarivate.com
+  role: website
+  relation: own
+- host: developer.clarivate.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  - APICatalog
+  - GettingStarted
+  - APIKeys
+  - SignUp
+  serves:
+  - docs
+  registrable_domain: clarivate.com
+  role: portal
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: status.clarivate.com
+  found_by:
+  - pointer
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: clarivate.com
+  role: status
+  relation: own
+- host: support.clarivate.com
+  found_by:
+  - pointer
+  types:
+  - Support
+  serves: []
+  registrable_domain: clarivate.com
+  role: support
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform

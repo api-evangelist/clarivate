@@ -1,32 +1,30 @@
 ---
 name: clarivate-wos-journal-metrics
-description: >-
-  Retrieve Journal Citation Reports metrics — Journal Impact Factor, JCI, quartile and
-  category rankings — for a journal or a Web of Science category, using the Web of
-  Science Journals API. Use when evaluating where to publish, benchmarking a journal
-  portfolio, or reporting on category performance for a JCR year.
+description: Retrieve Journal Citation Reports metrics — Journal Impact Factor, JCI,
+  quartile and category rankings — for a journal or a Web of Science category, using
+  the Web of Science Journals API. Use when evaluating where to publish, benchmarking
+  a journal portfolio, or reporting on category performance for a JCR year.
 api: Web of Science Journals API
 spec: openapi/clarivate-wos-journal-openapi.json
 base_url: https://api.clarivate.com/apis/wos-journals/v1
 operations:
-  - GET /journals
-  - GET /journals/{id}
-  - GET /journals/{id}/reports/year/{year}
-  - GET /journals/{id}/cited/year/{year}
-  - GET /journals/{id}/citing/year/{year}
-  - GET /journals/{id}/history
-  - GET /journals/history/title
-  - GET /categories
-  - GET /categories/{id}
-  - GET /categories/{id}/reports/year/{year}
-  - GET /categories/{id}/cited/year/{year}
-  - GET /categories/{id}/citing/year/{year}
-  - GET /last-updated
+- getJournals
+- getJournalsById
+- getJournalsByIdReportsYearByYear
+- getJournalsByIdCitedYearByYear
+- getJournalsByIdCitingYearByYear
+- getJournalsByIdHistory
+- getJournalsHistoryTitle
+- getCategories
+- getCategoriesById
+- getCategoriesByIdReportsYearByYear
+- getCategoriesByIdCitedYearByYear
+- getCategoriesByIdCitingYearByYear
+- getLastUpdated
 generated: '2026-09-05'
 method: generated
-source: >-
-  https://developer.clarivate.com/apis/wos-journal/swagger — the 13 operations above
-  are exactly those declared in the harvested contract. Clarivate declares no
+source: https://developer.clarivate.com/apis/wos-journal/swagger — the 13 operations
+  above are exactly those declared in the harvested contract. Clarivate declares no
   operationId on this API.
 ---
 

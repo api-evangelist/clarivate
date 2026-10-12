@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-make-prediction-request-schema.json",
+  "title": "MakePredictionRequest",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-prediction-api-openapi.yml#/components/schemas/MakePredictionRequest",
+  "properties": {
+    "model": {
+      "type": "string",
+      "title": "Model"
+    },
+    "format": {
+      "$ref": "#/$defs/Format",
+      "default": "json"
+    },
+    "inputs": {
+      "items": {
+        "$ref": "#/$defs/PredictionInput"
+      },
+      "type": "array",
+      "title": "Inputs"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "model",
+    "inputs"
+  ],
+  "$defs": {
+    "Format": {
+      "type": "string",
+      "enum": [
+        "json"
+      ],
+      "title": "Format"
+    },
+    "OperationEnum": {
+      "type": "string",
+      "enum": [
+        "eq",
+        "in"
+      ],
+      "title": "OperationEnum"
+    },
+    "PredictionInput": {
+      "properties": {
+        "field": {
+          "type": "string",
+          "title": "Field"
+        },
+        "op": {
+          "$ref": "#/$defs/OperationEnum"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "field",
+        "op",
+        "value"
+      ],
+      "title": "PredictionInput"
+    }
+  }
+}

@@ -1,0 +1,421 @@
+generated: '2026-10-12'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/clarivate-administration-user-data-api-openapi.yml
+- openapi/clarivate-administration-user-delegations-api-openapi.yml
+- openapi/clarivate-audit-info-api-openapi.yml
+- openapi/clarivate-cache-management-api-openapi.yml
+- openapi/clarivate-categories-api-openapi.yml
+vocabulary:
+  name: Clarivate Domain Vocabulary
+  description: 'Terms declared by Clarivate''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-12'
+  terms:
+  - term: Administration - User data
+    definition: Perform User operations
+    tags:
+    - Resource Group
+    source: openapi/clarivate-administration-user-data-api-openapi.yml
+  - term: Administration - User Delegations
+    definition: Perform User Delegation operations
+    tags:
+    - Resource Group
+    source: openapi/clarivate-administration-user-delegations-api-openapi.yml
+  - term: Audit Info
+    definition: Get audit info for actions like DOWNLOAD.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-audit-info-api-openapi.yml
+  - term: Cache Management
+    definition: Service invalidates cache post data erasure for direct GDPR data deletion from database.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-cache-management-api-openapi.yml
+  - term: Categories
+    definition: Categories
+    tags:
+    - Resource Group
+    source: openapi/clarivate-categories-api-openapi.yml
+  - term: Configuration
+    definition: Access PentahoParamTokenScheduler API via HTTPS with admin credentials.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-configuration-api-openapi.yml
+  - term: Configuration - Entity definitions
+    definition: Get the configured entity definitions
+    tags:
+    - Resource Group
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml
+  - term: Configuration - Link entity definitions
+    definition: Get the configured entity definitions
+    tags:
+    - Resource Group
+    source: openapi/clarivate-configuration-link-entity-definitions-api-openapi.yml
+  - term: Data Entities
+    definition: REST endpoints for data Entities
+    tags:
+    - Resource Group
+    source: openapi/clarivate-data-entities-api-openapi.yml
+  - term: Data - Entity
+    definition: Get the entity data
+    tags:
+    - Resource Group
+    source: openapi/clarivate-data-entity-api-openapi.yml
+  - term: Data File
+    definition: Download files
+    tags:
+    - Resource Group
+    source: openapi/clarivate-data-file-api-openapi.yml
+  - term: Data Integration
+    definition: Data integration uses Kettle Transformation with Servlets as output steps.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-data-integration-api-openapi.yml
+  - term: Data - Link entity
+    definition: Get the links between entity data
+    tags:
+    - Resource Group
+    source: openapi/clarivate-data-link-entity-api-openapi.yml
+  - term: Data - Tree
+    definition: Get the links between entity data
+    tags:
+    - Resource Group
+    source: openapi/clarivate-data-tree-api-openapi.yml
+  - term: Documents
+    definition: Web of Science Documents
+    tags:
+    - Resource Group
+    source: openapi/clarivate-documents-api-openapi.yml
+  - term: Integration
+    definition: Supports integration and data supplement activities.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-integration-api-openapi.yml
+  - term: Journals
+    definition: Journals
+    tags:
+    - Resource Group
+    source: openapi/clarivate-journals-api-openapi.yml
+  - term: Json
+    definition: Response in json format
+    tags:
+    - Resource Group
+    source: openapi/clarivate-json-api-openapi.yml
+  - term: 'Legacy API: find By Pattern'
+    definition: Retrieves representation of an instance of com.converis.ws.restful.pentaho.publicservice
+    tags:
+    - Resource Group
+    source: openapi/clarivate-legacy-api-find-by-pattern-api-openapi.yml
+  - term: 'Legacy API: get Info Object'
+    definition: REST web service
+    tags:
+    - Resource Group
+    source: openapi/clarivate-legacy-api-get-info-object-api-openapi.yml
+  - term: 'Legacy API: get legacy api version'
+    definition: Gets the version of Legacy API
+    tags:
+    - Resource Group
+    source: openapi/clarivate-legacy-api-get-legacy-api-version-api-openapi.yml
+  - term: 'Legacy API: get related info objects'
+    definition: 'REST Web Service: Representation of GetRelated'
+    tags:
+    - Resource Group
+    source: openapi/clarivate-legacy-api-get-related-info-objects-api-openapi.yml
+  - term: Link Entities
+    definition: REST endpoints for link entities.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-link-entities-api-openapi.yml
+  - term: Projects
+    definition: Projects management endpoints
+    tags:
+    - Resource Group
+    source: openapi/clarivate-projects-api-openapi.yml
+  - term: Publications & Sequences
+    definition: Publications & Sequences information endpoints
+    tags:
+    - Resource Group
+    source: openapi/clarivate-publications-sequences-api-openapi.yml
+  - term: Researchers
+    definition: Researcher data and metrics
+    tags:
+    - Resource Group
+    source: openapi/clarivate-researchers-api-openapi.yml
+  - term: Search
+    definition: Supports discovery and interrogation of Web of Science data.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-search-api-openapi.yml
+  - term: Search Results
+    definition: Search results management endpoints
+    tags:
+    - Resource Group
+    source: openapi/clarivate-search-results-api-openapi.yml
+  - term: Searches
+    definition: Searches management endpoints
+    tags:
+    - Resource Group
+    source: openapi/clarivate-searches-api-openapi.yml
+  - term: Session Info
+    definition: Session information endpoints
+    tags:
+    - Resource Group
+    source: openapi/clarivate-session-info-api-openapi.yml
+  - term: Version
+    definition: Get Converis and component versions.
+    tags:
+    - Resource Group
+    source: openapi/clarivate-version-api-openapi.yml
+  - term: XML
+    definition: Response in xml format
+    tags:
+    - Resource Group
+    source: openapi/clarivate-xml-api-openapi.yml
+  - term: UserList
+    definition: 'Object declared by the contract with fields: startRecord, count, nrRecordsAll, nrRecordsFound, data.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-data-api-openapi.yml#/components/schemas/UserList
+  - term: UserRole
+    definition: 'Object declared by the contract with fields: roleName, entryPointId, entryPointDataUrl, entryPointDefinitionUrl.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-data-api-openapi.yml#/components/schemas/UserRole
+  - term: DefaultResponse
+    definition: 'Object declared by the contract with fields: timestamp, path, status, statusDescription, message.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-data-api-openapi.yml#/components/schemas/DefaultResponse
+  - term: User
+    definition: 'Object declared by the contract with fields: userName, firstName, lastName, email, firstLogin, preferredLanguage, active, acceptedTC,
+      userType, lastLogin, roles.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-data-api-openapi.yml#/components/schemas/User
+  - term: UserDelegationList
+    definition: 'Object declared by the contract with fields: startRecord, count, nrRecordsAll, nrRecordsFound, data.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-delegations-api-openapi.yml#/components/schemas/UserDelegationList
+  - term: UserDelegationValidity
+    definition: 'Object declared by the contract with fields: startDate, endDate.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-delegations-api-openapi.yml#/components/schemas/UserDelegationValidity
+  - term: UserDelegation
+    definition: 'Object declared by the contract with fields: delegationId, fromUser, toUser, role, validity.'
+    tags:
+    - Object
+    source: openapi/clarivate-administration-user-delegations-api-openapi.yml#/components/schemas/UserDelegation
+  - term: CategoryReports
+    definition: 'Object declared by the contract with fields: year, journals, articles, cites, jif, immediacy, halfLife, frequency, sourceData,
+      categoryData.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryReports
+  - term: Immediacy
+    definition: 'Object declared by the contract with fields: count, citesCurrentYear, publishedCurrentYear.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/Immediacy
+  - term: CategoriesCiting
+    definition: 'Object declared by the contract with fields: metadata, hits.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoriesCiting
+  - term: Jif
+    definition: 'Object declared by the contract with fields: median, aggregate.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/Jif
+  - term: CategoryListRecord
+    definition: 'Object declared by the contract with fields: id, self, matches, name, edition, categoryCitationReports.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryListRecord
+  - term: CategoryReportsSourceData
+    definition: Aggregate Source Data counting the number of citable items and the number of cited references in each type of item.
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryReportsSourceData
+  - term: CategoryRecord
+    definition: 'Object declared by the contract with fields: id, name, edition, categoryCode, description, categoryCitationReports.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryRecord
+  - term: Frequency
+    definition: Number of journals in the category according to the number of times per year published
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/Frequency
+  - term: CategoryData
+    definition: 'Object declared by the contract with fields: cited, citing.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryData
+  - term: CitedData
+    definition: 'Object declared by the contract with fields: url, count.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CitedData
+  - term: Metadata
+    definition: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/Metadata
+  - term: CitingData
+    definition: 'Object declared by the contract with fields: url, count.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CitingData
+  - term: SearchMatch
+    definition: Displays the field and value matched to the search string
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/SearchMatch
+  - term: CategoryList
+    definition: 'Object declared by the contract with fields: metadata, hits.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryList
+  - term: CategoriesCited
+    definition: 'Object declared by the contract with fields: metadata, hits.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoriesCited
+  - term: HalfLife
+    definition: 'Object declared by the contract with fields: cited, citing.'
+    tags:
+    - Object
+    source: openapi/clarivate-categories-api-openapi.yml#/components/schemas/HalfLife
+  - term: WorkflowStep
+    definition: 'Object declared by the contract with fields: stepNr, label.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/WorkflowStep
+  - term: EntityDefinition
+    definition: 'Object declared by the contract with fields: id, name, isVersionableFile, description, maximumStatusStep, dynamicTypeSelector,
+      singular, plural, workflowSteps, attributes, links.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/EntityDefinition
+  - term: EntityDefinitionList
+    definition: 'Object declared by the contract with fields: startRecord, count, nrRecordsAll, nrRecordsFound, data.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/EntityDefinitionList
+  - term: LabelDefinition
+    definition: 'Object declared by the contract with fields: language, value.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/LabelDefinition
+  - term: LinkReference
+    definition: 'Object declared by the contract with fields: rel, href.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/LinkReference
+  - term: AttributeDefinition
+    definition: 'Object declared by the contract with fields: id, name, dataInput, multilanguage, description, labels, mandatory, allowPublicSearch,
+      internallySearcheable, includeInPageExport.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/AttributeDefinition
+  - term: AttributeInputDefinition
+    definition: 'Object declared by the contract with fields: dataType, renderingTypeHint, inputPattern, defaultExpression.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-entity-definitions-api-openapi.yml#/components/schemas/AttributeInputDefinition
+  - term: LinkEntityDefinition
+    definition: 'Object declared by the contract with fields: id, name, isTree, description, leftDefinitionUrl, rightDefinitionUrl, attributes.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-link-entity-definitions-api-openapi.yml#/components/schemas/LinkEntityDefinition
+  - term: LinkEntityDefinitionList
+    definition: 'Object declared by the contract with fields: startRecord, count, nrRecordsAll, nrRecordsFound, data.'
+    tags:
+    - Object
+    source: openapi/clarivate-configuration-link-entity-definitions-api-openapi.yml#/components/schemas/LinkEntityDefinitionList
+  - term: AttributeData
+    definition: 'Object declared by the contract with fields: attributeName, attributeType, language, value, choiceGroupData.'
+    tags:
+    - Object
+    source: openapi/clarivate-data-entity-api-openapi.yml#/components/schemas/AttributeData
+  - term: EntityData
+    definition: 'Object declared by the contract with fields: id, entityName, status, statusLabels, public, intern, createdBy, createdOn, updatedBy,
+      updatedOn, shortDescription, attributes. (1 more)'
+    tags:
+    - Object
+    source: openapi/clarivate-data-entity-api-openapi.yml#/components/schemas/EntityData
+  - term: EntityDataList
+    definition: 'Object declared by the contract with fields: startRecord, count, nrRecordsAll, nrRecordsFound, data.'
+    tags:
+    - Object
+    source: openapi/clarivate-data-entity-api-openapi.yml#/components/schemas/EntityDataList
+  - term: ChoiceGroupData
+    definition: 'Object declared by the contract with fields: choiceGroupName, choiceGroupValue, choiceGroupValueLabels.'
+    tags:
+    - Object
+    source: openapi/clarivate-data-entity-api-openapi.yml#/components/schemas/ChoiceGroupData
+  - term: LinkEntityData
+    definition: 'Object declared by the contract with fields: id, linkName, leftEntity, rightEntity, leftSeq, rightSeq, createdBy, createdOn,
+      updatedBy, updatedOn, attributes.'
+    tags:
+    - Object
+    source: openapi/clarivate-data-link-entity-api-openapi.yml#/components/schemas/LinkEntityData
+  - term: BasicData
+    definition: 'Object declared by the contract with fields: id, entityName, status, data, shortDescription.'
+    tags:
+    - Object
+    source: openapi/clarivate-data-link-entity-api-openapi.yml#/components/schemas/BasicData
+  - term: LinkEntityDataList
+    definition: 'Object declared by the contract with fields: startRecord, count, nrRecordsAll, nrRecordsFound, data.'
+    tags:
+    - Object
+    source: openapi/clarivate-data-link-entity-api-openapi.yml#/components/schemas/LinkEntityDataList
+  - term: derwent_images_request
+    definition: 'Object declared by the contract with fields: drawings, dwpi, format, fponly, params, size, type, wrap.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/derwent_images_request
+  - term: doc_idmapping_request_derwent_api
+    definition: 'Object declared by the contract with fields: params.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/doc_idmapping_request_derwent_api
+  - term: document_pdf_response_derwent_api_post
+    definition: 'Object declared by the contract with fields: available, unavailable.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/document_pdf_response_derwent_api_post
+  - term: corporate_tree_request_derwent_api
+    definition: 'Object declared by the contract with fields: params.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/corporate_tree_request_derwent_api
+  - term: class_search_request_derwent_api
+    definition: 'Object declared by the contract with fields: params.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/class_search_request_derwent_api
+  - term: search_by_query_request_derwent_api
+    definition: 'Object declared by the contract with fields: params.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/search_by_query_request_derwent_api
+  - term: search_by_ids_request_derwent_api
+    definition: 'Object declared by the contract with fields: params.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/search_by_ids_request_derwent_api
+  - term: document_by_pns_request_derwent_api
+    definition: 'Object declared by the contract with fields: params.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/document_by_pns_request_derwent_api
+  - term: document_pdf_request_derwent_api_post
+    definition: 'Object declared by the contract with fields: params, wrap.'
+    tags:
+    - Object
+    source: openapi/clarivate-derwent-api-api-openapi.yml#/components/schemas/document_pdf_request_derwent_api_post

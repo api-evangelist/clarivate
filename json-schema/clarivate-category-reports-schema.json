@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-category-reports-schema.json",
+  "title": "CategoryReports",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoryReports",
+  "type": "object",
+  "required": [
+    "year"
+  ],
+  "properties": {
+    "year": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "journals": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "articles": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "cites": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "jif": {
+      "$ref": "#/$defs/Jif"
+    },
+    "immediacy": {
+      "$ref": "#/$defs/Immediacy"
+    },
+    "halfLife": {
+      "$ref": "#/$defs/HalfLife"
+    },
+    "frequency": {
+      "$ref": "#/$defs/Frequency"
+    },
+    "sourceData": {
+      "$ref": "#/$defs/CategoryReportsSourceData"
+    },
+    "categoryData": {
+      "$ref": "#/$defs/CategoryData"
+    }
+  },
+  "$defs": {
+    "CategoryData": {
+      "type": "object",
+      "properties": {
+        "cited": {
+          "$ref": "#/$defs/CitedData"
+        },
+        "citing": {
+          "$ref": "#/$defs/CitingData"
+        }
+      }
+    },
+    "CategoryReportsSourceData": {
+      "type": "object",
+      "description": "Aggregate Source Data counting the number of citable items and the number of cited references in each type of item.",
+      "properties": {
+        "articles": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "description": "Total count of articles",
+              "format": "int32"
+            },
+            "references": {
+              "type": "integer",
+              "description": "Total count of article references",
+              "format": "int32"
+            }
+          }
+        },
+        "reviews": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "description": "Total count of reviews",
+              "format": "int32"
+            },
+            "references": {
+              "type": "integer",
+              "description": "Total count of review references",
+              "format": "int32"
+            }
+          }
+        },
+        "other": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "references": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      }
+    },
+    "CitedData": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Link to the Cited endpoint for the JCR year."
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of cited journals"
+        }
+      }
+    },
+    "CitingData": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Link to the Citing endpoint for the JCR year."
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of citing journals"
+        }
+      }
+    },
+    "Frequency": {
+      "type": "object",
+      "description": "Number of journals in the category according to the number of times per year published",
+      "properties": {
+        "annual": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hemiannual": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "triannual": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "semiannual": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quarterly": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bimonthly": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "monthly": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biweekly": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "weekly": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "daily": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "irregular": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "HalfLife": {
+      "type": "object",
+      "properties": {
+        "cited": {
+          "type": "number",
+          "format": "double"
+        },
+        "citing": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Immediacy": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "number",
+          "format": "double"
+        },
+        "citesCurrentYear": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "publishedCurrentYear": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Jif": {
+      "type": "object",
+      "properties": {
+        "median": {
+          "type": "number",
+          "format": "double"
+        },
+        "aggregate": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "string"
+            },
+            "citesYearAgo": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "citesTwoYearsAgo": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "publishedYearAgo": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "publishedTwoYearsAgo": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      }
+    }
+  }
+}

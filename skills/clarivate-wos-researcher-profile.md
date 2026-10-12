@@ -1,21 +1,19 @@
 ---
 name: clarivate-wos-researcher-profile
-description: >-
-  Resolve a researcher to their Web of Science profile and pull their publications and
-  peer-review record, joining ResearcherID to ORCID. Use for faculty reporting,
+description: Resolve a researcher to their Web of Science profile and pull their publications
+  and peer-review record, joining ResearcherID to ORCID. Use for faculty reporting,
   reviewer vetting, or syncing an institutional CRIS with Web of Science author data.
 api: Web of Science Researcher API
 spec: openapi/clarivate-wos-researcher-openapi.json
 base_url: https://api.clarivate.com/apis/wos-researcher
 operations:
-  - GET /researchers
-  - GET /researchers/{rid}
-  - GET /researchers/{rid}/documents
-  - GET /researchers/{rid}/peer-reviews
+- getResearchers
+- getResearchersByRid
+- getResearchersByRidDocuments
+- getResearchersByRidPeerReviews
 generated: '2026-09-05'
 method: generated
-source: >-
-  https://developer.clarivate.com/apis/wos-researcher/swagger — the four operations
+source: https://developer.clarivate.com/apis/wos-researcher/swagger — the four operations
   above are exactly those declared in the harvested contract. Clarivate declares no
   operationId on this API.
 ---

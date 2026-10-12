@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-content-set-ontology-response-schema.json",
+  "title": "ContentSetOntologyResponse",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-ontology-api-openapi.yml#/components/schemas/ContentSetOntologyResponse",
+  "properties": {
+    "status": {
+      "$ref": "#/$defs/Status",
+      "default": "success"
+    },
+    "data": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array",
+      "title": "Data"
+    }
+  },
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "$defs": {
+    "Status": {
+      "type": "string",
+      "enum": [
+        "success"
+      ],
+      "title": "Status"
+    }
+  }
+}

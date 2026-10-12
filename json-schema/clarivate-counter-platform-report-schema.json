@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-counter-platform-report-schema.json",
+  "title": "COUNTER_platform_report",
+  "description": "Describes the formatting needs for the COUNTER Platform Report - the Report_Header and Report_Items (usage stats).",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-reports-api-openapi.yml#/components/schemas/COUNTER_platform_report",
+  "type": "object",
+  "required": [
+    "Report_Header",
+    "Report_Items"
+  ],
+  "properties": {
+    "Report_Header": {
+      "$ref": "#/$defs/SUSHI_report_header"
+    },
+    "Report_Items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/COUNTER_platform_usage"
+      }
+    }
+  },
+  "$defs": {
+    "COUNTER_item_performance": {
+      "type": "object",
+      "required": [
+        "Period",
+        "Instance"
+      ],
+      "properties": {
+        "Period": {
+          "type": "object",
+          "required": [
+            "Begin_Date",
+            "End_Date"
+          ],
+          "properties": {
+            "Begin_Date": {
+              "type": "string",
+              "description": "Beginning date for usage in this 'itemPerformance' instance."
+            },
+            "End_Date": {
+              "type": "string",
+              "description": "Ending date for usage in this 'itemPerformance' instance."
+            }
+          }
+        },
+        "Instance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "Metric_Type",
+              "Count"
+            ],
+            "properties": {
+              "Metric_Type": {
+                "type": "string",
+                "description": "Type of activity being counted.",
+                "enum": [
+                  "Searches_Automated",
+                  "Searches_Federated",
+                  "Searches_Platform",
+                  "Searches_Regular",
+                  "Total_Item_Investigations",
+                  "Total_Item_Requests",
+                  "Unique_Item_Investigations",
+                  "Unique_Item_Requests",
+                  "Unique_Title_Investigations",
+                  "Unique_Title_Requests",
+                  "No_License",
+                  "Limit_Exceeded"
+                ]
+              },
+              "Count": {
+                "type": "integer",
+                "description": "Usage count > 0.  If count is zero, the Intance element should be excluded."
+              }
+            }
+          }
+        }
+      }
+    },
+    "COUNTER_platform_usage": {
+      "type": "object",
+      "description": "Defines the output for the Report_Items being returned in a Platform Report.",
+      "required": [
+        "Platform",
+        "Performance"
+      ],
+      "properties": {
+        "Platform": {
+          "type": "string",
+          "description": "Name of the platform"
+        },
+        "Performance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/COUNTER_item_performance"
+          },
+          "description": "The usage data related to the report item"
+        }
+      }
+    },
+    "SUSHI_error_model": {
+      "type": "object",
+      "description": "Generalized format for presenting errors and exceptions.",
+      "required": [
+        "Code",
+        "Severity",
+        "Message"
+      ],
+      "properties": {
+        "Code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Error number. See table of error."
+        },
+        "Severity": {
+          "type": "string",
+          "description": "Severity of the error.",
+          "enum": [
+            "Warning",
+            "Error",
+            "Fatal",
+            "Debug",
+            "Info"
+          ]
+        },
+        "Message": {
+          "type": "string",
+          "description": "Text describing the error."
+        },
+        "Help_URL": {
+          "type": "string",
+          "description": "URL describing error details."
+        },
+        "Data": {
+          "type": "string",
+          "description": "Additional data provided by the server to clarify the error."
+        }
+      }
+    },
+    "SUSHI_org_identifiers": {
+      "type": "object",
+      "description": "Identifier for an organization.",
+      "required": [
+        "Type",
+        "Value"
+      ],
+      "properties": {
+        "Type": {
+          "type": "string",
+          "description": "Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.",
+          "enum": [
+            "ISNI",
+            "ISIL",
+            "OCLC",
+            "Proprietary"
+          ]
+        },
+        "Value": {
+          "type": "string",
+          "description": "Value of the organization identifier"
+        }
+      }
+    },
+    "SUSHI_report_header": {
+      "type": "object",
+      "description": "Generalized report header that defines the requested report, the requestor, the customer, filters applied, reportAttributes applied and any exceptions.",
+      "required": [
+        "Report_ID",
+        "Report_Name",
+        "Release"
+      ],
+      "properties": {
+        "Created": {
+          "type": "string",
+          "format": "dateTime",
+          "description": "Time the report was prepared. Format as defined by date-time - RFC3339"
+        },
+        "Created_By": {
+          "type": "string",
+          "description": "Name of the organization producing the report."
+        },
+        "Customer_ID": {
+          "type": "string",
+          "description": "Identifier of the customer the report represents - identifier used on the request"
+        },
+        "Report_ID": {
+          "type": "string",
+          "description": "The report ID or code or shortname. Typically this will be the same code provided in the Report parameter of the request."
+        },
+        "Release": {
+          "type": "string",
+          "description": "The release or version of the report."
+        },
+        "Report_Name": {
+          "type": "string",
+          "description": "The long name of the report."
+        },
+        "Institution_Name": {
+          "type": "string",
+          "description": "Name of the customer.",
+          "items": {
+            "$ref": "#/$defs/SUSHI_org_identifiers"
+          }
+        },
+        "Report_Filters": {
+          "type": "array",
+          "description": "A List of report filters used for this report.  Typically reflect filters provided on the Request.  Filters limit the data to be reported on.",
+          "items": {
+            "required": [
+              "Name",
+              "Value"
+            ],
+            "properties": {
+              "Name": {
+                "type": "string",
+                "description": "Name of the report filter."
+              },
+              "Value": {
+                "type": "string",
+                "description": "Value of the report filter."
+              }
+            }
+          }
+        },
+        "Report_Attributes": {
+          "type": "array",
+          "description": "Any additional attributes applied to the report. Attributes inform the level of detail in the report.",
+          "items": {
+            "required": [
+              "Name",
+              "Value"
+            ],
+            "properties": {
+              "Name": {
+                "type": "string",
+                "description": "Name of the report attribute."
+              },
+              "Value": {
+                "type": "string",
+                "description": "Value of the report attribute."
+              }
+            }
+          }
+        },
+        "Exceptions": {
+          "type": "array",
+          "description": "Series of exceptions encounted when preparing the report.",
+          "items": {
+            "$ref": "#/$defs/SUSHI_error_model"
+          }
+        }
+      }
+    }
+  }
+}

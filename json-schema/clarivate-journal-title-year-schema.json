@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-journal-title-year-schema.json",
+  "title": "JournalTitleYear",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-journals-api-openapi.yml#/components/schemas/JournalTitleYear",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/Metadata"
+    },
+    "hits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "jcrTitle": {
+            "type": "string"
+          },
+          "titleChanges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "changeType": {
+                  "type": "string"
+                },
+                "jcrTitle": {
+                  "type": "string"
+                },
+                "changeYear": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "jcrYear": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "edition": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Metadata": {
+      "type": "object",
+      "description": "Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of records for the request."
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Page number (default is 1)"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of records on a page (default is 10)."
+        }
+      }
+    }
+  }
+}

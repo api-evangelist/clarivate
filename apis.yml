@@ -35,29 +35,176 @@ position: Producing
 specificationVersion: '0.23'
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/clarivate.png
 tags:
-  - Analytics
-  - Bibliometrics
-  - Citations
-  - Data
-  - Drug Pipeline
-  - Insights
-  - Intellectual Property
-  - Life Sciences
-  - Patents
-  - Publications
-  - Research
-  - Scholarly Communication
-description: >-
-  Clarivate is a global information services company providing data, insights and analytics across
-  academia and government, life sciences and healthcare, and intellectual property. It publishes 26
-  machine-readable API contracts through one developer portal at developer.clarivate.com, each
-  fetchable at developer.clarivate.com/apis/<api>/swagger, and serves them through a single gateway
-  at api.clarivate.com. The estate spans Web of Science publication and citation data, Journal
-  Citation Reports metrics, InCites benchmarking, Derwent patent and trademark intelligence,
-  Converis research information management, Cortellis life sciences intelligence, and COUNTER R5
-  usage reporting over NISO SUSHI. Access is by API key or OAuth 2.0 client credentials, issued per
-  registered application; every plan but the Web of Science Starter Free Trial is entitled from an
-  institutional subscription and approved by Clarivate.
+- Analytics
+- Bibliometrics
+- Citations
+- Data
+- Drug Pipeline
+- Insights
+- Intellectual Property
+- Life Sciences
+- Patents
+- Publications
+- Research
+- Scholarly Communication
+description: Clarivate is a global information services company providing data, insights and analytics across academia and government, life sciences
+  and healthcare, and intellectual property. It publishes 26 machine-readable API contracts through one developer portal at developer.clarivate.com,
+  each fetchable at developer.clarivate.com/apis/<api>/swagger, and serves them through a single gateway at api.clarivate.com. The estate spans
+  Web of Science publication and citation data, Journal Citation Reports metrics, InCites benchmarking, Derwent patent and trademark intelligence,
+  Converis research information management, Cortellis life sciences intelligence, and COUNTER R5 usage reporting over NISO SUSHI. Access is by
+  API key or OAuth 2.0 client credentials, issued per registered application; every plan but the Web of Science Starter Free Trial is entitled
+  from an institutional subscription and approved by Clarivate.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: Vocabulary
+  url: vocabulary/clarivate-vocabulary.yml
+- type: Hosts
+  url: hosts/clarivate-hosts.yml
+- type: Vendors
+  url: vendors/clarivate-vendors.yml
+- type: FinOps
+  url: finops/clarivate-finops.yml
+- type: CapabilityMap
+  url: capabilities/clarivate-capability-edges.yml
+  name: Clarivate Business Capability Map
+- type: Overlay
+  url: overlays/clarivate-ipdata-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-converisreadapi-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-dss-search-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-wos-journal-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-endnote-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-legacy-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-converis-additional-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-incites-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-wos-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-sushi-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-cud-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-ric-ai-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-cddi-counter-five-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-ric-download-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-wos-researcher-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-wos-starter-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-woslite-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-lsh-download-ext-client-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-wosrl-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-cortellis-api-collection-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-patentmonitor-innography-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-reviewer-connect-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-ric-agent-hub-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-ric-searchretrieve-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-sushi-status-api-overlay.yaml
+- type: Overlay
+  url: overlays/clarivate-twa-riskmark-integration-overlay.yaml
+- type: Website
+  url: https://clarivate.com/
+- type: DeveloperPortal
+  url: https://developer.clarivate.com/
+- type: Documentation
+  url: https://developer.clarivate.com/apis
+- type: APIReference
+  url: https://developer.clarivate.com/apis
+- type: APICatalog
+  url: https://developer.clarivate.com/apis
+- type: GettingStarted
+  url: https://developer.clarivate.com/help/application
+- type: Authentication
+  url: authentication/clarivate-authentication.yml
+- type: APIKeys
+  url: https://developer.clarivate.com/help/api-access#key_access
+- type: SignUp
+  url: https://developer.clarivate.com/login
+- type: Support
+  url: https://support.clarivate.com/
+- type: Blog
+  url: https://clarivate.com/news/
+- type: Newsroom
+  url: https://clarivate.com/news/
+- type: GitHubOrganization
+  url: https://github.com/clarivate
+- type: LinkedIn
+  url: https://www.linkedin.com/company/clarivate
+- type: TermsOfService
+  url: https://clarivate.com/legal-center/
+- type: PrivacyPolicy
+  url: https://clarivate.com/privacy-center/
+- type: InterfaceLicense
+  url: https://clarivate.com/wp-content/uploads/dlm_uploads/2019/08/End-User-Terms.pdf
+- type: Plans
+  url: plans/clarivate-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/clarivate-rate-limits.yml
+- type: StatusPage
+  url: https://status.clarivate.com/
+- type: ChangeLog
+  url: changelog/clarivate-changelog.yml
+- type: ReleaseNotes
+  url: https://clarivate.com/academia-government/release-notes/wos-apis/
+- type: Lifecycle
+  url: lifecycle/clarivate-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/clarivate-lifecycle.yml
+- type: Conventions
+  url: conventions/clarivate-conventions.yml
+- type: ErrorCatalog
+  url: errors/clarivate-problem-types.yml
+- type: DataModel
+  url: data-model/clarivate-data-model.yml
+- type: Conformance
+  url: conformance/clarivate-conformance.yml
+- type: Compliance
+  url: https://clarivate.com/trust-center/security-compliance/
+- type: TrustCenter
+  url: security/clarivate-trust-center.yml
+- type: Trust
+  url: https://clarivate.com/trust-center/
+- type: Security
+  url: security/clarivate-vulnerability-disclosure.yml
+- type: VulnerabilityDisclosure
+  url: security/clarivate-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/clarivate-domain-security.yml
+- type: Packages
+  url: packages/clarivate-packages.yml
+- type: SDKs
+  url: packages/clarivate-packages.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: X-MCPServerCandidate
+  url: mcp/clarivate-mcp.yml
+- type: AgenticAccess
+  url: agentic-access/clarivate-agentic-access.yml
+- type: JSONLD
+  url: json-ld/clarivate-context.jsonld
+- type: Spectral
+  url: rules/clarivate-rules.yml
+- type: X-GraphQLGated
+  url: graphql/clarivate-graphql.yml
 apis:
 - aid: clarivate:clarivate-administration-user-data-api
   name: Clarivate Administration - User data API
@@ -175,6 +322,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-user-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-default-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-user-list-schema.json
 - aid: clarivate:clarivate-administration-user-delegations-api
   name: Clarivate Administration - User Delegations API
   description: Perform User Delegation operations
@@ -291,6 +444,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-default-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-user-delegation-list-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-user-delegation-schema.json
 - aid: clarivate:clarivate-audit-info-api
   name: Clarivate Audit Info API
   description: Get audit info for actions like DOWNLOAD.
@@ -639,6 +798,16 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-category-reports-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-category-record-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-categories-cited-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-categories-citing-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-category-list-schema.json
 - aid: clarivate:clarivate-configuration-api
   name: Clarivate Configuration API
   description: Access PentahoParamTokenScheduler API via HTTPS with admin credentials.
@@ -871,6 +1040,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-entity-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-entity-definition-list-schema.json
 - aid: clarivate:clarivate-configuration-link-entity-definitions-api
   name: Clarivate Configuration - Link entity definitions API
   description: Get the configured entity definitions
@@ -987,6 +1160,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-link-entity-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-link-entity-definition-list-schema.json
 - aid: clarivate:clarivate-data-entities-api
   name: Clarivate Data Entities API
   description: REST endpoints for data Entities
@@ -1219,6 +1396,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-entity-data-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-entity-data-list-schema.json
 - aid: clarivate:clarivate-data-file-api
   name: Clarivate Data - File API
   description: Download files
@@ -1569,6 +1750,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-link-entity-data-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-link-entity-data-list-schema.json
 - aid: clarivate:clarivate-data-tree-api
   name: Clarivate Data - Tree API
   description: Get the links between entity data
@@ -1685,6 +1870,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-entity-data-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-entity-data-list-schema.json
 - aid: clarivate:clarivate-derwent-api-api
   name: Clarivate Derwent API
   description: The Derwent API API from Clarivate — 16 operation(s) for derwent api.
@@ -1801,6 +1990,18 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-by-ids-request-derwent-api-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-document-by-ids-request-derwent-api-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-by-pns-request-derwent-api-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-document-by-pns-request-derwent-api-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-doc-idmapping-request-derwent-api-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-combined-search-request-derwent-api-schema.json
 - aid: clarivate:clarivate-documents-api
   name: Clarivate Documents API
   description: Web of Science Documents
@@ -1917,6 +2118,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-document-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-documents-list-schema.json
 - aid: clarivate:clarivate-download-api
   name: Clarivate Download API
   description: The Download API from Clarivate — 1 operation(s) for download.
@@ -2151,6 +2356,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-roalibrary-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-uri-schema.json
 - aid: clarivate:clarivate-feed-api
   name: Clarivate Feed API
   description: The feed API from Clarivate — 4 operation(s) for feed.
@@ -2269,6 +2478,14 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-request-package-input-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-check-package-status-result-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-subscriptions-info-result-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-request-package-result-schema.json
 - aid: clarivate:clarivate-history-api
   name: Clarivate History API
   description: The History API from Clarivate — 1 operation(s) for history.
@@ -2503,6 +2720,8 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-single-opposition-response-schema.json
 - aid: clarivate:clarivate-integration-api
   name: Clarivate Integration API
   description: Supports integration and data supplement activities.
@@ -2619,6 +2838,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-wos-search-response-xml-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-wos-short-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-wos-search-response-schema.json
 - aid: clarivate:clarivate-ip-cases-api
   name: Clarivate IP Cases API
   description: The IP Cases API from Clarivate — 4 operation(s) for ip cases.
@@ -2735,6 +2960,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-request-caselaw-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-records-request-caselaw-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-document-availability-request-caselaw-schema.json
 - aid: clarivate:clarivate-journals-api
   name: Clarivate Journals API
   description: Journals
@@ -2851,6 +3082,18 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-journal-history-record-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-journal-title-year-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-journal-record-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-journal-reports-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-journals-cited-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-journals-citing-schema.json
 - aid: clarivate:clarivate-json-api
   name: Clarivate JSON API
   description: Response in json format
@@ -2967,6 +3210,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-array-of-dates-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-array-of-records-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-array-of-uts-schema.json
 - aid: clarivate:clarivate-last-updated-api
   name: Clarivate Last Updated API
   description: The last-updated API from Clarivate — 1 operation(s) for last-updated.
@@ -3549,9 +3798,7 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
 - aid: clarivate:clarivate-legacy-api-get-using-pentaho-resource-api
   name: 'Clarivate Legacy API: get using pentaho resource API'
-  description: >-
-    The Legacy API: get using pentaho resource API from Clarivate — 2 operation(s) for legacy api: get
-    using pentaho resource.
+  description: 'The Legacy API: get using pentaho resource API from Clarivate — 2 operation(s) for legacy api: get using pentaho resource.'
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
@@ -3897,6 +4144,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-public-agent-success-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-public-agent-message-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-public-agent-request-schema.json
 - aid: clarivate:clarivate-members-api
   name: Clarivate Members API
   description: The Members API from Clarivate — 1 operation(s) for members.
@@ -4013,6 +4266,8 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-sushi-consortium-member-list-schema.json
 - aid: clarivate:clarivate-newapi-api
   name: Clarivate Newapi API
   description: The Newapi API from Clarivate — 1 operation(s) for newapi.
@@ -4247,6 +4502,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-content-set-ontologies-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-content-set-ontology-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-content-set-info-response-schema.json
 - aid: clarivate:clarivate-patents-api
   name: Clarivate Patents API
   description: The Patents API from Clarivate — 9 operation(s) for patents.
@@ -4363,6 +4624,16 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-request-patent-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-records-request-patent-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-match-patent-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-document-availability-request-patent-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-match-response-patent-schema.json
 - aid: clarivate:clarivate-prediction-api
   name: Clarivate Prediction API
   description: The prediction API from Clarivate — 2 operation(s) for prediction.
@@ -4481,6 +4752,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-make-prediction-request-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-predictions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-make-prediction-response-schema.json
 - aid: clarivate:clarivate-projects-api
   name: Clarivate Projects API
   description: Projects management endpoints
@@ -4599,6 +4876,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-pagination-links-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-project-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-json-api-pagination-meta-schema.json
 - aid: clarivate:clarivate-publications-sequences-api
   name: Clarivate Publications & Sequences API
   description: Publications & Sequences information endpoints
@@ -4715,6 +4998,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-patent-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-sequence-schema.json
 - aid: clarivate:clarivate-reference-api
   name: Clarivate Reference API
   description: The Reference API from Clarivate — 2 operation(s) for reference.
@@ -4831,6 +5118,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-roareference-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-referencetype-schema.json
 - aid: clarivate:clarivate-references-api
   name: Clarivate References API
   description: The References API from Clarivate — 2 operation(s) for references.
@@ -4947,6 +5238,8 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-roareference-schema.json
 - aid: clarivate:clarivate-reports-api
   name: Clarivate Reports API
   description: The Reports API from Clarivate — 6 operation(s) for reports.
@@ -5063,6 +5356,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-sushi-report-list-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-counter-database-report-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-counter-platform-report-schema.json
 - aid: clarivate:clarivate-researchers-api
   name: Clarivate Researchers API
   description: Researcher data and metrics
@@ -5179,6 +5478,14 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-researcher-record-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-researcher-document-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-researcher-list-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-peer-review-list-schema.json
 - aid: clarivate:clarivate-search-api
   name: Clarivate Search API
   description: Supports discovery and interrogation of Web of Science data.
@@ -5295,6 +5602,18 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-reference-response-xml-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-wos-search-response-xml-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-retrieve-response-xml-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-citation-report-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-category-context-response-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-category-context-response-xml-schema.json
 - aid: clarivate:clarivate-search-results-api
   name: Clarivate Search Results API
   description: Search results management endpoints
@@ -5411,6 +5730,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-pagination-meta-schema.json
 - aid: clarivate:clarivate-searches-antibody-api
   name: Clarivate Searches (Antibody) API
   description: The Searches (Antibody) API from Clarivate — 1 operation(s) for searches (antibody).
@@ -5527,6 +5850,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-searches-api
   name: Clarivate Searches API
   description: Searches management endpoints
@@ -5643,6 +5970,16 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-pagination-links-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-json-api-pagination-meta-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-update-params-schema.json
 - aid: clarivate:clarivate-searches-bestseq-api
   name: Clarivate Searches (BestSeq) API
   description: The Searches (BestSeq) API from Clarivate — 1 operation(s) for searches (bestseq).
@@ -5759,6 +6096,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-searches-blast-sw-api
   name: Clarivate Searches (BLAST / SW) API
   description: The Searches (BLAST / SW) API from Clarivate — 2 operation(s) for searches (blast / sw).
@@ -5875,6 +6216,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-searches-keyword-api
   name: Clarivate Searches (Keyword) API
   description: The Searches (Keyword) API from Clarivate — 1 operation(s) for searches (keyword).
@@ -5991,10 +6336,13 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-searches-modification-api
   name: Clarivate Searches (Modification) API
-  description: >-
-    The Searches (Modification) API from Clarivate — 1 operation(s) for searches (modification).
+  description: The Searches (Modification) API from Clarivate — 1 operation(s) for searches (modification).
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
@@ -6108,6 +6456,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-searches-motif-api
   name: Clarivate Searches (Motif) API
   description: The Searches (Motif) API from Clarivate — 1 operation(s) for searches (motif).
@@ -6224,6 +6576,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-session-info-api
   name: Clarivate Session Info API
   description: Session information endpoints
@@ -6340,6 +6696,8 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-session-info-schema.json
 - aid: clarivate:clarivate-status-api
   name: Clarivate Status API
   description: The Status API from Clarivate — 1 operation(s) for status.
@@ -6456,6 +6814,8 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-sushi-service-status-schema.json
 - aid: clarivate:clarivate-trademarks-api
   name: Clarivate Trademarks API
   description: The Trademarks API from Clarivate — 3 operation(s) for trademarks.
@@ -6572,6 +6932,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-request-trademark-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-records-request-trademark-schema.json
 - aid: clarivate:clarivate-user-space-api
   name: Clarivate User Space API
   description: The User Space API from Clarivate — 4 operation(s) for user space.
@@ -6690,6 +7054,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-userspaceresource-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-uri-schema.json
 - aid: clarivate:clarivate-version-api
   name: Clarivate Version API
   description: Get Converis and component versions.
@@ -6808,9 +7176,7 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
 - aid: clarivate:clarivate-web-of-science-reviewer-locator-api-api
   name: Clarivate Web of Science Reviewer Locator API
-  description: >-
-    The Web of Science Reviewer Locator API API from Clarivate — 2 operation(s) for web of science reviewer
-    locator api.
+  description: The Web of Science Reviewer Locator API API from Clarivate — 2 operation(s) for web of science reviewer locator api.
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
@@ -6924,6 +7290,10 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
+  - type: JSONSchema
+    url: json-schema/clarivate-search-input-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-response-schema.json
 - aid: clarivate:clarivate-xml-api
   name: Clarivate XML API
   description: Response in xml format
@@ -7156,159 +7526,12 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
   - type: Documentation
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
-common:
-  - type: FinOps
-    url: finops/clarivate-finops.yml
-  - type: CapabilityMap
-    url: capabilities/clarivate-capability-edges.yml
-    name: Clarivate Business Capability Map
-  - type: Overlay
-    url: overlays/clarivate-ipdata-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-converisreadapi-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-dss-search-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-wos-journal-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-endnote-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-legacy-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-converis-additional-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-incites-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-wos-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-sushi-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-cud-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-ric-ai-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-cddi-counter-five-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-ric-download-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-wos-researcher-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-wos-starter-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-woslite-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-lsh-download-ext-client-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-wosrl-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-cortellis-api-collection-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-patentmonitor-innography-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-reviewer-connect-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-ric-agent-hub-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-ric-searchretrieve-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-sushi-status-api-overlay.yaml
-  - type: Overlay
-    url: overlays/clarivate-twa-riskmark-integration-overlay.yaml
-  - type: Website
-    url: https://clarivate.com/
-  - type: DeveloperPortal
-    url: https://developer.clarivate.com/
-  - type: Documentation
-    url: https://developer.clarivate.com/apis
-  - type: APIReference
-    url: https://developer.clarivate.com/apis
-  - type: APICatalog
-    url: https://developer.clarivate.com/apis
-  - type: GettingStarted
-    url: https://developer.clarivate.com/help/application
-  - type: Authentication
-    url: authentication/clarivate-authentication.yml
-  - type: APIKeys
-    url: https://developer.clarivate.com/help/api-access#key_access
-  - type: OAuthScopes
-    url: scopes/clarivate-scopes.yml
-  - type: SignUp
-    url: https://developer.clarivate.com/login
-  - type: Support
-    url: https://support.clarivate.com/
-  - type: Blog
-    url: https://clarivate.com/news/
-  - type: Newsroom
-    url: https://clarivate.com/news/
-  - type: GitHubOrganization
-    url: https://github.com/clarivate
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/clarivate
-  - type: TermsOfService
-    url: https://clarivate.com/legal-center/
-  - type: PrivacyPolicy
-    url: https://clarivate.com/privacy-center/
-  - type: InterfaceLicense
-    url: https://clarivate.com/wp-content/uploads/dlm_uploads/2019/08/End-User-Terms.pdf
-  - type: Plans
-    url: plans/clarivate-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/clarivate-rate-limits.yml
-  - type: StatusPage
-    url: https://status.clarivate.com/
-  - type: ChangeLog
-    url: changelog/clarivate-changelog.yml
-  - type: ReleaseNotes
-    url: https://clarivate.com/academia-government/release-notes/wos-apis/
-  - type: Lifecycle
-    url: lifecycle/clarivate-lifecycle.yml
-  - type: Deprecation
-    url: lifecycle/clarivate-lifecycle.yml
-  - type: Conventions
-    url: conventions/clarivate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/clarivate-problem-types.yml
-  - type: DataModel
-    url: data-model/clarivate-data-model.yml
-  - type: Conformance
-    url: conformance/clarivate-conformance.yml
-  - type: Compliance
-    url: https://clarivate.com/trust-center/security-compliance/
-  - type: TrustCenter
-    url: security/clarivate-trust-center.yml
-  - type: Trust
-    url: https://clarivate.com/trust-center/
-  - type: Security
-    url: security/clarivate-vulnerability-disclosure.yml
-  - type: VulnerabilityDisclosure
-    url: security/clarivate-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/clarivate-domain-security.yml
-  - type: Packages
-    url: packages/clarivate-packages.yml
-  - type: SDKs
-    url: packages/clarivate-packages.yml
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: LLMsTxt
-    url: llms/clarivate-llms.txt
-  - type: X-MCPServerCandidate
-    url: mcp/clarivate-mcp.yml
-  - type: ToolCrosswalk
-    url: mcp/clarivate-tool-crosswalk.yml
-  - type: AgenticAccess
-    url: agentic-access/clarivate-agentic-access.yml
-  - type: JSONLD
-    url: json-ld/clarivate-context.jsonld
-  - type: Spectral
-    url: rules/clarivate-rules.yml
-  - type: X-GraphQLGated
-    url: graphql/clarivate-graphql.yml
+  - type: JSONSchema
+    url: json-schema/clarivate-graph-qlquery-schema.json
+  - type: JSONSchema
+    url: json-schema/clarivate-graph-qlresponse-schema.json
 x-enrichment:
-  date: '2026-09-05'
+  date: '2026-10-12'
   status: enriched
-  artifacts_added: 74
-  pass: local-v3
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+  artifacts_added: 1
+  pass: local-v5

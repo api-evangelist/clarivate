@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-default-response-schema.json",
+  "title": "DefaultResponse",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-administration-user-data-api-openapi.yml#/components/schemas/DefaultResponse",
+  "required": [
+    "statusDescirption",
+    "message",
+    "path",
+    "status",
+    "timestamp"
+  ],
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "description": "The date-time notation as defined by RFC 3339, section 5.6, e.g. \"2017-07-21T17:32:28Z\"",
+      "format": "date-time"
+    },
+    "path": {
+      "type": "string",
+      "description": "The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication",
+      "format": "uri"
+    },
+    "status": {
+      "type": "integer",
+      "description": "HTTP Status code,e.g. 400+"
+    },
+    "statusDescription": {
+      "type": "string",
+      "description": "Description of HTTP Status code, e.g. Bad Request"
+    },
+    "message": {
+      "type": "string",
+      "description": "The detailed description of the error"
+    }
+  }
+}

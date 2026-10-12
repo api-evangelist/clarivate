@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-journal-history-record-schema.json",
+  "title": "JournalHistoryRecord",
+  "description": "Journal History record",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-journals-api-openapi.yml#/components/schemas/JournalHistoryRecord",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "array",
+      "description": "History of assigned names",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name"
+          },
+          "year": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer",
+                "description": "First year of name",
+                "format": "int32"
+              },
+              "end": {
+                "type": "integer",
+                "description": "Last year of name",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "issn": {
+      "type": "array",
+      "description": "Previously assigned ISSN identifiers",
+      "items": {
+        "type": "object",
+        "properties": {
+          "issn": {
+            "type": "string",
+            "description": "ISSN identifier"
+          },
+          "year": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer",
+                "description": "First year of ISSN",
+                "format": "int32"
+              },
+              "end": {
+                "type": "integer",
+                "description": "Last year of ISSN",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "publisher": {
+      "type": "array",
+      "description": "Previously assigned publishers",
+      "items": {
+        "type": "object",
+        "properties": {
+          "publisher": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Publisher name"
+              },
+              "address": {
+                "type": "string",
+                "description": "Publisher address"
+              },
+              "countryRegion": {
+                "type": "string",
+                "description": "Publisher country/region"
+              }
+            }
+          },
+          "year": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer",
+                "description": "First year of name, address, and country/region",
+                "format": "int32"
+              },
+              "end": {
+                "type": "integer",
+                "description": "Last year of name, address, and country/region",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "isoTitle": {
+      "type": "array",
+      "description": "Previously assigned ISO titles",
+      "items": {
+        "type": "object",
+        "properties": {
+          "isoTitle": {
+            "type": "string",
+            "description": "ISO title"
+          },
+          "year": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer",
+                "description": "First year of title",
+                "format": "int32"
+              },
+              "end": {
+                "type": "integer",
+                "description": "Last year of title",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "titleChanges": {
+      "type": "array",
+      "description": "jcrTitle",
+      "items": {
+        "type": "object",
+        "properties": {
+          "changeType": {
+            "type": "string",
+            "description": "The type of change, whether the tile is changed/merged from/to. Example value: changed_to\n"
+          },
+          "changeYear": {
+            "format": "int32",
+            "type": "integer",
+            "description": "The year the change happened"
+          },
+          "edition": {
+            "type": "string",
+            "description": "The Web of Science Edition affected, e.g. SCIE"
+          },
+          "jcrTitle1": {
+            "type": "string",
+            "description": "The left title change based on `changeType`."
+          },
+          "jcrTitle2": {
+            "type": "string",
+            "description": "The right title change based on `changeType`."
+          },
+          "jcrYear": {
+            "format": "int32",
+            "type": "integer",
+            "description": "The year the change reflected in JCR."
+          }
+        }
+      }
+    }
+  }
+}

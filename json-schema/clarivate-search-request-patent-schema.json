@@ -1,0 +1,2139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-search-request-patent-schema.json",
+  "title": "search_request_patent",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-patents-api-openapi.yml#/components/schemas/search_request_patent",
+  "properties": {
+    "AGG": {
+      "description": "A list of aggregations",
+      "items": {
+        "properties": {
+          "ALIAS": {
+            "description": "Field name alias",
+            "type": "string"
+          },
+          "FIELD": {
+            "description": "Field to query",
+            "enum": [
+              "DPCI_CITING_COUNTS_PATENTS_TOTAL",
+              "PUBLICATION_YEAR",
+              "PUBLICATION_DATE",
+              "DWPI_ACCESSION_NUMBER",
+              "APPLICATION_REGISTRATION_OFFICE",
+              "DSI_AVERAGE_SCORE",
+              "ASSIGNEE_ORIGINAL_NATIONALITY",
+              "DWPI_TITLE",
+              "IPC_SUBCLASS_DESCRIPTION",
+              "GUID",
+              "DWPI_FAMILY_MEMBER_COUNT",
+              "DEAD_ALIVE_STATUS",
+              "DWPI_CLASS_SECTION_DESCRIPTION",
+              "DWPI_ASSIGNEE_CODE_TYPE",
+              "GRANTED",
+              "INVENTOR_ADDRESS",
+              "DSI_STRENGTH_INDEX",
+              "IPC_SYMBOL",
+              "ASSIGNEE_ORIGINAL_STATE",
+              "INVENTOR_STATE",
+              "KIND_CODE",
+              "EXAMINER_SECONDARY",
+              "IPC_SECTION",
+              "GRANT_DATE",
+              "DPCI_CITED_COUNTS_PATENTS_TOTAL",
+              "JP_CLASS_F_TERM",
+              "DWPI_APPLICATION_NUMBER_BASIC",
+              "DWPI_MANUAL_CODE_4",
+              "EARLIEST_PRIORITY_COUNTRY",
+              "IPC_SUBCLASS",
+              "EARLIEST_PRIORITY_NUMBER",
+              "DWPI_ASSIGNEE_NAME",
+              "ASSIGNEE_CURRENT_US",
+              "DWPI_DESIGNATED_OFFICE_COUNT",
+              "CPC_TYPE",
+              "CORRESPONDENT_CITY",
+              "DERWENT_FORWARD_CITATION_COUNT",
+              "CORRESPONDENT_NAME",
+              "AGENT_CITY",
+              "ASSIGNEE_NAME",
+              "DSI_INVENTION_INFLUENCE_SCORE",
+              "DWPI_INVENTOR_NAME",
+              "IPC_CURRENT",
+              "ASSIGNEE_ORIGINAL_NAME",
+              "IPC_CLASS",
+              "SERIAL_NUMBER",
+              "APPLICATION_NUMBER",
+              "DSI_TECHNICAL_DISTINCTIVENESS_SCORE",
+              "REGISTRATION_OFFICE",
+              "ESTIMATED_EXPIRATION_DISCLAIMER_FLAG",
+              "EXAMINER_MAIN",
+              "EARLIEST_PRIORITY_YEAR",
+              "ASSIGNEE_ORIGINAL_ZIP_CODE",
+              "IPC_4",
+              "DWPI_FAMILY_STATUS",
+              "DOCUMENT_GUID",
+              "INVENTOR_NATIONALITY",
+              "AGENT_INID",
+              "DPCI_CITED_COUNTS_AUTHORITIES_TOTAL",
+              "INVENTOR_NAME",
+              "ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM",
+              "DPCI_CITED_COUNTS_NON_PATENTS_TOTAL",
+              "IPC_DESCRIPTION",
+              "ASSIGNEE_ORIGINAL_CITY",
+              "DSI_AGE_DISCOUNT",
+              "DWPI_ASSIGNEE_CODE",
+              "PATENT_TYPE",
+              "IPC_TYPE",
+              "DWPI_REGISTRATION_OFFICE_BASIC",
+              "AGENT_COUNTRY",
+              "DWPI_CLASS_DESCRIPTION",
+              "DOCDB_SIMPLE_FAMILY_ID",
+              "JP_CLASS_FI_CODE",
+              "CPC_4",
+              "DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL",
+              "OPTIMIZED_ASSIGNEES",
+              "DSI_INVENTION_SUCCESS_SCORE",
+              "IPC_SECTION_DESCRIPTION",
+              "DWPI_CLASS",
+              "DSI_INVENTION_GLOBALIZATION_SCORE",
+              "DWPI_EARLIEST_PRIORITY_YEAR",
+              "INVENTOR_CITY",
+              "APPLICATION_DATE",
+              "CORRESPONDENT_STATE",
+              "CPC_SYMBOL",
+              "PUBLICATION_TYPE",
+              "CITATION_WOS_CLUSTERKEY",
+              "DWPI_CLASS_SECTION",
+              "INVENTOR_ZIP_CODE",
+              "ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE",
+              "ESTIMATED_EXPIRATION_DATE",
+              "LAST_UPDATED_DATE",
+              "CORRESPONDENT_ADDRESS",
+              "ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT",
+              "DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC",
+              "DWPI_MANUAL_CODE_SECTION",
+              "DWPI_MANUAL_CODE",
+              "ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR",
+              "PUBLICATION_LANGUAGE",
+              "IPC_CLASS_DESCRIPTION",
+              "AGENT_NAME",
+              "DSI_YEARS_REMAINING",
+              "AGENT_ADDRESS",
+              "ASSIGNEE_ORIGINAL_ADDRESS",
+              "CITATION_WOS_SCORE",
+              "DWPI_KIND_CODE_BASIC",
+              "DWPI_EARLIEST_PRIORITY_DATE",
+              "DWPI_MANUAL_CODE_DESCRIPTION",
+              "CORRESPONDENT_COUNTRY",
+              "INPADOC_FAMILY_STATUS",
+              "DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL",
+              "DWPI_MANUAL_CODE_SECTION_DESCRIPTION",
+              "ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE",
+              "AGENT_ZIP_CODE",
+              "GREEN_DATA_CATEGORY",
+              "DWPI_PUBLICATION_NUMBER_BASIC",
+              "CPC_CURRENT",
+              "AGENT_STATE",
+              "DPCI_CITING_COUNTS_AUTHORITIES_TOTAL",
+              "ASSIGNEE_ORIGINAL_INID",
+              "REPRESENTATIVE_NAME",
+              "ASSIGNEE_ORIGINAL_COUNTRY",
+              "INVENTOR_COUNTRY",
+              "PUBLICATION_NUMBER",
+              "CORRESPONDENT_ZIP_CODE",
+              "EARLIEST_PRIORITY_DATE",
+              "DERWENT_BACKWARD_CITATION_COUNT",
+              "ULTIMATE_PARENT",
+              "DWPI_MANUAL_CODE_CLASS",
+              "DWPI_MANUAL_CODE_CLASS_DESCRIPTION"
+            ],
+            "type": "string"
+          },
+          "FUNC": {
+            "description": "Aggregation function",
+            "type": "string"
+          }
+        },
+        "required": [
+          "FIELD",
+          "FUNC"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "FIELDS": {
+      "oneOf": [
+        {
+          "description": "Fields to fetch. This may also be a structure of type field_aliases_patent, rather than an array, in which case the fields will be renamed.",
+          "items": {
+            "default": "GUID",
+            "description": "Fields to fetch. This may also be a structure of type field_aliases_patent, rather than an array, in which case the fields will be renamed.",
+            "enum": [
+              "DPCI_CITING_COUNTS_PATENTS_TOTAL",
+              "PUBLICATION_YEAR",
+              "PUBLICATION_DATE",
+              "DWPI_ACCESSION_NUMBER",
+              "APPLICATION_REGISTRATION_OFFICE",
+              "DWPI_UPDATE",
+              "DSI_AVERAGE_SCORE",
+              "ASSIGNEE_ORIGINAL_NATIONALITY",
+              "DWPI_TITLE",
+              "IPC_SUBCLASS_DESCRIPTION",
+              "GUID",
+              "DWPI_FAMILY_MEMBER_COUNT",
+              "DEAD_ALIVE_STATUS",
+              "DWPI_CLASS_SECTION_DESCRIPTION",
+              "DWPI_ASSIGNEE_CODE_TYPE",
+              "GRANTED",
+              "INVENTOR_ADDRESS",
+              "DSI_STRENGTH_INDEX",
+              "IPC_SYMBOL",
+              "ASSIGNEE_ORIGINAL_STATE",
+              "INVENTOR_STATE",
+              "KIND_CODE",
+              "EXAMINER_SECONDARY",
+              "IPC_SECTION",
+              "GRANT_DATE",
+              "DPCI_CITED_COUNTS_PATENTS_TOTAL",
+              "JP_CLASS_F_TERM",
+              "DWPI_APPLICATION_NUMBER_BASIC",
+              "DWPI_MANUAL_CODE_4",
+              "EARLIEST_PRIORITY_COUNTRY",
+              "IPC_SUBCLASS",
+              "EARLIEST_PRIORITY_NUMBER",
+              "DWPI_ASSIGNEE_NAME",
+              "ASSIGNEE_CURRENT_US",
+              "DWPI_DESIGNATED_OFFICE_COUNT",
+              "CPC_TYPE",
+              "CORRESPONDENT_CITY",
+              "DERWENT_FORWARD_CITATION_COUNT",
+              "CORRESPONDENT_NAME",
+              "AGENT_CITY",
+              "ASSIGNEE_NAME",
+              "DSI_INVENTION_INFLUENCE_SCORE",
+              "DWPI_INVENTOR_NAME",
+              "IPC_CURRENT",
+              "ASSIGNEE_ORIGINAL_NAME",
+              "IPC_CLASS",
+              "SERIAL_NUMBER",
+              "APPLICATION_NUMBER",
+              "DWPI_UPDATE_BASIC",
+              "DSI_TECHNICAL_DISTINCTIVENESS_SCORE",
+              "REGISTRATION_OFFICE",
+              "ESTIMATED_EXPIRATION_DISCLAIMER_FLAG",
+              "EXAMINER_MAIN",
+              "EARLIEST_PRIORITY_YEAR",
+              "ASSIGNEE_ORIGINAL_ZIP_CODE",
+              "IPC_4",
+              "DWPI_FAMILY_STATUS",
+              "DOCUMENT_GUID",
+              "INVENTOR_NATIONALITY",
+              "AGENT_INID",
+              "DPCI_CITED_COUNTS_AUTHORITIES_TOTAL",
+              "INVENTOR_NAME",
+              "ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM",
+              "DPCI_CITED_COUNTS_NON_PATENTS_TOTAL",
+              "IPC_DESCRIPTION",
+              "ASSIGNEE_ORIGINAL_CITY",
+              "DSI_AGE_DISCOUNT",
+              "DWPI_ASSIGNEE_CODE",
+              "PATENT_TYPE",
+              "IPC_TYPE",
+              "DWPI_REGISTRATION_OFFICE_BASIC",
+              "AGENT_COUNTRY",
+              "DWPI_CLASS_DESCRIPTION",
+              "DOCDB_SIMPLE_FAMILY_ID",
+              "JP_CLASS_FI_CODE",
+              "CPC_4",
+              "DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL",
+              "OPTIMIZED_ASSIGNEES",
+              "DSI_INVENTION_SUCCESS_SCORE",
+              "IPC_SECTION_DESCRIPTION",
+              "DWPI_CLASS",
+              "DSI_INVENTION_GLOBALIZATION_SCORE",
+              "DWPI_EARLIEST_PRIORITY_YEAR",
+              "INVENTOR_CITY",
+              "APPLICATION_DATE",
+              "CORRESPONDENT_STATE",
+              "CPC_SYMBOL",
+              "PUBLICATION_TYPE",
+              "CITATION_WOS_CLUSTERKEY",
+              "DWPI_CLASS_SECTION",
+              "INVENTOR_ZIP_CODE",
+              "ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE",
+              "ESTIMATED_EXPIRATION_DATE",
+              "LAST_UPDATED_DATE",
+              "CORRESPONDENT_ADDRESS",
+              "ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT",
+              "DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC",
+              "DWPI_MANUAL_CODE_SECTION",
+              "DWPI_MANUAL_CODE",
+              "ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR",
+              "PUBLICATION_LANGUAGE",
+              "IPC_CLASS_DESCRIPTION",
+              "AGENT_NAME",
+              "DSI_YEARS_REMAINING",
+              "AGENT_ADDRESS",
+              "ASSIGNEE_ORIGINAL_ADDRESS",
+              "CITATION_WOS_SCORE",
+              "DWPI_KIND_CODE_BASIC",
+              "DWPI_EARLIEST_PRIORITY_DATE",
+              "DWPI_MANUAL_CODE_DESCRIPTION",
+              "CORRESPONDENT_COUNTRY",
+              "INPADOC_FAMILY_STATUS",
+              "DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL",
+              "DWPI_MANUAL_CODE_SECTION_DESCRIPTION",
+              "ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE",
+              "AGENT_ZIP_CODE",
+              "GREEN_DATA_CATEGORY",
+              "DWPI_PUBLICATION_NUMBER_BASIC",
+              "CPC_CURRENT",
+              "AGENT_STATE",
+              "DPCI_CITING_COUNTS_AUTHORITIES_TOTAL",
+              "ASSIGNEE_ORIGINAL_INID",
+              "REPRESENTATIVE_NAME",
+              "ASSIGNEE_ORIGINAL_COUNTRY",
+              "INVENTOR_COUNTRY",
+              "PUBLICATION_NUMBER",
+              "CORRESPONDENT_ZIP_CODE",
+              "EARLIEST_PRIORITY_DATE",
+              "DERWENT_BACKWARD_CITATION_COUNT",
+              "ULTIMATE_PARENT",
+              "DWPI_MANUAL_CODE_CLASS",
+              "DWPI_MANUAL_CODE_CLASS_DESCRIPTION"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/field_aliases_patent"
+        }
+      ]
+    },
+    "GROUPBY": {
+      "description": "Group by fields (for aggregation)",
+      "items": {
+        "description": "Group by fields (for aggregation)",
+        "enum": [
+          "DPCI_CITING_COUNTS_PATENTS_TOTAL",
+          "PUBLICATION_YEAR",
+          "PUBLICATION_DATE",
+          "DWPI_ACCESSION_NUMBER",
+          "APPLICATION_REGISTRATION_OFFICE",
+          "DSI_AVERAGE_SCORE",
+          "ASSIGNEE_ORIGINAL_NATIONALITY",
+          "DWPI_TITLE",
+          "IPC_SUBCLASS_DESCRIPTION",
+          "GUID",
+          "DWPI_FAMILY_MEMBER_COUNT",
+          "DEAD_ALIVE_STATUS",
+          "DWPI_CLASS_SECTION_DESCRIPTION",
+          "DWPI_ASSIGNEE_CODE_TYPE",
+          "GRANTED",
+          "INVENTOR_ADDRESS",
+          "DSI_STRENGTH_INDEX",
+          "IPC_SYMBOL",
+          "ASSIGNEE_ORIGINAL_STATE",
+          "INVENTOR_STATE",
+          "KIND_CODE",
+          "EXAMINER_SECONDARY",
+          "IPC_SECTION",
+          "GRANT_DATE",
+          "DPCI_CITED_COUNTS_PATENTS_TOTAL",
+          "JP_CLASS_F_TERM",
+          "DWPI_APPLICATION_NUMBER_BASIC",
+          "DWPI_MANUAL_CODE_4",
+          "EARLIEST_PRIORITY_COUNTRY",
+          "IPC_SUBCLASS",
+          "EARLIEST_PRIORITY_NUMBER",
+          "DWPI_ASSIGNEE_NAME",
+          "ASSIGNEE_CURRENT_US",
+          "DWPI_DESIGNATED_OFFICE_COUNT",
+          "CPC_TYPE",
+          "CORRESPONDENT_CITY",
+          "DERWENT_FORWARD_CITATION_COUNT",
+          "CORRESPONDENT_NAME",
+          "AGENT_CITY",
+          "ASSIGNEE_NAME",
+          "DSI_INVENTION_INFLUENCE_SCORE",
+          "DWPI_INVENTOR_NAME",
+          "IPC_CURRENT",
+          "ASSIGNEE_ORIGINAL_NAME",
+          "IPC_CLASS",
+          "SERIAL_NUMBER",
+          "APPLICATION_NUMBER",
+          "DSI_TECHNICAL_DISTINCTIVENESS_SCORE",
+          "REGISTRATION_OFFICE",
+          "ESTIMATED_EXPIRATION_DISCLAIMER_FLAG",
+          "EXAMINER_MAIN",
+          "EARLIEST_PRIORITY_YEAR",
+          "ASSIGNEE_ORIGINAL_ZIP_CODE",
+          "IPC_4",
+          "DWPI_FAMILY_STATUS",
+          "DOCUMENT_GUID",
+          "INVENTOR_NATIONALITY",
+          "AGENT_INID",
+          "DPCI_CITED_COUNTS_AUTHORITIES_TOTAL",
+          "INVENTOR_NAME",
+          "ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM",
+          "DPCI_CITED_COUNTS_NON_PATENTS_TOTAL",
+          "IPC_DESCRIPTION",
+          "ASSIGNEE_ORIGINAL_CITY",
+          "DSI_AGE_DISCOUNT",
+          "DWPI_ASSIGNEE_CODE",
+          "PATENT_TYPE",
+          "IPC_TYPE",
+          "DWPI_REGISTRATION_OFFICE_BASIC",
+          "AGENT_COUNTRY",
+          "DWPI_CLASS_DESCRIPTION",
+          "DOCDB_SIMPLE_FAMILY_ID",
+          "JP_CLASS_FI_CODE",
+          "CPC_4",
+          "DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL",
+          "OPTIMIZED_ASSIGNEES",
+          "DSI_INVENTION_SUCCESS_SCORE",
+          "IPC_SECTION_DESCRIPTION",
+          "DWPI_CLASS",
+          "DSI_INVENTION_GLOBALIZATION_SCORE",
+          "DWPI_EARLIEST_PRIORITY_YEAR",
+          "INVENTOR_CITY",
+          "APPLICATION_DATE",
+          "CORRESPONDENT_STATE",
+          "CPC_SYMBOL",
+          "PUBLICATION_TYPE",
+          "CITATION_WOS_CLUSTERKEY",
+          "DWPI_CLASS_SECTION",
+          "INVENTOR_ZIP_CODE",
+          "ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE",
+          "ESTIMATED_EXPIRATION_DATE",
+          "LAST_UPDATED_DATE",
+          "CORRESPONDENT_ADDRESS",
+          "ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT",
+          "DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC",
+          "DWPI_MANUAL_CODE_SECTION",
+          "DWPI_MANUAL_CODE",
+          "ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR",
+          "PUBLICATION_LANGUAGE",
+          "IPC_CLASS_DESCRIPTION",
+          "AGENT_NAME",
+          "DSI_YEARS_REMAINING",
+          "AGENT_ADDRESS",
+          "ASSIGNEE_ORIGINAL_ADDRESS",
+          "CITATION_WOS_SCORE",
+          "DWPI_KIND_CODE_BASIC",
+          "DWPI_EARLIEST_PRIORITY_DATE",
+          "DWPI_MANUAL_CODE_DESCRIPTION",
+          "CORRESPONDENT_COUNTRY",
+          "INPADOC_FAMILY_STATUS",
+          "DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL",
+          "DWPI_MANUAL_CODE_SECTION_DESCRIPTION",
+          "ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE",
+          "AGENT_ZIP_CODE",
+          "GREEN_DATA_CATEGORY",
+          "DWPI_PUBLICATION_NUMBER_BASIC",
+          "CPC_CURRENT",
+          "AGENT_STATE",
+          "DPCI_CITING_COUNTS_AUTHORITIES_TOTAL",
+          "ASSIGNEE_ORIGINAL_INID",
+          "REPRESENTATIVE_NAME",
+          "ASSIGNEE_ORIGINAL_COUNTRY",
+          "INVENTOR_COUNTRY",
+          "PUBLICATION_NUMBER",
+          "CORRESPONDENT_ZIP_CODE",
+          "EARLIEST_PRIORITY_DATE",
+          "DERWENT_BACKWARD_CITATION_COUNT",
+          "ULTIMATE_PARENT",
+          "DWPI_MANUAL_CODE_CLASS",
+          "DWPI_MANUAL_CODE_CLASS_DESCRIPTION"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIMIT": {
+      "default": 10,
+      "description": "Maximum documents to retrieve",
+      "type": "number"
+    },
+    "OFFSET": {
+      "default": 0,
+      "description": "How many items to skip at the beginning (for pagination)",
+      "type": "number"
+    },
+    "ORDERBY": {
+      "description": "Order by fields (for aggregation)",
+      "items": {
+        "properties": {
+          "AGENT_ADDRESS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "AGENT_CITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "AGENT_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "AGENT_INID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "AGENT_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "AGENT_STATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "AGENT_ZIP_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "APPLICATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "APPLICATION_REGISTRATION_OFFICE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_CURRENT_US": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_ADDRESS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_CITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_INID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_NATIONALITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_STATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ASSIGNEE_ORIGINAL_ZIP_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CITATION_WOS_CLUSTERKEY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CITATION_WOS_SCORE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CORRESPONDENT_ADDRESS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CORRESPONDENT_CITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CORRESPONDENT_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CORRESPONDENT_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CORRESPONDENT_STATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CORRESPONDENT_ZIP_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CPC_4": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CPC_CURRENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CPC_SYMBOL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "CPC_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DEAD_ALIVE_STATUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DERWENT_BACKWARD_CITATION_COUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DERWENT_FORWARD_CITATION_COUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCDB_SIMPLE_FAMILY_ID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DOCUMENT_GUID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITED_COUNTS_AUTHORITIES_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITED_COUNTS_NON_PATENTS_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITED_COUNTS_PATENTS_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITING_COUNTS_AUTHORITIES_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DPCI_CITING_COUNTS_PATENTS_TOTAL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_AGE_DISCOUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_AVERAGE_SCORE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_INVENTION_GLOBALIZATION_SCORE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_INVENTION_INFLUENCE_SCORE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_INVENTION_SUCCESS_SCORE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_STRENGTH_INDEX": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_TECHNICAL_DISTINCTIVENESS_SCORE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DSI_YEARS_REMAINING": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_ACCESSION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_APPLICATION_NUMBER_BASIC": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_ASSIGNEE_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_ASSIGNEE_CODE_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_ASSIGNEE_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_CLASS_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_CLASS_SECTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_CLASS_SECTION_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_DESIGNATED_OFFICE_COUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_EARLIEST_PRIORITY_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "DWPI_EARLIEST_PRIORITY_YEAR": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_FAMILY_MEMBER_COUNT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_FAMILY_STATUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_INVENTOR_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_KIND_CODE_BASIC": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE_4": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE_CLASS_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE_SECTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_MANUAL_CODE_SECTION_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_PUBLICATION_NUMBER_BASIC": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_REGISTRATION_OFFICE_BASIC": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_TITLE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_UPDATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "DWPI_UPDATE_BASIC": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EARLIEST_PRIORITY_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EARLIEST_PRIORITY_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "EARLIEST_PRIORITY_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EARLIEST_PRIORITY_YEAR": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_DISCLAIMER_FLAG": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "EXAMINER_MAIN": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "EXAMINER_SECONDARY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "GRANTED": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "GRANT_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "GREEN_DATA_CATEGORY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "GUID": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INPADOC_FAMILY_STATUS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_ADDRESS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_CITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_COUNTRY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_NATIONALITY": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_STATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "INVENTOR_ZIP_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_4": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_CLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_CLASS_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_CURRENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_SECTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_SECTION_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_SUBCLASS": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_SUBCLASS_DESCRIPTION": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_SYMBOL": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "IPC_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "JP_CLASS_FI_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "JP_CLASS_F_TERM": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "KIND_CODE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "LAST_UPDATED_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "OPTIMIZED_ASSIGNEES": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PATENT_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PUBLICATION_DATE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "format": "date",
+            "type": "string"
+          },
+          "PUBLICATION_LANGUAGE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PUBLICATION_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PUBLICATION_TYPE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "PUBLICATION_YEAR": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REGISTRATION_OFFICE": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "REPRESENTATIVE_NAME": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "SERIAL_NUMBER": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          },
+          "ULTIMATE_PARENT": {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "QUERY": {
+      "description": "Either a query_body_patent object or an array of one or more query_body_patent objects separated by strings consisting of boolean operators.",
+      "oneOf": [
+        {
+          "items": {
+            "anyOf": [
+              {
+                "description": "boolean operator",
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/query_body_patent"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/query_body_patent"
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "field_aliases_patent": {
+      "properties": {
+        "AGENT_ADDRESS": {
+          "description": "Alias for AGENT_ADDRESS",
+          "type": "string"
+        },
+        "AGENT_CITY": {
+          "description": "Alias for AGENT_CITY",
+          "type": "string"
+        },
+        "AGENT_COUNTRY": {
+          "description": "Alias for AGENT_COUNTRY",
+          "type": "string"
+        },
+        "AGENT_INID": {
+          "description": "Alias for AGENT_INID",
+          "type": "string"
+        },
+        "AGENT_NAME": {
+          "description": "Alias for AGENT_NAME",
+          "type": "string"
+        },
+        "AGENT_STATE": {
+          "description": "Alias for AGENT_STATE",
+          "type": "string"
+        },
+        "AGENT_ZIP_CODE": {
+          "description": "Alias for AGENT_ZIP_CODE",
+          "type": "string"
+        },
+        "APPLICATION_DATE": {
+          "description": "Alias for APPLICATION_DATE",
+          "type": "string"
+        },
+        "APPLICATION_NUMBER": {
+          "description": "Alias for APPLICATION_NUMBER",
+          "type": "string"
+        },
+        "APPLICATION_REGISTRATION_OFFICE": {
+          "description": "Alias for APPLICATION_REGISTRATION_OFFICE",
+          "type": "string"
+        },
+        "ASSIGNEE_CURRENT_US": {
+          "description": "Alias for ASSIGNEE_CURRENT_US",
+          "type": "string"
+        },
+        "ASSIGNEE_NAME": {
+          "description": "Alias for ASSIGNEE_NAME",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_ADDRESS": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_ADDRESS",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_CITY": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_CITY",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_COUNTRY": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_COUNTRY",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_INID": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_INID",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_NAME": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_NAME",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_NATIONALITY": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_NATIONALITY",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_STATE": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_STATE",
+          "type": "string"
+        },
+        "ASSIGNEE_ORIGINAL_ZIP_CODE": {
+          "description": "Alias for ASSIGNEE_ORIGINAL_ZIP_CODE",
+          "type": "string"
+        },
+        "CITATION_WOS_CLUSTERKEY": {
+          "description": "Alias for CITATION_WOS_CLUSTERKEY",
+          "type": "string"
+        },
+        "CITATION_WOS_SCORE": {
+          "description": "Alias for CITATION_WOS_SCORE",
+          "type": "string"
+        },
+        "CORRESPONDENT_ADDRESS": {
+          "description": "Alias for CORRESPONDENT_ADDRESS",
+          "type": "string"
+        },
+        "CORRESPONDENT_CITY": {
+          "description": "Alias for CORRESPONDENT_CITY",
+          "type": "string"
+        },
+        "CORRESPONDENT_COUNTRY": {
+          "description": "Alias for CORRESPONDENT_COUNTRY",
+          "type": "string"
+        },
+        "CORRESPONDENT_NAME": {
+          "description": "Alias for CORRESPONDENT_NAME",
+          "type": "string"
+        },
+        "CORRESPONDENT_STATE": {
+          "description": "Alias for CORRESPONDENT_STATE",
+          "type": "string"
+        },
+        "CORRESPONDENT_ZIP_CODE": {
+          "description": "Alias for CORRESPONDENT_ZIP_CODE",
+          "type": "string"
+        },
+        "CPC_4": {
+          "description": "Alias for CPC_4",
+          "type": "string"
+        },
+        "CPC_CURRENT": {
+          "description": "Alias for CPC_CURRENT",
+          "type": "string"
+        },
+        "CPC_SYMBOL": {
+          "description": "Alias for CPC_SYMBOL",
+          "type": "string"
+        },
+        "CPC_TYPE": {
+          "description": "Alias for CPC_TYPE",
+          "type": "string"
+        },
+        "DEAD_ALIVE_STATUS": {
+          "description": "Alias for DEAD_ALIVE_STATUS",
+          "type": "string"
+        },
+        "DERWENT_BACKWARD_CITATION_COUNT": {
+          "description": "Alias for DERWENT_BACKWARD_CITATION_COUNT",
+          "type": "string"
+        },
+        "DERWENT_FORWARD_CITATION_COUNT": {
+          "description": "Alias for DERWENT_FORWARD_CITATION_COUNT",
+          "type": "string"
+        },
+        "DOCDB_SIMPLE_FAMILY_ID": {
+          "description": "Alias for DOCDB_SIMPLE_FAMILY_ID",
+          "type": "string"
+        },
+        "DOCUMENT_GUID": {
+          "description": "Alias for DOCUMENT_GUID",
+          "type": "string"
+        },
+        "DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL": {
+          "description": "Alias for DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL",
+          "type": "string"
+        },
+        "DPCI_CITED_COUNTS_AUTHORITIES_TOTAL": {
+          "description": "Alias for DPCI_CITED_COUNTS_AUTHORITIES_TOTAL",
+          "type": "string"
+        },
+        "DPCI_CITED_COUNTS_NON_PATENTS_TOTAL": {
+          "description": "Alias for DPCI_CITED_COUNTS_NON_PATENTS_TOTAL",
+          "type": "string"
+        },
+        "DPCI_CITED_COUNTS_PATENTS_TOTAL": {
+          "description": "Alias for DPCI_CITED_COUNTS_PATENTS_TOTAL",
+          "type": "string"
+        },
+        "DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL": {
+          "description": "Alias for DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL",
+          "type": "string"
+        },
+        "DPCI_CITING_COUNTS_AUTHORITIES_TOTAL": {
+          "description": "Alias for DPCI_CITING_COUNTS_AUTHORITIES_TOTAL",
+          "type": "string"
+        },
+        "DPCI_CITING_COUNTS_PATENTS_TOTAL": {
+          "description": "Alias for DPCI_CITING_COUNTS_PATENTS_TOTAL",
+          "type": "string"
+        },
+        "DSI_AGE_DISCOUNT": {
+          "description": "Alias for DSI_AGE_DISCOUNT",
+          "type": "string"
+        },
+        "DSI_AVERAGE_SCORE": {
+          "description": "Alias for DSI_AVERAGE_SCORE",
+          "type": "string"
+        },
+        "DSI_INVENTION_GLOBALIZATION_SCORE": {
+          "description": "Alias for DSI_INVENTION_GLOBALIZATION_SCORE",
+          "type": "string"
+        },
+        "DSI_INVENTION_INFLUENCE_SCORE": {
+          "description": "Alias for DSI_INVENTION_INFLUENCE_SCORE",
+          "type": "string"
+        },
+        "DSI_INVENTION_SUCCESS_SCORE": {
+          "description": "Alias for DSI_INVENTION_SUCCESS_SCORE",
+          "type": "string"
+        },
+        "DSI_STRENGTH_INDEX": {
+          "description": "Alias for DSI_STRENGTH_INDEX",
+          "type": "string"
+        },
+        "DSI_TECHNICAL_DISTINCTIVENESS_SCORE": {
+          "description": "Alias for DSI_TECHNICAL_DISTINCTIVENESS_SCORE",
+          "type": "string"
+        },
+        "DSI_YEARS_REMAINING": {
+          "description": "Alias for DSI_YEARS_REMAINING",
+          "type": "string"
+        },
+        "DWPI_ACCESSION_NUMBER": {
+          "description": "Alias for DWPI_ACCESSION_NUMBER",
+          "type": "string"
+        },
+        "DWPI_APPLICATION_NUMBER_BASIC": {
+          "description": "Alias for DWPI_APPLICATION_NUMBER_BASIC",
+          "type": "string"
+        },
+        "DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC": {
+          "description": "Alias for DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC",
+          "type": "string"
+        },
+        "DWPI_ASSIGNEE_CODE": {
+          "description": "Alias for DWPI_ASSIGNEE_CODE",
+          "type": "string"
+        },
+        "DWPI_ASSIGNEE_CODE_TYPE": {
+          "description": "Alias for DWPI_ASSIGNEE_CODE_TYPE",
+          "type": "string"
+        },
+        "DWPI_ASSIGNEE_NAME": {
+          "description": "Alias for DWPI_ASSIGNEE_NAME",
+          "type": "string"
+        },
+        "DWPI_CLASS": {
+          "description": "Alias for DWPI_CLASS",
+          "type": "string"
+        },
+        "DWPI_CLASS_DESCRIPTION": {
+          "description": "Alias for DWPI_CLASS_DESCRIPTION",
+          "type": "string"
+        },
+        "DWPI_CLASS_SECTION": {
+          "description": "Alias for DWPI_CLASS_SECTION",
+          "type": "string"
+        },
+        "DWPI_CLASS_SECTION_DESCRIPTION": {
+          "description": "Alias for DWPI_CLASS_SECTION_DESCRIPTION",
+          "type": "string"
+        },
+        "DWPI_DESIGNATED_OFFICE_COUNT": {
+          "description": "Alias for DWPI_DESIGNATED_OFFICE_COUNT",
+          "type": "string"
+        },
+        "DWPI_EARLIEST_PRIORITY_DATE": {
+          "description": "Alias for DWPI_EARLIEST_PRIORITY_DATE",
+          "type": "string"
+        },
+        "DWPI_EARLIEST_PRIORITY_YEAR": {
+          "description": "Alias for DWPI_EARLIEST_PRIORITY_YEAR",
+          "type": "string"
+        },
+        "DWPI_FAMILY_MEMBER_COUNT": {
+          "description": "Alias for DWPI_FAMILY_MEMBER_COUNT",
+          "type": "string"
+        },
+        "DWPI_FAMILY_STATUS": {
+          "description": "Alias for DWPI_FAMILY_STATUS",
+          "type": "string"
+        },
+        "DWPI_INVENTOR_NAME": {
+          "description": "Alias for DWPI_INVENTOR_NAME",
+          "type": "string"
+        },
+        "DWPI_KIND_CODE_BASIC": {
+          "description": "Alias for DWPI_KIND_CODE_BASIC",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE": {
+          "description": "Alias for DWPI_MANUAL_CODE",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE_4": {
+          "description": "Alias for DWPI_MANUAL_CODE_4",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE_CLASS": {
+          "description": "Alias for DWPI_MANUAL_CODE_CLASS",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE_CLASS_DESCRIPTION": {
+          "description": "Alias for DWPI_MANUAL_CODE_CLASS_DESCRIPTION",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE_DESCRIPTION": {
+          "description": "Alias for DWPI_MANUAL_CODE_DESCRIPTION",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE_SECTION": {
+          "description": "Alias for DWPI_MANUAL_CODE_SECTION",
+          "type": "string"
+        },
+        "DWPI_MANUAL_CODE_SECTION_DESCRIPTION": {
+          "description": "Alias for DWPI_MANUAL_CODE_SECTION_DESCRIPTION",
+          "type": "string"
+        },
+        "DWPI_PUBLICATION_NUMBER_BASIC": {
+          "description": "Alias for DWPI_PUBLICATION_NUMBER_BASIC",
+          "type": "string"
+        },
+        "DWPI_REGISTRATION_OFFICE_BASIC": {
+          "description": "Alias for DWPI_REGISTRATION_OFFICE_BASIC",
+          "type": "string"
+        },
+        "DWPI_TITLE": {
+          "description": "Alias for DWPI_TITLE",
+          "type": "string"
+        },
+        "DWPI_UPDATE": {
+          "description": "Alias for DWPI_UPDATE",
+          "type": "string"
+        },
+        "DWPI_UPDATE_BASIC": {
+          "description": "Alias for DWPI_UPDATE_BASIC",
+          "type": "string"
+        },
+        "EARLIEST_PRIORITY_COUNTRY": {
+          "description": "Alias for EARLIEST_PRIORITY_COUNTRY",
+          "type": "string"
+        },
+        "EARLIEST_PRIORITY_DATE": {
+          "description": "Alias for EARLIEST_PRIORITY_DATE",
+          "type": "string"
+        },
+        "EARLIEST_PRIORITY_NUMBER": {
+          "description": "Alias for EARLIEST_PRIORITY_NUMBER",
+          "type": "string"
+        },
+        "EARLIEST_PRIORITY_YEAR": {
+          "description": "Alias for EARLIEST_PRIORITY_YEAR",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR": {
+          "description": "Alias for ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_DATE": {
+          "description": "Alias for ESTIMATED_EXPIRATION_DATE",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_DISCLAIMER_FLAG": {
+          "description": "Alias for ESTIMATED_EXPIRATION_DISCLAIMER_FLAG",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM": {
+          "description": "Alias for ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE": {
+          "description": "Alias for ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT": {
+          "description": "Alias for ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT",
+          "type": "string"
+        },
+        "ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE": {
+          "description": "Alias for ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE",
+          "type": "string"
+        },
+        "EXAMINER_MAIN": {
+          "description": "Alias for EXAMINER_MAIN",
+          "type": "string"
+        },
+        "EXAMINER_SECONDARY": {
+          "description": "Alias for EXAMINER_SECONDARY",
+          "type": "string"
+        },
+        "GRANTED": {
+          "description": "Alias for GRANTED",
+          "type": "string"
+        },
+        "GRANT_DATE": {
+          "description": "Alias for GRANT_DATE",
+          "type": "string"
+        },
+        "GREEN_DATA_CATEGORY": {
+          "description": "Alias for GREEN_DATA_CATEGORY",
+          "type": "string"
+        },
+        "GUID": {
+          "description": "Alias for GUID",
+          "type": "string"
+        },
+        "INPADOC_FAMILY_STATUS": {
+          "description": "Alias for INPADOC_FAMILY_STATUS",
+          "type": "string"
+        },
+        "INVENTOR_ADDRESS": {
+          "description": "Alias for INVENTOR_ADDRESS",
+          "type": "string"
+        },
+        "INVENTOR_CITY": {
+          "description": "Alias for INVENTOR_CITY",
+          "type": "string"
+        },
+        "INVENTOR_COUNTRY": {
+          "description": "Alias for INVENTOR_COUNTRY",
+          "type": "string"
+        },
+        "INVENTOR_NAME": {
+          "description": "Alias for INVENTOR_NAME",
+          "type": "string"
+        },
+        "INVENTOR_NATIONALITY": {
+          "description": "Alias for INVENTOR_NATIONALITY",
+          "type": "string"
+        },
+        "INVENTOR_STATE": {
+          "description": "Alias for INVENTOR_STATE",
+          "type": "string"
+        },
+        "INVENTOR_ZIP_CODE": {
+          "description": "Alias for INVENTOR_ZIP_CODE",
+          "type": "string"
+        },
+        "IPC_4": {
+          "description": "Alias for IPC_4",
+          "type": "string"
+        },
+        "IPC_CLASS": {
+          "description": "Alias for IPC_CLASS",
+          "type": "string"
+        },
+        "IPC_CLASS_DESCRIPTION": {
+          "description": "Alias for IPC_CLASS_DESCRIPTION",
+          "type": "string"
+        },
+        "IPC_CURRENT": {
+          "description": "Alias for IPC_CURRENT",
+          "type": "string"
+        },
+        "IPC_DESCRIPTION": {
+          "description": "Alias for IPC_DESCRIPTION",
+          "type": "string"
+        },
+        "IPC_SECTION": {
+          "description": "Alias for IPC_SECTION",
+          "type": "string"
+        },
+        "IPC_SECTION_DESCRIPTION": {
+          "description": "Alias for IPC_SECTION_DESCRIPTION",
+          "type": "string"
+        },
+        "IPC_SUBCLASS": {
+          "description": "Alias for IPC_SUBCLASS",
+          "type": "string"
+        },
+        "IPC_SUBCLASS_DESCRIPTION": {
+          "description": "Alias for IPC_SUBCLASS_DESCRIPTION",
+          "type": "string"
+        },
+        "IPC_SYMBOL": {
+          "description": "Alias for IPC_SYMBOL",
+          "type": "string"
+        },
+        "IPC_TYPE": {
+          "description": "Alias for IPC_TYPE",
+          "type": "string"
+        },
+        "JP_CLASS_FI_CODE": {
+          "description": "Alias for JP_CLASS_FI_CODE",
+          "type": "string"
+        },
+        "JP_CLASS_F_TERM": {
+          "description": "Alias for JP_CLASS_F_TERM",
+          "type": "string"
+        },
+        "KIND_CODE": {
+          "description": "Alias for KIND_CODE",
+          "type": "string"
+        },
+        "LAST_UPDATED_DATE": {
+          "description": "Alias for LAST_UPDATED_DATE",
+          "type": "string"
+        },
+        "OPTIMIZED_ASSIGNEES": {
+          "description": "Alias for OPTIMIZED_ASSIGNEES",
+          "type": "string"
+        },
+        "PATENT_TYPE": {
+          "description": "Alias for PATENT_TYPE",
+          "type": "string"
+        },
+        "PUBLICATION_DATE": {
+          "description": "Alias for PUBLICATION_DATE",
+          "type": "string"
+        },
+        "PUBLICATION_LANGUAGE": {
+          "description": "Alias for PUBLICATION_LANGUAGE",
+          "type": "string"
+        },
+        "PUBLICATION_NUMBER": {
+          "description": "Alias for PUBLICATION_NUMBER",
+          "type": "string"
+        },
+        "PUBLICATION_TYPE": {
+          "description": "Alias for PUBLICATION_TYPE",
+          "type": "string"
+        },
+        "PUBLICATION_YEAR": {
+          "description": "Alias for PUBLICATION_YEAR",
+          "type": "string"
+        },
+        "REGISTRATION_OFFICE": {
+          "description": "Alias for REGISTRATION_OFFICE",
+          "type": "string"
+        },
+        "REPRESENTATIVE_NAME": {
+          "description": "Alias for REPRESENTATIVE_NAME",
+          "type": "string"
+        },
+        "SERIAL_NUMBER": {
+          "description": "Alias for SERIAL_NUMBER",
+          "type": "string"
+        },
+        "ULTIMATE_PARENT": {
+          "description": "Alias for ULTIMATE_PARENT",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "query_body_patent": {
+      "description": "Query objects of this type may be freely interleaved with boolean operators, as strings. Available boolean operators are AND and OR",
+      "properties": {
+        "ALG": {
+          "description": "Algorithm to use.",
+          "enum": [
+            "BASIC"
+          ],
+          "type": "string"
+        },
+        "FIELD": {
+          "description": "Field to query",
+          "enum": [
+            "DPCI_CITING_COUNTS_PATENTS_TOTAL",
+            "PUBLICATION_YEAR",
+            "PUBLICATION_DATE",
+            "DWPI_ACCESSION_NUMBER",
+            "APPLICATION_REGISTRATION_OFFICE",
+            "DSI_AVERAGE_SCORE",
+            "ASSIGNEE_ORIGINAL_NATIONALITY",
+            "DWPI_TITLE",
+            "IPC_SUBCLASS_DESCRIPTION",
+            "GUID",
+            "DWPI_FAMILY_MEMBER_COUNT",
+            "DEAD_ALIVE_STATUS",
+            "DWPI_CLASS_SECTION_DESCRIPTION",
+            "DWPI_ASSIGNEE_CODE_TYPE",
+            "GRANTED",
+            "INVENTOR_ADDRESS",
+            "DSI_STRENGTH_INDEX",
+            "IPC_SYMBOL",
+            "ASSIGNEE_ORIGINAL_STATE",
+            "INVENTOR_STATE",
+            "KIND_CODE",
+            "EXAMINER_SECONDARY",
+            "IPC_SECTION",
+            "GRANT_DATE",
+            "DPCI_CITED_COUNTS_PATENTS_TOTAL",
+            "JP_CLASS_F_TERM",
+            "DWPI_APPLICATION_NUMBER_BASIC",
+            "DWPI_MANUAL_CODE_4",
+            "EARLIEST_PRIORITY_COUNTRY",
+            "IPC_SUBCLASS",
+            "EARLIEST_PRIORITY_NUMBER",
+            "DWPI_ASSIGNEE_NAME",
+            "ASSIGNEE_CURRENT_US",
+            "DWPI_DESIGNATED_OFFICE_COUNT",
+            "CPC_TYPE",
+            "CORRESPONDENT_CITY",
+            "DERWENT_FORWARD_CITATION_COUNT",
+            "CORRESPONDENT_NAME",
+            "AGENT_CITY",
+            "ASSIGNEE_NAME",
+            "DSI_INVENTION_INFLUENCE_SCORE",
+            "DWPI_INVENTOR_NAME",
+            "IPC_CURRENT",
+            "ASSIGNEE_ORIGINAL_NAME",
+            "IPC_CLASS",
+            "SERIAL_NUMBER",
+            "APPLICATION_NUMBER",
+            "DSI_TECHNICAL_DISTINCTIVENESS_SCORE",
+            "REGISTRATION_OFFICE",
+            "ESTIMATED_EXPIRATION_DISCLAIMER_FLAG",
+            "EXAMINER_MAIN",
+            "EARLIEST_PRIORITY_YEAR",
+            "ASSIGNEE_ORIGINAL_ZIP_CODE",
+            "IPC_4",
+            "DWPI_FAMILY_STATUS",
+            "DOCUMENT_GUID",
+            "INVENTOR_NATIONALITY",
+            "AGENT_INID",
+            "DPCI_CITED_COUNTS_AUTHORITIES_TOTAL",
+            "INVENTOR_NAME",
+            "ESTIMATED_EXPIRATION_FACTOR_DESIGN_TERM",
+            "DPCI_CITED_COUNTS_NON_PATENTS_TOTAL",
+            "IPC_DESCRIPTION",
+            "ASSIGNEE_ORIGINAL_CITY",
+            "DSI_AGE_DISCOUNT",
+            "DWPI_ASSIGNEE_CODE",
+            "PATENT_TYPE",
+            "IPC_TYPE",
+            "DWPI_REGISTRATION_OFFICE_BASIC",
+            "AGENT_COUNTRY",
+            "DWPI_CLASS_DESCRIPTION",
+            "DOCDB_SIMPLE_FAMILY_ID",
+            "JP_CLASS_FI_CODE",
+            "CPC_4",
+            "DPCI_CITING_COUNTS_ACCESSION_NUMBERS_TOTAL",
+            "OPTIMIZED_ASSIGNEES",
+            "DSI_INVENTION_SUCCESS_SCORE",
+            "IPC_SECTION_DESCRIPTION",
+            "DWPI_CLASS",
+            "DSI_INVENTION_GLOBALIZATION_SCORE",
+            "DWPI_EARLIEST_PRIORITY_YEAR",
+            "INVENTOR_CITY",
+            "APPLICATION_DATE",
+            "CORRESPONDENT_STATE",
+            "CPC_SYMBOL",
+            "PUBLICATION_TYPE",
+            "CITATION_WOS_CLUSTERKEY",
+            "DWPI_CLASS_SECTION",
+            "INVENTOR_ZIP_CODE",
+            "ESTIMATED_EXPIRATION_FACTOR_EARLIEST_EFFECTIVE_FILING_DATE",
+            "ESTIMATED_EXPIRATION_DATE",
+            "LAST_UPDATED_DATE",
+            "CORRESPONDENT_ADDRESS",
+            "ESTIMATED_EXPIRATION_FACTOR_POST_GRANT_PATENT_TERM_ADJUSTMENT",
+            "DWPI_APPLICATION_REGISTRATION_OFFICE_BASIC",
+            "DWPI_MANUAL_CODE_SECTION",
+            "DWPI_MANUAL_CODE",
+            "ESTIMATED_EXPIRATION_CONFIRMATION_INDICATOR",
+            "PUBLICATION_LANGUAGE",
+            "IPC_CLASS_DESCRIPTION",
+            "AGENT_NAME",
+            "DSI_YEARS_REMAINING",
+            "AGENT_ADDRESS",
+            "ASSIGNEE_ORIGINAL_ADDRESS",
+            "CITATION_WOS_SCORE",
+            "DWPI_KIND_CODE_BASIC",
+            "DWPI_EARLIEST_PRIORITY_DATE",
+            "DWPI_MANUAL_CODE_DESCRIPTION",
+            "CORRESPONDENT_COUNTRY",
+            "INPADOC_FAMILY_STATUS",
+            "DPCI_CITED_COUNTS_ACCESSION_NUMBERS_TOTAL",
+            "DWPI_MANUAL_CODE_SECTION_DESCRIPTION",
+            "ESTIMATED_EXPIRATION_FACTOR_TERMINAL_DISC_PRIOR_EXPIRY_DATE",
+            "AGENT_ZIP_CODE",
+            "GREEN_DATA_CATEGORY",
+            "DWPI_PUBLICATION_NUMBER_BASIC",
+            "CPC_CURRENT",
+            "AGENT_STATE",
+            "DPCI_CITING_COUNTS_AUTHORITIES_TOTAL",
+            "ASSIGNEE_ORIGINAL_INID",
+            "REPRESENTATIVE_NAME",
+            "ASSIGNEE_ORIGINAL_COUNTRY",
+            "INVENTOR_COUNTRY",
+            "PUBLICATION_NUMBER",
+            "CORRESPONDENT_ZIP_CODE",
+            "EARLIEST_PRIORITY_DATE",
+            "DERWENT_BACKWARD_CITATION_COUNT",
+            "ULTIMATE_PARENT",
+            "DWPI_MANUAL_CODE_CLASS",
+            "DWPI_MANUAL_CODE_CLASS_DESCRIPTION"
+          ],
+          "type": "string"
+        },
+        "OP": {
+          "description": "Operator",
+          "enum": [
+            "LE",
+            "GE",
+            "NE",
+            "GT",
+            "IS",
+            "LT",
+            "EQ",
+            "IN"
+          ],
+          "type": "string"
+        },
+        "VALUE": {
+          "description": "Field value to match (based on operator)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "OP",
+        "VALUE"
+      ],
+      "type": "object"
+    }
+  }
+}

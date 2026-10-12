@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-researcher-list-schema.json",
+  "title": "ResearcherList",
+  "description": "A list of researcher output based on query and filters",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-researchers-api-openapi.yml#/components/schemas/ResearcherList",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/Metadata"
+    },
+    "hits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResearcherListRecord"
+      }
+    }
+  },
+  "$defs": {
+    "AuthorshipSearchMatch": {
+      "type": "object",
+      "description": "A match when searching by topic, displays top documents from Web of Science Core Collection",
+      "properties": {
+        "ut": {
+          "type": "string",
+          "description": "Accession number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "matches": {
+          "description": "Array of matched values (if several) with the HTML highlighting",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SearchMatch"
+          }
+        }
+      }
+    },
+    "DocumentsCount": {
+      "type": "object",
+      "description": "Number of documents for a Researcher",
+      "properties": {
+        "count": {
+          "type": "string",
+          "description": "Number of documents"
+        },
+        "self": {
+          "type": "string",
+          "description": "Reference URL to fetch documents of that researcher"
+        }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "description": "Information about total numbers in the retrieve, number of records on the page, and the page number.",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of records for the request."
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Page number (default is 1)"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of records on a page (default is 10)."
+        }
+      }
+    },
+    "ResearcherListRecord": {
+      "type": "object",
+      "description": "Object with basic researcher metadata in the list.",
+      "properties": {
+        "rid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Web of Science ResearcherID"
+        },
+        "orcids": {
+          "type": "array",
+          "description": "ORCID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Full name"
+        },
+        "primaryAffiliation": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Primary affiliation"
+          }
+        },
+        "self": {
+          "type": "string",
+          "description": "ResearcherID endpoint with full information"
+        },
+        "hIndex": {
+          "type": "integer",
+          "description": "The h-index (also known as Hirsch index) was introduced by J. Hirsch in 2005 and can be defined as follows: A researcher has an h-index, if they have at least h publications for which they have received at least h citations. For example, Researcher A has an h-index = 13 if they have published at least 13 documents for which they have received at least 13 citations.\n\n>h-index is calculated using citation data from Web of Science Core Collection (including self-citations).\n",
+          "format": "int32"
+        },
+        "documentsCount": {
+          "$ref": "#/$defs/DocumentsCount"
+        },
+        "totalTimesCited": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Total number of citations in Web of Science"
+        },
+        "matches": {
+          "type": "array",
+          "description": "Feedback about search match",
+          "items": {
+            "$ref": "#/$defs/SearchMatch"
+          }
+        },
+        "authorships": {
+          "type": "array",
+          "description": "Feedback about search match in the case of a topic search",
+          "items": {
+            "$ref": "#/$defs/AuthorshipSearchMatch"
+          }
+        }
+      }
+    },
+    "SearchMatch": {
+      "type": "object",
+      "description": "Displays the field and value matched to the search string",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Name of the matched field"
+        },
+        "value": {
+          "description": "Array of matched values (if several) with the HTML highlighting",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

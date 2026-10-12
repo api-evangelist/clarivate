@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-researcher-record-schema.json",
+  "title": "ResearcherRecord",
+  "description": "Object with basic researcher metadata in the list.",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-researchers-api-openapi.yml#/components/schemas/ResearcherRecord",
+  "type": "object",
+  "properties": {
+    "ids": {
+      "$ref": "#/$defs/Ids"
+    },
+    "claimStatus": {
+      "type": "boolean",
+      "description": "true, if the profile is claimed in Web of Science"
+    },
+    "name": {
+      "$ref": "#/$defs/Name"
+    },
+    "metricsAllTime": {
+      "$ref": "#/$defs/ResearcherAllTimeMetrics"
+    },
+    "organization": {
+      "type": "object",
+      "properties": {
+        "primaryAffiliation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "organizationEnhancedName": {
+                "type": "string"
+              },
+              "organizationName": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "departments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "affiliations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Affiliation"
+          }
+        }
+      }
+    },
+    "authorPosition": {
+      "type": "object",
+      "properties": {
+        "last": {
+          "$ref": "#/$defs/Position"
+        },
+        "corresponding": {
+          "$ref": "#/$defs/Position"
+        },
+        "first": {
+          "$ref": "#/$defs/Position"
+        }
+      }
+    },
+    "subjectCategories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "awards": {
+      "description": "List of award",
+      "type": "object",
+      "properties": {
+        "highlyCitedResearcher": {
+          "type": "boolean"
+        },
+        "highlyCitedResearcherYear": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HighlyCitedResearcherYear"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Affiliation": {
+      "type": "object",
+      "properties": {
+        "startYear": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Start year"
+        },
+        "endYear": {
+          "type": "integer",
+          "format": "int32",
+          "description": "End year"
+        },
+        "organization": {
+          "type": "string",
+          "description": "Organization name"
+        },
+        "numberOfDocuments": {
+          "type": "integer",
+          "format": "int32",
+          "description": "to be filled"
+        }
+      }
+    },
+    "HighlyCitedResearcherYear": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      }
+    },
+    "Ids": {
+      "type": "object",
+      "description": "Researcher IDs",
+      "properties": {
+        "rids": {
+          "type": "array",
+          "description": "Researcher ID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "orcids": {
+          "type": "array",
+          "description": "ORCID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "internalId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Name": {
+      "type": "object",
+      "description": "Details about Researcher names used for publishing",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Full name"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last"
+        },
+        "alternativeNames": {
+          "type": "array",
+          "description": "The alternative names used in their publications",
+          "items": {
+            "type": "object",
+            "description": "Name and number of documents this name appears",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "numberOfDocuments": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Position": {
+      "type": "object",
+      "properties": {
+        "numberOfDocuments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "percentage": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ResearcherAllTimeMetrics": {
+      "type": "object",
+      "properties": {
+        "hIndex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The h-index (also known as Hirsch index) was introduced by J. Hirsch in 2005 and can be defined as follows: A researcher has an h-index, if they have at least h publications for which they have received at least h citations. For example, Researcher A has an h-index = 13 if they have published at least 13 documents for which they have received at least 13 citations.\n\n>h-index is calculated using citation data from Web of Science Core Collection (including self-citations).\n"
+        },
+        "documents": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "self": {
+              "type": "string"
+            },
+            "publishedYears": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "year": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "numberOfDocuments": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "totalCitingPublications": {
+          "description": "Citing Articles",
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalCitingWithoutSelf": {
+          "description": "Citing Articles without self-citations",
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalTimesCited": {
+          "description": "Times cited",
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalTimesCitedWithoutSelf": {
+          "description": "Times cited without self-citations",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

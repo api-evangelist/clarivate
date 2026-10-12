@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-categories-citing-schema.json",
+  "title": "CategoriesCiting",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-categories-api-openapi.yml#/components/schemas/CategoriesCiting",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/Metadata"
+    },
+    "hits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "journal": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "citingJournals": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "cited": {
+            "$ref": "#/$defs/Cites"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Cites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "description": "Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of records for the request."
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Page number (default is 1)"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of records on a page (default is 10)."
+        }
+      }
+    }
+  }
+}

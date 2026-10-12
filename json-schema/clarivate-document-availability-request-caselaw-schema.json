@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-document-availability-request-caselaw-schema.json",
+  "title": "document_availability_request_caselaw",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-ip-cases-api-openapi.yml#/components/schemas/document_availability_request_caselaw",
+  "properties": {
+    "GUIDS": {
+      "description": "Documents to check",
+      "items": {
+        "description": "Unique ID of caselaw document",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "SINCE_LAST_UPDATED": {
+      "description": "Show only documents updated since this date",
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

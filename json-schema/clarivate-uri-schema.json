@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-uri-schema.json",
+  "title": "uri",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-endnote-rest-api-api-openapi.yml#/components/schemas/uri",
+  "properties": {
+    "system": {
+      "description": "As true, POST method is not allowed",
+      "readOnly": true,
+      "default": false,
+      "type": "boolean"
+    },
+    "readOnly": {
+      "description": "As true, PUT method is not allowed",
+      "readOnly": true,
+      "default": false,
+      "type": "boolean"
+    },
+    "idValue": {
+      "description": "Unique Identifier of a pointed resource",
+      "readOnly": true,
+      "type": "string"
+    },
+    "hidden": {
+      "description": "As true, GET method is not allowed",
+      "readOnly": true,
+      "default": false,
+      "type": "boolean"
+    },
+    "mandatory": {
+      "description": "As true, DELETE method is not allowed",
+      "readOnly": true,
+      "default": false,
+      "type": "boolean"
+    },
+    "display": {
+      "description": "Name of the resource to show users",
+      "readOnly": true,
+      "type": "string"
+    },
+    "uri": {
+      "description": "URL pointing to a resource",
+      "readOnly": true,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

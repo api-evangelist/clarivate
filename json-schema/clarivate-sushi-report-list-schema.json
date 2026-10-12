@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-sushi-report-list-schema.json",
+  "title": "SUSHI_report_list",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-reports-api-openapi.yml#/components/schemas/SUSHI_report_list",
+  "type": "object",
+  "required": [
+    "Report_ID",
+    "Report_Name",
+    "Release",
+    "Report_Description"
+  ],
+  "properties": {
+    "Report_Name": {
+      "type": "string",
+      "description": "The long name of the report"
+    },
+    "Report_ID": {
+      "type": "string",
+      "description": "The code, ID or short name of the report that is be used in the request to identify the report."
+    },
+    "Release": {
+      "type": "string",
+      "description": "The release or version number of the report."
+    },
+    "Report_Description": {
+      "type": "string",
+      "description": "A short sentence describing the report."
+    },
+    "Path": {
+      "type": "string",
+      "description": "The path to use when requesting this report on this service. Optional but recommended for custom reports."
+    }
+  }
+}

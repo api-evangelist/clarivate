@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-array-of-dates-schema.json",
+  "title": "ArrayOfDates",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-json-api-openapi.yml#/components/schemas/ArrayOfDates",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "INCITES_DATASET_UPDATED": {
+        "type": "string",
+        "description": "The date of the last time the InCites Dataset was updated"
+      },
+      "WOS_DATASET_INDEXED": {
+        "type": "string",
+        "description": "The date of the last time the WoS Dataset was updated"
+      }
+    }
+  }
+}

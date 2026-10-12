@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-referencetype-schema.json",
+  "title": "referencetype",
+  "description": "This object specify the type of reference. Reference type field contains the value of the type. Name field can be use to show the type to the user. ",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-reference-api-openapi.yml#/components/schemas/referencetype",
+  "properties": {
+    "name": {
+      "description": "Display property for users",
+      "readOnly": true,
+      "type": "string"
+    },
+    "value": {
+      "format": "int64",
+      "description": "Id property to be submitted in the reference bibliographic set of fields when creating a new reference. A positive Number",
+      "readOnly": true,
+      "default": 0,
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

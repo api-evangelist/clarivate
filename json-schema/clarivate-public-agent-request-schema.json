@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/clarivate/main/json-schema/clarivate-public-agent-request-schema.json",
+  "title": "PublicAgentRequest",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/clarivate-lsh-ai-agent-api-openapi.yml#/components/schemas/PublicAgentRequest",
+  "properties": {
+    "question": {
+      "type": "string",
+      "title": "Question",
+      "description": "Natural language question"
+    },
+    "conversation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Conversation Id",
+      "description": "Existing conversation context ID"
+    }
+  },
+  "type": "object",
+  "required": [
+    "question"
+  ]
+}
