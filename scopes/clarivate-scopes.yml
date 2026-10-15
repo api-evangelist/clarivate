@@ -1,12 +1,32 @@
-generated: '2026-09-05'
+generated: '2026-10-14'
 method: none
-source: openapi/clarivate-endnote-openapi.json
+source: openapi/clarivate-endnote-rest-api-api-openapi.yml, openapi/clarivate-reference-api-openapi.yml,
+  openapi/clarivate-references-api-openapi.yml, openapi/clarivate-user-space-api-openapi.yml
 schemes:
-- name: Log In, accessCode
-  source: openapi/clarivate-endnote-openapi.json
+- name: Log_In__accessCode
+  source: openapi/clarivate-endnote-rest-api-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
+    tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token
+- name: Log_In__accessCode
+  source: openapi/clarivate-reference-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
+    tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token
+- name: Log_In__accessCode
+  source: openapi/clarivate-references-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
+    tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token
+- name: Log_In__accessCode
+  source: openapi/clarivate-user-space-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://api.clarivate.com/auth/steam/api/endnote/authorize
     tokenUrl: https://api.clarivate.com/auth/steam/api/endnote/token
 scopes: []
-note: OAuth2 schemes declared but no scopes named in any spec
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
