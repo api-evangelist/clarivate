@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/clarivate/integrations
 - https://n8n.io/integrations/clarivate/
@@ -9,8 +9,39 @@ checked:
 - https://composio.dev/toolkits/clarivate
 - https://monid.ai/tools/clarivate
 - https://n8n.io/integrations/clarivate/
+- https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
+- https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
 - https://zapier.com/apps/clarivate/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: eduGAIN
+  partner: null
+  type: register
+  channel: standard-directory
+  relationship: network-participant
+  direction: partner-built
+  evidence: https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
+  category: research and education identity federation
+  contract_reference:
+    network: eduGAIN (GÉANT interfederation)
+    spec_file: null
+    roles:
+    - service-provider
+    role: service-provider
+    federations:
+    - UK-FEDERATION
+    matched_by: domain+verified:clarivate.com
+    entities:
+    - entity_id: https://access.clarivate.com/entity
+      role: service-provider
+      federation: UK-FEDERATION
+      display_name: Camelot UK BIDCO Limited
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    detected_by: sweep-higher-ed.py
+    detected: '2026-10-15'
+  detected_by: sweep-higher-ed.py
+  first_seen: '2026-10-15'
 templates: []
