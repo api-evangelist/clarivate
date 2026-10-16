@@ -58,6 +58,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: OAuthScopes
+  url: scopes/clarivate-scopes.yml
 - type: Vocabulary
   url: vocabulary/clarivate-vocabulary.yml
 - type: Hosts
