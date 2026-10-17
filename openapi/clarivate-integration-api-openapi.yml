@@ -310,7 +310,7 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    WosRecord:
+    WosShortRecord:
       type: object
       required:
       - UID
@@ -330,24 +330,9 @@ components:
                 pub_info:
                   type: object
                   properties:
-                    coverdate:
-                      type: string
-                      example: OCT 2019
-                      xml:
-                        attribute: true
                     vol:
                       type: integer
                       example: 203
-                      xml:
-                        attribute: true
-                    journal_oas_gold:
-                      type: string
-                      example: N
-                      xml:
-                        attribute: true
-                    has_citation_context:
-                      type: string
-                      example: Y
                       xml:
                         attribute: true
                     pubyear:
@@ -360,67 +345,11 @@ components:
                       example: 27
                       xml:
                         attribute: true
-                    special_issue:
-                      type: string
-                      example: SI
-                      xml:
-                        attribute: true
-                    sortdate:
-                      type: string
-                      example: '2019-08-21'
-                      xml:
-                        attribute: true
-                    has_abstract:
-                      type: string
-                      example: N
-                      xml:
-                        attribute: true
-                    pubmonth:
-                      type: string
-                      example: OCT
-                      xml:
-                        attribute: true
                     pubtype:
                       type: string
                       example: Journal
                       xml:
                         attribute: true
-                    early_access_month:
-                      type: integer
-                      example: 08
-                      xml:
-                        attribute: true
-                    early_access_date:
-                      type: string
-                      example: AUG 2019
-                      xml:
-                        attribute: true
-                    early_access_year:
-                      type: integer
-                      example: 2019
-                      xml:
-                        attribute: true
-                    page:
-                      type: object
-                      properties:
-                        end:
-                          type: integer
-                          example: 11
-                          xml:
-                            attribute: true
-                        begin:
-                          type: integer
-                          example: 9
-                          xml:
-                            attribute: true
-                        page_count:
-                          type: integer
-                          example: 2
-                          xml:
-                            attribute: true
-                        content:
-                          type: string
-                          example: 9-11
                 names:
                   type: object
                   properties:
@@ -435,18 +364,6 @@ components:
                             type: integer
                           role:
                             type: string
-                          claim_status:
-                            type: boolean
-                          full_name:
-                            type: string
-                          addr_no:
-                            type: array
-                            items:
-                              type: integer
-                          reprint:
-                            type: string
-                          last_name:
-                            type: string
                           display_name:
                             type: string
                           wos_standard:
@@ -455,35 +372,6 @@ components:
                             type: string
                           daisng_id:
                             type: integer
-                          orcid_id:
-                            type: string
-                          noncore_startyear:
-                            type: integer
-                          noncore_endyear:
-                            type: integer
-                          first_name:
-                            type: string
-                          data-item-ids:
-                            type: object
-                            properties:
-                              data-item-id:
-                                type: object
-                                properties:
-                                  type:
-                                    type: string
-                                  content:
-                                    type: string
-                          preferred_name:
-                            type: object
-                            properties:
-                              full_name:
-                                type: string
-                              last_name:
-                                type: string
-                              middle_name:
-                                type: string
-                              first_name:
-                                type: string
                 doctypes:
                   type: object
                   properties:
@@ -493,69 +381,6 @@ components:
                         type: string
                     count:
                       type: integer
-                publishers:
-                  type: object
-                  properties:
-                    publisher:
-                      type: object
-                      properties:
-                        names:
-                          type: object
-                          properties:
-                            count:
-                              type: integer
-                            name:
-                              type: object
-                              properties:
-                                seq_no:
-                                  type: integer
-                                role:
-                                  type: string
-                                full_name:
-                                  type: string
-                                unified_name:
-                                  type: string
-                                addr_no:
-                                  type: integer
-                                display_name:
-                                  type: string
-                        address_spec:
-                          type: object
-                          properties:
-                            city:
-                              type: string
-                            addr_no:
-                              type: integer
-                            full_address:
-                              type: string
-                            url_spec:
-                              type: object
-                              properties:
-                                url:
-                                  type: string
-                EWUID:
-                  type: object
-                  properties:
-                    WUID:
-                      type: object
-                      properties:
-                        coll_id:
-                          type: string
-                          example: WOS
-                          xml:
-                            attribute: true
-                    edition:
-                      oneOf:
-                      - type: object
-                      - type: array
-                      items:
-                        type: object
-                        properties:
-                          value:
-                            type: string
-                            example: WOS.SSCI
-                            xml:
-                              attribute: true
                 titles:
                   type: object
                   properties:
@@ -570,233 +395,9 @@ components:
                             type: string
                           content:
                             type: string
-            item:
-              type: object
-              properties:
-                xsi:type:
-                  type: string
-                coll_id:
-                  type: string
-                ids:
-                  type: object
-                  properties:
-                    avail:
-                      type: string
-                    content:
-                      type: string
-                xmlns:xsi:
-                  type: string
-                bib_pagecount:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                    content:
-                      type: integer
-                keywords_plus:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    keyword:
-                      type: array
-                      items:
-                        type: string
-                bib_id:
-                  type: string
             fullrecord_metadata:
               type: object
               properties:
-                addresses:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    address_name:
-                      oneOf:
-                      - type: object
-                      - type: array
-                      items:
-                        oneOf:
-                        - type: object
-                        - type: array
-                        properties:
-                          names:
-                            type: object
-                            properties:
-                              count:
-                                type: integer
-                              name:
-                                oneOf:
-                                - type: object
-                                - type: array
-                                items:
-                                  type: object
-                                  properties:
-                                    seq_no:
-                                      type: integer
-                                    role:
-                                      type: string
-                                    claim_status:
-                                      type: boolean
-                                    full_name:
-                                      type: string
-                                    addr_no:
-                                      type: array
-                                      items:
-                                        type: integer
-                                    reprint:
-                                      type: string
-                                    last_name:
-                                      type: string
-                                    display_name:
-                                      type: string
-                                    wos_standard:
-                                      type: string
-                                    r_id:
-                                      type: string
-                                    daisng_id:
-                                      type: integer
-                                    orcid_id:
-                                      type: string
-                                    noncore_startyear:
-                                      type: integer
-                                    noncore_endyear:
-                                      type: integer
-                                    first_name:
-                                      type: string
-                                    data-item-ids:
-                                      type: object
-                                      properties:
-                                        data-item-id:
-                                          type: object
-                                          properties:
-                                            type:
-                                              type: string
-                                            content:
-                                              type: string
-                                    preferred_name:
-                                      type: object
-                                      properties:
-                                        full_name:
-                                          type: string
-                                        last_name:
-                                          type: string
-                                        middle_name:
-                                          type: string
-                                        first_name:
-                                          type: string
-                          address_spec:
-                            type: object
-                            properties:
-                              zip:
-                                type: object
-                                properties:
-                                  location:
-                                    type: string
-                                  content:
-                                    oneOf:
-                                    - type: integer
-                                    - type: string
-                              country:
-                                type: string
-                              city:
-                                type: string
-                              addr_no:
-                                type: integer
-                              organizations:
-                                type: object
-                                properties:
-                                  organization:
-                                    type: array
-                                    items:
-                                      type: object
-                                      properties:
-                                        pref:
-                                          type: string
-                                        content:
-                                          type: string
-                                  count:
-                                    type: integer
-                              full_address:
-                                type: string
-                              state:
-                                type: string
-                              suborganizations:
-                                type: object
-                                properties:
-                                  count:
-                                    type: integer
-                                  suborganization:
-                                    type: array
-                                    items:
-                                      type: object
-                                      properties:
-                                        count:
-                                          type: integer
-                                        suborganization:
-                                          type: string
-                category_info:
-                  type: object
-                  properties:
-                    subheadings:
-                      type: object
-                      properties:
-                        count:
-                          type: integer
-                        subheading:
-                          oneOf:
-                          - type: string
-                          - type: array
-                          items:
-                            type: string
-                    subjects:
-                      type: object
-                      properties:
-                        subject:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              ascatype:
-                                type: string
-                              code:
-                                type: string
-                              content:
-                                type: string
-                        count:
-                          type: integer
-                    headings:
-                      type: object
-                      properties:
-                        heading:
-                          type: string
-                        count:
-                          type: integer
-                normalized_languages:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    language:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                        content:
-                          type: string
-                languages:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    language:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                        content:
-                          type: string
                 keywords:
                   type: object
                   properties:
@@ -811,214 +412,6 @@ components:
                   properties:
                     count:
                       type: integer
-                reprint_addresses:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    address_name:
-                      type: object
-                      properties:
-                        names:
-                          type: object
-                          properties:
-                            count:
-                              type: integer
-                            name:
-                              oneOf:
-                              - type: object
-                              - type: array
-                              properties:
-                                seq_no:
-                                  type: integer
-                                role:
-                                  type: string
-                                full_name:
-                                  type: string
-                                reprint:
-                                  type: string
-                                addr_no:
-                                  type: integer
-                                last_name:
-                                  type: string
-                                display_name:
-                                  type: string
-                                wos_standard:
-                                  type: string
-                                first_name:
-                                  type: string
-                        address_spec:
-                          type: object
-                          properties:
-                            zip:
-                              type: object
-                              properties:
-                                location:
-                                  type: string
-                                content:
-                                  type: integer
-                            country:
-                              type: string
-                            city:
-                              type: string
-                            street:
-                              type: string
-                            addr_no:
-                              type: integer
-                            organizations:
-                              type: object
-                              properties:
-                                organization:
-                                  type: array
-                                  items:
-                                    type: object
-                                    properties:
-                                      pref:
-                                        type: string
-                                      content:
-                                        type: string
-                                count:
-                                  type: integer
-                            full_address:
-                              type: string
-                            state:
-                              type: string
-                            suborganizations:
-                              type: object
-                              properties:
-                                count:
-                                  type: integer
-                                suborganization:
-                                  oneOf:
-                                  - type: string
-                                  - type: array
-                                  items:
-                                    type: string
-                abstracts:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    abstract:
-                      type: object
-                      properties:
-                        abstract_text:
-                          type: object
-                          properties:
-                            p:
-                              type: string
-                            count:
-                              type: integer
-                fund_ack:
-                  type: object
-                  properties:
-                    grants:
-                      type: object
-                      properties:
-                        count:
-                          type: integer
-                        grant:
-                          type: object
-                          properties:
-                            grant_agency_names:
-                              oneOf:
-                              - type: object
-                              - type: array
-                              items:
-                                type: object
-                                properties:
-                                  pref:
-                                    type: string
-                                  content:
-                                    type: string
-                            grant_ids:
-                              type: object
-                              properties:
-                                grant_id:
-                                  oneOf:
-                                  - type: string
-                                  - type: array
-                                  items:
-                                    type: string
-                                count:
-                                  type: integer
-                            grant_source:
-                              type: string
-                            grant_data:
-                              type: object
-                              properties:
-                                count:
-                                  type: integer
-                                grantDataItem:
-                                  type: object
-                                  properties:
-                                    principalInvestigators:
-                                      type: object
-                                      properties:
-                                        principalInvestigatorInstitutions:
-                                          type: array
-                                          items:
-                                            type: object
-                                            properties:
-                                              principalInvestigatorInstitution:
-                                                type: object
-                                                properties:
-                                                  lang_id:
-                                                    type: string
-                                                  content:
-                                                    type: string
-                                        principalInvestigator:
-                                          type: array
-                                          items:
-                                            type: object
-                                            properties:
-                                              seq_no:
-                                                type: integer
-                                              lang_id:
-                                                type: string
-                                              content:
-                                                type: string
-                                    grantStatus:
-                                      type: string
-                                    grantProjectTitle:
-                                      type: object
-                                      properties:
-                                        lang_id:
-                                          type: string
-                                        content:
-                                          type: string
-                                    endDate:
-                                      type: string
-                                    totalAwardAmount:
-                                      type: string
-                                    coPrincipalInvestigators:
-                                      type: string
-                                    currency:
-                                      type: string
-                                    grantType:
-                                      type: string
-                                      example: Scholarships abroad - Research Internship - Master's degree
-                                    startDate:
-                                      type: object
-                                      properties:
-                                        startYear:
-                                          type: integer
-                                        content:
-                                          type: string
-                                    grantSummary:
-                                      type: object
-                                      properties:
-                                        lang_id:
-                                          type: string
-                                        content:
-                                          type: string
-                            grant_agency:
-                              type: string
-                    fund_text:
-                      type: object
-                      properties:
-                        p:
-                          type: string
                 normalized_doctypes:
                   type: object
                   properties:
@@ -1030,45 +423,9 @@ components:
                         type: string
                     count:
                       type: integer
-            contributors:
-              type: object
-              properties:
-                contributor:
-                  type: object
-                  properties:
-                    name:
-                      type: object
-                      properties:
-                        seq_no:
-                          type: integer
-                        role:
-                          type: string
-                        full_name:
-                          type: string
-                        last_name:
-                          type: string
-                        display_name:
-                          type: string
-                        r_id:
-                          type: string
-                        first_name:
-                          type: string
-                        orcid_id:
-                          type: string
-                count:
-                  type: integer
-        dates:
-          type: object
-          properties:
-            date_modified:
-              type: string
-            date_created:
-              type: string
-            date_loaded:
-              type: string
         r_id_disclaimer:
           type: string
-          example: ResearcherID data provided by Clarivate
+          example: ResearcherID data provided by Clarivate Analytics
           xml:
             attribute: true
         dynamic_data:
@@ -1156,13 +513,82 @@ components:
                             type: string
                           value:
                             type: string
-            wos_usage:
+    errorMessage:
+      type: object
+      xml:
+        name: error
+        namespace: http://www.isinet.com/xrpc42
+      properties:
+        code:
+          type: string
+          description: Error Code
+        message:
+          type: string
+          description: Error Message
+        id:
+          type: string
+          description: Request Id
+    WosShortSearchResponse:
+      type: object
+      properties:
+        Data:
+          type: object
+          properties:
+            Records:
               type: object
               properties:
-                last180days:
-                  type: integer
-                alltime:
-                  type: integer
+                records:
+                  type: object
+                  properties:
+                    REC:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/WosShortRecord'
+        QueryResult:
+          $ref: '#/components/schemas/QueryResult'
+    WosSearchResponseXML:
+      type: object
+      xml:
+        name: response
+        namespace: http://www.isinet.com/xrpc42
+      properties:
+        map:
+          type: object
+          properties:
+            map:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Data
+                  xml:
+                    attribute: true
+                val:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: Records
+                      xml:
+                        attribute: true
+                    records:
+                      type: object
+                      properties:
+                        REC:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/WosRecordXML'
+        QueryResult:
+          $ref: '#/components/schemas/QueryResult'
+    QueryResult:
+      type: object
+      properties:
+        QueryID:
+          type: string
+        RecordsSearched:
+          type: integer
+        RecordsFound:
+          type: integer
     WosRecordXML:
       type: object
       required:
@@ -2309,49 +1735,6 @@ components:
             date_loaded:
               type: string
               example: '2009-12-31T23:59:59.00000'
-    QueryResult:
-      type: object
-      properties:
-        QueryID:
-          type: string
-        RecordsSearched:
-          type: integer
-        RecordsFound:
-          type: integer
-    WosSearchResponseXML:
-      type: object
-      xml:
-        name: response
-        namespace: http://www.isinet.com/xrpc42
-      properties:
-        map:
-          type: object
-          properties:
-            map:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: Data
-                  xml:
-                    attribute: true
-                val:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      example: Records
-                      xml:
-                        attribute: true
-                    records:
-                      type: object
-                      properties:
-                        REC:
-                          type: array
-                          items:
-                            $ref: '#/components/schemas/WosRecordXML'
-        QueryResult:
-          $ref: '#/components/schemas/QueryResult'
     WosSearchResponse:
       type: object
       properties:
@@ -2370,40 +1753,7 @@ components:
                         $ref: '#/components/schemas/WosRecord'
         QueryResult:
           $ref: '#/components/schemas/QueryResult'
-    WosShortSearchResponse:
-      type: object
-      properties:
-        Data:
-          type: object
-          properties:
-            Records:
-              type: object
-              properties:
-                records:
-                  type: object
-                  properties:
-                    REC:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/WosShortRecord'
-        QueryResult:
-          $ref: '#/components/schemas/QueryResult'
-    errorMessage:
-      type: object
-      xml:
-        name: error
-        namespace: http://www.isinet.com/xrpc42
-      properties:
-        code:
-          type: string
-          description: Error Code
-        message:
-          type: string
-          description: Error Message
-        id:
-          type: string
-          description: Request Id
-    WosShortRecord:
+    WosRecord:
       type: object
       required:
       - UID
@@ -2423,9 +1773,24 @@ components:
                 pub_info:
                   type: object
                   properties:
+                    coverdate:
+                      type: string
+                      example: OCT 2019
+                      xml:
+                        attribute: true
                     vol:
                       type: integer
                       example: 203
+                      xml:
+                        attribute: true
+                    journal_oas_gold:
+                      type: string
+                      example: N
+                      xml:
+                        attribute: true
+                    has_citation_context:
+                      type: string
+                      example: Y
                       xml:
                         attribute: true
                     pubyear:
@@ -2438,11 +1803,67 @@ components:
                       example: 27
                       xml:
                         attribute: true
+                    special_issue:
+                      type: string
+                      example: SI
+                      xml:
+                        attribute: true
+                    sortdate:
+                      type: string
+                      example: '2019-08-21'
+                      xml:
+                        attribute: true
+                    has_abstract:
+                      type: string
+                      example: N
+                      xml:
+                        attribute: true
+                    pubmonth:
+                      type: string
+                      example: OCT
+                      xml:
+                        attribute: true
                     pubtype:
                       type: string
                       example: Journal
                       xml:
                         attribute: true
+                    early_access_month:
+                      type: integer
+                      example: 08
+                      xml:
+                        attribute: true
+                    early_access_date:
+                      type: string
+                      example: AUG 2019
+                      xml:
+                        attribute: true
+                    early_access_year:
+                      type: integer
+                      example: 2019
+                      xml:
+                        attribute: true
+                    page:
+                      type: object
+                      properties:
+                        end:
+                          type: integer
+                          example: 11
+                          xml:
+                            attribute: true
+                        begin:
+                          type: integer
+                          example: 9
+                          xml:
+                            attribute: true
+                        page_count:
+                          type: integer
+                          example: 2
+                          xml:
+                            attribute: true
+                        content:
+                          type: string
+                          example: 9-11
                 names:
                   type: object
                   properties:
@@ -2457,6 +1878,18 @@ components:
                             type: integer
                           role:
                             type: string
+                          claim_status:
+                            type: boolean
+                          full_name:
+                            type: string
+                          addr_no:
+                            type: array
+                            items:
+                              type: integer
+                          reprint:
+                            type: string
+                          last_name:
+                            type: string
                           display_name:
                             type: string
                           wos_standard:
@@ -2465,6 +1898,35 @@ components:
                             type: string
                           daisng_id:
                             type: integer
+                          orcid_id:
+                            type: string
+                          noncore_startyear:
+                            type: integer
+                          noncore_endyear:
+                            type: integer
+                          first_name:
+                            type: string
+                          data-item-ids:
+                            type: object
+                            properties:
+                              data-item-id:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                  content:
+                                    type: string
+                          preferred_name:
+                            type: object
+                            properties:
+                              full_name:
+                                type: string
+                              last_name:
+                                type: string
+                              middle_name:
+                                type: string
+                              first_name:
+                                type: string
                 doctypes:
                   type: object
                   properties:
@@ -2474,6 +1936,69 @@ components:
                         type: string
                     count:
                       type: integer
+                publishers:
+                  type: object
+                  properties:
+                    publisher:
+                      type: object
+                      properties:
+                        names:
+                          type: object
+                          properties:
+                            count:
+                              type: integer
+                            name:
+                              type: object
+                              properties:
+                                seq_no:
+                                  type: integer
+                                role:
+                                  type: string
+                                full_name:
+                                  type: string
+                                unified_name:
+                                  type: string
+                                addr_no:
+                                  type: integer
+                                display_name:
+                                  type: string
+                        address_spec:
+                          type: object
+                          properties:
+                            city:
+                              type: string
+                            addr_no:
+                              type: integer
+                            full_address:
+                              type: string
+                            url_spec:
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                EWUID:
+                  type: object
+                  properties:
+                    WUID:
+                      type: object
+                      properties:
+                        coll_id:
+                          type: string
+                          example: WOS
+                          xml:
+                            attribute: true
+                    edition:
+                      oneOf:
+                      - type: object
+                      - type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                            example: WOS.SSCI
+                            xml:
+                              attribute: true
                 titles:
                   type: object
                   properties:
@@ -2488,9 +2013,233 @@ components:
                             type: string
                           content:
                             type: string
+            item:
+              type: object
+              properties:
+                xsi:type:
+                  type: string
+                coll_id:
+                  type: string
+                ids:
+                  type: object
+                  properties:
+                    avail:
+                      type: string
+                    content:
+                      type: string
+                xmlns:xsi:
+                  type: string
+                bib_pagecount:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    content:
+                      type: integer
+                keywords_plus:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    keyword:
+                      type: array
+                      items:
+                        type: string
+                bib_id:
+                  type: string
             fullrecord_metadata:
               type: object
               properties:
+                addresses:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    address_name:
+                      oneOf:
+                      - type: object
+                      - type: array
+                      items:
+                        oneOf:
+                        - type: object
+                        - type: array
+                        properties:
+                          names:
+                            type: object
+                            properties:
+                              count:
+                                type: integer
+                              name:
+                                oneOf:
+                                - type: object
+                                - type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    seq_no:
+                                      type: integer
+                                    role:
+                                      type: string
+                                    claim_status:
+                                      type: boolean
+                                    full_name:
+                                      type: string
+                                    addr_no:
+                                      type: array
+                                      items:
+                                        type: integer
+                                    reprint:
+                                      type: string
+                                    last_name:
+                                      type: string
+                                    display_name:
+                                      type: string
+                                    wos_standard:
+                                      type: string
+                                    r_id:
+                                      type: string
+                                    daisng_id:
+                                      type: integer
+                                    orcid_id:
+                                      type: string
+                                    noncore_startyear:
+                                      type: integer
+                                    noncore_endyear:
+                                      type: integer
+                                    first_name:
+                                      type: string
+                                    data-item-ids:
+                                      type: object
+                                      properties:
+                                        data-item-id:
+                                          type: object
+                                          properties:
+                                            type:
+                                              type: string
+                                            content:
+                                              type: string
+                                    preferred_name:
+                                      type: object
+                                      properties:
+                                        full_name:
+                                          type: string
+                                        last_name:
+                                          type: string
+                                        middle_name:
+                                          type: string
+                                        first_name:
+                                          type: string
+                          address_spec:
+                            type: object
+                            properties:
+                              zip:
+                                type: object
+                                properties:
+                                  location:
+                                    type: string
+                                  content:
+                                    oneOf:
+                                    - type: integer
+                                    - type: string
+                              country:
+                                type: string
+                              city:
+                                type: string
+                              addr_no:
+                                type: integer
+                              organizations:
+                                type: object
+                                properties:
+                                  organization:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        pref:
+                                          type: string
+                                        content:
+                                          type: string
+                                  count:
+                                    type: integer
+                              full_address:
+                                type: string
+                              state:
+                                type: string
+                              suborganizations:
+                                type: object
+                                properties:
+                                  count:
+                                    type: integer
+                                  suborganization:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        count:
+                                          type: integer
+                                        suborganization:
+                                          type: string
+                category_info:
+                  type: object
+                  properties:
+                    subheadings:
+                      type: object
+                      properties:
+                        count:
+                          type: integer
+                        subheading:
+                          oneOf:
+                          - type: string
+                          - type: array
+                          items:
+                            type: string
+                    subjects:
+                      type: object
+                      properties:
+                        subject:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              ascatype:
+                                type: string
+                              code:
+                                type: string
+                              content:
+                                type: string
+                        count:
+                          type: integer
+                    headings:
+                      type: object
+                      properties:
+                        heading:
+                          type: string
+                        count:
+                          type: integer
+                normalized_languages:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    language:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        content:
+                          type: string
+                languages:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    language:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        content:
+                          type: string
                 keywords:
                   type: object
                   properties:
@@ -2505,6 +2254,214 @@ components:
                   properties:
                     count:
                       type: integer
+                reprint_addresses:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    address_name:
+                      type: object
+                      properties:
+                        names:
+                          type: object
+                          properties:
+                            count:
+                              type: integer
+                            name:
+                              oneOf:
+                              - type: object
+                              - type: array
+                              properties:
+                                seq_no:
+                                  type: integer
+                                role:
+                                  type: string
+                                full_name:
+                                  type: string
+                                reprint:
+                                  type: string
+                                addr_no:
+                                  type: integer
+                                last_name:
+                                  type: string
+                                display_name:
+                                  type: string
+                                wos_standard:
+                                  type: string
+                                first_name:
+                                  type: string
+                        address_spec:
+                          type: object
+                          properties:
+                            zip:
+                              type: object
+                              properties:
+                                location:
+                                  type: string
+                                content:
+                                  type: integer
+                            country:
+                              type: string
+                            city:
+                              type: string
+                            street:
+                              type: string
+                            addr_no:
+                              type: integer
+                            organizations:
+                              type: object
+                              properties:
+                                organization:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      pref:
+                                        type: string
+                                      content:
+                                        type: string
+                                count:
+                                  type: integer
+                            full_address:
+                              type: string
+                            state:
+                              type: string
+                            suborganizations:
+                              type: object
+                              properties:
+                                count:
+                                  type: integer
+                                suborganization:
+                                  oneOf:
+                                  - type: string
+                                  - type: array
+                                  items:
+                                    type: string
+                abstracts:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                    abstract:
+                      type: object
+                      properties:
+                        abstract_text:
+                          type: object
+                          properties:
+                            p:
+                              type: string
+                            count:
+                              type: integer
+                fund_ack:
+                  type: object
+                  properties:
+                    grants:
+                      type: object
+                      properties:
+                        count:
+                          type: integer
+                        grant:
+                          type: object
+                          properties:
+                            grant_agency_names:
+                              oneOf:
+                              - type: object
+                              - type: array
+                              items:
+                                type: object
+                                properties:
+                                  pref:
+                                    type: string
+                                  content:
+                                    type: string
+                            grant_ids:
+                              type: object
+                              properties:
+                                grant_id:
+                                  oneOf:
+                                  - type: string
+                                  - type: array
+                                  items:
+                                    type: string
+                                count:
+                                  type: integer
+                            grant_source:
+                              type: string
+                            grant_data:
+                              type: object
+                              properties:
+                                count:
+                                  type: integer
+                                grantDataItem:
+                                  type: object
+                                  properties:
+                                    principalInvestigators:
+                                      type: object
+                                      properties:
+                                        principalInvestigatorInstitutions:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              principalInvestigatorInstitution:
+                                                type: object
+                                                properties:
+                                                  lang_id:
+                                                    type: string
+                                                  content:
+                                                    type: string
+                                        principalInvestigator:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              seq_no:
+                                                type: integer
+                                              lang_id:
+                                                type: string
+                                              content:
+                                                type: string
+                                    grantStatus:
+                                      type: string
+                                    grantProjectTitle:
+                                      type: object
+                                      properties:
+                                        lang_id:
+                                          type: string
+                                        content:
+                                          type: string
+                                    endDate:
+                                      type: string
+                                    totalAwardAmount:
+                                      type: string
+                                    coPrincipalInvestigators:
+                                      type: string
+                                    currency:
+                                      type: string
+                                    grantType:
+                                      type: string
+                                      example: Scholarships abroad - Research Internship - Master's degree
+                                    startDate:
+                                      type: object
+                                      properties:
+                                        startYear:
+                                          type: integer
+                                        content:
+                                          type: string
+                                    grantSummary:
+                                      type: object
+                                      properties:
+                                        lang_id:
+                                          type: string
+                                        content:
+                                          type: string
+                            grant_agency:
+                              type: string
+                    fund_text:
+                      type: object
+                      properties:
+                        p:
+                          type: string
                 normalized_doctypes:
                   type: object
                   properties:
@@ -2516,9 +2473,45 @@ components:
                         type: string
                     count:
                       type: integer
+            contributors:
+              type: object
+              properties:
+                contributor:
+                  type: object
+                  properties:
+                    name:
+                      type: object
+                      properties:
+                        seq_no:
+                          type: integer
+                        role:
+                          type: string
+                        full_name:
+                          type: string
+                        last_name:
+                          type: string
+                        display_name:
+                          type: string
+                        r_id:
+                          type: string
+                        first_name:
+                          type: string
+                        orcid_id:
+                          type: string
+                count:
+                  type: integer
+        dates:
+          type: object
+          properties:
+            date_modified:
+              type: string
+            date_created:
+              type: string
+            date_loaded:
+              type: string
         r_id_disclaimer:
           type: string
-          example: ResearcherID data provided by Clarivate Analytics
+          example: ResearcherID data provided by Clarivate
           xml:
             attribute: true
         dynamic_data:
@@ -2606,6 +2599,13 @@ components:
                             type: string
                           value:
                             type: string
+            wos_usage:
+              type: object
+              properties:
+                last180days:
+                  type: integer
+                alltime:
+                  type: integer
   securitySchemes:
     key:
       type: apiKey

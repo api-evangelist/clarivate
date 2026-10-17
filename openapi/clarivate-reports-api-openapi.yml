@@ -176,7 +176,7 @@ paths:
                 $ref: '#/components/schemas/SUSHI_error_model'
       tags:
       - Reports
-      summary: Get PRP1 report
+      summary: Get PRP1Report
       x-summary-source: derived
   /reports/dr:
     get:
@@ -298,7 +298,7 @@ paths:
                 $ref: '#/components/schemas/SUSHI_error_model'
       tags:
       - Reports
-      summary: Get DRD1 report
+      summary: Get DRD1Report
       x-summary-source: derived
   /reports/dr_d2:
     get:
@@ -350,87 +350,42 @@ paths:
                 $ref: '#/components/schemas/SUSHI_error_model'
       tags:
       - Reports
-      summary: Get DRD2 report
+      summary: Get DRD2Report
       x-summary-source: derived
 components:
   schemas:
-    COUNTER_item_performance:
+    COUNTER_platform_usage:
       type: object
+      description: Defines the output for the Report_Items being returned in a Platform Report.
       required:
-      - Period
-      - Instance
+      - Platform
+      - Performance
       properties:
-        Period:
-          type: object
-          required:
-          - Begin_Date
-          - End_Date
-          properties:
-            Begin_Date:
-              type: string
-              description: Beginning date for usage in this 'itemPerformance' instance.
-              example: '2015-01-01'
-            End_Date:
-              type: string
-              description: Ending date for usage in this 'itemPerformance' instance.
-              example: '2015-01-31'
-        Instance:
+        Platform:
+          type: string
+          description: Name of the platform
+          example: Web of Science
+        Performance:
           type: array
           items:
-            type: object
-            required:
-            - Metric_Type
-            - Count
-            properties:
-              Metric_Type:
-                type: string
-                description: Type of activity being counted.
-                example: Total_Item_Requests
-                enum:
-                - Searches_Automated
-                - Searches_Federated
-                - Searches_Platform
-                - Searches_Regular
-                - Total_Item_Investigations
-                - Total_Item_Requests
-                - Unique_Item_Investigations
-                - Unique_Item_Requests
-                - Unique_Title_Investigations
-                - Unique_Title_Requests
-                - No_License
-                - Limit_Exceeded
-              Count:
-                type: integer
-                description: Usage count > 0.  If count is zero, the Intance element should be excluded.
-                example: 21
-    SUSHI_report_list:
+            $ref: '#/components/schemas/COUNTER_item_performance'
+          description: The usage data related to the report item
+    COUNTER_publisher_identifiers:
       type: object
       required:
-      - Report_ID
-      - Report_Name
-      - Release
-      - Report_Description
+      - Type
+      - Value
       properties:
-        Report_Name:
+        Type:
           type: string
-          description: The long name of the report
-          example: Database Search and Item Usage
-        Report_ID:
+          example: ISNI
+          enum:
+          - ISNI
+          - Proprietary
+        Value:
           type: string
-          description: The code, ID or short name of the report that is be used in the request to identify the report.
-          example: DR_D1
-        Release:
-          type: string
-          description: The release or version number of the report.
-          example: '5'
-        Report_Description:
-          type: string
-          description: A short sentence describing the report.
-          example: Total and Monthly Searches and Item Usage for each Web of Science Database
-        Path:
-          type: string
-          description: The path to use when requesting this report on this service. Optional but recommended for custom reports.
-          example: /reports/dr_d1
+          description: Value of the publisher identifier
+          example: 1234 1234 1234 1234
     SUSHI_error_model:
       type: object
       description: Generalized format for presenting errors and exceptions.
@@ -498,22 +453,6 @@ components:
           type: string
           description: Value of the organization identifier
           example: 1234 1234 1234 1234
-    COUNTER_publisher_identifiers:
-      type: object
-      required:
-      - Type
-      - Value
-      properties:
-        Type:
-          type: string
-          example: ISNI
-          enum:
-          - ISNI
-          - Proprietary
-        Value:
-          type: string
-          description: Value of the publisher identifier
-          example: 1234 1234 1234 1234
     COUNTER_database_usage:
       type: object
       description: Defines the output for the Report_Items being returned in a Database Report.
@@ -545,6 +484,34 @@ components:
           items:
             $ref: '#/components/schemas/COUNTER_item_performance'
           description: The usage data related to the report item
+    SUSHI_report_list:
+      type: object
+      required:
+      - Report_ID
+      - Report_Name
+      - Release
+      - Report_Description
+      properties:
+        Report_Name:
+          type: string
+          description: The long name of the report
+          example: Database Search and Item Usage
+        Report_ID:
+          type: string
+          description: The code, ID or short name of the report that is be used in the request to identify the report.
+          example: DR_D1
+        Release:
+          type: string
+          description: The release or version number of the report.
+          example: '5'
+        Report_Description:
+          type: string
+          description: A short sentence describing the report.
+          example: Total and Monthly Searches and Item Usage for each Web of Science Database
+        Path:
+          type: string
+          description: The path to use when requesting this report on this service. Optional but recommended for custom reports.
+          example: /reports/dr_d1
     COUNTER_platform_report:
       type: object
       description: Describes the formatting needs for the COUNTER Platform Report - the Report_Header and Report_Items (usage stats).
@@ -558,22 +525,55 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/COUNTER_platform_usage'
-    COUNTER_platform_usage:
+    COUNTER_item_performance:
       type: object
-      description: Defines the output for the Report_Items being returned in a Platform Report.
       required:
-      - Platform
-      - Performance
+      - Period
+      - Instance
       properties:
-        Platform:
-          type: string
-          description: Name of the platform
-          example: Web of Science
-        Performance:
+        Period:
+          type: object
+          required:
+          - Begin_Date
+          - End_Date
+          properties:
+            Begin_Date:
+              type: string
+              description: Beginning date for usage in this 'itemPerformance' instance.
+              example: '2015-01-01'
+            End_Date:
+              type: string
+              description: Ending date for usage in this 'itemPerformance' instance.
+              example: '2015-01-31'
+        Instance:
           type: array
           items:
-            $ref: '#/components/schemas/COUNTER_item_performance'
-          description: The usage data related to the report item
+            type: object
+            required:
+            - Metric_Type
+            - Count
+            properties:
+              Metric_Type:
+                type: string
+                description: Type of activity being counted.
+                example: Total_Item_Requests
+                enum:
+                - Searches_Automated
+                - Searches_Federated
+                - Searches_Platform
+                - Searches_Regular
+                - Total_Item_Investigations
+                - Total_Item_Requests
+                - Unique_Item_Investigations
+                - Unique_Item_Requests
+                - Unique_Title_Investigations
+                - Unique_Title_Requests
+                - No_License
+                - Limit_Exceeded
+              Count:
+                type: integer
+                description: Usage count > 0.  If count is zero, the Intance element should be excluded.
+                example: 21
     SUSHI_report_header:
       type: object
       description: Generalized report header that defines the requested report, the requestor, the customer, filters applied, reportAttributes applied and any exceptions.

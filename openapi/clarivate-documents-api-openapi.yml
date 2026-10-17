@@ -318,6 +318,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    OtherName:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Web of Science display name
     AuthorName:
       type: object
       properties:
@@ -534,12 +540,6 @@ components:
               type: array
               items:
                 type: string
-    OtherName:
-      type: object
-      properties:
-        displayName:
-          type: string
-          description: Web of Science display name
   securitySchemes:
     key:
       type: apiKey

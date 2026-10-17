@@ -455,25 +455,56 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UserRole:
+    UserDelegation:
+      type: object
       properties:
-        roleName:
-          type: string
-          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
-          example: Researcher
-        entryPointId:
+        delegationId:
           type: integer
+          example: 1234
           format: int64
-          description: User entry point
-          example: 123456
-        entryPointDataUrl:
+          description: 'id of the delegation.
+
+
+            To be passed in the request only for edit and delete delegation.
+
+
+            Returned in the response for fetch API.
+
+            '
+        fromUser:
+          $ref: '#/components/schemas/User'
+        toUser:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/UserRole'
+        validity:
+          $ref: '#/components/schemas/UserDelegationValidity'
+    UserDelegationValidity:
+      type: object
+      properties:
+        startDate:
           type: string
-          description: The entrypoint data url - only by GET Request
-          example: /converis-apis/ws/v2/data/entities/Person/123456
-        entryPointDefinitionUrl:
+          example: '2022-12-10'
+          description: 'The date when the role delegation starts. Values must follow the pattern yyyy-MM-dd.
+
+
+            If this date is not provided, it is defaulted to current date.
+
+
+            In case of update API, if there is no change in the start date, it is expected to send the existing unchanged value of the start date.
+
+            '
+          format: date
+        endDate:
           type: string
-          description: Entry point definition url - only by GET Request
-          example: /converis-apis/ws/v2/config/entities/Person
+          example: '2022-12-14'
+          description: 'The date when the role delegation ends. Values must follow the pattern yyyy-MM-dd.
+
+
+            In case of update API, if there is no change in the end date, it is expected to send the existing unchanged value of the end date.
+
+            '
+          format: date
     UserDelegationList:
       required:
       - count
@@ -531,6 +562,25 @@ components:
         message:
           type: string
           description: The detailed description of the error
+    UserRole:
+      properties:
+        roleName:
+          type: string
+          description: 'Converis user role - Please carefully check your Converis configuration. Do not provide names of the specific language. Special role names for admins can be used: Config Admin or Super Admin. For special roles no entryPointId is needed.'
+          example: Researcher
+        entryPointId:
+          type: integer
+          format: int64
+          description: User entry point
+          example: 123456
+        entryPointDataUrl:
+          type: string
+          description: The entrypoint data url - only by GET Request
+          example: /converis-apis/ws/v2/data/entities/Person/123456
+        entryPointDefinitionUrl:
+          type: string
+          description: Entry point definition url - only by GET Request
+          example: /converis-apis/ws/v2/config/entities/Person
     User:
       type: object
       properties:
@@ -579,56 +629,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserRole'
-    UserDelegationValidity:
-      type: object
-      properties:
-        startDate:
-          type: string
-          example: '2022-12-10'
-          description: 'The date when the role delegation starts. Values must follow the pattern yyyy-MM-dd.
-
-
-            If this date is not provided, it is defaulted to current date.
-
-
-            In case of update API, if there is no change in the start date, it is expected to send the existing unchanged value of the start date.
-
-            '
-          format: date
-        endDate:
-          type: string
-          example: '2022-12-14'
-          description: 'The date when the role delegation ends. Values must follow the pattern yyyy-MM-dd.
-
-
-            In case of update API, if there is no change in the end date, it is expected to send the existing unchanged value of the end date.
-
-            '
-          format: date
-    UserDelegation:
-      type: object
-      properties:
-        delegationId:
-          type: integer
-          example: 1234
-          format: int64
-          description: 'id of the delegation.
-
-
-            To be passed in the request only for edit and delete delegation.
-
-
-            Returned in the response for fetch API.
-
-            '
-        fromUser:
-          $ref: '#/components/schemas/User'
-        toUser:
-          $ref: '#/components/schemas/User'
-        role:
-          $ref: '#/components/schemas/UserRole'
-        validity:
-          $ref: '#/components/schemas/UserDelegationValidity'
   securitySchemes:
     BasicAuth:
       type: http

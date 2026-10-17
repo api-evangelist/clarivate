@@ -402,16 +402,6 @@ components:
           type: string
           description: Unique identifier for Web of Science Core Collection article (UID)
           example: 000188396500010
-    ArrayOfUTs:
-      type: array
-      items:
-        $ref: '#/components/schemas/UT'
-    OA_FLAG_DATA:
-      type: object
-      properties:
-        TYPE:
-          type: integer
-          description: Impact Story colour
     ErrorMessage:
       type: object
       properties:
@@ -498,6 +488,16 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Record'
+    ArrayOfUTs:
+      type: array
+      items:
+        $ref: '#/components/schemas/UT'
+    OA_FLAG_DATA:
+      type: object
+      properties:
+        TYPE:
+          type: integer
+          description: Impact Story colour
     Percentiles:
       type: object
       properties:

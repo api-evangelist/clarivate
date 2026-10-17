@@ -81,6 +81,30 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Search.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - search
+        attributes:
+          $ref: '#/components/schemas/SearchAttributes'
+      required:
+      - id
+      - type
+      - attributes
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
     SearchCreateMultiSequenceParams:
       type: object
       required:
@@ -305,6 +329,45 @@ components:
               enum:
               - true
               description: Must be true for multi-sequence search mode
+    SearchAttributes:
+      type: object
+      required:
+      - id
+      - program
+      - title
+      - status
+      - completion
+      - search_results_count
+      - redundant_search_results_count
+      - created_at
+      properties:
+        id:
+          type: integer
+        program:
+          type: string
+        title:
+          type: string
+        status:
+          type: string
+        completion:
+          type: integer
+        search_results_count:
+          type: integer
+        redundant_search_results_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        started_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        completed_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
     SearchCreateSingleQueryParams:
       type: object
       required:
@@ -521,69 +584,6 @@ components:
               type: string
               example: CGCGGTCGGGTCGTG
               description: Single sequence query string
-    Search:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Search.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - search
-        attributes:
-          $ref: '#/components/schemas/SearchAttributes'
-      required:
-      - id
-      - type
-      - attributes
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
-    SearchAttributes:
-      type: object
-      required:
-      - id
-      - program
-      - title
-      - status
-      - completion
-      - search_results_count
-      - redundant_search_results_count
-      - created_at
-      properties:
-        id:
-          type: integer
-        program:
-          type: string
-        title:
-          type: string
-        status:
-          type: string
-        completion:
-          type: integer
-        search_results_count:
-          type: integer
-        redundant_search_results_count:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        started_at:
-          oneOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        completed_at:
-          oneOf:
-          - type: string
-            format: date-time
-          - type: 'null'
   securitySchemes:
     key:
       type: apiKey

@@ -3800,7 +3800,9 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
 - aid: clarivate:clarivate-legacy-api-get-using-pentaho-resource-api
   name: 'Clarivate Legacy API: get using pentaho resource API'
-  description: 'The Legacy API: get using pentaho resource API from Clarivate — 2 operation(s) for legacy api: get using pentaho resource.'
+  description: >-
+    The Legacy API: get using pentaho resource API from Clarivate — 2 operation(s) for legacy api: get
+    using pentaho resource.
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
@@ -6344,7 +6346,8 @@ apis:
     url: json-schema/clarivate-search-create-params-schema.json
 - aid: clarivate:clarivate-searches-modification-api
   name: Clarivate Searches (Modification) API
-  description: The Searches (Modification) API from Clarivate — 1 operation(s) for searches (modification).
+  description: >-
+    The Searches (Modification) API from Clarivate — 1 operation(s) for searches (modification).
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:
@@ -7178,7 +7181,9 @@ apis:
     url: https://developer.clarivate.com/apis/twa-riskmark-integration
 - aid: clarivate:clarivate-web-of-science-reviewer-locator-api-api
   name: Clarivate Web of Science Reviewer Locator API
-  description: The Web of Science Reviewer Locator API API from Clarivate — 2 operation(s) for web of science reviewer locator api.
+  description: >-
+    The Web of Science Reviewer Locator API API from Clarivate — 2 operation(s) for web of science reviewer
+    locator api.
   humanURL: https://developer.clarivate.com/apis/ipdata-api
   baseURL: https://api.clarivate.com
   tags:

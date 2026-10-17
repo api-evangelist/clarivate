@@ -472,51 +472,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    LinkEntityData:
+    ChoiceGroupData:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          description: Converis ID of the link entity
-          example: 66893426
-        linkName:
+        choiceGroupName:
           type: string
-          description: Link Entity name of this data
-          example: PUBL_has_CARD
-        leftEntity:
-          $ref: '#/components/schemas/BasicData'
-        rightEntity:
-          $ref: '#/components/schemas/BasicData'
-        leftSeq:
-          type: integer
-          description: The left sequence of this linked data
-          example: 1
-        rightSeq:
-          type: integer
-          description: The right sequence of this linked data
-          example: 2
-        createdBy:
+          description: If the attribute is of type ChoiceGroup, then this should be filled.
+          example: Publication type
+        choiceGroupValue:
           type: string
-          description: User who created this linked data
-          example: configadmin
-        createdOn:
-          type: string
-          description: Creation date of this linked data
-          format: date-time
-        updatedBy:
-          type: string
-          description: User who last updated this linked data
-          example: configadmin
-        updatedOn:
-          type: string
-          description: Last updation date of this linked data
-          format: date-time
-        attributes:
+          description: default value
+          example: Journal article
+        choiceGroupValueLabels:
           type: array
-          description: list of attributes data for this entity data
+          example:
+          - language: de_DE
+            value: Zeitschrift
           items:
-            $ref: '#/components/schemas/AttributeData'
+            $ref: '#/components/schemas/LabelDefinition'
     AttributeData:
       required:
       - attributeName
@@ -597,6 +570,75 @@ components:
           type: string
           description: The value of the label
           example: Publication
+    LinkEntityData:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Converis ID of the link entity
+          example: 66893426
+        linkName:
+          type: string
+          description: Link Entity name of this data
+          example: PUBL_has_CARD
+        leftEntity:
+          $ref: '#/components/schemas/BasicData'
+        rightEntity:
+          $ref: '#/components/schemas/BasicData'
+        leftSeq:
+          type: integer
+          description: The left sequence of this linked data
+          example: 1
+        rightSeq:
+          type: integer
+          description: The right sequence of this linked data
+          example: 2
+        createdBy:
+          type: string
+          description: User who created this linked data
+          example: configadmin
+        createdOn:
+          type: string
+          description: Creation date of this linked data
+          format: date-time
+        updatedBy:
+          type: string
+          description: User who last updated this linked data
+          example: configadmin
+        updatedOn:
+          type: string
+          description: Last updation date of this linked data
+          format: date-time
+        attributes:
+          type: array
+          description: list of attributes data for this entity data
+          items:
+            $ref: '#/components/schemas/AttributeData'
+    LinkEntityDataList:
+      required:
+      - count
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityData'
     DefaultResponse:
       required:
       - statusDescirption
@@ -639,48 +681,6 @@ components:
           type: string
           description: is the complete endpoint path that uniquely defines the resource.
           example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
-    LinkEntityDataList:
-      required:
-      - count
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityData'
-    ChoiceGroupData:
-      type: object
-      properties:
-        choiceGroupName:
-          type: string
-          description: If the attribute is of type ChoiceGroup, then this should be filled.
-          example: Publication type
-        choiceGroupValue:
-          type: string
-          description: default value
-          example: Journal article
-        choiceGroupValueLabels:
-          type: array
-          example:
-          - language: de_DE
-            value: Zeitschrift
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
   securitySchemes:
     BasicAuth:
       type: http

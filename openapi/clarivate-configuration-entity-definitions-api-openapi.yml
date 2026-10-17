@@ -168,23 +168,45 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    WorkflowStep:
+    EntityDefinitionList:
       required:
-      - label
-      - stepNr
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
       properties:
-        stepNr:
+        startRecord:
           type: integer
-          example: 2
-        label:
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
           type: array
-          example:
-          - language: en_GB
-            value: Validated
-          - language: de_DE
-            value: Validiert
           items:
-            $ref: '#/components/schemas/LabelDefinition'
+            $ref: '#/components/schemas/EntityDefinition'
+    LabelDefinition:
+      required:
+      - language
+      - value
+      type: object
+      properties:
+        language:
+          type: string
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
+          example: Publication
     EntityDefinition:
       required:
       - description
@@ -251,31 +273,6 @@ components:
             href: /converis-api/ws/v2/config/linkentities/PUBL_has_ORGA
           items:
             $ref: '#/components/schemas/LinkReference'
-    EntityDefinitionList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityDefinition'
     DefaultResponse:
       required:
       - statusDescirption
@@ -304,34 +301,6 @@ components:
         message:
           type: string
           description: The detailed description of the error
-    LabelDefinition:
-      required:
-      - language
-      - value
-      type: object
-      properties:
-        language:
-          type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
-          type: string
-          description: The value of the label
-          example: Publication
-    LinkReference:
-      required:
-      - rel
-      - href
-      type: object
-      properties:
-        rel:
-          type: string
-          description: Describes the type of relationship.
-          example: Publication
-        href:
-          type: string
-          description: is the complete endpoint path that uniquely defines the resource.
-          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
     AttributeDefinition:
       required:
       - name
@@ -375,6 +344,37 @@ components:
         includeInPageExport:
           type: boolean
           example: true
+    WorkflowStep:
+      required:
+      - label
+      - stepNr
+      properties:
+        stepNr:
+          type: integer
+          example: 2
+        label:
+          type: array
+          example:
+          - language: en_GB
+            value: Validated
+          - language: de_DE
+            value: Validiert
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
+    LinkReference:
+      required:
+      - rel
+      - href
+      type: object
+      properties:
+        rel:
+          type: string
+          description: Describes the type of relationship.
+          example: Publication
+        href:
+          type: string
+          description: is the complete endpoint path that uniquely defines the resource.
+          example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
     AttributeInputDefinition:
       properties:
         dataType:

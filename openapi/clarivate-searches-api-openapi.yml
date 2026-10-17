@@ -500,6 +500,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the Search.
+          example: '1'
+        type:
+          type: string
+          description: Resource type.
+          enum:
+          - search
+        attributes:
+          $ref: '#/components/schemas/SearchAttributes'
+      required:
+      - id
+      - type
+      - attributes
     PaginationLinks:
       description: Pagination navigation links for collection responses.
       type: object
@@ -526,6 +544,12 @@ components:
           type: string
           format: uri
           description: Link to the previous page.
+    SearchCreateParams:
+      oneOf:
+      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
+      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
+      discriminator:
+        propertyName: mss
     SearchCreateMultiSequenceParams:
       type: object
       required:
@@ -750,6 +774,65 @@ components:
               enum:
               - true
               description: Must be true for multi-sequence search mode
+    error:
+      type: object
+      properties:
+        status:
+          oneOf:
+          - type: string
+          - type: integer
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+        title:
+          type: string
+        detail:
+          oneOf:
+          - type: string
+          - type: array
+          - type: object
+        pointer:
+          type: string
+    SearchAttributes:
+      type: object
+      required:
+      - id
+      - program
+      - title
+      - status
+      - completion
+      - search_results_count
+      - redundant_search_results_count
+      - created_at
+      properties:
+        id:
+          type: integer
+        program:
+          type: string
+        title:
+          type: string
+        status:
+          type: string
+        completion:
+          type: integer
+        search_results_count:
+          type: integer
+        redundant_search_results_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        started_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        completed_at:
+          oneOf:
+          - type: string
+            format: date-time
+          - type: 'null'
     JsonApiPaginationMeta:
       description: Pagination metadata for JSON:API collection responses.
       type: object
@@ -991,69 +1074,6 @@ components:
               type: string
               maxLength: 255
               description: Search title
-    Search:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the Search.
-          example: '1'
-        type:
-          type: string
-          description: Resource type.
-          enum:
-          - search
-        attributes:
-          $ref: '#/components/schemas/SearchAttributes'
-      required:
-      - id
-      - type
-      - attributes
-    SearchCreateParams:
-      oneOf:
-      - $ref: '#/components/schemas/SearchCreateSingleQueryParams'
-      - $ref: '#/components/schemas/SearchCreateMultiSequenceParams'
-      discriminator:
-        propertyName: mss
-    SearchAttributes:
-      type: object
-      required:
-      - id
-      - program
-      - title
-      - status
-      - completion
-      - search_results_count
-      - redundant_search_results_count
-      - created_at
-      properties:
-        id:
-          type: integer
-        program:
-          type: string
-        title:
-          type: string
-        status:
-          type: string
-        completion:
-          type: integer
-        search_results_count:
-          type: integer
-        redundant_search_results_count:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        started_at:
-          oneOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        completed_at:
-          oneOf:
-          - type: string
-            format: date-time
-          - type: 'null'
     errors:
       type: object
       properties:
@@ -1061,26 +1081,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/error'
-    error:
-      type: object
-      properties:
-        status:
-          oneOf:
-          - type: string
-          - type: integer
-        code:
-          oneOf:
-          - type: string
-          - type: integer
-        title:
-          type: string
-        detail:
-          oneOf:
-          - type: string
-          - type: array
-          - type: object
-        pointer:
-          type: string
   securitySchemes:
     key:
       type: apiKey

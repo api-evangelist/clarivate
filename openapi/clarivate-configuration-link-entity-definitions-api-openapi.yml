@@ -143,48 +143,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DefaultResponse:
-      required:
-      - statusDescirption
-      - message
-      - path
-      - status
-      - timestamp
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
-          format: date-time
-        path:
-          type: string
-          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
-          format: uri
-        status:
-          type: integer
-          description: HTTP Status code,e.g. 400+
-          example: 400
-        statusDescription:
-          type: string
-          description: Description of HTTP Status code, e.g. Bad Request
-          example: Bad Request
-        message:
-          type: string
-          description: The detailed description of the error
-    LabelDefinition:
-      required:
-      - language
-      - value
-      type: object
-      properties:
-        language:
-          type: string
-          description: The system language abbreviation
-          example: en_US
-        value:
-          type: string
-          description: The value of the label
-          example: Publication
     LinkEntityDefinition:
       required:
       - attributes
@@ -218,6 +176,73 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttributeDefinition'
+    LinkEntityDefinitionList:
+      required:
+      - count
+      - data
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkEntityDefinition'
+    LabelDefinition:
+      required:
+      - language
+      - value
+      type: object
+      properties:
+        language:
+          type: string
+          description: The system language abbreviation
+          example: en_US
+        value:
+          type: string
+          description: The value of the label
+          example: Publication
+    DefaultResponse:
+      required:
+      - statusDescirption
+      - message
+      - path
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: The date-time notation as defined by RFC 3339, section 5.6, e.g. "2017-07-21T17:32:28Z"
+          format: date-time
+        path:
+          type: string
+          description: The path which is used by user, e.g./converis-apis/ws/v2/data/entities/Publication
+          format: uri
+        status:
+          type: integer
+          description: HTTP Status code,e.g. 400+
+          example: 400
+        statusDescription:
+          type: string
+          description: Description of HTTP Status code, e.g. Bad Request
+          example: Bad Request
+        message:
+          type: string
+          description: The detailed description of the error
     AttributeDefinition:
       required:
       - name
@@ -261,31 +286,6 @@ components:
         includeInPageExport:
           type: boolean
           example: true
-    LinkEntityDefinitionList:
-      required:
-      - count
-      - data
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkEntityDefinition'
     AttributeInputDefinition:
       properties:
         dataType:

@@ -1258,6 +1258,229 @@ paths:
     - url: https://api.clarivate.com/apis/wos-journals/v1
 components:
   schemas:
+    JournalsCiting:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            type: object
+            properties:
+              journal:
+                $ref: '#/components/schemas/JournalsCitesJournal'
+              cited:
+                $ref: '#/components/schemas/Cites'
+    JournalReportsJournal:
+      type: object
+      description: Main information about the report journal
+      properties:
+        id:
+          type: string
+          description: Journal unique identifier
+        self:
+          type: string
+          description: Journals API link to the journal entity
+        name:
+          type: string
+          description: Journal title
+    Metadata:
+      type: object
+      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.
+      properties:
+        total:
+          type: integer
+          format: int32
+          description: Total number of records for the request.
+        page:
+          type: integer
+          format: int32
+          description: Page number (default is 1)
+        limit:
+          type: integer
+          format: int32
+          description: Number of records on a page (default is 10).
+    HalfLife:
+      type: object
+      properties:
+        cited:
+          type: number
+          format: double
+        citing:
+          type: number
+          format: double
+    SourceData:
+      type: object
+      description: Information about number of citable items in the JCR year. For the detailed description how this data is calculated please visit [this page](http://jcr.help.clarivate.com/Content/source-data.htm?Highlight=Source%20Data)
+      properties:
+        articles:
+          type: object
+          properties:
+            count:
+              type: integer
+              format: int32
+            references:
+              type: integer
+              format: int32
+        reviews:
+          type: object
+          properties:
+            count:
+              type: integer
+              format: int32
+            references:
+              type: integer
+              format: int32
+        other:
+          type: object
+          properties:
+            count:
+              type: integer
+              format: int32
+            references:
+              type: integer
+              format: int32
+    Ranks:
+      type: object
+      description: JCR rank and ESI Total cites. Detailed information could be found on [this page](http://jcr.help.clarivate.com/Content/journal-profile-rank.htm)
+      properties:
+        jif:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              edition:
+                type: string
+              self:
+                type: string
+              rank:
+                type: string
+              quartile:
+                type: string
+              jifPercentile:
+                type: number
+                format: double
+        articleInfluence:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankQuartileData'
+        eigenFactorScore:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankQuartileData'
+        immediacyIndex:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankQuartileData'
+        jci:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              rank:
+                type: string
+              quartile:
+                type: string
+              jciPercentile:
+                type: number
+                format: double
+        esiCitations:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              rank:
+                type: string
+              quartile:
+                type: string
+    InfluenceMetrics:
+      type: object
+      properties:
+        eigenFactor:
+          type: object
+          description: Eigenfactor score metrics (score and normalized score), available for journals reports dated 2007 or later. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor23)
+          properties:
+            score:
+              type: number
+              format: double
+              description: Eigenfactor score. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor24)
+            normalized:
+              type: number
+              format: double
+              description: Normalized Eigenfactor score. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor33)
+        articleInfluence:
+          type: number
+          format: double
+          description: Article influence metrics. For more information, please visit [this page](http://jcr.help.clarivate.com/Content/glossary-article-influence-score.htm)
+    Publisher:
+      type: object
+      description: Information about the journal publisher
+      properties:
+        id:
+          type: string
+          description: Publisher unique identifier
+        name:
+          type: string
+          description: Publisher name
+        address:
+          type: string
+          description: Publisher address
+        countryRegion:
+          type: string
+          description: Publisher country/region
+    JournalRecord:
+      type: object
+      description: ' '
+      properties:
+        id:
+          type: string
+          description: Journal unique identifier
+        name:
+          type: string
+          description: Journal title
+        jcrTitle:
+          type: string
+          description: Journal JCR abbreviation
+        isoTitle:
+          type: string
+          description: Journal title in [ISO format](https://www.issn.org/services/online-services/access-to-the-ltwa/)
+        issn:
+          type: string
+          description: Current [ISSN identifier](https://www.issn.org/understanding-the-issn/what-is-an-issn/)
+        previousIssn:
+          type: array
+          description: Previously assignled ISSN identifiers
+          items:
+            type: string
+        eIssn:
+          type: string
+          description: (For online journals) [Electronic ISSN](https://www.issn.org/understanding-the-issn/assignment-rules/the-issn-for-electronic-media/) identifier
+        publisher:
+          $ref: '#/components/schemas/Publisher'
+        frequency:
+          type: integer
+          description: Number of times per year the journal is published
+          format: int32
+        firstIssueYear:
+          type: integer
+          description: First year the journal was published
+          format: int32
+        language:
+          type: string
+          description: Journal publication language
+        openAccess:
+          $ref: '#/components/schemas/OpenAccess'
+        categories:
+          $ref: '#/components/schemas/Categories'
+        journalCitationReports:
+          $ref: '#/components/schemas/JournalCitationReport'
     JournalCitationReport:
       type: array
       description: List of all available Journal Citation Reports by year
@@ -1271,6 +1494,50 @@ components:
           url:
             type: string
             description: Link to the report
+    OpenAccess:
+      type: object
+      description: Journal open access status
+      properties:
+        startYear:
+          type: integer
+          description: First year of journal open access
+          format: int32
+        endYear:
+          type: integer
+          description: Last year of journal open access
+          format: int32
+    Cites:
+      type: array
+      items:
+        type: object
+        properties:
+          year:
+            type: string
+          count:
+            type: integer
+            format: int32
+    SearchMatch:
+      type: object
+      description: Displays the field and value matched to the search string
+      properties:
+        field:
+          type: string
+          description: Name of the matched field
+        value:
+          description: Array of matched values (if several) with the HTML highligthing
+          type: array
+          items:
+            type: string
+    CitingData:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Link to the Citing endpoint for the JCR year.
+        count:
+          type: integer
+          format: int32
+          description: Number of citing journals
     Categories:
       type: array
       description: List of journal categories with related editions/databases
@@ -1286,45 +1553,7 @@ components:
           edition:
             type: string
             description: Edition/database name
-    JournalReports:
-      type: object
-      properties:
-        year:
-          type: integer
-          format: int32
-          description: Report year
-        suppressed:
-          type: boolean
-          description: Suppressed Title. Read more at in [JCR Help](https://jcr.help.clarivate.com/Content/title-suppressions.htm)
-        onHold:
-          type: boolean
-          description: Indicates the journal was on hold for evaluation at the point of JCR release. Source:- JCR_ON_HOLD_JOURNALS.
-        delisted:
-          type: boolean
-          description: Indicates the journal has been dropped from the Web of Science Core Collection. Source:- JCR_WOS_DROPPED_JOURNALS.
-        journal:
-          $ref: '#/components/schemas/JournalReportsJournal'
-        metrics:
-          type: object
-          description: Key metrics information, including Impact Metrics (such as Journal Impact Factor), Influence Metrics (such as Eigen Factor), and Source Metrics (such as Citation Half-Life)
-          properties:
-            impactMetrics:
-              $ref: '#/components/schemas/ImpactMetrics'
-            influenceMetrics:
-              $ref: '#/components/schemas/InfluenceMetrics'
-            sourceMetrics:
-              $ref: '#/components/schemas/SourceMetrics'
-            citationDistribution:
-              $ref: '#/components/schemas/CitationDistribution'
-        ranks:
-          $ref: '#/components/schemas/Ranks'
-        journalData:
-          $ref: '#/components/schemas/JournalData'
-        sourceData:
-          $ref: '#/components/schemas/SourceData'
-        journalProfile:
-          $ref: '#/components/schemas/JournalProfile'
-    JournalTitleYear:
+    JournalList:
       type: object
       properties:
         metadata:
@@ -1332,113 +1561,74 @@ components:
         hits:
           type: array
           items:
+            $ref: '#/components/schemas/JournalListRecord'
+    JournalProfile:
+      type: object
+      description: Journal Profile uses JCR year source data, and the two prior years to develop a picture of the countries, regions, and organizations that have published materials in this journal in the past three years.
+      properties:
+        startYear:
+          type: integer
+          description: First year of the profile
+          format: int32
+        endYear:
+          type: integer
+          description: Last year of the profile (equal to the Report year)
+          format: int32
+        citableItems:
+          type: object
+          description: Open access citable items for the three years. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/open-access.htm)
+          properties:
+            goldOA:
+              type: integer
+              format: int32
+            subscription:
+              type: integer
+              format: int32
+            other:
+              type: integer
+              format: int32
+        citations:
+          type: object
+          description: Open access citations for the three years. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/open-access.htm)
+          properties:
+            goldOA:
+              type: integer
+              format: int32
+            subscription:
+              type: integer
+              format: int32
+            other:
+              type: integer
+              format: int32
+            unlinked:
+              type: integer
+              format: int32
+        occurrenceCountries:
+          type: array
+          description: Information about of the top 10 countries and regions that have published materials in this journal in the past three years.
+          items:
             type: object
             properties:
-              jcrTitle:
+              countryRegion:
                 type: string
-              titleChanges:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    changeType:
-                      type: string
-                    jcrTitle:
-                      type: string
-                    changeYear:
-                      type: integer
-                      format: int32
-                    jcrYear:
-                      type: integer
-                      format: int32
-                    edition:
-                      type: string
-      example:
-        metadata:
-          total: 119
-          page: 1
-          limit: 10
-        hits:
-        - jcrTitle: AUST NZ J CRIMINOL
-          titleChanges:
-          - changeType: changed to
-            jcrTitle: J CRIMINOL-UK
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SSCI
-        - jcrTitle: BUS ETHICS
-          titleChanges:
-          - changeType: changed to
-            jcrTitle: BUS ETHICS ENV RESP
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SSCI
-        - jcrTitle: BUS ETHICS ENV RESP
-          titleChanges:
-          - changeType: changed from
-            jcrTitle: BUS ETHICS
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SSCI
-        - jcrTitle: ADV BIOL-GER
-          titleChanges:
-          - changeType: changed from
-            jcrTitle: ADV BIOSYST
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SCIE
-        - jcrTitle: ADV BIOSYST
-          titleChanges:
-          - changeType: changed to
-            jcrTitle: ADV BIOL-GER
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SCIE
-        - jcrTitle: DIABETES EDUCATOR
-          titleChanges:
-          - changeType: changed to
-            jcrTitle: SCI DIABETES SELF-MA
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SCIE
-          - changeType: changed to
-            jcrTitle: SCI DIABETES SELF-MA
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SSCI
-        - jcrTitle: ADV COMPOS LETT
-          titleChanges:
-          - changeType: changed to
-            jcrTitle: COMPOS ADV MATER
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SCIE
-        - jcrTitle: INFANC APRENDIZ
-          titleChanges:
-          - changeType: changed to
-            jcrTitle: J STUD EDUC DEV
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SSCI
-          - changeType: changed to
-            jcrTitle: J STUD EDUC DEV
-            changeYear: 2020
-            jcrYear: 2020
-            edition: SSCI
-        - jcrTitle: ADV WEED SCI
-          titleChanges:
-          - changeType: changed from
-            jcrTitle: PLANTA DANINHA
-            changeYear: 2021
-            jcrYear: 2021
-            edition: SCIE
-        - jcrTitle: APUNTS SPORTS MED
-          titleChanges:
-          - changeType: changed from
-            jcrTitle: APUNTS-MED ESPORT
-            changeYear: 2021
-            jcrYear: 2021
-            edition: ESCI
+                description: Country/region name
+              occurrence:
+                type: integer
+                format: int32
+                description: Number of country/region's articles/reviews/etc
+        occurrenceOrganizations:
+          type: array
+          description: Information about of the top 10 organizations that have published materials in this journal in the past three years.
+          items:
+            type: object
+            properties:
+              organization:
+                type: string
+                description: Organization name
+              occurrence:
+                type: integer
+                format: int32
+                description: Number of organization's articles/reviews/etc
     JournalHistoryRecord:
       type: object
       description: Journal History record
@@ -1584,150 +1774,19 @@ components:
         other:
           type: integer
           format: int32
-    JournalRecord:
-      type: object
-      description: ' '
-      properties:
-        id:
-          type: string
-          description: Journal unique identifier
-        name:
-          type: string
-          description: Journal title
-        jcrTitle:
-          type: string
-          description: Journal JCR abbreviation
-        isoTitle:
-          type: string
-          description: Journal title in [ISO format](https://www.issn.org/services/online-services/access-to-the-ltwa/)
-        issn:
-          type: string
-          description: Current [ISSN identifier](https://www.issn.org/understanding-the-issn/what-is-an-issn/)
-        previousIssn:
-          type: array
-          description: Previously assignled ISSN identifiers
-          items:
-            type: string
-        eIssn:
-          type: string
-          description: (For online journals) [Electronic ISSN](https://www.issn.org/understanding-the-issn/assignment-rules/the-issn-for-electronic-media/) identifier
-        publisher:
-          $ref: '#/components/schemas/Publisher'
-        frequency:
-          type: integer
-          description: Number of times per year the journal is published
-          format: int32
-        firstIssueYear:
-          type: integer
-          description: First year the journal was published
-          format: int32
-        language:
-          type: string
-          description: Journal publication language
-        openAccess:
-          $ref: '#/components/schemas/OpenAccess'
-        categories:
-          $ref: '#/components/schemas/Categories'
-        journalCitationReports:
-          $ref: '#/components/schemas/JournalCitationReport'
-    Ranks:
-      type: object
-      description: JCR rank and ESI Total cites. Detailed information could be found on [this page](http://jcr.help.clarivate.com/Content/journal-profile-rank.htm)
-      properties:
-        jif:
-          type: array
-          items:
-            type: object
-            properties:
-              category:
-                type: string
-              edition:
-                type: string
-              self:
-                type: string
-              rank:
-                type: string
-              quartile:
-                type: string
-              jifPercentile:
-                type: number
-                format: double
-        articleInfluence:
-          type: array
-          items:
-            $ref: '#/components/schemas/RankQuartileData'
-        eigenFactorScore:
-          type: array
-          items:
-            $ref: '#/components/schemas/RankQuartileData'
-        immediacyIndex:
-          type: array
-          items:
-            $ref: '#/components/schemas/RankQuartileData'
-        jci:
-          type: array
-          items:
-            type: object
-            properties:
-              category:
-                type: string
-              rank:
-                type: string
-              quartile:
-                type: string
-              jciPercentile:
-                type: number
-                format: double
-        esiCitations:
-          type: array
-          items:
-            type: object
-            properties:
-              category:
-                type: string
-              rank:
-                type: string
-              quartile:
-                type: string
-    SourceMetrics:
+    RankQuartileData:
       type: object
       properties:
-        citableItems:
-          type: object
-          properties:
-            total:
-              type: integer
-              format: int32
-            articlesPercentage:
-              type: number
-              format: double
-        jifPercentile:
-          type: number
-          format: double
-          description: Average Journal Impact Factor Percentile. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/glossary-average-jif-percentile.htm)
-        halfLife:
-          $ref: '#/components/schemas/HalfLife'
-    SearchMatch:
-      type: object
-      description: Displays the field and value matched to the search string
-      properties:
-        field:
+        category:
           type: string
-          description: Name of the matched field
-        value:
-          description: Array of matched values (if several) with the HTML highligthing
-          type: array
-          items:
-            type: string
-    HalfLife:
-      type: object
-      properties:
-        cited:
-          type: number
-          format: double
-        citing:
-          type: number
-          format: double
+        edition:
+          type: string
+        self:
+          type: string
+        rank:
+          type: string
+        quartile:
+          type: string
     JournalListRecord:
       type: object
       properties:
@@ -1812,68 +1871,6 @@ components:
                   jciPercentile:
                     type: number
                     format: double
-    InfluenceMetrics:
-      type: object
-      properties:
-        eigenFactor:
-          type: object
-          description: Eigenfactor score metrics (score and normalized score), available for journals reports dated 2007 or later. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor23)
-          properties:
-            score:
-              type: number
-              format: double
-              description: Eigenfactor score. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor24)
-            normalized:
-              type: number
-              format: double
-              description: Normalized Eigenfactor score. For more information, please visit the [JCR Glossary page](http://jcr.help.clarivate.com/Content/glossary.htm#610062182_anchor33)
-        articleInfluence:
-          type: number
-          format: double
-          description: Article influence metrics. For more information, please visit [this page](http://jcr.help.clarivate.com/Content/glossary-article-influence-score.htm)
-    OpenAccess:
-      type: object
-      description: Journal open access status
-      properties:
-        startYear:
-          type: integer
-          description: First year of journal open access
-          format: int32
-        endYear:
-          type: integer
-          description: Last year of journal open access
-          format: int32
-    Cites:
-      type: array
-      items:
-        type: object
-        properties:
-          year:
-            type: string
-          count:
-            type: integer
-            format: int32
-    JournalReportsJournal:
-      type: object
-      description: Main information about the report journal
-      properties:
-        id:
-          type: string
-          description: Journal unique identifier
-        self:
-          type: string
-          description: Journals API link to the journal entity
-        name:
-          type: string
-          description: Journal title
-    JournalData:
-      type: object
-      description: Links to the Cited and Citing endpoints, with the total count of records.
-      properties:
-        cited:
-          $ref: '#/components/schemas/CitedData'
-        citing:
-          $ref: '#/components/schemas/CitingData'
     JournalsCited:
       type: object
       properties:
@@ -1888,212 +1885,6 @@ components:
                 $ref: '#/components/schemas/JournalsCitesJournal'
               citing:
                 $ref: '#/components/schemas/Citable'
-    RankQuartileData:
-      type: object
-      properties:
-        category:
-          type: string
-        edition:
-          type: string
-        self:
-          type: string
-        rank:
-          type: string
-        quartile:
-          type: string
-    CitedData:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Link to the Cited endpoint for the JCR year.
-        count:
-          type: integer
-          format: int32
-          description: Number of cited journals
-    SourceData:
-      type: object
-      description: Information about number of citable items in the JCR year. For the detailed description how this data is calculated please visit [this page](http://jcr.help.clarivate.com/Content/source-data.htm?Highlight=Source%20Data)
-      properties:
-        articles:
-          type: object
-          properties:
-            count:
-              type: integer
-              format: int32
-            references:
-              type: integer
-              format: int32
-        reviews:
-          type: object
-          properties:
-            count:
-              type: integer
-              format: int32
-            references:
-              type: integer
-              format: int32
-        other:
-          type: object
-          properties:
-            count:
-              type: integer
-              format: int32
-            references:
-              type: integer
-              format: int32
-    JournalProfile:
-      type: object
-      description: Journal Profile uses JCR year source data, and the two prior years to develop a picture of the countries, regions, and organizations that have published materials in this journal in the past three years.
-      properties:
-        startYear:
-          type: integer
-          description: First year of the profile
-          format: int32
-        endYear:
-          type: integer
-          description: Last year of the profile (equal to the Report year)
-          format: int32
-        citableItems:
-          type: object
-          description: Open access citable items for the three years. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/open-access.htm)
-          properties:
-            goldOA:
-              type: integer
-              format: int32
-            subscription:
-              type: integer
-              format: int32
-            other:
-              type: integer
-              format: int32
-        citations:
-          type: object
-          description: Open access citations for the three years. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/open-access.htm)
-          properties:
-            goldOA:
-              type: integer
-              format: int32
-            subscription:
-              type: integer
-              format: int32
-            other:
-              type: integer
-              format: int32
-            unlinked:
-              type: integer
-              format: int32
-        occurrenceCountries:
-          type: array
-          description: Information about of the top 10 countries and regions that have published materials in this journal in the past three years.
-          items:
-            type: object
-            properties:
-              countryRegion:
-                type: string
-                description: Country/region name
-              occurrence:
-                type: integer
-                format: int32
-                description: Number of country/region's articles/reviews/etc
-        occurrenceOrganizations:
-          type: array
-          description: Information about of the top 10 organizations that have published materials in this journal in the past three years.
-          items:
-            type: object
-            properties:
-              organization:
-                type: string
-                description: Organization name
-              occurrence:
-                type: integer
-                format: int32
-                description: Number of organization's articles/reviews/etc
-    JournalList:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/JournalListRecord'
-    JournalsCitesJournal:
-      type: object
-      properties:
-        self:
-          type: string
-        name:
-          type: string
-    Publisher:
-      type: object
-      description: Information about the journal publisher
-      properties:
-        id:
-          type: string
-          description: Publisher unique identifier
-        name:
-          type: string
-          description: Publisher name
-        address:
-          type: string
-          description: Publisher address
-        countryRegion:
-          type: string
-          description: Publisher country/region
-    JournalsCiting:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        hits:
-          type: array
-          items:
-            type: object
-            properties:
-              journal:
-                $ref: '#/components/schemas/JournalsCitesJournal'
-              cited:
-                $ref: '#/components/schemas/Cites'
-    CitingData:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Link to the Citing endpoint for the JCR year.
-        count:
-          type: integer
-          format: int32
-          description: Number of citing journals
-    Citable:
-      type: array
-      items:
-        type: object
-        properties:
-          year:
-            type: string
-          count:
-            type: integer
-            format: int32
-          citableItems:
-            type: integer
-            format: int32
-    Metadata:
-      type: object
-      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number.
-      properties:
-        total:
-          type: integer
-          format: int32
-          description: Total number of records for the request.
-        page:
-          type: integer
-          format: int32
-          description: Page number (default is 1)
-        limit:
-          type: integer
-          format: int32
-          description: Number of records on a page (default is 10).
     ImpactMetrics:
       type: object
       properties:
@@ -2119,6 +1910,240 @@ components:
           type: number
           format: double
           description: The Journal Citation Indicator is a new field-normalized metric that is calculated for all journals in the Web of Science Core Collection. The value represents the average category-normalized citation impact for papers published in the prior three-year period.
+    Citable:
+      type: array
+      items:
+        type: object
+        properties:
+          year:
+            type: string
+          count:
+            type: integer
+            format: int32
+          citableItems:
+            type: integer
+            format: int32
+    JournalsCitesJournal:
+      type: object
+      properties:
+        self:
+          type: string
+        name:
+          type: string
+    JournalReports:
+      type: object
+      properties:
+        year:
+          type: integer
+          format: int32
+          description: Report year
+        suppressed:
+          type: boolean
+          description: Suppressed Title. Read more at in [JCR Help](https://jcr.help.clarivate.com/Content/title-suppressions.htm)
+        onHold:
+          type: boolean
+          description: Indicates the journal was on hold for evaluation at the point of JCR release. Source:- JCR_ON_HOLD_JOURNALS.
+        delisted:
+          type: boolean
+          description: Indicates the journal has been dropped from the Web of Science Core Collection. Source:- JCR_WOS_DROPPED_JOURNALS.
+        journal:
+          $ref: '#/components/schemas/JournalReportsJournal'
+        metrics:
+          type: object
+          description: Key metrics information, including Impact Metrics (such as Journal Impact Factor), Influence Metrics (such as Eigen Factor), and Source Metrics (such as Citation Half-Life)
+          properties:
+            impactMetrics:
+              $ref: '#/components/schemas/ImpactMetrics'
+            influenceMetrics:
+              $ref: '#/components/schemas/InfluenceMetrics'
+            sourceMetrics:
+              $ref: '#/components/schemas/SourceMetrics'
+            citationDistribution:
+              $ref: '#/components/schemas/CitationDistribution'
+        ranks:
+          $ref: '#/components/schemas/Ranks'
+        journalData:
+          $ref: '#/components/schemas/JournalData'
+        sourceData:
+          $ref: '#/components/schemas/SourceData'
+        journalProfile:
+          $ref: '#/components/schemas/JournalProfile'
+    CitedData:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Link to the Cited endpoint for the JCR year.
+        count:
+          type: integer
+          format: int32
+          description: Number of cited journals
+    JournalTitleYear:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        hits:
+          type: array
+          items:
+            type: object
+            properties:
+              jcrTitle:
+                type: string
+              titleChanges:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    changeType:
+                      type: string
+                    jcrTitle:
+                      type: string
+                    changeYear:
+                      type: integer
+                      format: int32
+                    jcrYear:
+                      type: integer
+                      format: int32
+                    edition:
+                      type: string
+      example:
+        metadata:
+          total: 119
+          page: 1
+          limit: 10
+        hits:
+        - jcrTitle: AUST NZ J CRIMINOL
+          titleChanges:
+          - changeType: changed to
+            jcrTitle: J CRIMINOL-UK
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SSCI
+        - jcrTitle: BUS ETHICS
+          titleChanges:
+          - changeType: changed to
+            jcrTitle: BUS ETHICS ENV RESP
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SSCI
+        - jcrTitle: BUS ETHICS ENV RESP
+          titleChanges:
+          - changeType: changed from
+            jcrTitle: BUS ETHICS
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SSCI
+        - jcrTitle: ADV BIOL-GER
+          titleChanges:
+          - changeType: changed from
+            jcrTitle: ADV BIOSYST
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SCIE
+        - jcrTitle: ADV BIOSYST
+          titleChanges:
+          - changeType: changed to
+            jcrTitle: ADV BIOL-GER
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SCIE
+        - jcrTitle: DIABETES EDUCATOR
+          titleChanges:
+          - changeType: changed to
+            jcrTitle: SCI DIABETES SELF-MA
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SCIE
+          - changeType: changed to
+            jcrTitle: SCI DIABETES SELF-MA
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SSCI
+        - jcrTitle: ADV COMPOS LETT
+          titleChanges:
+          - changeType: changed to
+            jcrTitle: COMPOS ADV MATER
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SCIE
+        - jcrTitle: INFANC APRENDIZ
+          titleChanges:
+          - changeType: changed to
+            jcrTitle: J STUD EDUC DEV
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SSCI
+          - changeType: changed to
+            jcrTitle: J STUD EDUC DEV
+            changeYear: 2020
+            jcrYear: 2020
+            edition: SSCI
+        - jcrTitle: ADV WEED SCI
+          titleChanges:
+          - changeType: changed from
+            jcrTitle: PLANTA DANINHA
+            changeYear: 2021
+            jcrYear: 2021
+            edition: SCIE
+        - jcrTitle: APUNTS SPORTS MED
+          titleChanges:
+          - changeType: changed from
+            jcrTitle: APUNTS-MED ESPORT
+            changeYear: 2021
+            jcrYear: 2021
+            edition: ESCI
+    SourceMetrics:
+      type: object
+      properties:
+        citableItems:
+          type: object
+          properties:
+            total:
+              type: integer
+              format: int32
+            articlesPercentage:
+              type: number
+              format: double
+        jifPercentile:
+          type: number
+          format: double
+          description: Average Journal Impact Factor Percentile. Detailed information could be found in [this page](http://jcr.help.clarivate.com/Content/glossary-average-jif-percentile.htm)
+        halfLife:
+          $ref: '#/components/schemas/HalfLife'
+    JournalData:
+      type: object
+      description: Links to the Cited and Citing endpoints, with the total count of records.
+      properties:
+        cited:
+          $ref: '#/components/schemas/CitedData'
+        citing:
+          $ref: '#/components/schemas/CitingData'
+    JournalsList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata_2'
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Journal'
+    Metadata_2:
+      type: object
+      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number
+      properties:
+        page:
+          type: integer
+          format: int32
+          description: Page number (default is 1)
+        limit:
+          type: integer
+          format: int32
+          description: Number of records on a page (default is 10).
+        total:
+          type: integer
+          format: int32
+          description: Total number of records for the request.
     Journal:
       type: object
       properties:
@@ -2157,31 +2182,6 @@ components:
               url:
                 type: string
                 description: URL of Web of Science Product
-    Metadata_2:
-      type: object
-      description: Information about total number of journals in the retrieve, number of recodrs on the page, and the page number
-      properties:
-        page:
-          type: integer
-          format: int32
-          description: Page number (default is 1)
-        limit:
-          type: integer
-          format: int32
-          description: Number of records on a page (default is 10).
-        total:
-          type: integer
-          format: int32
-          description: Total number of records for the request.
-    JournalsList:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata_2'
-        hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Journal'
   securitySchemes:
     key:
       type: apiKey

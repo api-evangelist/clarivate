@@ -58,6 +58,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SUSHI_org_identifiers:
+      type: object
+      description: Identifier for an organization.
+      required:
+      - Type
+      - Value
+      properties:
+        Type:
+          type: string
+          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
+          example: ISNI
+          enum:
+          - ISNI
+          - ISIL
+          - OCLC
+          - Proprietary
+        Value:
+          type: string
+          description: Value of the organization identifier
+          example: 1234 1234 1234 1234
     SUSHI_consortium_member_list:
       type: object
       required:
@@ -116,26 +136,6 @@ components:
           type: string
           description: Additional data provided by the server to clarify the error.
           example: Usage data has not been processed for all requested months.
-    SUSHI_org_identifiers:
-      type: object
-      description: Identifier for an organization.
-      required:
-      - Type
-      - Value
-      properties:
-        Type:
-          type: string
-          description: Type of identifier (namespace or domain). e.g. ISNI, Proprietary, etc.
-          example: ISNI
-          enum:
-          - ISNI
-          - ISIL
-          - OCLC
-          - Proprietary
-        Value:
-          type: string
-          description: Value of the organization identifier
-          example: 1234 1234 1234 1234
   securitySchemes:
     key:
       type: apiKey

@@ -194,38 +194,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AttributeData:
-      required:
-      - attributeName
-      - attributeType
-      - value
-      type: object
-      properties:
-        attributeName:
-          type: string
-          description: Attribute name
-          example: cfTitle
-        attributeType:
-          type: string
-          description: Data type of the Attribute
-          example: STRING
-          enum:
-          - STRING
-          - TEXT
-          - CGV
-          - NUMBER
-          - DATE
-          - BOOLEAN
-        language:
-          type: string
-          description: language code of this attribute. Empty if not translatable
-          example: en_GB
-        value:
-          type: string
-          description: The value of the attribute data
-          example: An example Publication title
-        choiceGroupData:
-          $ref: '#/components/schemas/ChoiceGroupData'
     EntityData:
       required:
       - createdBy
@@ -313,6 +281,56 @@ components:
             href: /converis-api/ws/v2/data/entities/Publication/linked/PUBL_has_PUBL/56893426?directon=l2r
           items:
             $ref: '#/components/schemas/LinkReference'
+    ChoiceGroupData:
+      type: object
+      properties:
+        choiceGroupName:
+          type: string
+          description: If the attribute is of type ChoiceGroup, then this should be filled.
+          example: Publication type
+        choiceGroupValue:
+          type: string
+          description: default value
+          example: Journal article
+        choiceGroupValueLabels:
+          type: array
+          example:
+          - language: de_DE
+            value: Zeitschrift
+          items:
+            $ref: '#/components/schemas/LabelDefinition'
+    AttributeData:
+      required:
+      - attributeName
+      - attributeType
+      - value
+      type: object
+      properties:
+        attributeName:
+          type: string
+          description: Attribute name
+          example: cfTitle
+        attributeType:
+          type: string
+          description: Data type of the Attribute
+          example: STRING
+          enum:
+          - STRING
+          - TEXT
+          - CGV
+          - NUMBER
+          - DATE
+          - BOOLEAN
+        language:
+          type: string
+          description: language code of this attribute. Empty if not translatable
+          example: en_GB
+        value:
+          type: string
+          description: The value of the attribute data
+          example: An example Publication title
+        choiceGroupData:
+          $ref: '#/components/schemas/ChoiceGroupData'
     LabelDefinition:
       required:
       - language
@@ -327,6 +345,30 @@ components:
           type: string
           description: The value of the label
           example: Publication
+    EntityDataList:
+      required:
+      - count
+      - nrRecordsAll
+      - nrRecordsFound
+      - startRecord
+      type: object
+      properties:
+        startRecord:
+          type: integer
+          example: 1
+        count:
+          type: integer
+          example: 50
+        nrRecordsAll:
+          type: integer
+          example: 1540
+        nrRecordsFound:
+          type: integer
+          example: 50
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityData'
     DefaultResponse:
       required:
       - statusDescirption
@@ -369,48 +411,6 @@ components:
           type: string
           description: is the complete endpoint path that uniquely defines the resource.
           example: /converis-apis/ws/v2/data/Publication/linked/PUBL_has_JOUR/1234
-    EntityDataList:
-      required:
-      - count
-      - nrRecordsAll
-      - nrRecordsFound
-      - startRecord
-      type: object
-      properties:
-        startRecord:
-          type: integer
-          example: 1
-        count:
-          type: integer
-          example: 50
-        nrRecordsAll:
-          type: integer
-          example: 1540
-        nrRecordsFound:
-          type: integer
-          example: 50
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityData'
-    ChoiceGroupData:
-      type: object
-      properties:
-        choiceGroupName:
-          type: string
-          description: If the attribute is of type ChoiceGroup, then this should be filled.
-          example: Publication type
-        choiceGroupValue:
-          type: string
-          description: default value
-          example: Journal article
-        choiceGroupValueLabels:
-          type: array
-          example:
-          - language: de_DE
-            value: Zeitschrift
-          items:
-            $ref: '#/components/schemas/LabelDefinition'
   securitySchemes:
     BasicAuth:
       type: http

@@ -78,6 +78,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    JournalOrFunder:
+      type: object
+      description: Journal or funding agency.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Journal or funding agency name
     Country:
       type: object
       required:
@@ -86,35 +95,6 @@ components:
         name:
           type: string
           example: Country name
-    Journal:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Journal name
-    SearchArticle:
-      type: object
-      description: Input manuscript or grant application details.
-      required:
-      - title
-      - abstract
-      - journal
-      properties:
-        title:
-          type: string
-          example: Manuscript or grant application title
-        abstract:
-          type: string
-          example: Manuscript or grant application abstract
-        journal:
-          $ref: '#/components/schemas/JournalOrFunder'
-        authors:
-          type: array
-          description: List of manuscript authors or grant application applicants. Will be excluded from the recommendations. Will also be used to check for potential conflicts of interest by co-publication or co-affiliation.
-          items:
-            $ref: '#/components/schemas/AuthorOrApplicant'
     SearchInput:
       type: object
       required:
@@ -152,6 +132,22 @@ components:
           description: If provided, reviewer recommendations will be restricted to researchers without recent affiliations with organizations from the listed countries. 'includedCountries' and 'excludedCountries' should not be used in conjunction.
           items:
             $ref: '#/components/schemas/Country'
+    AuthorOrganization:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Affiliated organization name
+    Funder:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Funding agency name
     Article:
       type: object
       required:
@@ -191,69 +187,6 @@ components:
           type: string
           format: YYYY
           example: '2019'
-    AuthorOrApplicant:
-      type: object
-      required:
-      - firstName
-      - lastName
-      properties:
-        firstName:
-          type: string
-          example: Researcher first name
-        lastName:
-          type: string
-          example: Researcher last name
-        email:
-          type: string
-          format: email
-          example: researcher@organization.edu
-        organizations:
-          type: array
-          description: Affiliated organizations. Used to check for potential conflicts of interest by co-affiliation.
-          items:
-            $ref: '#/components/schemas/AuthorOrganization'
-    Funder:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Funding agency name
-    Response:
-      type: object
-      required:
-      - searchInput
-      - searchToken
-      - searchUrl
-      - recommendedReviewers
-      properties:
-        searchInput:
-          $ref: '#/components/schemas/SearchInput'
-        requestId:
-          type: string
-          description: Optional consumer defined request identifier. If provided in a request, will be returned in the response.
-        searchToken:
-          type: string
-          description: Unique token identifying this search. When trouble-shooting or enquiring about a particular search with the Web of Science team please provide the search token in question.
-          example: 7dd6f44b0b9346f6b75d6d0efb65ebc2
-        searchUrl:
-          type: string
-          description: URL for viewing and interacting with this search within the Web of Science Reviewer Locator web interface. Note that web interface permissions are required and are separate to your API key.
-          format: url
-          example: https://reviewerlocator.webofscience.com/7dd6f44b0b9346f6b75d6d0efb65ebc2/
-        recommendedReviewers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecommendedReviewer'
-    AuthorOrganization:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Affiliated organization name
     Organization:
       type: object
       required:
@@ -283,6 +216,98 @@ components:
           type: string
         zip:
           type: string
+    Response:
+      type: object
+      required:
+      - searchInput
+      - searchToken
+      - searchUrl
+      - recommendedReviewers
+      properties:
+        searchInput:
+          $ref: '#/components/schemas/SearchInput'
+        requestId:
+          type: string
+          description: Optional consumer defined request identifier. If provided in a request, will be returned in the response.
+        searchToken:
+          type: string
+          description: Unique token identifying this search. When trouble-shooting or enquiring about a particular search with the Web of Science team please provide the search token in question.
+          example: 7dd6f44b0b9346f6b75d6d0efb65ebc2
+        searchUrl:
+          type: string
+          description: URL for viewing and interacting with this search within the Web of Science Reviewer Locator web interface. Note that web interface permissions are required and are separate to your API key.
+          format: url
+          example: https://reviewerlocator.webofscience.com/7dd6f44b0b9346f6b75d6d0efb65ebc2/
+        recommendedReviewers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecommendedReviewer'
+    SearchArticle:
+      type: object
+      description: Input manuscript or grant application details.
+      required:
+      - title
+      - abstract
+      - journal
+      properties:
+        title:
+          type: string
+          example: Manuscript or grant application title
+        abstract:
+          type: string
+          example: Manuscript or grant application abstract
+        journal:
+          $ref: '#/components/schemas/JournalOrFunder'
+        authors:
+          type: array
+          description: List of manuscript authors or grant application applicants. Will be excluded from the recommendations. Will also be used to check for potential conflicts of interest by co-publication or co-affiliation.
+          items:
+            $ref: '#/components/schemas/AuthorOrApplicant'
+    ExcludedReviewer:
+      type: object
+      required:
+      - firstName
+      - lastName
+      properties:
+        firstName:
+          type: string
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        email:
+          type: string
+          format: email
+          example: researcher@organization.edu
+    Journal:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Journal name
+    AuthorOrApplicant:
+      type: object
+      required:
+      - firstName
+      - lastName
+      properties:
+        firstName:
+          type: string
+          example: Researcher first name
+        lastName:
+          type: string
+          example: Researcher last name
+        email:
+          type: string
+          format: email
+          example: researcher@organization.edu
+        organizations:
+          type: array
+          description: Affiliated organizations. Used to check for potential conflicts of interest by co-affiliation.
+          items:
+            $ref: '#/components/schemas/AuthorOrganization'
     RecommendedReviewer:
       type: object
       properties:
@@ -418,31 +443,6 @@ components:
           description: Affiliated organizations within the Web of Science which represent a potential conflict of interest by co-affiliation with the search manuscript / grant application's authors / applicants.
           items:
             $ref: '#/components/schemas/Organization'
-    JournalOrFunder:
-      type: object
-      description: Journal or funding agency.
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Journal or funding agency name
-    ExcludedReviewer:
-      type: object
-      required:
-      - firstName
-      - lastName
-      properties:
-        firstName:
-          type: string
-          example: Researcher first name
-        lastName:
-          type: string
-          example: Researcher last name
-        email:
-          type: string
-          format: email
-          example: researcher@organization.edu
   securitySchemes:
     key:
       type: apiKey
