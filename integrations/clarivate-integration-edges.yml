@@ -6,7 +6,9 @@ source:
 - https://composio.dev/toolkits/clarivate
 - https://monid.ai/tools/clarivate
 checked:
+- https://cloudsecurityalliance.org/star/registry
 - https://composio.dev/toolkits/clarivate
+- https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://monid.ai/tools/clarivate
 - https://n8n.io/integrations/clarivate/
 - https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
@@ -16,6 +18,55 @@ checked:
 summary: null
 marketplace_apps: []
 edges:
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200012386
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - IPOne Trademark Search Agent
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Certified
+- partner_name: Cloud Security Alliance STAR Registry
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cloudsecurityalliance.org/star/registry/clarivate/services/trademarkvision-designvision-clarivate
+  category: Cloud security assurance
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: Clarivate™
+    registry_id: clarivate
+    service_url: https://clarivate.com/products/ip-intelligence/trademark-research-and-protection/trademark-vision/
+    matched_domain: clarivate.com
+    matched_by: domain+name-among-holders
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
 - partner_name: eduGAIN
   partner: null
   type: register
@@ -45,23 +96,4 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-higher-ed.py
   first_seen: '2026-10-15'
-- partner_name: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA200012386
-  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-  apps:
-  - IPOne Trademark Search Agent
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Microsoft Teams app
-  publisher_verified:
-  - Microsoft 365 Certified
 templates: []
