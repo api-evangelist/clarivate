@@ -15,6 +15,7 @@ checked:
 - https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
 - https://zapier.com/apps/clarivate/integrations
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+- https://aws.amazon.com/marketplace/search/results?FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE
 summary: null
 marketplace_apps: []
 edges:
@@ -37,6 +38,35 @@ edges:
   category: Microsoft Teams app
   publisher_verified:
   - Microsoft 365 Certified
+- partner_name: eduGAIN
+  partner: null
+  type: register
+  channel: standard-directory
+  relationship: network-participant
+  direction: partner-built
+  evidence: https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
+  category: research and education identity federation
+  contract_reference:
+    network: eduGAIN (GÉANT interfederation)
+    spec_file: null
+    roles:
+    - service-provider
+    role: service-provider
+    federations:
+    - UK-FEDERATION
+    matched_by: domain+verified:clarivate.com
+    entities:
+    - entity_id: https://access.clarivate.com/entity
+      role: service-provider
+      federation: UK-FEDERATION
+      display_name: Camelot UK BIDCO Limited
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    detected_by: sweep-higher-ed.py
+    detected: '2026-10-19'
+  detected_by: sweep-higher-ed.py
+  first_seen: '2026-10-19'
 - partner_name: Cloud Security Alliance STAR Registry
   partner: null
   partner_match: register
@@ -67,33 +97,32 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
-- partner_name: eduGAIN
-  partner: null
-  type: register
-  channel: standard-directory
-  relationship: network-participant
-  direction: partner-built
-  evidence: https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
-  category: research and education identity federation
+- partner_name: AWS Data Exchange
+  partner: amazon-data-exchange
+  partner_match: aggregator
+  type: marketplace
+  marketplace: amazon-data-exchange-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=5287aa89-5274-4119-a793-54be9d68b175
+  category: data product listing
   contract_reference:
-    network: eduGAIN (GÉANT interfederation)
+    register: AWS Data Exchange (AWS Marketplace discovery search, FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE + seller-profile
+      sellerWebsiteUrl)
     spec_file: null
-    roles:
-    - service-provider
-    role: service-provider
-    federations:
-    - UK-FEDERATION
-    matched_by: domain+verified:clarivate.com
-    entities:
-    - entity_id: https://access.clarivate.com/entity
-      role: service-provider
-      federation: UK-FEDERATION
-      display_name: Camelot UK BIDCO Limited
-      entity_categories: null
-      sirtfi: false
-      coco: true
-    detected_by: sweep-higher-ed.py
-    detected: '2026-10-15'
-  detected_by: sweep-higher-ed.py
-  first_seen: '2026-10-15'
+    role: data-marketplace-seller
+    registered_name: Clarivate
+    matched_domain: clarivate.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Clarivate Real World Data Product
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+  publisher_verified:
+  - Deployed on AWS
 templates: []
