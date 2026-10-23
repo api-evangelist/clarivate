@@ -9,6 +9,9 @@ artifacts:
   authentication/clarivate-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  capabilities/clarivate-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/clarivate-changelog.yml:
     method: searched
     evidence: declared in the artifact
@@ -51,130 +54,307 @@ artifacts:
   graphql/clarivate-graphql.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/clarivate-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/clarivate-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
   json-ld/clarivate-context.jsonld:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  json-schema/clarivate-array-of-dates-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-array-of-records-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-array-of-uts-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-categories-cited-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-categories-citing-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-category-context-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-category-context-response-xml-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-category-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-category-record-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-category-reports-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-check-package-status-result-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-citation-report-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-combined-search-request-derwent-api-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-content-set-info-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-content-set-ontologies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-content-set-ontology-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-counter-database-report-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-counter-platform-report-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-default-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-doc-idmapping-request-derwent-api-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-document-availability-request-caselaw-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-document-availability-request-patent-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-document-by-ids-request-derwent-api-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-document-by-pns-request-derwent-api-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-document-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-documents-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-entity-data-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-entity-data-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-entity-definition-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-entity-definition-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-graph-qlquery-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-graph-qlresponse-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-journal-history-record-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-journal-record-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-journal-reports-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-journal-title-year-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-journals-cited-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-journals-citing-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-json-api-pagination-meta-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-link-entity-data-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-link-entity-data-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-link-entity-definition-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-link-entity-definition-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-make-prediction-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-make-prediction-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-match-patent-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-match-response-patent-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-pagination-links-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-pagination-meta-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-patent-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-peer-review-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-predictions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-project-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-public-agent-message-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-public-agent-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-public-agent-success-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-records-request-caselaw-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-records-request-patent-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-records-request-trademark-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-reference-response-xml-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-referencetype-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-request-package-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-request-package-result-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-researcher-document-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-researcher-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-researcher-record-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-retrieve-response-xml-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-roalibrary-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-roareference-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-by-ids-request-derwent-api-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-by-pns-request-derwent-api-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-create-params-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-request-caselaw-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-request-patent-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-request-trademark-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-result-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-search-update-params-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-sequence-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-session-info-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-single-opposition-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-subscriptions-info-result-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-sushi-consortium-member-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-sushi-report-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-sushi-service-status-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-uri-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-user-delegation-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-user-delegation-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-user-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-user-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-userspaceresource-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-wos-search-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-wos-search-response-xml-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/clarivate-wos-short-search-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -258,234 +438,187 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/clarivate-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
-  llms/clarivate-llms.txt:
-    method: generated
-    evidence: carries an API Evangelist house phrase
   mcp/clarivate-mcp.yml:
-    method: derived
-    evidence: declared in the artifact
-  mcp/clarivate-tool-crosswalk.yml:
     method: derived
     evidence: declared in the artifact
   openapi/_original/clarivate-cddi-counter-five-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/cddi-counter-five/swagger (sha256
+      e5e2ee014b3f, fetched 2026-10-04)
   openapi/_original/clarivate-cddi-counter-five-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-cddi-counter-five-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/cddi-counter-five/swagger (sha256
+      e5e2ee014b3f, fetched 2026-10-04)
   openapi/_original/clarivate-converis-additional-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/converis_additional_api/swagger (sha256
+      b027028bb84e, fetched 2026-10-04)
   openapi/_original/clarivate-converisreadapi-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/converisreadapi/swagger (sha256 44be1e80191a,
+      fetched 2026-10-04)
   openapi/_original/clarivate-converisreadapi-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-converisreadapi-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/converisreadapi/swagger (sha256 44be1e80191a,
+      fetched 2026-10-04)
   openapi/_original/clarivate-cortellis-api-collection-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: the same operations as https://developer.clarivate.com/apis/patentmonitor-innography/swagger
+      (sha256 ce744b3fd18c, fetched 2026-10-04)
   openapi/_original/clarivate-cortellis-api-collection-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-cortellis-api-collection-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: the same operations as https://developer.clarivate.com/apis/patentmonitor-innography/swagger
+      (sha256 ce744b3fd18c, fetched 2026-10-04)
   openapi/_original/clarivate-cud-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/cud_api/swagger (sha256 9ba5d28ea9bb,
+      fetched 2026-10-04)
   openapi/_original/clarivate-dss-search-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/dss-search-api/swagger (sha256 8a2bdb0ea322,
+      fetched 2026-10-04)
   openapi/_original/clarivate-endnote-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/endnote/swagger (sha256 ceaba3cba0d9,
+      fetched 2026-10-04)
   openapi/_original/clarivate-endnote-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-endnote-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/endnote/swagger (sha256 ceaba3cba0d9,
+      fetched 2026-10-04)
   openapi/_original/clarivate-incites-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/incites/swagger (sha256 b24727f2dde0,
+      fetched 2026-10-04)
   openapi/_original/clarivate-incites-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-incites-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/incites/swagger (sha256 b24727f2dde0,
+      fetched 2026-10-04)
   openapi/_original/clarivate-ipdata-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: the same operations as https://developer.clarivate.com/apis/ipdata-api/swagger (sha256 617433f7d09d,
+      fetched 2026-10-04)
   openapi/_original/clarivate-legacy-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/legacy_api/swagger (sha256 f0c735bf8c98,
+      fetched 2026-10-04)
   openapi/_original/clarivate-lsh-download-ext-client-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/lsh-download-ext-client/swagger (sha256
+      1cfa5b68ea53, fetched 2026-10-04)
   openapi/_original/clarivate-lsh-download-ext-client-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-lsh-download-ext-client-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/lsh-download-ext-client/swagger (sha256
+      1cfa5b68ea53, fetched 2026-10-04)
   openapi/_original/clarivate-patentmonitor-innography-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/patentmonitor-innography/swagger
+      (sha256 ce744b3fd18c, fetched 2026-10-04)
   openapi/_original/clarivate-patentmonitor-innography-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-patentmonitor-innography-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/patentmonitor-innography/swagger
+      (sha256 ce744b3fd18c, fetched 2026-10-04)
   openapi/_original/clarivate-reviewer-connect-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/reviewer-connect/swagger (sha256
+      8fa173820879, fetched 2026-10-04)
   openapi/_original/clarivate-reviewer-connect-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-reviewer-connect-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/reviewer-connect/swagger (sha256
+      8fa173820879, fetched 2026-10-04)
   openapi/_original/clarivate-ric-agent-hub-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/ric-agent-hub-api/swagger (sha256
+      1781fe6746c1, fetched 2026-10-04)
   openapi/_original/clarivate-ric-ai-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/ric_ai_api/swagger (sha256 d2cdec7d503a,
+      fetched 2026-10-04)
   openapi/_original/clarivate-ric-download-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/ric-download-api/swagger (sha256
+      8d88b0122957, fetched 2026-10-04)
   openapi/_original/clarivate-ric-searchretrieve-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/ric-searchretrieve-api/swagger (sha256
+      4c69a65133e0, fetched 2026-10-04)
   openapi/_original/clarivate-sushi-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/sushi-api/swagger (sha256 4ac0bcdb36cb,
+      fetched 2026-10-04)
   openapi/_original/clarivate-sushi-status-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/sushi-status-api/swagger (sha256
+      d090c6aa1129, fetched 2026-10-04)
   openapi/_original/clarivate-twa-riskmark-integration-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
+      (sha256 6586c4686feb, fetched 2026-10-04)
   openapi/_original/clarivate-twa-riskmark-integration-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-twa-riskmark-integration-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/twa-riskmark-integration/swagger
+      (sha256 6586c4686feb, fetched 2026-10-04)
   openapi/_original/clarivate-wos-journal-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos-journal/swagger (sha256 0a541008ab9a,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-journal-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-wos-journal-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos-journal/swagger (sha256 0a541008ab9a,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos/swagger (sha256 f6a97df1f8d7,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-wos-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos/swagger (sha256 f6a97df1f8d7,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-researcher-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos-researcher/swagger (sha256 39deefbd6837,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-researcher-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-wos-researcher-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos-researcher/swagger (sha256 39deefbd6837,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-starter-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos-starter/swagger (sha256 883898bf27ea,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wos-starter-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-wos-starter-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wos-starter/swagger (sha256 883898bf27ea,
+      fetched 2026-10-04)
   openapi/_original/clarivate-woslite-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/woslite/swagger (sha256 9f0fab2aa2fb,
+      fetched 2026-10-04)
   openapi/_original/clarivate-woslite-openapi_2.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/clarivate-woslite-openapi_2.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/woslite/swagger (sha256 9f0fab2aa2fb,
+      fetched 2026-10-04)
   openapi/_original/clarivate-wosrl-api-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://developer.clarivate.com/apis/wosrl-api/swagger (sha256 e6a8d56d1516,
+      fetched 2026-10-04)
   openapi/clarivate-administration-user-data-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -669,7 +802,31 @@ artifacts:
   openapi/clarivate-xml-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  overlays/clarivate-administration-user-data-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-administration-user-delegations-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-audit-info-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-cache-management-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-categories-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-cddi-counter-five-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-configuration-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-configuration-entity-definitions-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-configuration-link-entity-definitions-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-converis-additional-api-overlay.yaml:
@@ -684,25 +841,136 @@ artifacts:
   overlays/clarivate-cud-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-data-entities-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-data-entity-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-data-file-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-data-integration-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-data-link-entity-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-data-tree-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-derwent-api-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-documents-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-download-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-dss-search-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-endnote-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-endnote-rest-api-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-feed-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-graph-ql-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-history-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-incites-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-integration-api-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-integration-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-ip-cases-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-ipdata-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-journals-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-json-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-last-updated-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-legacy-api-find-by-pattern-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-legacy-api-get-info-object-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-legacy-api-get-legacy-api-version-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-legacy-api-get-related-info-objects-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-legacy-api-get-using-pentaho-resource-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-legacy-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-link-entities-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-lsh-ai-agent-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-lsh-download-ext-client-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-members-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-newapi-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-ontology-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-patentmonitor-innography-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-patents-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-prediction-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-projects-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-publications-sequences-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-reference-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-references-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-reports-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-researchers-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-reviewer-connect-overlay.yaml:
@@ -720,13 +988,58 @@ artifacts:
   overlays/clarivate-ric-searchretrieve-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-search-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-search-results-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-antibody-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-bestseq-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-blast-sw-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-keyword-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-modification-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-searches-motif-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-session-info-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-status-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-sushi-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-sushi-status-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-trademarks-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/clarivate-twa-riskmark-integration-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-user-space-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-version-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/clarivate-web-of-science-reviewer-locator-api-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   overlays/clarivate-wos-journal-overlay.yaml:
@@ -747,6 +1060,9 @@ artifacts:
   overlays/clarivate-wosrl-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  overlays/clarivate-xml-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   packages/clarivate-packages.yml:
     method: searched
     evidence: declared in the artifact
@@ -760,8 +1076,8 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   scopes/clarivate-scopes.yml:
-    method: derived
-    evidence: declared in the artifact
+    method: unknown
+    evidence: no authorship recorded
   security/clarivate-domain-security.yml:
     method: unknown
     evidence: no authorship recorded
@@ -788,6 +1104,12 @@ artifacts:
     evidence: declared in the artifact
   skills/clarivate-wos-researcher-profile.md:
     method: generated
+    evidence: declared in the artifact
+  vendors/clarivate-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/clarivate-vocabulary.yml:
+    method: derived
     evidence: declared in the artifact
   well-known/clarivate-well-known.yml:
     method: unknown

@@ -394,3 +394,9 @@ components:
       type: http
       description: The authentication information has to be provided by the client application as Basic authentication header. This can be configured by an admin in Converis under Configuration -> API Authentication Info.
       scheme: basic
+x-provenance:
+  method: harvested
+  publisher: Clarivate
+  source: https://developer.clarivate.com/apis/converisreadapi/swagger
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

@@ -7799,3 +7799,9 @@ components:
       in: header
       name: X-ApiKey
 x-api-category: DERWENT API
+x-provenance:
+  method: harvested
+  publisher: Clarivate
+  source: https://developer.clarivate.com/apis/ipdata-api/swagger
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

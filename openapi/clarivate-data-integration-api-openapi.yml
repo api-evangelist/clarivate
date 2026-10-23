@@ -84,3 +84,9 @@ paths:
           description: Requested data is not found
         '500':
           description: Unknown Internal error occurred. Try again or contact the system administrator
+x-provenance:
+  method: harvested
+  publisher: Clarivate
+  source: https://developer.clarivate.com/apis/converis_additional_api/swagger
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

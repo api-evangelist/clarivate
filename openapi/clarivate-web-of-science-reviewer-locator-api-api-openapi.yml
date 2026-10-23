@@ -451,3 +451,9 @@ components:
 externalDocs:
   description: Read more about Web of Science Reviewer Locator
   url: https://clarivate.com/academia-government/scientific-and-academic-research/publisher-solutions/web-of-science-reviewer-locator
+x-provenance:
+  method: harvested
+  publisher: Clarivate
+  source: https://developer.clarivate.com/apis/wosrl-api/swagger
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
