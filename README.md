@@ -1,4 +1,4 @@
-# Clarivate (clarivate)
+# Clarivate
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,125 +64,277 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Clarivate is a global information services company providing data, insights, and analytics across academia, government, life sciences, healthcare, and intellectual property. Clarivate exposes a unified developer portal at developer.clarivate.com that catalogs APIs across its product families: Web of Science for publication and citation data, Derwent for patent data, Cortellis for life sciences and drug pipeline intelligence, and supporting tools such as InCites and ScholarOne. APIs are subscription-based and authenticated with per-API keys issued through the developer portal after subscription approval.
+Clarivate is a global information services company providing data, insights and analytics across academia and government, life sciences and healthcare, and intellectual property. It publishes 26 machine-readable API contracts through one developer portal at developer.clarivate.com, each fetchable at developer.clarivate.com/apis/<api>/swagger, and serves them through a single gateway at api.clarivate.com. The estate spans Web of Science publication and citation data, Journal Citation Reports metrics, InCites benchmarking, Derwent patent and trademark intelligence, Converis research information management, Cortellis life sciences intelligence, and COUNTER R5 usage reporting over NISO SUSHI. Access is by API key or OAuth 2.0 client credentials, issued per registered application; every plan but the Web of Science Starter Free Trial is entitled from an institutional subscription and approved by Clarivate.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/clarivate/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/clarivate/refs/heads/main/apis.yml)
+**Areas:** Analytics · Bibliometrics · Citations · Data · Drug Pipeline · Insights · Intellectual Property · Life Sciences · Patents · Publications · Research · Scholarly Communication
 
-## Scope
+## Clarivate on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Clarivate is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/clarivate/](https://apis.io/providers/clarivate/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (61)
 
-- Analytics
-- Citations
-- Data
-- Drug Pipeline
-- Insights
-- Intellectual Property
-- Life Sciences
-- Patents
-- Publications
-- Research
+- [Clarivate Administration - User data API](https://apis.io/apis/clarivate/clarivate-administration-user-data-api/) — Perform User operations
+- [Clarivate Administration - User Delegations API](https://apis.io/apis/clarivate/clarivate-administration-user-delegations-api/) — Perform User Delegation operations
+- [Clarivate Audit Info API](https://apis.io/apis/clarivate/clarivate-audit-info-api/) — Get audit info for actions like DOWNLOAD.
+- [Clarivate Cache Management API](https://apis.io/apis/clarivate/clarivate-cache-management-api/) — Service invalidates cache post data erasure for direct GDPR data deletion from database.
+- [Clarivate Categories API](https://apis.io/apis/clarivate/clarivate-categories-api/) — Categories
+- [Clarivate Configuration API](https://apis.io/apis/clarivate/clarivate-configuration-api/) — Access PentahoParamTokenScheduler API via HTTPS with admin credentials.
+- [Clarivate Configuration - Entity definitions API](https://apis.io/apis/clarivate/clarivate-configuration-entity-definitions-api/) — Get the configured entity definitions
+- [Clarivate Configuration - Link entity definitions API](https://apis.io/apis/clarivate/clarivate-configuration-link-entity-definitions-api/) — Get the configured entity definitions
+- [Clarivate Data Entities API](https://apis.io/apis/clarivate/clarivate-data-entities-api/) — REST endpoints for data Entities
+- [Clarivate Data - Entity API](https://apis.io/apis/clarivate/clarivate-data-entity-api/) — Get the entity data
+- [Clarivate Data - File API](https://apis.io/apis/clarivate/clarivate-data-file-api/) — Download files
+- [Clarivate Data Integration API](https://apis.io/apis/clarivate/clarivate-data-integration-api/) — Data integration uses Kettle Transformation with Servlets as output steps.
+- [Clarivate Data - Link entity API](https://apis.io/apis/clarivate/clarivate-data-link-entity-api/) — Get the links between entity data
+- [Clarivate Data - Tree API](https://apis.io/apis/clarivate/clarivate-data-tree-api/) — Get the links between entity data
+- [Clarivate Derwent API](https://apis.io/apis/clarivate/clarivate-derwent-api-api/) — The Derwent API API from Clarivate — 16 operation(s) for derwent api.
+- [Clarivate Documents API](https://apis.io/apis/clarivate/clarivate-documents-api/) — Web of Science Documents
+- [Clarivate Download API](https://apis.io/apis/clarivate/clarivate-download-api/) — The Download API from Clarivate — 1 operation(s) for download.
+- [Clarivate EndNote REST API](https://apis.io/apis/clarivate/clarivate-endnote-rest-api-api/) — The EndNote REST API API from Clarivate — 1 operation(s) for endnote rest api.
+- [Clarivate Feed API](https://apis.io/apis/clarivate/clarivate-feed-api/) — The feed API from Clarivate — 4 operation(s) for feed.
+- [Clarivate History API](https://apis.io/apis/clarivate/clarivate-history-api/) — The History API from Clarivate — 1 operation(s) for history.
+- [Clarivate Integration API](https://apis.io/apis/clarivate/clarivate-integration-api-api/) — The Integration Api API from Clarivate — 1 operation(s) for integration api.
+- [Clarivate Integration API](https://apis.io/apis/clarivate/clarivate-integration-api/) — Supports integration and data supplement activities.
+- [Clarivate IP Cases API](https://apis.io/apis/clarivate/clarivate-ip-cases-api/) — The IP Cases API from Clarivate — 4 operation(s) for ip cases.
+- [Clarivate Journals API](https://apis.io/apis/clarivate/clarivate-journals-api/) — Journals
+- [Clarivate JSON API](https://apis.io/apis/clarivate/clarivate-json-api/) — Response in json format
+- [Clarivate Last Updated API](https://apis.io/apis/clarivate/clarivate-last-updated-api/) — The last-updated API from Clarivate — 1 operation(s) for last-updated.
+- [Clarivate Legacy API: find By Pattern API](https://apis.io/apis/clarivate/clarivate-legacy-api-find-by-pattern-api/) — Retrieves representation of an instance of com.converis.ws.restful.pentaho.publicservice
+- [Clarivate Legacy API: get Info Object API](https://apis.io/apis/clarivate/clarivate-legacy-api-get-info-object-api/) — REST web service
+- [Clarivate Legacy API: get legacy api version API](https://apis.io/apis/clarivate/clarivate-legacy-api-get-legacy-api-version-api/) — Gets the version of Legacy API
+- [Clarivate Legacy API: get related info objects API](https://apis.io/apis/clarivate/clarivate-legacy-api-get-related-info-objects-api/) — REST Web Service: Representation of GetRelated
+- [Clarivate Legacy API: get using pentaho resource API](https://apis.io/apis/clarivate/clarivate-legacy-api-get-using-pentaho-resource-api/) — The Legacy API: get using pentaho resource API from Clarivate — 2 operation(s) for legacy api: get using pentaho resource.
+- [Clarivate Link Entities API](https://apis.io/apis/clarivate/clarivate-link-entities-api/) — REST endpoints for link entities.
+- [Clarivate LSH AI Agent API](https://apis.io/apis/clarivate/clarivate-lsh-ai-agent-api/) — The LSH AI Agent API from Clarivate — 1 operation(s) for lsh ai agent.
+- [Clarivate Members API](https://apis.io/apis/clarivate/clarivate-members-api/) — The Members API from Clarivate — 1 operation(s) for members.
+- [Clarivate Newapi API](https://apis.io/apis/clarivate/clarivate-newapi-api/) — The Newapi API from Clarivate — 1 operation(s) for newapi.
+- [Clarivate Ontology API](https://apis.io/apis/clarivate/clarivate-ontology-api/) — The ontology API from Clarivate — 3 operation(s) for ontology.
+- [Clarivate Patents API](https://apis.io/apis/clarivate/clarivate-patents-api/) — The Patents API from Clarivate — 9 operation(s) for patents.
+- [Clarivate Prediction API](https://apis.io/apis/clarivate/clarivate-prediction-api/) — The prediction API from Clarivate — 2 operation(s) for prediction.
+- [Clarivate Projects API](https://apis.io/apis/clarivate/clarivate-projects-api/) — Projects management endpoints
+- [Clarivate Publications & Sequences API](https://apis.io/apis/clarivate/clarivate-publications-sequences-api/) — Publications & Sequences information endpoints
+- [Clarivate Reference API](https://apis.io/apis/clarivate/clarivate-reference-api/) — The Reference API from Clarivate — 2 operation(s) for reference.
+- [Clarivate References API](https://apis.io/apis/clarivate/clarivate-references-api/) — The References API from Clarivate — 2 operation(s) for references.
+- [Clarivate Reports API](https://apis.io/apis/clarivate/clarivate-reports-api/) — The Reports API from Clarivate — 6 operation(s) for reports.
+- [Clarivate Researchers API](https://apis.io/apis/clarivate/clarivate-researchers-api/) — Researcher data and metrics
+- [Clarivate Search API](https://apis.io/apis/clarivate/clarivate-search-api/) — Supports discovery and interrogation of Web of Science data.
+- [Clarivate Search Results API](https://apis.io/apis/clarivate/clarivate-search-results-api/) — Search results management endpoints
+- [Clarivate Searches (Antibody) API](https://apis.io/apis/clarivate/clarivate-searches-antibody-api/) — The Searches (Antibody) API from Clarivate — 1 operation(s) for searches (antibody).
+- [Clarivate Searches API](https://apis.io/apis/clarivate/clarivate-searches-api/) — Searches management endpoints
+- [Clarivate Searches (BestSeq) API](https://apis.io/apis/clarivate/clarivate-searches-bestseq-api/) — The Searches (BestSeq) API from Clarivate — 1 operation(s) for searches (bestseq).
+- [Clarivate Searches (BLAST / SW) API](https://apis.io/apis/clarivate/clarivate-searches-blast-sw-api/) — The Searches (BLAST / SW) API from Clarivate — 2 operation(s) for searches (blast / sw).
+- [Clarivate Searches (Keyword) API](https://apis.io/apis/clarivate/clarivate-searches-keyword-api/) — The Searches (Keyword) API from Clarivate — 1 operation(s) for searches (keyword).
+- [Clarivate Searches (Modification) API](https://apis.io/apis/clarivate/clarivate-searches-modification-api/) — The Searches (Modification) API from Clarivate — 1 operation(s) for searches (modification).
+- [Clarivate Searches (Motif) API](https://apis.io/apis/clarivate/clarivate-searches-motif-api/) — The Searches (Motif) API from Clarivate — 1 operation(s) for searches (motif).
+- [Clarivate Session Info API](https://apis.io/apis/clarivate/clarivate-session-info-api/) — Session information endpoints
+- [Clarivate Status API](https://apis.io/apis/clarivate/clarivate-status-api/) — The Status API from Clarivate — 1 operation(s) for status.
+- [Clarivate Trademarks API](https://apis.io/apis/clarivate/clarivate-trademarks-api/) — The Trademarks API from Clarivate — 3 operation(s) for trademarks.
+- [Clarivate User Space API](https://apis.io/apis/clarivate/clarivate-user-space-api/) — The User Space API from Clarivate — 4 operation(s) for user space.
+- [Clarivate Version API](https://apis.io/apis/clarivate/clarivate-version-api/) — Get Converis and component versions.
+- [Clarivate Web of Science Reviewer Locator API](https://apis.io/apis/clarivate/clarivate-web-of-science-reviewer-locator-api-api/) — The Web of Science Reviewer Locator API API from Clarivate — 2 operation(s) for web of science reviewer locator api.
+- [Clarivate XML API](https://apis.io/apis/clarivate/clarivate-xml-api/) — Response in xml format
+- [Clarivate Graph QL API](https://apis.io/apis/clarivate/clarivate-graph-ql-api/) — The Graph QL API from Clarivate — 1 operation(s) for graph ql.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-12-16
-- **Modified:** 2026-04-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Web of Science APIs
+Model Context Protocol servers that expose the API to agents.
 
-Web of Science APIs deliver publication and citation data drawn from the curated Web of Science Core Collection, supporting bibliometric analysis, research evaluation, and institutional assessment workflows.
+- [clarivate-mcp.yml](https://apis.io/servers/clarivate/clarivate-mcp-yml/)
 
-- **Human URL:** [https://developer.clarivate.com/apis/wos](https://developer.clarivate.com/apis/wos)
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Bibliometrics
-- Citations
-- Publications
-- Research Analytics
+- [Clarivate Agentic Access](https://apis.io/agentic-access/clarivate/clarivate-agentic-access/)
 
-#### Properties
+#### JSON Schema (96)
 
-- [Documentation](https://developer.clarivate.com/apis/wos)
-- [Postman Collection](collections/clarivate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clarivate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### Derwent Innovation API
+- [ArrayOfDates](https://apis.io/schemas/clarivate/clarivate-array-of-dates/)
+- [ArrayOfRecords](https://apis.io/schemas/clarivate/clarivate-array-of-records/)
+- [ArrayOfUTs](https://apis.io/schemas/clarivate/clarivate-array-of-uts/)
+- [CategoriesCited](https://apis.io/schemas/clarivate/clarivate-categories-cited/)
+- [CategoriesCiting](https://apis.io/schemas/clarivate/clarivate-categories-citing/)
+- [CategoryContextResponse](https://apis.io/schemas/clarivate/clarivate-category-context-response/)
+- [CategoryContextResponseXML](https://apis.io/schemas/clarivate/clarivate-category-context-response-xml/)
+- [CategoryList](https://apis.io/schemas/clarivate/clarivate-category-list/)
+- [CategoryRecord](https://apis.io/schemas/clarivate/clarivate-category-record/)
+- [CategoryReports](https://apis.io/schemas/clarivate/clarivate-category-reports/)
+- [CheckPackageStatusResult](https://apis.io/schemas/clarivate/clarivate-check-package-status-result/)
+- [CitationReportResponse](https://apis.io/schemas/clarivate/clarivate-citation-report-response/)
+- [combined_search_request_derwent_api](https://apis.io/schemas/clarivate/clarivate-combined-search-request-derwent-api/)
+- [ContentSetInfoResponse](https://apis.io/schemas/clarivate/clarivate-content-set-info-response/)
+- [ContentSetOntologiesResponse](https://apis.io/schemas/clarivate/clarivate-content-set-ontologies-response/)
+- [ContentSetOntologyResponse](https://apis.io/schemas/clarivate/clarivate-content-set-ontology-response/)
+- [COUNTER_database_report](https://apis.io/schemas/clarivate/clarivate-counter-database-report/)
+- [COUNTER_platform_report](https://apis.io/schemas/clarivate/clarivate-counter-platform-report/)
+- [DefaultResponse](https://apis.io/schemas/clarivate/clarivate-default-response/)
+- [doc_idmapping_request_derwent_api](https://apis.io/schemas/clarivate/clarivate-doc-idmapping-request-derwent-api/)
+- [Document](https://apis.io/schemas/clarivate/clarivate-document/)
+- [document_availability_request_caselaw](https://apis.io/schemas/clarivate/clarivate-document-availability-request-caselaw/)
+- [document_availability_request_patent](https://apis.io/schemas/clarivate/clarivate-document-availability-request-patent/)
+- [document_by_ids_request_derwent_api](https://apis.io/schemas/clarivate/clarivate-document-by-ids-request-derwent-api/)
+- [document_by_pns_request_derwent_api](https://apis.io/schemas/clarivate/clarivate-document-by-pns-request-derwent-api/)
+- …and 71 more published on APIs.io
 
-The Derwent Innovation API provides programmatic access to Derwent World Patents Index data, including normalized patent records, families, and citations used for IP intelligence and competitive analysis.
+#### JSON-LD (1)
 
-- **Human URL:** [https://developer.clarivate.com/apis/derwent](https://developer.clarivate.com/apis/derwent)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Clarivate Context](https://apis.io/jsonld/clarivate/clarivate-context/)
 
-- Derwent
-- Intellectual Property
-- Patents
+#### Collections (3)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.clarivate.com/apis/derwent)
-- [Postman Collection](collections/clarivate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clarivate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Clarivate Web of Science Starter API](https://apis.io/collections/clarivate/open-clarivate/)
+- [Clarivate Web of Science Starter Documents API](https://apis.io/collections/clarivate/open-clarivate-documents-api/)
+- [Clarivate Web of Science Starter Documents Journals API](https://apis.io/collections/clarivate/open-clarivate-journals-api/)
 
-### Cortellis APIs
+#### Overlays (87)
 
-Cortellis APIs expose the Clarivate life sciences intelligence platform, covering drug pipelines, clinical trials, regulatory intelligence, deals, and competitive intelligence for biopharma and medical-device companies.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- **Human URL:** [https://www.cortellis.com/](https://www.cortellis.com/)
+- [Clarivate Administration User Data Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-administration-user-data-api-phrasing-overlay/)
+- [Clarivate Administration User Delegations Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-administration-user-delegations-api-phrasing-overlay/)
+- [Clarivate Audit Info Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-audit-info-api-phrasing-overlay/)
+- [Clarivate Cache Management Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-cache-management-api-phrasing-overlay/)
+- [Clarivate Categories Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-categories-api-phrasing-overlay/)
+- [Clarivate Cddi Counter Five Overlay](https://apis.io/overlays/clarivate/clarivate-cddi-counter-five-overlay/)
+- [Clarivate Configuration Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-configuration-api-phrasing-overlay/)
+- [Clarivate Configuration Entity Definitions Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-configuration-entity-definitions-api-phrasing-overlay/)
+- [Clarivate Configuration Link Entity Definitions Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-configuration-link-entity-definitions-api-phrasing-overlay/)
+- [Clarivate Converis Additional Api Overlay](https://apis.io/overlays/clarivate/clarivate-converis-additional-api-overlay/)
+- [Clarivate Converisreadapi Overlay](https://apis.io/overlays/clarivate/clarivate-converisreadapi-overlay/)
+- [Clarivate Cortellis Api Collection Overlay](https://apis.io/overlays/clarivate/clarivate-cortellis-api-collection-overlay/)
+- [Clarivate Cud Api Overlay](https://apis.io/overlays/clarivate/clarivate-cud-api-overlay/)
+- [Clarivate Data Entities Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-data-entities-api-phrasing-overlay/)
+- [Clarivate Data Entity Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-data-entity-api-phrasing-overlay/)
+- [Clarivate Data File Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-data-file-api-phrasing-overlay/)
+- [Clarivate Data Integration Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-data-integration-api-phrasing-overlay/)
+- [Clarivate Data Link Entity Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-data-link-entity-api-phrasing-overlay/)
+- [Clarivate Data Tree Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-data-tree-api-phrasing-overlay/)
+- [Clarivate Derwent Api Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-derwent-api-api-phrasing-overlay/)
+- [Clarivate Documents Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-documents-api-phrasing-overlay/)
+- [Clarivate Download Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-download-api-phrasing-overlay/)
+- [Clarivate Dss Search Api Overlay](https://apis.io/overlays/clarivate/clarivate-dss-search-api-overlay/)
+- [Clarivate Endnote Overlay](https://apis.io/overlays/clarivate/clarivate-endnote-overlay/)
+- [Clarivate Endnote Rest Api Api Phrasing Overlay](https://apis.io/overlays/clarivate/clarivate-endnote-rest-api-api-phrasing-overlay/)
+- …and 62 more published on APIs.io
 
-#### Tags
+#### Governance rules (1)
 
-- Clinical Trials
-- Cortellis
-- Drug Pipeline
-- Life Sciences
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [Clarivate API Rules](https://apis.io/rules/clarivate/clarivate-rules/)
 
-- [Documentation](https://developer.clarivate.com/apis/cortellis)
-- [Portal](https://www.cortellis.com/)
-- [Postman Collection](collections/clarivate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clarivate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (4)
 
-### InCites Benchmarking and Analytics API
+Authentication, trust centre, and vulnerability disclosure.
 
-The InCites API provides programmatic access to the Clarivate research benchmarking platform, enabling institutional research performance analytics built on Web of Science data.
+- [Clarivate Authentication](https://apis.io/security/clarivate/clarivate-authentication/)
+- [Clarivate Domain Security](https://apis.io/security/clarivate/clarivate-domain-security/)
+- [Clarivate Trust Center](https://apis.io/security/clarivate/clarivate-trust-center/)
+- [Clarivate Vulnerability Disclosure](https://apis.io/security/clarivate/clarivate-vulnerability-disclosure/)
 
-- **Human URL:** [https://developer.clarivate.com/apis/incites](https://developer.clarivate.com/apis/incites)
+#### OAuth scopes (1)
 
-#### Tags
+The permissions the API asks for.
 
-- Benchmarking
-- InCites
-- Research Analytics
+- [Clarivate Scopes](https://apis.io/scopes/clarivate/clarivate-scopes/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://developer.clarivate.com/apis/incites)
-- [Postman Collection](collections/clarivate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clarivate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-## Common Properties
+- [Clarivate Plans Pricing](https://apis.io/plans/clarivate/clarivate-plans-pricing/)
 
-- [GitHub Organization](https://github.com/clarivate)
-- [LinkedIn](https://www.linkedin.com/company/clarivate)
+#### Rate limits (1)
+
+Published request limits.
+
+- [Clarivate Rate Limits](https://apis.io/rate-limits/clarivate/clarivate-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Clarivate Finops](https://apis.io/finops/clarivate/clarivate-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://clarivate.com/)
-- [Portal](https://developer.clarivate.com/)
-- [A P I  Catalog](https://developer.clarivate.com/apis)
+- [Documentation](https://developer.clarivate.com/apis)
+- [Getting started](https://developer.clarivate.com/help/application)
+- [API reference](https://developer.clarivate.com/apis)
+- [Sign up](https://developer.clarivate.com/login)
 - [Support](https://support.clarivate.com/)
-- [Privacy Policy](https://clarivate.com/privacy-center/)
-- [Terms of Service](https://clarivate.com/legal-center/)
-- [JSON-LD](json-ld/clarivate-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/clarivate-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
+- [Blog](https://clarivate.com/news/)
+- [Compliance](https://clarivate.com/trust-center/security-compliance/)
+- [Terms of service](https://clarivate.com/legal-center/)
+- [Privacy policy](https://clarivate.com/privacy-center/)
+- [GitHub](https://github.com/clarivate)
+- [Status](https://status.clarivate.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 72.1** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 83.9 |
+| Contract quality | 62.3 |
+| Contract governance | 33.3 |
+| Operational transparency | 84.2 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 81.6 |
+
+**Agent readiness 32.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 41.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/clarivate/](https://apis.io/providers/clarivate/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Clarivate: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/clarivate/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
