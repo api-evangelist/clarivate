@@ -53,6 +53,9 @@ artifacts:
   graphql/clarivate-graphql.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-02.yml:
+    method: unknown
+    evidence: no authorship recorded
   hosts/clarivate-hosts.yml:
     method: derived
     evidence: declared in the artifact
@@ -356,7 +359,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-10-31T095417.yml:
+  kin/checks-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -411,6 +414,15 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-10-31T095417.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T171331.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-01T200237.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/clarivate-lifecycle.yml:
@@ -1063,6 +1075,9 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   skills/clarivate-wos-researcher-profile.md:
+    method: generated
+    evidence: declared in the artifact
+  sla/clarivate-sla.yml:
     method: generated
     evidence: declared in the artifact
   vendors/clarivate-vendors.yml:
